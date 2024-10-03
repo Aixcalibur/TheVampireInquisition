@@ -1,0 +1,306 @@
+﻿namespace = vi_stress_threshold
+
+
+vi_stress_threshold.1001 = {
+	type = character_event
+	title = vi_stress_threshold.1001.t
+	desc = vi_stress_threshold.1001.desc
+
+	theme = mental_break
+	override_background = {
+		trigger = { is_travelling = yes }
+		reference = terrain
+	}
+	left_portrait = {
+		character = root
+		animation = rage
+	}
+
+	right_portrait = {
+		character = scope:victim_1
+		animation = fear
+	}
+
+	lower_center_portrait = {
+		character = scope:victim_2
+	}
+
+	lower_right_portrait = {
+		character = scope:victim_3
+	}
+
+	trigger = {
+		# Character must meet the criteria for at least two event options to qualify for this event (don't want to fire the event if the player has no choices!).
+		# calc_true_if = {
+		# 	amount >= 2
+
+		# 	can_be_contrite = yes
+		# 	has_trait = contrite
+		# 	can_be_flagellant = yes
+		# 	has_trait = flagellant
+		# 	can_be_improvident = yes
+		# 	has_trait = improvident
+		# 	can_be_journaller = yes
+		# 	has_trait = journaller
+		# 	OR = { # While picking either of these is fine, we don't want to have the player chose between only these two.
+		# 		can_be_drunkard = yes
+		# 		has_trait = drunkard
+		# 		can_be_hashishiyah = yes
+		# 		has_trait = hashishiyah
+		# 	}
+		# }
+	}
+
+	weight_multiplier = {
+		base = 1
+
+		# modifier = { # Much more likely to occur if the character has a Criminal Secret they can confess.
+		# 	AND = {
+		# 		can_be_contrite = yes
+		# 		any_secret = {
+		# 			is_criminal_for = root
+		# 		}
+		# 	}
+		# 	add = 50
+		# }
+		# modifier = { # Somewhat more likely to occur if the character can become Flagellant.
+		# 	can_be_flagellant = yes
+		# 	add = 10
+		# }
+		# modifier = { # Somewhat more likely to occur if the character can become Improvident.
+		# 	can_be_improvident = yes
+		# 	add = 10
+		# }
+		# modifier = {
+		# 	can_be_journaller = yes
+		# 	add = 5
+		# }
+		# #One of your parents/guardian has issues
+		# modifier = {
+		# 	OR = {
+		# 		has_witnessed_stress_coping_trait = { TRAIT = contrite }
+		# 		has_witnessed_stress_coping_trait = { TRAIT = flagellant }
+		# 		has_witnessed_stress_coping_trait = { TRAIT = journaller }
+		# 		has_witnessed_stress_coping_trait = { TRAIT = drunkard }
+		# 		has_witnessed_stress_coping_trait = { TRAIT = hashishiyah }
+		# 	}
+		# 	add = 5
+		# }
+	}
+
+	widget = {
+		gui = "event_window_widget_stress"
+		container = "custom_widgets_container"
+	}
+
+	immediate = {
+		root = { save_scope_as = stress_character } # For stress widget
+		
+		stress_character.location = {
+			save_scope_as = stress_location
+		}
+
+		random_pool_character = {
+			province = scope:stress_location
+			limit = {
+				NOR = {
+					vi_is_vampire_trigger = yes
+					is_landed = yes
+					is_ai = no
+				}
+			}
+			save_scope_as = victim_1
+		}
+
+		if = {
+			limit = {
+				NOT = { exists = scope:victim_1 }
+			}
+			#Create peasant to stuff in pool
+			create_character = {
+				template = generic_peasant_character
+				location = scope:stress_location
+				dynasty = none
+				culture = scope:stress_location.culture
+				faith = scope:stress_location.faith
+				save_scope_as = victim_1
+			}
+		}
+
+		random_pool_character = {
+			province = scope:stress_location
+			limit = {
+				NOR = {
+					vi_is_vampire_trigger = yes
+					is_landed = yes
+					is_ai = no
+				}
+			}
+			save_scope_as = victim_2
+		}
+
+		if = {
+			limit = {
+				NOT = { exists = scope:victim_1 }
+			}
+			#Create peasant to stuff in pool
+			create_character = {
+				template = generic_peasant_character
+				location = scope:stress_location
+				dynasty = none
+				culture = scope:stress_location.culture
+				faith = scope:stress_location.faith
+				save_scope_as = victim_2
+			}
+		}
+
+		random_pool_character = {
+			province = scope:stress_location
+			limit = {
+				NOR = {
+					vi_is_vampire_trigger = yes
+					is_landed = yes
+					is_ai = no
+				}
+			}
+			save_scope_as = victim_3
+		}
+
+		if = {
+			limit = {
+				NOT = { exists = scope:victim_1 }
+			}
+			#Create peasant to stuff in pool
+			create_character = {
+				template = generic_peasant_character
+				location = scope:stress_location
+				dynasty = none
+				culture = scope:stress_location.culture
+				faith = scope:stress_location.faith
+				save_scope_as = victim_3
+			}
+		}
+
+		stress_threshold_event_post_immediate = yes
+	}
+
+	option = {
+
+		name = vi_stress_threshold.1001.a
+		# trigger = {
+		# 	# has_character_flag = stress_threshold_option_contrite
+		# }
+		# name = {
+		# 	trigger = { can_be_contrite = yes }
+		# 	text = stress_threshold.1001.contrite.gain
+		# }
+		# name = {
+		# 	trigger = { has_trait = contrite }
+		# 	text = stress_threshold.1001.contrite.effect
+		# }
+		ai_chance = {
+			base = 1
+			
+		}
+
+		scope:victim_1 = {
+			death = {
+				killer = scope:stress_character
+				death_reason = death_murder
+			}
+		}
+
+		add_stress = medium_stress_impact_loss
+
+		# add_trait = contrite
+		# trait = contrite
+
+		# contrite_get_secret_scopes_effect = yes # Get secrets before trying to reveal
+		# contrite_reveal_secrets_effect = yes # Includes stress loss based on what secrets were revealed
+	}
+
+	option = {
+		name = vi_stress_threshold.1001.b
+
+		scope:victim_2 = {
+			death = {
+				killer = scope:stress_character
+				death_reason = death_murder
+			}
+		}
+
+		add_stress = medium_stress_impact_loss
+	}
+
+	option = {
+		name = vi_stress_threshold.1001.c
+
+		scope:victim_3 = {
+			death = {
+				killer = scope:stress_character
+				death_reason = death_murder
+			}
+		}
+
+		add_stress = medium_stress_impact_loss
+	}
+}
+
+vi_stress_threshold.9001 = {
+	type = character_event
+	title = vi_stress_threshold.9001.t
+	desc = vi_stress_threshold.9001.desc
+
+	theme = mental_break
+
+	override_background = {
+		trigger = { is_travelling = yes }
+		reference = terrain
+	}
+
+	left_portrait = {
+		character = root
+		animation = rage
+	}
+
+	right_portrait = {
+		character = root
+		animation = fear
+	}
+
+	# trigger = {
+		
+	# }
+
+	weight_multiplier = {
+		base = 1
+
+	}
+
+	widget = {
+		gui = "event_window_widget_stress"
+		container = "custom_widgets_container"
+	}
+
+	option = {
+
+		name = vi_stress_threshold.9001.a
+		# trigger = {
+		# 	# has_character_flag = stress_threshold_option_contrite
+		# }
+		# name = {
+		# 	trigger = { can_be_contrite = yes }
+		# 	text = stress_threshold.1001.contrite.gain
+		# }
+		# name = {
+		# 	trigger = { has_trait = contrite }
+		# 	text = stress_threshold.1001.contrite.effect
+		# }
+		ai_chance = {
+			base = 1
+			
+		}
+
+		add_trait = vi_feral
+	}
+}

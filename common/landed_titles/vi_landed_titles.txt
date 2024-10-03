@@ -1,0 +1,18 @@
+﻿k_vi_court_of_night = {
+	color = { 200 0 0 }
+	definite_form = yes
+	ruler_uses_title_name = no
+	landless = yes
+	can_be_named_after_dynasty = no
+
+	capital = c_ile_de_france
+
+	ai_primary_priority = {
+		add = @always_primary_score
+	}
+
+	destroy_if_invalid_heir = yes
+	no_automatic_claims = yes
+	always_follows_primary_heir = yes
+	de_jure_drift_disabled = yes
+}

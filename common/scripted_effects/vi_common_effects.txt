@@ -1,0 +1,16 @@
+﻿vi_make_vampire_effect = {
+
+	add_character_flag = immune_to_disease
+
+	add_character_flag = vi_vampire
+
+	# Make it so vampires don't get the vanilla stress events any more
+	# EDIT: Actually, we'll just place this on the stress_on_action
+	# add_character_flag = stress_threshold_event_3_cooldown
+	# add_character_flag = stress_threshold_event_2_cooldown
+	# add_character_flag = stress_threshold_event_1_cooldown
+
+	add_character_modifier = vi_unnatural_youth_modifier
+
+	# set_sexuality = asexual
+}

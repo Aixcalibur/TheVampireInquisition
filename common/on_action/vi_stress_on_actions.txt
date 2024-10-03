@@ -1,0 +1,66 @@
+﻿# Here we block vanilla events from firing for vampires.
+
+on_stress_level_1 = {
+	trigger = {
+		NOT = { has_character_flag = recently_hit_stress_threshold } # Prevents multiple mental breaks from occuring on the same day (causes errors and creates an unbreakable stress loop).
+	}
+	on_actions = {
+		vi_stress_on_action
+	}
+}
+
+on_stress_level_2 = {
+	trigger = {
+		NOT = { has_character_flag = recently_hit_stress_threshold } # Prevents multiple mental breaks from occuring on the same day (causes errors and creates an unbreakable stress loop).
+	}
+	on_actions = {
+		vi_stress_on_action
+	}
+}
+
+on_stress_level_3 = {
+	trigger = {
+		NOT = { has_character_flag = recently_hit_stress_threshold } # Prevents multiple mental breaks from occuring on the same day (causes errors and creates an unbreakable stress loop).
+	}
+	on_actions = {
+		vi_stress_on_action
+	}
+}
+
+on_stress_level_4 = {
+	trigger = {
+		NOT = { has_character_flag = recently_hit_stress_threshold } # Prevents multiple mental breaks from occuring on the same day (causes errors and creates an unbreakable stress loop).
+	}
+	on_actions = {
+		vi_stress_level_4_on_action
+	}
+}
+
+vi_stress_on_action = {
+	trigger = {
+		vi_is_vampire_trigger = yes
+	}
+
+	effect = {
+		add_character_flag = stress_threshold_event_3_cooldown
+		add_character_flag = stress_threshold_event_2_cooldown
+		add_character_flag = stress_threshold_event_1_cooldown
+	}
+
+	on_actions = {
+		delay = { days = 3 }
+		vi_stress_choose_on_action
+	}
+}
+
+vi_stress_choose_on_action = {
+	random_events = {
+		100 = vi_stress_threshold.1001
+	}
+}
+
+vi_stress_level_4_on_action = {
+	random_events = {
+		100 = vi_stress_threshold.9001
+	}
+}

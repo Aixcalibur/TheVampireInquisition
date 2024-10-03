@@ -1,0 +1,12 @@
+﻿l_english:
+
+ k_vi_court_of_night_article:0 "the "
+ k_vi_court_of_night:0 "Court of Night"
+ k_vi_court_of_night_adj:0 "Night"
+
+ # Character Names
+ Esclarmonde:0 "Esclarmonde"
+ vi_historical_character.esclarmonde: "Esclarmonde's origins have been meticulously buried by the Queen herself."
+
+ nick_vi_queenofthenight:0 "the Queen of the Night"
+ nick_vi_queenofthenight_desc:1 "Civilization was brought to the nights of Gaul not through the blade or fang, but through unearthly charm and keen insight."

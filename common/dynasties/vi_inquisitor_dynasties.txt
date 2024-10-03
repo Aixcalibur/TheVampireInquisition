@@ -1,0 +1,4 @@
+﻿vi_dynasty_Helsing = {
+	name = "dynn_vi_Helsing"
+	culture = "norse"
+}

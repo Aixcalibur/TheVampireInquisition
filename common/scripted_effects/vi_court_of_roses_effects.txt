@@ -1,0 +1,18 @@
+﻿vi_spawn_esclarmonde_effect = {
+	create_character = {
+		name = "Esclarmonde"
+		template = vi_esclarmonde_character_template
+		location = c_ile_de_france
+		save_scope_as = vi_esclarmonde
+	}
+}
+
+vi_spawn_roland_effect = {
+	create_character = {
+		name = "Roland"
+		template = vi_roland_character_template
+		location = c_ile_de_france
+		employer = scope:vi_esclarmonde
+		save_scope_as = vi_roland
+	}
+}

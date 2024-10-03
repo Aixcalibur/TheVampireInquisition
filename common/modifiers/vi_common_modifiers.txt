@@ -1,0 +1,17 @@
+﻿vi_drained_modifier = {
+	icon = health_negative
+	health = -0.2
+	prowess = -2
+	stacking = yes
+}
+
+vi_unnatural_youth_modifier = {
+	icon = fertility_positive
+	life_expectancy = 10000
+	no_prowess_loss_from_age = yes
+}
+
+vi_unbreakable_calm_modifier = {
+	icon = magic_positive
+	stress_gain_mult = -10
+}

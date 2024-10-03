@@ -1,0 +1,5 @@
+﻿house_vi_Helsing = {
+	name = "dynn_vi_Helsing"
+	dynasty = vi_dynasty_Helsing
+	motto = "dynn_vi_Helsing_motto"
+}

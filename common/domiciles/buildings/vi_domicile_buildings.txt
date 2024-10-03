@@ -1,0 +1,311 @@
+﻿##################
+# ESTATE BUILDINGS
+##################
+
+### NOTE: If updating, adding, or changing buildings, ensure the following effects are updated too:
+### destroy_random_estate_building_variable_effect
+### destroy_random_estate_building_effect
+
+### Estate Main Building - The Villa
+vi_estate_main_01 = {
+	slot_type = main
+	internal_slots = 2
+	construction_time = 730
+	allowed_domicile_types = { vi_lair }
+
+	cost = {
+		gold = estate_external_building_high_cost_tier_2_value
+	}
+
+	character_modifier = {
+		domicile_monthly_gold_add = 0.25
+		domicile_monthly_influence_add = 1
+		domicile_external_slots_capacity_add = 2
+	}
+
+	ai_value = {
+		value = 100
+	}
+
+	asset = {
+		trigger = {
+			domicile_location.culture = {
+				has_graphical_mena_culture_group_trigger = yes
+			}
+		}
+		icon = "gfx/interface/icons/domicile_building/domicile_building_villa.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_villa_mena.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_villa_mena_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_estate_main_building"
+	}
+
+	asset = {
+		trigger = {
+			domicile_location.culture = {
+				has_graphical_western_culture_group_trigger = yes
+			}
+		}
+		icon = "gfx/interface/icons/domicile_building/domicile_building_villa.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_villa_western.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_villa_western_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_estate_main_building"
+	}
+
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_building_villa.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_villa_byzantine.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_villa_byzantine_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_estate_main_building"
+	}
+}
+
+vi_estate_main_02 = {
+	slot_type = main
+	internal_slots = 4
+	construction_time = 730
+	allowed_domicile_types = { vi_lair }
+	previous_building = vi_estate_main_01
+	
+	can_construct = {
+		culture ?= { has_innovation = innovation_city_planning }
+	}
+
+	cost = {
+		gold = estate_external_building_high_cost_tier_3_value
+	}
+	
+	parameters = {
+		reduce_success_of_raid_estate = yes
+		estate_increase_house_member_investment_cap_1 = yes
+	}
+
+	character_modifier = {
+		domicile_monthly_gold_add = 0.25
+		domicile_monthly_influence_add = 0.5
+		domicile_external_slots_capacity_add = 1
+	}
+
+	ai_value = {
+		value = 100
+	}
+	
+	asset = {
+		trigger = {
+			domicile_location.culture = {
+				has_graphical_mena_culture_group_trigger = yes
+			}
+		}
+		icon = "gfx/interface/icons/domicile_building/domicile_building_manor.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_manor_mena.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_manor_mena_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_estate_main_building"
+	}
+
+	asset = {
+		trigger = {
+			domicile_location.culture = {
+				has_graphical_western_culture_group_trigger = yes
+			}
+		}
+		icon = "gfx/interface/icons/domicile_building/domicile_building_manor.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_manor_western.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_manor_western_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_estate_main_building"
+	}
+
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_building_manor.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_manor_byzantine.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_manor_byzantine_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_estate_main_building"
+	}
+}
+
+vi_estate_main_03 = {
+	slot_type = main
+	internal_slots = 6
+	construction_time = 730
+	allowed_domicile_types = { vi_lair }
+	previous_building = vi_estate_main_02
+	
+	can_construct = {
+		culture ?= { has_innovation = innovation_manorialism }
+	}
+
+	cost = {
+		gold = estate_external_building_high_cost_tier_4_value
+	}
+	
+	parameters = {
+		reduce_success_of_raid_estate = yes
+		estate_increase_house_member_investment_cap_2 = yes
+	}
+
+	character_modifier = {
+		domicile_monthly_gold_add = 0.5
+		domicile_monthly_gold_mult = 0.02
+		domicile_monthly_influence_add = 0.5
+		domicile_external_slots_capacity_add = 1
+	}
+
+	ai_value = {
+		value = 100
+	}
+	
+	asset = {
+		trigger = {
+			domicile_location.culture = {
+				has_graphical_mena_culture_group_trigger = yes
+			}
+		}
+		icon = "gfx/interface/icons/domicile_building/domicile_building_mansion.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_mansion_mena.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_mansion_mena_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_estate_main_building"
+	}
+
+	asset = {
+		trigger = {
+			domicile_location.culture = {
+				has_graphical_western_culture_group_trigger = yes
+			}
+		}
+		icon = "gfx/interface/icons/domicile_building/domicile_building_mansion.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_mansion_western.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_mansion_western_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_estate_main_building"
+	}
+
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_building_mansion.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_mansion_byzantine.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_mansion_byzantine_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_estate_main_building"
+	}
+}
+
+vi_estate_main_04 = {
+	slot_type = main
+	internal_slots = 8
+	construction_time = 730
+	allowed_domicile_types = { vi_lair }
+	previous_building = vi_estate_main_03
+	
+	can_construct = {
+		culture ?= { has_innovation = innovation_development_03 }
+	}
+
+	cost = {
+		gold = estate_external_building_high_cost_tier_5_value
+	}
+	
+	parameters = {
+		reduce_success_of_raid_estate = yes
+		estate_increase_house_member_investment_cap_3 = yes
+	}
+
+	character_modifier = {
+		domicile_monthly_gold_add = 0.5
+		domicile_monthly_gold_mult = 0.03
+		domicile_monthly_influence_add = 0.5
+		domicile_external_slots_capacity_add = 1
+	}
+
+	ai_value = {
+		value = 100
+	}
+	
+	asset = {
+		trigger = {
+			domicile_location.culture = {
+				has_graphical_mena_culture_group_trigger = yes
+			}
+		}
+		icon = "gfx/interface/icons/domicile_building/domicile_building_estate.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_estate_mena.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_estate_mena_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_estate_main_building"
+	}
+
+	asset = {
+		trigger = {
+			domicile_location.culture = {
+				has_graphical_western_culture_group_trigger = yes
+			}
+		}
+		icon = "gfx/interface/icons/domicile_building/domicile_building_estate.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_estate_western.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_estate_western_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_estate_main_building"
+	}
+
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_building_estate.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_estate_byzantine.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_estate_byzantine_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_estate_main_building"
+	}
+}
+
+vi_estate_main_05 = {
+	slot_type = main
+	internal_slots = 10
+	construction_time = 730
+	allowed_domicile_types = { vi_lair }
+	previous_building = vi_estate_main_04
+	
+	can_construct = {
+		culture ?= { has_innovation = innovation_cranes }
+	}
+
+	cost = {
+		gold = estate_external_building_high_cost_tier_6_value
+	}
+	
+	parameters = {
+		reduce_success_of_raid_estate = yes
+		estate_increase_house_member_investment_cap_4 = yes
+	}
+
+	character_modifier = {
+		domicile_monthly_gold_add = 0.75
+		domicile_monthly_gold_mult = 0.05
+		domicile_monthly_influence_add = 0.5
+		domicile_external_slots_capacity_add = 1
+	}
+
+	ai_value = {
+		value = 100
+	}
+	
+	asset = {
+		trigger = {
+			domicile_location.culture = {
+				has_graphical_mena_culture_group_trigger = yes
+			}
+		}
+		icon = "gfx/interface/icons/domicile_building/domicile_building_grand_estate.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_grand_estate_mena.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_grand_estate_mena_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_estate_main_building"
+	}
+
+	asset = {
+		trigger = {
+			domicile_location.culture = {
+				has_graphical_western_culture_group_trigger = yes
+			}
+		}
+		icon = "gfx/interface/icons/domicile_building/domicile_building_grand_estate.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_grand_estate_western.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_grand_estate_western_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_estate_main_building"
+	}
+	
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_building_grand_estate.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_grand_estate_byzantine.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_grand_estate_byzantine_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_estate_main_building"
+	}
+}

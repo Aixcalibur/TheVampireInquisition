@@ -1,0 +1,7 @@
+﻿k_vi_court_of_night = {
+	768.10.31 = {
+		holder = vi_esclarmonde
+		government = vi_vampire_government
+		liege = 0
+	}
+}

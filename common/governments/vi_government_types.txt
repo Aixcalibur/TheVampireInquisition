@@ -1,0 +1,50 @@
+﻿vi_vampire_government = {
+	government_rules = {
+		court_generate_spouses = no
+		create_cadet_branches = yes
+		rulers_should_have_dynasty = yes
+		dynasty_named_realms = no
+		royal_court = yes
+		administrative = yes
+		landless_playable = yes
+		legitimacy = yes
+		# state_faith = yes
+		use_as_base_on_landed = yes
+		use_as_base_on_rank_up = yes
+		inherit_from_dynastic_government = no
+	}
+
+	domicile_type = vi_lair
+
+	# fallback = 3
+
+	# primary_holding = castle_holding
+	valid_holdings = { tribal_holding castle_holding city_holding church_holding }
+	required_county_holdings = { castle_holding city_holding church_holding }
+
+	# vassal_contract = {
+	# 	administrative_obligations
+	# 	administrative_themes
+	# }
+
+	character_modifier = {
+		levy_size = -1
+		# feudal_government_tax_contribution_mult = -0.5
+		# feudal_government_levy_contribution_mult = -1
+		# clan_government_tax_contribution_mult = -0.5
+		# clan_government_levy_contribution_mult = -1
+		men_at_arms_cap = -2
+		men_at_arms_limit = -2
+		knight_limit = 10
+		# vassal_limit = 100
+	}
+
+	# Use flags instead of has_government for moddability if possible (i.e., wherever not visible to the player).
+	# flag = government_is_administrative
+
+	# These flags only exist for loc and in-game descriptions
+	# flag = government_has_influence
+	# flag = government_has_title_men_at_arms
+	# flag = government_has_powerful_families
+	color = hsv{ 0.00 0.00 0.66 }
+}

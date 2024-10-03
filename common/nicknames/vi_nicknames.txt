@@ -1,0 +1,2 @@
+﻿
+nick_vi_queenofthenight = {}

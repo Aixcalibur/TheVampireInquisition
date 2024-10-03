@@ -1,0 +1,16 @@
+﻿vi_dynasty_Underworld = { #This only exists to hold appearances
+	name = "dynn_vi_Underworld"
+	culture = "greek"
+}
+
+vi_dynasty_Carmine = {
+	name = "dynn_vi_Carmine"
+	culture = "roman"
+	motto = "dynn_vi_Carmine_motto"
+	forced_coa_religiongroup = "christian"
+}
+
+vi_dynasty_Nosferatu = {
+	name = "dynn_vi_Nosferatu"
+	culture = "russian"
+}

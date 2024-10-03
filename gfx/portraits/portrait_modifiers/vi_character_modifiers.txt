@@ -1,0 +1,45 @@
+﻿vi_character_accessories = {
+	usage = game
+	selection_behavior = max
+	priority = 2
+
+	vi_esclarmonde = {
+		dna_modifiers = {
+			accessory = {
+                mode = add
+                gene = hairstyles
+                template = all_hairstyles
+                accessory = female_hair_western_07
+            }
+
+			morph = {
+				mode = replace
+				gene = complexion
+				template = complexion_beauty_1
+				value = 0.9
+			}
+
+			# color = {
+			# 	gene = skin_color
+			# 	mode = modify
+			# 	x = -0.3
+			# 	y = -0.3
+			# }
+		}
+
+		weight = {
+            base = 0
+            modifier = {
+                add = 900
+				exists = this
+				OR = {
+					this = {
+						has_character_flag = vi_esclarmonde
+					}
+					this = character:vi_esclarmonde
+					this = character:vi_esclarmonde_shade
+				}
+            }
+        }
+	}
+}

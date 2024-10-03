@@ -1,0 +1,48 @@
+﻿vi_doctrine_core_tenets = {
+	
+	#NOTE:
+	
+	group = "core_tenets"
+	number_of_picks = 0
+
+	tenet_ars_occultism = {
+		icon = core_tenet_alexandrian_catechism
+		piety_cost = {
+			value = faith_tenet_cost_mid
+
+			# Multiplier for keeping same tenet
+			if = {
+				limit = { has_doctrine = tenet_ars_occultism }
+				multiply = faith_unchanged_doctrine_cost_mult
+			}
+		}
+
+		name = {
+			desc = tenet_ars_occultism_name
+		}
+
+		desc = {
+			desc = tenet_ars_occultism_desc
+		}
+
+		is_shown = {
+			not = {
+				religion_tag = christianity_religion
+			}
+		}
+
+		can_pick = {
+			not = {
+				religion_tag = christianity_religion
+			}
+		}
+
+		character_modifier = {
+			monthly_learning_lifestyle_xp_gain_mult = 0.2
+		}
+
+		traits = {
+			virtues = { scholar witch lifestyle_mystic }
+		}
+	}
+}

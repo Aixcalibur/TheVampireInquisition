@@ -1,0 +1,10 @@
+﻿house_vi_roses = {
+	name = "dynn_vi_Roses"
+	dynasty = vi_dynasty_Carmine
+	motto = "dynn_vi_Roses_motto"
+}
+
+house_vi_Underworld = {
+	name = "dynn_vi_Underworld"
+	dynasty = vi_dynasty_Underworld
+}
