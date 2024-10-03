@@ -1,11 +1,21 @@
-﻿vi_esclarmonde_shade = {
+﻿vi_hades_shade = {
+
+	name = "Hades"
+	dynasty_house = house_vi_Underworld
+	sexuality = asexual
+	faith = hellenic_pagan
+	culture = greek
 	
-	name = "Esclarmonde"
+}
+
+vi_esclarmonde_shade = {
+	
+	name = "Esclarmonde Shade"
 	dna = vi_esclarmonde_dna
 	dynasty_house = house_vi_Underworld
 	female = yes
 	sexuality = bisexual
-	faith = catholicism
+	faith = catholic
 	culture = french
 
 	diplomacy = 5
@@ -18,12 +28,16 @@
 	trait = gregarious
 	trait = ambitious
 	trait = calm
-	trait = education_diplomacy_5
+	trait = education_diplomacy_4
 	trait = vi_shade
 
 	disallow_random_traits = yes
 
 	800.6.12 = {
 		birth = yes
+	}
+
+	1800.6.12 = {
+		death = yes
 	}
 }

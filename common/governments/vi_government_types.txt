@@ -5,14 +5,18 @@
 		rulers_should_have_dynasty = yes
 		dynasty_named_realms = no
 		royal_court = yes
-		administrative = yes
+		# administrative = yes
 		landless_playable = yes
 		legitimacy = yes
 		# state_faith = yes
+		allow_out_of_realm_inheritance = no
 		use_as_base_on_landed = yes
 		use_as_base_on_rank_up = yes
 		inherit_from_dynastic_government = no
+		
 	}
+
+	court_generate_commanders = no
 
 	domicile_type = vi_lair
 
@@ -22,29 +26,40 @@
 	valid_holdings = { tribal_holding castle_holding city_holding church_holding }
 	required_county_holdings = { castle_holding city_holding church_holding }
 
-	# vassal_contract = {
-	# 	administrative_obligations
-	# 	administrative_themes
-	# }
+	vassal_contract = {
+		administrative_obligations
+		administrative_themes
+	}
 
 	character_modifier = {
-		levy_size = -1
-		# feudal_government_tax_contribution_mult = -0.5
-		# feudal_government_levy_contribution_mult = -1
-		# clan_government_tax_contribution_mult = -0.5
-		# clan_government_levy_contribution_mult = -1
+		
+		feudal_government_tax_contribution_mult = -0.5
+		feudal_government_levy_contribution_mult = -0.5
+		clan_government_tax_contribution_mult = -0.5
+		clan_government_levy_contribution_mult = -0.5
 		men_at_arms_cap = -2
 		men_at_arms_limit = -2
 		knight_limit = 10
 		# vassal_limit = 100
 	}
 
+	ai = {
+		use_goals = yes
+		perform_religious_reformation = no
+		use_legends = no
+		arrange_marriage = no
+	}
+
 	# Use flags instead of has_government for moddability if possible (i.e., wherever not visible to the player).
 	# flag = government_is_administrative
+	flag = adult_rulers_only
+	flag = government_is_landless_adventurer
+
 
 	# These flags only exist for loc and in-game descriptions
-	# flag = government_has_influence
+	flag = government_has_influence
 	# flag = government_has_title_men_at_arms
 	# flag = government_has_powerful_families
+	
 	color = hsv{ 0.00 0.00 0.66 }
 }

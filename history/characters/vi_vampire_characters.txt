@@ -1,11 +1,11 @@
 ﻿vi_esclarmonde = {
-	
+
 	name = "Esclarmonde"
 	dna = vi_esclarmonde_dna
 	dynasty_house = house_vi_roses
 	female = yes
 	sexuality = bisexual
-	faith = catholicism
+	faith = catholic
 	culture = french
 
 	diplomacy = 12
