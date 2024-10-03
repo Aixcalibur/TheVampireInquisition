@@ -3,6 +3,7 @@
 	definite_form = yes
 	ruler_uses_title_name = no
 	landless = yes
+	noble_family = yes
 	can_be_named_after_dynasty = no
 
 	capital = c_ile_de_france
@@ -11,7 +12,7 @@
 		add = @always_primary_score
 	}
 
-	destroy_if_invalid_heir = yes
+	destroy_if_invalid_heir = no
 	no_automatic_claims = yes
 	always_follows_primary_heir = yes
 	de_jure_drift_disabled = yes

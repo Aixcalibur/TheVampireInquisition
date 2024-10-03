@@ -13,13 +13,13 @@
 	map_pin_anchor = left
 	map_pin_lobby = yes
 
-	provisions = yes
+	# provisions = yes
 
 	move_cooldown = { days = estate_move_cooldown_value }
 	move_cost = {
 		gold = {
 			value = {
-				value = 200
+				value = 100
 				format = "BASE_VALUE_FORMAT"
 				desc = "BASE_VALUE"
 			}
@@ -27,25 +27,25 @@
 				limit = {
 					domicile ?= { has_domicile_building_or_higher = estate_main_05 }
 				}
-				add = 800
+				add = 400
 			}
 			else_if = {
 				limit = {
 					domicile ?= { has_domicile_building_or_higher = estate_main_04 }
 				}
-				add = 600
+				add = 300
 			}
 			else_if = {
 				limit = {
 					domicile ?= { has_domicile_building_or_higher = estate_main_03 }
 				}
-				add = 400
+				add = 200
 			}
 			else_if = {
 				limit = {
 					domicile ?= { has_domicile_building_or_higher = estate_main_02 }
 				}
-				add = 200
+				add = 100
 			}
 		}
 	}

@@ -5,7 +5,7 @@
 		rulers_should_have_dynasty = yes
 		dynasty_named_realms = no
 		royal_court = yes
-		# administrative = yes
+		administrative = yes
 		landless_playable = yes
 		legitimacy = yes
 		# state_faith = yes
@@ -51,9 +51,9 @@
 	}
 
 	# Use flags instead of has_government for moddability if possible (i.e., wherever not visible to the player).
-	# flag = government_is_administrative
+	flag = government_is_administrative
 	flag = adult_rulers_only
-	flag = government_is_landless_adventurer
+	# flag = government_is_landless_adventurer
 
 
 	# These flags only exist for loc and in-game descriptions

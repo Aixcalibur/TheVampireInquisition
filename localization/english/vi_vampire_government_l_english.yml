@@ -5,6 +5,11 @@
  vi_vampire_government_realm: "Vampire Princedom"
  vi_vampire_government_desc: "\n$game_concept_administrative_desc$\n\n#F A Vampire Princedom is a territory claimed by a powerful vampire, unbeknownst to the local mortal population. All vampires must obey the local Prince if they wish to stay here.#!"
 
+
+ vi_lair_domicile_type: "Lair"
+ vi_lair_domicile_type_tooltip: "Lair"
+ vi_lair_domicile_type_possessive: "Estate's"
+
  vi_estate_main_01_domicile_building: "Villa"
  vi_estate_main_02_domicile_building: "Manor"
  vi_estate_main_03_domicile_building: "Mansion"
