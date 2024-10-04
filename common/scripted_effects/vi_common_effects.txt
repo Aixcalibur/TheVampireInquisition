@@ -4,13 +4,57 @@
 
 	add_character_flag = vi_vampire
 
+	add_character_modifier = vi_unnatural_youth_modifier
+
 	# Make it so vampires don't get the vanilla stress events any more
 	# EDIT: Actually, we'll just place this on the stress_on_action
 	# add_character_flag = stress_threshold_event_3_cooldown
 	# add_character_flag = stress_threshold_event_2_cooldown
 	# add_character_flag = stress_threshold_event_1_cooldown
 
-	add_character_modifier = vi_unnatural_youth_modifier
-
 	# set_sexuality = asexual
+}
+
+vi_add_stacking_modifier_effect = {
+	if = {
+		limit = { 
+			$LEVEL$ > 0
+		}
+		save_scope_value_as = {
+			name = modifier
+			value = flag:$MODIFIER$
+		}
+		save_scope_value_as = {
+			name = level
+			value = $LEVEL$
+		}
+		save_scope_value_as = {
+			name = years
+			value = $YEARS$
+		}
+		hidden_effect = {
+			set_local_variable = {
+				name = for_counter
+				value = 0
+			}
+			while = {
+				limit = {
+					exists = local_var:for_counter
+					exists = scope:level
+					scope:level > local_var:for_counter
+				}
+				if = {
+					limit = { $YEARS$ > 0 }
+					add_$TYPE$_modifier = { modifier = $MODIFIER$ years = $YEARS$ }
+				}
+				else = {
+					add_$TYPE$_modifier = $MODIFIER$
+				}
+				change_local_variable = {
+					name = for_counter
+					add = 1
+				}
+			}
+		}
+	}
 }

@@ -8,3 +8,7 @@
 		has_trait = vi_vampire_5
 	}
 }
+
+vi_has_county_policy_trigger = {
+	has_county_modifier = vi_county_discreet_modifier
+}

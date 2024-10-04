@@ -13,6 +13,9 @@
 
  trait_vi_feral:0 "Feral"
 
+ trait_vi_shade:0 "Shade"
+ trait_vi_shade_desc:0 "This character is an immaterial shade."
+
 #  trait_vi_heliophobic:0 "Sun-Cursed"
 #  trait_vi_heliophobic_desc:0 "Avoids the sun at all costs."
 #  trait_vi_heliophobic_character_desc:0 "[ROOT.GetCharacter.GetFirstNameNoTooltip] avoids the sun at all costs."

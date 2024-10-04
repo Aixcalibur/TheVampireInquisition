@@ -2,49 +2,51 @@
 	age = 23 
 	dna = vi_esclarmonde_dna
 	gender = female
-	sexuality = bisexual
-	dynasty_house = house_vi_roses
+	faith = faith:catholicism
+	culture = culture:french
+
+	dynasty_house = house_vi_Montmartre
+
 	diplomacy = 10
 	martial = 6
 	stewardship = 7
 	intrigue = 10
 	learning = 5
 	prowess = 0
-	faith = faith:catholicism
-	culture = culture:french
+
 	trait = gregarious
 	trait = ambitious
 	trait = calm
 	trait = education_diplomacy_5
-	trait = vi_heliophobic
+	trait = vi_vampire_3
 	trait = beauty_good_3
-	trait = vi_queenofthenight
-	trait = gardener
+	trait = lifestyle_gardener
 	random_traits = no
 
 	after_creation = {
-		vi_make_vampire_effect = yes
-		set_immortal_age = 23
-		vi_add_diplomacy_perks_effect = yes
+		set_immortal_age = 25
+		vi_esclarmonde_after_effect = yes
 	}
 }
 
 vi_roland_character_template = {
 	age = 29
-	dynasty_house = house_vi_roses
-	sexuality = heterosexual
+	dynasty_house = house_vi_Montmartre
+	faith = faith:catholicism
+	culture = culture:french
+
 	diplomacy = 7
 	martial = 12
 	stewardship = 4
 	intrigue = 3
 	learning = 4
 	prowess = 20
-	faith = faith:catholicism
-	culture = culture:french
+
+	trait = education_martial_4
 	trait = brave
 	trait = stubborn
 	trait = impatient
-	trait = vi_heliophobic
+	trait = vi_vampire_2
 	trait = beauty_good_2
 	trait = gallant
 	trait = loyal
@@ -56,22 +58,23 @@ vi_roland_character_template = {
 	}
 }
 
-vi_olivier_character_templavi_roland_character_template = {
+vi_olivier_character_template = {
 	age = 28
-	dynasty_house = house_vi_roses
-	sexuality = asexual
+	dynasty_house = house_vi_Montmartre
+	faith = faith:catholicism
+	culture = culture:french
+
 	diplomacy = 8
 	martial = 8
 	stewardship = 6
 	intrigue = 6
 	learning = 7
 	prowess = 16
-	faith = faith:catholicism
-	culture = culture:french
+	
 	trait = calm
 	trait = patient
 	trait = compassionate
-	trait = vi_heliophobic
+	trait = vi_vampire_2
 	trait = beauty_good_1
 	trait = strategist
 	trait = loyal

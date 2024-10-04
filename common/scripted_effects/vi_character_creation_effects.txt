@@ -1,6 +1,13 @@
 ﻿vi_esclarmonde_after_effect = {
+
+	set_mother = character:vi_venus
+
+	change_target_weight = -30
+	change_current_weight = -20
 	
 	set_immortal_age = 25
+
+	add_prestige_level = 3
 
 	vi_make_vampire_effect = yes
 
@@ -25,11 +32,11 @@
 	}
 
 	add_prowess_skill = 4
-
 	add_character_modifier = {
 		modifier = vi_unbreakable_calm_modifier
 	}
 
 	add_character_flag = vi_esclarmonde
+	give_nickname = nick_vi_queenofthenight
 
 }

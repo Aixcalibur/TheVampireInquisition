@@ -80,7 +80,7 @@ vi_estate_main_02 = {
 	}
 
 	character_modifier = {
-		domicile_monthly_gold_add = 0.25
+		domicile_monthly_gold_add = 0.5
 		domicile_monthly_influence_add = 0.5
 		domicile_external_slots_capacity_add = 1
 	}
@@ -142,7 +142,7 @@ vi_estate_main_03 = {
 	}
 
 	character_modifier = {
-		domicile_monthly_gold_add = 0.5
+		domicile_monthly_gold_add = 0.75
 		domicile_monthly_gold_mult = 0.02
 		domicile_monthly_influence_add = 0.5
 		domicile_external_slots_capacity_add = 1
@@ -205,7 +205,7 @@ vi_estate_main_04 = {
 	}
 
 	character_modifier = {
-		domicile_monthly_gold_add = 0.5
+		domicile_monthly_gold_add = 1
 		domicile_monthly_gold_mult = 0.03
 		domicile_monthly_influence_add = 0.5
 		domicile_external_slots_capacity_add = 1
@@ -268,7 +268,7 @@ vi_estate_main_05 = {
 	}
 
 	character_modifier = {
-		domicile_monthly_gold_add = 0.75
+		domicile_monthly_gold_add = 2
 		domicile_monthly_gold_mult = 0.05
 		domicile_monthly_influence_add = 0.5
 		domicile_external_slots_capacity_add = 1

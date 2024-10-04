@@ -14,4 +14,36 @@ vi_unnatural_youth_modifier = {
 vi_unbreakable_calm_modifier = {
 	icon = magic_positive
 	stress_gain_mult = -10
+
+}
+
+# County Modifiers from Vampire Policy
+vi_county_discreet_modifier = {
+	icon = family_negative
+	tax_mult = -0.1
+}
+
+vi_county_sapped_modifier = {
+	icon = economy_negative
+	tax_mult = -0.4
+}
+
+vi_county_drained_modifier = {
+	icon = county_modifier_development_negative
+	build_speed = -0.4
+	development_growth_factor = -0.4
+}
+
+vi_county_underworld_investment_modifier = {
+	icon = county_modifier_development_positive
+
+}
+
+# Personal Modifiers from Vampire Policy
+vi_sap_county_wealth_modifier = {
+	icon = economy_positive
+	legitimacy_gain_mult = -0.05
+	monthly_income = 0.5
+	domicile_monthly_gold_mult = 0.01
+	stacking = yes
 }

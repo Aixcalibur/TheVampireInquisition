@@ -1,0 +1,142 @@
+﻿namespace = vi_vampire_policy
+
+vi_vampire_policy.001 = {
+	type = character_event
+	title = vi_vampire_policy.001.t
+	desc = vi_vampire_policy.001.desc
+
+	theme = realm
+
+	left_portrait = {
+		character = root
+		animation = personality_honorable
+	}
+
+	immediate = {
+		root.domicile.domicile_location = {
+			save_scope_as = lair_location
+		}
+	}
+
+
+	option = {
+		name = vi_vampire_policy.001.a
+
+		ai_chance = {
+			base = 50
+
+			ai_value_modifier = {
+				ai_compassion = 0.25
+				ai_rationality = 0.5
+				ai_greed = 0.5
+			}
+		}
+		vi_vampire_county_normal_effect = yes
+	}
+
+	option = {
+
+		name = vi_vampire_policy.001.b
+
+		ai_chance = {
+			base = 10
+
+			modifier = {
+				add = 50
+				has_trait = craven
+			}
+
+			modifier = {
+				add = 20
+				legitimacy_level <= 3
+			}
+
+			modifier = {
+				add = 200
+				legitimacy_level <= 1
+			}
+
+			ai_value_modifier = {
+				ai_compassion = 0.1
+			}
+		}
+
+		vi_vampire_county_discreet_effect = yes
+
+	}
+
+	option = {
+		trigger = {
+			OR = {
+				has_trait = callous
+				has_trait = sadistic
+				has_trait = greedy
+				has_trait = ambitious
+				has_trait = arbitrary
+				has_trait = avaricious
+			}
+		}
+
+		name = vi_vampire_policy.001.c
+
+		ai_chance = {
+			base = 10
+
+			modifier = {
+				add = 100
+				gold <= 0
+			}
+
+			ai_value_modifier = {
+				ai_compassion = -0.5 
+				ai_boldness = 0.5
+				ai_greed = 1
+			}
+		}
+
+		vi_vampire_county_drain_effect = yes
+
+	}
+
+	option = {
+		trigger = {
+			OR = {
+				has_trait = generous
+				has_trait = just
+				has_trait = architect
+				has_trait = compassionate
+				has_trait = diligent
+			}
+		}
+
+		name = vi_vampire_policy.001.d
+
+		ai_chance = {
+			base = 10
+
+			modifier = {
+				add = 50
+				has_trait = generous
+			}
+
+			modifier = {
+				add = 50
+				gold > 500
+			}
+
+			modifier = {
+				add = -50
+				gold <= 0
+			}
+
+			ai_value_modifier = {
+				ai_compassion = 0.5 
+				ai_rationality = 0.5
+				ai_greed = -0.5
+			}
+		}
+
+		vi_vampire_county_investment_effect = yes
+	}
+
+}

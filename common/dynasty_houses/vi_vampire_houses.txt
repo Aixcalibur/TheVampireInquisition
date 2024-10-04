@@ -1,7 +1,8 @@
-﻿house_vi_roses = {
-	name = "dynn_vi_Roses"
+﻿house_vi_Montmartre = {
+	prefix = "dynnp_de"
+	name = "dynn_vi_Montmartre"
 	dynasty = vi_dynasty_Carmine
-	motto = "dynn_vi_Roses_motto"
+	motto = "dynn_vi_Montmartre_motto"
 }
 
 house_vi_Underworld = {

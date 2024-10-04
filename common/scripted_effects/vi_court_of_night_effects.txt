@@ -1,4 +1,4 @@
-﻿vi_spawn_esclarmonde_effect = {
+﻿vi_respawn_esclarmonde_effect = {
 	create_character = {
 		name = "Esclarmonde"
 		template = vi_esclarmonde_character_template
@@ -7,7 +7,7 @@
 	}
 }
 
-vi_spawn_roland_effect = {
+vi_respawn_roland_effect = {
 	create_character = {
 		name = "Roland"
 		template = vi_roland_character_template

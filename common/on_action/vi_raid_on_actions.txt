@@ -1,0 +1,60 @@
+﻿on_raid_action_completion = {
+	on_actions = {
+		delay = { days = 30 }
+		vi_deliver_raid_loot_on_action
+	}
+}
+
+vi_deliver_raid_loot_on_action = {
+	trigger = {
+		root.army_owner = {
+			OR = {
+				has_government = vi_vampire_government
+			}
+		}
+	}
+	
+	on_actions = {
+		on_raid_loot_delivered
+	}
+}
+
+on_raid_loot_delivered = {
+	on_actions = {
+		vi_deliver_raid_loot_resolve_on_action
+	}
+}
+
+vi_deliver_raid_loot_resolve_on_action = {
+
+	trigger = {
+		root.army_owner = {
+			OR = {
+				has_government = vi_vampire_government
+			}
+		}
+	}
+
+	effect = {
+		
+		set_variable = {
+			name = loot_to_deliver
+			value = root.raid_loot
+			
+		}
+	
+		root.army_owner = {
+			add_gold = {
+				value = root.var:loot_to_deliver
+			}
+		}
+	
+		change_variable = {
+			name = loot_to_deliver
+			multiply = -1
+		 }
+	
+		add_loot = root.var:loot_to_deliver
+	}
+}
+

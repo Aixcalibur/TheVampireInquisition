@@ -1,0 +1,19 @@
+﻿l_english:
+ 
+ rf_vi_vampire:0 "Vampiric"
+ #Common Christian Localization
+ vi_vampire_religion:0 "Vampirism"
+ vi_vampire_religion_adj:0 "Vampiric"
+ vi_vampire_religion_adherent:0 "Vampire"
+ vi_vampire_religion_adherent_plural:0 "Vampires"
+ vi_vampire_religion_desc:0 "Those who stalk the night have forsaken their ties to mortal religions and must find purpose elsewhere."
+
+ vi_nightcourt:0 "Court of Night"
+ vi_nightcourt_adj:0 "Court of Night"
+ vi_nightcourt_adherent:0 "Night Courtier"
+ vi_nightcourt_adherent_plural:0 "Night Courtiers"
+ vi_nightcourt_desc:0 "The way of un-life followed by those who pay obeisance to the Queen of the Night. By her decree, vampires shall live in secret harmony with the mortal population."
+
+
+ holy_site_versailles_name:0 "Versailles"
+ holy_site_versailles_effect_name:0 "From [holy_site|E] #weak ($holy_site_versailles_name$)#!"

@@ -1,81 +1,61 @@
 ﻿vi_vampire_1 = {
 	icon = albino.dds
-	category = health
+	category = lifestyle
 	incapacitating = yes
 	general_opinion = -20
+	health = 5
 	disables_combat_leadership = yes
 	ruler_designer_cost = 40
+	stress_gain_mult = 1
 	monthly_lifestyle_xp_gain_mult = -0.25
 
 	immortal = yes
 	# Dummy flags — just here for loc really.
-	flag = is_immortal
-	flag = immortal_visuals
-	flag = immortal_fertility
+	# flag = is_immortal
+	# flag = immortal_visuals
+	# flag = immortal_fertility
 	# flag = immortal_incapability
 	
-	desc = {
-		first_valid = {
-			triggered_desc = {
-				trigger = {
-					NOT = { exists = this }
-				}
-				desc = trait_incapable_desc
-			}
-			desc = trait_incapable_character_desc
-		}
-	}
+	fertility = -2
 }
 
 vi_vampire_2 = {
 	icon = albino.dds
-	category = health
-	incapacitating = yes
-	general_opinion = -20
+	category = lifestyle
+	# incapacitating = yes
+	general_opinion = -10
+	health = 6
 	# disables_combat_leadership = yes
 	ruler_designer_cost = 80
+	stress_gain_mult = 0.5
 	monthly_lifestyle_xp_gain_mult = -0.5
 
 	immortal = yes
-	# Dummy flags — just here for loc really.
-	flag = is_immortal
-	flag = immortal_visuals
-	flag = immortal_fertility
-	# flag = immortal_incapability
-	
-	desc = {
-		first_valid = {
-			triggered_desc = {
-				trigger = {
-					NOT = { exists = this }
-				}
-				desc = trait_incapable_desc
-			}
-			desc = trait_incapable_character_desc
-		}
-	}
+
+	fertility = -1
 }
 
 vi_vampire_3 = {
 	icon = albino.dds
-	category = health
+	category = lifestyle
+	health = 10
 	# disables_combat_leadership = yes
 	shown_in_ruler_designer = yes
 	ruler_designer_cost = 160
 	monthly_lifestyle_xp_gain_mult = -0.75
+	stress_gain_mult = 0.25
+	prowess_no_portrait = 5
+
+	fertility = -1
 
 	immortal = yes
-	# Dummy flags — just here for loc really.
-	flag = is_immortal
-	flag = immortal_visuals
-	flag = immortal_fertility
-	flag = immortal_incapability
 
 }
 
 vi_vampire_4 = {
 	icon = albino.dds
-	category = health
+	category = lifestyle
+	health = 15
 	# disables_combat_leadership = yes
 	shown_in_ruler_designer = yes
 	ruler_designer_cost = 320
@@ -83,17 +63,14 @@ vi_vampire_4 = {
 	prowess_no_portrait = 10
 	immortal = yes
 
-	# Dummy flags — just here for loc really.
-	flag = is_immortal
-	flag = immortal_visuals
-	flag = immortal_fertility
-	flag = immortal_incapability
+	fertility = -1
 
 }
 
 vi_vampire_5 = {
 	icon = albino.dds
-	category = health
+	category = lifestyle
+	health = 20
 	# disables_combat_leadership = yes
 	shown_in_ruler_designer = yes
 	ruler_designer_cost = 10000
@@ -101,11 +78,8 @@ vi_vampire_5 = {
 	prowess_no_portrait = 100
 	immortal = yes
 
-	# Dummy flags — just here for loc really.
-	flag = is_immortal
-	flag = immortal_visuals
-	flag = immortal_fertility
-	flag = immortal_incapability
+	fertility = -1
+
 }
 
 
@@ -144,11 +118,16 @@ vi_historical_character = {
 }
 
 vi_shade = {
-	category = fame
+	category = lifestyle
 	immortal = yes
 	incapacitating = yes
+	disables_combat_leadership = yes
 	shown_in_ruler_designer = no
 	health = 7
+	flag = can_not_marry
+	inheritance_blocker = all
+	claim_inheritance_blocker = all
+	can_have_children = no
 
 	ai_energy = -500
 }

@@ -3,6 +3,12 @@
  k_vi_court_of_night_article:0 "the "
  k_vi_court_of_night:0 "Court of Night"
  k_vi_court_of_night_adj:0 "Night"
+ D_nf_vi_montmartre: "Montmartre Family"
+ d_nf_vi_montmartre: "Montmartre Family"
+ D_nf_vi_montmartre_article: "$DEFAULT_TITLE_NAME_ARTICLE$"
+ d_nf_vi_montmartre_article: "$DEFAULT_TITLE_NAME_ARTICLE$"
+ D_nf_vi_normandy: "House of Neustria"
+ D_nf_vi_normandy_article: "$DEFAULT_TITLE_NAME_ARTICLE$"
 
  # Character Names
  Esclarmonde:0 "Esclarmonde"
