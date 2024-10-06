@@ -9,6 +9,18 @@
 	}
 }
 
+vi_is_vampire_accepting_trigger = {
+	faith = {
+		is_in_family = rf_vi_vampire
+	}
+}
+
 vi_has_county_policy_trigger = {
 	has_county_modifier = vi_county_discreet_modifier
+}
+
+vi_can_have_vampire_succession_law_trigger = {
+	has_ep3_dlc_trigger = yes
+	government_allows = administrative
+	has_government = vi_vampire_government
 }

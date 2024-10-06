@@ -1,0 +1,33 @@
+﻿doctrine_vi_masquerade = {
+	group = "main_group"
+	is_available_on_create = {
+		religion_tag = vi_vampire_religion
+	}
+
+	vi_masquerade_required = {
+		piety_cost = {
+			value = faith_doctrine_cost_low
+			if = {
+				limit = { has_doctrine = vi_masquerade_required }
+				multiply = 0
+			}
+		}
+		parameters = {
+			vi_masquerade
+		}
+	}
+
+	vi_masquerade_not_required = {
+		piety_cost = {
+			value = faith_doctrine_cost_low
+			if = {
+				limit = { has_doctrine = vi_masquerade_not_required }
+				multiply = 0
+			}
+		}
+		
+		parameters = {
+			vi_no_masquerade
+		}
+	}
+}

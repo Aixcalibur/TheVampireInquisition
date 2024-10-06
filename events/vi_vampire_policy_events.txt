@@ -13,6 +13,13 @@ vi_vampire_policy.001 = {
 	}
 
 	immediate = {
+		remove_character_modifier = vi_sap_county_wealth_modifier
+
+		add_character_flag = {
+			flag = vi_vampire_policy_decided
+			days = 1800
+		}
+		
 		root.domicile.domicile_location = {
 			save_scope_as = lair_location
 		}
@@ -27,8 +34,8 @@ vi_vampire_policy.001 = {
 
 			ai_value_modifier = {
 				ai_compassion = 0.25
-				ai_rationality = 0.5
-				ai_greed = 0.5
+				ai_rationality = 1
+				ai_greed = 0.25
 			}
 		}
 		vi_vampire_county_normal_effect = yes
@@ -39,7 +46,7 @@ vi_vampire_policy.001 = {
 		name = vi_vampire_policy.001.b
 
 		ai_chance = {
-			base = 10
+			base = 50
 
 			modifier = {
 				add = 50
@@ -47,13 +54,8 @@ vi_vampire_policy.001 = {
 			}
 
 			modifier = {
-				add = 20
-				legitimacy_level <= 3
-			}
-
-			modifier = {
-				add = 200
-				legitimacy_level <= 1
+				add = 50
+				gold > 500
 			}
 
 			ai_value_modifier = {
@@ -90,7 +92,7 @@ vi_vampire_policy.001 = {
 			ai_value_modifier = {
 				ai_compassion = -0.5 
 				ai_boldness = 0.5
-				ai_greed = 1
+				ai_greed = 0.5
 			}
 		}
 
@@ -106,6 +108,7 @@ vi_vampire_policy.001 = {
 				has_trait = architect
 				has_trait = compassionate
 				has_trait = diligent
+				has_trait = patient
 			}
 		}
 
@@ -121,6 +124,16 @@ vi_vampire_policy.001 = {
 
 			modifier = {
 				add = 50
+				has_trait = patient
+			}
+
+			modifier = {
+				add = -50
+				has_trait = greedy
+			}
+
+			modifier = {
+				add = 50
 				gold > 500
 			}
 
@@ -132,7 +145,6 @@ vi_vampire_policy.001 = {
 			ai_value_modifier = {
 				ai_compassion = 0.5 
 				ai_rationality = 0.5
-				ai_greed = -0.5
 			}
 		}
 

@@ -29,8 +29,8 @@ vi_vampire_bats = {
 	}
 	
 	damage = 5
-	toughness = 3
-	pursuit = 15
+	toughness = 4
+	pursuit = 10
 	screen = 20
 	
 	terrain_bonus = {
@@ -56,7 +56,7 @@ vi_vampire_bats = {
 	high_maintenance_cost = { prestige = skirmisher_high_maint_cost }
 	provision_cost = @provisions_cost_infantry_cheap
 	
-	stack = 500
+	stack = 250
 	ai_quality = {
 		value = culture_ai_weight_skirmishers
 		add = 50

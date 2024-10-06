@@ -1,2 +1,3 @@
 ﻿
 nick_vi_queenofthenight = {}
+nick_vi_princeofurchins = {}

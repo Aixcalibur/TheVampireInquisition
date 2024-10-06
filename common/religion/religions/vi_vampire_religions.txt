@@ -1,8 +1,10 @@
 ﻿vi_vampire_religion = {
+
 	family = rf_vi_vampire
 
 	doctrine_background_icon = core_tenet_banner_christian.dds
 	doctrine = vi_vampiric_hostility_doctrine
+	doctrine = vi_masquerade_required
 
 	#Main Group
 	doctrine = doctrine_temporal_head
@@ -233,6 +235,7 @@
 
 	faiths = {
 		vi_nightcourt = {
+			icon = custom_faith_2
 			color = { 0.8 0.8 0.6 }
 			religious_head = k_vi_court_of_night
 			graphical_faith = "catholic_gfx"
@@ -248,16 +251,11 @@
 			
 
 			#Tenets
-			doctrine = tenet_communion
+			doctrine = tenet_ritual_celebrations
 			doctrine = tenet_christian_syncretism
 			doctrine = tenet_sacred_shadows
 
 			doctrine = doctrine_adultery_women_accepted
-
-			traits = {
-				virtues = { august family_first calm gregarious brave gallant }
-				sins = { impatient }
-			}
 
 			holy_order_names = {
 				{ name = "holy_order_knights_templar" coat_of_arms = "ho_knights_templar" }

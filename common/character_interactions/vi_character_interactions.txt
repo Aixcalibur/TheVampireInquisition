@@ -1,0 +1,213 @@
+﻿
+# Challenge Status
+start_vi_investigate_interaction = {
+	icon = icon_scheme_challenge_status
+	interface_priority = 95
+	category = interaction_category_hostile
+
+	send_name = START_SCHEME
+
+	scheme = vi_investigate
+	ignores_pending_interaction_block = yes
+
+	ai_targets = {
+		ai_recipients = peer_vassals
+		max = 10
+	}
+
+	ai_frequency = 60
+	
+	is_shown = {
+		scope:actor = {
+			is_ruler = yes
+			has_opinion_modifier = {
+				modifier = suspicion_opinion
+				target = scope:recipient
+			}
+		}
+
+		scope:recipient != scope:actor
+		
+		scope:recipient = {
+			vi_is_vampire_trigger = yes
+		}
+	}
+
+	is_valid_showing_failures_only = {
+		scope:actor = {
+			is_adult = yes
+			is_imprisoned = no
+			can_start_scheme = {
+				type = vi_investigate
+				target_character = scope:recipient
+			}
+		}
+	}
+
+	desc = {
+		triggered_desc = {
+			trigger = {
+				scope:actor = {
+					can_start_scheme = {
+						type = vi_investigate
+						target_character = scope:recipient
+					}
+				}
+			}
+			desc = scheme_interaction_tt_challenge_status_approved
+		}
+	}
+
+	# Scheme Starter Packages
+	options_heading = schemes.t.agent_packages
+	send_options_exclusive = yes
+	## Balanced agents.
+	send_option = {
+		flag = agent_focus_balance
+		current_description = start_challenge_status_interaction.tt.agent_focus_balance
+	}
+	## Focused on Success Chance.
+	send_option = {
+		flag = agent_focus_success
+		current_description = start_challenge_status_interaction.tt.agent_focus_success
+	}
+	## Focused on Speed.
+	send_option = {
+		flag = agent_focus_speed
+		current_description = start_challenge_status_interaction.tt.agent_focus_speed
+	}
+
+	on_accept = {
+		scope:actor = {
+			send_interface_toast = {
+				type = event_toast_effect_neutral
+				title = start_challenge_status_notification
+
+				left_icon = scope:actor
+				right_icon = scope:recipient
+
+				# Success.
+				if = {
+					limit = { scope:agent_focus_success ?= yes }
+					begin_scheme_with_agents_effect = {
+						SCHEME_TYPE = vi_investigate
+						TARGET_TYPE = target_character
+						TARGET_SCOPE = scope:recipient
+						# Success.
+						AGENT_1 = agent_proponent
+						AGENT_2 = agent_intermediary
+						AGENT_3 = agent_sycophant
+						# Speed.
+						AGENT_4 = agent_political_socialite
+						AGENT_5 = agent_bureaucrat
+					}
+				}
+				# Speed.
+				else_if = {
+					limit = { scope:agent_focus_speed ?= yes }
+					begin_scheme_with_agents_effect = {
+						SCHEME_TYPE = vi_investigate
+						TARGET_TYPE = target_character
+						TARGET_SCOPE = scope:recipient
+						# Success.
+						AGENT_1 = agent_proponent
+						AGENT_2 = agent_intermediary
+						# Speed.
+						AGENT_3 = agent_political_socialite
+						AGENT_4 = agent_bureaucrat
+						AGENT_5 = agent_bureaucrat
+					}
+				}
+				# Balanced.
+				else = {
+					begin_scheme_with_agents_effect = {
+						SCHEME_TYPE = vi_investigate
+						TARGET_TYPE = target_character
+						TARGET_SCOPE = scope:recipient
+						# Success.
+						AGENT_1 = agent_proponent
+						AGENT_2 = agent_intermediary
+						# Speed.
+						AGENT_3 = agent_political_socialite
+						AGENT_4 = agent_bureaucrat
+						# Secrecy.
+						AGENT_5 = agent_amanuensis
+					}
+				}
+			}
+			# Scheme bonuses from being the emperor/dominant family/powerful family
+			# ep3_actor_scheme_modifier_effect = yes
+			# custom_tooltip = challenge_status_success_actor_tt
+		}
+		scope:recipient = {
+			save_scope_as = target
+			custom_tooltip = challenge_status_success_recipient_tt
+		}
+	}
+
+	ai_potential = {
+		NOT = {
+			any_scheme = {
+				is_scheme_category = hostile
+			}
+		}
+		is_ruler = yes
+	}
+	
+	auto_accept = yes
+
+	ai_will_do = {
+		base = 5
+
+		#Personality
+		modifier = {
+			has_trait = zealous
+			add = 50
+		}
+
+		# House & Family
+
+		#Feuds
+		modifier = {
+			house.house_head ?= {
+				any_owned_story = {
+					story_type = story_cycle_house_feud
+					has_variable = house_feud_house
+					var:house_feud_house = scope:recipient.house
+				}
+			}
+			add = 50
+		}
+
+		# Relationships
+		modifier = {
+			add = 25
+			has_any_mild_bad_relationship_with_character_trigger = { CHARACTER = scope:recipient }
+		}
+
+		modifier = {
+			add = 50
+			has_any_moderate_bad_relationship_with_character_trigger = { CHARACTER = scope:recipient }
+		}
+
+		modifier = {
+			add = 100
+			has_any_worst_bad_relationship_with_character_trigger = { CHARACTER = scope:recipient }
+		}
+
+		modifier = {
+			add = -25
+			has_any_mild_good_relationship_with_character_trigger = { CHARACTER = scope:recipient }
+		}
+
+		modifier = {
+			add = -50
+			has_any_moderate_good_relationship_with_character_trigger = { CHARACTER = scope:recipient }
+		}
+
+		modifier = {
+			factor = 0
+			has_any_best_good_relationship_with_character_trigger = { CHARACTER = scope:recipient }
+		}
+	}
+}

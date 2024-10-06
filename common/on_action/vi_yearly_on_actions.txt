@@ -1,32 +1,54 @@
 ﻿yearly_playable_pulse = {
 	on_actions = {
-		vi_vampire_yearly_pulse
+		vi_vampire_policy_pulse
+		vi_vampire_friendship_pulse
 	}
 }
 
-vi_vampire_yearly_pulse = {
+vi_vampire_policy_pulse = {
 	trigger = {
 		has_government = vi_vampire_government
 		is_landless_ruler = yes
 
-		OR = {
-			is_independent_ruler = yes
-			top_liege = {
-				is_landless_ruler = yes
+		NOT = {
+			has_character_flag = vi_vampire_policy_decided
+		}
+
+		any_held_title = {
+			NOT = {
+				has_title_law = noble_family_succession_law
 			}
 		}
 	}
 
-	effect = {
-		# domicile.domicile_location = {
-		# 	add_county_modifier = {
-		# 		modifier = vi_county_drained_modifier
-		# 		years = 1
-		# 	}
-		# }
-	}
+	
 
 	events = {
 		vi_vampire_policy.001
+	}
+}
+
+vi_vampire_friendship_pulse = {
+	trigger = {
+		has_government = vi_vampire_government
+		is_landless_ruler = yes
+		is_ai = yes
+	}
+
+	effect = {
+		save_scope_as = vi_friend
+		random_relation = {
+			type = friend
+			limit = {
+				NOR = {
+					vi_is_vampire_trigger = yes
+					has_character_flag = vi_refused_vampirism
+				}
+			}
+			trigger_event = {
+				id = vi_become_vampire.001
+				days = { 30 60 }
+			}
+		}
 	}
 }

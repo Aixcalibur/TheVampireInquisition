@@ -1,0 +1,929 @@
+﻿vi_venus = {
+	name = "Venus"
+	dynasty = vi_dynasty_Carmine
+	female = yes
+	sexuality = bisexual
+	faith = hellenic_pagan
+	culture = greek
+
+	diplomacy = 12
+	martial = 8
+	stewardship = 8
+	intrigue = 12
+	learning = 8
+	prowess = 12
+
+	trait = gregarious
+	trait = calm
+	trait = patient
+
+	trait = education_intrigue_5
+	trait = beauty_good_3
+	trait = vi_vampire_5
+	trait = seducer
+	trait = family_first
+
+	disallow_random_traits = yes
+
+	0.1.1 = {
+		birth = yes
+		effect = {
+			set_immortal_age = 20
+		}
+	}
+
+	20.1.1 = {
+		
+		death = {
+			death_reason = death_disappearance
+		}
+	}
+}
+
+vi_esclarmonde = {
+	name = "Esclarmonde"
+	dna = vi_esclarmonde_dna
+	dynasty_house = house_vi_Montmartre
+	female = yes
+	sexuality = bisexual
+	faith = vi_nightcourt
+	culture = french
+
+	diplomacy = 12
+	martial = 6
+	stewardship = 7
+	intrigue = 10
+	learning = 5
+	prowess = 0
+
+	trait = gregarious
+	trait = ambitious
+	trait = patient
+	trait = calm
+	trait = education_diplomacy_5
+	trait = beauty_good_3
+	trait = vi_vampire_3
+	trait = vi_historical_character
+	trait = shrewd
+	trait = lifestyle_gardener
+	trait = lifestyle_herbalist
+
+	# mother = vi_venus
+
+	disallow_random_traits = yes
+
+	400.6.12 = {
+		birth = yes
+		effect = {
+			add_gold = 1000
+			add_legitimacy = 1000
+			vi_esclarmonde_after_effect = yes
+		}
+	}
+
+	1060.1.1 = {
+		effect = {
+			add_trait = vi_vampire_4
+			remove_trait = vi_vampire_3
+		}
+	}
+
+	1900.1.1 = {
+		death = yes
+	}
+}
+
+vi_ambrosius = {
+	name = "Ambrosius"
+	dna = vi_ambrosius_dna
+	dynasty_house = house_vi_Cologne
+	sexuality = bisexual
+	faith = vi_nightcourt
+	culture = franconian
+
+	diplomacy = 9
+	stewardship = 8
+	intrigue = 15
+	prowess = 0
+
+	trait = gregarious
+	trait = arrogant
+	trait = fickle
+	trait = lustful
+	trait = education_intrigue_4
+
+	trait = beauty_good_3
+	trait = vi_vampire_4
+	trait = physique_bad_1
+
+	trait = lifestyle_herbalist
+	trait = lifestyle_hunter
+	trait = lifestyle_traveler
+	trait = lifestyle_reveler
+
+	# mother = vi_venus
+
+	505.1.1 = {
+		birth = yes
+		effect = {
+			add_gold = 500
+			add_legitimacy = 1000
+			vi_make_vampire_effect = yes
+			add_prowess = 20
+			set_immortal_age = 30
+		}
+	}
+
+	1800.1.1 = {
+		death = yes
+	}
+
+}
+
+vi_lucie = {
+	name = "Lucie"
+	female = yes
+	dynasty_house = house_vi_Cologne
+	faith = vi_nightcourt
+	sexuality = heterosexual
+	culture = franconian
+
+	trait = arbitrary
+	trait = greedy
+	trait = arrogant
+	prowess = 0
+
+	trait = education_stewardship_3
+	trait = beauty_good_3
+	trait = fecund
+	trait = lifestyle_gardener
+
+	650.6.19 = {
+		birth = yes
+	}
+
+	670.4.15 = {
+		employer = vi_ambrosius
+		effect = {
+			add_gold = 100
+			add_trait = vi_vampire_3
+			set_father = character:vi_ambrosius
+			set_house = character:vi_ambrosius.house
+			vi_make_vampire_effect = yes
+			set_immortal_age = 18
+			add_prowess_skill = 5
+			set_relation_lover = {
+				reason = lover_history
+				target = character:vi_ambrosius
+			}
+		}
+		add_spouse = vi_ambrosius
+		
+	}
+
+	1200.1.1 = {
+		death = yes
+	}
+}
+
+vi_victor = {
+	name = "Victor"
+	sexuality = asexual
+	dynasty_house = house_vi_London
+	faith = vi_nightcourt
+	culture = anglo_saxon
+
+	diplomacy = 6
+	martial = 4
+	stewardship = 6
+	intrigue = 6
+	learning = 7
+	prowess = 0
+
+	trait = stubborn
+	trait = ambitious
+	trait = arbitrary
+
+	trait = gallowsbait
+	trait = education_stewardship_4
+	trait = vi_vampire_2
+	trait = intellect_good_3
+	trait = overseer
+	trait = celibate
+	# mother = vi_venus
+
+	640.1.1 = {
+		birth = yes
+	}
+
+	652.1.1 = {
+		effect = {
+			add_gold = 500
+			vi_make_vampire_effect = yes
+			add_prowess_skill = 3
+			set_immortal_age = 12
+			give_nickname = nick_vi_princeofurchins
+		}
+	}
+
+	1060.1.1 = {
+		effect = {
+			set_culture = culture:norman
+			add_trait = vi_vampire_3
+			remove_trait = vi_vampire_2
+		}
+	}
+
+	1100.1.1 = {
+		effect = {
+			set_culture = culture:english
+		}
+	}
+
+	1800.1.1 = {
+		death = yes
+	}
+}
+
+vi_albert = {
+	name = "Albert"
+	sexuality = heterosexual
+	dynasty_house = house_vi_London
+	faith = vi_nightcourt
+	culture = anglo_saxon
+	father = vi_victor
+
+	trait = humble
+	trait = diligent
+	trait = content
+
+	trait = education_stewardship_4
+	trait = vi_vampire_3
+	trait = overseer
+	trait = administrator
+	trait = loyal
+	trait = lifestyle_gardener
+	trait = lifestyle_herbalist
+	trait = lifestyle_physician
+
+	670.1.1 = {
+		birth = yes
+		effect = {
+			vi_make_vampire_effect = yes
+			set_immortal_age = 60
+			add_prowess_skill = 20
+		}
+	}
+
+	860.1.1 = {
+		employer = vi_victor
+	}
+
+	1060.1.1 = {
+		effect = {
+			set_culture = culture:norman
+			add_trait = vi_vampire_4
+			remove_trait = vi_vampire_3
+		}
+	}
+
+	1100.1.1 = {
+		effect = {
+			set_culture = culture:english
+		}
+	}
+
+	1800.1.1 = {
+		death = yes
+	}
+}
+
+vi_emily = {
+	name = "Emily"
+	female = yes
+	sexuality = asexual
+	dynasty_house = house_vi_London
+	father = vi_victor
+	faith = vi_nightcourt
+	culture = anglo_saxon
+
+	prowess = 0
+
+	trait = brave
+	trait = deceitful
+	trait = temperate
+
+	trait = gallowsbait
+	trait = education_intrigue_4
+	trait = vi_vampire_2
+	trait = intellect_good_3
+	trait = loyal
+	trait = celibate
+
+	728.1.1 = {
+		birth = yes
+	}
+
+	742.1.1 = {
+		effect = {
+			vi_make_vampire_effect = yes
+			set_immortal_age = 14
+			add_prowess_skill = 10
+		}
+	}
+
+	860.1.1 = {
+		employer = vi_victor
+	}
+
+	1060.1.1 = {
+		effect = {
+			set_culture = culture:norman
+			add_trait = vi_vampire_4
+			remove_trait = vi_vampire_3
+		}
+	}
+
+	1100.1.1 = {
+		effect = {
+			set_culture = culture:english
+		}
+	}
+
+	1800.1.1 = {
+		death = yes
+	}
+
+}
+
+vi_bookman = {
+	name = "Bookman"
+	sexuality = asexual
+	dynasty_house = house_vi_London
+	father = vi_victor
+	faith = vi_nightcourt
+	culture = anglo_saxon
+
+	diplomacy = 5
+	prowess = 0
+
+	trait = shy
+	trait = diligent
+	trait = arbitrary
+	trait = eccentric
+
+	trait = education_learning_4
+	trait = vi_vampire_2
+	trait = gallowsbait
+	trait = devoted
+	trait = intellect_good_1
+	trait = shrewd
+	trait = loyal
+	trait = weak
+	trait = lifestyle_physician
+	trait = lifestyle_mystic
+
+	787.1.1 = {
+		birth = yes
+	}
+
+	800.1.1 = {
+		effect = {
+			vi_make_vampire_effect = yes
+			set_immortal_age = 15
+			add_prowess_skill = 2
+			add_trait_xp = {
+				trait = lifestyle_physician
+				value = 100
+			}
+		}
+	}
+
+	860.1.1 = {
+		employer = vi_victor
+	}
+
+	1060.1.1 = {
+		effect = {
+			set_culture = culture:norman
+			add_trait = vi_vampire_4
+			remove_trait = vi_vampire_3
+		}
+	}
+
+	1100.1.1 = {
+		effect = {
+			set_culture = culture:english
+		}
+	}
+
+	1800.1.1 = {
+		death = yes
+	}
+
+}
+
+vi_bruiser = {
+	name = "Bruiser"
+	sexuality = asexual
+	dynasty_house = house_vi_London
+	father = vi_victor
+	faith = vi_nightcourt
+	culture = norse
+	
+	diplomacy = 5
+	martial = 8
+	prowess = 0
+	
+	trait = wrathful
+	trait = content
+	trait = brave
+	trait = education_martial_2
+
+	trait = giant
+	trait = dull
+	trait = gallowsbait
+	trait = physique_good_3
+	trait = vi_vampire_2
+	trait = loyal
+	trait = berserker
+
+	812.1.1 = {
+		birth = yes
+	}
+
+	827.1.1 = {
+		
+		effect = {
+			vi_make_vampire_effect = yes
+			set_immortal_age = 15
+			add_prowess_skill = 15
+		}
+	}
+
+	860.1.1 = {
+		employer = vi_victor
+	}
+
+	1800.1.1 = {
+		death = yes
+	}
+}
+
+vi_ysabel = {
+	name = "Ysabel"
+	female = yes
+	dynasty_house = house_vi_Montmartre
+	faith = vi_nightcourt
+	sexuality = bisexual
+	culture = french
+
+	prowess = 0
+
+	trait = education_intrigue_3
+	trait = seducer
+	trait = beauty_good_3
+	trait = lifestyle_herbalist
+
+	612.4.3 = {
+		birth = yes
+	}
+
+	630.4.15 = {
+		
+		effect = {
+			add_gold = 100
+			add_trait = vi_vampire_3
+			set_mother = character:vi_esclarmonde
+			set_house = character:vi_esclarmonde.house
+			vi_make_vampire_effect = yes
+			set_immortal_age = 18
+			add_prowess_skill = 13
+		}
+	}
+
+	800.1.1 = {
+		employer = vi_esclarmonde
+	}
+
+	1200.1.1 = {
+		death = yes
+	}
+}
+
+vi_jehanne = {
+	name = "Jehanne"
+	female = yes
+	dynasty_house = house_vi_Montmartre
+	faith = vi_nightcourt
+	sexuality = bisexual
+	culture = french
+
+	prowess = 0
+
+	trait = education_stewardship_3
+	trait = seducer
+	trait = beauty_good_3
+	trait = lifestyle_hunter
+	trait = lifestyle_traveler
+
+	660.8.13 = {
+		birth = yes
+	}
+
+	678.10.10 = {
+		effect = {
+			add_gold = 100
+			add_trait = vi_vampire_3
+			set_mother = character:vi_esclarmonde
+			set_house = character:vi_esclarmonde.house
+			vi_make_vampire_effect = yes
+			set_immortal_age = 18
+			add_prowess_skill = 7
+		}
+	}
+
+	800.1.1 = {
+		employer = vi_esclarmonde
+	}
+
+	1200.1.1 = {
+		death = yes
+	}
+}
+
+vi_symonne = {
+	name = "Symonne"
+	female = yes
+	sexuality = bisexual
+	dynasty_house = house_vi_Montmartre
+	faith = vi_nightcourt
+	culture = french
+
+	stewardship = 8
+	learning = 8
+
+	prowess = 0
+
+	trait = humble
+	trait = education_learning_5
+	trait = scholar
+	trait = theologian
+	trait = devoted
+	trait = lifestyle_physician
+	trait = lifestyle_herbalist
+	trait = lifestyle_gardener
+
+	692.3.3 = {
+		birth = yes
+	}
+
+	710.7.19 = {
+		employer = vi_esclarmonde
+		effect = {
+			add_gold = 100
+			add_trait = vi_vampire_3
+			set_mother = character:vi_esclarmonde
+			set_house = character:vi_esclarmonde.house
+			vi_make_vampire_effect = yes
+			set_immortal_age = 18
+			add_prowess_skill = 5
+		}
+	}
+
+	1500.1.1 = {
+		death = yes
+	}
+}
+
+
+vi_roland = {
+	name = "Roland"
+	dynasty_house = house_vi_Montmartre
+	sexuality = heterosexual
+	faith = vi_nightcourt
+	culture = french
+	
+	diplomacy = 7
+	martial = 12
+	stewardship = 4
+	intrigue = 9
+	learning = 4
+	prowess = 0
+
+	trait = education_martial_4
+
+	trait = brave
+	trait = just
+	trait = impatient
+	trait = vi_vampire_2
+	trait = beauty_good_2
+	trait = physique_good_3
+	trait = gallant
+	trait = loyal
+	trait = strong
+
+	disallow_random_traits = yes
+
+	749.6.27 = {
+		birth = yes
+	}
+
+	778.8.15 = {
+		employer = vi_esclarmonde
+		effect = {
+			set_mother = character:vi_esclarmonde
+			set_relation_best_friend = { reason = friend_generic_history target = character:vi_olivier }
+			vi_make_vampire_effect = yes
+			set_immortal_age = 29
+			add_prowess_skill = 20
+		}
+	}
+
+	1065.1.1 = {
+		effect = {
+			add_trait = vi_vampire_3
+			remove_trait = vi_vampire_2
+			add_trait = tourney_participant
+			add_random_tourney_participant_level_effect = yes
+			add_random_tourney_participant_level_effect = yes
+			add_random_tourney_participant_level_effect = yes
+			add_random_tourney_participant_level_effect = yes
+		}
+	}
+
+	1800.9.30 = {
+		death = yes
+	}
+}
+
+vi_olivier = {
+	name = "Olivier"
+	dynasty_house = house_vi_Montmartre
+	sexuality = heterosexual
+	faith = vi_nightcourt
+	culture = french
+	
+	diplomacy = 8
+	martial = 8
+	stewardship = 6
+	intrigue = 9
+	learning = 7
+	prowess = 0
+
+	trait = education_intrigue_4
+	trait = calm
+	trait = patient
+	trait = compassionate
+	trait = vi_vampire_2
+	trait = beauty_good_1
+	trait = strategist
+	trait = loyal
+
+	disallow_random_traits = yes
+
+	751.3.15 = {
+		birth = yes
+	}
+
+	778.8.15 = {
+		employer = vi_esclarmonde
+		effect = {
+			set_mother = character:vi_esclarmonde
+			vi_make_vampire_effect = yes
+			set_immortal_age = 27
+			add_prowess_skill = 16
+		}
+	}
+
+	1065.1.1 = {
+		effect = {
+			add_trait = vi_vampire_3
+			remove_trait = vi_vampire_2
+			add_trait = tourney_participant
+			add_random_tourney_participant_level_effect = yes
+			add_random_tourney_participant_level_effect = yes
+			add_random_tourney_participant_level_effect = yes
+			add_random_tourney_participant_level_effect = yes
+		}
+	}
+
+	1800.9.30 = {
+		death = yes
+	}
+}
+
+vi_lugh = {
+	name = "Lugus"
+	sexuality = bisexual
+	faith = vi_nightcourt
+	culture = roman
+
+	stewardship = 8
+	prowess = 0
+
+	trait = arrogant
+	trait = diligent
+	trait = eccentric
+
+	trait = education_stewardship_4
+	trait = vi_vampire_4
+	trait = physique_good_2
+	trait = architect
+	trait = reclusive
+	trait = lifestyle_gardener
+
+	0.1.1 = {
+		birth = yes
+	}
+
+	25.1.1 = {
+		effect = {
+			vi_make_vampire_effect = yes
+			set_immortal_age = 35
+			add_prowess_skill = 30
+		}
+	}
+
+	1500.1.1 = {
+		death = yes
+	}
+}
+
+vi_setanta = {
+	name = "Setanta"
+	sexuality = heterosexual
+	faith = vi_nightcourt
+	culture = irish
+
+	prowess = 0
+
+	trait = diligent
+	trait = brave
+	trait = vengeful
+	trait = education_martial_5
+	trait = vi_vampire_3
+	trait = gallant
+	trait = strong
+	trait = physique_good_3
+	trait = disloyal
+
+	512.1.30 = {
+		birth = yes
+	}
+
+	545.6.6 = {
+		effect = {
+			set_father = character:vi_lugh
+			set_house = character:vi_lugh.house
+			vi_make_vampire_effect = yes
+			set_immortal_age = 30
+			add_prowess_skill = 40
+		}
+	}
+
+	800.1.1 = {
+		employer = vi_lugh
+	}
+
+	1000.1.1 = {
+		effect = {
+			add_trait = vi_vampire_4
+			remove_trait = vi_vampire_3
+		}
+	}
+
+	1800.1.1 = {
+		death = yes
+	}
+
+}
+
+vi_norman = {
+	name = "Gorm"
+	sexuality = heterosexual
+	faith = vi_nightcourt
+	culture = norse
+
+	prowess = 5
+
+	trait = ambitious
+	trait = greedy
+	trait = lustful
+	trait = sadistic
+	trait = education_martial_4
+	trait = vi_vampire_2
+	trait = berserker
+	trait = physique_good_3
+	trait = fecund
+	trait = disloyal
+	trait = overseer
+
+	650.12.13 = {
+		birth = yes
+	}
+
+	700.1.1 = {
+		effect = {
+			vi_make_vampire_effect = yes
+			set_immortal_age = 49
+			add_prowess_skill = 14
+		}
+	}
+
+	966.1.15 = {
+		effect = {
+			set_culture = culture:norman
+		}
+			
+	}
+
+	1200.1.1 = {
+		death = yes
+	}
+}
+
+vi_norman_wife = {
+	name = "Claire"
+	female = yes
+	sexuality = heterosexual
+	faith = catholic
+	culture = french
+	dna = vi_pretty_maiden_dna
+
+	prowess = 0
+
+	trait = ambitious
+	trait = patient
+	trait = vengeful
+	
+	trait = education_intrigue_4
+	trait = vi_vampire_1
+	trait = beauty_good_2
+	trait = fecund
+
+	847.2.26 = {
+		birth = yes
+	}
+
+	866.1.15 = {
+		employer = vi_norman
+		
+		effect = {
+			set_relation_grudge = character:vi_norman
+
+			add_opinion = {
+				target = character:vi_norman
+				modifier = hate_opinion
+				opinion = -200
+			}
+
+			change_target_weight = -30
+			change_current_weight = -20
+		}
+		add_spouse = vi_norman
+	}
+
+	870.1.1 = {
+		effect = {
+			set_father = character:vi_norman
+			set_house = character:vi_norman.house
+			vi_make_vampire_effect = yes
+			set_immortal_age = 18
+			add_prowess_skill = 4
+			change_target_weight = -30
+		}
+	}
+
+	1200.1.1 = {
+		death = yes
+	}
+}
+
+vi_norman_baby = {
+	name = "Jean"
+	faith = vi_nightcourt
+	culture = french
+
+	trait = beauty_good_2
+	trait = physique_good_2
+
+	father = vi_norman
+	mother = vi_norman_wife
+
+	865.10.14 = {
+		birth = yes
+	}
+
+	884.10.14 = {
+		effect = {
+			add_trait = vi_vampire_1
+			vi_make_vampire_effect = yes
+			set_immortal_age = 18
+		}
+	}
+
+	1200.1.1 = {
+		death = yes
+	}
+}

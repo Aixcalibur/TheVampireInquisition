@@ -1,0 +1,6 @@
+﻿l_english:
+ vi_become_vampire.001.t:0 "A Nighttime Offer"
+ vi_become_vampire.001.desc:0 "One late evening, my [actor.Custom2('RelationToMeShort', SCOPE.sC('vi_friend'))] [vi_friend.GetName] comes to me with an apprehensive look on [vi_friend.GetHerHis] face. "My dear [actor.GetFirstName], I worry sometimes of what it would be like if you were gone... I would sorely miss our times together. What if I told you there was a way you could stop aging and live forever?"\n\n [vi_friend.GetSheHe] smiled at my disbelief. "It would, however, require that you forfeit your current lifestyle, but that would be a small price to pay for immortality. Let me explain...""
+ vi_become_vampire.001.a:0 "Make me a vampire!"
+ vi_become_vampire.001.b:0 "I will not turn into a bloodsucker."
+ vi_become_vampire.001.c:0 "You are a monster!"

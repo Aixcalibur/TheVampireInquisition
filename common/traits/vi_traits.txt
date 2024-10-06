@@ -4,6 +4,8 @@
 	incapacitating = yes
 	general_opinion = -20
 	health = 5
+	stewardship_per_stress_level = -5
+	prowess_per_stress_level = 3
 	disables_combat_leadership = yes
 	ruler_designer_cost = 40
 	stress_gain_mult = 1
@@ -17,6 +19,8 @@
 	# flag = immortal_incapability
 	
 	fertility = -2
+
+	ai_energy = -100
 }
 
 vi_vampire_2 = {
@@ -28,11 +32,15 @@ vi_vampire_2 = {
 	# disables_combat_leadership = yes
 	ruler_designer_cost = 80
 	stress_gain_mult = 0.5
+	stewardship_per_stress_level = -2
+	prowess_per_stress_level = 3
 	monthly_lifestyle_xp_gain_mult = -0.5
 
 	immortal = yes
 
 	fertility = -1
+
+	ai_energy = -100
 }
 
 vi_vampire_3 = {
@@ -44,9 +52,11 @@ vi_vampire_3 = {
 	ruler_designer_cost = 160
 	monthly_lifestyle_xp_gain_mult = -0.75
 	stress_gain_mult = 0.25
+	stewardship_per_stress_level = -2
+	prowess_per_stress_level = 4
 	prowess_no_portrait = 5
 
-	fertility = -1
+	fertility = -0.95
 
 	immortal = yes
 
@@ -61,9 +71,11 @@ vi_vampire_4 = {
 	ruler_designer_cost = 320
 	monthly_lifestyle_xp_gain_mult = -1
 	prowess_no_portrait = 10
+	stewardship_per_stress_level = -2
+	prowess_per_stress_level = 5
 	immortal = yes
 
-	fertility = -1
+	fertility = -0.95
 
 }
 
@@ -78,8 +90,18 @@ vi_vampire_5 = {
 	prowess_no_portrait = 100
 	immortal = yes
 
-	fertility = -1
+	fertility = -0.95
 
+}
+
+vi_exposed_vampire = {
+	icon = excommunicated.dds
+	category = fame
+	triggered_opinion = {
+		parameter = vi_no_masquerade
+		check_missing = yes	
+		opinion_modifier = vi_vampire_opinion
+	}
 }
 
 

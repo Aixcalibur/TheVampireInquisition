@@ -5,6 +5,24 @@
 	motto = "dynn_vi_Montmartre_motto"
 }
 
+house_vi_Cologne = {
+	name = "dynn_vi_Cologne"
+	dynasty = vi_dynasty_Carmine
+	motto = "dynn_vi_Cologne_motto"
+}
+
+house_vi_London = {
+	name = "dynn_London"
+	dynasty = vi_dynasty_Carmine
+	motto = "dynn_vi_London_motto"
+}
+
+house_vi_Venezia = {
+	name = "dynn_vi_Venezia"
+	dynasty = vi_dynasty_Carmine
+	name = "dynn_vi_Venezia_motto"
+}
+
 house_vi_Underworld = {
 	name = "dynn_vi_Underworld"
 	dynasty = vi_dynasty_Underworld

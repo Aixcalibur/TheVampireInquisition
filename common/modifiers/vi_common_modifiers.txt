@@ -5,6 +5,13 @@
 	stacking = yes
 }
 
+vi_grand_ambitions_modifier = {
+	icon = prestige_positive
+	health = 0.5
+	intrigue = 5
+	opinion_of_liege = -100
+}
+
 vi_unnatural_youth_modifier = {
 	icon = fertility_positive
 	life_expectancy = 10000
@@ -14,7 +21,12 @@ vi_unnatural_youth_modifier = {
 vi_unbreakable_calm_modifier = {
 	icon = magic_positive
 	stress_gain_mult = -10
+}
 
+vi_ancient_regime_modifier = {
+	icon = county_modifier_development_positive
+	domicile_build_speed = -0.5
+	domicile_build_gold_cost = -0.15
 }
 
 # County Modifiers from Vampire Policy
@@ -25,18 +37,21 @@ vi_county_discreet_modifier = {
 
 vi_county_sapped_modifier = {
 	icon = economy_negative
-	tax_mult = -0.4
+	tax_mult = -0.3
 }
 
 vi_county_drained_modifier = {
 	icon = county_modifier_development_negative
-	build_speed = -0.4
-	development_growth_factor = -0.4
+	build_speed = 0.5
+	tax_mult = -0.2
+	development_growth_factor = -0.5
 }
 
 vi_county_underworld_investment_modifier = {
 	icon = county_modifier_development_positive
-
+	build_gold_cost = -0.5
+	build_speed = -0.5
+	development_growth_factor = 0.5
 }
 
 # Personal Modifiers from Vampire Policy

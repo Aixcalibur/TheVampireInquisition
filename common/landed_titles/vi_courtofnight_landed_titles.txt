@@ -1,0 +1,172 @@
+﻿# k_vi_underworld = {
+# 	landless = yes
+# 	can_be_named_after_dynasty = no
+	
+# }
+
+k_vi_court_of_night = {
+	color = { 200 0 0 }
+	definite_form = yes
+	ruler_uses_title_name = no
+	landless = yes
+	# noble_family = yes
+	can_be_named_after_dynasty = no
+
+	capital = c_ile_de_france
+
+	ai_primary_priority = {
+		add = @always_primary_score
+	}
+
+	destroy_if_invalid_heir = no
+	no_automatic_claims = yes
+	de_jure_drift_disabled = yes
+
+	d_vi_paris = {
+		definite_form = yes
+		ruler_uses_title_name = no
+		landless = yes
+		can_be_named_after_dynasty = no
+		capital = c_ile_de_france
+		destroy_if_invalid_heir = no
+		de_jure_drift_disabled = yes
+	}
+
+	d_vi_cologne = {
+		definite_form = yes
+		ruler_uses_title_name = no
+		landless = yes
+		can_be_named_after_dynasty = no
+		capital = c_cologne
+		destroy_if_invalid_heir = no
+		de_jure_drift_disabled = yes
+	}
+
+	d_vi_zurich = {
+		definite_form = yes
+		ruler_uses_title_name = no
+		landless = yes
+		can_be_named_after_dynasty = no
+		capital = c_zurich
+		destroy_if_invalid_heir = no
+		de_jure_drift_disabled = yes
+	}
+
+	d_vi_normandy = {
+		definite_form = yes
+		ruler_uses_title_name = no
+		landless = yes
+		can_be_named_after_dynasty = no
+		capital = c_rouen
+		destroy_if_invalid_heir = no
+		de_jure_drift_disabled = yes
+	}
+
+	d_vi_lyon = {
+		definite_form = yes
+		ruler_uses_title_name = no
+		landless = yes
+		can_be_named_after_dynasty = no
+		capital = c_lyon
+		destroy_if_invalid_heir = no
+		de_jure_drift_disabled = yes
+	}
+	
+}
+
+d_vi_venezia = {
+	definite_form = yes
+	ruler_uses_title_name = no
+	landless = yes
+	can_be_named_after_dynasty = no
+	capital = c_venezia
+	destroy_if_invalid_heir = no
+	de_jure_drift_disabled = yes
+}
+
+d_vi_prague = {
+	definite_form = yes
+	ruler_uses_title_name = no
+	landless = yes
+	can_be_named_after_dynasty = no
+	capital = c_praha
+	destroy_if_invalid_heir = no
+	de_jure_drift_disabled = yes
+}
+
+d_vi_london = {
+	definite_form = yes
+	ruler_uses_title_name = no
+	landless = yes
+	can_be_named_after_dynasty = no
+	capital = c_middlesex
+	destroy_if_invalid_heir = no
+	de_jure_drift_disabled = yes
+}
+
+d_nf_vi_montmartre = {
+	color = { 100 100 100 }
+	capital = c_ile_de_france
+
+	definite_form = yes
+	landless = yes
+	ruler_uses_title_name = no
+	always_follows_primary_heir = yes
+	no_automatic_claims = yes
+	noble_family = yes
+	destroy_if_invalid_heir = yes
+	ai_primary_priority = { add = @never_primary_score }
+}
+
+d_nf_vi_cologne = {
+	color = { 100 100 100 }
+	capital = c_cologne
+	definite_form = yes
+	landless = yes
+	ruler_uses_title_name = no
+	always_follows_primary_heir = yes
+	no_automatic_claims = yes
+	noble_family = yes
+	destroy_if_invalid_heir = yes
+	ai_primary_priority = { add = @never_primary_score }
+}
+
+d_nf_vi_normandy = {
+	color = { 100 100 100 }
+	capital = c_rouen
+	definite_form = yes
+	landless = yes
+	ruler_uses_title_name = no
+	always_follows_primary_heir = yes
+	no_automatic_claims = yes
+	noble_family = yes
+	destroy_if_invalid_heir = yes
+	ai_primary_priority = { add = @never_primary_score }
+}
+
+d_nf_vi_lyon = {
+	color = { 100 100 100 }
+	capital = c_lyon
+	definite_form = yes
+	landless = yes
+	ruler_uses_title_name = no
+	always_follows_primary_heir = yes
+	no_automatic_claims = yes
+	noble_family = yes
+	destroy_if_invalid_heir = yes
+	ai_primary_priority = { add = @never_primary_score }
+}
+
+d_laamp_vi_helsing = { 
+	color = { 100 100 100 }
+	capital = c_paderborn # Oinaion
+
+	definite_form = yes
+	landless = yes
+	require_landless = yes
+	ruler_uses_title_name = no
+	no_automatic_claims = yes
+	destroy_if_invalid_heir = yes
+
+	ai_primary_priority = { add = @never_primary_score }
+}

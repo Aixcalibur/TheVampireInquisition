@@ -1,0 +1,61 @@
+﻿namespace = vi_investigate
+
+vi_investigate.001 = {
+
+	title = "Success"
+	desc = "I found out a horrid secret"
+
+	type = character_event
+	theme = intrigue
+	left_portrait = {
+		character = scope:target
+		animation = personality_callous
+	}
+
+	right_portrait = {
+		character = root
+		animation = shock
+	}
+
+	immediate = {
+
+	}
+
+	option = {
+		name = vi_investigate.001.a
+	}
+
+	option = {
+		name = vi_investigate.001.b
+	}
+}
+
+vi_investigate.002 = {
+
+	title = "Failure"
+	desc = "I did not find anything."
+
+	type = character_event
+	theme = intrigue
+	left_portrait = {
+		character = scope:target
+		animation = personality_bold
+	}
+
+	right_portrait = {
+		character = root
+		animation = paranoia
+	}
+
+	immediate = {
+
+	}
+
+	option = {
+		name = vi_investigate.002.a
+	}
+
+	option = {
+		name = vi_investigate.002.b
+	}
+}

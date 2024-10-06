@@ -7,8 +7,8 @@
 		holder = {
 			send_interface_message = {
 				type = event_generic_bad_with_text
-				title = vi_vampire_policy.001.a.toast_title
-				desc = vi_vampire_policy.001.a.toast_desc
+				title = vi_vampire_policy.001.a.msg_title
+				desc = vi_vampire_policy.001.a.msg_desc
 				#tooltip = LOCALIZATION # optional, otherwise takes it from the message type
 				left_icon = root # optional, character, artifact, or title
 				right_icon = scope:domicile_location # optional, character, artifact, or title
@@ -16,20 +16,26 @@
 				scope:domicile_location = {
 					add_county_modifier = {
 						modifier = vi_county_discreet_modifier
-						years = 1
+						years = 5
 					}
 					add_county_modifier = {
 						modifier = vi_county_sapped_modifier
-						years = 1
+						years = 5
 					}
 				}
 				add_legitimacy = miniscule_legitimacy_loss
+			}
+
+			add_opinion = {
+				target = root
+				modifier = suspicion_opinion
+				opinion = -20
 			}
 		}
 	}
 	
 	add_gold = {
-		value = scope:domicile_location.available_loot
+		value = scope:domicile_location.capital_barony.available_loot
 		multiply = 0.5
 	}
 
@@ -40,7 +46,7 @@
 			name = vi_development_tier
 			value = {
 				value = scope:domicile_location.development_level
-				factor = 0.05
+				multiply = 0.2
 				add = 1
 			}
 		}
@@ -49,7 +55,7 @@
 			MODIFIER = vi_sap_county_wealth_modifier
 			TYPE = character
 			LEVEL = local_var:vi_development_tier
-			YEARS = 1 
+			YEARS = 5 
 		}
 	}
 }
@@ -59,7 +65,7 @@ vi_vampire_county_discreet_effect = {
 		save_scope_as = domicile_location
 		add_county_modifier = {
 			modifier = vi_county_discreet_modifier
-			years = 1
+			years = 5
 		}
 	}
 
@@ -73,8 +79,8 @@ vi_vampire_county_drain_effect = {
 		holder = {
 			send_interface_message = {
 				type = event_generic_bad_with_text
-				title = vi_vampire_policy.001.c.toast_title
-				desc = vi_vampire_policy.001.c.toast_desc
+				title = vi_vampire_policy.001.c.msg_title
+				desc = vi_vampire_policy.001.c.msg_desc
 				#tooltip = LOCALIZATION # optional, otherwise takes it from the message type
 				left_icon = root # optional, character, artifact, or title
 				right_icon = scope:domicile_location # optional, character, artifact, or title
@@ -94,12 +100,18 @@ vi_vampire_county_drain_effect = {
 					}
 				}
 				add_legitimacy = minor_legitimacy_loss
+
+				add_opinion = {
+					target = root
+					modifier = suspicion_opinion
+					opinion = -50
+				}
 			}
 		}
 	}
 
 	add_gold = {
-		value = scope:domicile_location.available_loot
+		value = scope:domicile_location.capital_barony.available_loot
 		multiply = 1
 	}
 
@@ -108,7 +120,7 @@ vi_vampire_county_drain_effect = {
 			name = vi_development_tier
 			value = {
 				value = scope:domicile_location.development_level
-				factor = 0.1
+				multiply = 0.4
 				add = 1
 			}
 		}
@@ -117,7 +129,7 @@ vi_vampire_county_drain_effect = {
 			MODIFIER = vi_sap_county_wealth_modifier
 			TYPE = character
 			LEVEL = local_var:vi_development_tier
-			YEARS = 1 
+			YEARS = 5
 		}
 	}
 
@@ -135,8 +147,8 @@ vi_vampire_county_investment_effect = {
 		holder = {
 			send_interface_message = {
 				type = event_generic_good_with_text
-				title = vi_vampire_policy.001.d.toast_title
-				desc = vi_vampire_policy.001.d.toast_desc
+				title = vi_vampire_policy.001.d.msg_title
+				desc = vi_vampire_policy.001.d.msg_desc
 				#tooltip = LOCALIZATION # optional, otherwise takes it from the message type
 				left_icon = root # optional, character, artifact, or title
 				right_icon = scope:domicile_location # optional, character, artifact, or title
@@ -144,11 +156,11 @@ vi_vampire_county_investment_effect = {
 				scope:domicile_location = {
 					add_county_modifier = {
 						modifier = vi_county_discreet_modifier
-						years = 1
+						years = 5
 					}
 					add_county_modifier = {
 						modifier = vi_county_underworld_investment_modifier
-						years = 1
+						years = 5
 					}
 				}
 			}

@@ -4,6 +4,10 @@
 
 	add_character_flag = vi_vampire
 
+	add_secret = {
+		type = secret_vi_vampire
+	}
+
 	add_character_modifier = vi_unnatural_youth_modifier
 
 	# Make it so vampires don't get the vanilla stress events any more

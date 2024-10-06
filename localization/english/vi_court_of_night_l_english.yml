@@ -1,14 +1,36 @@
 ﻿l_english:
 
- k_vi_court_of_night_article:0 "the "
+ k_vi_court_of_night_article:0 "$DEFAULT_TITLE_NAME_ARTICLE$"
  k_vi_court_of_night:0 "Court of Night"
  k_vi_court_of_night_adj:0 "Night"
+
+ d_vi_paris_article:0 "$DEFAULT_TITLE_NAME_ARTICLE$"
+ d_vi_paris:0 "Princedom of Paris"
+
+ d_vi_cologne_article:0 "$DEFAULT_TITLE_NAME_ARTICLE$"
+ d_vi_cologne:0 "Princedom of Cologne"
+
+ d_vi_lyon_article:0 "$DEFAULT_TITLE_NAME_ARTICLE$"
+ d_vi_lyon:0 "Princedom of Lugdunum"
+
+ d_vi_normandy_article:0 "$DEFAULT_TITLE_NAME_ARTICLE$"
+ d_vi_normandy:0 "Princedom of Rouen"
+
+ d_vi_zurich_article:0 "$DEFAULT_TITLE_NAME_ARTICLE$"
+ d_vi_zurich:0 "Abbey of Fraumünster"
+
  D_nf_vi_montmartre: "Montmartre Family"
  d_nf_vi_montmartre: "Montmartre Family"
  D_nf_vi_montmartre_article: "$DEFAULT_TITLE_NAME_ARTICLE$"
  d_nf_vi_montmartre_article: "$DEFAULT_TITLE_NAME_ARTICLE$"
  D_nf_vi_normandy: "House of Neustria"
+ d_nf_vi_normandy: "House of Neustria"
  D_nf_vi_normandy_article: "$DEFAULT_TITLE_NAME_ARTICLE$"
+ d_nf_vi_normandy_article: "$DEFAULT_TITLE_NAME_ARTICLE$"
+ d_nf_vi_lyon: "Lugdunum Family"
+ D_nf_vi_lyon: "Lugdunum Family"
+ d_nf_vi_lyon_article: "$DEFAULT_TITLE_NAME_ARTICLE$"
+ D_nf_vi_lyon_article: "$DEFAULT_TITLE_NAME_ARTICLE$"
 
  # Character Names
  Esclarmonde:0 "Esclarmonde"
@@ -16,3 +38,5 @@
 
  nick_vi_queenofthenight:0 "the Queen of the Night"
  nick_vi_queenofthenight_desc:1 "Civilization was brought to the nights of Gaul not through the blade or fang, but through unearthly charm and keen insight."
+
+ nick_vi_princeofurchins:0 "the Prince of Urchins"

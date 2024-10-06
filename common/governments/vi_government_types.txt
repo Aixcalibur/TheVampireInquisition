@@ -42,9 +42,10 @@
 		# men_at_arms_cap = -2
 		# men_at_arms_limit = -2
 		# knight_limit = 10
+		monthly_income = 0.1
+		monthly_prestige = 2
+		monthly_prestige = 2
 		vassal_limit = -20
-		monthly_prestige = 2
-		monthly_prestige = 2
 	}
 
 	ai = {

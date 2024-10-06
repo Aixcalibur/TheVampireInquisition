@@ -1,0 +1,7 @@
+﻿d_vi_paris = c_ile_de_france
+d_vi_cologne = c_cologne
+d_vi_venezia = c_venezia
+d_vi_prague = c_praha
+d_vi_normandy = c_rouen
+d_vi_rouen = c_rouen
+d_vi_london = b_london

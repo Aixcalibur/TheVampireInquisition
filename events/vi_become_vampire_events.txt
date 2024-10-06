@@ -1,0 +1,139 @@
+﻿namespace = vi_become_vampire
+
+vi_become_vampire.001 = {
+	type = character_event
+	title = vi_become_vampire.001.t
+	desc = vi_become_vampire.001.desc
+
+	theme = intrigue
+
+	left_portrait = {
+		character = root
+		animation = shock
+	}
+
+	right_portrait = {
+		character = scope:vi_friend
+		animation = personality_rational
+	}
+
+	immediate = {
+		
+	}
+
+	option = {
+		name = vi_become_vampire.001.a
+
+		ai_chance = {
+			base = 10
+
+			modifier = {
+				add = -1000
+				AND = {
+					has_trait = conqueror
+					age < 50
+				}
+			}
+
+			modifier = {
+				add = 50
+				has_trait = ambitious
+			}
+
+			modifier = {
+				add = 50
+				has_trait = cynical
+			}
+		}
+
+		save_scope_as = adoptee
+		add_character_flag = {
+			flag = abdicated_from_throne
+			days = 30
+		}
+
+		add_trait = vi_vampire_1
+		
+		hidden_effect = {	#Make all weak claims on your titles into strong claims.
+			every_held_title = {
+				save_temporary_scope_as = abdicator_title
+				every_claimant = {
+					limit = { has_weak_claim_on = scope:abdicator_title }
+					make_claim_strong = scope:abdicator_title
+				}
+			}
+		}
+
+		depose = yes
+
+		set_character_faith = scope:vi_friend.faith
+
+		add_opinion = {
+			target = scope:vi_friend
+			modifier = grateful_opinion
+			opinion = 30
+		}
+
+		scope:vi_friend = {
+			adopt = scope:adoptee
+		}
+
+		hidden_effect = {
+			set_house = scope:vi_friend.house
+		}
+
+		found_cadet_house_decision_effect = {
+			CHARACTER = scope:adoptee
+			PRESTIGE = 0
+		}
+	}
+
+	option = {
+		name = vi_become_vampire.001.b
+
+		ai_chance = {
+			base = 50
+
+			modifier = {
+				add = 100
+				has_trait = conqueror
+			}
+		}
+
+		add_opinion = {
+			target = scope:vi_friend
+			modifier = suspicion_opinion
+			opinion = -50
+		}
+		reverse_add_opinion = {
+			target = scope:vi_friend
+			modifier = disappointed_opinion
+			opinion = -50
+		}
+
+		add_character_flag = vi_refused_vampirism
+	}
+
+	option = {
+		name = vi_become_vampire.001.c
+
+		ai_chance = {
+			base = 0
+		}
+		remove_relation_friend = scope:vi_friend
+
+		add_opinion = {
+			target = scope:vi_friend
+			modifier = suspicion_opinion
+			opinion = -100
+		}
+
+		reverse_add_opinion = {
+			target = scope:vi_friend
+			modifier = betrayal_opinion
+			opinion = -100
+		}
+
+		add_character_flag = vi_refused_vampirism
+	}
+}
