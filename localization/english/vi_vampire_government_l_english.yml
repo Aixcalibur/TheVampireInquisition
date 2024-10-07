@@ -2,9 +2,12 @@
  vi_vampire_government: "Vampire Princedom"
  vi_vampire_government_with_icon: "@government_type_administrative! $administrative_government$"
  vi_vampire_government_adjective: "Vampire"
- vi_vampire_government_realm: "Vampire Princedom"
+ vi_vampire_government_realm: "Vampire"
  vi_vampire_government_desc: "A Vampire Princedom is a territory claimed by a powerful vampire, unbeknownst to the local mortal population. All vampires must obey the local Prince if they wish to stay here."
 
+ vi_acclamation_succession_law: "Vampire"
+
+ VI_NEW_CREATED_PRINCEDOM_NAME: "Princedom of [vi_title_county.GetNameNoTierNoTooltip]"
 
  vi_lair_domicile_type: "Lair"
  vi_lair_domicile_type_tooltip: "Lair"
@@ -18,3 +21,5 @@
 
  vi_lady: "Lady"
  vi_lord: "Lord"
+ vi_mother: "Mother"
+ vi_father: "Father"

@@ -9,7 +9,6 @@
 	disables_combat_leadership = yes
 	ruler_designer_cost = 40
 	stress_gain_mult = 1
-	monthly_lifestyle_xp_gain_mult = -0.25
 
 	immortal = yes
 	# Dummy flags — just here for loc really.
@@ -34,7 +33,6 @@ vi_vampire_2 = {
 	stress_gain_mult = 0.5
 	stewardship_per_stress_level = -2
 	prowess_per_stress_level = 3
-	monthly_lifestyle_xp_gain_mult = -0.5
 
 	immortal = yes
 
@@ -50,7 +48,6 @@ vi_vampire_3 = {
 	# disables_combat_leadership = yes
 	shown_in_ruler_designer = yes
 	ruler_designer_cost = 160
-	monthly_lifestyle_xp_gain_mult = -0.75
 	stress_gain_mult = 0.25
 	stewardship_per_stress_level = -2
 	prowess_per_stress_level = 4
@@ -69,7 +66,6 @@ vi_vampire_4 = {
 	# disables_combat_leadership = yes
 	shown_in_ruler_designer = yes
 	ruler_designer_cost = 320
-	monthly_lifestyle_xp_gain_mult = -1
 	prowess_no_portrait = 10
 	stewardship_per_stress_level = -2
 	prowess_per_stress_level = 5
@@ -86,7 +82,6 @@ vi_vampire_5 = {
 	# disables_combat_leadership = yes
 	shown_in_ruler_designer = yes
 	ruler_designer_cost = 10000
-	monthly_lifestyle_xp_gain_mult = -10
 	prowess_no_portrait = 100
 	immortal = yes
 
@@ -104,12 +99,53 @@ vi_exposed_vampire = {
 	}
 }
 
+vi_heartstealer = {
+	icon = seducer.dds
+	category = lifestyle
+
+	shown_in_ruler_designer = no
+
+	attraction_opinion = 20
+
+	diplomacy_per_stress_level = 2
+	intrigue_per_stress_level = 2
+
+	flag = vi_can_steal_hearts
+
+}
+
+vi_dragonsscion = {
+	category = lifestyle
+
+	shown_in_ruler_designer = no
+
+	dread_baseline_add = 30
+	prowess_no_portrait = 20
+
+	flag = vi_can_use_dragon_fear
+
+}
+
 
 vi_feral = {
 	category = health
 	general_opinion = -50
 	prowess = 10
 	shown_in_ruler_designer = no
+}
+
+vi_dormant = {
+	category = health
+	domain_limit = -10
+	incapacitating = yes
+	disables_combat_leadership = yes
+	health = 20
+	flag = can_not_marry
+	inheritance_blocker = all
+	claim_inheritance_blocker = all
+	can_have_children = no
+	shown_in_ruler_designer = no
+	ai_energy = -500
 }
 
 vi_historical_character = {

@@ -1,12 +1,11 @@
 ﻿vi_vampire_county_normal_effect = {
-	
 
-	root.domicile.domicile_location.county = {
-		save_scope_as = domicile_location	
+	root.capital_county = {
+		save_scope_as = domicile_location # actually capital location, but too lazy to change
 
 		holder = {
 			send_interface_message = {
-				type = event_generic_bad_with_text
+				type = send_interface_message_bad
 				title = vi_vampire_policy.001.a.msg_title
 				desc = vi_vampire_policy.001.a.msg_desc
 				#tooltip = LOCALIZATION # optional, otherwise takes it from the message type
@@ -61,24 +60,45 @@
 }
 
 vi_vampire_county_discreet_effect = {
-	root.domicile.domicile_location.county = {
+	root.capital_county = {
 		save_scope_as = domicile_location
 		add_county_modifier = {
 			modifier = vi_county_discreet_modifier
 			years = 5
 		}
 	}
-
-	add_legitimacy = minor_legitimacy_gain
+	if = {
+		limit = {
+			is_independent_ruler = yes
+		}
+		add_legitimacy = minor_legitimacy_gain
+	}
+	else = {
+		liege ?= {
+			send_interface_message = {
+				type = send_interface_message_bad
+				title = vi_vampire_policy.001.b.msg_title
+				desc = vi_vampire_policy.001.b.msg_title
+				left_icon = root # optional, character, artifact, or title
+				right_icon = scope:domicile_location # optional, character, artifact, or title
+				add_legitimacy = miniscule_legitimacy_gain
+				add_opinion = {
+					target = root
+					modifier = grateful_opinion
+					value = 10
+				}
+			}
+		}
+	}
 }
 
 vi_vampire_county_drain_effect = {
-	root.domicile.domicile_location.county = {
+	root.capital_county = {
 		save_scope_as = domicile_location
 
 		holder = {
 			send_interface_message = {
-				type = event_generic_bad_with_text
+				type = send_interface_message_bad
 				title = vi_vampire_policy.001.c.msg_title
 				desc = vi_vampire_policy.001.c.msg_desc
 				#tooltip = LOCALIZATION # optional, otherwise takes it from the message type
@@ -88,15 +108,15 @@ vi_vampire_county_drain_effect = {
 				scope:domicile_location = {
 					add_county_modifier = {
 						modifier = vi_county_discreet_modifier
-						years = 1
+						years = 5
 					}
 					add_county_modifier = {
 						modifier = vi_county_sapped_modifier
-						years = 1
+						years = 5
 					}
 					add_county_modifier = {
 						modifier = vi_county_drained_modifier
-						years = 1
+						years = 5
 					}
 				}
 				add_legitimacy = minor_legitimacy_loss
@@ -139,14 +159,14 @@ vi_vampire_county_drain_effect = {
 
 vi_vampire_county_investment_effect = {
 
-	add_gold = -100
+	remove_gold = medium_gold_value
 
-	root.domicile.domicile_location.county = {
+	root.capital_county = {
 		save_scope_as = domicile_location
 
 		holder = {
 			send_interface_message = {
-				type = event_generic_good_with_text
+				type = send_interface_message_good
 				title = vi_vampire_policy.001.d.msg_title
 				desc = vi_vampire_policy.001.d.msg_desc
 				#tooltip = LOCALIZATION # optional, otherwise takes it from the message type

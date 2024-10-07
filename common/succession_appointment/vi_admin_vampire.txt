@@ -34,7 +34,7 @@
 					add = age
 					multiply = 0.15
 					ceiling = 100
-					desc = age_desc
+					desc = age
 				}
 			}
 
@@ -83,10 +83,10 @@
 				}
 			}
 			if = {
-				limit = { has_trait = vi_vampire_exposed }
+				limit = { has_trait = vi_exposed_vampire }
 				subtract = {
 					value = 1000
-					desc = trait_vi_vampire_exposed
+					desc = trait_vi_exposed_vampire
 				}
 			}
 

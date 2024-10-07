@@ -1,5 +1,0 @@
-﻿namespace = vi_vampire_exposed
-
-vi_vampire_exposed.001 = {
-	
-}

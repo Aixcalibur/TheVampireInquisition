@@ -1,0 +1,23 @@
+﻿on_game_start = {
+	on_actions = {
+		vi_vampire_game_start
+	}
+}
+
+vi_vampire_game_start = {
+	on_actions = {
+		delay = { days = 30 }
+		vi_vampire_game_start_create_princedom
+	}
+}
+
+vi_vampire_game_start_create_princedom = {
+	effect = {
+		character:vi_jehanne = {
+			vi_create_vassal_princedom_effect = {
+				VI_LIEGE = character:vi_esclarmonde
+				VI_COUNTY = title:c_orleans
+			}
+		}
+	}
+}

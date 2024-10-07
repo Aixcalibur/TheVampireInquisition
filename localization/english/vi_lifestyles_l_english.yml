@@ -1,0 +1,99 @@
+﻿l_english:
+ vi_vampire_lifestyle_name:0 "Vampire"
+ vi_vampire_lifestyle_desc:0 "Focus on honing your vampiric powers and become capable of impossible feats."
+
+
+
+
+ vi_charm_tree_name:0 "Heart-Stealer"
+
+ vi_vampire_charm_focus:1 "$vi_vampire_charm_focus_short$ Focus"
+ vi_vampire_charm_focus_short:0 "Charisma"
+ vi_vampire_charm_focus_modifier:1 "[GetFocus('vi_vampire_charm_focus').GetName]"
+ vi_vampire_charm_focus_desc:0 "To be dark, brooding, and handsome is your vampiric privilege. Use it well and mortals will come crawling to kiss your feet."
+ vi_vampire_charm_focus_effect_desc:0 "Focusing on Charisma grants:"
+
+ vi_charm_perk_name:0 "Unnatural Allure"
+ vi_charm_perk_effect:0 "Unlocks the [vi_charm_interaction|E] on mortals"
+ my_vi_charm_perk_effect:0 "You can use the [vi_charm_interaction|E] on mortals"
+ their_vi_charm_perk_effect:0 "They can use the [vi_charm_interaction|E] on mortals"
+
+ vi_animal_speak_perk_name:0 "Speak to Animals"
+ vi_animal_speak_perk_effect:0 "Unlocks the $adopt_puppy_decision_name$ [decision|E]"
+
+ vi_animal_command_perk_name:0 "Creatures of the Night"
+ vi_animal_command_perk_effect:0 "Can recruit [GetMaA('vi_vampire_bats').GetName] as [men_at_arms|E]"
+
+ vi_soothe_perk_name:0 "Sweet Nothings"
+ vi_soothe_perk_effect:0 "Unlocks the [vi_soothe_interaction|E] on mortals"
+
+ vi_galvanize_perk_name:0 "Galvanizing Speech"
+ vi_galvanize_perk_effect:0 "Unlocks the [vi_galvanize_interaction|E] on mortals"
+
+ vi_persuasion_perk_name:0 "Binding Persuasion"
+ vi_persuasion_perk_effect:0 "Unlocks the [vi_extract_hook_interaction|E] on mortals with high [opinion|E]"
+
+ vi_enthrall_perk_name:0 "Enthralling Gaze"
+ vi_enthrall_perk_effect:0 "Unlocks the [vi_enthrall_interaction|E] on mortal [friends|E] and [lovers|E]"
+
+ vi_presence_perk_name:0 "Lion Among Sheep"
+ vi_presence_perk_effect:0 "Allows Charisma [interactions|E] to be used on other vampires"
+
+ vi_heartstealer_perk_name:0 "Heart-Stealer"
+
+
+
+
+ vi_will_tree_name:0 "Dragon's Scion"
+
+ vi_vampire_will_focus:1 "$vi_vampire_will_focus_short$ Focus"
+ vi_vampire_will_focus_short:0 "Will"
+ vi_vampire_will_focus_modifier:1 "[GetFocus('vi_vampire_will_focus').GetName]"
+ vi_vampire_will_focus_desc:0 "There is no need to ask when you can simply take. Everything can be overcome with sheer force of will."
+ vi_vampire_will_focus_effect_desc:0 "Focusing on Will grants:"
+
+ vi_celerity_perk_name:0 "Celerity"
+ vi_blink_perk_name:0 "Flash Step"
+
+ vi_fortitude_perk_name:0 "Fortitude"
+
+ vi_strength_perk_name:0 "Outer Strength"
+ vi_strength_perk_effect:0 "Gain the [trait_strong|E] trait"
+
+ vi_regeneration_perk_name:0 "Regeneration"
+ vi_shadowwalk_perk_name:0 "Shadow Walk"
+
+ vi_storm_perk_name:0 "Approaching Storm"
+ vi_transformation_perk_name:0 "Transformation"
+ 
+ vi_dragons_scion_perk_name:0 "Dragon's Scion"
+
+
+
+
+ vi_insight_tree_name:0 "All-Seeing"
+
+ vi_vampire_insight_focus:1 "$vi_vampire_insight_focus_short$ Focus"
+ vi_vampire_insight_focus_short:0 "Insight"
+ vi_vampire_insight_focus_modifier:1 "[GetFocus('vi_vampire_insight_focus').GetName]"
+ vi_vampire_insight_focus_desc:0 "When you gaze long into the abyss, the abyss gazes back."
+ vi_vampire_insight_focus_effect_desc:0 "Focusing on Insight grants:"
+
+ vi_auspex_perk_name:0 "Auspex"
+ 
+ vi_peopleofinterest_perk_name:0 "Mortals of Interest"
+ vi_peopleofinterest_perk_name:0 "Can use the [vi_seek_mortal|E] [decision|E]"
+ vi_windfall_perk_name:0 "Persistent Windfalls"
+ vi_mercantile_perk_name:0 "Mercantile Insight"
+ 
+ vi_heartsofmen_perk_name:0 "Hearts of Men"
+ vi_heartsofmen_perk_effect:0 "Unlocks the [vi_see_secret_interaction|E] on mortals"
+
+ vi_guidance_perk_name:0 "Sage's Guidance"
+ vi_guidance_perk_effect:0 "Unlocks the [vi_guidance_interaction|E]"
+
+ vi_propheticdreams_perk_name:0 "Prophetic Dreams"
+
+ vi_allseeing_perk_name:0 "Fateweaver"
+
+ vi_fateweaver_perk_name:0 "All-Seeing"

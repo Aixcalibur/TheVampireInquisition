@@ -1,6 +1,22 @@
 ﻿vi_drained_modifier = {
 	icon = health_negative
-	health = -0.2
+	health = -0.25
+	prowess = -2
+	stacking = yes
+}
+
+vi_sated_modifier = {
+	icon = health_positive
+	health = 0.25
+	prowess = 2
+	stress_loss_mult = -0.25
+	stacking = yes
+}
+
+vi_vampire_strain_modifier = {
+	icon = treatment_negative
+	stress_gain_mult = 0.25
+	health = -0.25
 	prowess = -2
 	stacking = yes
 }
@@ -49,7 +65,7 @@ vi_county_drained_modifier = {
 
 vi_county_underworld_investment_modifier = {
 	icon = county_modifier_development_positive
-	build_gold_cost = -0.5
+	build_gold_cost = -0.25
 	build_speed = -0.5
 	development_growth_factor = 0.5
 }

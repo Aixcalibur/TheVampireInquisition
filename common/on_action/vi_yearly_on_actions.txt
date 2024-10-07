@@ -21,8 +21,6 @@ vi_vampire_policy_pulse = {
 		}
 	}
 
-	
-
 	events = {
 		vi_vampire_policy.001
 	}
@@ -50,5 +48,16 @@ vi_vampire_friendship_pulse = {
 				days = { 30 60 }
 			}
 		}
+	}
+}
+
+vi_vampire_breakup_pulse = {
+	trigger = {
+		is_ai = yes
+		vi_is_vampire_trigger = yes
+	}
+
+	effect = {
+		
 	}
 }

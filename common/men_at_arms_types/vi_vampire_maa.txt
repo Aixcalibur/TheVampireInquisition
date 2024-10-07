@@ -25,7 +25,7 @@ vi_vampire_bats = {
 	icon = skirmishers
 
 	can_recruit = {
-		vi_is_vampire_trigger = yes
+		has_perk = vi_animal_command_perk
 	}
 	
 	damage = 5

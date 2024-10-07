@@ -1,0 +1,120 @@
+﻿vi_vampire_drain_stress_effect = {
+	stress_impact = {
+		base = major_stress_impact_loss
+		compassionate = medium_stress_impact_gain
+		sadistic = minor_stress_impact_loss
+		callous = minor_stress_impact_loss
+	}
+}
+
+vi_vampire_drain_effect = {
+
+	$VI_VICTIM$ = {
+		save_as_scope = victim
+	}
+
+	$VI_VAMPIRE$ = {
+		save_as_scope = vampire
+	}
+
+	scope:victim = {
+
+		add_stress = major_stress_gain
+
+		add_opinion = {
+			target = scope:vampire
+			modifier = suspicion_opinion
+			opinion = -50
+		}
+
+		add_character_modifier = {
+			modifier = vi_drained_modifier
+		}
+	}
+
+	scope:vampire = {
+		vi_vampire_drain_stress_effect = yes
+
+		add_character_modifier = {
+			modifier = vi_sated_modifier
+			years = 3
+		}
+	}
+}
+
+
+vi_vampire_drain_turn_effect = {
+
+	$VI_VICTIM$ = {
+		save_as_scope = victim
+	}
+
+	$VI_VAMPIRE$ = {
+		save_as_scope = vampire
+	}
+
+	scope:victim = {
+
+		add_stress = major_stress_gain
+
+		add_character_modifier = {
+			modifier = vi_drained_modifier
+			years = 3
+		}
+
+		add_relation_grudge = scope:vampire
+
+		add_opinion = {
+			target = scope:vampire
+			modifier = hate_opinion
+			opinion = -100
+		}
+
+		vi_turn_into_vampire_effect = {
+			VI_VAMPIRE = scope:vampire
+			VI_TARGET = scope:victim
+		}
+
+	}
+
+	scope:vampire = {
+		vi_vampire_drain_stress_effect = yes
+
+		add_character_modifier = {
+			modifier = vi_sated_modifier
+			years = 5
+		}
+	}
+}
+
+vi_vampire_drain_kill_effect = {
+	$VI_VICTIM$ = {
+		save_as_scope = victim
+	}
+
+	$VI_VAMPIRE$ = {
+		save_as_scope = vampire
+	}
+
+	scope:victim = {
+		death = {
+			death_reason = death_murder
+			killer = scope:vampire
+		}
+	}
+
+	scope:vampire = {
+
+		vi_vampire_drain_stress_effect = yes
+
+		add_secret = {
+			type = secret_murder
+			target = scope:victim
+		}
+
+		add_character_modifier = {
+			modifier = vi_sated_modifier
+			years = 5
+		}
+	}
+}

@@ -44,48 +44,22 @@ vi_become_vampire.001 = {
 				add = 50
 				has_trait = cynical
 			}
-		}
 
-		save_scope_as = adoptee
-		add_character_flag = {
-			flag = abdicated_from_throne
-			days = 30
-		}
-
-		add_trait = vi_vampire_1
-		
-		hidden_effect = {	#Make all weak claims on your titles into strong claims.
-			every_held_title = {
-				save_temporary_scope_as = abdicator_title
-				every_claimant = {
-					limit = { has_weak_claim_on = scope:abdicator_title }
-					make_claim_strong = scope:abdicator_title
-				}
+			modifier = {
+				add = 50
+				is_healthy = no
 			}
 		}
 
-		depose = yes
-
-		set_character_faith = scope:vi_friend.faith
-
-		add_opinion = {
-			target = scope:vi_friend
-			modifier = grateful_opinion
-			opinion = 30
+		vi_turn_into_vampire_effect = {
+			VI_VAMPIRE = scope:vi_friend
+			VI_TARGET = root
 		}
 
-		scope:vi_friend = {
-			adopt = scope:adoptee
-		}
-
-		hidden_effect = {
-			set_house = scope:vi_friend.house
-		}
-
-		found_cadet_house_decision_effect = {
-			CHARACTER = scope:adoptee
-			PRESTIGE = 0
-		}
+		# found_cadet_house_decision_effect = {
+		# 	CHARACTER = scope:adoptee
+		# 	PRESTIGE = 0
+		# }
 	}
 
 	option = {

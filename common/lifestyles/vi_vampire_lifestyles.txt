@@ -1,0 +1,19 @@
+﻿vi_vampire_lifestyle = {
+
+	is_highlighted = {
+		has_trait = vi_vampire_1
+	}
+
+	is_valid = {
+		OR = {
+			has_trait = vi_vampire_1
+			has_trait = vi_vampire_2
+			has_trait = vi_vampire_3
+			has_trait = vi_vampire_4
+			has_trait = vi_vampire_5
+		}
+	}
+
+	xp_per_level = 1000
+	base_xp_gain = 10
+}

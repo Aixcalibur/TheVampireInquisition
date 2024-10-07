@@ -1,7 +1,6 @@
 ﻿vi_make_vampire_effect = {
 
 	add_character_flag = immune_to_disease
-
 	add_character_flag = vi_vampire
 
 	add_secret = {
@@ -18,6 +17,99 @@
 
 	# set_sexuality = asexual
 }
+
+vi_turn_into_vampire_effect = {
+
+	$VI_VAMPIRE$ = {
+		save_scope_as = vi_vampire
+	}
+	$VI_TARGET$ = {
+		save_scope_as = vi_target
+	}
+
+	scope:vi_target = {
+		if = {
+			limit = {
+				vi_is_vampire_trigger = no
+			}
+
+			every_close_or_extended_family_member = {
+				limit = {
+					vi_is_vampire_trigger = no
+				}
+				add_opinion = {
+					target = scope:vi_target
+					modifier = suspicion_opinion
+					value = -30
+				}
+			}
+
+			#Depose Rulers
+			if = {
+				limit = {
+					is_ruler = yes
+				}
+				add_character_flag = {
+					flag = abdicated_from_throne
+					days = 30
+				}
+				hidden_effect = {	#Make all weak claims on your titles into strong claims.
+					every_held_title = {
+						save_temporary_scope_as = abdicator_title
+						every_claimant = {
+							limit = { has_weak_claim_on = scope:abdicator_title }
+							make_claim_strong = scope:abdicator_title
+						}
+					}
+				}
+				depose = yes
+			}
+
+			add_trait = vi_vampire_1
+			vi_make_vampire_effect = yes
+
+			scope:vi_vampire = {
+				adopt = scope:vi_target
+			}
+			set_character_faith = scope:vi_vampire.faith
+			set_house = scope:vi_vampire.house
+		}
+	}
+
+	scope:vi_vampire = {
+		if = {
+			limit = {
+				is_ruler = yes
+			}
+
+			add_courtier = scope:vi_victim
+		}
+	}
+}
+
+vi_become_dormant_effect = {
+	if = {
+		limit = {
+			is_ruler = yes
+		}
+		add_character_flag = {
+			flag = abdicated_from_throne
+			days = 30
+		}
+		hidden_effect = {	#Make all weak claims on your titles into strong claims.
+			every_held_title = {
+				save_temporary_scope_as = abdicator_title
+				every_claimant = {
+					limit = { has_weak_claim_on = scope:abdicator_title }
+					make_claim_strong = scope:abdicator_title
+				}
+			}
+		}
+		depose = yes
+	}
+}
+
+
 
 vi_add_stacking_modifier_effect = {
 	if = {
@@ -61,4 +153,8 @@ vi_add_stacking_modifier_effect = {
 			}
 		}
 	}
+}
+
+vi_secret_exposed_vampire_effect = {
+	add_trait = vi_exposed_vampire
 }

@@ -1,0 +1,47 @@
+﻿vi_charm_perk_effect = {
+	global = vi_charm_perk_effect
+	first = my_vi_charm_perk_effect
+	third = their_vi_charm_perk_effect
+}
+
+vi_animal_speak_perk_effect = {
+	global = vi_animal_speak_perk_effect
+	first = vi_animal_speak_perk_effect
+	third = vi_animal_speak_perk_effect
+}
+
+vi_animal_command_perk_effect = {
+	global = vi_animal_command_perk_effect
+	first = vi_animal_command_perk_effect
+	third = vi_animal_command_perk_effect
+}
+
+vi_soothe_perk_effect = {
+	global = vi_soothe_perk_effect
+	first = vi_soothe_perk_effect
+	third = vi_soothe_perk_effect
+}
+
+vi_galvanize_perk_effect = {
+	global = vi_galvanize_perk_effect
+	first = vi_galvanize_perk_effect
+	third = vi_galvanize_perk_effect
+}
+
+vi_persuasion_perk_effect = {
+	global = vi_persuasion_perk_effect
+	first = vi_persuasion_perk_effect
+	third = vi_persuasion_perk_effect
+}
+
+vi_enthrall_perk_effect = {
+	global = vi_enthrall_perk_effect
+	first = vi_enthrall_perk_effect
+	third = vi_enthrall_perk_effect
+}
+
+vi_presence_perk_effect = {
+	global = vi_presence_perk_effect
+	first = vi_presence_perk_effect
+	third = vi_presence_perk_effect
+}

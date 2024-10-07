@@ -9,6 +9,8 @@
 
 	add_prestige_level = 3
 
+	add_influence_level = 3
+
 	vi_make_vampire_effect = yes
 
 	if = {
@@ -26,12 +28,8 @@
 		add_perk = confidants_perk
 	}
 
-	if = {
-		limit = { NOT = { has_perk = dignitas_perk } }
-		add_perk = dignitas_perk
-	}
-
 	add_trait = lifestyle_reveler
+
 	add_trait_xp = {
 		trait = lifestyle_reveler
 		value = 100
@@ -41,5 +39,6 @@
 
 	add_character_flag = vi_esclarmonde
 	give_nickname = nick_vi_queenofthenight
+	
 
 }

@@ -715,6 +715,7 @@ vi_olivier = {
 
 vi_lugh = {
 	name = "Lugus"
+	dynasty_house = house_vi_Tuatha_De
 	sexuality = bisexual
 	faith = vi_nightcourt
 	culture = roman
@@ -741,62 +742,14 @@ vi_lugh = {
 		effect = {
 			vi_make_vampire_effect = yes
 			set_immortal_age = 35
-			add_prowess_skill = 30
+			add_prowess_skill = 20
+			add_character_flag = do_not_generate_starting_family
 		}
 	}
 
 	1500.1.1 = {
 		death = yes
 	}
-}
-
-vi_setanta = {
-	name = "Setanta"
-	sexuality = heterosexual
-	faith = vi_nightcourt
-	culture = irish
-
-	prowess = 0
-
-	trait = diligent
-	trait = brave
-	trait = vengeful
-	trait = education_martial_5
-	trait = vi_vampire_3
-	trait = gallant
-	trait = strong
-	trait = physique_good_3
-	trait = disloyal
-
-	512.1.30 = {
-		birth = yes
-	}
-
-	545.6.6 = {
-		effect = {
-			set_father = character:vi_lugh
-			set_house = character:vi_lugh.house
-			vi_make_vampire_effect = yes
-			set_immortal_age = 30
-			add_prowess_skill = 40
-		}
-	}
-
-	800.1.1 = {
-		employer = vi_lugh
-	}
-
-	1000.1.1 = {
-		effect = {
-			add_trait = vi_vampire_4
-			remove_trait = vi_vampire_3
-		}
-	}
-
-	1800.1.1 = {
-		death = yes
-	}
-
 }
 
 vi_norman = {

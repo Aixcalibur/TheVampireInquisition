@@ -1,5 +1,7 @@
 ﻿namespace = vi_stress_threshold
 
+# 1000 - Stress Feeding events
+# 2000 - Stress Personality change
 
 vi_stress_threshold.1001 = {
 	type = character_event
@@ -96,6 +98,7 @@ vi_stress_threshold.1001 = {
 	immediate = {
 		root = { save_scope_as = stress_character } # For stress widget
 		
+
 		stress_character.location = {
 			save_scope_as = stress_location
 		}
@@ -245,6 +248,212 @@ vi_stress_threshold.1001 = {
 		add_stress = medium_stress_impact_loss
 	}
 }
+
+vi_stress_threshold.2010 = { # Lose Humanity and Compassionate
+	type = character_event
+	title = vi_stress_threshold.2010.t
+	desc = vi_stress_threshold.2010.desc
+
+	theme = mental_break
+
+	left_portrait = {
+		character = root
+		animation = rage
+	}
+
+	trigger = {
+		stress_level >= 2
+		NOR = {
+			has_trait = sadistic
+			has_character_flag = had_vi_stress_threshold2010
+		}
+	}
+
+	weight_multiplier = {
+		base = 1
+
+		modifier = {
+			add = 1
+			has_trait = compassionate
+		}
+		modifier = {
+			subtract = 0.75
+			has_trait = callous
+		}
+	}
+
+	immediate = {
+		root = {
+			add_character_modifier = {
+				modifier = vi_vampire_strain_modifier
+				years = 5
+			}
+
+			add_character_flag = {
+				flag = had_vi_stress_threshold2010
+				years = 10
+			}
+		}
+	}
+
+	option = {
+		name = vi_stress_threshold.2010.a
+		trigger = {
+			has_trait = compassionate
+		}
+		remove_trait = compassionate
+	}
+
+	option = {
+		name = vi_stress_threshold.2010.b
+		trigger = {
+			NOR = {
+				has_trait = compassionate
+				has_trait = callous
+				has_trait = sadistic
+			}
+		}
+		add_trait = callous
+	}
+
+	option = {
+		name = vi_stress_threshold.2010.c
+		trigger = {
+			NOR = {
+				has_trait = compassionate
+				has_trait = sadistic
+			}
+		}
+		if = {
+			limit = {
+				has_trait = callous
+			}
+			remove_trait = callous
+		}
+		add_trait = sadistic
+	}
+
+	option = {
+		name = vi_stress_threshold.2010.d
+
+	}
+}
+
+vi_stress_threshold.2020 = { # Become Eccentric
+	type = character_event
+	title = vi_stress_threshold.2020.t
+	desc = vi_stress_threshold.2020.desc
+
+	theme = mental_break
+
+	left_portrait = {
+		character = root
+		animation = rage
+	}
+
+	trigger = {
+		stress_level >= 2
+		NOT = {
+			has_trait = eccentric
+		}
+	}
+
+	weight_multiplier = {
+		base = 1
+
+		modifier = {
+			add = 0.25
+			has_trait = scholar
+		}
+
+		modifier = {
+			add = 0.25
+			has_trait = theologian
+		}
+
+		modifier = {
+			add = 0.5
+			has_trait = intellect_good_3
+		}
+	}
+
+	immediate = {
+		root = {
+			add_character_modifier = {
+				modifier = vi_vampire_strain_modifier
+				years = 5
+			}
+		}
+	}
+
+	option = {
+		name = vi_stress_threshold.2020.a
+		
+		add_trait = eccentric
+	}
+
+	option = {
+		name = vi_stress_threshold.2020.b
+
+	}
+}
+
+vi_stress_threshold.2030 = { # Become Arbitrary
+	type = character_event
+	title = vi_stress_threshold.2030.t
+	desc = vi_stress_threshold.2030.desc
+
+	theme = mental_break
+
+	left_portrait = {
+		character = root
+		animation = rage
+	}
+
+	trigger = {
+		stress_level >= 2
+		NOT = {
+			has_trait = arbitrary
+		}
+	}
+
+	weight_multiplier = {
+		base = 1
+
+		modifier = {
+			add = 0.25
+			has_trait = just
+		}
+	}
+
+	immediate = {
+		root = {
+			add_character_modifier = {
+				modifier = vi_vampire_strain_modifier
+				years = 5
+			}
+		}
+	}
+
+	option = {
+		name = vi_stress_threshold.2030.a
+
+		if = {
+			limit = {
+				has_trait = just
+			}
+			remove_trait = just
+		}
+		
+		add_trait = arbitrary
+	}
+
+	option = {
+		name = vi_stress_threshold.2030.b
+
+	}
+}
+
 
 vi_stress_threshold.9001 = {
 	type = character_event

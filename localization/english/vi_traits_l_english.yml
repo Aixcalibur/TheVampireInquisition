@@ -1,15 +1,23 @@
 ﻿l_english:
 
  trait_vi_vampire_1:0 "Fledgling Vampire"
- trait_vi_vampire_1_desc:0 "Recently embraced, a fledgling vampire is barely more than a walking corpse. The thirst heightens their senses, but their strength is still lacking. Every night, a fledgling must return to the dirt of their grave."
+ trait_vi_vampire_1_desc:0 "Recently embraced, a fledgling is barely more than a walking corpse. The thirst heightens their senses, but their strength is still lacking. Every night, a fledgling must return to the dirt of their grave."
  trait_vi_vampire_2:0 "Nightwalker Vampire"
- trait_vi_vampire_2_desc:0 "With years of age come wisdom, skill, and strength surpassing mortals. The daily sunrise, however, remains an indomitable foe, forcing vampires to hide from its wrath at all costs."
+ trait_vi_vampire_2_desc:0 "With years of age come wisdom, skill, and strength surpassing mortals. The daily sunrise, however, remains an indomitable foe, forcing nightwalkers to hide from its light at all costs."
  trait_vi_vampire_3:0 "Elder Vampire"
  trait_vi_vampire_3_desc:0 "As centuries pass, it becomes possible, for short periods of time, to see sunlight once more. The Sun still saps vampires of all their supernatural prowess, but nevertheless, the advantages of being able to walk in daylight are innumerable."
  trait_vi_vampire_4:0 "Ancient Vampire"
  trait_vi_vampire_4_desc:0 "Among monsters, there are still greater monsters that they fear. Ancient vampires have all but lost count of how long they have stalked the Earth. Most of them drift in and out of hibernation, waking only for a few decades at a time."
  trait_vi_vampire_5:0 "Progenitor Vampire"
  trait_vi_vampire_5_desc:0 "Their existence is only a myth, but if they still exist, their power must be unimaginable."
+
+ trait_vi_heartstealer:0 "Heart-Stealer"
+ trait_vi_heartstealer_desc:0 "To steal hearts without them noticing that they are already dead."
+ TRAIT_FLAG_DESC_vi_can_steal_hearts:0 "Unlocks the [vi_compel_suicide_interaction|E] on mortals"
+
+ trait_vi_dragonsscion:0 "Dragon's Scion"
+ trait_vi_dragonsscion_desc:0 "Invincible"
+ TRAIT_FLAG_DESC_vi_can_use_dragon_fear:0 "Unlocks the [vi_dragon_fear_interaction|E]"
 
  trait_vi_feral:0 "Feral"
 
