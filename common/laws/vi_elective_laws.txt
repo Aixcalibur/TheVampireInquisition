@@ -1,0 +1,49 @@
+﻿title_succession_laws = {
+
+	#HRE Succession
+	vi_vampire_elective_succession_law = {
+
+		can_have = {
+			has_government = vi_vampire_government
+		}
+
+		can_pass = {
+			has_government = vi_vampire_government
+			can_change_title_law_trigger = yes
+		}
+
+		can_title_have = {
+			# this = title:e_hre
+			#tier > tier_duchy
+			tier >= holder.primary_title.tier
+		}
+
+		should_start_with = {
+			always = no
+		}
+
+		succession = {
+			order_of_succession = election
+			election_type = vi_vampire_elective
+		}
+
+		flag = elective_succession_law
+		flag = titles_cannot_leave_realm_on_succession
+
+		# title_allegiance_opinion = 10
+		
+		modifier = {
+			vassal_tax_mult = 0.5
+			#minority_opinion = -15
+		}
+
+		revoke_cost = {
+			prestige = change_hre_title_succession_law_prestige_cost
+		}
+		
+		pass_cost = {
+			prestige = 0
+		}
+		
+	}
+}

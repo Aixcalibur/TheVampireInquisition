@@ -1,0 +1,12 @@
+﻿l_english:
+ vi_hunt:0 "Hunt"
+ vi_hunt_interaction:0 "Hunt"
+ vi_hunt_action:0 "Hunt"
+ vi_hunt_interaction_desc:0 "Attempt to personally hunt down [recipient.GetShortUINameNoTooltip]"
+ vi_hunt_interaction_vampire_desc:0 "Attempt to personally hunt down [recipient.GetShortUINameNoTooltip]"
+
+ vi_hunt.2001.t:0 "The Predator Approaches"
+ vi_hunt.2001.desc:0 "At last, my preparations bear fruit as I find my prey alone and undefended."
+ vi_hunt.2001.a:0 "Only take a sip"
+ vi_hunt.2001.b:0 "Drain them dry"
+ vi_hunt.2001.c:0 "Turn them into a vampire"

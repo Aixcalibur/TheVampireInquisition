@@ -8,13 +8,12 @@
 
 	$VI_COUNTY$ = {
 		save_scope_as = vi_title_county
+
+		add_county_modifier = {
+			modifier = vi_county_discreet_modifier
+			years = 2
+		}
 	}
-
-	# vi_create_noble_family_effect = yes
-
-	# domicile ?= {
-	# 	move_domicile = scope:vi_title_county
-	# }
 
 	create_dynamic_title = {
 		tier = duchy
@@ -34,7 +33,8 @@
 		set_coa = scope:vi_title_county
 		set_landless_title = yes
 		set_definitive_form = yes
-		
+		set_de_jure_liege_title = scope:vi_liege.primary_title
+		add_title_law = vi_vampire_elective_succession_law
 	}
 
 	change_liege = {
@@ -46,6 +46,9 @@
 
 	change_government = vi_vampire_government
 
+	# vi_create_noble_family_effect = yes
+
+
 	# hidden_effect = {
 	# 	scope:new_title = {
 	# 		# set_de_jure_liege_title = scope:vi_liege.primary_title
@@ -56,21 +59,26 @@
 }
 
 vi_create_noble_family_effect = {
+
 	debug_log = create_noble_family_title
 
-	save_scope_as = new_noble_family_holder
-	# hidden_effect = { # NF can only be held by house heads
-	# 	house ?= {
-	# 		if = {
-	# 			limit = { house_head != scope:new_noble_family_holder }
-	# 			set_house_head = scope:new_noble_family_holder
-	# 		}
-	# 	}
-	# }
+	$VI_COUNTY$ = {
+		save_scope_as = vi_title_county
+	}
 
-	found_cadet_house_decision_effect = {
-		CHARACTER = scope:new_noble_family_holder
-		PRESTIGE = 0
+	save_scope_as = new_noble_family_holder
+	hidden_effect = { # NF can only be held by house heads
+		house ?= {
+			if = {
+				limit = { house_head != scope:new_noble_family_holder }
+				scope:new_noble_family_holder = {
+					found_cadet_house_decision_effect = {
+						CHARACTER = scope:new_noble_family_holder
+						PRESTIGE = 0
+					}
+				}
+			}
+		}
 	}
 
 	give_noble_family_title = {
@@ -84,7 +92,16 @@ vi_create_noble_family_effect = {
 			save_scope_as = noble_family_head
 		}
 		set_coa = scope:noble_family_head.house
+
+		if = {
+			limit = {
+				exists = scope:vi_title_county
+			}
+			set_capital_county = scope:vi_title_county
+		}
 	}
+
+
 	custom_description = {
 		text = create_noble_family_tt
 	}

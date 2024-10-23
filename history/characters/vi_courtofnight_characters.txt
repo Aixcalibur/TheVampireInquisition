@@ -1,46 +1,4 @@
-﻿vi_venus = {
-	name = "Venus"
-	dynasty = vi_dynasty_Carmine
-	female = yes
-	sexuality = bisexual
-	faith = hellenic_pagan
-	culture = greek
-
-	diplomacy = 12
-	martial = 8
-	stewardship = 8
-	intrigue = 12
-	learning = 8
-	prowess = 12
-
-	trait = gregarious
-	trait = calm
-	trait = patient
-
-	trait = education_intrigue_5
-	trait = beauty_good_3
-	trait = vi_vampire_5
-	trait = seducer
-	trait = family_first
-
-	disallow_random_traits = yes
-
-	0.1.1 = {
-		birth = yes
-		effect = {
-			set_immortal_age = 20
-		}
-	}
-
-	20.1.1 = {
-		
-		death = {
-			death_reason = death_disappearance
-		}
-	}
-}
-
-vi_esclarmonde = {
+﻿vi_esclarmonde = {
 	name = "Esclarmonde"
 	dna = vi_esclarmonde_dna
 	dynasty_house = house_vi_Montmartre
@@ -68,15 +26,13 @@ vi_esclarmonde = {
 	trait = lifestyle_gardener
 	trait = lifestyle_herbalist
 
-	# mother = vi_venus
-
 	disallow_random_traits = yes
 
 	400.6.12 = {
 		birth = yes
 		effect = {
-			add_gold = 1000
-			add_legitimacy = 1000
+			add_gold = 800
+			add_legitimacy = 800
 			vi_esclarmonde_after_effect = yes
 		}
 	}
@@ -113,7 +69,7 @@ vi_ambrosius = {
 	trait = education_intrigue_4
 
 	trait = beauty_good_3
-	trait = vi_vampire_4
+	trait = vi_vampire_3
 	trait = physique_bad_1
 
 	trait = lifestyle_herbalist
@@ -129,8 +85,15 @@ vi_ambrosius = {
 			add_gold = 500
 			add_legitimacy = 1000
 			vi_make_vampire_effect = yes
-			add_prowess = 20
+			add_prowess_skill = 15
 			set_immortal_age = 30
+		}
+	}
+
+	1060.1.1 = {
+		effect = {
+			add_trait = vi_vampire_4
+			remove_trait = vi_vampire_3
 		}
 	}
 
@@ -228,7 +191,7 @@ vi_victor = {
 
 	1060.1.1 = {
 		effect = {
-			set_culture = culture:norman
+			#set_culture = culture:norman
 			add_trait = vi_vampire_3
 			remove_trait = vi_vampire_2
 		}
@@ -253,12 +216,14 @@ vi_albert = {
 	culture = anglo_saxon
 	father = vi_victor
 
+	prowess = 5
+
 	trait = humble
 	trait = diligent
 	trait = content
 
 	trait = education_stewardship_4
-	trait = vi_vampire_3
+	trait = vi_vampire_2
 	trait = overseer
 	trait = administrator
 	trait = loyal
@@ -270,8 +235,8 @@ vi_albert = {
 		birth = yes
 		effect = {
 			vi_make_vampire_effect = yes
-			set_immortal_age = 60
-			add_prowess_skill = 20
+			set_immortal_age = 70
+			add_prowess_skill = 14
 		}
 	}
 
@@ -281,9 +246,9 @@ vi_albert = {
 
 	1060.1.1 = {
 		effect = {
-			set_culture = culture:norman
-			add_trait = vi_vampire_4
-			remove_trait = vi_vampire_3
+			#set_culture = culture:norman
+			add_trait = vi_vampire_3
+			remove_trait = vi_vampire_2
 		}
 	}
 
@@ -338,9 +303,9 @@ vi_emily = {
 
 	1060.1.1 = {
 		effect = {
-			set_culture = culture:norman
-			add_trait = vi_vampire_4
-			remove_trait = vi_vampire_3
+			#set_culture = culture:norman
+			add_trait = vi_vampire_3
+			remove_trait = vi_vampire_2
 		}
 	}
 
@@ -405,9 +370,9 @@ vi_bookman = {
 
 	1060.1.1 = {
 		effect = {
-			set_culture = culture:norman
-			add_trait = vi_vampire_4
-			remove_trait = vi_vampire_3
+			#set_culture = culture:norman
+			add_trait = vi_vampire_3
+			remove_trait = vi_vampire_2
 		}
 	}
 
@@ -472,6 +437,7 @@ vi_bruiser = {
 
 vi_ysabel = {
 	name = "Ysabel"
+	dna = vi_ysabel_dna
 	female = yes
 	dynasty_house = house_vi_Montmartre
 	faith = vi_nightcourt
@@ -479,6 +445,10 @@ vi_ysabel = {
 	culture = french
 
 	prowess = 0
+
+	trait = deceitful
+	trait = arrogant
+	trait = generous
 
 	trait = education_intrigue_3
 	trait = seducer
@@ -498,7 +468,7 @@ vi_ysabel = {
 			set_house = character:vi_esclarmonde.house
 			vi_make_vampire_effect = yes
 			set_immortal_age = 18
-			add_prowess_skill = 13
+			add_prowess_skill = 9
 		}
 	}
 
@@ -513,6 +483,7 @@ vi_ysabel = {
 
 vi_jehanne = {
 	name = "Jehanne"
+	dna = vi_jehanne_dna
 	female = yes
 	dynasty_house = house_vi_Montmartre
 	faith = vi_nightcourt
@@ -520,6 +491,10 @@ vi_jehanne = {
 	culture = french
 
 	prowess = 0
+
+	trait = arbitrary
+	trait = fickle
+	trait = brave
 
 	trait = education_stewardship_3
 	trait = seducer
@@ -566,7 +541,11 @@ vi_symonne = {
 	prowess = 0
 
 	trait = humble
-	trait = education_learning_5
+	trait = temperate
+	trait = lustful
+
+	trait = education_learning_4
+	trait = beauty_good_2
 	trait = scholar
 	trait = theologian
 	trait = devoted
@@ -802,7 +781,6 @@ vi_norman_wife = {
 	sexuality = heterosexual
 	faith = catholic
 	culture = french
-	dna = vi_pretty_maiden_dna
 
 	prowess = 0
 

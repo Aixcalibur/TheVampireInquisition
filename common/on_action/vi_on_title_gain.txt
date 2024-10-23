@@ -1,0 +1,11 @@
+﻿on_title_gain = {
+	on_actions = {
+		vi_on_title_gain_vampire
+	}
+}
+
+vi_on_title_gain_vampire = {
+	trigger = {
+		
+	}
+}

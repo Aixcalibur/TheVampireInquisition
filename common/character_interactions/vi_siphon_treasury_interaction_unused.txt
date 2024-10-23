@@ -1,0 +1,614 @@
+﻿
+# # Diarch (actor) either tests stewardship or spends prestige to gain gold at the expense of negative modifiers delivered to the liege (recipient).
+# vi_siphon_treasury_interaction = {
+# 	interface_priority = 120
+# 	common_interaction = yes
+# 	category = interaction_category_admin
+# 	# diarch_interaction = yes
+# 	icon = icon_scheme_generate_claim
+# 	name = diarch_syphon_treasury_interaction
+
+# 	desc = diarch_syphon_treasury_interaction_desc
+
+# 	interface_priority = 60
+
+# 	is_shown = {
+# 		# The obvious.
+# 		NOT = { scope:actor = scope:recipient }
+# 		# Diarchy checks for scope:actor.
+# 		scope:actor = {
+# 			# is_landed = no
+# 			is_imprisoned = no
+# 			has_government = vi_vampire_government
+# 		}
+# 		scope:recipient = {
+# 			is_landed = yes
+# 			NOT = { this = scope:actor }
+# 			NOT = {
+# 				has_government = vi_vampire_government
+# 			}
+# 			highest_held_title_tier >= tier_duchy
+# 			OR = {
+# 				is_independent_ruler = yes
+# 				highest_held_title_tier >= tier_kingdom
+# 			}
+# 		}
+# 	}
+	
+# 	is_valid_showing_failures_only = {
+# 		# Make sure scope:recipient is the liege.
+# 		# If scope:actor's stewardship is too crap, then we need to make sure they haven't somehow managed to riddle scope:recipient's lands with negative modifiers already.
+# 		trigger_if = {
+# 			limit = { scope:actor.stewardship < syphon_treasury_stewardship_medium }
+# 			custom_tooltip = {
+# 				text = diarch_syphon_treasury_interaction.tt.not_enough_marks_or_stewardship
+# 				scope:recipient = {
+# 					any_held_county = { diarch_syphon_treasury_embezzlement_modifiers_trigger = no }
+# 				}
+# 			}
+# 		}
+		
+		
+# 		# Must have selected an amount to embezzle.
+# 		trigger_if = {
+# 			# AI won't exploit and need this exception, as they don't actually open the windows, so they'll be blocked from taking the interaction otherwise.
+# 			limit = {
+# 				scope:actor = { is_ai = no }
+# 			}
+# 				custom_tooltip = {
+# 				text = diarch_interactions.tt.must_embezzle_something
+# 				OR = {
+# 					scope:diarch_syphon_treasury_sum_small = yes
+# 					scope:diarch_syphon_treasury_sum_medium = yes
+# 					scope:diarch_syphon_treasury_sum_large = yes
+# 					scope:diarch_syphon_treasury_sum_huge = yes
+# 				}
+# 			}
+# 		}
+# 		# Cannot be at war with your liege.
+# 		NOT = {
+# 			scope:actor = { is_at_war_with = scope:recipient }
+# 		}
+# 	}
+
+# 	can_send = {
+# 		scope:actor = {
+# 			custom_description = {
+# 				text = "character_interactions_hostile_actions_disabled_delay"
+# 				NOT = { has_character_flag = flag_hostile_actions_disabled_delay }
+# 			}
+# 		}
+# 	}
+
+# 	cooldown = { years = 3 }
+
+# 	# Attempt Methods
+# 	send_options_exclusive = yes
+# 	## Steal a small sum.
+# 	### Bonus to scope:actor.
+# 	send_option = {
+# 		flag = diarch_syphon_treasury_sum_small
+# 		# We're doing gross overrides here so that we don't need to relocalise some perfectly good stuff.
+# 		localization = diarch_syphon_treasury_sum_small_name
+# 		current_description = diarch_syphon_treasury_sum_small
+# 	}
+# 	## Steal a moderate sum.
+# 	### No bonus, no malus.
+# 	send_option = {
+# 		flag = diarch_syphon_treasury_sum_medium
+# 		# We're doing gross overrides here so that we don't need to relocalise some perfectly good stuff.
+# 		localization = diarch_syphon_treasury_sum_medium_name
+# 		current_description = diarch_syphon_treasury_sum_medium
+# 		starts_enabled = { always = yes }
+# 	}
+# 	## Steal a large sum.
+# 	### Malus to scope:actor
+# 	send_option = {
+# 		flag = diarch_syphon_treasury_sum_large
+# 		# We're doing gross overrides here so that we don't need to relocalise some perfectly good stuff.
+# 		localization = diarch_syphon_treasury_sum_large_name
+# 		current_description = diarch_syphon_treasury_sum_large
+# 	}
+# 	## Steal a _huge_sum.
+# 	### _Huge_ malus to scope:actor.
+# 	send_option = {
+# 		flag = diarch_syphon_treasury_sum_huge
+# 		# We're doing gross overrides here so that we don't need to relocalise some perfectly good stuff.
+# 		localization = diarch_syphon_treasury_sum_huge_name
+# 		current_description = diarch_syphon_treasury_sum_huge
+# 	}
+
+# 	on_send = {
+# 		# Did a landless diarch send this?
+# 		# log_diarch_send_interaction_as_variable_effect = { INTERACTION = embezzle }
+# 	}
+
+# 	on_accept = {
+# 		scope:recipient = {
+# 			add_opinion = {
+# 				target = scope:actor
+# 				modifier = suspicious_opinion
+# 				opinion = -40
+# 			}
+# 		}
+# 		# Time for a skill duel!
+# 		scope:actor = {
+# 			duel = {
+# 				skill = stewardship
+# 				value = syphon_treasury_duel_target_value
+# 				# Victory! Gold for scope:actor, maluses for the liege.
+# 				100 = {
+# 					compare_modifier = {
+# 						value = scope:duel_value
+# 						multiplier = 3.5
+# 						min = -49
+# 					}
+# 					compare_modifier = {
+# 						value = intrigue
+# 						multiplier = 3.5
+# 						min = -49
+# 					}
+# 					# Bonus for smaller amounts.
+# 					modifier = {
+# 						add = 25
+# 						always = scope:diarch_syphon_treasury_sum_small
+# 					}
+# 					# You always have some kind of a chance.
+# 					min = 10
+# 					desc = diarch_syphon_treasury_interaction.tt.success
+# 					# Inform scope:actor what type of embezzlement they'll be pursuing.
+# 					## Very high stewardship characters syphon development growth from a few counties.
+# 					if = {
+# 						limit = { stewardship >= syphon_treasury_stewardship_very_high }
+# 						custom_tooltip = diarch_syphon_treasury_interaction.tt.success.syphon_development_growth
+# 					}
+# 					## High stewardship characters syphon some control from various counties.
+# 					else_if = {
+# 						limit = { stewardship >= syphon_treasury_stewardship_high }
+# 						custom_tooltip = diarch_syphon_treasury_interaction.tt.success.syphon_control_several_counties
+# 					}
+# 					## Medium stewardship characters syphon lots of control from one county.
+# 					else_if = {
+# 						limit = { stewardship >= syphon_treasury_stewardship_medium }
+# 						custom_tooltip = diarch_syphon_treasury_interaction.tt.success.syphon_control_county
+# 					}
+# 					## Low stewardship characters apply county modifiers.
+# 					else = { custom_tooltip = diarch_syphon_treasury_interaction.tt.success.apply_county_modifier }
+# 					# Now we sort the actual effects.
+# 					## A nice toast to tell us about our new gold.
+# 					send_interface_toast = {
+# 						type = event_toast_effect_good
+# 						title = diarch_syphon_treasury_interaction.tt.success
+# 						left_icon = scope:recipient
+# 						# Transfer gold.
+# 						## Small amount.
+# 						if = {
+# 							limit = { always = scope:diarch_syphon_treasury_sum_small }
+# 							give_or_update_embezzler_secret_effect = {
+# 								TARGET = scope:recipient
+# 								STAKE = syphon_treasury_gold_gain_low
+# 							}
+# 							add_gold = syphon_treasury_gold_gain_low
+# 						}
+# 						## Medium amount.
+# 						else_if = {
+# 							limit = { always = scope:diarch_syphon_treasury_sum_medium }
+# 							give_or_update_embezzler_secret_effect = {
+# 								TARGET = scope:recipient
+# 								STAKE = syphon_treasury_gold_gain_medium
+# 							}
+# 							add_gold = syphon_treasury_gold_gain_medium
+# 						}
+# 						## Large amount.
+# 						else_if = {
+# 							limit = { always = scope:diarch_syphon_treasury_sum_large }
+# 							give_or_update_embezzler_secret_effect = {
+# 								TARGET = scope:recipient
+# 								STAKE = syphon_treasury_gold_gain_high
+# 							}
+# 							add_gold = syphon_treasury_gold_gain_high
+# 						}
+# 						## Huge amount.
+# 						else_if = {
+# 							limit = { always = scope:diarch_syphon_treasury_sum_huge }
+# 							give_or_update_embezzler_secret_effect = {
+# 								TARGET = scope:recipient
+# 								STAKE = syphon_treasury_gold_gain_very_high
+# 							}
+# 							add_gold = syphon_treasury_gold_gain_very_high
+# 						}
+# 					}
+# 					## Plus the maluses for the liege.
+# 					scope:recipient = {
+# 						# Very high stewardship characters syphon development growth from a few counties.
+# 						if = {
+# 							limit = { scope:actor.stewardship >= syphon_treasury_stewardship_very_high }
+# 							# Gold transfer was...
+# 							## Very high.
+# 							if = {
+# 								limit = { always = scope:diarch_syphon_treasury_sum_huge }
+# 								diarch_syphon_treasury_interaction_syphon_development_growth_effect = { LOSS = massive_development_progress_loss }
+# 							}
+# 							## High.
+# 							else_if = {
+# 								limit = { always = scope:diarch_syphon_treasury_sum_large }
+# 								diarch_syphon_treasury_interaction_syphon_development_growth_effect = { LOSS = major_development_progress_loss }
+# 							}
+# 							## Medium.
+# 							else_if = {
+# 								limit = { always = scope:diarch_syphon_treasury_sum_medium }
+# 								diarch_syphon_treasury_interaction_syphon_development_growth_effect = { LOSS = medium_development_progress_loss }
+# 							}
+# 							## Low.
+# 							else = {
+# 								diarch_syphon_treasury_interaction_syphon_development_growth_effect = { LOSS = minor_development_progress_loss }
+# 							}
+# 						}
+# 						# High stewardship characters syphon some control from various counties.
+# 						else_if = {
+# 							limit = { scope:actor.stewardship >= syphon_treasury_stewardship_high }
+# 							# Gold transfer was...
+# 							## Very high.
+# 							if = {
+# 								limit = { always = scope:diarch_syphon_treasury_sum_huge }
+# 								diarch_syphon_treasury_interaction_syphon_control_effect = { LOSS = monumental_county_control_loss }
+# 							}
+# 							## High.
+# 							else_if = {
+# 								limit = { always = scope:diarch_syphon_treasury_sum_large }
+# 								diarch_syphon_treasury_interaction_syphon_control_effect = { LOSS = extreme_county_control_loss }
+# 							}
+# 							## Medium.
+# 							else_if = {
+# 								limit = { always = scope:diarch_syphon_treasury_sum_medium }
+# 								diarch_syphon_treasury_interaction_syphon_control_effect = { LOSS = major_county_control_loss }
+# 							}
+# 							## Low.
+# 							else = {
+# 								diarch_syphon_treasury_interaction_syphon_control_effect = { LOSS = medium_county_control_loss }
+# 							}
+# 						}
+# 						# Medium stewardship characters syphon lots of control from one county.
+# 						else_if = {
+# 							limit = { scope:actor.stewardship >= syphon_treasury_stewardship_medium }
+# 							# Gold transfer was...
+# 							## Very high.
+# 							if = {
+# 								limit = { always = scope:diarch_syphon_treasury_sum_huge }
+# 								random_held_county = {
+# 									# Try to prefer against the capital, as that's more noticeable.
+# 									limit = {
+# 										NOT = { this = scope:recipient.capital_county }
+# 									}
+# 									alternative_limit = { always = yes }
+# 									change_county_control = monumental_county_control_loss
+# 								}
+# 							}
+# 							## High.
+# 							else_if = {
+# 								limit = { always = scope:diarch_syphon_treasury_sum_large }
+# 								random_held_county = {
+# 									# Try to prefer against the capital, as that's more noticeable.
+# 									limit = {
+# 										NOT = { this = scope:recipient.capital_county }
+# 									}
+# 									alternative_limit = { always = yes }
+# 									change_county_control = extreme_county_control_loss
+# 								}
+# 							}
+# 							## Medium.
+# 							else_if = {
+# 								limit = { always = scope:diarch_syphon_treasury_sum_medium }
+# 								random_held_county = {
+# 									# Try to prefer against the capital, as that's more noticeable.
+# 									limit = {
+# 										NOT = { this = scope:recipient.capital_county }
+# 									}
+# 									alternative_limit = { always = yes }
+# 									change_county_control = major_county_control_loss
+# 								}
+# 							}
+# 							## Low.
+# 							else = {
+# 								random_held_county = {
+# 									# Try to prefer against the capital, as that's more noticeable.
+# 									limit = {
+# 										NOT = { this = scope:recipient.capital_county }
+# 									}
+# 									alternative_limit = { always = yes }
+# 									change_county_control = medium_county_control_loss
+# 								}
+# 							}
+# 						}
+# 						# Low stewardship characters apply county modifiers.
+# 						else = {
+# 							# Gold transfer was...
+# 							## Very high.
+# 							if = {
+# 								limit = { always = scope:diarch_syphon_treasury_sum_huge }
+# 								random_held_county = {
+# 									# Try to prefer against the capital, as that's more noticeable.
+# 									limit = { diarch_syphon_treasury_embezzlement_modifiers_trigger = no }
+# 									add_county_modifier = {
+# 										modifier = syphon_treasury_massive_sum_modifier
+# 										years = 5
+# 									}
+# 								}
+# 							}
+# 							## High.
+# 							else_if = {
+# 								limit = { always = scope:diarch_syphon_treasury_sum_large }
+# 								random_held_county = {
+# 									# Try to prefer against the capital, as that's more noticeable.
+# 									limit = { diarch_syphon_treasury_embezzlement_modifiers_trigger = no }
+# 									add_county_modifier = {
+# 										modifier = syphon_treasury_large_sum_modifier
+# 										years = 5
+# 									}
+# 								}
+# 							}
+# 							## Medium.
+# 							else_if = {
+# 								limit = { always = scope:diarch_syphon_treasury_sum_medium }
+# 								random_held_county = {
+# 									# Try to prefer against the capital, as that's more noticeable.
+# 									limit = { diarch_syphon_treasury_embezzlement_modifiers_trigger = no }
+# 									add_county_modifier = {
+# 										modifier = syphon_treasury_medium_sum_modifier
+# 										years = 5
+# 									}
+# 								}
+# 							}
+# 							## Low.
+# 							else = {
+# 								random_held_county = {
+# 									# Try to prefer against the capital, as that's more noticeable.
+# 									limit = { diarch_syphon_treasury_embezzlement_modifiers_trigger = no }
+# 									add_county_modifier = {
+# 										modifier = syphon_treasury_small_sum_modifier
+# 										years = 5
+# 									}
+# 								}
+# 							}
+# 						}
+# 					}
+# 				}
+# 				# Defeat! No gold, just strife & a crime opinion.
+# 				50 = {
+# 					compare_modifier = {
+# 						value = scope:duel_value
+# 						multiplier = -3.5
+# 						min = -49
+# 					}
+# 					compare_modifier = {
+# 						value = intrigue
+# 						multiplier = -3.5
+# 						min = -49
+# 					}
+# 					# Malus for higher amounts.
+# 					modifier = {
+# 						add = 25
+# 						always = scope:diarch_syphon_treasury_sum_large
+# 					}
+# 					# Chungus malus for chungus higher amounts.
+# 					modifier = {
+# 						add = 100
+# 						always = scope:diarch_syphon_treasury_sum_huge
+# 					}
+# 					# You can always fail.
+# 					min = 20
+# 					desc = diarch_syphon_treasury_interaction.tt.failure.actor
+# 					send_interface_toast = {
+# 						type = event_toast_effect_bad
+# 						title = diarch_syphon_treasury_interaction.tt.failure.actor
+# 						left_icon = scope:recipient
+# 						show_as_tooltip = { diarch_syphon_treasury_interaction_caught_embezzling_effect = yes }
+# 					}
+# 					hidden_effect = {
+# 						scope:recipient = {
+# 							send_interface_toast = {
+# 								type = event_toast_effect_neutral
+# 								title = diarch_syphon_treasury_interaction.tt.failure.recipient
+# 								left_icon = scope:actor
+# 								diarch_syphon_treasury_interaction_caught_embezzling_effect = yes
+# 							}
+# 						}
+# 					}
+# 				}
+# 			}
+# 		}
+
+# 		# Debug logging.
+# 		debug_log = debug_log.syphon_treasury.attempt_made
+# 	}
+
+# 	auto_accept = yes
+
+# 	# AI
+# 	ai_targets = {
+# 		ai_recipients = neighboring_rulers
+# 		max = 10
+# 	}
+
+# 	ai_frequency = 12
+
+# 	ai_potential = {
+# 		# is_diarch = yes
+# 		# Loyal diarchs don't engage in skullduggery.
+# 		# diarch_loyalty < diarch_loyalty_visibly_loyal_threshold
+# 		# Honest and generous characters never embezzle.
+# 		NOR = {
+# 			has_trait = honest
+# 			has_trait = generous
+# 		}
+# 	}
+
+# 	ai_will_do = {
+# 		# Embezzlement is serious, so you need actual reasons for it.
+# 		base = 0
+
+# 		# Additions.
+# 		## Weight for opinion.
+# 		opinion_modifier = {
+# 			opinion_target = scope:recipient
+# 			multiplier = -1
+# 		}
+# 		## Weight for personality.
+# 		ai_value_modifier = {
+# 			ai_boldness = 0.25
+# 			ai_greed = 1
+# 			ai_honor = -0.5
+# 		}
+# 		## Flag Management.
+# 		### The AI never goes for a huge sum, that's just there to tempt the player.
+# 		### We prefer a large sum if we've got a massive skill disparity.
+# 		modifier = {
+# 			add = 100
+# 			scope:diarch_syphon_treasury_sum_large = yes
+# 			stewardship_diff = {
+# 				target = scope:recipient
+# 				value >= @ai_skill_diff_upper_threshold
+# 			}
+# 		}
+# 		### But a moderate sum does well if we're more evenly matched.
+# 		modifier = {
+# 			add = 50
+# 			scope:diarch_syphon_treasury_sum_medium = yes
+# 			stewardship_diff = {
+# 				target = scope:recipient
+# 				value < @ai_skill_diff_upper_threshold
+# 			}
+# 			stewardship_diff = {
+# 				target = scope:recipient
+# 				value >= @ai_skill_diff_lower_threshold
+# 			}
+# 		}
+# 		### Aaaand otherwise we'll accept a small amount.
+# 		modifier = {
+# 			add = 25
+# 			scope:diarch_syphon_treasury_sum_small = yes
+# 			stewardship_diff = {
+# 				target = scope:recipient
+# 				value < @ai_skill_diff_lower_threshold
+# 			}
+# 		}
+# 		## Less likely in tribal societies with less bookwork to hide theft in.
+# 		modifier = {
+# 			add = -50
+# 			scope:recipient = { government_has_flag = government_is_tribal }
+# 		}
+# 		## Debt is a great motivator for theft.
+# 		### Is slightly in debt.
+# 		modifier = {
+# 			add = 10
+# 			debt_level = 1
+# 		}
+# 		### Is one year in debt.
+# 		modifier = {
+# 			add = 25
+# 			debt_level = 2
+# 		}
+# 		### Is two years in debt.
+# 		modifier = {
+# 			add = 40
+# 			debt_level = 3
+# 		}
+# 		### Is three years in debt.
+# 		modifier = {
+# 			add = 60
+# 			debt_level = 4
+# 		}
+# 		### Is four years in debt.
+# 		modifier = {
+# 			add = 100
+# 			debt_level = 5
+# 		}
+# 		### Is over five years in debt.
+# 		modifier = {
+# 			add = 200
+# 			debt_level >= 6
+# 		}
+# 		## Certain traits can affect likelihood directly.
+# 		### It's intentional that these don't sync up value-wise with their opposite traits.
+# 		### Honest/generous excluded because they're hard locked out of the interaction for the AI.
+# 		### +++ Greedy.
+# 		modifier = {
+# 			add = diarch_ai_desire_plus_3_value
+# 			has_trait = greedy
+# 		}
+# 		### ++ Deceitful.
+# 		modifier = {
+# 			add = diarch_ai_desire_plus_2_value
+# 			has_trait = deceitful
+# 		}
+# 		### + Arbitrary.
+# 		modifier = {
+# 			add = diarch_ai_desire_plus_1_value
+# 			has_trait = arbitrary
+# 		}
+# 		### -- Just.
+# 		modifier = {
+# 			add = diarch_ai_desire_minus_2_value
+# 			has_trait = just
+# 		}
+# 		## Skill considerations.
+# 		### Very low negative comparative stewardship.
+# 		modifier = {
+# 			add = -50
+# 			stewardship_diff = {
+# 				target = scope:recipient
+# 				value <= 10
+# 			}
+# 			# Filter out arrogant characters, who can't believe they suck.
+# 			NOT = { has_trait = arrogant }
+# 		}
+# 		### Low negative comparative stewardship.
+# 		modifier = {
+# 			add = -25
+# 			stewardship_diff = {
+# 				target = scope:recipient
+# 				value <= 5
+# 			}
+# 			# Filter out arrogant characters, who can't believe they suck.
+# 			NOT = { has_trait = arrogant }
+# 		}
+# 		### High positive comparative stewardship.
+# 		modifier = {
+# 			add = 25
+# 			stewardship_diff = {
+# 				target = scope:recipient
+# 				value >= 5
+# 			}
+# 			# Filter out humble characters, who give their liege too much credit.
+# 			NOT = { has_trait = humble }
+# 		}
+# 		### Very high positive comparative stewardship.
+# 		modifier = {
+# 			add = 50
+# 			stewardship_diff = {
+# 				target = scope:recipient
+# 				value >= 10
+# 			}
+# 			# Filter out humble characters, who give their liege too much credit.
+# 			NOT = { has_trait = humble }
+# 		}
+# 		# Factors.
+# 		## + Do pick on people we hate.
+# 		modifier = {
+# 			factor = 1.5
+# 			should_prioritise_hostile_action_against_due_to_personal_relations_trigger = {
+# 				ACTOR = scope:actor
+# 				RECIPIENT = scope:recipient
+# 			}
+# 		}
+# 		## x0 Don't pick on our friends or allies.
+# 		# modifier = {
+# 		# 	factor = 0
+# 		# 	should_avoid_hostile_action_against_due_to_personal_relations_trigger = {
+# 		# 		ACTOR = scope:actor
+# 		# 		RECIPIENT = scope:recipient
+# 		# 	}
+# 		# }
+# 		## We're happy to bully players here, since we're not taking their land.
+# 	}
+# }

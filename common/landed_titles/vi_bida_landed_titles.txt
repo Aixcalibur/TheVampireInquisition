@@ -1,0 +1,91 @@
+﻿
+k_vi_bida = {
+	color = { 209 144 4 }
+	definite_form = yes
+	ruler_uses_title_name = yes
+	landless = yes
+	# noble_family = yes
+	can_be_named_after_dynasty = no
+
+	capital = c_awkar
+
+	ai_primary_priority = {
+		add = @always_primary_score
+	}
+
+	destroy_if_invalid_heir = yes
+	no_automatic_claims = yes
+	de_jure_drift_disabled = yes
+
+	d_vi_figuira = {
+		definite_form = yes
+		ruler_uses_title_name = yes
+		landless = yes
+		can_be_named_after_dynasty = no
+		capital = c_niani
+		always_follows_primary_heir = yes
+		destroy_if_invalid_heir = yes
+		de_jure_drift_disabled = yes
+	}
+
+	d_vi_siguiri = {
+		definite_form = yes
+		ruler_uses_title_name = yes
+		landless = yes
+		can_be_named_after_dynasty = no
+		capital = c_siguiri
+		# always_follows_primary_heir = yes
+		destroy_if_invalid_heir = yes
+		de_jure_drift_disabled = yes
+	}
+
+	d_vi_bambuk = {
+		definite_form = yes
+		ruler_uses_title_name = yes
+		landless = yes
+		can_be_named_after_dynasty = no
+		capital = c_bambuk
+		# always_follows_primary_heir = yes
+		destroy_if_invalid_heir = yes
+		de_jure_drift_disabled = yes
+	}
+
+	d_vi_lobi = {
+		definite_form = yes
+		ruler_uses_title_name = yes
+		landless = yes
+		can_be_named_after_dynasty = no
+		capital = c_lobi
+		destroy_if_invalid_heir = yes
+		de_jure_drift_disabled = yes
+	}
+	
+}
+
+d_nf_vi_bida = {
+	color = { 100 100 100 }
+	capital = c_awkar
+
+	definite_form = yes
+	landless = yes
+	ruler_uses_title_name = no
+	always_follows_primary_heir = yes
+	no_automatic_claims = yes
+	noble_family = yes
+	destroy_if_invalid_heir = yes
+	ai_primary_priority = { add = @never_primary_score }
+}
+
+d_nf_vi_cisse = {
+	color = { 100 100 100 }
+	# capital = c_awkar
+
+	definite_form = yes
+	landless = yes
+	ruler_uses_title_name = no
+	always_follows_primary_heir = yes
+	no_automatic_claims = yes
+	noble_family = yes
+	destroy_if_invalid_heir = yes
+	ai_primary_priority = { add = @never_primary_score }
+}

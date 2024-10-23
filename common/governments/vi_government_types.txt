@@ -3,10 +3,11 @@
 		court_generate_spouses = no
 		create_cadet_branches = yes
 		rulers_should_have_dynasty = yes
-		dynasty_named_realms = no
+		dynasty_named_realms = yes
 		royal_court = yes
 		administrative = yes
-		landless_playable = yes
+		# religious = yes
+		# landless_playable = yes
 		legitimacy = yes
 		state_faith = yes
 		allow_out_of_realm_inheritance = no
@@ -19,20 +20,33 @@
 	court_generate_commanders = no
 
 	domicile_type = vi_lair
+	# domicile_type = estate
 
-	# fallback = 3
+	fallback = 99 #For some reason needs this set to a number for no auto-revert to tribal
 
 	# primary_holding = castle_holding
 	valid_holdings = { tribal_holding castle_holding city_holding church_holding }
 	required_county_holdings = { castle_holding city_holding church_holding }
 
+	# vassal_contract = {
+	# 	administrative_obligations
+	# 	administrative_themes
+	# }
+
 	vassal_contract = {
-		administrative_obligations
-		administrative_themes
+		feudal_government_taxes
+		feudal_government_levies
+		special_contract
+		religious_rights
+		fortification_rights
+		coinage_rights
+		succession_rights
+		war_declaration_rights
+		council_rights
+		title_revocation_rights
 	}
 
 	character_modifier = {
-		
 		feudal_government_tax_contribution_mult = -0.5
 		feudal_government_levy_contribution_mult = -0.5
 		clan_government_tax_contribution_mult = -0.5
@@ -41,34 +55,42 @@
 		movement_speed_land_raiding = 0.5
 		# men_at_arms_cap = -2
 		# men_at_arms_limit = -2
-		# knight_limit = 10
+		knight_limit = 10
+		courtier_opinion = 10
+		opinion_of_liege = -30
+		vassal_opinion = -20
+		ai_boldness = 10
+		ai_greed = 10
 		monthly_income = 0.1
 		monthly_prestige = 2
-		monthly_prestige = 2
-		vassal_limit = -20
+		monthly_piety = 2
 	}
+
+	prestige_opinion_override = { -10 0 0 0 0 0 }
 
 	ai = {
 		use_goals = yes
 		perform_religious_reformation = no
-		use_legends = no
+		use_legends = yes
 		arrange_marriage = no
 	}
 
 	# Use flags instead of has_government for moddability if possible (i.e., wherever not visible to the player).
-	flag = government_is_administrative
+	# flag = government_is_administrative
 	flag = adult_rulers_only
 	# flag = government_is_landless_adventurer
 	flag = government_can_raid_rule
-	flag = may_appoint_viziers
+	# flag = may_appoint_viziers
 
 	flag = government_is_supernatural
+
+	# flag = government_is_theocracy
 
 	# These flags only exist for loc and in-game descriptions
 	flag = government_has_influence
 	
 	# flag = government_has_title_men_at_arms
-	# flag = government_has_powerful_families
+	flag = government_has_powerful_families
 	
 	color = hsv{ 0.00 0.00 0.66 }
 }

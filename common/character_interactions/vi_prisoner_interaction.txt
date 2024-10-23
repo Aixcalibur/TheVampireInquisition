@@ -1,0 +1,158 @@
+﻿
+vi_drain_prisoner_interaction = {
+	interface_priority = 125
+	common_interaction = yes
+	icon = icon_dead
+
+	category = interaction_category_prison
+
+	desc = vi_drain_prisoner_interaction_desc
+
+	#cooldown = { years = 1 }
+	cooldown_against_recipient = { years = 1 }
+
+	is_shown = {
+		scope:recipient = { is_imprisoned_by = scope:actor }
+		scope:recipient = { is_adult = yes }
+		scope:actor = { is_adult = yes }
+		scope:actor = { vi_is_vampire_trigger = yes }
+	}
+
+	is_valid_showing_failures_only = {
+		#scope:recipient = {
+		#	NOT = {
+		#		health <= 1.5 #Because torture would definitely kill them
+		#	}
+		#}
+		# scope:actor = {
+		# 	trigger_if = {
+		# 		limit = {
+		# 			domicile ?= { is_domicile_type = camp }
+		# 		}
+		# 		custom_tooltip = {
+		# 			text = laamp_torture_requires_tools_tt
+		# 			domicile = { has_domicile_parameter = camp_unlocks_torture_interaction }
+		# 		}
+		# 	}
+		# }
+		scope:recipient = {
+			custom_description = {
+				text = "currently_being_tortured"
+				NOT = { has_character_flag = is_being_tortured }
+			}
+		}
+		# cannot_release_former_regent_whilst_old_regent_holds_power_trigger = {
+		# 	PRISONER = scope:recipient
+		# 	REGENT = scope:recipient.var:imprisoned_by_diarch
+		# }
+	}
+
+	is_highlighted = {
+		OR = {
+			scope:actor = { stress_level >= 1 }
+		}
+	}
+
+	on_accept = {
+		
+		scope:recipient = {
+			add_character_flag = {
+				flag = is_being_tortured
+				months = 6 # Players in MP can keep the event window open...
+			}
+		}
+
+		scope:actor = { save_scope_as = bg_override_char }
+		###EFFECT TOOLTIP###
+
+		show_as_tooltip = {
+			scope:recipient = {
+				add_character_modifier = {
+					modifier = recently_tortured
+					years = 1
+				}
+			}
+		}
+
+		###EVENTS###
+		hidden_effect = {
+			#Torture method for descs
+
+			#They have a secret I want to know about
+			scope:actor = {
+				trigger_event = {
+					id = prison.1010
+					days = 1
+				}
+			}
+		}
+
+		# Dark Insights Perk:
+		if = {
+			limit = {
+				scope:actor = { has_perk = dark_insights_perk }
+			}
+			scope:actor = {
+				dark_insights_skill_gain_roll_effect = yes
+			}
+		}
+	}
+
+	auto_accept = yes
+
+	# AI
+	ai_targets = {
+		ai_recipients = prisoners
+	}
+
+	ai_frequency = 24
+
+	ai_potential = {
+		always = yes
+	}
+
+	ai_will_do = {
+		base = -25
+
+		modifier = {
+			has_trait = sadistic
+			add = 30
+		}
+		ai_value_modifier = {
+			ai_compassion = tiny_chance_impact_negative_ai_value #Adds +50 for highly uncompassionate characters, -50 for highly compassionate characters
+		}
+		opinion_modifier = {
+			opinion_target = scope:recipient
+			multiplier = -0.25
+		}
+		#Scope:target has caused internal strife in the realm
+		character_hates_scope_due_to_strife_modifier = { TARGET = scope:recipient }
+		modifier = { # Family Feud
+			exists = scope:actor.house
+			exists = scope:recipient.house
+			scope:actor = {
+				house.house_head = {
+					any_owned_story = {
+						story_type = story_cycle_house_feud
+						has_variable = house_feud_house
+						var:house_feud_house = scope:recipient.house
+					}
+				}
+				has_opinion_modifier = {
+					modifier = house_feud_opinion
+					target = scope:recipient.house.house_head
+				}
+			}
+			add = 30
+		}
+		modifier = {
+			scope:actor = {
+				has_opinion_modifier = {
+					modifier = tried_to_escape_from_prison_opinion
+					target = scope:recipient
+				}
+			}
+			add = 25
+		}
+	}
+}

@@ -1,0 +1,108 @@
+﻿namespace = vi_hunt
+
+##################################################
+# Murder Results
+# (shifted here) by Ewan Cowhig Croft
+# 1001 - 1010
+##################################################
+
+#	Results event for the Murder scheme.
+vi_hunt.1001 = {
+	hidden = yes
+
+	immediate = {
+		scope:scheme = {
+			vi_generic_scheme_process_ending_effect = {
+				RESULTS_TOOLTIP = murder_successful_roll_tt
+				SUCCESS_EVENT_TYPE = on_action
+				SUCCESS_EVENT_ID = vi_hunt_success_pre_filter_on_action
+				FAILURE_EVENT_TYPE = on_action
+				FAILURE_EVENT_ID = vi_hunt_failure_pre_filter_on_action
+			}
+		}
+	}
+}
+
+
+# Approach your victim and choose what to do to them
+vi_hunt.2001  = {
+	type = character_event
+	window = scheme_successful_event
+	title = vi_hunt.2001.t
+	desc = vi_hunt.2001.desc
+	
+	theme = murder_scheme
+	left_portrait = {
+		character = scope:owner
+		animation = schadenfreude
+	}
+	# center_portrait = {
+	# 	character = scope:assassin
+	# 	animation = assassin
+	# }
+	right_portrait = {
+		character = scope:target
+		animation = map_fear
+	}
+	override_background = { reference = corridor_night }
+
+	trigger = {
+		scope:target = {
+			location = { is_sea_province = no }
+
+			# vi_is_vampire_trigger = no
+		}
+	}
+
+	immediate = {
+		scope:owner = {
+			save_scope_as = vi_vampire
+		}
+		scope:target = {
+			save_scope_as = vi_victim
+		}
+		# debug_sort_scheme_scopes_for_testing_effect = yes
+	}
+
+	# Just take a sip
+	option = {
+		name = vi_hunt.2001.a
+		vi_vampire_drain_effect = yes
+		scope:scheme = {
+			end_scheme = yes
+		}
+	}
+
+	# Drain them dry
+	option = {
+		name = vi_hunt.2001.b
+		vi_vampire_drain_kill_effect = yes
+		scope:scheme = {
+			end_scheme = yes
+		}
+	}
+
+	# Try to turn them into a vampire
+	option = {
+		name = vi_hunt.2001.c
+		random_list = {
+			60 = {
+				vi_vampire_drain_turn_hostile_effect = yes
+			}
+
+			40 = {
+				vi_vampire_drain_kill_effect = yes
+			}
+		}
+		scope:scheme = {
+			end_scheme = yes
+		}
+		
+	}
+	# Feuding, opt to stop.
+
+	# Fire the rest of the outcome.
+	# after = {
+	# 	scope:target = { trigger_event = murder_outcome_reworked.0002 }
+	# }
+}

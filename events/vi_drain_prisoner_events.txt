@@ -1,0 +1,160 @@
+﻿namespace = vi_drain_prisoner
+
+
+#Drain Prisoner
+vi_drain_prisoner.1010 = { #by Mathilda Bjarnehed
+	type = character_event
+	title = vi_drain_prisoner.1010.t
+	desc = vi_drain_prisoner.1010.desc
+	theme = prison
+	left_portrait = {
+		character = root
+		animation = schadenfreude
+	}
+	right_portrait = {
+		character = scope:recipient
+		animation = loss_1
+		override_imprisonment_visuals = yes
+	}
+
+	trigger = { scope:recipient = { is_imprisoned_by = scope:actor } }
+
+	on_trigger_fail = {
+		scope:recipient = {
+			if = {
+				limit = { has_character_flag = is_being_tortured }
+				remove_character_flag = is_being_tortured
+			}
+		}
+	}
+
+	immediate = {
+		play_music_cue = "mx_cue_prison"
+		scope:actor = {
+			save_scope_as = vi_vampire
+		}
+
+		scope:recipient = {
+			save_scope_as = vi_vampire
+		}
+		vi_vampire_drain_effect = yes
+
+		scope:recipient = {
+			every_close_family_member = {
+				add_opinion = {
+					target = scope:actor
+					modifier = suspicion_opinion
+					opinion = -30
+				}
+			}
+		}
+	}
+
+	option = {
+		name = vi_drain_prisoner.1010.a
+
+		stress_impact = {
+			compassionate = major_stress_impact_gain
+			generous = minor_stress_impact_gain
+		}
+
+		vi_vampire_drain_kill_effect = yes
+
+		ai_chance = {
+			base = -10
+
+			modifier = {
+				add = -100
+				has_trait = compassionate
+			}
+
+			modifier = {
+				add = 20
+				stress_level >= 1
+			}
+
+			modifier = {
+				add = 80
+				stress_level >= 2
+			}
+
+			modifier = {
+				add = 100
+				stress_level >= 3
+			}
+
+			ai_value_modifier = {
+				ai_compassion = -0.5
+				ai_greed = 0.2
+			}
+		}
+	}
+
+	option = {
+		name = vi_drain_prisoner.1010.b
+
+		trigger = {
+			scope:recipient = {
+				vi_is_vampire_trigger = no
+			}
+		}
+
+		vi_vampire_drain_turn_hostile_effect = yes
+
+		ai_chance = {
+
+			base = -25
+
+			modifier = {
+				add = 30
+				scope:recipient = {
+					has_trait = intellect_good
+				}
+			}
+
+			modifier = {
+				add = 50
+				scope:recipient = {
+					has_trait = beauty_good
+				}
+			}
+
+			modifier = {
+				add = 40
+				scope:recipient = {
+					has_trait = physique_good
+				}
+			}
+
+			modifier = {
+				add = 100
+				scope:recipient = {
+					has_trait = historical_character
+				}
+			}
+
+			ai_value_modifier = {
+				ai_greed = 0.2
+			}
+
+		}
+	}
+
+	option = {
+		name = vi_drain_prisoner.1010.c
+
+		stress_impact = {
+			compassionate = minor_stress_impact_loss
+			generous = miniscule_stress_impact_loss
+		}
+
+		ai_chance = {
+			base = 50
+
+			ai_value_modifier = {
+				ai_compassion = 0.5
+				ai_greed = -0.2
+			}
+		}
+	}
+}

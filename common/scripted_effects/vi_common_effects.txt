@@ -18,6 +18,30 @@
 	# set_sexuality = asexual
 }
 
+vi_upgrade_vampire_effect = {
+	if = {
+		limit = {
+			has_trait = vi_vampire_1
+		}
+		add_trait = vi_vampire_2
+		remove_trait = vi_vampire_1
+	}
+	else_if = {
+		limit = {
+			has_trait = vi_vampire_2
+		}
+		add_trait = vi_vampire_3
+		remove_trait = vi_vampire_2
+	}
+	else_if = {
+		limit = {
+			has_trait = vi_vampire_3
+		}
+		add_trait = vi_vampire_4
+		remove_trait = vi_vampire_3
+	}
+}
+
 vi_turn_into_vampire_effect = {
 
 	$VI_VAMPIRE$ = {
@@ -33,14 +57,16 @@ vi_turn_into_vampire_effect = {
 				vi_is_vampire_trigger = no
 			}
 
-			every_close_or_extended_family_member = {
-				limit = {
-					vi_is_vampire_trigger = no
-				}
-				add_opinion = {
-					target = scope:vi_target
-					modifier = suspicion_opinion
-					value = -30
+			hidden_effect = {
+				every_close_or_extended_family_member = {
+					limit = {
+						vi_is_vampire_trigger = no
+					}
+					add_opinion = {
+						target = scope:vi_target
+						modifier = suspicion_opinion
+						value = -30
+					}
 				}
 			}
 
@@ -72,7 +98,7 @@ vi_turn_into_vampire_effect = {
 				adopt = scope:vi_target
 			}
 			set_character_faith = scope:vi_vampire.faith
-			set_house = scope:vi_vampire.house
+			# set_house = scope:vi_vampire.house
 		}
 	}
 
@@ -88,10 +114,13 @@ vi_turn_into_vampire_effect = {
 }
 
 vi_become_dormant_effect = {
+	add_trait = vi_dormant
+
 	if = {
 		limit = {
 			is_ruler = yes
 		}
+
 		add_character_flag = {
 			flag = abdicated_from_throne
 			days = 30
@@ -107,8 +136,22 @@ vi_become_dormant_effect = {
 		}
 		depose = yes
 	}
-}
 
+	if = {
+		limit = {
+			has_trait = vi_exposed_vampire
+		}
+		remove_trait = vi_exposed_vampire
+	}
+
+	every_scheme = {
+		end_scheme = yes
+	}
+	
+	every_targeting_scheme = {
+		end_scheme = yes
+	}
+}
 
 
 vi_add_stacking_modifier_effect = {

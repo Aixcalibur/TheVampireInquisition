@@ -1,0 +1,175 @@
+﻿vi_hunt_scheme_prep_effect = {
+	save_scope_as = scheme
+	save_scope_value_as = {
+		name = follow_up_event
+		value = event_id:vi_hunt.1001
+	}
+	if = {
+		limit = {
+			NOT = { exists = scope:suppress_next_event }
+		}
+		scheme_owner = { trigger_event = scheme_critical_moments.0002 }
+	}
+}
+
+vi_siphon_wealth_scheme_prep_effect = {
+	save_scope_as = scheme
+	save_scope_value_as = {
+		name = follow_up_event
+		value = event_id:scheme_critical_moments.1131
+	}
+	if = {
+		limit = {
+			NOT = { exists = scope:suppress_next_event }
+		}
+		scheme_owner = { trigger_event = scheme_critical_moments.0002 }
+	}
+}
+
+# Based off generic_scheme_process_ending_effect
+# Sort the ending for a scheme.
+vi_generic_scheme_process_ending_effect = {
+	# Grab our scopes.
+	save_scope_as = scheme
+	scheme_owner = { save_scope_as = owner }
+	## Targets.
+	scheme_target_character ?= { save_scope_as = target }
+	scheme_target_culture ?= { save_scope_as = target }
+	scheme_target_faith ?= { save_scope_as = target }
+	scheme_target_title ?= { save_scope_as = target }
+	# Success roll.
+	random = {
+		chance = scheme_success_chance
+		custom_tooltip = $RESULTS_TOOLTIP$
+		save_scope_value_as = {
+			name = scheme_successful
+			value = yes
+		}
+		# Interception saves.
+		## Unique saves roll.
+		### E.g., your dog flings itself in front of an assassin for you.
+		if = {
+			limit = { is_savable_murder_scheme_trigger = yes }
+			# We use a scripted effect so that mods can overwrite it without overwriting the whole block.
+			scheme_unique_interception_roll_effect = yes
+		}
+		## Repeatable saves roll.
+		### E.g., your bodyguard flings itself in front of an assassin for you.
+		if = {
+			limit = { is_savable_murder_scheme_trigger = yes }
+			random = {
+				chance = scope:target.scheme_intercept_repeatable_chance_total_value
+				save_scope_value_as = {
+					name = interception_repeatable
+					value = yes
+				}
+			}
+		}
+	}
+	# Secrecy roll.
+	## We check this after an interception so that, if a successful scheme is intercepted, we can boost its success a little to compensate.
+	if = {
+		limit = { is_type_secret = yes }
+		## First, determine our secrecy value.
+		save_scope_value_as = {
+			name = discovery_chance
+			value = {
+				value = 100
+				subtract = scheme_secrecy
+				# Boost this up a bit if the scheme was intercepted.
+				if = {
+					limit = {
+						OR = {
+							exists = scope:interception_unique
+							exists = scope:interception_repeatable
+						}
+					}
+					add = -30
+				}
+				# And make sure there's always _some_ risk.
+				min = 5
+			}
+		}
+		random = {
+			chance = scope:discovery_chance
+			custom_tooltip = scheme_remain_secret_roll_tt
+			save_scope_value_as = {
+				name = scheme_discovered
+				value = yes
+			}
+			# Grab an exposer.
+			if = {
+				limit = { exists = scope:target.host }
+				scope:target.host = { save_scope_as = murder_exposer }
+			}
+			else = {
+				scope:target = { save_scope_as = murder_exposer }
+			}
+			# Set up assorted cosmetics for murders.
+			scope:owner = {
+				# Portraits.
+				save_scope_as = owner_to_reveal
+				# Plus a flavour scope we use.
+				random_memory = {
+					limit = {
+						has_memory_category = negative
+						has_memory_participant = scope:target
+						NOR = { # These read poorly
+							has_memory_type = became_rivals
+							has_memory_type = became_nemesis
+						}
+					}
+					save_scope_as = bad_memory
+				}
+			}
+		}
+	}
+	# Process ending on_actions.
+	## Scheme intercepted by a unique flag, stopping a killing at the last moment.
+	if = {
+		limit = { exists = scope:interception_unique }
+		scheme_owner = {
+			trigger_event = { on_action = pick_unique_murder_intercept_on_action }
+		}
+	}
+	## Scheme intercepted by a repeatable flag, stopping a killing at the last moment.
+	else_if = {
+		limit = { exists = scope:interception_repeatable }
+		scheme_owner = {
+			trigger_event = { on_action = pick_repeatable_murder_intercept_on_action }
+		}
+	}
+	## Scheme successful.
+	else_if = {
+		limit = { exists = scope:scheme_successful }
+		# If we have a contract conclusion event to fire, fire it.
+		if = {
+			limit = { exists = scope:contract_end_success }
+			scheme_owner = {
+				trigger_event = {
+					saved_event_id = scope:contract_end_success
+					delayed = yes
+				}
+			}
+		}
+		task_contract ?= { complete_task_contract = success_standard }
+		trigger_event = { $SUCCESS_EVENT_TYPE$ = $SUCCESS_EVENT_ID$ }
+		scheme_owner = { play_sound_effect = "event:/DLC/EP3/SFX/Stingers/Scheme_Rework/ep3_mx_sting_schemerework_positive" }		
+	}
+	## Scheme failed.
+	else = {
+		# If we have a contract conclusion event to fire, fire it.
+		if = {
+			limit = { exists = scope:contract_end_failure }
+			scheme_owner = {
+				trigger_event = {
+					saved_event_id = scope:contract_end_failure
+					delayed = yes
+				}
+			}
+		}
+		task_contract ?= { complete_task_contract = failure_standard }
+		trigger_event = { $FAILURE_EVENT_TYPE$ = $FAILURE_EVENT_ID$ }
+		scheme_owner = { play_sound_effect = "event:/DLC/EP3/SFX/Stingers/Scheme_Rework/ep3_mx_sting_schemerework_negative" }
+	}
+}

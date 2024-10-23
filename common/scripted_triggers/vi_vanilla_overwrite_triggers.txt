@@ -1,0 +1,23 @@
+﻿#We add this overwrite so Fledglings and Nightwalkers aren't allowed to attend outdoor activities
+
+bannable_serving_diarch_trigger = {
+
+	liege?= { NOT = { is_landless_adventurer = yes } }
+
+	OR = {
+		NOR = {
+			has_trait = vi_vampire_1
+			has_trait = vi_vampire_2
+		}
+
+		# Diarchs with official responsibilities can't come out to play.
+		is_diarch = yes
+		is_designated_diarch = yes
+		# Assumed diarchs don't get to either if they're the AI, as the player might be planning around them & the AI may have designated to avoid people after if it'd known they were going to welch.
+		## Assumed-diarch players can make an intelligent choice on whether they want to go to events or not.
+		AND = {
+			is_ai = yes
+			is_diarchy_successor = yes
+		}
+	}
+}

@@ -8,6 +8,9 @@ start_vi_investigate_interaction = {
 	send_name = START_SCHEME
 
 	scheme = vi_investigate
+	cooldown = {
+		years = 1
+	}
 	ignores_pending_interaction_block = yes
 
 	ai_targets = {
@@ -196,12 +199,12 @@ start_vi_investigate_interaction = {
 		}
 
 		modifier = {
-			add = -25
+			add = -15
 			has_any_mild_good_relationship_with_character_trigger = { CHARACTER = scope:recipient }
 		}
 
 		modifier = {
-			add = -50
+			add = -20
 			has_any_moderate_good_relationship_with_character_trigger = { CHARACTER = scope:recipient }
 		}
 

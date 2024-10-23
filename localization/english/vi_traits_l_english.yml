@@ -11,15 +11,17 @@
  trait_vi_vampire_5:0 "Progenitor Vampire"
  trait_vi_vampire_5_desc:0 "Their existence is only a myth, but if they still exist, their power must be unimaginable."
 
- trait_vi_heartstealer:0 "Heart-Stealer"
- trait_vi_heartstealer_desc:0 "To steal hearts without them noticing that they are already dead."
+ trait_vi_heartstealer:0 "Siren"
+ trait_vi_heartstealer_desc:0 "Likes moths to a fire, mortals fall into your jaws."
  TRAIT_FLAG_DESC_vi_can_steal_hearts:0 "Unlocks the [vi_compel_suicide_interaction|E] on mortals"
 
  trait_vi_dragonsscion:0 "Dragon's Scion"
- trait_vi_dragonsscion_desc:0 "Invincible"
+ trait_vi_dragonsscion_desc:0 "All shall cower before your might."
  TRAIT_FLAG_DESC_vi_can_use_dragon_fear:0 "Unlocks the [vi_dragon_fear_interaction|E]"
 
  trait_vi_feral:0 "Feral"
+
+ trait_vi_excommunicated:0 "Marked for Death"
 
  trait_vi_shade:0 "Shade"
  trait_vi_shade_desc:0 "This character is an immaterial shade."

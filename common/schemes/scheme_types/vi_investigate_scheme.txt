@@ -113,7 +113,7 @@
 		scheme_owner = { save_scope_as = owner }
 		scope:scheme = {
 			scheme_owner = {
-				#DISCOVERY ROLL
+				# # DISCOVERY ROLL
 				# save_scope_value_as = {
 				# 	name = discovery_chance
 				# 	value = {
@@ -139,28 +139,26 @@
 					}
 				}
 
-				#SECRECY: DO I WANT TO PROCEED?
+				
 				if = {
 					limit = { exists = scope:scheme_successful }
 					trigger_event = vi_investigate.001 #Success event
 				}
 				else = {
-					trigger_event = {
-						on_action = convert_to_witchcraft_failure_outcome
-					}
+					trigger_event = vi_investigate.002
 				}
 			}
 		}
 	}
-	on_hud_click  = { challenge_status_scheme_prep_effect = yes }
-	on_semiyearly = {
-		if = {
-			limit = {
-				scheme_owner = { is_ai = yes }
-			}
-			challenge_status_scheme_prep_effect = yes
-		}
-	}
+	# on_hud_click  = { challenge_status_scheme_prep_effect = yes }
+	# on_semiyearly = {
+	# 	if = {
+	# 		limit = {
+	# 			scheme_owner = { is_ai = yes }
+	# 		}
+	# 		challenge_status_scheme_prep_effect = yes
+	# 	}
+	# }
 
 	## Invalidation
 	on_invalidated = {
@@ -171,7 +169,7 @@
 			save_scope_as = owner
 			send_interface_toast = {
 				type = event_toast_effect_neutral
-				title = challenge_status_invalidated_title
+				title = vi_investigate_invalidated_title
 				left_icon = scope:target
 				if = { # Invalidation due to death
 					limit = {

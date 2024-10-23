@@ -1,68 +1,68 @@
-﻿vi_hades_shade = {
+﻿# vi_hades_shade = {
 
-	name = "Hades"
-	dynasty_house = house_vi_Underworld
-	sexuality = asexual
-	faith = hellenic_pagan
-	culture = greek
+# 	name = "Hades"
+# 	dynasty_house = house_vi_Underworld
+# 	sexuality = asexual
+# 	faith = hellenic_pagan
+# 	culture = greek
 	
-	diplomacy = 5
-	martial = 5
-	stewardship = 5
-	intrigue = 5
-	learning = 5
-	prowess = 5
+# 	diplomacy = 5
+# 	martial = 5
+# 	stewardship = 5
+# 	intrigue = 5
+# 	learning = 5
+# 	prowess = 5
 
-	trait = diligent
-	trait = wrathful
-	trait = patient
+# 	trait = diligent
+# 	trait = wrathful
+# 	trait = patient
 
-	trait = education_intrigue_4
-	trait = vi_shade
+# 	trait = education_intrigue_4
+# 	trait = vi_shade
 
-	0.1.1 = {
-		birth = yes
-		effect = {
-			set_immortal_age = 40
-		}
-	}
+# 	0.1.1 = {
+# 		birth = yes
+# 		effect = {
+# 			set_immortal_age = 40
+# 		}
+# 	}
 
-	2000.1.1 = {
-		death = yes
-	}
-}
+# 	2000.1.1 = {
+# 		death = yes
+# 	}
+# }
 
-vi_esclarmonde_shade = {
+# vi_esclarmonde_shade = {
 	
-	name = "Esclarmonde Shade"
-	dna = vi_esclarmonde_dna
-	dynasty_house = house_vi_Underworld
-	female = yes
-	sexuality = bisexual
-	faith = catholic
-	culture = french
-	weight = 0
+# 	name = "Esclarmonde Shade"
+# 	dna = vi_esclarmonde_dna
+# 	dynasty_house = house_vi_Underworld
+# 	female = yes
+# 	sexuality = bisexual
+# 	faith = catholic
+# 	culture = french
+# 	weight = 0
 
-	diplomacy = 5
-	martial = 5
-	stewardship = 5
-	intrigue = 5
-	learning = 5
-	prowess = 5
+# 	diplomacy = 5
+# 	martial = 5
+# 	stewardship = 5
+# 	intrigue = 5
+# 	learning = 5
+# 	prowess = 5
 
-	trait = gregarious
-	trait = ambitious
-	trait = calm
-	trait = education_diplomacy_4
-	trait = vi_shade
+# 	trait = gregarious
+# 	trait = ambitious
+# 	trait = calm
+# 	trait = education_diplomacy_4
+# 	trait = vi_shade
 
-	disallow_random_traits = yes
+# 	disallow_random_traits = yes
 
-	800.6.12 = {
-		birth = yes
-	}
+# 	800.6.12 = {
+# 		birth = yes
+# 	}
 
-	1800.6.12 = {
-		death = yes
-	}
-}
+# 	1800.6.12 = {
+# 		death = yes
+# 	}
+# }

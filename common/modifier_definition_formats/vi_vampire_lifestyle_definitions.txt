@@ -1,0 +1,17 @@
+﻿monthly_vi_vampire_lifestyle_xp_gain_add = {
+	decimals = 0
+}
+
+monthly_vi_vampire_lifestyle_xp_gain_mult = {
+	decimals = 0
+	percent = yes
+}
+
+vi_vampire_lifestyle_xp_gain_add = {
+	decimals = 0
+}
+
+vi_vampire_lifestyle_xp_gain_mult = {
+	decimals = 0
+	percent = yes
+}

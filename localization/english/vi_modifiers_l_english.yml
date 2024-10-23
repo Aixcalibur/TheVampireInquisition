@@ -1,8 +1,15 @@
 ﻿l_english:
  vi_drained_modifier:0 "Drained"
  vi_drained_modifier_desc:0 "This person seems to have been drained of their vitality."
+
+ vi_sated_modifier:0 "Sated"
+ vi_vampire_strain_modifier:0 "Vampiric Strain"
+ vi_vampire_madness_modifier:0 "Madness"
+
  vi_unnatural_youth_modifier:0 "Unnatural Youth"
  vi_unnatural_youth_modifier_desc:0 "This person seems to not show any signs of aging."
+
+ vi_ancient_regime_modifier:0 "Ancien Régime"
 
  vi_county_discreet_modifier:0 "Underworld Presence"
  vi_county_discreet_modifier_desc:0 "There are rumors abound of supernatural beings here hidden among the populace."
@@ -10,6 +17,11 @@
  vi_county_sapped_modifier_desc:0 "The criminal underworld of this county is siphoning away its wealth."
  vi_county_drained_modifier:0 "Drained Populace"
  vi_county_drained_modifier_desc:0 "People here are sometimes showing up dead... and drained of blood."
+ vi_county_underworld_investment_modifier:0 "Bloody Investments"
+ vi_county_underworld_investment_modifier_desc:0 "Some mysterious benefactor is aiding the development of this county."
 
  vi_sap_county_wealth_modifier:0 "Underworld Bounty"
  vi_sap_county_wealth_modifier_desc:0 "Controlling the local criminal underworld certainly has its benefits."
+
+ vi_bida_modifier:0 "Golden Serpent"
+ vi_bida_modifier_desc:0 "The Golden Serpent"

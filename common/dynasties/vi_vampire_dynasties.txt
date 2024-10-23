@@ -3,16 +3,22 @@
 	culture = "greek"
 }
 
-vi_dynasty_Carmina = {
-	name = "dynn_vi_Carmina"
+vi_dynasty_Aphrodisian = {
+	name = "dynn_vi_Aphrodisian"
 	culture = "roman"
-	motto = "dynn_vi_Carmina_motto"
+	motto = "dynn_vi_Aphrodisian_motto"
 	forced_coa_religiongroup = "christian"
 }
 
-vi_dynasty_Annunaki = {
-	name = "dynn_vi_Annunaki"
+vi_dynasty_Anunnaki = {
+	name = "dynn_vi_Anunnaki"
 	culture = "persian"
-	motto = "dynn_vi_Annunaki_motto"
-	forced_coa_religiongroup = "christian"
+	motto = "dynn_vi_Anunnaki_motto"
+	# forced_coa_religiongroup = "christian"
+}
+
+vi_dynasty_Nosferatu = {
+	name = "dynn_vi_Nosferatu"
+	culture = "greek"
+	motto = "dynn_vi_Nosferatu_motto"
 }

@@ -1,0 +1,16 @@
+﻿vi_charm_interaction = {
+}
+vi_soothe_interaction = {
+}
+vi_galvanize_interaction = {
+}
+vi_extract_hook_interaction = {
+}
+vi_enthrall_interaction = {
+}
+
+
+
+
+vi_weave_fate_interaction = {
+}

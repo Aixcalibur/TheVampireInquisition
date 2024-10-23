@@ -1,0 +1,140 @@
+﻿story_vi_bida = {
+	
+	on_setup = {
+
+		title:b_figuira.province = { #6728
+			add_to_temporary_list = vi_gold_mines
+		}
+
+		title:b_siguiri.province = { #6739
+			add_to_temporary_list = vi_gold_mines
+		}
+
+		title:b_yaresna.province = { #6747
+			add_to_temporary_list = vi_gold_mines
+		}
+
+		every_in_list = {
+			list = vi_gold_mines
+			if = {
+				limit = {
+					always = yes
+					# NOT = {
+					# 	has_special_building = yes
+					# }
+				}
+				add_special_building = mali_mines_01
+			}
+		}
+
+		faith:west_african_bidu_pagan = {
+
+			remove_doctrine = west_african_unreformed_faith_doctrine
+
+			if = {
+				limit = {
+					has_doctrine = tenet_adaptive
+				}
+				remove_doctrine = tenet_adaptive
+				add_doctrine = tenet_communion
+			}
+
+			if = {
+				limit = {
+					has_doctrine = doctrine_no_head
+				}
+				remove_doctrine = doctrine_no_head
+				add_doctrine = doctrine_spiritual_head
+			}
+
+			set_religious_head_title = title:k_vi_bida
+		}
+
+		title:k_ghana.holder = {
+			create_alliance = story_owner
+		}
+
+		story_owner = {
+			change_government = vi_vampire_government
+			add_character_modifier = {
+				modifier = vi_bida_modifier
+			}
+		}
+
+	}
+	
+	on_end = {
+
+		faith:west_african_bidu_pagan = {
+			if = {
+				limit = {
+					has_doctrine = tenet_communion
+				}
+				remove_doctrine = tenet_communion
+				add_doctrine = tenet_adaptive
+			}
+
+			add_doctrine = west_african_unreformed_faith_doctrine
+
+		}
+
+		title:b_figuira.province = { #6728
+			add_to_temporary_list = vi_gold_mines
+		}
+
+		title:b_siguiri.province = { #6739
+			add_to_temporary_list = vi_gold_mines
+		}
+
+		title:b_yaresna.province = { #6747
+			add_to_temporary_list = vi_gold_mines
+		}
+
+		every_in_list = {
+			list = vi_gold_mines
+			if = {
+				limit = {
+					has_building_or_higher = mali_mines_02
+				}
+				add_special_building = mali_mines_01
+			}
+			else = {
+				remove_building = mali_mines_01
+			}
+		}
+	}
+	
+	on_owner_death = {
+		end_story = yes
+	}
+	
+	# Something happens - random events
+	effect_group = {
+		days = { 100 540 }
+
+		trigger = {
+			story_owner = {
+				is_alive = yes
+			}
+		}
+
+		random_valid = {
+			triggered_effect = {
+				trigger = { always = yes }
+				effect = {
+					story_owner = {
+						add_gold = minor_gold_value
+					}
+				}
+			}
+			triggered_effect = {
+				trigger = { always = yes }
+				effect = {
+					story_owner = {
+						add_gold = medium_gold_value
+					}
+				}
+			}
+		}
+	}
+}

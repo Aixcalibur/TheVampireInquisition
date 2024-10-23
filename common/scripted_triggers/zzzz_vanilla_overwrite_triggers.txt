@@ -1,0 +1,35 @@
+﻿age_ranked_health_vulnerability_threshold_trigger = {
+	is_immortal = no
+	OR = {
+		# If you're already having problems...
+		has_trait = infirm
+		# Otherwise, we check health crossed against age.
+		## Characters that are this old are vulnerable regardless of health.
+		age >= 80
+		## Else, the higher your health is, the older you need to be to suffer age-related health problems.
+		AND = {
+			health <= good_health
+			age >= 70
+		}
+		AND = {
+			health <= medium_health
+			age >= 60
+		}
+		AND = {
+			health <= fine_health
+			age >= 50
+		}
+		AND = {
+			health <= poor_health
+			age >= 40
+		}
+		AND = {
+			health <= dying_health
+			age >= 30
+		}
+	}
+	NOR = {
+		has_trait = immortal
+		has_trait_with_flag = is_immortal
+	}
+}

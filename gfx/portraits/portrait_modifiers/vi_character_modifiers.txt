@@ -3,20 +3,62 @@
 	selection_behavior = max
 	priority = 2
 
+	vi_no_veil = {
+		dna_modifiers = {
+			
+			accessory = {
+				mode = add
+				gene = additive_headgear
+				template = no_additive
+				range = { 0 1 }
+			}
+
+			# color = {
+			# 	gene = skin_color
+			# 	mode = modify
+			# 	x = -0.3
+			# 	y = -0.3
+			# }
+		}
+
+		weight = {
+            base = 0
+            modifier = {
+                add = 800
+				exists = this
+				OR = {
+					this = {
+						has_character_flag = vi_no_veil
+					}
+					this = character:vi_ysabel
+					this = character:vi_jehanne
+				}
+            }
+        }
+	}
+
 	vi_esclarmonde = {
 		dna_modifiers = {
 			accessory = {
-                mode = add
-                gene = hairstyles
-                template = all_hairstyles
-                accessory = female_hair_western_07
-            }
+				mode = add
+				gene = hairstyles
+				template = scripted_character_hairstyles_03
+				value = 0.6 # For the randomness to work correctly
+				# type = female
+			}
 
 			morph = {
 				mode = replace
 				gene = complexion
 				template = complexion_beauty_1
 				value = 0.9
+			}
+
+			accessory = {
+				mode = add
+				gene = additive_headgear
+				template = no_additive
+				range = { 0 1 }
 			}
 
 			# color = {
@@ -43,3 +85,4 @@
         }
 	}
 }
+

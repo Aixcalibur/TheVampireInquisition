@@ -1,0 +1,46 @@
+﻿k_vi_bida = {
+	300.1.1 = {
+		holder = vi_bida
+		government = vi_vampire_government
+		# succession_laws = { vi_vampire_elective_succession_law }
+		liege = 0
+	}
+
+	1100.1.1 = {
+		holder = 0
+	}
+}
+
+d_nf_vi_bida = {
+	300.1.1 = {
+		holder = vi_bida
+		government = vi_vampire_government
+		succession_laws = { noble_family_succession_law }
+		liege = k_vi_bida
+	}
+}
+
+d_vi_figuira = {
+	800.1.1 = {
+		holder = vi_dyabe
+		government = vi_vampire_government
+		liege = k_vi_bida
+	}
+
+	1100.1.1 = {
+		holder = 0
+	}
+}
+
+d_nf_vi_cisse = {
+	800.1.1 = {
+		holder = vi_dyabe
+		government = vi_vampire_government
+		succession_laws = { noble_family_succession_law }
+		liege = k_vi_bida
+	}
+
+	1100.1.1 = {
+		holder = 0
+	}
+}

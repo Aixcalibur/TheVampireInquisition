@@ -1,6 +1,6 @@
 ﻿vi_vampire_county_normal_effect = {
 
-	root.capital_county = {
+	root.primary_title.title_capital_county = {
 		save_scope_as = domicile_location # actually capital location, but too lazy to change
 
 		holder = {
@@ -34,8 +34,11 @@
 	}
 	
 	add_gold = {
-		value = scope:domicile_location.capital_barony.available_loot
-		multiply = 0.5
+		value = {
+			value = 0
+			add = scope:domicile_location.title_province.available_loot
+			divide = 4
+		}
 	}
 
 	custom_tooltip = vi_vampire_policy.001.a.tt
@@ -60,7 +63,7 @@
 }
 
 vi_vampire_county_discreet_effect = {
-	root.capital_county = {
+	root.primary_title.title_capital_county = {
 		save_scope_as = domicile_location
 		add_county_modifier = {
 			modifier = vi_county_discreet_modifier
@@ -85,7 +88,7 @@ vi_vampire_county_discreet_effect = {
 				add_opinion = {
 					target = root
 					modifier = grateful_opinion
-					value = 10
+					opinion = 10
 				}
 			}
 		}
@@ -93,7 +96,7 @@ vi_vampire_county_discreet_effect = {
 }
 
 vi_vampire_county_drain_effect = {
-	root.capital_county = {
+	root.primary_title.title_capital_county = {
 		save_scope_as = domicile_location
 
 		holder = {
@@ -106,6 +109,8 @@ vi_vampire_county_drain_effect = {
 				right_icon = scope:domicile_location # optional, character, artifact, or title
 				goto = scope:domicile_location # optional, character, barony title, province will add a goto button
 				scope:domicile_location = {
+					change_county_control = -30
+
 					add_county_modifier = {
 						modifier = vi_county_discreet_modifier
 						years = 5
@@ -118,6 +123,7 @@ vi_vampire_county_drain_effect = {
 						modifier = vi_county_drained_modifier
 						years = 5
 					}
+	
 				}
 				add_legitimacy = minor_legitimacy_loss
 
@@ -131,9 +137,13 @@ vi_vampire_county_drain_effect = {
 	}
 
 	add_gold = {
-		value = scope:domicile_location.capital_barony.available_loot
-		multiply = 1
+		value = {
+			value = 0
+			add = scope:domicile_location.title_province.available_loot
+		}
 	}
+
+	custom_tooltip = vi_vampire_policy.001.a.tt
 
 	hidden_effect = {
 		set_local_variable = {
@@ -159,9 +169,9 @@ vi_vampire_county_drain_effect = {
 
 vi_vampire_county_investment_effect = {
 
-	remove_gold = medium_gold_value
+	remove_short_term_gold = medium_gold_value
 
-	root.capital_county = {
+	root.primary_title.title_capital_county = {
 		save_scope_as = domicile_location
 
 		holder = {
@@ -174,6 +184,9 @@ vi_vampire_county_investment_effect = {
 				right_icon = scope:domicile_location # optional, character, artifact, or title
 				goto = scope:domicile_location # optional, character, barony title, province will add a goto button
 				scope:domicile_location = {
+
+					change_county_control = -15
+
 					add_county_modifier = {
 						modifier = vi_county_discreet_modifier
 						years = 5

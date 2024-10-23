@@ -13,18 +13,18 @@
 	doctrine = doctrine_theocracy_lay_clergy
 
 	#Marriage
-	doctrine = doctrine_monogamy
+	doctrine = doctrine_concubines
 	doctrine = doctrine_divorce_allowed
 	doctrine = doctrine_bastardry_none
 	doctrine = doctrine_consanguinity_unrestricted
 
 	#Crimes
 	doctrine = doctrine_homosexuality_shunned
-	doctrine = doctrine_adultery_men_shunned
-	doctrine = doctrine_adultery_women_shunned
+	doctrine = doctrine_adultery_men_accepted
+	doctrine = doctrine_adultery_women_accepted
 	doctrine = doctrine_kinslaying_any_dynasty_member_crime
 	doctrine = doctrine_deviancy_shunned
-	doctrine = doctrine_witchcraft_accepted
+	doctrine = doctrine_witchcraft_shunned
 
 	#Clerical Functions
 	doctrine = doctrine_clerical_function_taxation
@@ -255,7 +255,7 @@
 			doctrine = tenet_christian_syncretism
 			doctrine = tenet_sacred_shadows
 
-			doctrine = doctrine_adultery_women_accepted
+			doctrine = doctrine_monogamy
 
 			holy_order_names = {
 				{ name = "holy_order_knights_templar" coat_of_arms = "ho_knights_templar" }

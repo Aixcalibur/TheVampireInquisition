@@ -1,0 +1,29 @@
+﻿l_english:
+
+ k_vi_bida_article:0 "$DEFAULT_TITLE_NAME_ARTICLE$"
+ k_vi_bida:0 "Temple of Gold"
+ k_vi_bida_adj:0 "Golden"
+
+ d_nf_vi_bida: "House of Bida"
+ d_nf_vi_bida_article: "$DEFAULT_TITLE_NAME_ARTICLE$"
+
+ d_vi_figuira_article:0 "$DEFAULT_TITLE_NAME_ARTICLE$"
+ d_vi_figuira:0 "Goldfields of Bure"
+ d_vi_figuira_adj:0 "Bure"
+
+ d_nf_vi_cisse: "Cisse Family"
+ d_nf_vi_cisse_article: "$DEFAULT_TITLE_NAME_ARTICLE$"
+
+ d_vi_bambuk_article:0 "$DEFAULT_TITLE_NAME_ARTICLE$"
+ d_vi_bambuk:0 "Goldfields of Bambuk"
+ d_vi_bambuk_adj:0 "Bambuk"
+
+ d_vi_siguiri_article:0 "$DEFAULT_TITLE_NAME_ARTICLE$"
+ d_vi_siguiri:0 "Goldfields of Siguiri"
+ d_vi_siguiri_adj:0 "Siguiri"
+
+ d_vi_lobi_article:0 "$DEFAULT_TITLE_NAME_ARTICLE$"
+ d_vi_lobi:0 "Goldfields of Lobi"
+ d_vi_lobi_adj:0 "Lobi"
+
+ vi_serpent_bida:0 "Great Serpent"

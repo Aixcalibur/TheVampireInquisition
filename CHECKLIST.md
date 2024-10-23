@@ -7,8 +7,7 @@ A lot of the mechanics around vampirism revolve around Stress. This is in order 
 ### Basic Vampire Mechanics
 - Vampire Character Creation
 - Stress events (40%) (vi_stress_on_action)
-- Drain mortal
-- Turn mortal
+- Drain/turn mortal (50%)
 - Vampire secret and exposed vampire trait (60%) (vi_investigate_secrets.100)
 - Generating tasty mortals
 
@@ -23,7 +22,6 @@ Happen every five years.
 - Investigate vampire (80%)
 - Hunt vampire
 - Raid Lair
-- Contracts
 
 ### Mortal Rulers
 - Investigate vampire (80%)
@@ -44,16 +42,17 @@ Most of these mechanics require influence.
 - Lair domicile and buildings (WIP)
 
 ### Vampire Solo Progression
-- Vampire Perks (20%)
-- Devour other vampires for experience
-- Drain special victims for experience
+- Vampire Perks (80%)
+- Devour other vampires for experience (50%)
+- Drain special victims for experience (20%)
 - Acquire Vampire artifacts
 
 ### Vampire AI Activity
 - Turn mortal friends into vampires. (90%) (vi_vampire_friendship_pulse)
+- Set up contracts
 
 ### Vampire Dynasties
-- Carmina Bloodline: The archetypical supernatural seducers, the legends about them are numerous across all cultures around the world. Their origins have been long lost to time, it is possible they are actually comprised of several similar bloodlines.
+- Aphrodisian Bloodline: The archetypical supernatural seducers, the legends about them are numerous across all cultures around the world. Their origins have been long lost to time, it is possible they are actually comprised of several similar bloodlines.
 - Anunnaki Bloodline: Originating in Mesopotamia and descended from their mythical progenitor Anu, many Anunnaki see themselves as the shepherds of humanity and have posed themselves as deities to mortals.
 - Nosferatu Bloodline: The most monstrous of vampires, the Nosferatu are said to be cursed with hideous appearances that reflect the inner corruption of their souls.
 
@@ -64,7 +63,7 @@ The French Court of Night set up by Esclarmonde.
 - Sponsoring artists grants influence, prestige, and piety in the Court of Night
 
 ### Michael the Archangel
-Slumbering in Rome is an ancient Annunaki vampire who has convinced himself that vampires must be purged. He will eat them all.
+Slumbering in Rome is an ancient Anunnaki vampire who has convinced himself that vampires must be purged. He will eat them all.
 
 ### The Faceless One
 The Byzantine Empire has a hidden protector.

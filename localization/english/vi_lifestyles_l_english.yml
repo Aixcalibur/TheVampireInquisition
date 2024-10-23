@@ -1,22 +1,29 @@
 ﻿l_english:
  vi_vampire_lifestyle_name:0 "Vampire"
- vi_vampire_lifestyle_desc:0 "Focus on honing your vampiric powers and become capable of impossible feats."
+ vi_vampire_lifestyle_desc:0 "Focus on honing your supernatural powers. You shall walk as a god among mere mortals... at least while the sun is not out."
+ vi_vampire_lifestyle_xp_gain_add: "Vampire [lifestyle|E] Experience Gain"
+ vi_vampire_lifestyle_xp_gain_mult: "$vi_vampire_lifestyle_xp_gain_add$"
+ monthly_vi_vampire_lifestyle_xp_gain_add: "$monthly_vi_vampire_lifestyle_xp_gain_mult$"
+ monthly_vi_vampire_lifestyle_xp_gain_mult:0 "Monthly Vampire [lifestyle|E] Experience"
 
 
 
-
- vi_charm_tree_name:0 "Heart-Stealer"
+ vi_charm_tree_name:0 "Siren"
 
  vi_vampire_charm_focus:1 "$vi_vampire_charm_focus_short$ Focus"
  vi_vampire_charm_focus_short:0 "Charisma"
  vi_vampire_charm_focus_modifier:1 "[GetFocus('vi_vampire_charm_focus').GetName]"
- vi_vampire_charm_focus_desc:0 "To be dark, brooding, and handsome is your vampiric privilege. Use it well and mortals will come crawling to kiss your feet."
+ vi_vampire_charm_focus_desc:0 "To be dark, brooding, and handsome is a vampire's privilege."
  vi_vampire_charm_focus_effect_desc:0 "Focusing on Charisma grants:"
 
  vi_charm_perk_name:0 "Unnatural Allure"
- vi_charm_perk_effect:0 "Unlocks the [vi_charm_interaction|E] on mortals"
- my_vi_charm_perk_effect:0 "You can use the [vi_charm_interaction|E] on mortals"
- their_vi_charm_perk_effect:0 "They can use the [vi_charm_interaction|E] on mortals"
+ vi_charm_perk_effect:0 "Unlocks the [vi_charm_interaction|E] [interaction|E] on mortals" [GetInteraction]
+ my_vi_charm_perk_effect:0 "You can use the [vi_charm_interaction|E] [interaction|E] on mortals"
+ their_vi_charm_perk_effect:0 "They can use the [vi_charm_interaction|E] [interaction|E] on mortals"
+ vi_charm_interaction:0 "Charm"
+ vi_charm_interaction_desc:1 "Use supernatural charm to increase [recipient.GetShortUINamePossessiveNoTooltip] opinion of you"
+ game_concept_vi_charm_interaction:0 "Charm"
+ game_concept_vi_charm_interaction_desc:0 "Charming another character will increase their [opinion|E] of you while simultaneously arousing their suspicion.\n\nThe higher your [diplomacy|E], the more Opinion you will get.\n\nThe higher their [intrigue|E], the more Opinion you will lose."
 
  vi_animal_speak_perk_name:0 "Speak to Animals"
  vi_animal_speak_perk_effect:0 "Unlocks the $adopt_puppy_decision_name$ [decision|E]"
@@ -25,21 +32,29 @@
  vi_animal_command_perk_effect:0 "Can recruit [GetMaA('vi_vampire_bats').GetName] as [men_at_arms|E]"
 
  vi_soothe_perk_name:0 "Sweet Nothings"
- vi_soothe_perk_effect:0 "Unlocks the [vi_soothe_interaction|E] on mortals"
+ vi_soothe_perk_effect:0 "Unlocks the [vi_soothe_interaction|E] [interaction|E] on mortals"
+ game_concept_vi_soothe_interaction:0 "Soothe"
+ game_concept_vi_soothe_interaction_desc:0 "Soothing another character will erase their suspicion and decrease their [stress|E]."
 
  vi_galvanize_perk_name:0 "Galvanizing Speech"
- vi_galvanize_perk_effect:0 "Unlocks the [vi_galvanize_interaction|E] on mortals"
+ vi_galvanize_perk_effect:0 "Unlocks the [vi_galvanize_interaction|E] [interaction|E] on mortals"
+ game_concept_vi_galvanize_interaction:0 "Galvanize"
+ game_concept_vi_galvanize_interaction_desc:0 "Galvanizing another character will temporarily improve their [health|E] and [prowess|E]."
 
  vi_persuasion_perk_name:0 "Binding Persuasion"
- vi_persuasion_perk_effect:0 "Unlocks the [vi_extract_hook_interaction|E] on mortals with high [opinion|E]"
+ vi_persuasion_perk_effect:0 "Unlocks the [vi_extract_hook_interaction|E] [interaction|E] on mortals with high [opinion|E]"
+ game_concept_vi_extract_hook_interaction:0 "Extract Favor"
+ game_concept_vi_extract_hook_interaction_desc:0 "Extracting a favor from a character in the form of a hook will decrease their [opinion|E] of you."
 
  vi_enthrall_perk_name:0 "Enthralling Gaze"
- vi_enthrall_perk_effect:0 "Unlocks the [vi_enthrall_interaction|E] on mortal [friends|E] and [lovers|E]"
+ vi_enthrall_perk_effect:0 "Unlocks the [vi_enthrall_interaction|E] [interaction|E] on mortal [friends|E] and [lovers|E]"
+ game_concept_vi_enthrall_interaction:0 "Enthrall"
+ game_concept_vi_enthrall_interaction_desc:0 "Enthralling a character will grant you a $loyalty_hook$ [hook|E] on them."
 
  vi_presence_perk_name:0 "Lion Among Sheep"
- vi_presence_perk_effect:0 "Allows Charisma [interactions|E] to be used on other vampires"
+ vi_presence_perk_effect:0 "Allows $vi_vampire_charm_focus_short$ [interactions|E] to be used on other vampires"
 
- vi_heartstealer_perk_name:0 "Heart-Stealer"
+ vi_heartstealer_perk_name:0 "Siren"
 
 
 
@@ -49,16 +64,15 @@
  vi_vampire_will_focus:1 "$vi_vampire_will_focus_short$ Focus"
  vi_vampire_will_focus_short:0 "Will"
  vi_vampire_will_focus_modifier:1 "[GetFocus('vi_vampire_will_focus').GetName]"
- vi_vampire_will_focus_desc:0 "There is no need to ask when you can simply take. Everything can be overcome with sheer force of will."
+ vi_vampire_will_focus_desc:0 "There is no need to ask when you can simply take. Thy will be done."
  vi_vampire_will_focus_effect_desc:0 "Focusing on Will grants:"
 
  vi_celerity_perk_name:0 "Celerity"
  vi_blink_perk_name:0 "Flash Step"
+ vi_blink_perk_effect:0 "Can hunt mortal rulers."
 
  vi_fortitude_perk_name:0 "Fortitude"
-
  vi_strength_perk_name:0 "Outer Strength"
- vi_strength_perk_effect:0 "Gain the [trait_strong|E] trait"
 
  vi_regeneration_perk_name:0 "Regeneration"
  vi_shadowwalk_perk_name:0 "Shadow Walk"
@@ -82,7 +96,7 @@
  vi_auspex_perk_name:0 "Auspex"
  
  vi_peopleofinterest_perk_name:0 "Mortals of Interest"
- vi_peopleofinterest_perk_name:0 "Can use the [vi_seek_mortal|E] [decision|E]"
+ vi_peopleofinterest_perk_effect:0 "Can use the [vi_seek_mortal|E] [decision|E]"
  vi_windfall_perk_name:0 "Persistent Windfalls"
  vi_mercantile_perk_name:0 "Mercantile Insight"
  
@@ -94,6 +108,9 @@
 
  vi_propheticdreams_perk_name:0 "Prophetic Dreams"
 
- vi_allseeing_perk_name:0 "Fateweaver"
+ vi_fateweaver_perk_name:0 "Fateweaver"
+ vi_fateweaver_perk_effect:0 "Can use the [vi_weave_fate|E] [interaction|E] on a mortal child of another dynasty"
+ game_concept_vi_weave_fate_interaction:0 "Weave Fate"
+ game_concept_vi_weave_fate_interaction_desc:0 "Weaving the fate of a child will grant them the potential to become a [trait_conqueror|E]."
 
- vi_fateweaver_perk_name:0 "All-Seeing"
+ vi_allseeing_perk_name:0 "All-Seeing"

@@ -6,18 +6,86 @@
 
 vi_vampire_game_start = {
 	on_actions = {
+		vi_bida_game_start
+		vi_vampire_game_start_ancient_regime
 		delay = { days = 30 }
 		vi_vampire_game_start_create_princedom
 	}
 }
 
-vi_vampire_game_start_create_princedom = {
+vi_vampire_game_start_ancient_regime = {
 	effect = {
-		character:vi_jehanne = {
-			vi_create_vassal_princedom_effect = {
-				VI_LIEGE = character:vi_esclarmonde
-				VI_COUNTY = title:c_orleans
+		every_ruler = {
+			limit = {
+				# vi_is_vampire_trigger = yes
+				has_government = vi_vampire_government
+				is_landed = no
+			}
+
+			add_character_modifier = {
+				modifier = vi_ancient_regime_modifier
+				years = 3
+			}
+
+			capital_county = {
+				add_county_modifier = {
+					modifier = vi_county_discreet_modifier
+					years = 2
+				}
+			}
+
+			every_held_title = {
+
+				if = {
+					limit = {
+						is_noble_family_title = no
+					}
+					add_title_law = vi_vampire_elective_succession_law
+				}			
+			}
+
+			if = {
+				limit = {
+					exists = liege
+				}
+
+				vassal_contract_set_obligation_level = { type = title_revocation_rights level = 1 }
+			}
+
+
+
+			house ?= {
+				set_variable = {
+					name = ai_random_harm_cooldown
+					value = yes
+				}
 			}
 		}
+	}
+}
+
+vi_bida_game_start = {
+	trigger = {
+		character:vi_bida = {
+			is_alive = yes
+			is_ruler = yes
+		}
+	}
+
+	effect = {
+		character:vi_bida = {
+			create_story = story_vi_bida
+		}
+	}
+}
+
+vi_vampire_game_start_create_princedom = {
+	effect = {
+		# character:vi_jehanne = {
+		# 	vi_create_vassal_princedom_effect = {
+		# 		VI_LIEGE = character:vi_esclarmonde
+		# 		VI_COUNTY = title:c_orleans
+		# 	}
+		# }
 	}
 }

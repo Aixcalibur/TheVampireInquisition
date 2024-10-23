@@ -19,7 +19,7 @@
 	move_cost = {
 		gold = {
 			value = {
-				value = 100
+				value = 1000000
 				format = "BASE_VALUE_FORMAT"
 				desc = "BASE_VALUE"
 			}

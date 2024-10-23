@@ -1,31 +1,37 @@
 ﻿house_vi_Montmartre = {
 	prefix = "dynnp_de"
 	name = "dynn_vi_Montmartre"
-	dynasty = vi_dynasty_Carmina
+	dynasty = vi_dynasty_Aphrodisian
 	motto = "dynn_vi_Montmartre_motto"
 }
 
 house_vi_Cologne = {
 	name = "dynn_vi_Cologne"
-	dynasty = vi_dynasty_Carmina
+	dynasty = vi_dynasty_Aphrodisian
 	motto = "dynn_vi_Cologne_motto"
 }
 
 house_vi_London = {
 	name = "dynn_vi_London"
-	dynasty = vi_dynasty_Annunaki
+	dynasty = vi_dynasty_Anunnaki
 	motto = "dynn_vi_London_motto"
 }
 
 house_vi_Tuatha_De = {
 	name = "dynn_vi_Tuatha_De"
-	dynasty = vi_dynasty_Annunaki
+	dynasty = vi_dynasty_Anunnaki
 	motto = "dynn_vi_Tuatha_De_motto"
+}
+
+house_vi_Bida = {
+	name = bidu_high_god_name
+	dynasty = vi_dynasty_Anunnaki
+	motto = "dynn_vi_Bida_motto"
 }
 
 house_vi_Venezia = {
 	name = "dynn_vi_Venezia"
-	dynasty = vi_dynasty_Carmina
+	dynasty = vi_dynasty_Aphrodisian
 	name = "dynn_vi_Venezia_motto"
 }
 

@@ -1,17 +1,27 @@
 ﻿vi_esclarmonde_after_effect = {
 
-	set_mother = character:vi_venus
+	# set_mother = character:vi_venus
 
-	change_target_weight = -30
-	change_current_weight = -20
-	
+	set_variable = {
+		name = character_weight_variable
+		value = {
+			value = base_weight
+			multiply = -1
+			add = -20
+		}
+	}
+
+	change_current_weight = -25
+
 	set_immortal_age = 25
 
-	add_prestige_level = 3
+	add_prestige_level = 2
 
-	add_influence_level = 3
+	add_influence = 2000
 
 	vi_make_vampire_effect = yes
+
+	add_vi_vampire_lifestyle_xp = 10000
 
 	if = {
 		limit = { NOT = { has_perk = thoughtful_perk } }
@@ -28,6 +38,11 @@
 		add_perk = confidants_perk
 	}
 
+	if = {
+		limit = { NOT = { has_perk = kidnapper_perk } }
+		add_perk = kidnapper_perk
+	}
+
 	add_trait = lifestyle_reveler
 
 	add_trait_xp = {
@@ -35,10 +50,9 @@
 		value = 100
 	}
 
-	add_prowess_skill = 14
+	add_prowess_skill = 4
 
 	add_character_flag = vi_esclarmonde
 	give_nickname = nick_vi_queenofthenight
-	
 
 }

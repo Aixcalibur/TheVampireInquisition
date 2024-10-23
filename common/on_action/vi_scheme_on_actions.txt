@@ -1,0 +1,162 @@
+﻿
+# This is for adding unique murder interception
+# pick_repeatable_murder_intercept_on_action = {
+# 	random_events = {
+# 		# Old events.
+# 		# 300 = murder_save.0010		# A Varangian saves them
+# 		# 100 = murder_save.0006		# Their personal guard protects them from a band of thugs
+# 		# 100 = court_position.9001	# Saved from poisoned food by food taster
+# 		# 50 = court_position.9011	# Saved from poison by cup-bearer
+# 		# 5 = murder_save.0013		# Saved from poisoned food by gluttonous trait
+# 		# 100 = court_position.9021	# A Bodyguard saves you from an assassin
+# 		# 600 = fp1_shieldmaiden.0021	# A Shieldmaiden saves them
+# 	}
+# }
+
+# This determines which type of murder we want to go with, as well as sorts general murder effects.
+vi_hunt_success_pre_filter_on_action = {
+	effect = {
+		scope:owner = {
+
+			trigger_event = { on_action = vi_hunt_success_standard_event_list_on_action }
+
+			# Right, which murder list do we want?
+			## Incapable murders: for hitting bedridden characters.
+			# if = {
+			# 	limit = {
+			# 		scope:target = { is_incapable = yes }
+			# 	}
+			# 	trigger_event = { on_action = murder_success_incapable_event_list_on_action }
+			# }
+			# ## Imprisoned murders: for anyone who is in house arrest or the dungeons.
+			# else_if = {
+			# 	limit = {
+			# 		scope:target = { is_imprisoned = yes }
+			# 	}
+			# 	trigger_event = { on_action = murder_success_imprisoned_event_list_on_action }
+			# }
+			# ## Child murders: for free, child characters capable of independent movement.
+			# else_if = {
+			# 	limit = {
+			# 		scope:target = { is_adult = no }
+			# 	}
+			# 	trigger_event = { on_action = murder_success_child_event_list_on_action }
+			# }
+			# ## Standard murders: for free, adult characters capable of independent movement.
+			# else = {
+			# 	trigger_event = { on_action = murder_success_standard_event_list_on_action }
+			# }
+
+			
+			# Plus we always want music.
+			play_music_cue = "mx_cue_murder"
+
+			# Achievements.
+			every_scheme = {
+				limit = { scheme_type = vi_hunt }
+				# The Things We Do For Love.
+				if = {
+					limit = {
+						scheme_target_character ?= {
+							any_spouse = {
+								any_relation = {
+									type = lover
+									this = scope:owner
+								}
+							}
+						}
+					}
+					scope:owner = {
+						add_achievement_flag_effect = { FLAG = achievement_the_things_we_do_for_love_flag }
+					}
+				}
+				# An Unfortunate Accident.
+				if = {
+					limit = {
+						scheme_target_character = {
+							save_temporary_scope_as = murder_target
+							scope:owner = { is_heir_of = scope:murder_target }
+						}
+					}
+					scope:owner = {
+						add_achievement_flag_effect = { FLAG = achievement_an_unfortunate_accident_flag }
+					}
+				}
+				# Death Did Us Part.
+				if = {
+					limit = {
+						scheme_target_character = {
+							any_spouse = { this = scope:owner }
+						}
+					}
+					scope:owner = {
+						add_achievement_flag_effect = { FLAG = achievement_death_did_us_part_flag }
+					}
+				}
+				# Royal Flush.
+				if = {
+					limit = {
+						exists = scheme_target_character
+						scope:owner = { 
+							is_ai = no 
+							faith = { has_doctrine = tenet_fp3_fedayeen }
+						}
+					}
+					if = {
+						limit = {
+							scope:target = { highest_held_title_tier = tier_empire }
+						}
+						scope:owner = { add_character_flag = fp3_assassinated_tier3 }
+					}
+					else_if = {
+						limit = {
+							scope:target = { highest_held_title_tier = tier_kingdom }
+						}
+						scope:owner = { add_character_flag = fp3_assassinated_tier2 }
+					}
+					else_if = {
+						limit = {
+							scope:target = { is_lowborn  = yes }
+						}
+						scope:owner = { add_character_flag = fp3_assassinated_tier1 }
+					}
+				}
+			}
+			# BP2: If you did a murder based on your imaginary friend, fire the follow-up event
+			if = {
+				limit = { var:imaginary_friend_murder_target ?= scope:scheme.scheme_target_character }
+				# if you have murdered a sufficient amount, we fire a special ending 
+				if = {
+					limit = {
+						has_variable = imaginary_friend_murder_count
+						var:imaginary_friend_murder_count >= 4
+					}
+					trigger_event = {
+						id = bp2_yearly.2025
+						days = 1
+					}
+				}
+				else = {
+					trigger_event = {
+						id = bp2_yearly.2022
+						days = 1
+					}
+				}
+			}
+			# Aaaaand this is quite memorable.
+			create_character_memory = {
+				type = successful_murder
+				participants = {
+					victim = scope:scheme.scheme_target_character
+				}
+			}
+		}
+	}
+}
+
+vi_hunt_success_standard_event_list_on_action = {
+	random_events = {
+		# Old events.
+		300 = vi_hunt.2001
+	}
+}

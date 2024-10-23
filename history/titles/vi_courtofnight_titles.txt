@@ -2,9 +2,7 @@
 	768.10.31 = {
 		holder = vi_esclarmonde
 		government = vi_vampire_government
-		succession_laws = {
-			vi_acclamation_succession_law
-		}
+		# succession_laws = { vi_vampire_elective_succession_law }
 		liege = 0
 	}
 }
@@ -30,6 +28,7 @@ d_vi_cologne = {
 	770.1.1 = {
 		holder = vi_ambrosius
 		government = vi_vampire_government
+		# succession_laws = { vi_vampire_elective_succession_law }
 		liege = k_vi_court_of_night
 	}
 }
@@ -38,7 +37,7 @@ d_nf_vi_cologne = {
 	770.1.1 = {
 		holder = vi_ambrosius
 		government = vi_vampire_government
-		succession_laws = { noble_family_succession_law }
+		# succession_laws = { noble_family_succession_law }
 		liege = k_vi_court_of_night
 	}
 }
@@ -55,7 +54,7 @@ d_nf_vi_normandy = {
 	800.1.1 = {
 		holder = vi_norman
 		government = vi_vampire_government
-		succession_laws = { noble_family_succession_law }
+		# succession_laws = { noble_family_succession_law }
 		liege = k_vi_court_of_night
 	}
 }
@@ -64,6 +63,7 @@ d_vi_lyon = {
 	800.1.1 = {
 		holder = vi_lugh
 		government = vi_vampire_government
+		# succession_laws = { vi_vampire_elective_succession_law }
 		liege = k_vi_court_of_night
 	}
 }
@@ -72,7 +72,7 @@ d_nf_vi_lyon = {
 	800.1.1 = {
 		holder = vi_lugh
 		government = vi_vampire_government
-		succession_laws = { noble_family_succession_law }
+		# succession_laws = { noble_family_succession_law }
 		liege = k_vi_court_of_night
 	}
 }
@@ -81,7 +81,7 @@ d_vi_zurich = {
 	860.1.1 = {
 		holder = vi_symonne
 		government = vi_vampire_government
-		succession_laws = { vi_abbey_theocratic_succession_law female_preference_law }
+		# succession_laws = { vi_abbey_theocratic_succession_law female_preference_law }
 		liege = k_vi_court_of_night
 	}
 }
@@ -90,12 +90,10 @@ d_vi_london = {
 	860.1.1 = {
 		holder = vi_victor
 		government = vi_vampire_government
-		succession_laws = { vi_acclamation_succession_law }
+		# succession_laws = { vi_vampire_elective_succession_law }
 		liege = k_vi_court_of_night
 	}
 }
-
-
 
 
 d_laamp_vi_helsing = { 
@@ -114,7 +112,7 @@ d_laamp_vi_helsing = {
 			destroy_landless_title_no_dlc_effect = { DATE = 867.1.1 }
 		}
 	}
-	1183.9.1 = {
+	1000.9.1 = {
 		holder = 0
 	}
 }

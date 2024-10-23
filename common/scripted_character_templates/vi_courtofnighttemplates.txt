@@ -2,7 +2,6 @@
 	age = 23 
 	dna = vi_esclarmonde_dna
 	gender = female
-	faith = faith:catholicism
 	culture = culture:french
 
 	dynasty_house = house_vi_Montmartre
@@ -32,7 +31,6 @@
 vi_roland_character_template = {
 	age = 29
 	dynasty_house = house_vi_Montmartre
-	faith = faith:catholicism
 	culture = culture:french
 
 	diplomacy = 7
@@ -61,7 +59,6 @@ vi_roland_character_template = {
 vi_olivier_character_template = {
 	age = 28
 	dynasty_house = house_vi_Montmartre
-	faith = faith:catholicism
 	culture = culture:french
 
 	diplomacy = 8

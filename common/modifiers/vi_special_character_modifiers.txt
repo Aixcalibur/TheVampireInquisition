@@ -1,0 +1,4 @@
+﻿vi_bida_modifier = {
+	icon = magic_positive
+	monthly_income = 5
+}

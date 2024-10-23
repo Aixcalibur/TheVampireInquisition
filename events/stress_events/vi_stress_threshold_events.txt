@@ -97,9 +97,13 @@ vi_stress_threshold.1001 = {
 
 	immediate = {
 		root = { save_scope_as = stress_character } # For stress widget
+
+		scope:stress_character = {
+			save_scope_as = vi_vampire
+		}
 		
 
-		stress_character.location = {
+		scope:stress_character.location = {
 			save_scope_as = stress_location
 		}
 
@@ -144,7 +148,7 @@ vi_stress_threshold.1001 = {
 
 		if = {
 			limit = {
-				NOT = { exists = scope:victim_1 }
+				NOT = { exists = scope:victim_2 }
 			}
 			#Create peasant to stuff in pool
 			create_character = {
@@ -171,7 +175,7 @@ vi_stress_threshold.1001 = {
 
 		if = {
 			limit = {
-				NOT = { exists = scope:victim_1 }
+				NOT = { exists = scope:victim_3 }
 			}
 			#Create peasant to stuff in pool
 			create_character = {
@@ -203,15 +207,13 @@ vi_stress_threshold.1001 = {
 		# }
 		ai_chance = {
 			base = 1
-			
 		}
 
-		scope:victim_1 = {
-			death = {
-				killer = scope:stress_character
-				death_reason = death_murder
-			}
+		scope:victim_2 = {
+			save_scope_as = vi_victim
 		}
+
+		vi_vampire_drain_kill_effect = yes
 
 		add_stress = medium_stress_impact_loss
 
@@ -226,11 +228,10 @@ vi_stress_threshold.1001 = {
 		name = vi_stress_threshold.1001.b
 
 		scope:victim_2 = {
-			death = {
-				killer = scope:stress_character
-				death_reason = death_murder
-			}
+			save_scope_as = vi_victim
 		}
+
+		vi_vampire_drain_kill_effect = yes
 
 		add_stress = medium_stress_impact_loss
 	}
@@ -239,11 +240,10 @@ vi_stress_threshold.1001 = {
 		name = vi_stress_threshold.1001.c
 
 		scope:victim_3 = {
-			death = {
-				killer = scope:stress_character
-				death_reason = death_murder
-			}
+			save_scope_as = vi_victim
 		}
+
+		vi_vampire_drain_kill_effect = yes
 
 		add_stress = medium_stress_impact_loss
 	}

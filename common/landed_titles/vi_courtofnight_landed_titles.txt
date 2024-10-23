@@ -4,6 +4,11 @@
 	
 # }
 
+@correct_culture_primary_score = 100
+@better_than_the_alternatives_score = 50
+@always_primary_score = 1000
+@never_primary_score = -1000
+
 k_vi_court_of_night = {
 	color = { 200 0 0 }
 	definite_form = yes

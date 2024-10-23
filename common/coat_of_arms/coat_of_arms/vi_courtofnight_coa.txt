@@ -1,0 +1,471 @@
+﻿d_vi_paris = c_ile_de_france
+
+d_vi_cologne = c_cologne
+house_vi_Cologne = c_cologne
+
+d_vi_venezia = c_venezia
+d_vi_prague = c_praha
+d_vi_normandy = c_rouen
+d_vi_rouen = c_rouen
+d_vi_london = b_london
+
+k_vi_court_of_night = {
+	#custom=yes
+	pattern="pattern__solid_designer.dds"
+	color1=black
+	color2=red
+	color3=red
+	colored_emblem={
+		color1=red
+		color3=black
+		texture="ce_shield_01.dds"
+		instance={
+			scale={ 0.480000 0.480000 }
+			depth=6.010000
+		}
+
+	}
+
+	colored_emblem={
+		color1=white
+		texture="ce_cross_couped.dds"
+		instance={
+			position={ 0.500000 0.130000 }
+			scale={ 0.240000 0.240000 }
+			depth=4.010000
+		}
+
+	}
+
+	colored_emblem={
+		color1=black
+		color2=red
+		color3=white
+		texture="ce_wyvern_rising.dds"
+		instance={
+			position={ 0.500000 0.495000 }
+			scale={ 0.460000 0.460000 }
+		}
+
+	}
+
+	colored_emblem={
+		color1=red
+		texture="ce_bendlet.dds"
+		instance={
+			scale={ -1.000000 1.000000 }
+			depth=7.010000
+		}
+
+		instance={
+			depth=8.010000
+		}
+
+	}
+
+	colored_emblem={
+		color1=white
+		texture="ce_star_ishtar.dds"
+		instance={
+			position={ 0.190000 0.490000 }
+			scale={ 0.240000 0.240000 }
+			depth=3.010000
+		}
+
+	}
+
+	colored_emblem={
+		color1=white
+		color2=red
+		color3=black
+		texture="ce_shield_01.dds"
+		instance={
+			scale={ 0.450000 0.450000 }
+			depth=5.010000
+		}
+
+	}
+
+	colored_emblem={
+		color1=white
+		texture="ce_fleur.dds"
+		instance={
+			position={ 0.500000 0.870000 }
+			scale={ 0.220000 0.220000 }
+			depth=1.010000
+		}
+
+	}
+
+	colored_emblem={
+		color1=white
+		texture="ce_crescent_mask_02.dds"
+		instance={
+			position={ 0.810000 0.490000 }
+			scale={ 0.230000 0.230000 }
+			depth=2.010000
+		}
+
+	}
+
+}
+
+house_vi_Montmartre = {
+	#custom=yes
+	pattern="pattern_tricolor_horizontal_01.dds"
+	color1=red
+	color2=white
+	color3=blue
+	colored_emblem={
+		color1=white
+		texture="ce_mermaid.dds"
+		instance={
+			position={ 0.500000 0.460000 }
+			scale={ 0.620000 0.620000 }
+		}
+
+	}
+
+	colored_emblem={
+		color1=blue
+		color2=red
+		texture="ce_waves_02.dds"
+		instance={
+			depth=4.010000
+		}
+
+	}
+
+	colored_emblem={
+		color1=red
+		color2=yellow
+		texture="ce_border_nebuly.dds"
+		instance={
+			depth=1.010000
+		}
+
+	}
+
+	colored_emblem={
+		color1=white
+		texture="ce_ordinary_pale_5.dds"
+		instance={
+			position={ 0.500000 0.490000 }
+			depth=3.010000
+		}
+
+	}
+
+	colored_emblem={
+		color1=white
+		texture="ce_ordinary_chevron_5.dds"
+		instance={
+			position={ 0.500000 0.470000 }
+			scale={ 1.000000 -0.720000 }
+			depth=2.010000
+		}
+
+	}
+
+}
+
+d_nf_vi_montmartre = {
+	# custom=yes
+	pattern="pattern__solid_designer.dds"
+	color1=red
+	color2=yellow
+	color3=red
+	colored_emblem={
+		color1=white
+		texture="ce_mermaid.dds"
+		instance={
+			scale={ 0.860000 0.860000 }
+		}
+
+	}
+
+	colored_emblem={
+		color1=blue
+		color2=red
+		texture="ce_waves_02.dds"
+		instance={
+			position={ 0.500000 0.540000 }
+			depth=1.010000
+		}
+
+	}
+
+}
+
+vi_dynasty_Aphrodisian = {
+	#custom=yes
+	pattern="pattern__solid_designer.dds"
+	color1=purple
+	color2=white
+	color3=blue
+	
+
+	colored_emblem={
+		color1=yellow
+		texture="ce_clam.dds"
+		instance={
+			position={ 1.000000 1.000000 }
+			scale={ 0.240000 -0.240000 }
+			depth=1.010000
+		}
+
+		instance={
+			position={ 0.800000 1.000000 }
+			scale={ 0.240000 -0.240000 }
+			depth=2.010000
+		}
+
+		instance={
+			position={ 0.600000 1.000000 }
+			scale={ 0.240000 -0.240000 }
+			depth=3.010000
+		}
+
+		instance={
+			position={ 0.400000 1.000000 }
+			scale={ 0.240000 -0.240000 }
+			depth=4.010000
+		}
+
+		instance={
+			position={ 0.200000 1.000000 }
+			scale={ 0.240000 -0.240000 }
+			depth=5.010000
+		}
+
+		instance={
+			position={ 0.000000 1.000000 }
+			scale={ 0.240000 -0.240000 }
+			depth=6.010000
+		}
+
+		instance={
+			position={ 0.900000 0.800000 }
+			scale={ 0.240000 -0.240000 }
+			depth=7.010000
+		}
+
+		instance={
+			position={ 0.700000 0.800000 }
+			scale={ 0.240000 -0.240000 }
+			depth=8.010000
+		}
+
+		instance={
+			position={ 0.500000 0.800000 }
+			scale={ 0.240000 -0.240000 }
+			depth=9.010000
+		}
+
+		instance={
+			position={ 0.300000 0.800000 }
+			scale={ 0.240000 -0.240000 }
+			depth=10.010000
+		}
+
+		instance={
+			position={ 0.100000 0.800000 }
+			scale={ 0.240000 -0.240000 }
+			depth=11.010000
+		}
+
+		instance={
+			position={ 1.000000 0.600000 }
+			scale={ 0.240000 -0.240000 }
+			depth=12.010000
+		}
+
+		instance={
+			position={ 0.800000 0.600000 }
+			scale={ 0.240000 -0.240000 }
+			depth=13.010000
+		}
+
+		instance={
+			position={ 0.600000 0.600000 }
+			scale={ 0.240000 -0.240000 }
+			depth=14.010000
+		}
+
+		instance={
+			position={ 0.400000 0.600000 }
+			scale={ 0.240000 -0.240000 }
+			depth=15.010000
+		}
+
+		instance={
+			position={ 0.200000 0.600000 }
+			scale={ 0.240000 -0.240000 }
+			depth=16.010000
+		}
+
+		instance={
+			position={ 0.000000 0.600000 }
+			scale={ 0.240000 -0.240000 }
+			depth=17.010000
+		}
+
+		instance={
+			position={ 0.900000 0.400000 }
+			scale={ 0.240000 -0.240000 }
+			depth=18.010000
+		}
+
+		instance={
+			position={ 0.700000 0.400000 }
+			scale={ 0.240000 -0.240000 }
+			depth=19.010000
+		}
+
+		instance={
+			position={ 0.500000 0.400000 }
+			scale={ 0.240000 -0.240000 }
+			depth=20.010000
+		}
+
+		instance={
+			position={ 0.300000 0.400000 }
+			scale={ 0.240000 -0.240000 }
+			depth=21.010000
+		}
+
+		instance={
+			position={ 0.100000 0.400000 }
+			scale={ 0.240000 -0.240000 }
+			depth=22.010000
+		}
+
+		instance={
+			position={ 1.000000 0.200000 }
+			scale={ 0.240000 -0.240000 }
+			depth=23.010000
+		}
+
+		instance={
+			position={ 0.800000 0.200000 }
+			scale={ 0.240000 -0.240000 }
+			depth=24.010000
+		}
+
+		instance={
+			position={ 0.600000 0.200000 }
+			scale={ 0.240000 -0.240000 }
+			depth=25.010000
+		}
+
+		instance={
+			position={ 0.400000 0.200000 }
+			scale={ 0.240000 -0.240000 }
+			depth=26.010000
+		}
+
+		instance={
+			position={ 0.200000 0.200000 }
+			scale={ 0.240000 -0.240000 }
+			depth=27.010000
+		}
+
+		instance={
+			position={ 0.000000 0.200000 }
+			scale={ 0.240000 -0.240000 }
+			depth=28.010000
+		}
+
+		instance={
+			position={ 0.900000 0.000000 }
+			scale={ 0.240000 -0.240000 }
+			depth=29.010000
+		}
+
+		instance={
+			position={ 0.700000 0.000000 }
+			scale={ 0.240000 -0.240000 }
+			depth=30.010000
+		}
+
+		instance={
+			position={ 0.500000 0.000000 }
+			scale={ 0.240000 -0.240000 }
+			depth=31.010000
+		}
+
+		instance={
+			position={ 0.300000 0.000000 }
+			scale={ 0.240000 -0.240000 }
+			depth=32.010002
+		}
+
+		instance={
+			position={ 0.100000 0.000000 }
+			scale={ 0.240000 -0.240000 }
+			depth=33.010002
+		}
+
+	}
+
+}
+
+
+vi_montmartre_v1 = {
+	custom=yes
+	pattern="pattern_horizontal_split_02.dds"
+	color1=red
+	color2=blue
+	color3=black
+	colored_emblem={
+		color1=yellow
+		color2=white
+		texture="ce_fleur.dds"
+		instance={
+			position={ 0.500000 0.160000 }
+			scale={ 0.240000 0.240000 }
+			depth=3.010000
+		}
+
+	}
+
+	colored_emblem={
+		color1=white
+		color2=yellow_light
+		color3=yellow
+		texture="ce_mermaid.dds"
+		instance={
+			position={ 0.500000 0.630000 }
+			scale={ 0.710000 0.710000 }
+			depth=1.010000
+		}
+
+	}
+
+	colored_emblem={
+		color1=blue
+		texture="ce_waves_04.dds"
+		instance={
+			position={ 0.500000 0.940000 }
+		}
+
+	}
+
+	colored_emblem={
+		color1=yellow
+		texture="ce_fleur.dds"
+		instance={
+			position={ 0.750000 0.160000 }
+			scale={ 0.240000 0.240000 }
+			depth=2.010000
+		}
+
+		instance={
+			position={ 0.250000 0.160000 }
+			scale={ 0.240000 0.240000 }
+			depth=4.010000
+		}
+
+	}
+
+}

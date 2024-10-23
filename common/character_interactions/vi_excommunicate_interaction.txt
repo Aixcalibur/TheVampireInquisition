@@ -1,0 +1,204 @@
+﻿
+vi_excommunicate_interaction = {
+	category = interaction_category_hostile
+	common_interaction = yes #suppress error
+	icon = excommunication
+	# desc = excommunicate_interaction_desc
+
+	is_shown = {
+		# scope:actor = scope:actor.faith.religious_head
+		scope:actor = title:k_vi_court_of_night.holder
+
+		NOT = {
+			scope:recipient = {
+				has_trait = vi_excommunicated
+			}
+		}
+
+		NOT = { #Don't do this to yourself
+			scope:recipient = scope:actor 
+		}
+	}
+
+	is_valid_showing_failures_only = {
+		scope:recipient = { NOT = { has_strong_hook = scope:actor } }
+		custom_tooltip = {
+			text = cannot_take_overt_hostile_actions_against_diarch.tt
+			NOT = { scope:recipient ?= scope:actor.diarch }
+		}
+	}
+
+	auto_accept = yes
+	force_notification = yes
+	notification_text = religious_interaction.1021
+	#answer_accept_key = religious_interaction.1000.strong_negative
+
+	on_accept = {
+		scope:actor = {
+			add_piety = major_piety_loss
+			add_prestige = major_prestige_loss
+			# hidden_effect = {
+			# 	send_interface_toast = {	
+			# 		type = event_toast_effect_neutral
+			# 		title = excommunicate_interaction_desc.tt
+			# 		left_icon = scope:recipient
+			# 		scope:recipient = {
+			# 			show_as_tooltip = {
+			# 				add_trait = vi_excommunicated
+			# 				set_relation_rival = scope:actor
+			# 			}
+			# 		}
+			# 	}
+			# }
+		}
+
+		scope:recipient = {
+			add_trait = vi_excommunicated
+			if = {
+				limit = {
+					NOR = {
+						has_relation_rival = scope:actor
+						has_relation_nemesis = scope:actor
+					}
+				}
+				set_relation_rival = scope:actor
+			}
+		}
+
+		# If we're a clan this interaction affects unity
+		add_clan_unity_interaction_effect = {
+			CHARACTER = scope:actor
+			TARGET = scope:recipient
+			VALUE = medium_unity_loss
+			DESC = clan_unity_excommunication.desc
+			REVERSE_NON_HOUSE_TARGET = no
+		}
+	}
+	
+	# AI will do
+	
+	ai_potential = {
+		is_adult = yes
+		piety >= major_piety_value
+		prestige >= major_prestige_value
+	}
+	
+	ai_target_quick_trigger = {
+		adult = yes
+	}
+
+	ai_targets = {
+		ai_recipients = scripted_relations
+		ai_recipients = primary_war_enemies
+	}
+	
+	ai_frequency = 36
+
+	ai_will_do = {
+		base = 50
+
+		ai_value_modifier = { # +50 to -50
+			who = scope:actor
+			ai_vengefulness = 0.5
+		}
+		
+		modifier = {
+			factor = 0
+			scope:recipient = {
+				NOR = {
+					has_relation_rival = scope:actor
+					has_relation_nemesis = scope:actor
+					is_at_war_with = scope:actor
+				}
+			}
+		}
+	}
+}
+
+vi_lift_excommunication_interaction = {
+	category = interaction_category_religion
+	icon = excommunication
+
+	common_interaction = yes
+
+	desc = lift_excommunication_interaction_desc
+
+	is_shown = {
+		scope:actor = title:k_vi_court_of_night.holder
+		scope:recipient = {
+			has_trait = vi_excommunicated
+		}
+	}
+
+	is_valid_showing_failures_only = {
+		scope:recipient = { is_busy_in_events_localised = yes }
+		scope:actor = {
+			NOT = {
+				is_at_war_with = scope:recipient
+			}
+		}
+	}
+
+	auto_accept = yes
+	force_notification = yes
+	notification_text = religious_interaction.1024
+	#answer_accept_key = religious_interaction.1024.positive
+
+	on_accept = {
+		# lift_character_excommunication_effect = {
+		# 	TARGET_CHARACTER = scope:recipient
+		# 	REQUESTING_CHARACTER = scope:actor
+		# }
+
+		scope:recipient = {
+			remove_trait = vi_excommunicated
+		}
+
+		# If we're a clan this interaction affects unity
+		add_clan_unity_interaction_effect = {
+			CHARACTER = scope:actor
+			TARGET = scope:recipient
+			VALUE = medium_unity_gain
+			DESC = clan_unity_excommunication_lifted
+			REVERSE_NON_HOUSE_TARGET = no
+		}
+	}
+	
+	# AI will do
+	
+	ai_potential = {
+		is_adult = yes
+		piety >= major_piety_value
+	}
+	
+	ai_target_quick_trigger = {
+		adult = yes
+	}
+
+	ai_targets = {
+		ai_recipients = scripted_relations
+		ai_recipients = war_allies
+	}
+	
+	ai_frequency = 72
+
+	ai_will_do = {
+		base = 10
+
+		ai_value_modifier = { # +50 to -50
+			who = scope:actor
+			ai_compassion = 0.5
+		}
+		
+		modifier = {
+			factor = 0
+			scope:recipient = {
+				NOR = {
+					has_relation_friend = scope:actor
+					has_relation_best_friend = scope:actor
+					is_allied_to = scope:actor
+				}
+			}
+		}
+	}
+}

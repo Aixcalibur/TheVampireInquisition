@@ -1,7 +1,9 @@
 ﻿vi_drained_modifier = {
 	icon = health_negative
+	life_expectancy = -10
 	health = -0.25
-	prowess = -2
+	prowess = -3
+	stress_loss_mult = -0.1
 	stacking = yes
 }
 
@@ -10,6 +12,7 @@ vi_sated_modifier = {
 	health = 0.25
 	prowess = 2
 	stress_loss_mult = -0.25
+	# stress_gain_mult = -0.05
 	stacking = yes
 }
 
@@ -18,6 +21,21 @@ vi_vampire_strain_modifier = {
 	stress_gain_mult = 0.25
 	health = -0.25
 	prowess = -2
+	stacking = yes
+}
+
+vi_vampire_madness_modifier = {
+	icon = stress_negative
+	diplomacy = -1
+	stress_gain_mult = 0.1
+	prowess = 1
+	stacking = yes
+}
+
+vi_vampire_tiredness_modifier = {
+	icon = stress_negative
+	stress_loss_mult = -0.1
+	stress_gain_mult = 0.05
 	stacking = yes
 }
 
@@ -41,14 +59,17 @@ vi_unbreakable_calm_modifier = {
 
 vi_ancient_regime_modifier = {
 	icon = county_modifier_development_positive
-	domicile_build_speed = -0.5
-	domicile_build_gold_cost = -0.15
+	domicile_build_speed = -0.9
+	domicile_build_gold_cost = -0.25
 }
+
+
 
 # County Modifiers from Vampire Policy
 vi_county_discreet_modifier = {
 	icon = family_negative
 	tax_mult = -0.1
+	monthly_county_control_growth_factor = -0.25
 }
 
 vi_county_sapped_modifier = {
@@ -61,20 +82,22 @@ vi_county_drained_modifier = {
 	build_speed = 0.5
 	tax_mult = -0.2
 	development_growth_factor = -0.5
+	monthly_county_control_growth_factor = -0.25
 }
 
 vi_county_underworld_investment_modifier = {
 	icon = county_modifier_development_positive
 	build_gold_cost = -0.25
-	build_speed = -0.5
-	development_growth_factor = 0.5
+	build_speed = -0.25
+	development_growth = 0.2
+	development_growth_factor = 0.2
 }
 
 # Personal Modifiers from Vampire Policy
 vi_sap_county_wealth_modifier = {
 	icon = economy_positive
 	legitimacy_gain_mult = -0.05
-	monthly_income = 0.5
-	domicile_monthly_gold_mult = 0.01
+	monthly_income = 0.3
+	domicile_monthly_gold_mult = 0.05
 	stacking = yes
 }

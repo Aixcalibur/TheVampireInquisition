@@ -1,27 +1,40 @@
 ﻿vi_lord = {
 	type = character
 	gender = male
-	special = holder
-	# tier = kingdom
-	priority = 301
-	governments = { vi_vampire_government }
+	special = domicile
+	domicile_type = vi_lair
+	priority = 29
 
-	flavourization_rules = { 
-		top_liege = no
-		only_holder = yes
+	flavourization_rules = {
+		top_liege = no 
+		# top_liege = yes
+		spouse_takes_title = yes
 	}
 }
 
 vi_lady = {
 	type = character
 	gender = female
-	special = holder
-	# tier = kingdom
-	priority = 301
-	governments = { vi_vampire_government }
+	special = domicile
+	domicile_type = vi_lair
+	priority = 29
 
+	flavourization_rules = {
+		top_liege = no
+		# top_liege = yes
+		spouse_takes_title = yes
+	}
+}
+
+vi_serpent_bida = {
+	type = character
+	# gender = female
+	special = holder
+	tier = kingdom
+	priority = 400
+	
+	titles = { k_vi_bida }
 	flavourization_rules = { 
 		top_liege = no
-		only_holder = yes
 	}
 }
