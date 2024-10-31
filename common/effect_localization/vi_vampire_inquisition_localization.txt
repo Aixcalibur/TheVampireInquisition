@@ -1,0 +1,8 @@
+﻿vi_begins_inquisition = {
+	global = VI_STARTS_INQUISITION
+}
+
+vi_inquisition_capture_realm_effect = {
+	global = VI_INQUISITION_REALM_CAPTURE
+}
+

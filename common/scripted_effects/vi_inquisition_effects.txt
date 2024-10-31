@@ -1,0 +1,188 @@
+﻿vi_inquisition_try_imprison_effect = {
+	#$TARGET$ = { save_temporary_scope_as = new_target }
+	save_temporary_scope_as = new_target
+	$IMPRISONER$ = { save_temporary_scope_as = new_imprisoner }
+
+	random_list = {
+		50 = {
+			vi_inquisition_imprison_effect = {
+				IMPRISONER = scope:new_imprisoner
+			}
+
+			modifier = {
+				has_trait = vi_exposed_vampire
+				add = 50
+			}
+
+			modifier = {
+				scope:new_imprisoner = {
+					has_trait = zealous
+				}
+				add = 25
+			}
+
+			modifier = {
+				scope:new_imprisoner = {
+					has_trait = overseer
+				}
+				add = 50
+			}
+
+			modifier = {
+				scope:new_imprisoner = {
+					has_trait = torturer
+				}
+				add = 50
+			}
+
+			modifier = {
+				add = {
+					value = 0
+					add = scope:new_imprisoner.intrigue
+					multiply = 3
+					add = scope:new_imprisoner.martial
+				}
+			}
+		}
+
+		50 = {
+			modifier = {
+				has_trait = vi_exposed_vampire
+				add = -100
+			}
+
+			modifier = {
+				add = 100
+				vi_is_vampire_trigger = no
+			}
+
+			modifier = {
+				add = 50
+				has_trait = vi_vampire_2
+			}
+
+			modifier = {
+				add = 25
+				has_perk = vi_celerity_perk
+			}
+
+			modifier = {
+				add = 25
+				has_perk = vi_blink_perk
+			}
+
+			modifier = {
+				add = 50
+				has_perk = vi_shadowwalk_perk
+			}
+
+			modifier = {
+				add = 25
+				has_perk = vi_auspex_perk
+			}
+
+			modifier = {
+				add = 100
+				has_trait = vi_allseeing
+			}
+
+			modifier = {
+				add = {
+					value = 0
+					add = scope:new_target.intrigue
+					multiply = 2
+					add = scope:new_target.prowess
+				}
+			}
+
+		}
+	}
+}
+
+vi_inquisition_imprison_effect = {
+	# $TARGET$ = { save_temporary_scope_as = new_target }
+	save_temporary_scope_as = new_target
+	$IMPRISONER$ = { save_temporary_scope_as = new_imprisoner }
+
+	if = {
+		limit = {
+			vi_is_vampire_trigger = yes
+		}
+		add_character_modifier = {
+			modifier = vi_silver_chains_modifier
+			years = 3
+		}
+		# add_trait = vi_exposed_vampire
+	}
+
+	scope:new_imprisoner = {
+		imprison = {
+			target = scope:new_target
+			type = dungeon
+		}
+	}
+}
+
+vi_inquisition_spawn_vampire_army_effect = {
+	save_scope_as = vampire_leader
+	spawn_army = {
+		men_at_arms = {
+			type = vi_local_vampires
+			stacks = 6
+		}
+		levies = 600
+		inheritable = yes
+		location = scope:vampire_leader.capital_province
+		war = scope:war
+		war_keep_on_attacker_victory = no
+		save_scope_as = new_army
+		name = vi_inquisition_vampire_army
+	}
+
+	every_vassal = {
+		limit = {
+			opinion = {
+				target = scope:vampire_leader
+				value > 0
+			}
+			vi_is_vampire_trigger = yes
+		}
+
+		capital_province = {
+			save_scope_as = spawn_location
+		}
+
+		scope:vampire_leader = {
+			spawn_army = {
+				men_at_arms = {
+					type = vi_local_vampires
+					stacks = 2
+				}
+				levies = 300
+				inheritable = yes
+				location = scope:spawn_location
+				war = scope:war
+				war_keep_on_attacker_victory = no
+				save_scope_as = new_army
+				name = vi_inquisition_vampire_army
+			}
+		}
+	}
+}
+
+vi_inquisition_spawn_inquisition_army_effect = {
+	save_scope_as = inquisition_leader
+	spawn_army = {
+		men_at_arms = {
+			type = teutonic_knights
+			stacks = 5
+		}
+		levies = 500
+		inheritable = no
+		location = scope:inquisition_leader.capital_province
+		war = scope:war
+		war_keep_on_attacker_victory = no
+		save_scope_as = new_army
+		name = vi_inquisition_human_army
+	}
+}

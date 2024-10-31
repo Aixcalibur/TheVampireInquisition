@@ -9,6 +9,14 @@
  vi_unnatural_youth_modifier:0 "Unnatural Youth"
  vi_unnatural_youth_modifier_desc:0 "This person seems to not show any signs of aging."
 
+ vi_skittish_modifier:0 "Skittish"
+ vi_galvanized_modifier:0 "Galvanized"
+
+ vi_sirenscall_modifier:0 "Call of the Siren"
+ vi_instilledfear_modifier:0 "Instilled Fear"
+
+ vi_silver_chains_modifier:0 "Silver Chains"
+
  vi_ancient_regime_modifier:0 "Ancien Régime"
 
  vi_county_discreet_modifier:0 "Underworld Presence"

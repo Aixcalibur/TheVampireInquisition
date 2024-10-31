@@ -1,0 +1,38 @@
+﻿on_16th_birthday = {
+	on_actions = {
+		vi_on_16th_birthday
+	}
+}
+
+vi_on_16th_birthday = {
+
+	random_on_action = {
+		1000 = 0
+		10 = vi_become_delicious_on_action
+	}
+}
+
+vi_become_delicious_on_action = {
+	trigger = {
+		vi_is_vampire_trigger = no
+		NOR = {
+			has_trait = beauty_bad_1
+			has_trait = beauty_bad_2
+			has_trait = beauty_bad_3
+		}
+	}
+
+	weight_multiplier = {
+		base = 1
+		modifier = {
+			factor = 0
+			
+		}
+	}
+
+	effect = {
+		add_character_modifier = {
+			modifier = vi_delicious_modifier
+		}
+	}
+}

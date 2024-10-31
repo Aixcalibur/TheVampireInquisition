@@ -1,6 +1,9 @@
 ﻿l_english:
  rf_vi_vampire:0 "Vampiric"
 
+ vampirism_religious_head_title:0 "Adjudicator"
+ vampirism_religious_head_title_name:0 "High Council"
+
  vi_vampire_religion:0 "Vampirism"
  vi_vampire_religion_adj:0 "Vampiric"
  vi_vampire_religion_adherent:0 "Vampire"

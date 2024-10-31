@@ -1,4 +1,723 @@
-﻿
+﻿vi_procure_estate_interaction = {
+	category = interaction_category_laamp
+	icon = powerful_family_shield
+
+	desc = vi_procure_estate_interaction_desc
+
+	# cooldown_against_recipient = { years = 10 }
+
+	notification_text = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					scope:hook = yes
+				}
+				desc = PROCURE_ESTATE_HOOK
+			}
+			triggered_desc = {
+				trigger = {
+					scope:gold_option = yes
+				}
+				desc = PROCURE_ESTATE_GOLD
+			}
+			triggered_desc = {
+				trigger = {
+					scope:piety_option = yes
+				}
+				desc = PROCURE_ESTATE_PIETY
+			}
+			desc = PROCURE_ESTATE_PRESTIGE
+		}
+		desc = PROCURE_ESTATE_PROPOSAL_OUTRO
+	}
+
+	popup_on_receive = yes
+	pause_on_receive = yes
+
+	interface_priority = 100
+	ai_min_reply_days = 4
+	ai_max_reply_days = 9
+
+	is_shown = {
+		has_ep3_dlc_trigger = yes
+		scope:actor = { government_has_flag = government_is_landless_adventurer }
+		scope:actor = {
+			vi_is_vampire_trigger = yes
+		}
+		scope:recipient = {
+			is_landed = no
+			vi_is_vampire_trigger = yes
+			has_government = vi_vampire_government
+		}
+		NOT = { scope:recipient = scope:actor }
+	}
+
+	is_valid_showing_failures_only = {
+		scope:actor = {
+			is_independent_ruler = yes
+			prestige_level >= 2
+			# Only house heads can have Noble Family titles
+			# custom_tooltip = {
+			# 	text = NOT_IS_HOUSE_HEAD
+			# 	house.house_head ?= {
+			# 		OR = {
+			# 			this = scope:actor
+			# 			is_ruler = no
+			# 		}
+			# 	}
+			# }
+		}
+		trigger_if = {
+			limit = {
+				scope:recipient = {
+					highest_held_title_tier < tier_kingdom
+				}
+			}
+			custom_description = {
+				text = procure_estate_low_rank_tt
+				always = no
+			}
+		}
+		trigger_if = { # Not going to give you a title if you're at war
+			limit = {
+				scope:actor = {
+					is_at_war_with = scope:recipient
+				}
+			}
+			custom_description = {
+				text = procure_estate_at_war_tt
+				always = no
+			}
+		}
+
+		trigger_if = { 
+			limit = {
+				scope:actor.domicile.domicile_location.county = {
+					has_county_modifier = vi_county_discreet_modifier
+				}
+			}
+			custom_description = {
+				text = vi_princedom_already_exists
+				always = no
+			}
+		}
+		scope:recipient = {
+			is_busy_in_events_localised = yes
+			NOT = { has_strong_hook = scope:actor }
+		}
+		#Has to be used instead of diplo range checks in laamp to landed interactions
+		vi_ep3_laamp_diplo_range_extended_trigger = {
+			TARGET = scope:recipient
+			LAAMP = scope:actor
+		}
+		# scope:recipient = { is_contact_of = scope:actor }
+
+	}
+
+	auto_accept = {
+		custom_description = {
+			text = "spending_hook"
+			subject = scope:actor
+			object = scope:recipient
+			scope:hook = yes
+		}
+	}
+	should_use_extra_icon = {
+		scope:actor = { has_usable_hook = scope:recipient }
+	}
+	extra_icon = "gfx/interface/icons/character_interactions/hook_icon.dds"
+
+	send_option = {
+		is_valid = {
+			scope:actor = {
+				has_usable_hook = scope:recipient
+			}
+		}
+		flag = hook
+		localization = SCHEME_HOOK
+	}
+	send_option = {
+		flag = prestige_option
+		localization = laamp_to_ladmin_prestige_option_desc
+	}
+	send_option = {
+		flag = gold_option
+		localization = laamp_to_ladmin_gold_option_desc
+	}
+	send_option = {
+		flag = piety_option
+		localization = laamp_to_ladmin_piety_option_desc
+	}
+
+	cost = {
+		gold = {
+			add = {
+				value = procure_estate_interaction_cost_base_gold
+				multiply = 0.6
+				desc = BASE
+			}
+			if = {
+				limit = { scope:gold_option = yes }
+				add = {
+					value = procure_estate_interaction_cost_base_gold
+					desc = laamp_to_ladmin_gold_option_desc
+				}
+			}
+		}
+		prestige = {
+			if = {
+				limit = {
+					NOR = {
+						scope:gold_option = yes
+						scope:piety_option = yes
+						scope:hook = yes
+					}
+				}
+				# Base cost
+				add = {
+					value = procure_estate_interaction_cost_base_prestige
+					multiply = 0.6
+					desc = BASE
+				}
+				# Gender modifiers
+				if = {
+					limit = {
+						scope:recipient ?= {
+							top_liege = { has_realm_law = male_preference_law }
+						}
+						scope:actor = {
+							is_female = yes
+						}
+					}
+					add = { # Increase the base cost
+						value = {
+							value = procure_estate_interaction_cost_base_prestige
+							multiply = 0.25
+						}
+						desc = male_preference_law
+					}
+				}
+				if = {
+					limit = {
+						scope:recipient ?= {
+							top_liege = { has_realm_law = female_preference_law }
+						}
+						scope:actor = {
+							is_male = yes
+						}
+					}
+					add = { # Increase the base cost
+						value = {
+							value = procure_estate_interaction_cost_base_prestige
+							multiply = 0.25
+						}
+						desc = female_preference_law
+					}
+				}
+			}
+		}
+		piety = {
+			if = {
+				limit = {
+					scope:piety_option = yes
+				}
+
+				# Base cost
+				add = {
+					value = procure_estate_interaction_cost_base_piety
+					desc = BASE
+				}
+
+				# Gender modifiers
+				if = {
+					limit = {
+						scope:recipient ?= {
+							top_liege = { has_realm_law = male_preference_law }
+						}
+						scope:actor = {
+							is_female = yes
+						}
+					}
+					add = { # Increase the base cost
+						value = {
+							value = procure_estate_interaction_cost_base_piety
+							multiply = 0.25
+						}
+						desc = male_preference_law
+					}
+				}
+				if = {
+					limit = {
+						scope:recipient ?= {
+							top_liege = { has_realm_law = female_preference_law }
+						}
+						scope:actor = {
+							is_male = yes
+						}
+					}
+					add = { # Increase the base cost
+						value = {
+							value = procure_estate_interaction_cost_base_piety
+							multiply = 0.25
+						}
+						desc = female_preference_law
+					}
+				}
+				#Brigands need to pay more to be legitimized
+				if = {
+					limit = {
+						scope:actor = {
+							has_realm_law = camp_purpose_brigands
+						}
+					}
+					add = { # Increase the base cost
+						value = {
+							value = procure_estate_interaction_cost_base_piety
+						}
+						desc = camp_purpose_brigands
+					}
+				}
+			}
+		}
+	}
+
+	is_highlighted = {
+		always = yes
+	}
+
+	on_accept = {
+		scope:actor = {
+			domicile.domicile_location.county = {
+				save_scope_as = princedom_county
+			}
+			save_scope_as = adventurer
+			vi_procure_estate_interaction_effect = yes
+			create_character_memory = {
+				type = procured_estate_memory
+				participants = { benefactor = scope:recipient }
+			}
+			if = {
+				limit = {
+					is_ai = no
+				}
+				add_achievement_global_variable_effect = {
+					VARIABLE = started_from_the_bottom_now_were_ere_procure
+					VALUE = yes
+				}
+			}
+
+			custom_tooltip = vi_you_gain_princedom
+			hidden_effect = {
+				vi_create_vassal_princedom_effect = {
+					VI_LIEGE = scope:recipient.top_liege
+					VI_COUNTY = scope:princedom_county
+				}
+				
+			}
+		}
+		
+		scope:actor = { trigger_event = ep3_interactions_events.0610 }
+	}
+
+	on_decline = {
+		scope:actor = {
+			save_scope_as = adventurer
+			trigger_event = ep3_interactions_events.0611
+		}
+	}
+
+	ai_targets = {
+		ai_recipients = neighboring_rulers
+		ai_recipients = contacts
+	}
+	ai_frequency = 120
+
+	ai_accept = {
+		base = 0 # Try to make it 0 for most interactions
+
+		modifier = {
+			add = -50
+			scope:actor = {
+				NOR = {
+					has_trait = vi_vampire_2
+					has_trait = vi_vampire_3
+					has_trait = vi_vampire_4
+					has_trait = vi_vampire_5
+				}
+			}
+			desc = VI_FLEDGLING_REASON
+		}
+
+		opinion_modifier = { # Opinion Factor
+			who = scope:recipient
+			opinion_target = scope:actor
+			multiplier = 0.5
+			desc = AI_OPINION_REASON
+		}
+		#DIFFERENT FAITH FROM STATE FAITH (if recipient is state faith)
+		modifier = {
+			add = -20
+			desc = PROCURE_ESTATE_STATE_FAITH_REASON
+			scope:actor.faith = {
+				NOT = {
+					this = scope:recipient.top_liege.primary_title.state_faith
+				}
+			}
+			scope:recipient.faith = {
+				this = scope:recipient.top_liege.primary_title.state_faith
+			}
+			NOT = {
+				scope:piety_option = yes
+			}
+		}
+		#Hey you're actually a local in my capital
+		modifier = {
+			add = 10
+			desc = PROCURE_ESTATE_SAME_CULTURE_AS_CAPITAL_REASON
+			scope:recipient.capital_county.culture = {
+				this = scope:actor.culture
+			}
+		}
+		#Your dynasty is worthless
+		modifier = {
+			add = -10
+			scope:actor.dynasty = {
+				dynasty_prestige_level < 2
+			}
+			desc = PROCURE_ESTATE_DYNASTY_PRESTIGE_LEVEL_REASON
+		}
+		#Your dynasty is pretty great actually
+		modifier = {
+			add = 10
+			scope:actor.dynasty = {
+				dynasty_prestige_level >= 4
+				dynasty_prestige_level < 7
+			}
+			desc = PROCURE_ESTATE_DYNASTY_PRESTIGE_LEVEL_REASON
+		}
+		#Your dynasty is pretty great actually
+		modifier = {
+			add = 20
+			scope:actor.dynasty = {
+				dynasty_prestige_level >= 7
+				dynasty_prestige_level < 10
+			}
+			desc = PROCURE_ESTATE_DYNASTY_PRESTIGE_LEVEL_REASON
+		}
+		#Your dynasty is pretty great actually
+		modifier = {
+			add = 30
+			scope:actor.dynasty = { dynasty_prestige_level >= 10 }
+			desc = PROCURE_ESTATE_DYNASTY_PRESTIGE_LEVEL_REASON
+		}
+		#We are not related
+		modifier = {
+			add = -15
+			desc = PROCURE_ESTATE_SHARED_RELATIVES_REASON
+			NOR = {
+				scope:actor.house ?= {
+					any_house_member = {
+						is_close_or_extended_family_of = scope:recipient
+					}
+				}
+				scope:actor = {
+					any_close_or_extended_family_member = {
+						is_close_or_extended_family_of = scope:recipient
+					}
+				}
+				scope:recipient.house ?= {
+					any_house_member = {
+						is_close_or_extended_family_of = scope:actor
+					}
+				}
+				scope:recipient = {
+					any_spouse = {
+						is_close_or_extended_family_of = scope:actor
+					}
+				}
+				scope:actor = {
+					any_spouse = {
+						is_close_or_extended_family_of = scope:recipient
+					}
+				}
+				scope:actor.dynasty = {
+					this = scope:recipient.dynasty
+				}
+			}
+		}
+		#You are criminal scum
+		modifier = {
+			add = -15
+			desc = PROCURE_ESTATE_BRIGANDS_REASON
+			scope:actor = {
+				has_realm_law = camp_purpose_brigands
+			}
+		}
+		#You are an upright legitimist
+		modifier = {
+			add = 25
+			desc = PROCURE_ESTATE_LEGITIMISTS_REASON
+			scope:actor = {
+				has_realm_law = camp_purpose_legitimists
+			}
+		}
+		#You have a criminal background
+		modifier = {
+			add = -10
+			desc = PROCURE_ESTATE_GALLOWSBAIT_REASON
+			scope:actor = {
+				has_trait = gallowsbait
+			}
+		}
+		#You have a criminal background
+		modifier = {
+			add = -5
+			desc = PROCURE_ESTATE_GALLOWSBAIT_REASON
+			scope:actor = {
+				has_trait = gallowsbait
+				NOR = {
+					has_trait_xp = {
+						trait = gallowsbait
+						track = bandit
+						value < 40
+					}
+					has_trait_xp = {
+						trait = gallowsbait
+						track = trickster
+						value < 40
+					}
+					has_trait_xp = {
+						trait = gallowsbait
+						track = thief
+						value < 40
+					}
+					has_trait_xp = {
+						trait = gallowsbait
+						track = poacher
+						value < 40
+					}
+					has_trait_xp = {
+						trait = gallowsbait
+						track = marauder
+						value < 40
+					}
+				}
+			}
+		}
+		modifier = {
+			add = -15
+			desc = PROCURE_ESTATE_GALLOWSBAIT_REASON
+			scope:actor = {
+				has_trait = gallowsbait
+				OR = {
+					has_trait_xp = {
+						trait = gallowsbait
+						track = bandit
+						value >= 40
+					}
+					has_trait_xp = {
+						trait = gallowsbait
+						track = trickster
+						value >= 40
+					}
+					has_trait_xp = {
+						trait = gallowsbait
+						track = thief
+						value >= 40
+					}
+					has_trait_xp = {
+						trait = gallowsbait
+						track = poacher
+						value >= 40
+					}
+					has_trait_xp = {
+						trait = gallowsbait
+						track = marauder
+						value >= 40
+					}
+				}
+				NOR = {
+					has_trait_xp = {
+						trait = gallowsbait
+						track = bandit
+						value < 80
+					}
+					has_trait_xp = {
+						trait = gallowsbait
+						track = trickster
+						value < 80
+					}
+					has_trait_xp = {
+						trait = gallowsbait
+						track = thief
+						value < 80
+					}
+					has_trait_xp = {
+						trait = gallowsbait
+						track = poacher
+						value < 80
+					}
+					has_trait_xp = {
+						trait = gallowsbait
+						track = marauder
+						value < 80
+					}
+				}
+			}
+		}
+		modifier = {
+			add = -30
+			desc = PROCURE_ESTATE_GALLOWSBAIT_REASON
+			scope:actor = {
+				has_trait = gallowsbait
+				OR = {
+					has_trait_xp = {
+						trait = gallowsbait
+						track = bandit
+						value >= 80
+					}
+					has_trait_xp = {
+						trait = gallowsbait
+						track = trickster
+						value >= 80
+					}
+					has_trait_xp = {
+						trait = gallowsbait
+						track = thief
+						value >= 80
+					}
+					has_trait_xp = {
+						trait = gallowsbait
+						track = poacher
+						value >= 80
+					}
+					has_trait_xp = {
+						trait = gallowsbait
+						track = marauder
+						value >= 80
+					}
+				}
+			}
+		}
+		#You have an interesting claim within my realm
+		modifier = {
+			add = 5
+			desc = PROCURE_ESTATE_CLAIMS_REASON
+			scope:actor = {
+				any_claim = {
+					save_temporary_scope_as = laamp_claim_temp
+					scope:recipient.top_liege.primary_title = {
+						is_de_jure_liege_or_above_target = scope:laamp_claim_temp
+					}
+					NOT = {
+						holder ?= scope:recipient
+					}
+				}
+			}
+		}
+		#You are a challenger for the empire and I want you indebted to me
+		modifier = {
+			add = 20
+			desc = PROCURE_ESTATE_IMPERIAL_CLAIMS_REASON
+			scope:actor = {
+				any_claim = {
+					save_temporary_scope_as = laamp_claim_temp
+					this = scope:recipient.top_liege.primary_title
+					NOT = {
+						holder ?= scope:recipient
+					}
+					scope:recipient = {
+						NOR = {
+							has_any_good_relationship_with_character_trigger = { CHARACTER = scope:recipient.top_liege }
+							opinion = {
+								target = scope:recipient.top_liege
+								value >= -20
+							}
+							is_allied_to = scope:recipient.top_liege
+						}
+					}
+				}
+			}
+		}
+		#You have a scary claim on one of my titles!
+		modifier = {
+			add = -50
+			desc = PROCURE_ESTATE_RIVAL_CLAIMANT_REASON
+			scope:actor = {
+				any_claim = {
+					holder ?= scope:recipient
+				}
+			}
+		}
+		#Needs gold
+		modifier = {
+			add = 10
+			scope:recipient = {
+				gold <= minor_gold_value
+			}
+			NOT = {
+				scope:gold_option = yes
+			}
+			desc = PROCURE_ESTATE_NEEDS_GOLD_REASON
+		}
+		#Needs gold and offering gold
+		modifier = {
+			add = 20
+			scope:recipient = {
+				gold <= minor_gold_value
+			}
+			scope:gold_option = yes
+			desc = PROCURE_ESTATE_NEEDS_GOLD_REASON
+		}
+		#Needs piety
+		modifier = {
+			add = 20
+			scope:recipient = {
+				piety_level <= 0
+			}
+			scope:piety_option = yes
+			desc = PROCURE_ESTATE_NEEDS_PIETY_REASON
+		}
+
+		#Needs prestige
+		modifier = {
+			add = 20
+			scope:recipient = {
+				prestige_level <= 0
+			}
+			scope:prestige_option = yes
+			desc = PROCURE_ESTATE_NEEDS_PRESTIGE_REASON
+		}
+	}
+
+	ai_will_do = {
+		base = -25
+		ai_value_modifier = {
+			ai_boldness = -0.5
+			ai_energy = -0.5
+			ai_greed = 0.5
+			ai_rationality = 0.5
+		}
+		modifier = {
+			gold < 100
+			factor = 0
+		}
+		modifier = {
+			gold > 100
+			OR = {
+				prestige >= massive_prestige_value
+				piety >= massive_piety_value
+				gold >= massive_gold_value
+			}
+			add = 50
+		}
+		modifier = {
+			has_hook = scope:recipient
+			add = 200
+		}
+	}
+}
+
 vi_sponsor_princedom_interaction = {
 	category = interaction_category_vassal
 	icon = support_candidacy
@@ -6,6 +725,7 @@ vi_sponsor_princedom_interaction = {
 	desc = invite_to_court_interaction_desc
 	
 	is_shown = {
+		always = no
 		scope:actor = {
 			has_government = vi_vampire_government
 			is_landed = no

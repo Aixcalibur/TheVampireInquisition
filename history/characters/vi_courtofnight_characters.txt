@@ -87,6 +87,7 @@ vi_ambrosius = {
 			vi_make_vampire_effect = yes
 			add_prowess_skill = 15
 			set_immortal_age = 30
+			vi_add_sirensong_effect = yes
 		}
 	}
 
@@ -139,6 +140,7 @@ vi_lucie = {
 				reason = lover_history
 				target = character:vi_ambrosius
 			}
+			vi_add_sirensong_effect = yes
 		}
 		add_spouse = vi_ambrosius
 		
@@ -469,6 +471,7 @@ vi_ysabel = {
 			vi_make_vampire_effect = yes
 			set_immortal_age = 18
 			add_prowess_skill = 9
+			vi_add_sirensong_effect = yes
 		}
 	}
 
@@ -515,6 +518,7 @@ vi_jehanne = {
 			vi_make_vampire_effect = yes
 			set_immortal_age = 18
 			add_prowess_skill = 7
+			vi_add_sirensong_effect = yes
 		}
 	}
 
@@ -530,7 +534,7 @@ vi_jehanne = {
 vi_symonne = {
 	name = "Symonne"
 	female = yes
-	sexuality = bisexual
+	sexuality = homosexual
 	dynasty_house = house_vi_Montmartre
 	faith = vi_nightcourt
 	culture = french
@@ -558,15 +562,22 @@ vi_symonne = {
 	}
 
 	710.7.19 = {
-		employer = vi_esclarmonde
+		# employer = vi_esclarmonde
 		effect = {
 			add_gold = 100
 			add_trait = vi_vampire_3
 			set_mother = character:vi_esclarmonde
 			set_house = character:vi_esclarmonde.house
+			add_character_flag = vi_clergy_flag
 			vi_make_vampire_effect = yes
 			set_immortal_age = 18
 			add_prowess_skill = 5
+		}
+	}
+
+	1000.1.1 = {
+		effect = {
+			vi_add_sirensong_effect = yes
 		}
 	}
 
@@ -615,7 +626,7 @@ vi_roland = {
 			set_relation_best_friend = { reason = friend_generic_history target = character:vi_olivier }
 			vi_make_vampire_effect = yes
 			set_immortal_age = 29
-			add_prowess_skill = 20
+			add_prowess_skill = 18
 		}
 	}
 

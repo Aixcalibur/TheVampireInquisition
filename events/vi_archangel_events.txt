@@ -1,0 +1,83 @@
+﻿namespace = vi_archangel
+
+vi_archangel.0001 = {
+	type = character_event
+	title = vi_archangel.0001.t
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					this = scope:vi_archangel_target
+				}
+				desc = vi_archangel.0001.desc_target
+			}
+			desc = vi_archangel.0001.desc
+		}
+	}
+
+	theme = battle
+
+	left_portrait = {
+		character = scope:vi_archangel_target
+		animation = fear
+	}
+
+	right_portrait = {
+		character = character:vi_michael
+		animation = personality_zealous
+	}
+
+	trigger = {
+		character:vi_michael = {
+			is_alive = yes
+			is_ruler = yes
+			is_imprisoned = no
+			NOT = {
+				has_trait = vi_dormant
+			}
+		}
+	}
+
+	immediate = {
+		show_as_tooltip = {
+			character:vi_michael = {
+				remove_trait_force_tooltip = vi_dormant
+				add_trait_force_tooltip = possessed_1
+			}
+		}
+	}
+
+	option = {
+		name = vi_archangel.0001.a
+		trigger = {
+			this = scope:vi_archangel_target
+		}
+
+		# character:vi_michael = {
+		# 	show_as_tooltip = {
+		# 		start_war = {
+		# 			casus_belli = vi_archangel_war
+		# 			target = scope:vi_archangel_target
+		# 		}
+		# 	}
+		# }
+	}
+
+	option = {
+		name = vi_archangel.0001.b
+		trigger = {
+			NOT = {
+				this = scope:vi_archangel_target
+			}
+		}
+	}
+
+	after = {
+		character:vi_michael = {
+			start_war = {
+				casus_belli = vi_archangel_war
+				target = scope:vi_archangel_target
+			}
+		}
+	}
+}

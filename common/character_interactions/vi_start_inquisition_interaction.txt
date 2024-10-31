@@ -1,0 +1,118 @@
+﻿
+vi_declare_inquisition_interaction = {
+	interface_priority = 90
+	category = interaction_category_admin
+	use_diplomatic_range = no
+	ignores_pending_interaction_block = yes
+	icon = icon_raid_estate
+
+	is_shown = {
+		NOT = { scope:recipient = scope:actor }
+		scope:recipient = {
+			is_ruler = yes
+			is_landed = no
+			OR = {
+				has_trait = vi_exposed_vampire
+				any_secret = {
+					secret_type = secret_vi_vampire
+					is_known_by = scope:actor
+				}
+			}
+			NOT = {
+				has_character_flag = vi_inquisition_target
+			}
+		}
+
+		scope:actor = {
+			is_ruler = yes
+			is_landed = yes
+			#any_sub_realm_county = scope:recipient.capital_county
+		}
+	}
+
+	is_valid_showing_failures_only = {
+		
+		scope:recipient = {
+			has_trait = vi_exposed_vampire
+		}
+
+		scope:actor = {
+			is_ruler = yes
+			is_landed = yes
+			any_sub_realm_county = {
+				this = scope:recipient.capital_county
+			}
+			custom_description = {
+				text = "is_not_bankrupt"
+				gold > 0
+			}
+			NOT = {
+				custom_description = {
+					text = "is_in_an_activity"
+					exists = involved_activity
+				}
+			}
+			trigger_if = {
+				limit = {
+					culture = { has_cultural_parameter = cannot_attack_allies }
+				}
+				NOT = {
+					is_allied_to = scope:recipient
+				}
+			}
+			trigger_if = {
+				limit = {
+					culture = { has_cultural_parameter = cannot_attack_truces }
+				}
+				NOT = {
+					has_truce = scope:recipient
+				}
+			}
+			is_imprisoned = no
+		}
+
+		scope:recipient = { NOT = { has_strong_hook = scope:actor } }
+		scope:recipient = {
+			trigger_if = {
+				limit = { is_imprisoned = yes }
+				NOT = {
+					imprisoner = scope:actor
+				}
+			}
+		}
+	}
+
+	
+
+	# send_option = {
+	# 	flag = love
+	# 	localization = debug_make_love_me_interaction
+	# }
+	# send_option = {
+	# 	flag = like
+	# 	localization = debug_make_like_me_interaction
+	# }
+	# send_option = {
+	# 	flag = dislike
+	# 	localization = debug_make_dislike_me_interaction
+	# }
+	# send_option = {
+	# 	flag = hate
+	# 	localization = debug_make_hate_me_interaction
+	# }
+	on_accept = {
+		scope:recipient = {
+			
+		}
+
+		scope:actor = {
+			add_prestige = -250
+			add_piety = -250
+			custom_description = {
+				text = x
+				trigger_event = vi_inquisition.0001
+			}
+		}
+	}
+	auto_accept = yes
+}

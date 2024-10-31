@@ -149,14 +149,15 @@ vi_vampire_adventurer_focus = {
 	}
 
 	desc = {
-		desc = martial_adventurer_focus_desc
+		desc = vi_vampire_adventurer_focus_desc
 		desc = line_break
 	}
 	
 	modifier = {
 		prowess = 3
-		monthly_lifestyle_xp_gain_mult = 0.15
-		stress_gain_mult = 0.15
+		vi_hunt_scheme_phase_duration_add = -50
+		monthly_lifestyle_xp_gain_mult = 0.2
+		stress_gain_mult = 0.2
 	}
 
 	auto_selection_weight = {

@@ -1,19 +1,34 @@
 ﻿
 # Challenge Status
 start_vi_investigate_interaction = {
-	icon = icon_scheme_challenge_status
+	icon = debug_secret
 	interface_priority = 95
 	category = interaction_category_hostile
 
 	send_name = START_SCHEME
 
 	scheme = vi_investigate
+
 	cooldown = {
 		years = 1
 	}
+
+	cooldown_against_recipient = {
+		years = 5
+	}
+	
 	ignores_pending_interaction_block = yes
 
 	ai_targets = {
+		ai_recipients = liege
+		ai_recipients = spouses
+		ai_recipients = vassals
+		ai_recipients = scripted_relations
+		max = 10
+	}
+
+	ai_targets = {
+		ai_recipients = neighboring_rulers
 		ai_recipients = peer_vassals
 		max = 10
 	}
@@ -23,10 +38,7 @@ start_vi_investigate_interaction = {
 	is_shown = {
 		scope:actor = {
 			is_ruler = yes
-			has_opinion_modifier = {
-				modifier = suspicion_opinion
-				target = scope:recipient
-			}
+			vi_is_vampire_trigger = no
 		}
 
 		scope:recipient != scope:actor
@@ -44,22 +56,14 @@ start_vi_investigate_interaction = {
 				type = vi_investigate
 				target_character = scope:recipient
 			}
+			has_opinion_modifier = {
+				modifier = suspicion_opinion
+				target = scope:recipient
+			}
 		}
 	}
 
-	desc = {
-		triggered_desc = {
-			trigger = {
-				scope:actor = {
-					can_start_scheme = {
-						type = vi_investigate
-						target_character = scope:recipient
-					}
-				}
-			}
-			desc = scheme_interaction_tt_challenge_status_approved
-		}
-	}
+	desc = vi_investigate_interaction_desc
 
 	# Scheme Starter Packages
 	options_heading = schemes.t.agent_packages

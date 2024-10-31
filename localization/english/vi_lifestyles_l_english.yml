@@ -1,14 +1,30 @@
 ﻿l_english:
+
  vi_vampire_lifestyle_name:0 "Vampire"
  vi_vampire_lifestyle_desc:0 "Focus on honing your supernatural powers. You shall walk as a god among mere mortals... at least while the sun is not out."
+ 
+ game_concept_vi_vampire_lifestyle:0 "Vampire Lifestyle"
+ game_concept_vi_vampire_lifestyle_i: "@vi_vampire_lifestyle_icon!"
+ game_concept_vi_vampire_lifestyle_desc:0 "The $game_concept_vi_vampire_lifestyle$ focuses on honing a [vampire|E]'s supernatural abilities."
+
  vi_vampire_lifestyle_xp_gain_add: "Vampire [lifestyle|E] Experience Gain"
  vi_vampire_lifestyle_xp_gain_mult: "$vi_vampire_lifestyle_xp_gain_add$"
  monthly_vi_vampire_lifestyle_xp_gain_add: "$monthly_vi_vampire_lifestyle_xp_gain_mult$"
  monthly_vi_vampire_lifestyle_xp_gain_mult:0 "Monthly Vampire [lifestyle|E] Experience"
+ GAINS_VAMPIRE_LIFESTYLE_XP:2 "Gains $VALUE|V0$ [vi_vampire_lifestyle|E] Experience"
+ GAINED_VAMPIRE_LIFESTYLE_XP:2 "Gained $VALUE|V0$ [vi_vampire_lifestyle|E] Experience"
+ I_GAIN_VAMPIRE_LIFESTYLE_XP:2 "You gain $VALUE|V0$ [vi_vampire_lifestyle|E] Experience"
+ I_GAINED_VAMPIRE_LIFESTYLE_XP:2 "You gained $VALUE|V0$ [vi_vampire_lifestyle|E] Experience"
+ TARGET_GAINS_VAMPIRE_LIFESTYLE_XP:2 "[CHARACTER.GetShortUIName|U] gains $VALUE|V0$ [vi_vampire_lifestyle|E] Experience"
+ TARGET_GAINED_VAMPIRE_LIFESTYLE_XP:2 "[CHARACTER.GetShortUIName|U] gained $VALUE|V0$ [vi_vampire_lifestyle|E] Experience"
 
+ vi_vampire_adventurer_focus:0 "Hunt Focus"
+ vi_vampire_adventurer_focus_short:0 "Hunt"
+ vi_vampire_adventurer_focus_modifier:1 "[GetFocus('vi_vampire_adventurer_focus').GetName]"
+ vi_vampire_adventurer_focus_desc:0 "Free of the responsibility of rule, a vampire can indulge in tracking down the tastiest mortals."
+ vi_vampire_adventurer_focus_effect_desc:0 "Focusing on the Hunt grants:"
 
-
- vi_charm_tree_name:0 "Siren"
+ vi_charm_tree_name:0 "Siren Song"
 
  vi_vampire_charm_focus:1 "$vi_vampire_charm_focus_short$ Focus"
  vi_vampire_charm_focus_short:0 "Charisma"
@@ -17,9 +33,9 @@
  vi_vampire_charm_focus_effect_desc:0 "Focusing on Charisma grants:"
 
  vi_charm_perk_name:0 "Unnatural Allure"
- vi_charm_perk_effect:0 "Unlocks the [vi_charm_interaction|E] [interaction|E] on mortals" [GetInteraction]
- my_vi_charm_perk_effect:0 "You can use the [vi_charm_interaction|E] [interaction|E] on mortals"
- their_vi_charm_perk_effect:0 "They can use the [vi_charm_interaction|E] [interaction|E] on mortals"
+ vi_charm_perk_effect:0 "Can use vampiric [vi_charm_interaction|E] while using a [GetScheme('sway').GetTypeName] [scheme|E] on mortals"
+ my_vi_charm_perk_effect:0 "You can use vampiric [vi_charm_interaction|E] while using a [GetScheme('sway').GetTypeName] [scheme|E] on mortals"
+ their_vi_charm_perk_effect:0 "They can use vampiric [vi_charm_interaction|E] while using a [GetScheme('sway').GetTypeName] [scheme|E] on mortals"
  vi_charm_interaction:0 "Charm"
  vi_charm_interaction_desc:1 "Use supernatural charm to increase [recipient.GetShortUINamePossessiveNoTooltip] opinion of you"
  game_concept_vi_charm_interaction:0 "Charm"
@@ -32,30 +48,41 @@
  vi_animal_command_perk_effect:0 "Can recruit [GetMaA('vi_vampire_bats').GetName] as [men_at_arms|E]"
 
  vi_soothe_perk_name:0 "Sweet Nothings"
- vi_soothe_perk_effect:0 "Unlocks the [vi_soothe_interaction|E] [interaction|E] on mortals"
+ vi_soothe_perk_effect:0 "Can relieve the stress of mortals when succeeding at a [GetScheme('sway').GetTypeName] [scheme|E] and erase their suspicions"
  game_concept_vi_soothe_interaction:0 "Soothe"
  game_concept_vi_soothe_interaction_desc:0 "Soothing another character will erase their suspicion and decrease their [stress|E]."
 
  vi_galvanize_perk_name:0 "Galvanizing Speech"
- vi_galvanize_perk_effect:0 "Unlocks the [vi_galvanize_interaction|E] [interaction|E] on mortals"
+ vi_galvanize_perk_effect:0 "Can galvanize mortals to improve their health while using a [GetScheme('sway').GetTypeName] [scheme|E]"
  game_concept_vi_galvanize_interaction:0 "Galvanize"
  game_concept_vi_galvanize_interaction_desc:0 "Galvanizing another character will temporarily improve their [health|E] and [prowess|E]."
 
  vi_persuasion_perk_name:0 "Binding Persuasion"
- vi_persuasion_perk_effect:0 "Unlocks the [vi_extract_hook_interaction|E] [interaction|E] on mortals with high [opinion|E]"
+ vi_persuasion_perk_effect:0 "Can gain hooks on mortals with high [opinion|E] when succeeding at a [GetScheme('sway').GetTypeName] [scheme|E]"
  game_concept_vi_extract_hook_interaction:0 "Extract Favor"
  game_concept_vi_extract_hook_interaction_desc:0 "Extracting a favor from a character in the form of a hook will decrease their [opinion|E] of you."
 
  vi_enthrall_perk_name:0 "Enthralling Gaze"
- vi_enthrall_perk_effect:0 "Unlocks the [vi_enthrall_interaction|E] [interaction|E] on mortal [friends|E] and [lovers|E]"
+ vi_enthrall_perk_effect:0 "Enables the [GetScheme('sway').GetTypeName] [scheme|E]"
  game_concept_vi_enthrall_interaction:0 "Enthrall"
  game_concept_vi_enthrall_interaction_desc:0 "Enthralling a character will grant you a $loyalty_hook$ [hook|E] on them."
 
  vi_presence_perk_name:0 "Lion Among Sheep"
- vi_presence_perk_effect:0 "Allows $vi_vampire_charm_focus_short$ [interactions|E] to be used on other vampires"
+ vi_presence_perk_effect:0 "Allows $vi_vampire_charm_focus_short$ powers to be used on other vampires"
 
- vi_heartstealer_perk_name:0 "Siren"
+ vi_heartstealer_perk_name:0 "Siren Song"
+ vi_compel_suicide_interaction:0 "Compel Suicide"
+ vi_compel_suicide_interaction_desc:0 "Try to force [recipient.GetShortUINameNoTooltip] to commit suicide or gain massive [stress|E]."
+ game_concept_vi_compel_suicide_interaction:0 "$vi_compel_suicide_interaction$"
+ game_concept_vi_compel_suicide_interaction_desc:0 "Forces a target to commit suicide or gain massive amounts of [stress|E]."
 
+ vi_compel_suicide_decline_summary:0 "@warning_icon! If [recipient.GetShortUINameNoTooltip] declines, [recipient.GetSheHe] will experience immense stress!"
+ vi_siren_call_accepted:0 "[recipient.GetShortUIName] Commits Suicide"
+ vi_siren_call_declined:0 "[recipient.GetShortUIName] Refused the Siren's Call"
+ VI_MUST_HAVE_PRESENCE_PERK:0 "You must have [GetPerk('positions_of_power_perk').GetName(GetPlayer)] to use this on [vampires|E]"
+ VI_VERY_STRESSED:0 "[recipient.GetSheHe|U] is very stressed: $VALUE|=+0$"
+ VI_TOO_STRESSED_TO_REFUSE:0 "[recipient.GetSheHe|U] is too stressed to refuse: $VALUE|=+0$"
+ VI_IS_VAMPIRE:0 "[recipient.GetSheHe|U] is a [vampire|E]: $VALUE|=+0$"
 
 
 
@@ -81,6 +108,12 @@
  vi_transformation_perk_name:0 "Transformation"
  
  vi_dragons_scion_perk_name:0 "Dragon's Scion"
+
+ vi_instill_fear_interaction:0 "Instill Fear"
+ vi_instill_fear_interaction_desc:0 "Causes the target to be more susceptible to dread. You gain a hook on targets that were already afraid."
+ game_concept_vi_instill_fear_interaction:0 "Instill Fear"
+ game_concept_vi_instill_fear_interaction_desc:0 "A truly powerful vampire can instill fear in the stoutest of mortals and even intimidate them into granting a hook."
+ vi_instilled_fear:0 "Instilled Fear"
 
 
 

@@ -32,6 +32,10 @@
 			}
 		}
 	}
+
+	hidden_effect = {
+		vi_recenter_domicile_effect = yes
+	}
 	
 	add_gold = {
 		value = {
@@ -69,6 +73,9 @@ vi_vampire_county_discreet_effect = {
 			modifier = vi_county_discreet_modifier
 			years = 5
 		}
+	}
+	hidden_effect = {
+		vi_recenter_domicile_effect = yes
 	}
 	if = {
 		limit = {
@@ -135,6 +142,9 @@ vi_vampire_county_drain_effect = {
 			}
 		}
 	}
+	hidden_effect = {
+		vi_recenter_domicile_effect = yes
+	}
 
 	add_gold = {
 		value = {
@@ -198,5 +208,8 @@ vi_vampire_county_investment_effect = {
 				}
 			}
 		}
+	}
+	hidden_effect = {
+		vi_recenter_domicile_effect = yes
 	}
 }

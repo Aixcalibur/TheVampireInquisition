@@ -675,6 +675,12 @@ window = {
 									texture = "gfx/interface/progressbars/progress_gray.dds"
 									alpha = 0.4
 								}
+
+								background = {
+									visible = "[EqualTo_string( Lifestyle.GetKey, 'vi_vampire_lifestyle' )]"
+									texture = "gfx/interface/progressbars/progress_red.dds"
+									alpha = 0.4
+								}
 		
 								background = {
 									visible = "[EqualTo_string( Lifestyle.GetKey, 'nht_prowess_lifestyle' )]"

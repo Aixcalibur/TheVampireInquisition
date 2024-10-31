@@ -2,7 +2,7 @@
 
 
 #Drain Prisoner
-vi_drain_prisoner.1010 = { #by Mathilda Bjarnehed
+vi_drain_prisoner.1010 = { #based on Torture Event by Mathilda Bjarnehed
 	type = character_event
 	title = vi_drain_prisoner.1010.t
 	desc = vi_drain_prisoner.1010.desc

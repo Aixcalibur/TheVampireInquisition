@@ -182,8 +182,8 @@
 		ReligiousText = christianity_religious_text
 		ReligiousText2 = christianity_religious_text_2
 		ReligiousText3 = christianity_religious_text_3
-		ReligiousHeadName = christianity_religious_head_title
-		ReligiousHeadTitleName = christianity_religious_head_title_name
+		ReligiousHeadName = vampirism_religious_head_title
+		ReligiousHeadTitleName = vampirism_religious_head_title_name
 		DevoteeMale = christianity_devotee_male
 		DevoteeMalePlural = christianity_devotee_male_plural
 		DevoteeFemale = christianity_devotee_female

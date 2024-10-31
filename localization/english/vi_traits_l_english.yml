@@ -1,23 +1,42 @@
 ﻿l_english:
 
+ game_concept_vampire:0 "Vampire"
+ game_concept_vampires:0 "Vampires"
+ game_concept_vampire_desc:0 "Vampires are undead beings that subsist on human blood. They live in the shadows of human civilization and avoid discovery at all costs."
+
+
+ TRAIT_FLAG_DESC_vi_sunlight_burns: "Cannot attend daytime events"
+
+
+ trait_vi_customizer:0 "Vampire Customizer"
+ trait_vi_customizer_desc:0 "Choose this if you would like to start as a vampire."
  trait_vi_vampire_1:0 "Fledgling Vampire"
- trait_vi_vampire_1_desc:0 "Recently embraced, a fledgling is barely more than a walking corpse. The thirst heightens their senses, but their strength is still lacking. Every night, a fledgling must return to the dirt of their grave."
- trait_vi_vampire_2:0 "Nightwalker Vampire"
- trait_vi_vampire_2_desc:0 "With years of age come wisdom, skill, and strength surpassing mortals. The daily sunrise, however, remains an indomitable foe, forcing nightwalkers to hide from its light at all costs."
+ trait_vi_vampire_1_desc:0 "Recently embraced, a fledgling [vampire|e] is almost no different from an ordinary human, but feels weak in sunlight and must feed on blood."
+ trait_vi_vampire_2:0 "Vampire"
+ trait_vi_vampire_2_desc:0 "With years of age come wisdom, skill, and strength surpassing mortals. However, this prowess is only usable under the cover of night."
  trait_vi_vampire_3:0 "Elder Vampire"
- trait_vi_vampire_3_desc:0 "As centuries pass, it becomes possible, for short periods of time, to see sunlight once more. The Sun still saps vampires of all their supernatural prowess, but nevertheless, the advantages of being able to walk in daylight are innumerable."
+ trait_vi_vampire_3_desc:0 "As centuries pass, a vampire's cursed existence can no longer be tolerated by the Sun, forcing them to sleep during the day despite their immense powers."
  trait_vi_vampire_4:0 "Ancient Vampire"
- trait_vi_vampire_4_desc:0 "Among monsters, there are still greater monsters that they fear. Ancient vampires have all but lost count of how long they have stalked the Earth. Most of them drift in and out of hibernation, waking only for a few decades at a time."
+ trait_vi_vampire_4_desc:0 "Ancient vampires have all but lost count of how long they have stalked the Earth. Most of them drift in and out of hibernation, waking only for a few decades at a time."
  trait_vi_vampire_5:0 "Progenitor Vampire"
  trait_vi_vampire_5_desc:0 "Their existence is only a myth, but if they still exist, their power must be unimaginable."
 
- trait_vi_heartstealer:0 "Siren"
- trait_vi_heartstealer_desc:0 "Likes moths to a fire, mortals fall into your jaws."
- TRAIT_FLAG_DESC_vi_can_steal_hearts:0 "Unlocks the [vi_compel_suicide_interaction|E] on mortals"
+ trait_vi_heartstealer:0 "Siren Song"
+ trait_vi_heartstealer_desc:0 "Deadly, but who could possibly resist?"
+ TRAIT_FLAG_DESC_vi_can_steal_hearts:0 "Enables the [vi_compel_suicide_interaction|E] [interaction|E] on mortals"
 
  trait_vi_dragonsscion:0 "Dragon's Scion"
- trait_vi_dragonsscion_desc:0 "All shall cower before your might."
- TRAIT_FLAG_DESC_vi_can_use_dragon_fear:0 "Unlocks the [vi_dragon_fear_interaction|E]"
+ trait_vi_dragonsscion_desc:0 "Mere knowledge of your existence inspires terror and awe."
+ TRAIT_FLAG_DESC_vi_can_use_dragon_fear:0 "Enables the Instill Fear [interaction|E]"
+
+ trait_vi_allseeing:0 "All-Seeing"
+ trait_vi_allseeing_desc:0 "Nothing can escape your eyes."
+
+ trait_vi_exposed_vampire:0 "Exposed Vampire"
+ trait_vi_exposed_vampire_desc:0 "Burn the vampire!"
+
+ trait_vi_dormant:0 "Dormant"
+ trait_vi_dormant_desc:0 "This vampire is hidden away in hibernation."
 
  trait_vi_feral:0 "Feral"
 

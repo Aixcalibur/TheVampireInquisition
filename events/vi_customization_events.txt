@@ -1,0 +1,277 @@
+﻿namespace = vi_customization
+
+vi_customization.0001 = {
+	type = character_event
+	title = vi_customization.0001.t
+	desc = vi_customization.0001.desc
+	
+	theme = murder_scheme
+
+	right_portrait = {
+		character = root
+		animation = personality_callous
+	}
+	override_background = { reference = corridor_night }
+
+	trigger = {
+		has_trait = vi_customizer
+	}
+
+	immediate = {
+		if = {
+			limit = {
+				age < 16
+			}
+			add_trait = celibate
+		}
+	}
+
+	# Become a Fledgling
+	option = {
+		name = vi_customization.0001.a
+		add_trait = vi_vampire_1
+		set_immortal_age = age
+		vi_make_vampire_effect = yes
+		custom_tooltip = vi_free_trait_refund_tt
+		trigger_event = vi_customization.1001
+	}
+
+	option = {
+		name = vi_customization.0001.b
+		add_trait = vi_vampire_2
+		set_immortal_age = age
+		vi_make_vampire_effect = yes
+		custom_tooltip = {
+			text = vi_increase_age_by_20_tt
+			set_age = {
+				value = age
+				add = 20
+			}
+		}
+
+		add_vi_vampire_lifestyle_xp = 1000
+
+		trigger_event = {
+			id = vi_customization.0002
+			days = 2
+			delayed = yes
+		}
+	}
+
+	option = {
+		name = vi_customization.0001.c
+		add_trait = vi_vampire_3
+		set_immortal_age = age
+		vi_make_vampire_effect = yes
+		custom_tooltip = {
+			text = vi_increase_age_by_200_tt
+			set_age = {
+				value = age
+				add = 200
+			}
+		}
+
+		add_vi_vampire_lifestyle_xp = 3000
+
+		trigger_event = {
+			id = vi_customization.0002
+			days = 2
+			delayed = yes
+		}
+	}
+
+	option = {
+		name = vi_customization.0001.d
+		remove_trait = vi_customizer
+		hidden_effect = {
+			remove_trait = celibate
+		}
+	}
+
+	# Fire the rest of the outcome.
+	# after = {
+	# 	trigger_event = vi_customization.0002
+	# }
+}
+
+vi_customization.0002 = {
+	type = character_event
+	title = vi_customization.0002.t
+	desc = vi_customization.0002.desc
+	
+	theme = murder_scheme
+
+	right_portrait = {
+		character = root
+		animation = personality_callous
+	}
+	override_background = { reference = corridor_night }
+
+	trigger = {
+		has_trait = vi_customizer
+	}
+
+	option = {
+		name = vi_customization.0002.a
+		trigger_event = vi_customization.0010
+	}
+
+	option = {
+		name = vi_customization.0002.b
+		custom_tooltip = vi_choose_a_vampire_tt
+		add_character_flag = vi_choosing_dynasty
+	}
+
+	option = {
+		name = vi_customization.0002.d
+		remove_trait = vi_customizer
+	}
+}
+
+vi_customization.1001 = {
+	type = character_event
+	title = vi_customization.1001.t
+	desc = vi_customization.1001.desc
+	
+	theme = murder_scheme
+
+	right_portrait = {
+		character = root
+		animation = personality_compassionate
+	}
+	override_background = { reference = corridor_night }
+
+	trigger = {
+		has_trait = vi_customizer
+	}
+
+	option = {
+		name = trait_lifestyle_blademaster
+		add_trait = lifestyle_blademaster
+		add_trait_xp = {
+			trait = lifestyle_blademaster
+			value = 60
+		}
+		trigger_event = vi_customization.0002
+	}
+	option = {
+		name = trait_lifestyle_physician
+		add_trait = lifestyle_physician
+		add_trait_xp = {
+			trait = lifestyle_physician
+			value = 60
+		}
+		trigger_event = vi_customization.0002
+	}
+	option = {
+		name = trait_shrewd
+		add_trait = shrewd
+		trigger_event = vi_customization.0002
+	}
+	option = {
+		name = vi_customization.1001.none
+		trigger_event = vi_customization.0002
+	}
+
+	# after = {
+		
+	# }
+}
+
+vi_customization.0010 = {
+	type = character_event
+	title = vi_customization.0010.t
+	desc = vi_customization.0010.desc
+	
+	theme = murder_scheme
+
+	right_portrait = {
+		character = root
+		animation = personality_callous
+	}
+	override_background = { reference = corridor_night }
+
+	trigger = {
+		has_trait = vi_customizer
+	}
+
+	option = {
+		name = vi_customization.0010.a
+		set_age = {
+			value = age
+			add = 10
+		}
+		trigger_event = vi_customization.0010
+	}
+
+	option = {
+		name = vi_customization.0010.b
+		set_age = {
+			value = age
+			add = -10
+		}
+		trigger_event = vi_customization.0010
+	}
+	option = {
+		name = vi_customization.0010.c
+		set_age = {
+			value = age
+			add = 1
+		}
+		trigger_event = vi_customization.0010
+	}
+
+	option = {
+		name = vi_customization.0010.d
+		trigger_event = vi_customization.0002
+	}
+}
+
+vi_customization.0020 = {
+	type = character_event
+	title = vi_customization.0020.t
+	desc = vi_customization.0020.desc
+	
+	theme = murder_scheme
+
+	right_portrait = {
+		character = root
+		animation = personality_callous
+	}
+	override_background = { reference = corridor_night }
+
+	trigger = {
+		has_trait = vi_customizer
+	}
+
+	option = {
+		name = vi_customization.0020.a
+		set_age = {
+			value = age
+			add = 10
+		}
+		trigger_event = vi_customization.0020
+	}
+
+	option = {
+		name = vi_customization.0020.b
+		set_age = {
+			value = age
+			add = -10
+		}
+		trigger_event = vi_customization.0020
+	}
+	option = {
+		name = vi_customization.0020.c
+		set_age = {
+			value = age
+			add = 1
+		}
+		trigger_event = vi_customization.0020
+	}
+
+	option = {
+		name = vi_customization.0010.d
+		trigger_event = vi_customization.0002
+	}
+}

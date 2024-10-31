@@ -4,6 +4,12 @@
 	}
 }
 
+on_game_start_after_lobby = {
+	on_actions = {
+		vi_vampire_game_start_after_lobby
+	}
+}
+
 vi_vampire_game_start = {
 	on_actions = {
 		vi_bida_game_start
@@ -35,24 +41,33 @@ vi_vampire_game_start_ancient_regime = {
 			}
 
 			every_held_title = {
-
 				if = {
 					limit = {
 						is_noble_family_title = no
+						tier >= tier_kingdom
 					}
 					add_title_law = vi_vampire_elective_succession_law
 				}			
+			}
+
+			every_courtier = {
+				if = {
+					limit = {
+						vi_is_vampire_trigger = no
+						is_councillor = yes
+					}
+
+					vi_make_vampire_effect = yes
+					add_trait = vi_vampire_1
+				}
 			}
 
 			if = {
 				limit = {
 					exists = liege
 				}
-
 				vassal_contract_set_obligation_level = { type = title_revocation_rights level = 1 }
 			}
-
-
 
 			house ?= {
 				set_variable = {
@@ -87,5 +102,17 @@ vi_vampire_game_start_create_princedom = {
 		# 		VI_COUNTY = title:c_orleans
 		# 	}
 		# }
+	}
+}
+
+vi_vampire_game_start_after_lobby = {
+	effect = {
+		every_player = {
+			trigger_event = {
+				id = vi_customization.0001
+				days = 1
+				delayed = yes
+			}
+		}
 	}
 }

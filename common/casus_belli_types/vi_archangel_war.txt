@@ -1,0 +1,310 @@
+﻿vi_archangel_war = {
+	group = religious_script_only
+	icon = undirected_great_holy_war
+
+	white_peace_possible = no
+
+	allowed_for_character = {
+		is_ai = yes
+	}
+
+	allowed_against_character = {
+		is_landed = yes
+	}
+
+	allowed_against_character_display_regardless = {
+		
+	}
+
+	should_invalidate = {
+		# scope:defender = {
+		# 	is_landed = no
+		# }
+	}
+
+	cost = {
+	}
+
+	on_declaration = {
+		scope:attacker = {
+			spawn_army = {
+				uses_supply = no
+				men_at_arms = {
+					type = vi_health_point_maa
+					stacks = 30
+				}
+				inheritable = no
+				location = scope:attacker.capital_province
+				war = scope:war
+				war_keep_on_attacker_victory = no
+				save_scope_as = new_army
+				name = vi_healthbar_army
+			}
+			spawn_army = {
+				uses_supply = no
+				men_at_arms = {
+					type = vi_health_point_maa
+					stacks = 30
+				}
+				inheritable = no
+				location = scope:attacker.capital_province
+				war = scope:war
+				war_keep_on_attacker_victory = no
+				save_scope_as = new_army
+				name = vi_healthbar_army
+			}
+			spawn_army = {
+				uses_supply = no
+				men_at_arms = {
+					type = vi_health_point_maa
+					stacks = 30
+				}
+				inheritable = no
+				location = scope:attacker.capital_province
+				war = scope:war
+				war_keep_on_attacker_victory = no
+				save_scope_as = new_army
+				name = vi_healthbar_army
+			}
+
+			add_opinion = {
+				target = scope:defender
+				modifier = hate_opinion
+				opinion = -100
+			}
+		}
+		scope:defender = { # First, we find a puppet
+			ordered_vassal_or_below = { # We start with important (landed) people
+				limit = { vi_is_vampire_trigger = no}
+				order_by = {
+					value = 0
+					add = monthly_character_income
+					# if = {
+					# 	limit = { house = scope:attacker.house }
+					# 	add = 10
+					# }
+				}
+				save_scope_as = loyalist_puppet
+			}
+			vi_inquisition_spawn_vampire_army_effect = yes
+		}
+		war ?= {
+			set_variable = {
+				name = loyalist_puppet
+				value = scope:loyalist_puppet
+			}
+		}
+	}
+
+	on_victory = {
+
+		scope:defender = {
+			hidden_effect = {
+				every_courtier = {
+					limit = {
+						vi_is_vampire_trigger = yes
+						is_travelling = no
+					}
+	
+					random = {
+						chance = 60
+						death = {
+							death_reason = death_vi_holy_flames
+							killer = scope:attacker
+						}
+					}
+				}
+
+				every_vassal_or_below = {
+					limit = {
+						vi_is_vampire_trigger = yes
+					}
+
+					every_courtier = {
+						limit = {
+							vi_is_vampire_trigger = yes
+							is_travelling = no
+						}
+		
+						random = {
+							chance = 40
+							death = {
+								death_reason = death_vi_holy_flames
+								killer = scope:attacker
+							}
+						}
+					}
+	
+					random = {
+						chance = 80
+						death = {
+							death_reason = death_vi_holy_flames
+							killer = scope:attacker
+						}
+					}
+				}
+			}
+		}
+
+		scope:defender = { # First, we find a puppet
+			ordered_vassal_or_below = { # We start with important (landed) people
+				limit = { vi_is_vampire_trigger = no }
+				order_by = {
+					value = 0
+					add = monthly_character_income
+					if = {
+						limit = { root.war.var:loyalist_puppet ?= this }
+						add = 5
+					}
+					# if = {
+					# 	limit = { scope:attacker.house ?= house }
+					# 	add = 10
+					# }
+				}
+				save_scope_as = loyalist_puppet
+			}
+		}
+
+		if = {
+			limit = { NOT = { exists = scope:loyalist_puppet } }
+			
+			create_character = {
+				location = scope:defender.capital_province
+				template = peasant_faction_leader_template
+				faith = faith:catholic
+				culture = scope:defender.capital_county.culture
+				
+				save_scope_as = loyalist_puppet
+			}
+		}
+
+		if = { # Autoformatter shenanigans fix
+			limit = { exists = scope:loyalist_puppet }
+			create_title_and_vassal_change = {
+				type = conquest_claim
+				save_scope_as = change
+				add_claim_on_loss = no
+			}
+			scope:defender = {
+				every_held_title = {
+					# limit = {
+					# 	tier = scope:defender.primary_title.tier
+					# }
+					add_to_list = title_to_steal
+				}
+				every_in_list = {
+					list = title_to_steal
+					change_title_holder = {
+						holder = scope:loyalist_puppet
+						change = scope:change
+					}
+				}
+			}
+			resolve_title_and_vassal_change = scope:change
+
+			create_title_and_vassal_change = {
+				type = usurped
+				save_scope_as = change2
+			}
+			# then vassalize the defender
+			scope:defender = {
+				hidden_effect = { # Avoid clutter. message below should make it clear already
+					every_vassal = {
+						limit = { primary_title.tier >= tier_county}
+						change_liege = {
+							liege = scope:loyalist_puppet
+							change = scope:change2
+						}
+					}
+
+					change_liege = {
+						liege = scope:loyalist_puppet
+						change = scope:change2
+					}
+				}
+			}
+			resolve_title_and_vassal_change = scope:change2
+
+
+			scope:loyalist_puppet = {
+				if = {
+					limit = {
+						has_government = vi_vampire_government
+					}
+					change_government = feudal_government
+				}
+			}
+		}
+
+		scope:attacker = { add_prestige = major_prestige_gain }
+		scope:defender = {
+			death = {
+				death_reason = death_vi_holy_flames
+				killer = scope:attacker
+		}
+		
+		add_truce_attacker_victory_effect = yes
+
+		# FP1 memory
+		# scope:attacker = { fp1_remember_recent_conquest_victory_effect = yes }
+
+		# EP3: note gold gained from military assistance/join war contracts and their war contribution threshold
+		laamp_as_mercenary_payout_tooltip_effect = yes
+	}
+	
+	on_defeat = {
+		add_truce_attacker_defeat_effect = yes
+		scope:attacker = {
+			add_prestige = major_prestige_loss
+			if = {
+				limit = {
+					vi_is_vampire_trigger = yes
+				}
+				add_character_modifier = {
+					modifier = vi_silver_chains_modifier
+					years = 3
+				}
+				add_trait = vi_exposed_vampire
+			}
+		}
+		scope:defender = {
+			add_prestige = major_prestige_gain
+			imprison = {
+				target = scope:attacker
+				type = dungeon
+			}
+		}
+
+		# EP3: note gold gained from military assistance/join war contracts and their war contribution threshold
+		laamp_as_mercenary_payout_tooltip_effect = yes
+	}
+
+	on_victory_desc = { desc = vi_archangel_war_victory_desc }
+	on_defeat_desc = { desc = vi_archangel_war_cb_defeat_desc }
+	on_white_peace_desc = {
+		desc = WHITE_PEACE_DISABLED
+	}
+	on_invalidated_desc = msg_invalidate_war_title
+
+	war_name = "VI_ARCHANGEL_WAR_NAME"
+	war_name_base = "VI_ARCHANGEL_WAR_NAME_BASE"
+	cb_name = "VI_ARCHANGEL_CB_NAME"
+
+	on_primary_attacker_death = invalidate
+	on_primary_defender_death = inherit
+	check_defender_inheritance_validity = no
+	attacker_allies_inherit = no
+	defender_allies_inherit = no
+	transfer_behavior = transfer
+	
+	# is_great_holy_war = yes
+	imprisonment_by_attacker_give_war_score = no
+	imprisonment_by_defender_give_war_score = no
+	attacker_capital_gives_war_score = no
+	defender_capital_gives_war_score = no
+	# landless_attacker_needs_armies = yes #This seems to cause the pursuit phase to be skipped which we don't want happening.
+	allow_hostages = no
+	defender_score_from_battles_scale = 50
+	attacker_score_from_battles_scale = 50
+	truce_days = 1800
+}

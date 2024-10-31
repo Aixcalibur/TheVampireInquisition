@@ -1,0 +1,15 @@
+﻿vampire = {
+	alias = { vampires }
+}
+
+vi_vampire_lifestyle = {
+	texture = "gfx/interface/icons/alerts/action_lifestyle_intrigue.dds"
+	framesize = { 144 144 }
+	frame = 2
+	parent = focus
+}
+
+vi_vampire_princedom = {
+	
+}
+

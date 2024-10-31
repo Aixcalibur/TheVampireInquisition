@@ -1,0 +1,11 @@
+﻿l_english:
+ vi_sway.1001.t:0 "A Charming Meeting"
+ vi_sway.1001.desc:2 "At a public diplomatic activity, I find myself close enough to [target.Custom2('MyCharacterIntroductionNoComma', ROOT.Char)] to use the more subtle of my vampiric powers. Perhaps this would be a good opportunity to further my objectives."
+ vi_sway.1001.a:0 "Attempt to use vampiric Charm."
+ vi_sway.1001.b:0 "Galvanize [target.GetShortUIName]."
+ vi_sway.1001.c:0 "It's not worth it."
+
+ vi_sway.2001.desc:0 "I find myself next to [target.GetShortUIName] to have a personal conversation. It would be a perfect opportunity to slip in some mental influence as I speak."
+ vi_sway.2001.a:0 "Manipulate [target.GetHerHis] good opinion to owe me a favor."
+ vi_sway.2001.b:0 "Erase [target.GetHerHis] suspicions."
+ vi_sway.2001.b:0 "It's not worth it."

@@ -1,0 +1,29 @@
+﻿story_vi_markedfordeath = {
+	
+	on_setup = {
+
+
+	}
+	
+	on_end = {
+
+		
+	}
+	
+	on_owner_death = {
+		end_story = yes
+	}
+	
+	# Something happens - random events
+	effect_group = {
+		days = { 100 540 }
+
+		trigger = {
+			story_owner = {
+				is_alive = yes
+			}
+		}
+
+		
+	}
+}

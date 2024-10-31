@@ -1,0 +1,11 @@
+﻿vi_customizer = {
+	category = lifestyle
+
+	ruler_designer_cost = 100
+	stress_gain_mult = 0.5
+	fertility = -1
+
+	immortal = yes
+	flag = can_murder_own_children
+	flag = immortal_visuals
+}

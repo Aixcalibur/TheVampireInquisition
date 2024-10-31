@@ -40,15 +40,10 @@
 	}
 
 	valid = {
-		scope:owner = {
-			any_held_title = { is_noble_family_title = yes }
-			house.house_head ?= this
-		}
 		scope:target = {
 			any_held_title = { is_noble_family_title = yes }
-			top_liege = scope:owner.top_liege
 			house.house_head ?= this
-			domicile ?= { is_domicile_type = estate }
+			domicile ?= { is_domicile_type = vi_lair }
 		}
 	}
 

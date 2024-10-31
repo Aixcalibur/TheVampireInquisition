@@ -8,6 +8,7 @@
 		value = 11
 		if = {
 			limit = {
+				vi_is_vampire_trigger = yes
 				OR = {
 					has_education_learning_trigger = yes
 					has_education_stewardship_trigger = yes
@@ -27,6 +28,16 @@
 				can_start_new_lifestyle_tree_trigger = no
 			}
 			multiply = 0
+		}
+	}
+
+	can_be_picked = { 
+		OR = {
+			has_trait = vi_vampire_1
+			has_trait = vi_vampire_2
+			has_trait = vi_vampire_3
+			has_trait = vi_vampire_4
+			has_trait = vi_vampire_5
 		}
 	}
 

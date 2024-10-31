@@ -15,11 +15,11 @@
 
 	# provisions = yes
 
-	move_cooldown = { days = estate_move_cooldown_value }
+	move_cooldown = { days = 0 }
 	move_cost = {
 		gold = {
 			value = {
-				value = 1000000
+				value = 100
 				format = "BASE_VALUE_FORMAT"
 				desc = "BASE_VALUE"
 			}

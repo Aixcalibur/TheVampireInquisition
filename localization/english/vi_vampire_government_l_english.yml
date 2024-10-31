@@ -21,12 +21,15 @@
  vi_estate_main_05_domicile_building: "Grand Estate"
 
  vi_vampire_government: "Vampire Princedom"
+ game_concept_vi_vampire_princedom: "Vampire Princedom"
+ game_concept_vi_vampire_princedom_desc: "A Vampire Princedom is a territory claimed by a powerful [vampire|e], unbeknownst to the local mortal population."
  
  vi_vampire_government_adjective: "Vampire"
  vi_vampire_government_realm: "Vampire"
- vi_vampire_government_desc: "A Vampire Princedom is a territory claimed by a powerful vampire, unbeknownst to the local mortal population."
+ vi_vampire_government_desc: "A Vampire Princedom is a territory claimed by a powerful [vampire|e], unbeknownst to the local mortal population."
  vi_vampire_government_with_icon: "@government_type_administrative! $administrative_government$"
 
  VI_NEW_CREATED_PRINCEDOM_NAME: "$DEFAULT_TITLE_NAME_ARTICLE$Princedom of [vi_title_county.GetNameNoTierNoTooltip]"
+ VI_NEW_CREATED_HIGH_PRINCEDOM_NAME: "$DEFAULT_TITLE_NAME_ARTICLE$High Princedom of [vi_title_county.GetNameNoTierNoTooltip]"
 
  

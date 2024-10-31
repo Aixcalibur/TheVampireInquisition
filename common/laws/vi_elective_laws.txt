@@ -38,12 +38,11 @@
 		}
 
 		revoke_cost = {
-			prestige = change_hre_title_succession_law_prestige_cost
+			prestige = 1000000
 		}
 		
 		pass_cost = {
 			prestige = 0
 		}
-		
 	}
 }

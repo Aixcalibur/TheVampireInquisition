@@ -1,5 +1,7 @@
 ﻿namespace = vi_become_vampire
 
+# Replaced by interaction and changes to the vampire mechanic. DO NOT USE.
+
 vi_become_vampire.001 = {
 	type = character_event
 	title = vi_become_vampire.001.t
@@ -51,10 +53,10 @@ vi_become_vampire.001 = {
 			}
 		}
 
-		vi_turn_into_vampire_effect = {
-			VI_VAMPIRE = scope:vi_friend
-			VI_TARGET = root
-		}
+		# vi_turn_into_vampire_effect = {
+		# 	VI_VAMPIRE = scope:vi_friend
+		# 	VI_TARGET = root
+		# }
 
 		# found_cadet_house_decision_effect = {
 		# 	CHARACTER = scope:adoptee

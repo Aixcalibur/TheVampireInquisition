@@ -16,6 +16,15 @@ vi_sated_modifier = {
 	stacking = yes
 }
 
+vi_delicious_modifier = {
+	icon = health_positive
+	health = 0.25
+	attraction_opinion = 5
+	life_expectancy = 5
+	fertility = 0.1
+	inbreeding_chance = -0.25
+}
+
 vi_vampire_strain_modifier = {
 	icon = treatment_negative
 	stress_gain_mult = 0.25
@@ -27,7 +36,10 @@ vi_vampire_strain_modifier = {
 vi_vampire_madness_modifier = {
 	icon = stress_negative
 	diplomacy = -1
+	enemy_hostile_scheme_phase_duration_add = 5
+	enemy_hostile_scheme_success_chance_add = 5
 	stress_gain_mult = 0.1
+	stress_loss_mult = 0.05
 	prowess = 1
 	stacking = yes
 }
@@ -36,7 +48,16 @@ vi_vampire_tiredness_modifier = {
 	icon = stress_negative
 	stress_loss_mult = -0.1
 	stress_gain_mult = 0.05
+	enemy_hostile_scheme_phase_duration_add = -5
 	stacking = yes
+}
+
+vi_silver_chains_modifier = {
+	icon = prison_negative
+	stress_gain_mult = 0.5
+	stress_loss_mult = -1
+	health = -1
+	prowess = -50
 }
 
 vi_grand_ambitions_modifier = {
@@ -48,8 +69,15 @@ vi_grand_ambitions_modifier = {
 
 vi_unnatural_youth_modifier = {
 	icon = fertility_positive
+	health = 0.5
+	fertility = -0.9
 	life_expectancy = 10000
 	no_prowess_loss_from_age = yes
+}
+
+vi_skittish_modifier = {
+	icon = stress_negative
+	stress_gain_mult = 0.5
 }
 
 vi_unbreakable_calm_modifier = {
@@ -63,6 +91,27 @@ vi_ancient_regime_modifier = {
 	domicile_build_gold_cost = -0.25
 }
 
+vi_galvanized_modifier = {
+	icon = health_positive
+	health = 0.5
+	prowess = 3
+}
+
+vi_sirenscall_modifier = {
+	icon = stress_negative
+	health = -0.5
+	prowess = -2
+	stress_gain_mult = 1
+	stress_loss_mult = -0.5
+}
+
+vi_instilledfear_modifier = {
+	icon = stress_negative
+	health = -0.1
+	prowess = -4
+	stress_gain_mult = 0.25
+	ai_boldness = -100
+}
 
 
 # County Modifiers from Vampire Policy

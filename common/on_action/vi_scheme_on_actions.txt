@@ -158,5 +158,6 @@ vi_hunt_success_standard_event_list_on_action = {
 	random_events = {
 		# Old events.
 		300 = vi_hunt.2001
+		100 = vi_hunt.3001
 	}
 }

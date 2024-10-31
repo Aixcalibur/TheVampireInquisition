@@ -1,0 +1,82 @@
+﻿vi_join_house_custom_interaction = {
+	category = interaction_category_admin
+	icon = designate_favorite
+	desc = vi_join_house_custom_interaction_desc
+
+	#ai_maybe = yes
+	#can_send_despite_rejection = yes
+	#on_decline_summary = vi_compel_suicide_decline_summary
+
+	use_diplomatic_range = no
+
+	is_shown = {
+		NOT = {
+			scope:actor = scope:recipient
+		}
+		scope:actor = {
+			vi_is_vampire_trigger = yes
+			has_trait = vi_customizer
+			has_character_flag = vi_choosing_dynasty
+		}
+		scope:recipient = {
+			vi_is_vampire_trigger = yes
+			house = {
+				exists = yes
+			}
+		}
+	}
+
+	is_valid_showing_failures_only = {
+		
+	}
+
+	cost = {
+
+	}
+
+	auto_accept = yes
+
+	send_option = {
+		flag = become_their_child
+		can_be_changed = {
+			always = yes
+		}
+		localization = vi_become_their_child
+	}
+
+	on_send = {
+		
+	}
+
+	on_accept = {
+		scope:actor = {
+			set_house = scope:recipient.house
+			if = {
+				limit = {
+					scope:become_their_child = yes
+				}
+				scope:recipient = {
+					adopt = scope:actor
+					house_head = {
+						add_hook = {
+							type = house_head_hook
+							target = scope:actor
+						}
+					}
+				}
+			}
+			else = {
+				found_cadet_house_decision_effect = {
+					CHARACTER = scope:actor
+					PRESTIGE = 0
+				}
+			}
+			remove_character_flag = vi_choosing_dynasty
+			trigger_event = vi_customization.0002
+		}
+	}
+
+	ai_potential = {
+		always = no
+	}
+}

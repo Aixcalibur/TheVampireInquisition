@@ -1,12 +1,44 @@
 ﻿l_english:
+ vi_hunt_scheme_phase_duration_add:0 "[GetScheme('vi_hunt').GetTypeName] [scheme_speed_single|E]"
+
  vi_hunt:0 "Hunt"
+ vi_hunt_desc:0 "Soon [SCHEME.GetTargetCharacter.GetShortUINameNoTooltip]'s blood will be mine!"
+ vi_hunt_desc_general:1 "$vi_hunt$ is a [hostile_scheme|E] that aims to track down the target. It is a [secret_scheme|E] based on [intrigue|E], that can recruit [agents|E].\n\nA successful $vi_hunt$ will result in a direct confrontation where a vampire can decide to drink the target's blood or turn the target into a vampire."
  vi_hunt_interaction:0 "Hunt"
  vi_hunt_action:0 "Hunt"
  vi_hunt_interaction_desc:0 "Attempt to personally hunt down [recipient.GetShortUINameNoTooltip]"
  vi_hunt_interaction_vampire_desc:0 "Attempt to personally hunt down [recipient.GetShortUINameNoTooltip]"
+
+ SCHEME_TARGET_IS_A_RULER:1 "[target.GetShortUIName] is a [ruler|E]: $VALUE|+0=$"
+ SCHEME_TARGET_IS_A_VAMPIRE:1 "Hunting a Vampire: $VALUE|+0=$"
+ SCHEME_TARGET_IS_A_ELDER_VAMPIRE:1 "Hunting an Elder Vampire: $VALUE|+0=$"
+ SCHEME_TARGET_IS_A_ANCIENT_VAMPIRE:1 "Hunting an Ancient Vampire: $VALUE|+0=$"
+ SCHEME_TARGET_IS_A_PROGENITOR_VAMPIRE:0 "Attacking a Progenitor is Suicide: $VALUE|+0=$"
+
+ SCHEME_TARGET_RELATIVE_SPEED:0 "Supernatural Speed Advantage: $VALUE|+0=$"
+
+ I_AM_A_VAMPIRE:0 "I am a Vampire: $VALUE|+0=$"
+ I_AM_A_ELDER_VAMPIRE:0 "I am an Elder Vampire: $VALUE|+0=$"
+ I_AM_A_ANCIENT_VAMPIRE:0 "I am an Ancient Vampire: $VALUE|+0=$"
+ I_AM_A_PROGENITOR_VAMPIRE:0 "I am a Progenitor Vampire: $VALUE|+0=$"
+
+ 
 
  vi_hunt.2001.t:0 "The Predator Approaches"
  vi_hunt.2001.desc:0 "At last, my preparations bear fruit as I find my prey alone and undefended."
  vi_hunt.2001.a:0 "Only take a sip"
  vi_hunt.2001.b:0 "Drain them dry"
  vi_hunt.2001.c:0 "Turn them into a vampire"
+ vi_hunt.2001.d:0 "Spare them"
+
+ vi_hunt.3001.t:0 "Dangerous Game"
+ vi_hunt.3001.desc:0 "I approach my target quietly."
+ vi_hunt.3001.a:0 "Ambush [vi_victim.GetHerHim]"
+ vi_hunt.3001.b:0 "Back off"
+ vi_hunt.3001.a.win_tt:0 "You manage to overpower [vi_victim.GetHerHim]"
+ vi_hunt.3001.a.lose_tt:0 "You are wounded and forced to flee"
+
+ vi_hunt.3002.t:0 "Dangerous Game"
+ vi_hunt.3002.desc:0 "After a brief but violent struggle, I pin [vi_victim.GetShortUIName] down and bring my salivating fangs to [vi_victim.GetHerHis] neck."
+ vi_hunt.3002.a:0 "Take a sip"
+ vi_hunt.3002.b:0 "Drain them dry"

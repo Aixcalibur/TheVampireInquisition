@@ -24,8 +24,8 @@ vi_hunt.1001 = {
 }
 
 
-# Approach your victim and choose what to do to them
-vi_hunt.2001  = {
+# Human victim
+vi_hunt.2001 = {
 	type = character_event
 	window = scheme_successful_event
 	title = vi_hunt.2001.t
@@ -49,8 +49,7 @@ vi_hunt.2001  = {
 	trigger = {
 		scope:target = {
 			location = { is_sea_province = no }
-
-			# vi_is_vampire_trigger = no
+			vi_is_vampire_trigger = no
 		}
 	}
 
@@ -60,6 +59,12 @@ vi_hunt.2001  = {
 		}
 		scope:target = {
 			save_scope_as = vi_victim
+
+			add_opinion = {
+				target = scope:owner
+				modifier = suspicion_opinion
+				opinion = -20
+			}
 		}
 		# debug_sort_scheme_scopes_for_testing_effect = yes
 	}
@@ -71,6 +76,20 @@ vi_hunt.2001  = {
 		scope:scheme = {
 			end_scheme = yes
 		}
+		ai_chance = {
+			base = 50
+
+			modifier = {
+				scope:actor = {
+					has_character_flag = vi_vampire_talent
+				}
+				add = -50
+			}
+			
+			ai_value_modifier = {
+				ai_greed = 0.5
+			}
+		}
 	}
 
 	# Drain them dry
@@ -79,6 +98,28 @@ vi_hunt.2001  = {
 		vi_vampire_drain_kill_effect = yes
 		scope:scheme = {
 			end_scheme = yes
+		}
+		ai_chance = {
+			base = 0
+
+			modifier = {
+				scope:actor = {
+					has_character_flag = vi_vampire_talent
+				}
+				add = -50
+			}
+
+			modifier = {
+				scope:actor = {
+					has_character_modifier = vi_delicious_modifier
+				}
+				add = 20
+			}
+			
+			ai_value_modifier = {
+				ai_greed = 1
+				ai_compassion = -1
+			}
 		}
 	}
 
@@ -97,7 +138,46 @@ vi_hunt.2001  = {
 		scope:scheme = {
 			end_scheme = yes
 		}
-		
+
+		ai_chance = {
+			base = -25
+
+			modifier = {
+				scope:actor = {
+					has_character_flag = vi_vampire_talent
+				}
+				add = 100
+			}
+			
+			ai_value_modifier = {
+				ai_greed = 0.5
+				ai_boldness = 0.2
+			}
+		}
+	}
+
+	option = {
+		name = vi_hunt.2001.d
+		trigger = {
+			has_trait = compassionate
+		}
+		scope:scheme = {
+			end_scheme = yes
+		}
+		ai_chance = {
+			base = 25
+
+			modifier = {
+				scope:actor = {
+					has_character_flag = vi_vampire_talent
+				}
+				add = -100
+			}
+			
+			ai_value_modifier = {
+				ai_compassion = 0.5
+			}
+		}
 	}
 	# Feuding, opt to stop.
 
@@ -105,4 +185,215 @@ vi_hunt.2001  = {
 	# after = {
 	# 	scope:target = { trigger_event = murder_outcome_reworked.0002 }
 	# }
+}
+
+# target perspective human victim
+vi_hunt.2002 = {
+	type = character_event
+	window = scheme_target_event
+	title = vi_hunt.2002.t
+	desc = vi_hunt.2002.desc
+	theme = murder_scheme
+
+	left_portrait = {
+		character = scope:target
+		animation = map_fear
+	}
+
+	# center_portrait = {
+	# 	character = scope:assassin
+	# 	animation = assassin
+	# 	camera = camera_event_right_pointing_right
+	# }
+
+	right_portrait = {
+		character = scope:owner
+		animation = schadenfreude
+	}
+	
+	override_background = { reference = corridor_night }
+
+	immediate = {
+		# Toggleable for loc testing.
+		# debug_sort_scheme_scopes_for_testing_effect = yes
+		# Process target murder effects.
+		# murder_success_kill_effect = { REASON = death_mysterious }
+	}
+
+	option = {
+		trigger = {
+			is_alive = yes
+		}
+		name = vi_hunt.2002.a
+	}
+
+	option = {
+		trigger = {
+			is_alive = no
+		}
+		name = vi_hunt.2002.b
+	}
+}
+
+# Vampire victim
+
+vi_hunt.3001  = {
+	type = character_event
+	window = scheme_successful_event
+	title = vi_hunt.3001.t
+	desc = vi_hunt.3001.desc
+	
+	theme = murder_scheme
+	left_portrait = {
+		character = scope:owner
+		animation = schadenfreude
+	}
+	# center_portrait = {
+	# 	character = scope:assassin
+	# 	animation = assassin
+	# }
+	right_portrait = {
+		character = scope:target
+		animation = paranoia
+	}
+	override_background = { reference = corridor_night }
+
+	trigger = {
+		scope:target = {
+			location = { is_sea_province = no }
+			vi_is_vampire_trigger = yes
+			is_ai = yes
+		}
+	}
+
+	immediate = {
+		scope:owner = {
+			save_scope_as = vi_vampire
+		}
+		scope:target = {
+			save_scope_as = vi_victim
+			add_opinion = {
+				target = scope:owner
+				modifier = suspicion_opinion
+				opinion = -20
+			}
+		}
+		# debug_sort_scheme_scopes_for_testing_effect = yes
+	}
+
+	# Go ahead
+	option = {
+		name = vi_hunt.3001.a
+		random_list = {
+			50 = {
+				custom_tooltip = vi_hunt.3001.a.win_tt
+				modifier = {
+					add = {
+						value = scope:vi_victim.prowess
+						multiply = -1
+						add = scope:vi_vampire.prowess
+						multiply = 3.5
+						min = -49
+						max = 49
+					}
+				}
+
+				modifier = {
+					add = scope:vi_vampire.intrigue
+				}
+				
+				trigger_event = {
+					id = vi_hunt.3002
+				}
+			}
+
+			50 = {
+				custom_tooltip = vi_hunt.3001.a.lose_tt
+
+				change_trait_rank = {
+					trait = wounded
+					rank = 1
+				}
+
+
+				modifier = {
+					add = {
+						value = scope:vi_vampire.prowess
+						multiply = -1
+						add = scope:vi_victim.prowess
+						multiply = 3.5
+						min = -49
+						max = 49
+					}
+				}
+				modifier = {
+					add = scope:vi_victim.intrigue
+				}
+				
+			}
+		}
+	}
+
+	# Back off
+	option = {
+		name = vi_hunt.3001.b
+		scope:scheme = {
+			end_scheme = yes
+		}
+	}
+	# Feuding, opt to stop.
+
+	# Fire the rest of the outcome.
+	# after = {
+	# 	scope:target = { trigger_event = murder_outcome_reworked.0002 }
+	# }
+}
+
+# Time for diablerie
+vi_hunt.3002  = {
+	type = character_event
+	window = scheme_successful_event
+	title = vi_hunt.3002.t
+	desc = vi_hunt.3002.desc
+	
+	theme = murder_scheme
+	left_portrait = {
+		character = scope:owner
+		animation = war_over_win
+	}
+	# center_portrait = {
+	# 	character = scope:assassin
+	# 	animation = assassin
+	# }
+	right_portrait = {
+		character = scope:target
+		animation = map_fear
+	}
+	override_background = { reference = corridor_night }
+
+	immediate = {
+
+	}
+
+	# Drink
+	option = {
+		name = vi_hunt.3002.a
+
+		vi_vampire_drain_effect = yes
+		
+		scope:scheme = {
+			end_scheme = yes
+		}
+	}
+
+	# Drain them dry
+	option = {
+		name = vi_hunt.3002.b
+
+		vi_vampire_drain_kill_effect = yes
+
+		scope:scheme = {
+			end_scheme = yes
+		}
+	}
 }

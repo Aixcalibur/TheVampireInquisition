@@ -8,9 +8,9 @@ vi_extract_hook_interaction = {
 }
 vi_enthrall_interaction = {
 }
-
-
-
-
+vi_compel_suicide_interaction = {
+}
+vi_instill_fear_interaction = {
+}
 vi_weave_fate_interaction = {
 }

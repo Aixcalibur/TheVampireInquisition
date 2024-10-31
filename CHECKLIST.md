@@ -5,65 +5,41 @@ We're trying to get the most basic features in place as a proof of concept sort 
 A lot of the mechanics around vampirism revolve around Stress. This is in order to synergize with base game mechanics.
 
 ### Basic Vampire Mechanics
-- Vampire Character Creation
-- Stress events (40%) (vi_stress_on_action)
-- Drain/turn mortal (50%)
-- Vampire secret and exposed vampire trait (60%) (vi_investigate_secrets.100)
-- Generating tasty mortals
+- Vampire Character Creation (90%) (Need polish pass)
+- Stress events (40%) (vi_stress_on_action) (need writing)
+- Drain/turn mortal (90%) (need events and polish pass)
+- Vampire secret and exposed vampire trait (60%) (scheme needs editing, methods of getting rid of exposed vampire need tuning)
+- Anti-Vampire Nuke (80%) (need more testing)
+
+### Vampire Solo Progression
+- Vampire Perks (80%) (Still a few effects need implementing)
+- Devour other vampires for experience (90%) (Want to polish it)
+- Drain special victims for experience (50%) (Need to generate tasty mortals)
+- Acquire Vampire artifacts (0%)
+- Lair domicile buildings and upgrades (0%)
 
 ### Flavor Events
-Happen every five years.
+Happen every 5-20 years.
 - Fledgling flavor
-- Progression flavor
-- Nightwalker flavor
+- General Vampire flavor
+- Stress events
 - Ancient flavor making them go to sleep.
 
 ### Landless Inquisitors
-- Investigate vampire (80%)
-- Hunt vampire
-- Raid Lair
+- Going to push this for second release instead
 
 ### Mortal Rulers
-- Investigate vampire (80%)
-- Raid Lair
+- Investigate vampire (70%) (scheme needs editing)
 - Order Inquisition
-- Petition Pope
 
 ### Vampire Government Mechanics
-Most of these mechanics require influence.
-- Siphon wealth from your capital county. (95%) (vi_vampire_policy_pulse)
-- King/Emperor legitimacy represents the Masquerade. Every three years, regain a bit of legitimacy.
-- Set up a Princedom anywhere
-- Set up a Vassal Princedom for your friends (40%)
-- Denounce vassals
+- Siphon wealth from your capital county. (95%) (vi_vampire_policy_pulse) (need polish pass)
+- Set up a Princedom anywhere (Should be functional, need longterm testing)
+- Set up a Vassal Princedom for your friends (20%) (not functional yet)
+- Denounce vassals (not implemented yet, but ez)
+- Mark for death and create assassin order (not implemented yet)
+- Vampire court positions (not implemented yet, need ideas)
 - Declare Independence
 - Defect to other Vampire Kingdoms
 - Mark targets for death
 - Lair domicile and buildings (WIP)
-
-### Vampire Solo Progression
-- Vampire Perks (80%)
-- Devour other vampires for experience (50%)
-- Drain special victims for experience (20%)
-- Acquire Vampire artifacts
-
-### Vampire AI Activity
-- Turn mortal friends into vampires. (90%) (vi_vampire_friendship_pulse)
-- Set up contracts
-
-### Vampire Dynasties
-- Aphrodisian Bloodline: The archetypical supernatural seducers, the legends about them are numerous across all cultures around the world. Their origins have been long lost to time, it is possible they are actually comprised of several similar bloodlines.
-- Anunnaki Bloodline: Originating in Mesopotamia and descended from their mythical progenitor Anu, many Anunnaki see themselves as the shepherds of humanity and have posed themselves as deities to mortals.
-- Nosferatu Bloodline: The most monstrous of vampires, the Nosferatu are said to be cursed with hideous appearances that reflect the inner corruption of their souls.
-
-## Characters and Story
-
-### The Court of Night
-The French Court of Night set up by Esclarmonde.
-- Sponsoring artists grants influence, prestige, and piety in the Court of Night
-
-### Michael the Archangel
-Slumbering in Rome is an ancient Anunnaki vampire who has convinced himself that vampires must be purged. He will eat them all.
-
-### The Faceless One
-The Byzantine Empire has a hidden protector.

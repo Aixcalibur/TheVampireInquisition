@@ -1,0 +1,21 @@
+﻿vi_is_suspicious_of = {
+	global = IS_SUSPICIOUS_OF
+	first = I_AM_SUSPICIOUS_OF
+	third = THEY_ARE_SUSPICIOUS_OF
+	global_not = NOT_IS_SUSPICIOUS_OF
+	first_not = NOT_I_AM_SUSPICIOUS_OF
+	third_not = NOT_THEY_ARE_SUSPICIOUS_OF
+}
+
+has_opinion_modifier = {
+	global = HAS_OPINION_MODIFIER_TRIGGER
+}
+
+vi_princedom_already_exists = {
+	global = vi_princedom_already_exists
+}
+
+VI_MUST_KNOW_SECRET = {
+	global = VI_MUST_KNOW_SECRET
+	global_not = VI_MUST_KNOW_SECRET
+}

@@ -21,8 +21,8 @@
 @provisions_cost_special_bankrupting = 24
 
 vi_vampire_bats = {
-	type = skirmishers
-	icon = skirmishers
+	type = animals
+	icon = bats
 
 	can_recruit = {
 		has_perk = vi_animal_command_perk
@@ -30,8 +30,11 @@ vi_vampire_bats = {
 	
 	damage = 5
 	toughness = 4
-	pursuit = 10
-	screen = 20
+	pursuit = 8
+	screen = 16
+
+	siege_tier = 4
+	siege_value = 0
 	
 	terrain_bonus = {
 		forest = { damage = 2 toughness = 2 }
@@ -46,7 +49,7 @@ vi_vampire_bats = {
 	}
 
 	counters = {
-		heavy_infantry = 2
+		# heavy_infantry = 2
 		heavy_cavalry = 2
 		light_cavalry = 2
 	}
@@ -61,4 +64,62 @@ vi_vampire_bats = {
 		value = culture_ai_weight_skirmishers
 		add = 50
 	}
+}
+
+vi_local_vampires = {
+	type = heavy_infantry
+
+	damage = 60
+	toughness = 30
+	pursuit = 50
+	screen = 50
+	
+	terrain_bonus = {
+		taiga = { damage = 8 }
+		forest = { damage = 8 }
+	}
+	
+	counters = {
+		pikemen = 1
+		archers = 1
+	}
+
+	can_recruit = {
+		always = no
+	}
+
+	winter_bonus = {
+		normal_winter = { toughness = 6 screen = 6 }
+		harsh_winter = { toughness = 6 screen = 6 }
+	}
+	
+	buy_cost = { gold = huscarls_recruitment_cost }
+	low_maintenance_cost = { gold = huscarls_low_maint_cost }
+	high_maintenance_cost = { gold = huscarls_high_maint_cost }
+	provision_cost = @provisions_cost_special_expensive
+
+	allowed_in_hired_troops = no
+}
+
+vi_health_point_maa = {
+	type = heavy_infantry
+
+	damage = 10
+	toughness = 100
+	pursuit = 10
+	screen = 25
+
+	siege_tier = 4
+	siege_value = 0.001
+
+	can_recruit = {
+		always = no
+	}
+
+	buy_cost = { gold = 0 }
+	low_maintenance_cost = { gold = 0 }
+	high_maintenance_cost = { gold = 0 }
+	provision_cost = 0
+
+	allowed_in_hired_troops = no
 }

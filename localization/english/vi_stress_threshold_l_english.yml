@@ -2,5 +2,5 @@
  vi_stress_threshold.1001.t:0 "The Beast Overwhelms"
  vi_stress_threshold.1001.desc:0 "The thirst rises within me, heightening my senses. Even from afar, I can smell the scent of a few hapless prey wandering about after dark. I must feed before I lose control completely."
  vi_stress_threshold.1001.a:0 "Feed on [victim_1.GetName]."
- vi_stress_threshold.1001.a:0 "Feed on [victim_2.GetName]."
- vi_stress_threshold.1001.a:0 "Feed on [victim_3.GetName]."
+ vi_stress_threshold.1001.b:0 "Feed on [victim_2.GetName]."
+ vi_stress_threshold.1001.c:0 "Feed on [victim_3.GetName]."

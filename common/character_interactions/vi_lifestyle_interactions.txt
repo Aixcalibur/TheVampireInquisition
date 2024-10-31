@@ -1,0 +1,467 @@
+﻿vi_compel_suicide_interaction = {
+	category = interaction_category_hostile
+	icon = icon_dead
+	desc = vi_compel_suicide_interaction_desc
+
+	ai_maybe = yes
+	can_send_despite_rejection = yes
+	on_decline_summary = vi_compel_suicide_decline_summary
+
+	cooldown_against_recipient = {
+		years = 1
+	}
+
+	ai_targets = {
+		ai_recipients = scripted_relations
+		max = 10
+	}
+
+	ai_frequency = 60
+	
+	is_shown = {
+		NOT = {
+			scope:actor = scope:recipient
+		}
+		scope:actor = {
+			vi_is_vampire_trigger = yes
+			is_ruler = yes
+			has_trait_with_flag = vi_can_steal_hearts
+		}
+	}
+
+	is_valid_showing_failures_only = {
+		custom_tooltip = {
+			scope:recipient = {
+				OR = {
+					vi_is_vampire_trigger = no
+					scope:actor = {
+						has_perk = vi_presence_perk
+					}
+				}
+			}
+			text = VI_MUST_HAVE_PRESENCE_PERK
+		}
+
+		scope:recipient = {
+			NOT = {
+				has_trait = vi_heartstealer
+			}
+		}
+	}
+
+	cost = {
+		piety = 100
+	}
+
+	on_send = {
+		scope:actor = {
+			# Moved to on_accept because these don't show up on UI
+			# add_character_modifier = {
+			# 	modifier = vi_vampire_strain_modifier
+			# 	years = 10
+			# }
+			# add_character_modifier = {
+			# 	modifier = vi_vampire_strain_modifier
+			# 	years = 10
+			# }
+			# stress_impact = {
+			# 	base = major_stress_impact_gain
+			# 	compassionate = minor_stress_impact_gain
+			# 	forgiving = miniscule_stress_impact_gain
+			# 	sadistic = minor_stress_impact_loss
+			# }
+		}
+	}
+
+	on_accept = {
+		scope:actor = {
+			add_character_modifier = {
+				modifier = vi_vampire_strain_modifier
+				years = 10
+			}
+			add_character_modifier = {
+				modifier = vi_vampire_strain_modifier
+				years = 10
+			}
+			stress_impact = {
+				base = major_stress_impact_gain
+				compassionate = minor_stress_impact_gain
+				forgiving = miniscule_stress_impact_gain
+				sadistic = minor_stress_impact_loss
+			}
+		}
+		scope:recipient = {
+			add_character_modifier = {
+				modifier = vi_sirenscall_modifier
+				years = 5
+			}
+			
+			hidden_effect = {
+				committed_suicide_effect = yes
+			}
+		}
+		scope:actor = {
+			send_interface_toast = {
+				type = event_toast_effect_good
+				title = vi_siren_call_accepted
+				right_icon = scope:recipient
+
+				scope:recipient = {
+					show_as_tooltip = {
+						committed_suicide_effect = yes
+					}
+				}
+			}
+		}
+	}
+	on_decline = {
+		scope:actor = {
+			add_character_modifier = {
+				modifier = vi_vampire_strain_modifier
+				years = 10
+			}
+			add_character_modifier = {
+				modifier = vi_vampire_strain_modifier
+				years = 10
+			}
+			stress_impact = {
+				base = major_stress_impact_gain
+				compassionate = minor_stress_impact_gain
+				forgiving = miniscule_stress_impact_gain
+				sadistic = minor_stress_impact_loss
+			}
+		}
+		scope:recipient = {
+			add_opinion = {
+				target = scope:actor
+				modifier = suspicion_opinion
+				opinion = -100
+			}
+			add_character_modifier = {
+				modifier = vi_sirenscall_modifier
+				years = 5
+			}
+		}
+
+		scope:actor = {
+			send_interface_toast = {
+				type = event_toast_effect_bad
+				title = vi_siren_call_declined
+				right_icon = scope:recipient
+
+				scope:recipient = {
+					if = {
+						limit = {
+							vi_is_vampire_trigger = no
+						}
+						stress_impact = {
+							base = 150
+						}
+					}
+					else = {
+						add_character_modifier = {
+							modifier = vi_vampire_strain_modifier
+							years = 10
+						}
+						stress_impact = {
+							base = major_stress_impact_gain
+						}
+					}
+				}
+			}
+		}
+	}
+
+	ai_accept = {
+ 		base = -40
+
+		modifier = {
+			stress_level >= 3
+			vi_is_vampire_trigger = no
+			add = 1000
+			desc = VI_TOO_STRESSED_TO_REFUSE
+		}
+
+		modifier = {
+			stress_level = 2
+			vi_is_vampire_trigger = no
+			add = 50
+			desc = VI_VERY_STRESSED
+		}
+
+		modifier = {
+			vi_is_vampire_trigger = yes
+			add = -50
+			desc = VI_IS_VAMPIRE
+		}
+
+		modifier = {
+			OR = {
+				has_trait = depressed_1
+				has_trait = depressed_genetic
+			}
+			add = 50
+		}
+
+ 		opinion_modifier = {
+ 			opinion_target = scope:actor
+ 			multiplier = 0.5
+ 			step = 5
+ 			max = 50
+ 		}
+
+ 		#Relations & relatives (with actor)
+ 		modifier = {
+ 			has_relation_lover = scope:actor
+			NOT = {
+				has_relation_soulmate = scope:actor
+			}
+ 			add = 25
+ 			desc = AI_YOUR_LOVER
+ 		}
+
+		modifier = {
+			has_relation_soulmate = scope:actor
+			add = 50
+			desc = AI_YOUR_SOULMATE
+		}
+
+ 		modifier = {
+ 			has_relation_friend = scope:actor
+			NOT = {
+				has_relation_best_friend = scope:actor
+			}
+ 			add = 10
+ 			desc = AI_YOUR_FRIEND
+ 		}
+
+		modifier = {
+			has_relation_best_friend = scope:actor
+			add = 20
+			desc = AI_YOUR_BEST_FRIEND
+		}
+		
+	}
+
+	ai_will_do = {
+		base = -50
+
+		modifier = {
+			add = 100
+			scope:recipient = {
+				has_relation_rival = scope:actor
+			}
+		}
+
+		modifier = {
+			add = 100
+			scope:recipient = {
+				has_relation_nemesis = scope:actor
+			}
+		}
+
+		modifier = {
+			add = -100
+			scope:actor = {
+				stress_level >= 1
+			}
+		}
+
+		modifier = {
+			add = -1000
+			scope:recipient = {
+				OR = {
+					has_relation_friend = scope:actor
+					has_relation_best_friend = scope:actor
+					has_relation_soulmate = scope:actor
+				}
+			}
+		}
+	}
+}
+
+vi_instill_fear_interaction = {
+	category = interaction_category_hostile
+	icon = torture_interaction
+	desc = vi_instill_fear_interaction_desc
+
+	#ai_maybe = yes
+	#can_send_despite_rejection = yes
+	#on_decline_summary = vi_compel_suicide_decline_summary
+	cooldown_against_recipient = {
+		years = 3
+	}
+
+	ai_targets = {
+		ai_recipients = scripted_relations
+		ai_recipients = vassals
+		max = 10
+	}
+
+	ai_frequency = 12
+	
+	is_shown = {
+		NOT = {
+			scope:actor = scope:recipient
+		}
+		scope:actor = {
+			vi_is_vampire_trigger = yes
+			is_ruler = yes
+			has_trait_with_flag = vi_can_use_dragon_fear
+		}
+		NOT = {
+			scope:recipient = {
+				is_imprisoned_by = scope:actor
+			}
+		}
+	}
+
+	is_valid_showing_failures_only = {
+		scope:recipient = {
+			NOT = {
+				has_trait = vi_dragonsscion
+			}
+		}
+	}
+
+	cost = {
+		piety = 100
+	}
+
+	auto_accept = yes
+
+	on_send = {
+		
+	}
+
+	on_accept = {
+		scope:actor = {
+			add_character_modifier = {
+				modifier = vi_vampire_strain_modifier
+				years = 5
+			}
+			stress_impact = {
+				base = miniscule_stress_impact_gain
+			}
+			add_dread = 20
+		}
+		scope:recipient = {
+			stress_impact = {
+				base = medium_stress_impact_gain
+			}
+			if = {
+				limit = {
+					has_dread_level_towards = {
+						target = scope:actor
+						level >= 2
+					}
+				}
+				scope:actor = {
+					add_hook = {
+						type = threat_hook
+						target = scope:recipient
+					}
+				}
+			}
+			send_interface_toast = {
+				type = event_toast_effect_bad
+				title = vi_instilled_fear
+				right_icon = scope:actor
+
+				add_character_modifier = {
+					modifier = vi_instilledfear_modifier
+					years = 10
+				}
+
+				random = {
+					chance = {
+						value = 1 # one in 100
+						if = {
+							limit = {
+								vi_is_vampire_trigger = no
+							}
+							add = 4
+						}
+						if = {
+							limit = {
+								OR = {
+									has_trait = vi_vampire_3
+									has_trait = vi_vampire_4
+									has_trait = vi_vampire_5
+								}
+								
+							}
+							add = -10
+						}
+					}
+
+					if = {
+						limit = {
+							has_trait = brave
+						}
+						remove_trait = brave
+					}
+					else = {
+						add_trait = craven
+					}
+				}
+			}
+		}
+	}
+
+	ai_will_do = {
+		base = -25
+
+		modifier = {
+			add = 25
+			scope:recipient = {
+				opinion = {
+					target = scope:actor
+					value < 0
+				}
+			}
+		}
+
+		modifier = {
+			add = 25
+			scope:actor = {
+				opinion = {
+					target = scope:recipient
+					value < 0
+				}
+			}
+		}
+
+		modifier = {
+			add = 100
+			scope:recipient = {
+				has_relation_rival = scope:actor
+			}
+		}
+
+		modifier = {
+			add = 100
+			scope:recipient = {
+				has_relation_nemesis = scope:actor
+			}
+		}
+
+		modifier = {
+			add = -100
+			scope:actor = {
+				stress_level >= 1
+			}
+		}
+
+		modifier = {
+			add = -1000
+			scope:recipient = {
+				OR = {
+					has_relation_friend = scope:actor
+					has_relation_best_friend = scope:actor
+					has_relation_soulmate = scope:actor
+				}
+			}
+		}
+	}
+}

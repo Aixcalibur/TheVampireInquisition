@@ -55,10 +55,10 @@ vi_stress_on_action = {
 }
 
 
-
 vi_stress_choose_on_action = {
 	random_events = {
 		100 = vi_stress_threshold.1001
+		200 = vi_stress_threshold.1010
 		10 = vi_stress_threshold.2010
 		10 = vi_stress_threshold.2020
 		10 = vi_stress_threshold.2030

@@ -2,3 +2,9 @@
 	icon = magic_positive
 	monthly_income = 5
 }
+
+vi_holy_flames_modifier = {
+	icon = magic_positive
+	advantage = 20
+	heavy_infantry_damage_add = 50
+}

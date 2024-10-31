@@ -8,9 +8,8 @@
 vi_deliver_raid_loot_on_action = {
 	trigger = {
 		root.army_owner = {
-			OR = {
-				has_government = vi_vampire_government
-			}
+			has_government = vi_vampire_government
+			is_landed = no
 		}
 	}
 	
@@ -29,9 +28,8 @@ vi_deliver_raid_loot_resolve_on_action = {
 
 	trigger = {
 		root.army_owner = {
-			OR = {
-				has_government = vi_vampire_government
-			}
+			has_government = vi_vampire_government
+			is_landed = no
 		}
 	}
 

@@ -1,3 +1,6 @@
 ﻿l_english:
  vi_vampire_bats:0 "Bats"
- vi_vampire_bats_desc:0 "The sky turns black as legions of bats descend upon their target."
+ vi_vampire_bats_flavor:0 "The sky turns black as legions of bats descend upon their target."
+
+ vi_local_vampires:0 "Local Vampires"
+ vi_local_vampires_flavor:0 "An army of local vampires, roused to defend their homes."

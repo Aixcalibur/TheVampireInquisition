@@ -1,0 +1,35 @@
+﻿l_english:
+ vi_customization.0001.t:0 "Vampire Customization"
+ vi_customization.0001.desc:0 "Choose what level of vampire you are."
+ vi_customization.0001.a:0 "Fledgling"
+ vi_customization.0001.b:0 "Neonate"
+ vi_customization.0001.c:0 "Elder"
+ vi_customization.0001.d:0 "Nevermind, I don't want to be a vampire"
+
+ vi_free_trait_refund_tt:0 "Gain a Free Trait"
+ vi_increase_age_by_20_tt:0 "Increase your age by 20"
+ vi_increase_age_by_200_tt:0 "Increase your age by 200"
+
+ vi_customization.0002.t:0 "Further Customization Menu"
+ vi_customization.0002.desc:0 "Choose what level of vampire you are."
+ vi_customization.0002.a:0 "Change Age"
+ vi_customization.0002.b:0 "Choose Dynasty"
+ vi_customization.0002.c:0 "Change..."
+ vi_customization.0002.d:0 "I'm finished"
+
+ vi_choose_a_vampire_tt:0 "Interact with a vampire to join their house before continuing"
+ vi_become_their_child:0 "Become their child"
+
+ vi_customization.0010.t:0 "Age Customization"
+ vi_customization.0010.desc:0 "How old are you?"
+ vi_customization.0010.a:0 "Add 10 Years"
+ vi_customization.0010.b:0 "Remove 10 Years"
+ vi_customization.0010.c:0 "Add 1 Year"
+ vi_customization.0010.d:0 "Go Back"
+
+
+
+ vi_customization.1001.t:0 "Free Trait"
+ vi_customization.1001.desc:0 "This one is on me."
+ vi_customization.1001.next:0 "Next Page"
+ vi_customization.1001.none:0 "I don't need a free trait"

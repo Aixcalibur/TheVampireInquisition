@@ -33,6 +33,89 @@ vi_vampire_drain_effect = {
 			modifier = vi_sated_modifier
 			years = 3
 		}
+
+		if = {
+			limit = {
+				scope:vi_victim = {
+					has_character_modifier = vi_delicious_modifier
+				}
+			}
+
+			add_vi_vampire_lifestyle_xp = { 100 500 }
+
+			scope:vi_victim = {
+				remove_character_modifier = vi_delicious_modifier
+			}
+		}
+
+		if = {
+			limit = {
+				scope:vi_victim = {
+					has_trait = vi_vampire_1
+				}
+			}
+
+			add_character_modifier = {
+				modifier = vi_vampire_madness_modifier
+				years = 5
+			}
+		}
+		else_if = {
+			limit = {
+				scope:vi_victim = {
+					has_trait = vi_vampire_2
+				}
+			}
+
+			add_character_modifier = {
+				modifier = vi_vampire_madness_modifier
+				years = 10
+			}
+
+			add_vi_vampire_lifestyle_xp = 50
+		}
+		else_if = {
+			limit = {
+				scope:vi_victim = {
+					has_trait = vi_vampire_3
+				}
+			}
+
+			add_character_modifier = {
+				modifier = vi_vampire_madness_modifier
+				years = 20
+			}
+
+			add_vi_vampire_lifestyle_xp = 100
+		}
+		else_if = {
+			limit = {
+				scope:vi_victim = {
+					has_trait = vi_vampire_4
+				}
+			}
+
+			add_character_modifier = {
+				modifier = vi_vampire_madness_modifier
+				years = 40
+			}
+
+			add_vi_vampire_lifestyle_xp = 250
+		}
+		else_if = {
+			limit = {
+				scope:vi_victim = {
+					has_trait = vi_vampire_5
+				}
+			}
+
+			add_character_modifier = {
+				modifier = vi_vampire_madness_modifier
+				years = 100
+			}
+
+			add_vi_vampire_lifestyle_xp = 500
+		}
 	}
 }
 
@@ -43,11 +126,6 @@ vi_vampire_drain_turn_hostile_effect = {
 
 		add_stress = major_stress_gain
 
-		add_character_modifier = {
-			modifier = vi_drained_modifier
-			years = 3
-		}
-
 		add_relation_grudge = scope:vi_vampire
 
 		add_opinion = {
@@ -56,10 +134,10 @@ vi_vampire_drain_turn_hostile_effect = {
 			opinion = -100
 		}
 
-		vi_turn_into_vampire_effect = {
-			VI_VAMPIRE = scope:vi_vampire
-			VI_TARGET = scope:vi_victim
-		}
+		save_scope_as = vi_target
+
+		vi_turn_into_vampire_effect = yes
+
 	}
 
 	scope:vi_vampire = {

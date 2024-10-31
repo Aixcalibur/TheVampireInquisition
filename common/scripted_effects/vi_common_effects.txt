@@ -2,7 +2,10 @@
 
 	add_character_flag = immune_to_disease
 	add_character_flag = vi_vampire
-
+	hidden_effect = {
+		remove_character_modifier = vi_drained_modifier
+	}
+	
 	add_secret = {
 		type = secret_vi_vampire
 	}
@@ -16,6 +19,26 @@
 	# add_character_flag = stress_threshold_event_1_cooldown
 
 	# set_sexuality = asexual
+}
+
+vi_recenter_domicile_effect = {
+	
+	# random_held_title = {
+	# 	limit = {
+	# 		tier = highest_held_title_tier
+	# 		is_noble_family_title = no
+	# 	}
+	# 	save_scope_as = destination
+	# }
+
+	primary_title.title_capital_county.title_province = {
+		save_scope_as = destination
+	}
+
+	domicile ?= {
+		move_domicile = scope:destination
+	}
+
 }
 
 vi_upgrade_vampire_effect = {
@@ -44,12 +67,12 @@ vi_upgrade_vampire_effect = {
 
 vi_turn_into_vampire_effect = {
 
-	$VI_VAMPIRE$ = {
-		save_scope_as = vi_vampire
-	}
-	$VI_TARGET$ = {
-		save_scope_as = vi_target
-	}
+	# $VI_VAMPIRE$ = {
+	# 	save_scope_as = vi_vampire
+	# }
+	# $VI_TARGET$ = {
+	# 	save_scope_as = vi_target
+	# }
 
 	scope:vi_target = {
 		if = {
@@ -65,50 +88,47 @@ vi_turn_into_vampire_effect = {
 					add_opinion = {
 						target = scope:vi_target
 						modifier = suspicion_opinion
-						value = -30
+						value = -10
 					}
 				}
 			}
 
 			#Depose Rulers
-			if = {
-				limit = {
-					is_ruler = yes
-				}
-				add_character_flag = {
-					flag = abdicated_from_throne
-					days = 30
-				}
-				hidden_effect = {	#Make all weak claims on your titles into strong claims.
-					every_held_title = {
-						save_temporary_scope_as = abdicator_title
-						every_claimant = {
-							limit = { has_weak_claim_on = scope:abdicator_title }
-							make_claim_strong = scope:abdicator_title
-						}
-					}
-				}
-				depose = yes
+			# if = {
+			# 	limit = {
+			# 		is_ruler = yes
+			# 	}
+			# 	add_character_flag = {
+			# 		flag = abdicated_from_throne
+			# 		days = 30
+			# 	}
+			# 	hidden_effect = {	#Make all weak claims on your titles into strong claims.
+			# 		every_held_title = {
+			# 			save_temporary_scope_as = abdicator_title
+			# 			every_claimant = {
+			# 				limit = { has_weak_claim_on = scope:abdicator_title }
+			# 				make_claim_strong = scope:abdicator_title
+			# 			}
+			# 		}
+			# 	}
+			# 	depose = yes
+			# }
+
+			# add_trait = vi_vampire_1
+			vi_make_vampire_effect = yes
+
+			add_character_modifier = {
+				modifier = vi_skittish_modifier
+				years = 20
 			}
 
-			add_trait = vi_vampire_1
-			vi_make_vampire_effect = yes
+			set_immortal_age = scope:vi_target.age
 
 			scope:vi_vampire = {
 				adopt = scope:vi_target
 			}
 			set_character_faith = scope:vi_vampire.faith
 			# set_house = scope:vi_vampire.house
-		}
-	}
-
-	scope:vi_vampire = {
-		if = {
-			limit = {
-				is_ruler = yes
-			}
-
-			add_courtier = scope:vi_victim
 		}
 	}
 }
@@ -142,6 +162,10 @@ vi_become_dormant_effect = {
 			has_trait = vi_exposed_vampire
 		}
 		remove_trait = vi_exposed_vampire
+		add_secret = {
+			type = secret_vi_vampire
+			target = THIS
+		}
 	}
 
 	every_scheme = {
@@ -200,4 +224,24 @@ vi_add_stacking_modifier_effect = {
 
 vi_secret_exposed_vampire_effect = {
 	add_trait = vi_exposed_vampire
+	#save_scope_as = vi_exposed_vampire
+	liege ?= {
+		if = {
+			limit = {
+				has_government = vi_vampire_government
+			}
+			send_interface_message = {
+				type = send_interface_message_bad
+				title = vi_vampire_exposed_msg
+				desc = vi_vampire_exposed_msg_desc
+				#tooltip = LOCALIZATION # optional, otherwise takes it from the message type
+				left_icon = root # optional, character, artifact, or title
+				#right_icon = scope:domicile_location # optional, character, artifact, or title
+				goto = root # optional, character, barony title, province will add a goto button
+				
+				add_legitimacy = medium_legitimacy_loss
+			}
+			
+		}	
+	}
 }

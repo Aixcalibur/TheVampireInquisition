@@ -1,0 +1,4 @@
+﻿death_vi_holy_flames = {
+	public_knowledge = yes
+	icon = "death_murder.dds"
+}

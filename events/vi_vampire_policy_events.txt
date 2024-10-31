@@ -19,9 +19,34 @@ vi_vampire_policy.001 = {
 			flag = vi_vampire_policy_decided
 			days = 1800
 		}
-		
-		root.domicile.domicile_location = {
+
+		primary_title.title_capital_county = {
 			save_scope_as = lair_location
+		}
+		
+		# root.domicile.domicile_location = {
+		# 	save_scope_as = lair_location
+		# }
+
+		if = {
+			limit = {
+				has_legitimacy = yes
+			}
+
+			every_vassal = {
+				if = {
+					limit = {
+						opinion = {
+							target = root
+							value >= 25
+						}
+					}
+
+					root = {
+						add_legitimacy = 10
+					}
+				}
+			}
 		}
 	}
 

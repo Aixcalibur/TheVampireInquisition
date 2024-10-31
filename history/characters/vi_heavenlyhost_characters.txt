@@ -1,0 +1,54 @@
+﻿vi_michael = {
+	name = Michael
+	sexuality = asexual
+	faith = catholic
+	culture = roman
+
+	diplomacy = 8
+	martial = 19
+	stewardship = 8
+	intrigue = 8
+	learning = 12
+	prowess = 0
+
+	trait = zealous
+	trait = brave
+	trait = temperate
+	trait = arbitrary
+
+	trait = education_martial_5
+	trait = reaver
+	trait = reckless
+	trait = vi_vampire_5
+	trait = education_martial_prowess_4
+	trait = vi_dormant
+	trait = saint
+	trait = lifestyle_blademaster
+	trait = lunatic_1
+	trait = order_member
+	trait = holy_warrior
+	trait = vi_dragonsscion
+	trait = strategist
+	trait = beauty_good_3
+	trait = physique_good_3
+
+	0.1.1 = {
+		birth = yes
+		effect = {
+			add_character_flag = do_not_generate_starting_family
+			set_immortal_age = 25
+			vi_make_vampire_effect = yes
+			add_prowess_skill = 100
+			add_trait_xp = {
+				trait = lifestyle_blademaster
+				value = 100
+			}
+			give_nickname = nick_vi_the_archangel
+			add_character_flag = vi_awaken_by_event_only
+		}
+	}
+
+	2000.1.1 = {
+		death = yes
+	}
+}

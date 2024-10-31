@@ -1,0 +1,104 @@
+﻿namespace = vi_inquisitions
+
+vi_inquisition.0001 = {
+	type = character_event
+	title = vi_inquisition.0001.t
+	desc = vi_inquisition.0001.desc
+	
+	theme = war
+
+	left_portrait = {
+		character = scope:recipient
+		animation = war_defender
+	}
+
+	right_portrait = {
+		character = root
+		animation = war_attacker
+	}
+
+	trigger = {
+		
+	}
+
+	immediate = {
+		add_character_flag = vi_inquisition_leader
+		if = {
+			limit = {
+				NOT = {
+					exists = scope:recipient
+				}
+			}
+
+			# character:vi_esclarmonde = {
+			# 	save_scope_as = recipient
+				
+			# }
+		}
+
+		scope:recipient = {
+			add_character_flag = vi_inquisition_target
+		}
+	}
+
+	option = {
+		name = vi_inquisition.0001.a
+
+		scope:recipient = {
+			start_war = {
+				casus_belli = vi_inquisition_defense_cb
+				target = root
+			}
+
+			trigger_event = {
+				id = vi_inquisition.0002
+			}
+		}
+	}
+}
+
+vi_inquisition.0002 = {
+	type = character_event
+	title = vi_inquisition.0002.t
+	desc = vi_inquisition.0002.desc
+	
+	theme = war
+
+	left_portrait = {
+		character = scope:actor
+		animation = war_defender
+	}
+
+	right_portrait = {
+		character = root
+		animation = war_attacker
+	}
+
+	trigger = {
+		
+	}
+
+	immediate = {
+		show_as_tooltip = {
+			scope:recipient = {
+				start_war = {
+					casus_belli = vi_inquisition_defense_cb
+					target = scope:actor
+				}
+			}	
+		}
+	}
+
+	option = {
+		name = vi_inquisition.0002.a
+	}
+
+	option = {
+		name = vi_inquisition.0002.b
+		trigger = {
+			NOT = {
+				root = scope:recipient
+			}
+		}
+	}
+}

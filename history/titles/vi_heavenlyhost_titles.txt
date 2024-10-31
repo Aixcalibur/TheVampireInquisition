@@ -1,0 +1,10 @@
+﻿k_vi_heavenly_host = {
+	200.1.1 = {
+		holder = vi_michael
+		liege = 0
+	}
+
+	2000.1.1 = {
+		holder = 0
+	}
+}

@@ -26,6 +26,50 @@ vi_lady = {
 	}
 }
 
+vi_father = {
+	type = character
+	gender = male
+	special = domicile
+	domicile_type = vi_lair
+	priority = 30
+	flag = vi_clergy_flag
+
+	flavourization_rules = {
+		top_liege = no
+		# top_liege = yes
+		spouse_takes_title = yes
+	}
+}
+
+vi_mother = {
+	type = character
+	gender = female
+	special = domicile
+	domicile_type = vi_lair
+	priority = 30
+	flag = vi_clergy_flag
+
+	flavourization_rules = {
+		top_liege = no
+		# top_liege = yes
+		spouse_takes_title = yes
+	}
+}
+
+vi_lady_esclarmonde = {
+	type = character
+	gender = female
+	special = holder
+	tier = kingdom
+	priority = 400
+	flag = vi_esclarmonde
+	
+	titles = { k_vi_court_of_night }
+	flavourization_rules = { 
+		top_liege = no
+	}
+}
+
 vi_serpent_bida = {
 	type = character
 	# gender = female
@@ -34,6 +78,17 @@ vi_serpent_bida = {
 	priority = 400
 	
 	titles = { k_vi_bida }
+	flavourization_rules = { 
+		top_liege = no
+	}
+}
+
+vi_saint = {
+	type = character
+	special = holder
+	tier = kingdom
+	priority = 400
+	titles = { k_vi_heavenly_host }
 	flavourization_rules = { 
 		top_liege = no
 	}

@@ -19,13 +19,14 @@
  d_vi_zurich_article:0 "$DEFAULT_TITLE_NAME_ARTICLE$"
  d_vi_zurich:0 "Abbey of Fraumünster"
 
- d_nf_vi_montmartre: "Montmartre Family"
+ d_nf_vi_montmartre: "$dynn_vi_Montmartre$ Family"
  d_nf_vi_montmartre_article: "$DEFAULT_TITLE_NAME_ARTICLE$"
  d_nf_vi_normandy: "House of Neustria"
  d_nf_vi_normandy_article: "$DEFAULT_TITLE_NAME_ARTICLE$"
  d_nf_vi_lyon: "Lugdunum Family"
  d_nf_vi_lyon_article: "$DEFAULT_TITLE_NAME_ARTICLE$"
-
+ d_nf_vi_cologne: "House of Cologne"
+ d_nf_vi_cologne_article: "$DEFAULT_TITLE_NAME_ARTICLE$"
 
 
 

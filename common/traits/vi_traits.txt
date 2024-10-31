@@ -1,20 +1,24 @@
-﻿vi_vampire_1 = {
-	icon = albino.dds
+﻿vi_customizer = {
 	category = lifestyle
 
-	incapacitating = yes
-	disables_combat_leadership = yes
-	stewardship = -6
-	monthly_prestige_gain_mult = -1
-	monthly_piety_gain_mult = -1
-
-	general_opinion = -30
+	ruler_designer_cost = 100
+	stress_gain_mult = 0.5
+	fertility = -1
 	health = 1
-	stress_gain_mult = 1
-	fertility = -2
-	character_travel_speed_mult = -0.5
 
-	monthly_vi_vampire_lifestyle_xp_gain_add = 3
+	immortal = yes
+	flag = can_murder_own_children
+	flag = immortal_visuals
+}
+
+vi_vampire_1 = {
+	#icon = albino.dds
+	category = lifestyle
+
+	# health = 1
+	# stress_gain_mult = 0.5
+	# fertility = -0.9
+	# character_travel_speed_mult = -0.5
 	
 	shown_in_ruler_designer = no
 	immortal = yes
@@ -22,24 +26,23 @@
 	flag = immortal_visuals
 	
 	ai_boldness = 25
-	ai_energy = -100
+	#ai_energy = -100
 }
 
 vi_vampire_2 = {
-	icon = albino.dds
+	#icon = albino.dds
 	category = lifestyle
 
-	stewardship = -4
 	monthly_prestige_gain_mult = -0.75
 	monthly_piety_gain_mult = -0.75
 
-	general_opinion = -20
-	health = 1.5
-	stress_gain_mult = 0.5
-	fertility = -0.95
-	character_travel_speed_mult = -0.5
+	#general_opinion = -10
+	health = 0.25
+	stress_gain_mult = 0.25
+	#fertility = -1
+	#character_travel_speed_mult = -0.5
 
-	monthly_vi_vampire_lifestyle_xp_gain_add = 3
+	monthly_vi_vampire_lifestyle_xp_gain_add = 1
 	enemy_hostile_scheme_phase_duration_add = medium_scheme_phase_duration_malus_value
 	enemy_hostile_scheme_success_chance_add = -25
 
@@ -49,22 +52,23 @@ vi_vampire_2 = {
 	flag = immortal_visuals
 
 	ai_boldness = 25
-	ai_energy = -100
+	#ai_energy = -100
 }
 
 vi_vampire_3 = {
-	icon = albino.dds
+	#icon = albino.dds
 	category = lifestyle
 
 	monthly_prestige_gain_mult = -0.5
 	monthly_piety_gain_mult = -0.5
 
 	general_opinion = -10
-	health = 2
-	fertility = -0.95
-	stress_gain_mult = 0.5
+	health = 1
+	#fertility = -1
+	stress_gain_mult = 0.25
+	character_travel_speed_mult = -0.5
 
-	prowess_no_portrait = 5
+	# prowess_no_portrait = 5
 	monthly_vi_vampire_lifestyle_xp_gain_add = 2
 	enemy_hostile_scheme_phase_duration_add = major_scheme_phase_duration_malus_value
 	enemy_hostile_scheme_success_chance_add = -50
@@ -73,25 +77,27 @@ vi_vampire_3 = {
 	immortal = yes
 	flag = can_murder_own_children
 	flag = immortal_visuals
+	flag = vi_sunlight_burns
 
 	ai_boldness = 25
+	ai_energy = -75
 }
 
 vi_vampire_4 = {
-	icon = albino.dds
+	#icon = albino.dds
 	category = lifestyle
 
 	monthly_prestige_gain_mult = -0.5
 	monthly_piety_gain_mult = -0.5
 
-	fertility = -0.95
-	health = 5
+	#fertility = -1
+	health = 2
 	general_opinion = -10
 	stress_gain_mult = 0.25
-	character_travel_speed_mult = 0.5
+	character_travel_speed_mult = -0.5
 	
-	prowess_no_portrait = 10
-	monthly_vi_vampire_lifestyle_xp_gain_add = 1
+	# prowess_no_portrait = 10
+	monthly_vi_vampire_lifestyle_xp_gain_add = 3
 	enemy_hostile_scheme_phase_duration_add = monumental_scheme_phase_duration_malus_value
 	enemy_hostile_scheme_success_chance_add = -80
 
@@ -101,10 +107,11 @@ vi_vampire_4 = {
 	flag = immortal_visuals
 
 	ai_boldness = 50
+	ai_energy = -75
 }
 
 vi_vampire_5 = {
-	icon = albino.dds
+	#icon = albino.dds
 	category = lifestyle
 
 	monthly_prestige_gain_mult = -0.5
@@ -112,7 +119,7 @@ vi_vampire_5 = {
 
 	health = 20
 	general_opinion = -10
-	fertility = -0.95
+	#fertility = -1
 	character_travel_speed_mult = 0.5
 
 	prowess_no_portrait = 100
@@ -128,6 +135,10 @@ vi_vampire_5 = {
 vi_exposed_vampire = {
 	icon = excommunicated.dds
 	category = fame
+	shown_in_ruler_designer = no
+	dread_baseline_add = 20
+	enemy_hostile_scheme_phase_duration_add = major_scheme_phase_duration_bonus_value
+	enemy_hostile_scheme_success_chance_add = 30
 	triggered_opinion = {
 		parameter = vi_no_masquerade
 		check_missing = yes	
@@ -157,14 +168,11 @@ vi_excommunicated = {
 }
 
 vi_heartstealer = {
-	icon = seducer.dds
 	category = lifestyle
-
 	shown_in_ruler_designer = no
 
-	general_opinion = 10
-
-	stress_loss_mult = -0.25
+	attraction_opinion = 20
+	stress_loss_mult = -0.15
 	diplomacy_per_stress_level = 2
 	intrigue_per_stress_level = 2
 
@@ -173,25 +181,27 @@ vi_heartstealer = {
 
 vi_dragonsscion = {
 	category = lifestyle
-
 	shown_in_ruler_designer = no
 
-	stress_loss_mult = -0.25
-	dread_baseline_add = 30
-	prowess_no_portrait = 20
+	martial_per_stress_level = 4
+	stress_loss_mult = -0.15
+	dread_baseline_add = 40
+	dread_gain_mult = 0.5
+	prowess_no_portrait = 4
 
 	flag = vi_can_use_dragon_fear
 }
 
 vi_allseeing = {
 	category = lifestyle
-
 	shown_in_ruler_designer = no
+
+	stewardship_per_stress_level = 4
 	stress_loss_mult = -0.25
 	stress_gain_mult = 0.25
-	diplomatic_range_mult = 1
-	enemy_scheme_secrecy_add = -100
-	domain_limit = 2
+	dread_baseline_add = 10
+	enemy_scheme_secrecy_add = -50
+	diplomatic_range_mult = 0.5
 }
 
 

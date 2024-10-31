@@ -28,7 +28,7 @@
 
 	# Core Triggers
 	allow = {
-		is_adult = yes
+		# is_adult = yes
 		is_imprisoned = no
 		is_ruler = yes
 	}
@@ -52,14 +52,17 @@
 		ai_agent_join_chance_political_suite_modifier = yes
 	}
 	agent_groups_owner_perspective = { peer_vassals courtiers vassals councillors }
-	agent_groups_target_character_perspective = { courtiers vassals councillors }
-	valid_agent = { is_valid_agent_standard_trigger = yes }
+	# agent_groups_target_character_perspective = { courtiers vassals councillors }
+	valid_agent = {
+		is_valid_agent_standard_trigger = yes
+		vi_is_vampire_trigger = no
+	}
 
 	odds_prediction = {
 		add = base_odds_prediction_target_is_char_value
 		add = odds_skill_contribution_intrigue_value
 		add = agent_groups_owner_perspective_value
-		add = agent_groups_target_character_perspective_value
+		# add = agent_groups_target_character_perspective_value
 		min = 0
 	}
 
@@ -67,6 +70,7 @@
 	base_success_chance = {
 		base = 0
 		scheme_type_skill_success_chance_modifier = { SKILL = INTRIGUE }
+		scheme_type_skill_success_chance_modifier = { SKILL = LEARNING }
 		
 		# Target's intrigue
 		modifier = {
@@ -84,7 +88,7 @@
 		modifier = { # Target is paranoid, therefore leaves few clues
 			scope:target = { has_trait = paranoid }
 			desc = "SCHEME_TRAIT_PARANOID"
-			add = -100
+			add = -50
 		}
 		
 		# House

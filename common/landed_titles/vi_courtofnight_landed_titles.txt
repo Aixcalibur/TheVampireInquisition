@@ -27,15 +27,15 @@ k_vi_court_of_night = {
 	no_automatic_claims = yes
 	de_jure_drift_disabled = yes
 
-	d_vi_paris = {
-		definite_form = yes
-		ruler_uses_title_name = no
-		landless = yes
-		can_be_named_after_dynasty = no
-		capital = c_ile_de_france
-		destroy_if_invalid_heir = no
-		de_jure_drift_disabled = yes
-	}
+	# d_vi_paris = {
+	# 	definite_form = yes
+	# 	ruler_uses_title_name = no
+	# 	landless = yes
+	# 	can_be_named_after_dynasty = no
+	# 	capital = c_ile_de_france
+	# 	destroy_if_invalid_heir = no
+	# 	de_jure_drift_disabled = yes
+	# }
 
 	d_vi_cologne = {
 		definite_form = yes
@@ -115,7 +115,7 @@ d_nf_vi_montmartre = {
 
 	definite_form = yes
 	landless = yes
-	ruler_uses_title_name = no
+	ruler_uses_title_name = yes
 	always_follows_primary_heir = yes
 	no_automatic_claims = yes
 	noble_family = yes
@@ -128,7 +128,20 @@ d_nf_vi_cologne = {
 	capital = c_cologne
 	definite_form = yes
 	landless = yes
-	ruler_uses_title_name = no
+	ruler_uses_title_name = yes
+	always_follows_primary_heir = yes
+	no_automatic_claims = yes
+	noble_family = yes
+	destroy_if_invalid_heir = yes
+	ai_primary_priority = { add = @never_primary_score }
+}
+
+d_nf_vi_london = {
+	color = { 100 100 100 }
+	capital = c_middlesex
+	definite_form = yes
+	landless = yes
+	ruler_uses_title_name = yes
 	always_follows_primary_heir = yes
 	no_automatic_claims = yes
 	noble_family = yes
@@ -141,7 +154,7 @@ d_nf_vi_normandy = {
 	capital = c_rouen
 	definite_form = yes
 	landless = yes
-	ruler_uses_title_name = no
+	ruler_uses_title_name = yes
 	always_follows_primary_heir = yes
 	no_automatic_claims = yes
 	noble_family = yes
@@ -154,7 +167,7 @@ d_nf_vi_lyon = {
 	capital = c_lyon
 	definite_form = yes
 	landless = yes
-	ruler_uses_title_name = no
+	ruler_uses_title_name = yes
 	always_follows_primary_heir = yes
 	no_automatic_claims = yes
 	noble_family = yes

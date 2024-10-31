@@ -1,0 +1,64 @@
+﻿on_imprison = {
+	on_actions = {
+		vi_vampire_prison_on_action
+	}
+}
+
+vi_vampire_prison_on_action = {
+	trigger = {
+		vi_is_vampire_trigger = yes
+	}
+
+	effect = {
+
+		if = {
+			limit = {
+				scope:imprisoner = character:vi_michael
+			}
+			death = {
+				death_reason = death_vi_holy_flames
+				killer = scope:imprisoner
+			}
+		}
+
+		if = {
+			limit = {
+				has_character_modifier = vi_silver_chains_modifier
+				NOT = {
+					has_trait = vi_exposed_vampire
+				}
+			}
+			random_secret = {
+				limit = {
+					secret_type = secret_vi_vampire
+				}
+				reveal_to = scope:imprisoner
+
+				if = {
+					limit = {
+						scope:imprisoner = {
+							is_ai = yes
+							vi_is_vampire_trigger = no
+						}
+					}
+	
+					expose_secret = scope:imprisoner
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				NOT = {
+					has_character_modifier = vi_silver_chains_modifier
+				}
+				scope:imprisoner = {
+					vi_is_vampire_trigger = no
+				}
+			}
+
+			trigger_event = {
+				on_action = escape_from_prison_success
+			}
+		}
+	}
+}

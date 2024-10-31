@@ -98,6 +98,11 @@ vi_stress_threshold.1001 = {
 	immediate = {
 		root = { save_scope_as = stress_character } # For stress widget
 
+		add_character_modifier = {
+			modifier = vi_vampire_madness_modifier
+			years = 20
+		}
+
 		scope:stress_character = {
 			save_scope_as = vi_vampire
 		}
@@ -209,7 +214,7 @@ vi_stress_threshold.1001 = {
 			base = 1
 		}
 
-		scope:victim_2 = {
+		scope:victim_1 = {
 			save_scope_as = vi_victim
 		}
 
@@ -249,6 +254,84 @@ vi_stress_threshold.1001 = {
 	}
 }
 
+vi_stress_threshold.1010 = {
+	type = character_event
+	title = vi_stress_threshold.1001.t
+	desc = vi_stress_threshold.1001.desc
+
+	theme = mental_break
+	
+	left_portrait = {
+		character = root
+		animation = rage
+	}
+
+	right_portrait = {
+		character = scope:vi_victim
+		animation = fear
+	}
+
+	trigger = {
+		is_travelling = no
+		any_prisoner = {
+			vi_is_vampire_trigger = no
+		}
+	}
+
+	weight_multiplier = {
+		base = 1
+	}
+
+	widget = {
+		gui = "event_window_widget_stress"
+		container = "custom_widgets_container"
+	}
+
+	immediate = {
+		root = { save_scope_as = stress_character } # For stress widget
+
+		add_character_modifier = {
+			modifier = vi_vampire_madness_modifier
+			years = 20
+		}
+
+		scope:stress_character = {
+			save_scope_as = vi_vampire
+		}
+		
+		random_prisoner = {
+			limit = {
+				vi_is_vampire_trigger = no
+			}
+			save_scope_as = vi_victim
+		}
+
+		stress_threshold_event_post_immediate = yes
+	}
+
+	option = {
+
+		name = vi_stress_threshold.1010.a
+
+		ai_chance = {
+			base = 25
+		}
+		vi_vampire_drain_kill_effect = yes
+		add_stress = medium_stress_impact_loss
+	}
+
+	option = {
+		name = vi_stress_threshold.1010.b
+		add_stress = minor_stress_impact_gain
+		vi_vampire_drain_effect = yes
+	}
+
+	option = {
+		name = vi_stress_threshold.1010.c
+		add_stress = major_stress_impact_gain
+	}
+}
+
 vi_stress_threshold.2010 = { # Lose Humanity and Compassionate
 	type = character_event
 	title = vi_stress_threshold.2010.t
@@ -285,8 +368,8 @@ vi_stress_threshold.2010 = { # Lose Humanity and Compassionate
 	immediate = {
 		root = {
 			add_character_modifier = {
-				modifier = vi_vampire_strain_modifier
-				years = 5
+				modifier = vi_vampire_madness_modifier
+				years = 20
 			}
 
 			add_character_flag = {
@@ -335,7 +418,6 @@ vi_stress_threshold.2010 = { # Lose Humanity and Compassionate
 
 	option = {
 		name = vi_stress_threshold.2010.d
-
 	}
 }
 
@@ -355,6 +437,9 @@ vi_stress_threshold.2020 = { # Become Eccentric
 		stress_level >= 2
 		NOT = {
 			has_trait = eccentric
+		}
+		NOT = {
+			has_character_flag = had_vi_stress_threshold2020
 		}
 	}
 
@@ -380,8 +465,12 @@ vi_stress_threshold.2020 = { # Become Eccentric
 	immediate = {
 		root = {
 			add_character_modifier = {
-				modifier = vi_vampire_strain_modifier
-				years = 5
+				modifier = vi_vampire_madness_modifier
+				years = 20
+			}
+			add_character_flag = {
+				flag = had_vi_stress_threshold2020
+				years = 10
 			}
 		}
 	}
@@ -415,6 +504,9 @@ vi_stress_threshold.2030 = { # Become Arbitrary
 		NOT = {
 			has_trait = arbitrary
 		}
+		NOT = {
+			has_character_flag = had_vi_stress_threshold2030
+		}
 	}
 
 	weight_multiplier = {
@@ -429,8 +521,12 @@ vi_stress_threshold.2030 = { # Become Arbitrary
 	immediate = {
 		root = {
 			add_character_modifier = {
-				modifier = vi_vampire_strain_modifier
-				years = 5
+				modifier = vi_vampire_madness_modifier
+				years = 20
+			}
+			add_character_flag = {
+				flag = had_vi_stress_threshold2030
+				years = 20
 			}
 		}
 	}
@@ -483,7 +579,6 @@ vi_stress_threshold.9001 = {
 
 	weight_multiplier = {
 		base = 1
-
 	}
 
 	widget = {
@@ -494,17 +589,7 @@ vi_stress_threshold.9001 = {
 	option = {
 
 		name = vi_stress_threshold.9001.a
-		# trigger = {
-		# 	# has_character_flag = stress_threshold_option_contrite
-		# }
-		# name = {
-		# 	trigger = { can_be_contrite = yes }
-		# 	text = stress_threshold.1001.contrite.gain
-		# }
-		# name = {
-		# 	trigger = { has_trait = contrite }
-		# 	text = stress_threshold.1001.contrite.effect
-		# }
+		
 		ai_chance = {
 			base = 1
 			

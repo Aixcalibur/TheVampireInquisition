@@ -14,8 +14,8 @@
 
 	# Parameters
 	speed_per_skill_point = t2_spsp_owner_value
-	speed_per_target_skill_point = t2_spsp_target_value
-	base_progress_goal = t2_base_phase_length_value
+	speed_per_target_skill_point = t3_spsp_target_value
+	base_progress_goal = t3_base_phase_length_value #70 Days
 	maximum_secrecy = 95
 	base_maximum_success = t2_base_max_success_value
 	phases_per_agent_charge = 1
@@ -78,13 +78,13 @@
 	# Agents
 	agent_leave_threshold = -25
 	agent_join_chance = {
-		base = 0
+		base = -50
 		
 		ai_agent_join_chance_basic_suite_modifier = yes
 		ai_agent_join_chance_hostile_grievous_modifier = yes
 	}
-	agent_groups_owner_perspective = { courtiers guests scripted_relations }
-	agent_groups_target_character_perspective = { courtiers vassals }
+	agent_groups_owner_perspective = { courtiers guests }
+	agent_groups_target_character_perspective = { courtiers guests }
 	valid_agent = { is_valid_agent_standard_trigger = yes }
 
 	odds_prediction = {
@@ -98,13 +98,148 @@
 
 	# Base Chances
 	base_success_chance = {
-		base = 50
+		base = 0
 		scheme_type_skill_success_chance_modifier = { SKILL = INTRIGUE }
 		
 		hostile_scheme_base_chance_modifier = yes
 
 		# Countermeasures.
 		apply_calculated_scheme_success_chance_adjustments_modifier = yes
+
+		modifier = {
+			add = -100
+			desc = "SCHEME_TARGET_IS_A_RULER"
+			scope:target = {
+				is_ruler = yes
+			}
+		}
+
+		modifier = {
+			add = -50
+			desc = "SCHEME_TARGET_IS_A_VAMPIRE"
+			scope:target = {
+				has_trait = vi_vampire_2
+			}
+		}
+
+		modifier = {
+			add = -100
+			desc = "SCHEME_TARGET_IS_A_ELDER_VAMPIRE"
+			scope:target = {
+				has_trait = vi_vampire_3
+			}
+		}
+
+		modifier = {
+			add = -150
+			desc = "SCHEME_TARGET_IS_A_ANCIENT_VAMPIRE"
+			scope:target = {
+				has_trait = vi_vampire_4
+			}
+		}
+
+		modifier = {
+			add = -1000
+			desc = "SCHEME_TARGET_IS_A_ANCIENT_VAMPIRE"
+			scope:target = {
+				has_trait = vi_vampire_5
+			}
+		}
+
+		modifier = {
+			add = -60
+			desc = "SCHEME_TARGET_IS_PARANOID"
+			scope:target = {
+				has_trait = paranoid
+			}
+		}
+
+		modifier = {
+			add = {
+				value = 0
+				if = {
+					limit = {
+						scope:target = {
+							has_perk = vi_celerity_perk
+						}
+					}
+					add = -25
+				}
+				if = {
+					limit = {
+						scope:target = {
+							has_perk = vi_blink_perk
+						}
+					}
+					add = -25
+				}
+				if = {
+					limit = {
+						scope:target = {
+							has_perk = vi_shadowwalk_perk
+						}
+					}
+					add = -25
+				}
+				if = {
+					limit = {
+						scope:owner = {
+							has_perk = vi_celerity_perk
+						}
+					}
+					add = 25
+				}
+				if = {
+					limit = {
+						scope:target = {
+							has_perk = vi_blink_perk
+						}
+					}
+					add = 25
+				}
+				if = {
+					limit = {
+						scope:owner = {
+							has_perk = vi_shadowwalk_perk
+						}
+					}
+					add = 25
+				}
+			}
+			desc = "SCHEME_TARGET_RELATIVE_SPEED"
+		}
+
+		modifier = {
+			add = 25
+			desc = "I_AM_A_VAMPIRE"
+			scope:owner = {
+				has_trait = vi_vampire_2
+			}
+		}
+
+		modifier = {
+			add = 50
+			desc = "I_AM_A_ELDER_VAMPIRE"
+			scope:owner = {
+				has_trait = vi_vampire_3
+			}
+		}
+
+		modifier = {
+			add = 75
+			desc = "I_AM_A_ANCIENT_VAMPIRE"
+			scope:owner = {
+				has_trait = vi_vampire_4
+			}
+		}
+
+		modifier = {
+			add = 200
+			desc = "I_AM_A_PROGENITOR_VAMPIRE"
+			scope:owner = {
+				has_trait = vi_vampire_5
+			}
+		}
 
 		# Imaginary friend told you to kill them
 		modifier = {
@@ -157,12 +292,6 @@
 		}
 
 		modifier = {
-			add = 10
-			scope:owner = { has_trait = lifestyle_herbalist }
-			desc = MURDER_HERBALIST_BONUS
-		}
-
-		modifier = {
 			add = -50
 			scope:target = {				
 				has_opinion_modifier = {
@@ -207,7 +336,7 @@
 		# At War
 		first_valid = {
 			modifier = {
-				add = -50
+				add = -100
 				desc = "SCHEME_AT_WAR"
 				scope:target = {
 					is_at_war_with = scope:owner
@@ -264,7 +393,7 @@
 		}
 	}
 	base_secrecy = {
-		add = 25 #We make this scheme more secretive than vanilla
+		add = 25 #We make this scheme more secretive since it's mostly a solo scheme
 		add = secrecy_base_value
 		add = countermeasure_apply_secrecy_maluses_value
 	}

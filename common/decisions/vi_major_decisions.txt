@@ -1,0 +1,246 @@
+﻿vi_fake_death_decision = {
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/ep3_decision_laamp_neutral_mountain.dds"
+	}
+	decision_group_type = major
+	desc = vi_fake_death_decision_desc
+
+	ai_check_interval = 36
+
+	is_shown = {
+		OR = {
+			has_trait = vi_exposed_vampire
+
+			AND = {
+				NOT = {
+					has_government = vi_vampire_government
+				}
+				is_landed = yes
+			}
+		}
+
+		faith = {
+			NOT = {
+				has_doctrine_parameter = vi_no_masquerade
+			}
+		}
+		
+		vi_is_vampire_trigger = yes
+	}
+
+	is_valid_showing_failures_only = {
+		is_at_war = no
+		is_alive = yes
+		is_available_adult = yes
+		# has_contagious_deadly_disease_trigger = no
+	}
+
+	cost = {
+		gold = medium_gold_value
+	}
+
+	effect = {
+		hidden_effect = {
+			every_close_or_extended_family_member = {
+				limit = {
+					vi_is_vampire_trigger = no
+				}
+				add_opinion = {
+					target = scope:vi_target
+					modifier = suspicion_opinion
+					opinion = -30
+				}
+			}
+		}
+
+		add_character_flag = {
+			flag = abdicated_from_throne
+			days = 30
+		}
+
+		add_prestige_level = -5
+		add_piety_level = -5
+
+		hidden_effect = {	#Make all weak claims on your titles into strong claims.
+			every_held_title = {
+				save_temporary_scope_as = abdicator_title
+				every_claimant = {
+					limit = { has_weak_claim_on = scope:abdicator_title }
+					make_claim_strong = scope:abdicator_title
+				}
+			}
+		}
+
+		depose_effect = { DEPOSER = root }
+
+		if = {
+			limit = {
+				has_trait = vi_exposed_vampire
+			}
+
+			remove_trait = vi_exposed_vampire
+			add_secret = {
+				type = secret_vi_vampire
+			}
+		}
+	}
+
+	ai_potential = {
+		OR = {
+			has_trait = vi_exposed_vampire
+			age > 50
+		}
+	}
+
+	ai_will_do = {
+
+		base = 50
+
+		modifier = {
+			has_character_modifier = vi_skittish_modifier
+			add = -35
+		}
+
+		modifier = {
+			has_trait = arrogant
+			add = -25
+		}
+
+		modifier = {
+			has_trait = greedy
+			add = -25
+		}
+
+		modifier = {
+			has_trait = conqueror
+			add = -50
+		}
+
+		modifier = {
+			has_trait = vi_exposed_vampire
+			add = 50
+		}
+
+		modifier = {
+			has_trait = craven
+			add = 50
+		}
+
+		modifier = {
+			has_trait = content
+			add = 25
+		}
+
+		modifier = {
+			has_trait = humble
+			add = 50
+		}
+
+		modifier = {
+			age > 90
+			add = 50
+		}
+	}
+}
+
+vi_found_princedom_decision = {
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/ep3_decision_laamp_neutral_mountain.dds"
+	}
+	decision_group_type = major
+	desc = vi_found_princedom_decision_desc
+
+	ai_check_interval = 360
+
+	is_shown = {
+		is_landless_adventurer = yes	
+		vi_is_vampire_trigger = yes
+	}
+
+	is_valid_showing_failures_only = {
+		is_at_war = no
+		is_alive = yes
+		is_available_adult = yes
+		is_travelling = no
+		is_commanding_army = no
+		# has_contagious_deadly_disease_trigger = no
+
+		prestige_level >= 3
+
+		trigger_if = { 
+			limit = {
+				OR = {
+					domicile.domicile_location.county = {
+						has_county_modifier = vi_county_discreet_modifier
+					}
+					# location.county = {
+					# 	has_county_modifier = vi_county_discreet_modifier
+					# }
+				}
+			}
+			custom_description = {
+				text = vi_princedom_already_exists
+				always = no
+			}
+		}
+	}
+
+	cost = {
+		gold = {
+			value = procure_estate_interaction_cost_base_gold
+			multiply = 1.5
+		}
+		prestige = {
+			value = 3000
+			if = {
+				limit = {
+					NOR = {
+						has_trait = vi_vampire_2
+						has_trait = vi_vampire_3
+						has_trait = vi_vampire_4
+						has_trait = vi_vampire_5
+					}
+				}
+				multiply = 1.5
+			}
+		}
+	}
+
+	effect = {
+		vi_adventure_create_princedom_effect = yes
+
+		if = {
+			limit = {
+				NOR = {
+					has_trait = vi_vampire_3
+					has_trait = vi_vampire_4
+					has_trait = vi_vampire_5
+				}
+			}
+
+			every_ruler = {
+				limit = {
+					is_independent_ruler = yes
+					has_government = vi_vampire_government
+					is_landed = no
+					in_diplomatic_range = root
+				}
+				add_opinion = {
+					target = root
+					modifier = audacity_opinion
+					opinion = -50
+				}
+			}
+		}
+	}
+
+	ai_potential = {
+		always = no
+	}
+
+	ai_will_do = {
+
+		base = 0
+
+	}
+}

@@ -30,7 +30,7 @@ vi_excommunicate_interaction = {
 
 	auto_accept = yes
 	force_notification = yes
-	notification_text = religious_interaction.1021
+	# notification_text = religious_interaction.1021
 	#answer_accept_key = religious_interaction.1000.strong_negative
 
 	on_accept = {

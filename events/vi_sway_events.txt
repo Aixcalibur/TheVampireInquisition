@@ -1,0 +1,443 @@
+﻿namespace = vi_sway
+
+
+# Based on sway_ongoing.1001 #by Linnéa Thimrén
+# Charm Interaction
+# Galvanize Interaction
+vi_sway.1001 = {
+	type = character_event
+	title = vi_sway.1001.t
+	desc = vi_sway.1001.desc
+	theme = friendly
+	left_portrait = scope:target
+	widget = {
+		gui = "event_window_widget_scheme"
+		container = "custom_widgets_container"
+	}
+
+	override_background = {
+		trigger = { is_travelling_not_at_activity = yes }
+		reference = terrain_travel
+	}
+	override_background = {
+		trigger = { is_travelling_at_activity = yes }
+		reference = ep2_activity
+	}
+	
+	trigger = {
+		scope:scheme = {
+			NOT = { has_variable = vi_had_event_sway_1001 }
+		}
+		scope:target = {
+			is_alive = yes
+		}
+		vi_is_vampire_trigger = yes
+		OR = {
+			has_perk = vi_charm_perk
+			has_perk = vi_galvanize_perk
+		}
+		
+
+		OR = {
+			scope:target = {
+				vi_is_vampire_trigger = no
+			}
+			has_perk = vi_presence_perk
+		}
+		# scope:target = {
+		# 	NOT = { culture = root.culture }
+		# }
+		# exists = location
+	}
+
+	immediate = {
+		scope:scheme = {
+			set_variable = {	
+				name = vi_had_event_sway_1001
+				value = yes
+				days = 3650
+			}
+		}
+		if = {
+			limit = {
+				exists = capital_province
+			}
+			capital_province = { save_scope_as = capital }
+		}
+		else = {
+			location = { save_scope_as = capital }
+		}
+	}
+
+	option = {
+		name = vi_sway.1001.a
+
+		trigger = {
+			has_perk = vi_charm_perk
+		}
+
+		add_character_modifier = {
+			modifier = vi_vampire_strain_modifier
+			years = 3
+		}
+
+		stress_impact = {
+			base = miniscule_stress_impact_gain
+			just = miniscule_stress_impact_gain
+			lustful = miniscule_stress_impact_loss
+			seducer = miniscule_stress_impact_loss
+		}
+
+		scope:target = {
+			random_list = {
+				50 = {
+					modifier = { add = root.diplomacy }
+					modifier = { subtract = scope:target.intrigue }
+					add_opinion = {
+						target = root
+						modifier = charmed_opinion
+						opinion = {
+							value = root.diplomacy
+							multiply = 2
+						}
+					}
+					add_opinion = {
+						target = root
+						modifier = suspicion_opinion
+						opinion = {
+							value = scope:target.intrigue
+							multiply = -0.5
+						}
+					}
+					modifier = {
+						add = 50
+						root = {
+							has_trait = vi_vampire_3
+						}
+					}
+					modifier = {
+						add = 75
+						root = {
+							has_trait = vi_vampire_4
+						}
+					}
+					modifier = {
+						add = 100
+						root = {
+							has_trait = vi_vampire_3
+						}
+					}
+				}
+				50 = {
+					add_opinion = {
+						target = root
+						modifier = charmed_opinion
+						opinion = {
+							value = root.diplomacy
+							multiply = 1.5
+						}
+					}
+					add_opinion = {
+						target = root
+						modifier = suspicion_opinion
+						opinion = {
+							value = scope:target.intrigue
+							multiply = -1
+						}
+					}
+				}
+				20 = {
+					add_opinion = {
+						target = scope:actor
+						modifier = suspicion_opinion
+						opinion = {
+							value = scope:target.intrigue
+							multiply = -2
+						}
+					}
+					modifier = { subtract = root.diplomacy }
+					modifier = { add = scope:target.intrigue }
+					modifier = {
+						add = 50
+						has_trait = vi_vampire_3
+					}
+					modifier = {
+						add = 75
+						has_trait = vi_vampire_4
+					}
+					modifier = {
+						add = 100
+						has_trait = vi_vampire_5
+					}
+				}
+			}
+		}
+
+		ai_chance = {
+			base = 30
+			ai_value_modifier = {
+				ai_boldness = 0.5
+				ai_greed = 0.5
+				ai_honor = -0.5
+			}
+
+			modifier = {
+				add = -1000
+				stress_level > 1
+			}
+		}
+	}
+
+	option = {
+		name = vi_sway.1001.b
+
+		trigger = {
+			has_perk = vi_galvanize_perk
+		}
+
+		add_character_modifier = {
+			modifier = vi_vampire_strain_modifier
+			years = 3
+		}
+
+		stress_impact = {
+			base = miniscule_stress_impact_gain
+			sadistic = miniscule_stress_impact_gain
+			callous = miniscule_stress_impact_gain
+			compassionate = miniscule_stress_impact_loss
+		}
+
+		scope:target = {
+			add_stress = minor_stress_loss
+			add_character_modifier = {
+				modifier = vi_galvanized_modifier
+				years = 5
+			}
+			add_opinion = {
+				target = root
+				modifier = friendliness_opinion
+				opinion = 15
+			}
+		}
+
+		ai_chance = {
+			base = 50
+
+			modifier = {
+				add = -1000
+				stress_level > 1
+			}
+			
+			ai_value_modifier = {
+				ai_compassion = 1
+				ai_honor = 1
+			}
+		}
+	}
+
+	option = {
+		name = vi_sway.1001.c
+		# add_prestige = minor_prestige_gain
+		ai_chance = {
+			base = 50
+
+			modifier = {
+				add = 1000
+				stress_level > 1
+			}
+			
+			ai_value_modifier = {
+				ai_boldness = -0.5
+				ai_honor = 1
+			}
+		}
+	}
+}
+
+
+vi_sway.2001 = {
+	type = character_event
+	title = sway_outcome.1001.t
+	desc = vi_sway.2001.desc
+	theme = sway_scheme
+	left_portrait = scope:target
+	widget = {
+		gui = "event_window_widget_scheme"
+		container = "custom_widgets_container"
+	}
+
+	override_background = {
+		trigger = { is_travelling_not_at_activity = yes }
+		reference = terrain_travel
+	}
+	override_background = {
+		trigger = { is_travelling_at_activity = yes }
+		reference = ep2_activity
+	}
+	
+	trigger = {
+		NOT = {
+			has_character_flag = vi_had_event_sway_outcome_1001
+		}
+		vi_is_vampire_trigger = yes
+		OR = {
+			AND = {
+				has_perk = vi_persuasion_perk
+				NOT = {
+					has_hook = scope:target
+				}
+				scope:target = {
+					opinion = {
+						target = root
+						value >= 80
+					}
+				}
+			}
+			
+			has_perk = vi_soothe_perk
+		}
+
+		OR = {
+			scope:target = {
+				vi_is_vampire_trigger = no
+			}
+			has_perk = vi_presence_perk
+		}
+	}
+
+	immediate = {
+		add_character_flag = {
+			flag = vi_had_event_sway_outcome_1001
+			years = 1
+		}
+	}
+
+	option = {
+		name = vi_sway.2001.a
+		
+		trigger = {
+			has_perk = vi_persuasion_perk
+			scope:target = {
+				opinion = {
+					target = root
+					value >= 60
+				}
+			}
+			NOT = {
+				has_hook = scope:target
+			}
+		}
+
+		add_character_modifier = {
+			modifier = vi_vampire_strain_modifier
+			years = 3
+		}
+
+		stress_impact = {
+			base = miniscule_stress_impact_gain
+			just = miniscule_stress_impact_gain
+		}
+
+		scope:target = {
+			add_hook = {
+				target = root
+				type = favor_hook
+			}
+			add_opinion = {
+				target = root
+				modifier = suspicion_opinion
+				opinion = -15
+			}
+		}
+		
+		sway_end_effect = yes
+
+		ai_chance = {
+			base = 50
+
+			modifier = {
+				add = -1000
+				stress_level > 1
+			}
+			
+			ai_value_modifier = {
+				ai_honor = -0.5
+				ai_greed = 1
+			}
+		}
+	}
+
+	option = {
+		name = vi_sway.2001.b
+
+		add_character_modifier = {
+			modifier = vi_vampire_strain_modifier
+			years = 3
+		}
+
+		stress_impact = {
+			base = miniscule_stress_impact_gain
+			honest = miniscule_stress_impact_gain
+		}
+
+		scope:target = {
+			add_stress = major_stress_loss
+			remove_opinion = {
+				modifier = suspicion_opinion
+				target = root
+			}
+			add_opinion = {
+				target = root
+				modifier = friendliness_opinion
+				opinion = 30
+			}
+		}
+		
+		sway_end_effect = yes
+
+		ai_chance = {
+			base = 50
+
+			modifier = {
+				add = -1000
+				stress_level > 1
+			}
+
+			modifier = {
+				add = 50
+				has_trait = paranoid
+			}
+			
+			ai_value_modifier = {
+				ai_compassion = 1
+				ai_honor = 0.5
+			}
+		}
+	}
+
+	option = {
+		name = vi_sway.2001.c
+		scope:target = {
+			add_opinion = {
+				target = scope:owner
+				modifier = scheme_sway_opinion
+				opinion = 30
+			}
+		}
+		sway_end_effect = yes
+
+		ai_chance = {
+			base = 50
+
+			modifier = {
+				add = 1000
+				stress_level > 1
+			}
+			
+			ai_value_modifier = {
+				ai_honor = 0.5
+			}
+		}
+	}
+}
+	

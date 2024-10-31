@@ -1,14 +1,11 @@
-﻿#We add this overwrite so Fledglings and Nightwalkers aren't allowed to attend outdoor activities
+﻿#We add this overwrite so some vampires
 
 bannable_serving_diarch_trigger = {
 
 	liege?= { NOT = { is_landless_adventurer = yes } }
 
 	OR = {
-		NOR = {
-			has_trait = vi_vampire_1
-			has_trait = vi_vampire_2
-		}
+		has_trait_with_flag = vi_sunlight_burns
 
 		# Diarchs with official responsibilities can't come out to play.
 		is_diarch = yes
