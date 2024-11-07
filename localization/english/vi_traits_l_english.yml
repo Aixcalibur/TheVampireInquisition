@@ -4,12 +4,27 @@
  game_concept_vampires:0 "Vampires"
  game_concept_vampire_desc:0 "Vampires are undead beings that subsist on human blood. They live in the shadows of human civilization and avoid discovery at all costs."
 
-
  TRAIT_FLAG_DESC_vi_sunlight_burns: "Cannot attend daytime events"
+ vi_travel_prohibition.0001.t:0 "Sunlight Burns"
+ vi_travel_prohibition.0001.desc:0 "As I set out, it occurs that I would not be able to participant in activities during daylight."
+ vi_travel_prohibition.0001.a:0 "I should return home."
 
 
  trait_vi_customizer:0 "Vampire Customizer"
- trait_vi_customizer_desc:0 "Choose this if you would like to start as a vampire."
+ trait_vi_customizer_desc:0 "Choose this if you would like to start as a [vampire|E]."
+
+ trait_vi_inquisitor:0 "Vampire Hunter"
+ trait_vi_inquisitor_alt:0 "Inquisitor"
+ trait_vi_inquisitor_1_desc:0 "This character is prepared in the fight against [vampires|E]."
+ trait_vi_inquisitor_1_character_desc:0 "[ROOT.GetCharacter.GetFirstNameNoTooltip] is prepared in the fight against [vampires|E]."
+ trait_track_vi_inquisitor:0 "Vampire Hunter"
+ trait_track_vi_inquisitor_desc:0 "It is not easy to learn about [vampires|E]."
+
+ trait_vi_dhampir:0 "Dhampir"
+ trait_vi_dhampir_desc:0 "This character's parentage grants them subtle advantages against supernatural beings."
+ TRAIT_FLAG_DESC_vi_advantage_against_vampires:0 "Gains bonuses against [vampires|E]"
+ TRAIT_FLAG_DESC_vi_cannot_be_turned_into_vampire:0 "Cannot be turned into a [vampire|E]"
+
  trait_vi_vampire_1:0 "Fledgling Vampire"
  trait_vi_vampire_1_desc:0 "Recently embraced, a fledgling [vampire|e] is almost no different from an ordinary human, but feels weak in sunlight and must feed on blood."
  trait_vi_vampire_2:0 "Vampire"
@@ -22,11 +37,11 @@
  trait_vi_vampire_5_desc:0 "Their existence is only a myth, but if they still exist, their power must be unimaginable."
 
  trait_vi_heartstealer:0 "Siren Song"
- trait_vi_heartstealer_desc:0 "Deadly, but who could possibly resist?"
+ trait_vi_heartstealer_desc:0 "Having mastered the manipulation of the mind, no one can resist your call."
  TRAIT_FLAG_DESC_vi_can_steal_hearts:0 "Enables the [vi_compel_suicide_interaction|E] [interaction|E] on mortals"
 
  trait_vi_dragonsscion:0 "Dragon's Scion"
- trait_vi_dragonsscion_desc:0 "Mere knowledge of your existence inspires terror and awe."
+ trait_vi_dragonsscion_desc:0 "Your might transcends the physical plane. The mere thought of you inspires fear and awe."
  TRAIT_FLAG_DESC_vi_can_use_dragon_fear:0 "Enables the Instill Fear [interaction|E]"
 
  trait_vi_allseeing:0 "All-Seeing"

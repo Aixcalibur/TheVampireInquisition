@@ -1,0 +1,110 @@
+﻿namespace = vi_stress_overload
+
+vi_stress_overload.0001 = { #This event just serves to override any other non-vampire stress level 3 event
+	hidden = yes
+
+	trigger = {
+		vi_is_vampire_trigger = yes
+	}
+
+	weight_multiplier = {
+		base = 1
+
+		modifier = {
+			vi_is_vampire_trigger = yes
+			add = 10
+		}
+	}
+
+	immediate = {
+		trigger_event = {
+			on_action = vi_stress_threshold_level_3_event
+		}
+	}
+}
+
+#Needs to be edited. This will be the turning feral event.
+vi_stress_overload.1001 = {
+	type = character_event
+	title = vi_stress_overload.1001.t
+	desc = vi_stress_overload.1001.desc
+	
+	theme = mental_break
+	override_background = {
+		trigger = { is_travelling = yes }
+		reference = terrain_travel
+	}
+	left_portrait = {
+		character = root
+		animation = paranoia
+	}
+
+	widget = {
+		gui = "event_window_widget_stress"
+		container = "custom_widgets_container"
+	}
+	immediate = {
+		root = { save_scope_as = stress_character } # For stress widget
+
+		stress_threshold_event_post_immediate = yes
+	}
+
+	# Option A: Hearing voices, if already lunatic lose random skills.
+	option = {
+		name = {
+			trigger = { NOT = { has_trait = lunatic} }
+			text = stress_threshold.3001.possessed.gain
+		}
+		name = {
+			trigger = { has_trait = lunatic }
+			text = stress_threshold.3001.possessed.effect
+		}
+
+		trait = lunatic_1
+		trait = lunatic_genetic
+
+		if = {
+			limit = {
+				has_trait = lunatic
+			}
+			random_list = {
+				33 = {
+					trigger = {
+						diplomacy > 0
+					}
+					add_diplomacy_skill = -1
+				}
+				33 = {
+					trigger = {
+						stewardship > 0
+					}
+					add_stewardship_skill = -1
+				}
+				33 = {
+					trigger = {
+						learning > 0
+					}
+					add_learning_skill = -1
+				}
+			}
+		}
+		else = {
+			add_trait = lunatic_1
+		}
+
+		add_stress = major_stress_impact_loss
+	}
+
+	# Option B: Go for a naked run, feel better but suffer a massive hit to prestige/prestige level.
+	option = {
+		name = stress_threshold.3001.naked_run
+
+		add_prestige = major_prestige_loss
+		add_prestige_level = -1
+		add_stress = major_stress_impact_loss
+	}	
+	
+	after = {
+		stress_threshold_event_aftereffects = yes # Perform stress threshold event clean-up and preparation for future stress threshold events.
+	}
+}

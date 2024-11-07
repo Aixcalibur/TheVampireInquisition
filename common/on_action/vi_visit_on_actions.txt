@@ -1,0 +1,13 @@
+﻿vi_visit_start = {
+	
+}
+
+vi_visit_travel_planner_exit = {
+
+}
+
+vi_visit_arrival_selector = {
+	random_events = {
+		100 = vi_visit.0001
+	}
+}

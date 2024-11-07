@@ -1,15 +1,10 @@
-﻿vi_customizer = {
-	category = lifestyle
+﻿@pos_compat_high = 30
+@pos_compat_medium = 15
+@pos_compat_low = 5
 
-	ruler_designer_cost = 100
-	stress_gain_mult = 0.5
-	fertility = -1
-	health = 1
-
-	immortal = yes
-	flag = can_murder_own_children
-	flag = immortal_visuals
-}
+@neg_compat_high = -30
+@neg_compat_medium = -15
+@neg_compat_low = -5
 
 vi_vampire_1 = {
 	#icon = albino.dds
@@ -27,6 +22,10 @@ vi_vampire_1 = {
 	
 	ai_boldness = 25
 	#ai_energy = -100
+
+	compatibility = {
+		vi_inquisitor = @neg_compat_high
+	}
 }
 
 vi_vampire_2 = {
@@ -50,6 +49,10 @@ vi_vampire_2 = {
 	immortal = yes
 	flag = can_murder_own_children
 	flag = immortal_visuals
+
+	compatibility = {
+		vi_inquisitor = @neg_compat_high
+	}
 
 	ai_boldness = 25
 	#ai_energy = -100
@@ -79,6 +82,10 @@ vi_vampire_3 = {
 	flag = immortal_visuals
 	flag = vi_sunlight_burns
 
+	compatibility = {
+		vi_inquisitor = @neg_compat_high
+	}
+
 	ai_boldness = 25
 	ai_energy = -75
 }
@@ -105,8 +112,13 @@ vi_vampire_4 = {
 	immortal = yes
 	flag = can_murder_own_children
 	flag = immortal_visuals
+	flag = vi_sunlight_burns
 
-	ai_boldness = 50
+	compatibility = {
+		vi_inquisitor = @neg_compat_high
+	}
+
+	ai_boldness = 25
 	ai_energy = -75
 }
 
@@ -130,6 +142,13 @@ vi_vampire_5 = {
 	immortal = yes
 	flag = can_murder_own_children
 	flag = immortal_visuals
+	flag = vi_sunlight_burns
+
+	compatibility = {
+		vi_inquisitor = @neg_compat_high
+	}
+
+	ai_boldness = 25
 }
 
 vi_exposed_vampire = {
@@ -144,28 +163,31 @@ vi_exposed_vampire = {
 		check_missing = yes	
 		opinion_modifier = vi_vampire_opinion
 	}
+
+	ai_rationality = -10
+	ai_boldness = 10
 }
 
-vi_excommunicated = {
-	category = fame
+# vi_excommunicated = {
+# 	category = fame
 
-	character_travel_safety = -50
-	stress_gain_mult = 0.5
+# 	character_travel_safety = -50
+# 	stress_gain_mult = 0.5
 	
-	shown_in_ruler_designer = no
+# 	shown_in_ruler_designer = no
 
-	desc = {
-		first_valid = {
-			triggered_desc = {
-				trigger = {
-					NOT = { exists = this }
-				}
-				desc = trait_excommunicated_desc
-			}
-			desc = trait_excommunicated_character_desc
-		}
-	}
-}
+# 	desc = {
+# 		first_valid = {
+# 			triggered_desc = {
+# 				trigger = {
+# 					NOT = { exists = this }
+# 				}
+# 				desc = trait_excommunicated_desc
+# 			}
+# 			desc = trait_excommunicated_character_desc
+# 		}
+# 	}
+# }
 
 vi_heartstealer = {
 	category = lifestyle

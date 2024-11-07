@@ -17,10 +17,7 @@ yearly_playable_pulse = {
 
 five_year_everyone_pulse = {
 	on_actions = {
-		delay = {
-			days = { 20 1800}
-		}
-		vi_vampire_upgrade_pulse
+		vi_vampire_maintenance_pulse
 	}
 }
 
@@ -45,42 +42,28 @@ vi_vampire_policy_pulse = {
 	}
 }
 
-vi_vampire_friendship_pulse = {
-	trigger = {
-		has_government = vi_vampire_government
-		is_landless_ruler = yes
-		is_ai = yes
-	}
-
-	effect = {
-		save_scope_as = vi_friend
-		random_relation = {
-			type = friend
-			limit = {
-				NOR = {
-					vi_is_vampire_trigger = yes
-					has_character_flag = vi_refused_vampirism
-				}
-			}
-			trigger_event = {
-				id = vi_become_vampire.001
-				days = { 30 60 }
-			}
-		}
-	}
-}
-
-
 #Later, we'll make the upgrade process more sophisticated, but for now, we'll just do age upgrades
-vi_vampire_upgrade_pulse = {
+vi_vampire_maintenance_pulse = {
 	trigger = {
 		vi_is_vampire_trigger = yes
 	}
-
 	on_actions = {
 		vi_vampire_upgrade_fledgling
 		vi_vampire_upgrade_vampire
 		vi_vampire_upgrade_elder
+	}
+
+	effect = {
+		# if = {
+		# 	limit = {
+		# 		age > 150
+		# 	}
+
+		# 	remove_character_modifier = vi_vampire_arrogance_modifier
+		# 	add_character_modifier = {
+		# 		modifier = vi_vampire_arrogance_modifier
+		# 	}
+		# }
 	}
 }
 
@@ -106,7 +89,7 @@ vi_vampire_upgrade_fledgling = {
 vi_vampire_upgrade_vampire = {
 	trigger = {
 		has_trait = vi_vampire_2
-		age >= 200
+		age >= 240
 	}
 
 	effect = {

@@ -1,0 +1,52 @@
+﻿vi_Disian_modifier = {
+	icon = fertility_positive
+	attraction_opinion = 10
+	stress_loss_mult = 0.2
+	
+	diplomacy = 1
+	intrigue = 2
+}
+
+vi_Annunaki_modifer = {
+	icon = stewardship_positive
+
+	stress_loss_mult = -0.2
+
+	martial = 2
+	stewardship = 2
+	parochial_opinion = 5
+
+	ai_rationality = 20
+}
+
+vi_Anunnaki_modifer = {
+	icon = stewardship_positive
+
+	stress_loss_mult = -0.2
+
+	martial = 2
+	stewardship = 2
+	parochial_opinion = 5
+
+	ai_rationality = 20
+}
+
+vi_Nosferatu_modifier = {
+	icon = intrigue_positive
+
+	general_opinion = -10
+
+	dread_baseline_add = 10
+	dynasty_opinion = 10
+	intrigue = 3
+	prowess = 2
+}
+
+vi_Strix_modifier = {
+	icon = stress_negative
+
+	dynasty_opinion = 5
+
+	learning = 1
+	stress_gain_mult = 0.5
+}

@@ -1,0 +1,185 @@
+﻿vi_generate_vampire_artifact_effect = {
+	$OWNER$ = { save_scope_as = owner }
+	# Not really used, but if we don't set the scopes we get errors in the feature selection
+	set_artifact_rarity_famed = yes
+
+	create_artifact = {
+		name = vi_artifact_vampire_reliquary_name
+		description = vi_artifact_vampire_reliquary_desc
+		template = general_unique_template
+		type = miscellaneous
+		visuals = reliquary
+		wealth = scope:wealth
+		quality = scope:quality
+		history = {
+			type = created_before_history
+		}
+		modifier = vi_vampire_artifact_modifier
+		save_scope_as = newly_created_artifact
+		decaying = no
+	}
+
+	scope:newly_created_artifact = {
+		#set_variable = { name = historical_unique_artifact value = yes }
+		save_scope_as = epic
+		vi_add_random_artifact_modifier_effect = yes
+		vi_add_random_artifact_modifier_effect = yes
+		vi_add_random_artifact_modifier_effect = yes
+		equip_artifact_to_owner = yes
+	}
+}
+
+vi_add_random_artifact_modifier_effect = {
+	random_list = {
+		50 = {
+			modifier = {
+				factor = 0
+				has_artifact_modifier = artifact_dread_baseline_add_4_modifier
+			}
+			add_artifact_modifier = artifact_dread_baseline_add_4_modifier
+		}
+		50 = {
+			modifier = {
+				factor = 0
+				has_artifact_modifier = artifact_general_opinion_1_modifier
+			}
+			add_artifact_modifier = artifact_general_opinion_1_modifier
+		}
+		50 = {
+			modifier = {
+				factor = 0
+				has_artifact_modifier = artifact_men_at_arms_maintenance_5_modifier
+			}
+			add_artifact_modifier = artifact_men_at_arms_maintenance_5_modifier
+		}
+		50 = {
+			modifier = {
+				factor = 0
+				has_artifact_modifier = artifact_domain_tax_mult_3_modifier
+			}
+			add_artifact_modifier = artifact_domain_tax_mult_3_modifier
+		}
+		50 = {
+			modifier = {
+				factor = 0
+				has_artifact_modifier = artifact_monthly_income_1_modifier
+			}
+			add_artifact_modifier = artifact_monthly_income_1_modifier
+		}
+		50 = {
+			modifier = {
+				factor = 0
+				has_artifact_modifier = artifact_owned_scheme_secrecy_add_8_modifier
+			}
+			add_artifact_modifier = artifact_owned_scheme_secrecy_add_8_modifier
+		}
+		50 = {
+			modifier = {
+				factor = 0
+				has_artifact_modifier = artifact_hostile_scheme_phase_duration_add_10_modifier
+			}
+			add_artifact_modifier = artifact_hostile_scheme_phase_duration_add_10_modifier
+		}
+		50 = {
+			modifier = {
+				factor = 0
+				has_artifact_modifier = artifact_stress_gain_3_modifier
+			}
+			add_artifact_modifier = artifact_stress_gain_3_modifier
+		}
+		50 = {
+			modifier = {
+				factor = 0
+				has_artifact_modifier = artifact_monthly_lifestyle_xp_1_modifier
+			}
+			add_artifact_modifier = artifact_monthly_lifestyle_xp_1_modifier
+		}
+		50 = {
+			modifier = {
+				factor = 0
+				has_artifact_modifier = artifact_learning_3_modifier
+			}
+			add_artifact_modifier = artifact_learning_3_modifier
+		}
+		50 = {
+			modifier = {
+				factor = 0
+				has_artifact_modifier = artifact_intrigue_2_modifier
+			}
+			add_artifact_modifier = artifact_intrigue_2_modifier
+		}
+		50 = {
+			modifier = {
+				factor = 0
+				has_artifact_modifier = artifact_epidemic_resistance_7_modifier
+			}
+			add_artifact_modifier = artifact_epidemic_resistance_7_modifier
+		}
+	}
+}
+
+vi_create_artifact_bida_head_effect = { #Create at start
+	# Get the character the artifact is being made for.
+	$OWNER$ = { save_scope_as = owner }
+	# Not really used, but if we don't set the scopes we get errors in the feature selection
+	set_artifact_rarity_illustrious = yes
+
+	# Create the artifact
+	create_artifact = {	
+		name = vi_artifact_bida_head_name
+		description = vi_artifact_bida_head_desc
+		type = animal_trinket
+		template = general_unique_template
+		visuals = pouch
+		wealth = scope:wealth
+		quality = scope:quality
+		history = {
+			type = created
+			date = current_date
+			recipient = scope:owner #Konstantinos I the Great
+			location = scope:owner.location #Constantinople
+		}
+		modifier = vi_bida_dead_modifier
+		save_scope_as = newly_created_artifact
+		decaying = no
+	}
+
+	scope:newly_created_artifact = {
+		set_variable = { name = historical_unique_artifact value = yes }
+		set_variable = vi_bida_head
+		save_scope_as = epic
+	}
+}
+
+vi_create_artifact_durendal_effect = {
+	# Get the character the artifact is being made for.
+	$OWNER$ = { save_scope_as = owner }
+	# Not really used, but if we don't set the scopes we get errors in the feature selection
+	set_artifact_rarity_illustrious = yes
+
+	# Create the artifact
+	create_artifact = {
+		name = artifact_durendal_name
+		description = vi_artifact_durendal_description
+		template = general_unique_template
+		type = sword
+		visuals = longsword
+		wealth = scope:wealth
+		quality = scope:quality
+		history = {
+			type = created_before_history
+		}
+		modifier = durendal_modifier
+		save_scope_as = newly_created_artifact
+		decaying = no
+	}
+
+	scope:newly_created_artifact = {
+		add_artifact_modifier = vi_durendal_modifier
+		set_variable = vampire_weapon
+		set_variable = { name = historical_unique_artifact value = yes }
+		set_variable = durendal
+		save_scope_as = epic
+		equip_artifact_to_owner = yes
+	}
+}

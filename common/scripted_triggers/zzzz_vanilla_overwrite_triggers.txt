@@ -33,3 +33,119 @@
 		has_trait_with_flag = is_immortal
 	}
 }
+
+is_playable_character = {
+	OR = {
+		is_landed = yes
+		is_landless_administrative = yes
+		is_landless_adventurer = yes
+		has_government = vi_vampire_government
+	}
+}
+
+can_be_drunkard = {
+	vi_is_vampire_trigger = no
+	is_adult = yes
+	NOR = { # Cannot be Temperate or already have a Substance Abuse trait.
+		has_trait = drunkard
+		has_trait = hashishiyah
+		has_trait = temperate
+	}
+	faith = { # Cannot be Muslim ( some Muslims did actually drink, but ideally we want Muslims to be Hashishiyahs instead of Drunkards because it is more thematic).
+		NOT = {
+			religion_tag = islam_religion
+		}
+	}
+}
+
+can_be_hashishiyah = {
+	vi_is_vampire_trigger = no
+	is_adult = yes
+	NOR = { # Cannot be Temperate or already have a Substance Abuse trait.
+		has_trait = drunkard
+		has_trait = hashishiyah
+		has_trait = temperate
+	}
+
+	OR = {
+		# Muslims always have access to Hashish...
+		faith = {
+			religion_tag = islam_religion
+		}
+		# Otherwise you must not be located in Europe (where Hashish was relatively unknown until modern times.)
+		AND = {
+			OR = {
+				AND = {
+					exists = capital_province
+					capital_province = {
+						save_temporary_scope_as = my_home_province
+					}
+				}
+				AND = {
+					exists = liege
+					exists = liege.capital_province
+					liege = {
+						capital_province = {
+							save_temporary_scope_as = my_home_province
+						}
+					}
+				}
+			}
+			scope:my_home_province = {
+				NOT = {
+					geographical_region = world_europe
+				}
+			}
+		}
+	}
+}
+
+can_be_rakish = { # Must have a fitting personality or lifestyle
+	is_adult = yes
+	vi_is_vampire_trigger = no
+	NOR = {
+		has_trait = rakish
+		has_sexuality = asexual
+		has_trait = celibate
+		has_trait = chaste
+	}
+	OR = {
+		has_trait = lustful
+		has_trait = arrogant
+		has_trait = deceitful
+		has_trait = gallant
+		has_trait = seducer
+	}
+}
+
+can_be_comfort_eater = { # Must have a fitting personality.
+	vi_is_vampire_trigger = no
+	NOR = {
+		has_trait = comfort_eater
+		has_trait = inappetetic
+		has_trait = temperate
+	}
+	OR = {
+		has_trait = gluttonous
+		has_trait = fickle
+		has_trait = arbitrary
+		has_trait = impatient
+		has_trait = calm
+	}
+}
+
+can_be_inappetetic = { # Must have a fitting personality. Cannot be vampire
+	vi_is_vampire_trigger = no
+	NOR = {
+		has_trait = comfort_eater
+		has_trait = inappetetic
+		has_trait = gluttonous
+	}
+	OR = {	
+		has_trait = temperate
+		has_trait = content
+		has_trait = arbitrary
+		has_trait = patient
+		has_trait = diligent
+	}
+}

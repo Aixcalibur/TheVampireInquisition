@@ -7,46 +7,62 @@ vi_vampire_policy.001 = {
 
 	theme = realm
 
+	right_portrait = {
+		character = scope:vi_councillor
+		# animation = 
+	}
+
 	left_portrait = {
 		character = root
-		animation = personality_honorable
+		animation = personality_rational
 	}
 
 	immediate = {
-		remove_character_modifier = vi_sap_county_wealth_modifier
 
 		add_character_flag = {
 			flag = vi_vampire_policy_decided
 			days = 1800
 		}
 
-		primary_title.title_capital_county = {
-			save_scope_as = lair_location
-		}
-		
-		# root.domicile.domicile_location = {
-		# 	save_scope_as = lair_location
-		# }
-
 		if = {
 			limit = {
-				has_legitimacy = yes
+				employs_court_position = vi_castellan_court_position
 			}
-
-			every_vassal = {
-				if = {
-					limit = {
-						opinion = {
-							target = root
-							value >= 25
-						}
-					}
-
-					root = {
-						add_legitimacy = 10
-					}
+			random_courtier = {
+				limit = {
+					has_court_position = vi_castellan_court_position
+				}
+				save_scope_as = vi_councillor
+			}
+		}
+		else_if = {
+			limit = {
+				any_councillor = {
+					has_council_position = councillor_steward
 				}
 			}
+
+			random_councillor = {
+				limit = {
+					has_council_position = councillor_steward
+				}
+				save_scope_as = vi_councillor
+			}
+		}
+		else = {
+			random_councillor = {
+				save_scope_as = vi_councillor
+			}
+		}
+		
+		vi_vampire_policy_start_effect = yes
+		
+		root.primary_title.title_capital_county = {
+			save_scope_as = lair_location
+		}
+
+		scope:lair_location.holder = {
+			save_scope_as = vi_host
 		}
 	}
 
@@ -71,16 +87,28 @@ vi_vampire_policy.001 = {
 		name = vi_vampire_policy.001.b
 
 		ai_chance = {
-			base = 0
+			base = 10
 
 			modifier = {
-				add = 50
+				add = 20
 				has_trait = craven
 			}
 
 			modifier = {
+				add = 10
+				gold > major_gold_value
+			}
+
+			modifier = {
 				add = 50
-				gold > 500
+				has_legitimacy = yes
+				legitimacy_level = 2
+			}
+
+			modifier = {
+				add = 100
+				has_legitimacy = yes
+				legitimacy_level <= 1
 			}
 
 			ai_value_modifier = {
@@ -89,21 +117,9 @@ vi_vampire_policy.001 = {
 		}
 
 		vi_vampire_county_discreet_effect = yes
-
 	}
 
 	option = {
-		trigger = {
-			OR = {
-				has_trait = callous
-				has_trait = sadistic
-				has_trait = greedy
-				has_trait = ambitious
-				has_trait = arbitrary
-				has_trait = avaricious
-			}
-		}
-
 		name = vi_vampire_policy.001.c
 
 		ai_chance = {
@@ -114,10 +130,28 @@ vi_vampire_policy.001 = {
 				gold <= 0
 			}
 
+			opinion_modifier = {
+				opinion_target = scope:vi_host
+				multiplier = -1
+			}
+
+			modifier = {
+				add = -50
+				has_legitimacy = yes
+				legitimacy_level = 2
+			}
+
+			modifier = {
+				add = -100
+				has_legitimacy = yes
+				legitimacy_level <= 1
+			}
+
 			ai_value_modifier = {
 				ai_compassion = -0.5 
 				ai_boldness = 0.5
 				ai_greed = 0.5
+				ai_rationality = -0.25
 			}
 		}
 
@@ -126,45 +160,34 @@ vi_vampire_policy.001 = {
 	}
 
 	option = {
-		trigger = {
-			OR = {
-				has_trait = generous
-				has_trait = just
-				has_trait = architect
-				has_trait = compassionate
-				has_trait = diligent
-				has_trait = patient
-			}
-		}
-
 		name = vi_vampire_policy.001.d
 
 		ai_chance = {
 			base = 10
 
 			modifier = {
-				add = 50
+				add = 20
 				has_trait = generous
 			}
 
 			modifier = {
-				add = 50
+				add = 20
 				has_trait = patient
 			}
 
 			modifier = {
-				add = -50
+				add = -40
 				has_trait = greedy
 			}
 
 			modifier = {
 				add = 50
-				gold > 500
+				gold > medium_gold_value
 			}
 
 			modifier = {
-				add = -50
-				gold <= 0
+				gold < 100
+				add = -30
 			}
 
 			ai_value_modifier = {
@@ -172,8 +195,11 @@ vi_vampire_policy.001 = {
 				ai_rationality = 0.5
 			}
 		}
-
 		vi_vampire_county_investment_effect = yes
+	}
+
+	after = {
+		vi_vampire_policy_after_effect = yes
 	}
 
 }

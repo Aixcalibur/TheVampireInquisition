@@ -4,7 +4,7 @@
 			has_perk = $PERK$
 		}
 
-		add_vi_vampire_lifestyle_xp = 1000
+		add_vi_vampire_lifestyle_xp = 800
 
 	}
 	else = {
@@ -121,6 +121,11 @@ vi_esclarmonde_after_effect = {
 	}
 
 	if = {
+		limit = { NOT = { has_perk = court_of_shadows_perk } }
+		add_perk = court_of_shadows_perk
+	}
+
+	if = {
 		limit = { NOT = { has_perk = befriend_perk } }
 		add_perk = befriend_perk
 	}
@@ -148,7 +153,58 @@ vi_esclarmonde_after_effect = {
 
 	add_character_flag = vi_esclarmonde
 	give_nickname = nick_vi_queenofthenight
+	vi_nightcourt_learn_languages = yes
 
+}
+
+vi_orlok_after_effect = {
+	set_immortal_age = 44
+	change_influence = 2000
+
+	set_variable = {
+		name = character_weight_variable
+		value = {
+			value = base_weight
+			multiply = -1
+			add = 100
+		}
+	}
+	change_current_weight = 100
+
+	vi_make_vampire_effect = yes
+
+	if = {
+		limit = { NOT = { has_perk = truth_is_relative_perk } }
+		add_perk = truth_is_relative_perk
+	}
+	if = {
+		limit = { NOT = { has_perk = golden_obligations_perk } }
+		add_perk = golden_obligations_perk
+	}
+	if = {
+		limit = { NOT = { has_perk = meritocracy_perk } }
+		add_perk = meritocracy_perk
+	}
+	if = {
+		limit = { NOT = { has_perk = dark_insights_perk } }
+		add_perk = dark_insights_perk
+	}
+	if = {
+		limit = { NOT = { has_perk = kidnapper_perk } }
+		add_perk = kidnapper_perk
+	}
+	if = {
+		limit = { NOT = { has_perk = court_of_shadows_perk } }
+		add_perk = court_of_shadows_perk
+	}
+
+	add_prowess_skill = 5
+
+	vi_add_allseeing_effect = yes
+
+	add_character_flag = vi_orlok
+	give_nickname = nick_vi_shadowless
+	vi_nightcourt_learn_languages = yes
 }
 
 vi_add_sirensong_effect = {
@@ -179,4 +235,145 @@ vi_add_sirensong_effect = {
 	vi_vampire_add_perk_effect = {
 		PERK = vi_heartstealer_perk
 	}
+}
+
+vi_add_dragonsscion_effect = {
+	vi_vampire_add_perk_effect = {
+		PERK = vi_celerity_perk
+	}
+	vi_vampire_add_perk_effect = {
+		PERK = vi_fortitude_perk
+	}
+	vi_vampire_add_perk_effect = {
+		PERK = vi_blink_perk
+	}
+	vi_vampire_add_perk_effect = {
+		PERK = vi_strength_perk
+	}
+	vi_vampire_add_perk_effect = {
+		PERK = vi_regeneration_perk
+	}
+	vi_vampire_add_perk_effect = {
+		PERK = vi_shadowwalk_perk
+	}
+	vi_vampire_add_perk_effect = {
+		PERK = vi_storm_perk
+	}
+	vi_vampire_add_perk_effect = {
+		PERK = vi_transformation_perk
+	}
+	vi_vampire_add_perk_effect = {
+		PERK = vi_dragons_scion_perk
+	}
+}
+
+vi_add_allseeing_effect = {
+	vi_vampire_add_perk_effect = {
+		PERK = vi_auspex_perk
+	}
+	vi_vampire_add_perk_effect = {
+		PERK = vi_peopleofinterest_perk
+	}
+	vi_vampire_add_perk_effect = {
+		PERK = vi_windfall_perk
+	}
+	vi_vampire_add_perk_effect = {
+		PERK = vi_mercantile_perk
+	}
+	vi_vampire_add_perk_effect = {
+		PERK = vi_heartsofmen_perk
+	}
+	vi_vampire_add_perk_effect = {
+		PERK = vi_guidance_perk
+	}
+	vi_vampire_add_perk_effect = {
+		PERK = vi_propheticdreams_perk
+	}
+	vi_vampire_add_perk_effect = {
+		PERK = vi_fateweaver_perk
+	}
+	vi_vampire_add_perk_effect = {
+		PERK = vi_allseeing_perk
+	}
+}
+
+vi_add_random_perks = {
+	random = {
+		chance = 30
+		vi_vampire_add_perk_effect = {
+			PERK = vi_charm_perk
+		}
+	}
+	random = {
+		chance = 30
+		vi_vampire_add_perk_effect = {
+			PERK = vi_celerity_perk
+		}
+	}
+	random = {
+		chance = 30
+		vi_vampire_add_perk_effect = {
+			PERK = vi_fortitude_perk
+		}
+	}
+	random = {
+		chance = 30
+		vi_vampire_add_perk_effect = {
+			PERK = vi_blink_perk
+		}
+	}
+	random = {
+		chance = 30
+		vi_vampire_add_perk_effect = {
+			PERK = vi_auspex_perk
+		}
+	}
+	random = {
+		chance = 30
+		vi_vampire_add_perk_effect = {
+			PERK = vi_strength_perk
+		}
+	}
+	random = {
+		chance = 10
+		vi_vampire_add_perk_effect = {
+			PERK = vi_animal_speak_perk
+		}
+	}
+	random = {
+		chance = 10
+		vi_vampire_add_perk_effect = {
+			PERK = vi_guidance_perk
+		}
+	}
+}
+
+vi_nightcourt_learn_languages = {
+	learn_language_of_culture = culture:french
+	learn_language_of_culture = culture:franconian
+	learn_language_of_culture = culture:anglo_saxon
+	random = {
+		chance = {
+			value = learning
+			multiply = 3
+			add = 20
+		}
+		learn_language_of_culture = culture:greek
+	}
+	random = {
+		chance = {
+			value = learning
+			multiply = 3
+			add = 20
+		}
+		learn_language_of_culture = culture:italian
+	}
+	random = {
+		chance = {
+			value = learning
+			multiply = 3
+		}
+		learn_language_of_culture = culture:roman
+	}
+	
 }

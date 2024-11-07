@@ -1,0 +1,14 @@
+﻿l_english:
+ IS_VAMPIRE_TRIGGER:0 "Is a [vampire|E]"
+ NOT_IS_VAMPIRE_TRIGGER:0 "Is not a [vampire|E]"
+ I_AM_VAMPIRE_TRIGGER:0 "I am a [vampire|E]"
+ NOT_I_AM_VAMPIRE_TRIGGER:0 "I am not a [vampire|E]"
+ THEY_ARE_VAMPIRE_TRIGGER:0 "[CHARACTER.GetShortUIName|V] is a [vampire|E]"
+ NOT_THEY_ARE_VAMPIRE_TRIGGER:0 "[CHARACTER.GetShortUIName|V] is not a [vampire|E]"
+
+ HAS_HOLY_ARTIFACT_EQUIPPED_TRIGGER:0 "Has a Holy Artifact equipped"
+ NOT_HAS_HOLY_ARTIFACT_EQUIPPED_TRIGGER:0 "Has a Holy Artifact equipped"
+ I_HAVE_HOLY_ARTIFACT_EQUIPPED_TRIGGER:0 "I have a Holy Artifact equipped"
+ NOT_I_HAVE_HOLY_ARTIFACT_EQUIPPED_TRIGGER:0 "I do not have a Holy Artifact equipped"
+ THEY_HAVE_HOLY_ARTIFACT_EQUIPPED_TRIGGER:0 "[CHARACTER.GetShortUIName|V] has a Holy Artifact equipped"
+ NOT_THEY_HAVE_HOLY_ARTIFACT_EQUIPPED_TRIGGER:0 "[CHARACTER.GetShortUIName|V] does not have a Holy Artifact equipped"

@@ -1,35 +1,58 @@
 ﻿l_english:
- vi_drained_modifier:0 "Drained"
- vi_drained_modifier_desc:0 "This person seems to have been drained of their vitality."
+ vi_vampire_arrogance_modifier: "Princely Entitlement"
+ vi_vampire_arrogance_modifier_desc: "This Vampire Prince arrogantly believes their [liege|e] owes them something and must be placated. #weak Effects scale with [personality|e] and [skills|e]. #!"
 
- vi_sated_modifier:0 "Sated"
- vi_vampire_strain_modifier:0 "Vampiric Strain"
- vi_vampire_madness_modifier:0 "Madness"
+ vi_drained_modifier: "Drained"
+ vi_drained_modifier_desc: "This person seems to have been drained of their vitality."
 
- vi_unnatural_youth_modifier:0 "Unnatural Youth"
- vi_unnatural_youth_modifier_desc:0 "This person seems to not show any signs of aging."
+ vi_sated_modifier: "Sated"
+ vi_vampire_strain_modifier: "Vampiric Strain"
+ vi_vampire_madness_modifier: "Madness"
 
- vi_skittish_modifier:0 "Skittish"
- vi_galvanized_modifier:0 "Galvanized"
+ vi_vampire_fertility_modifier: "Stimulated Life"
 
- vi_sirenscall_modifier:0 "Call of the Siren"
- vi_instilledfear_modifier:0 "Instilled Fear"
+ vi_unnatural_youth_modifier: "Unnatural Youth"
+ vi_unnatural_youth_modifier_desc: "This person seems to not show any signs of aging."
 
- vi_silver_chains_modifier:0 "Silver Chains"
+ vi_inspired_modifier: "Inspired"
+ vi_soothed_modifier: "Soothed"
 
- vi_ancient_regime_modifier:0 "Ancien Régime"
+ vi_skittish_modifier: "Skittish"
+ vi_galvanized_modifier: "Galvanized"
 
- vi_county_discreet_modifier:0 "Underworld Presence"
- vi_county_discreet_modifier_desc:0 "There are rumors abound of supernatural beings here hidden among the populace."
- vi_county_sapped_modifier:0 "Siphoned Wealth"
- vi_county_sapped_modifier_desc:0 "The criminal underworld of this county is siphoning away its wealth."
- vi_county_drained_modifier:0 "Drained Populace"
- vi_county_drained_modifier_desc:0 "People here are sometimes showing up dead... and drained of blood."
- vi_county_underworld_investment_modifier:0 "Bloody Investments"
- vi_county_underworld_investment_modifier_desc:0 "Some mysterious benefactor is aiding the development of this county."
+ vi_sirenscall_modifier: "Call of the Siren"
+ vi_instilledfear_modifier: "Instilled Fear"
 
- vi_sap_county_wealth_modifier:0 "Underworld Bounty"
- vi_sap_county_wealth_modifier_desc:0 "Controlling the local criminal underworld certainly has its benefits."
+ vi_receive_military_support_modifier: "Military Support"
+ vi_give_military_support_modifier: "Granting Military Support"
 
- vi_bida_modifier:0 "Golden Serpent"
- vi_bida_modifier_desc:0 "The Golden Serpent"
+ vi_silver_chains_modifier: "Silver Chains"
+
+ vi_ancient_regime_modifier: "Ancien Régime"
+
+ vi_vassal_cooperative_modifier: "Cooperative Vassals"
+ vi_vassal_uncooperative_modifier: "Uncooperative Vassals"
+
+ vi_county_discreet_modifier: "Underworld Presence"
+ vi_county_discreet_modifier_desc: "There are rumors abound of supernatural beings here hidden among the populace."
+ vi_county_sapped_modifier: "Siphoned Wealth"
+ vi_county_sapped_modifier_desc: "The criminal underworld of this county is siphoning away its wealth."
+ vi_county_drained_modifier: "Drained Populace"
+ vi_county_drained_modifier_desc: "People here are sometimes showing up dead... and drained of blood."
+ vi_county_underworld_investment_modifier: "Bloody Investments"
+ vi_county_underworld_investment_modifier_desc: "Some mysterious benefactor is aiding the development of this county."
+
+ vi_sap_county_wealth_modifier: "Underworld Bounty"
+ vi_sap_county_wealth_modifier_desc: "Controlling the local criminal underworld certainly has its benefits."
+
+ vi_heavy_capital_wealth_modifier: "Underworld Plunder"
+ vi_heavy_capital_wealth_modifier_desc: "Great wealth can be acquired by vampires willing to plunder the local mortal population with little regard for secrecy. #weak Effects scale with [development|E]. #!"
+ vi_balanced_capital_wealth_modifier: "Underworld Harvest"
+ vi_balanced_capital_wealth_modifier_desc: "Mortal populations can be carefully cultivated like crops and harvested for wealth. #weak Effects scale with [development|E]. #!"
+ vi_light_capital_wealth_modifier: "Underworld Touch"
+ vi_light_capital_wealth_modifier_desc: "A light touch in mortal businesses can keep a Princedom afloat while maintaining discretion.#weak Effects scale with [development|E]. #!"
+ vi_invest_capital_wealth_modifier: "Underworld Businesses"
+ vi_invest_capital_wealth_modifier_desc: "By investing in the local population, one can keep wealth flowing like lifeblood. #weak Effects scale with [development|E]. #!"
+
+ vi_bida_modifier: "Golden Serpent"
+ vi_bida_modifier_desc: "The Golden Serpent"

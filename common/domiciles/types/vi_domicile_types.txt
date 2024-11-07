@@ -5,7 +5,8 @@
 	# 	}
 	# }
 
-	rename_window = house
+	#rename_window = house
+	rename_window = primary_title
 
 	illustration = "gfx/interface/illustrations/event_scenes/ep3_medi_estate.dds"
 	icon = "gfx/interface/icons/flat_icons/estate.dds"
@@ -14,12 +15,34 @@
 	map_pin_lobby = yes
 
 	# provisions = yes
+	domicile_temperament_high_modifier = {
+		name = vi_courtier_temperament_high
+		knight_effectiveness_mult = 1
+		knight_limit = 1
+		vassal_opinion = -5
+		scale = vi_court_favor_scaling_value
+	}
+
+	domicile_temperament_low_modifier = {
+		name = vi_courtier_temperament_low
+		army_damage_mult = -0.1
+		knight_limit = -1
+		vassal_opinion = 5
+		#knight_effectiveness_mult = 0.05
+		scale = {
+			add = current_camp_temperament_average_value
+			multiply = -1
+			divide = 10
+			min = 1
+			max = 5
+		}
+	}
 
 	move_cooldown = { days = 0 }
 	move_cost = {
 		gold = {
 			value = {
-				value = 100
+				value = 10000000
 				format = "BASE_VALUE_FORMAT"
 				desc = "BASE_VALUE"
 			}

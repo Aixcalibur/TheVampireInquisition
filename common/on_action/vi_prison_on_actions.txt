@@ -21,9 +21,16 @@ vi_vampire_prison_on_action = {
 			}
 		}
 
+		
+
 		if = {
 			limit = {
-				has_character_modifier = vi_silver_chains_modifier
+				OR = {
+					scope:imprisoner = {
+						has_trait = vi_inquisitor
+					}
+					has_character_modifier = vi_silver_chains_modifier
+				}
 				NOT = {
 					has_trait = vi_exposed_vampire
 				}
@@ -45,6 +52,21 @@ vi_vampire_prison_on_action = {
 					expose_secret = scope:imprisoner
 				}
 			}
+
+			if = {
+				limit = {
+					scope:imprisoner = {
+						has_trait = vi_inquisitor
+					}
+				}
+
+				scope:imprisoner = {
+					add_trait_xp = {
+						trait = vi_inquisitor
+						value = 3
+					}
+				}
+			}
 		}
 		else_if = {
 			limit = {
@@ -52,6 +74,9 @@ vi_vampire_prison_on_action = {
 					has_character_modifier = vi_silver_chains_modifier
 				}
 				scope:imprisoner = {
+					NOT = {
+						has_trait = vi_inquisitor
+					}
 					vi_is_vampire_trigger = no
 				}
 			}

@@ -33,7 +33,7 @@
 		# title_allegiance_opinion = 10
 		
 		modifier = {
-			vassal_tax_mult = 0.5
+			vassal_tax_mult = 0.25
 			#minority_opinion = -15
 		}
 

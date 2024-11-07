@@ -38,7 +38,7 @@ k_vi_court_of_night = {
 	# }
 
 	d_vi_cologne = {
-		definite_form = yes
+		#definite_form = yes
 		ruler_uses_title_name = no
 		landless = yes
 		can_be_named_after_dynasty = no
@@ -47,8 +47,18 @@ k_vi_court_of_night = {
 		de_jure_drift_disabled = yes
 	}
 
+	d_vi_orleans = {
+		#definite_form = yes
+		ruler_uses_title_name = no
+		landless = yes
+		can_be_named_after_dynasty = no
+		capital = c_orleans
+		destroy_if_invalid_heir = no
+		de_jure_drift_disabled = yes
+	}
+
 	d_vi_zurich = {
-		definite_form = yes
+		#definite_form = yes
 		ruler_uses_title_name = no
 		landless = yes
 		can_be_named_after_dynasty = no
@@ -58,7 +68,7 @@ k_vi_court_of_night = {
 	}
 
 	d_vi_normandy = {
-		definite_form = yes
+		#definite_form = yes
 		ruler_uses_title_name = no
 		landless = yes
 		can_be_named_after_dynasty = no
@@ -68,7 +78,7 @@ k_vi_court_of_night = {
 	}
 
 	d_vi_lyon = {
-		definite_form = yes
+		#definite_form = yes
 		ruler_uses_title_name = no
 		landless = yes
 		can_be_named_after_dynasty = no
@@ -126,6 +136,19 @@ d_nf_vi_montmartre = {
 d_nf_vi_cologne = {
 	color = { 100 100 100 }
 	capital = c_cologne
+	definite_form = yes
+	landless = yes
+	ruler_uses_title_name = yes
+	always_follows_primary_heir = yes
+	no_automatic_claims = yes
+	noble_family = yes
+	destroy_if_invalid_heir = yes
+	ai_primary_priority = { add = @never_primary_score }
+}
+
+d_nf_vi_orlok = {
+	color = { 100 100 100 }
+	capital = c_orleans
 	definite_form = yes
 	landless = yes
 	ruler_uses_title_name = yes

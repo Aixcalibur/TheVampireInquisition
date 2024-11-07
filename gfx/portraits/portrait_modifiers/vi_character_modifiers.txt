@@ -84,5 +84,27 @@
             }
         }
 	}
+
+	vi_no_baldness = {
+		dna_modifiers = {
+			morph = {
+				mode = add
+				gene = gene_balding_hair_effect
+				template = no_baldness
+				value = 1
+			}		
+		} 
+		weight = {
+			base = 50
+			modifier = {
+				add = 200
+				scope:age < 25 
+			}
+			modifier = {
+				add = 200
+				has_character_flag = vi_vampire
+			}
+		}
+	}
 }
 

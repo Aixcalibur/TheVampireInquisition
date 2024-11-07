@@ -1,0 +1,191 @@
+﻿vi_inspire_interaction = {
+	icon = inspiration
+	interface_priority = 30
+	common_interaction = yes
+	category = interaction_category_vassal
+	desc = vi_inspire_interaction_desc
+
+	cooldown = {
+		years = 5
+	}
+
+	cooldown_against_recipient = {
+		years = 20
+	}
+
+	is_shown = {
+		scope:recipient = {
+			is_ruler = no
+			is_physically_able_ai_adult = yes
+			NOT = {
+				exists = inspiration
+			}
+		}
+		scope:actor = {
+			any_courtier_or_guest = {
+				this = scope:recipient
+			}
+			has_perk = vi_galvanize_perk
+		}
+	}
+	
+	is_highlighted = {
+		always = no
+	}
+
+	is_valid_showing_failures_only = {
+		trigger_if = {
+			limit = {
+				scope:recipient = {
+					vi_is_vampire_trigger = yes
+				}
+				scope:actor = {
+					NOT = {
+						has_perk = vi_presence_perk
+					}
+				}
+			}
+			custom_tooltip = {
+				text = vi_need_presence_tt
+				always = no
+			}
+		}
+	}
+	
+	on_accept = {
+		scope:actor = {
+			add_character_modifier = {
+				modifier = vi_vampire_strain_modifier
+				years = 10
+			}
+			add_stress = minor_stress_gain
+		}
+		scope:recipient = {
+			if = {
+				limit = {
+					OR = {
+						has_trait = lazy
+						has_trait = arrogant
+						has_trait = paranoid
+					}
+				}
+				add_opinion = {
+					target = scope:owner
+					modifier = suspicion_opinion
+					opinion = -10
+				}
+			}
+
+			random_list = {
+				40 = {
+					modifier = {
+						always = yes
+						add = scope:actor.diplomacy
+					}
+
+					modifier = {
+						always = yes
+						add = {
+							value = scope:actor.learning
+							multiply = 0.25
+						}
+					}
+
+					opinion_modifier = {
+						opinion_target = scope:actor
+						who = scope:recipient
+						multiplier = 0.25
+					}
+
+					add_character_modifier = {
+						modifier = vi_inspired_modifier
+						years = 5
+					}
+
+					grant_inspiration_to_character_no_court_artifacts_effect = { CHARACTER = this }
+
+				}
+
+				0 = {
+					modifier = {
+						always = yes
+						add = {
+							value = diplomacy
+							add = martial
+							add = stewardship
+							add = intrigue
+							add = learning
+						}
+					}
+
+					modifier = {
+						has_trait = vi_vampire_3
+						add = 20
+					}
+
+					modifier = {
+						has_trait = vi_vampire_4
+						add = 40
+					}
+
+					modifier = {
+						has_trait = vi_vampire_5
+						add = 100
+					}
+
+					add_stress = minor_stress_gain
+				}
+			}
+		}
+
+		# If we're a clan this interaction affects unity
+		add_clan_unity_interaction_effect = {
+			CHARACTER = scope:actor
+			TARGET = scope:recipient
+			VALUE = miniscule_unity_gain
+			DESC = clan_unity_inspo.desc
+			REVERSE_NON_HOUSE_TARGET = no
+		}
+	}
+	
+	auto_accept = {
+		custom_description = {
+			text = auto_accept_interaction_ai	
+			object = scope:recipient
+			scope:recipient = {
+				is_ai = yes
+			}
+		}
+	}
+
+	ai_frequency = 100
+
+	ai_targets = {
+		ai_recipients = guests
+		ai_recipients = courtiers
+	}
+
+	ai_target_quick_trigger = {
+		adult = yes
+	}
+
+	ai_potential = {
+		always = no
+		# is_at_war = no
+		# OR = {
+		# 	has_royal_court = yes
+		# 	government_has_flag = government_is_landless_adventurer
+		# 	has_government = vi_vampire_government
+		# }
+		# gold > ai_inspiration_desired_gold_value
+		# NOT = { has_character_flag = recently_fund_inspiration }
+		# ai_has_conqueror_personality = no
+		# ai_should_focus_on_building_in_their_capital = no
+	}
+
+	ai_will_do = {
+		base = -100
+		
+
+	}
+}

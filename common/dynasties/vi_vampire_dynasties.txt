@@ -22,3 +22,9 @@ vi_dynasty_Nosferatu = {
 	culture = "greek"
 	motto = "dynn_vi_Nosferatu_motto"
 }
+
+vi_dynasty_Strix = {
+	name = "dynn_vi_Strix"
+	culture = "greek"
+	motto = "dynn_vi_Strix_motto"
+}

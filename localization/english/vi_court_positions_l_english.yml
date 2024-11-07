@@ -1,0 +1,42 @@
+﻿l_english:
+
+ vi_galvanize_perk_bonus: "[GetPerk('vi_galvanize_perk').GetName( GetNullCharacter )]"
+
+ vi_herald_court_position: "Herald"
+ vi_herald_court_position_desc: "The Herald is a part of a Vampire Prince's Inner Council and manages diplomatic affairs within the Princedom."
+
+ vi_sword_court_position: "Sword"
+ vi_sword_court_position_desc: "The Sword is a part of a Vampire Prince's Inner Council and leads the [knights|E] in combat."
+
+ vi_castellan_court_position: "Castellan"
+ vi_castellan_court_position_desc: "The Castellan is a part of a Vampire Prince's Inner Council and serves as the foremost administrator."
+
+ vi_shadow_court_position: "Shadow"
+ vi_shadow_court_position_desc: "The Shadow is a part of a Vampire Prince's Inner Council and secretly keeps an eye on affairs throughout the Princedom."
+
+ vi_augur_court_position: "Augur"
+ vi_augur_court_position_desc: "The Augur is a part of a Vampire Prince's Inner Council and serves as a spiritual guide."
+
+ vi_thrall_keeper_court_position: "Thrall Keeper"
+ vi_thrall_keeper_court_position_desc: "The $vi_thrall_keeper_position$ is in charge of taking care of the blood thralls for the court."
+ vi_sentinel_court_position: "Vampire Sentinel"
+ vi_sentinel_court_position_desc: "The $vi_sentinel_position$ oversees the local vampire population to make sure they follow the laws of the Princedom."
+ vi_hound_court_position: "Hound"
+ vi_hound_court_position_desc: "The Hound is a vampire's personal thug to take care of matters without getting their hands dirty."
+
+ vi_merchant_liaison_position: "Merchant Liaison"
+ vi_merchant_liaison_position_desc: "The $vi_merchant_liaison_position$ maintains connections with merchants."
+ domicile_building_parameter_vi_unlock_merchant_liaison: "Unlocks the [GetCourtPositionType('vi_merchant_liaison_position').GetName()] [court position|E] for further bonuses to [domicile|E] income."
+
+ court_position_disian: "Disian Bloodline"
+ court_position_nosferatu: "Nosferatu Bloodline"
+ court_position_anunnaki: "Anunnaki Bloodline"
+ court_position_strix: "Strix Bloodline"
+ court_position_vampire_perks: "Vampire Perks"
+ court_position_vi_heartstealer_trait: "[GetTrait('vi_heartstealer').GetName( ROOT.Char )]"
+ court_position_vi_allseeing_trait: "[GetTrait('vi_allseeing').GetName( ROOT.Char )]"
+ court_position_vi_dragonsscion_trait: "[GetTrait('vi_dragonsscion').GetName( ROOT.Char )]"
+ court_position_vi_vampire_3_trait: "[GetTrait('vi_vampire_3').GetName( ROOT.Char )]"
+ court_position_vi_vampire_4_trait: "[GetTrait('vi_vampire_4').GetName( ROOT.Char )]"
+ court_position_possessed_trait: "[GetTrait('possessed_1').GetName( ROOT.Char )]"
+ court_position_ai_bonus: "AI Bonus"

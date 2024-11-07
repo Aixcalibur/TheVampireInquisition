@@ -1,76 +1,182 @@
 ﻿vi_investigate = {
 	# Basic Setup
 	skill = intrigue
-	desc = "challenge_status_desc_general"
-	success_desc = "CHALLENGE_STATUS_SUCCESS_DESC"
+	desc = vi_investigate_desc_general
+	success_desc = "VI_INVESTIGATE_SUCCESS_DESC"
 	icon = icon_scheme_challenge_status
 	illustration = "gfx/interface/illustrations/event_scenes/corridor.dds"
 	target_type = character
 	category = hostile
-	cooldown = { years = 10 }
-
-	# Travel Triggers (default no)
-	freeze_scheme_when_traveling = yes
-	freeze_scheme_when_traveling_target = no
+	is_secret = yes
+	maximum_breaches = 5
+	is_basic = yes
 
 	# Parameters
-	speed_per_skill_point = t2_spsp_owner_value
-	speed_per_target_skill_point = t2_spsp_target_value
-	spymaster_speed_per_skill_point = t2_spsp_owner_spy_value
-	target_spymaster_speed_per_skill_point = t2_spsp_target_spy_value
-	tier_speed = 1
-	base_progress_goal = t3_base_phase_length_value
-	base_maximum_success = t2_base_max_success_value
-	phases_per_agent_charge = 1
-	success_chance_growth_per_skill_point = t2_scgpsp_value
-
-	is_secret = no
-
+	speed_per_skill_point = 2
+	spymaster_speed_per_skill_point = 2
+	base_progress_goal = 365
+	base_maximum_success = 95
+	minimum_success = 1
+	
 	# Core Triggers
 	allow = {
-		# is_adult = yes
-		is_imprisoned = no
-		is_ruler = yes
+		#is_adult = yes
+		NOT = {
+			vi_is_vampire_trigger = yes
+		}
+		
+
+		scope:target = {
+			vi_is_vampire_trigger = yes
+			NOT = {
+				has_trait = vi_exposed_vampire
+			}
+		}
 	}
 
 	valid = {
-		has_opinion_modifier = {
-			modifier = suspicion_opinion
-			target = scope:target
-		}
+		# You're too far away
 		scope:target = {
-			vi_is_vampire_trigger = yes
+			OR = {
+				exists = location
+				in_diplomatic_range = scope:owner
+			}
+		}
+
+		scope:target = {
+			NOT = {
+				has_trait = vi_exposed_vampire
+			}
 		}
 	}
 
-	# Agents
-	agent_leave_threshold = -25
-	agent_join_chance = {
-		base = 0
-		ai_agent_join_chance_basic_suite_modifier = yes
-		ai_agent_join_chance_hostile_general_suite_modifier = yes
-		ai_agent_join_chance_political_suite_modifier = yes
-	}
-	agent_groups_owner_perspective = { peer_vassals courtiers vassals councillors }
-	# agent_groups_target_character_perspective = { courtiers vassals councillors }
-	valid_agent = {
-		is_valid_agent_standard_trigger = yes
-		vi_is_vampire_trigger = no
+	use_secrecy = {
+		always = yes
+		# use_seduce_secrecy_trigger = {
+		# 	TARGET = scope:target
+		# 	OWNER = scope:owner
+		# }
 	}
 
 	odds_prediction = {
 		add = base_odds_prediction_target_is_char_value
 		add = odds_skill_contribution_intrigue_value
-		add = agent_groups_owner_perspective_value
-		# add = agent_groups_target_character_perspective_value
+		#add = odds_seduce_scheme_misc_value
 		min = 0
 	}
 
 	# Base Chances
 	base_success_chance = {
-		base = 0
+		base = 50
 		scheme_type_skill_success_chance_modifier = { SKILL = INTRIGUE }
 		scheme_type_skill_success_chance_modifier = { SKILL = LEARNING }
+
+		#Countermeasures
+		apply_indirect_scheme_success_chance_adjustments_modifier = yes
+		
+		modifier = {
+			desc = "VI_VAMPIRE_HUNTER_SKILL"
+			scope:owner = {
+				has_trait = vi_inquisitor
+			}
+			add = {
+				value = 10
+				if = {
+					limit = {
+						scope:owner = {
+							has_trait_xp = { trait = vi_inquisitor value >= 25 }
+						}
+					}
+					add = 10
+				}
+				if = {
+					limit = {
+						scope:owner = {
+							has_trait_xp = { trait = vi_inquisitor value >= 50 }
+						}
+					}
+					add = 10
+				}
+				if = {
+					limit = {
+						scope:owner = {
+							has_trait_xp = { trait = vi_inquisitor value >= 75 }
+						}
+					}
+					add = 10
+				}
+				if = {
+					limit = {
+						scope:owner = {
+							has_trait_xp = { trait = vi_inquisitor value >= 100 }
+						}
+					}
+					add = 10
+				}
+			}
+		}
+
+		modifier = {
+			desc = "SCHEME_TARGET_IS_LANDED"
+			scope:target = {
+				is_landed = yes
+			}
+			add = 25
+		}
+
+		modifier = {
+			desc = "SCHEME_TARGET_IS_A_KING"
+			scope:target = {
+				is_landed = yes
+				highest_held_title_tier = tier_kingdom
+			}
+			add = 25
+		}
+
+		modifier = {
+			desc = "SCHEME_TARGET_IS_AN_EMPEROR"
+			scope:target = {
+				is_landed = yes
+				highest_held_title_tier = tier_empire
+			}
+			add = 45
+		}
+
+		modifier = {
+			desc = "SCHEME_TARGET_LEGITIMACY"
+			scope:target = {
+				has_legitimacy = yes
+				legitimacy_level > 3
+			}
+			add = -50
+		}
+
+		modifier = {
+			desc = "SCHEME_TARGET_LEGITIMACY"
+			scope:target = {
+				has_legitimacy = yes
+				legitimacy_level = 2
+			}
+			add = 25
+		}
+
+		modifier = {
+			desc = "SCHEME_TARGET_LEGITIMACY"
+			scope:target = {
+				has_legitimacy = yes
+				legitimacy_level = 1
+			}
+			add = 50
+		}
+
+		modifier = {
+			desc = "SCHEME_TARGET_LEGITIMACY"
+			scope:target = {
+				has_legitimacy = yes
+				legitimacy_level = 0
+			}
+			add = 100
+		}
 		
 		# Target's intrigue
 		modifier = {
@@ -80,38 +186,31 @@
 				multiply = -2
 			}
 		}
-
-		# Family Feud
-		house_feud_hostile_scheme_success_modifier = yes
 		
 		# Target's traits
 		modifier = { # Target is paranoid, therefore leaves few clues
 			scope:target = { has_trait = paranoid }
-			desc = "SCHEME_TRAIT_PARANOID"
+			desc = "SCHEME_TARGET_IS_PARANOID"
 			add = -50
 		}
-		
-		# House
 	}
 
+	base_secrecy = {
+		add = 50
+		add = secrecy_base_value
+		add = countermeasure_apply_secrecy_maluses_value
+	}
+	
 	# On Actions
 	on_start = {
-		# Fallback agents — a balanced config if you start the scheme from script.
-		if = {
-			limit = {
-				scheme_owner = {
-					NOT = { has_variable = agents_added }
-				}
-			}
-			add_agent_slot = agent_proponent
-			add_agent_slot = agent_intermediary
-			add_agent_slot = agent_political_socialite
-			add_agent_slot = agent_bureaucrat
-			add_agent_slot = agent_amanuensis
+		set_variable = {
+			name = apply_countermeasures
+			value = flag:indirect
 		}
 	}
-	on_phase_completed = {
 
+	on_phase_completed = {
+		# Grab our scopes.
 		save_scope_as = scheme
 		scheme_target_character = { save_scope_as = target }
 		scheme_owner = { save_scope_as = owner }
@@ -146,55 +245,31 @@
 				
 				if = {
 					limit = { exists = scope:scheme_successful }
-					trigger_event = vi_investigate.001 #Success event
+					trigger_event = vi_investigate_secrets.001 #Success event
 				}
 				else = {
-					trigger_event = vi_investigate.002
+					trigger_event = vi_investigate_secrets.002
 				}
 			}
 		}
 	}
-	# on_hud_click  = { challenge_status_scheme_prep_effect = yes }
-	# on_semiyearly = {
-	# 	if = {
-	# 		limit = {
-	# 			scheme_owner = { is_ai = yes }
-	# 		}
-	# 		challenge_status_scheme_prep_effect = yes
-	# 	}
-	# }
 
-	## Invalidation
+	on_monthly = {
+		save_scope_as = scheme
+		scheme_owner = { save_scope_as = owner }
+		scheme_target_character = { save_scope_as = target }
+
+		hostile_scheme_monthly_discovery_chance_effect = yes
+	}
+
 	on_invalidated = {
 		scheme_target_character = {
 			save_scope_as = target
 		}
 		scheme_owner = {
 			save_scope_as = owner
-			send_interface_toast = {
-				type = event_toast_effect_neutral
-				title = vi_investigate_invalidated_title
-				left_icon = scope:target
-				if = { # Invalidation due to death
-					limit = {
-						scope:target = { is_alive = no }
-						NOT = { block_death_event_trigger = { DEAD = scope:target } }
-						scope:owner = { is_alive = yes }
-					}
-					custom_tooltip = scheme_target_died
-				}
-				else_if = { # No more diplo range
-					limit = {
-						scope:target = { 
-							NOT = { in_diplomatic_range = scope:owner } 
-						}
-					}
-					custom_tooltip = scheme_target_not_in_diplomatic_range
-				}
-			}
 		}
-	}
 
-	## Ongoing
-	on_monthly = { fire_generic_contract_scheme_on_going_events_effect = yes }
+		#Do Stuff
+	}
 }

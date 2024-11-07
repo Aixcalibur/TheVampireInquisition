@@ -1,4 +1,62 @@
-﻿vi_vampire_county_normal_effect = {
+﻿vi_vampire_policy_start_effect = {
+	hidden_effect = {
+		if = {
+			limit = {
+				has_character_flag = vi_placated_vassal
+			}
+			remove_character_flag = vi_placated_vassal
+		}
+		else = {
+			add_character_modifier = {
+				modifier = vi_vampire_arrogance_modifier
+			}
+		}
+		remove_character_modifier = vi_heavy_capital_wealth_modifier
+		remove_character_modifier = vi_balanced_capital_wealth_modifier
+		remove_character_modifier = vi_light_capital_wealth_modifier
+		remove_character_modifier = vi_invest_capital_wealth_modifier
+	}
+}
+
+vi_vampire_policy_after_effect = {
+	save_scope_as = vi_vassal
+	liege ?= {
+		save_scope_as = vi_liege
+		if = {
+			limit = {
+				scope:vi_vassal = {
+					NOT = {
+						is_independent_ruler = yes
+					}
+					opinion = {
+						target = scope:vi_liege
+						value > 20
+					}
+				}
+			}
+			add_character_modifier = {
+				modifier = vi_vassal_cooperative_modifier
+				years = 5
+			}
+		}
+		else_if = {
+			limit = {
+				scope:vi_vassal = {
+					opinion = {
+						target = scope:vi_liege
+						value < -20
+					}
+				}
+			}
+			add_character_modifier = {
+				modifier = vi_vassal_uncooperative_modifier
+				years = 5
+			}
+		}
+	}
+}
+
+vi_vampire_county_normal_effect = {
 
 	root.primary_title.title_capital_county = {
 		save_scope_as = domicile_location # actually capital location, but too lazy to change
@@ -45,25 +103,29 @@
 		}
 	}
 
-	custom_tooltip = vi_vampire_policy.001.a.tt
-
-	hidden_effect = {
-		set_local_variable = {
-			name = vi_development_tier
-			value = {
-				value = scope:domicile_location.development_level
-				multiply = 0.2
-				add = 1
-			}
-		}
-	
-		vi_add_stacking_modifier_effect = {
-			MODIFIER = vi_sap_county_wealth_modifier
-			TYPE = character
-			LEVEL = local_var:vi_development_tier
-			YEARS = 5 
-		}
+	#custom_tooltip = vi_vampire_policy.001.a.tt
+	add_character_modifier = {
+		modifier = vi_balanced_capital_wealth_modifier
+		years = 5
 	}
+
+	# hidden_effect = {
+	# 	set_local_variable = {
+	# 		name = vi_development_tier
+	# 		value = {
+	# 			value = scope:domicile_location.development_level
+	# 			multiply = 0.2
+	# 			add = 1
+	# 		}
+	# 	}
+	
+	# 	vi_add_stacking_modifier_effect = {
+	# 		MODIFIER = vi_sap_county_wealth_modifier
+	# 		TYPE = character
+	# 		LEVEL = local_var:vi_development_tier
+	# 		YEARS = 5 
+	# 	}
+	# }
 }
 
 vi_vampire_county_discreet_effect = {
@@ -73,6 +135,10 @@ vi_vampire_county_discreet_effect = {
 			modifier = vi_county_discreet_modifier
 			years = 5
 		}
+	}
+	add_character_modifier = {
+		modifier = vi_light_capital_wealth_modifier
+		years = 5
 	}
 	hidden_effect = {
 		vi_recenter_domicile_effect = yes
@@ -86,9 +152,9 @@ vi_vampire_county_discreet_effect = {
 	else = {
 		liege ?= {
 			send_interface_message = {
-				type = send_interface_message_bad
+				type = send_interface_message_good
 				title = vi_vampire_policy.001.b.msg_title
-				desc = vi_vampire_policy.001.b.msg_title
+				desc = vi_vampire_policy.001.b.msg_desc
 				left_icon = root # optional, character, artifact, or title
 				right_icon = scope:domicile_location # optional, character, artifact, or title
 				add_legitimacy = miniscule_legitimacy_gain
@@ -153,25 +219,30 @@ vi_vampire_county_drain_effect = {
 		}
 	}
 
-	custom_tooltip = vi_vampire_policy.001.a.tt
-
-	hidden_effect = {
-		set_local_variable = {
-			name = vi_development_tier
-			value = {
-				value = scope:domicile_location.development_level
-				multiply = 0.4
-				add = 1
-			}
-		}
-	
-		vi_add_stacking_modifier_effect = {
-			MODIFIER = vi_sap_county_wealth_modifier
-			TYPE = character
-			LEVEL = local_var:vi_development_tier
-			YEARS = 5
-		}
+	add_character_modifier = {
+		modifier = vi_heavy_capital_wealth_modifier
+		years = 5
 	}
+
+	# custom_tooltip = vi_vampire_policy.001.c.tt
+
+	# hidden_effect = {
+	# 	set_local_variable = {
+	# 		name = vi_development_tier
+	# 		value = {
+	# 			value = scope:domicile_location.development_level
+	# 			multiply = 0.4
+	# 			add = 1
+	# 		}
+	# 	}
+	
+	# 	vi_add_stacking_modifier_effect = {
+	# 		MODIFIER = vi_sap_county_wealth_modifier
+	# 		TYPE = character
+	# 		LEVEL = local_var:vi_development_tier
+	# 		YEARS = 5
+	# 	}
+	# }
 
 	add_legitimacy = medium_legitimacy_loss
 }
@@ -180,6 +251,11 @@ vi_vampire_county_drain_effect = {
 vi_vampire_county_investment_effect = {
 
 	remove_short_term_gold = medium_gold_value
+
+	add_character_modifier = {
+		modifier = vi_invest_capital_wealth_modifier
+		years = 5
+	}
 
 	root.primary_title.title_capital_county = {
 		save_scope_as = domicile_location

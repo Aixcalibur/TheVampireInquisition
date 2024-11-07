@@ -1,0 +1,24 @@
+﻿seduce_ongoing_milestone_2 = {
+
+	on_actions = {
+		vi_seduce_ongoing_milestone_2
+	}
+}
+
+vi_seduce_ongoing_milestone_2 = {
+	trigger = {
+		vi_is_vampire_trigger = yes
+		is_ai = yes
+		is_male = yes
+	}
+
+	effect = {
+		random = {
+			chance = 50
+			add_character_modifier = {
+				modifier = vi_vampire_fertility_modifier
+				days = 180
+			}
+		}
+	}
+}

@@ -1,4 +1,19 @@
-﻿vi_is_suspicious_of = {
+﻿vi_is_vampire_trigger = {
+	global = IS_VAMPIRE_TRIGGER
+	first = I_AM_VAMPIRE_TRIGGER
+	third = THEY_ARE_VAMPIRE_TRIGGER
+
+	# expected localization keys: IS_VAMPIRE_TRIGGER, NOT_IS_VAMPIRE_TRIGGER, 
+	#I_AM_VAMPIRE_TRIGGER, NOT_I_AM_VAMPIRE_TRIGGER, THEY_ARE_VAMPIRE_TRIGGER, NOT_THEY_ARE_VAMPIRE_TRIGGER
+}
+
+vi_has_holy_artifact_equipped_trigger = {
+	global = HAS_HOLY_ARTIFACT_EQUIPPED_TRIGGER
+	first = I_HAVE_HOLY_ARTIFACT_EQUIPPED_TRIGGER
+	third = THEY_HAVE_HOLY_ARTIFACT_EQUIPPED_TRIGGER
+}
+
+vi_is_suspicious_of = {
 	global = IS_SUSPICIOUS_OF
 	first = I_AM_SUSPICIOUS_OF
 	third = THEY_ARE_SUSPICIOUS_OF
@@ -9,6 +24,7 @@
 
 has_opinion_modifier = {
 	global = HAS_OPINION_MODIFIER_TRIGGER
+	first = I_HAVE_OPINION_MODIFIER_TRIGGER
 }
 
 vi_princedom_already_exists = {

@@ -11,7 +11,7 @@ vi_vampire_elective = { #Thing
 		base = 10
 		
 		modifier = {
-			desc = sum_of_skills_desc
+			desc = vi_sum_of_skills_desc
 			add = {
 				value = {
 					add = diplomacy
@@ -30,8 +30,9 @@ vi_vampire_elective = { #Thing
 		}
 
 		modifier = {
+			desc = vi_tooltip_self_vote_strength
 			this = scope:holder
-			add = -20
+			add = -15
 		}
 
 		min = 1
@@ -61,7 +62,7 @@ vi_vampire_elective = { #Thing
 		elector_voting_pattern_traits_feudal_elective_modifier = yes
 
 		##########################	Elector voting patterns (opinion)	##########################
-		elector_voting_pattern_opinion_feudal_elective_modifier = yes
+		vi_elector_voting_pattern_opinion_feudal_elective_modifier = yes
 
 		##########################	Elector voting patterns (misc)	##########################
 		elector_voting_pattern_circumstances_misc_elective_modifier = yes
@@ -70,6 +71,7 @@ vi_vampire_elective = { #Thing
 	#scope:candidate = Candidate, scope:title = Title, scope:holder_candidate = Candidate currently selected by ruler.
 	candidates = {
 		add = title_claimants
+		add = title_dejure_vassals
 		add = holder_close_family
 		add = holder_direct_vassals
 	}

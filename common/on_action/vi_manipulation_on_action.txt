@@ -1,0 +1,221 @@
+﻿vi_manipulation_success_on_action = {
+	random_events = {
+		
+	}
+}
+
+vi_manipulation_failure_on_action = {
+	random_events = {
+
+	}
+}
+
+vi_manipulation_on_going = {
+	random_on_action = {
+		chance_to_happen = 30
+
+		200 = vi_manipulation_on_going_events
+
+		##################################################
+		# Minor stuff in On Actions
+		100 = vi_manipulation_on_going_minor_positive
+		100 = vi_manipulation_on_going_minor_negative
+		100 = vi_manipulation_on_going_minor_effects
+
+		##################################################
+		# Generic Agent events
+		100 = agent_events_on_action							#	General agent events.
+	}
+}
+
+vi_manipulation_on_going_events = {
+	random_events = {
+		100 = vi_manipulation.1001
+		100 = vi_manipulation.1011
+		100 = vi_manipulation.1021
+		100 = vi_manipulation.1031
+	}
+}
+
+vi_manipulation_on_going_minor_positive = {
+	trigger = {
+		scope:scheme = {
+			var:vi_scheme_goal ?= flag:positive
+		}
+	}
+	effect = {
+		send_interface_toast = {
+			title = vi_manipulation_on_going_minor_msg
+			left_icon = scope:target
+			scope:target = {
+				send_interface_toast = {
+					title = vi_manipulation_on_going_minor_msg
+					random_list = {
+						50 = {
+							add_prestige = minor_prestige_gain
+						}
+						50 = {
+							add_short_term_gold = minor_gold_value
+						}
+						20 = {
+							add_character_modifier = {
+								modifier = vi_minor_positive_vassal_modifier
+								years = 3
+							}
+						}
+						20 = {
+							add_character_modifier = {
+								modifier = vi_minor_positive_income_modifier
+								years = 3
+							}
+						}
+						20 = {
+							add_character_modifier = {
+								modifier = vi_minor_positive_levy_modifier
+								years = 3
+							}
+						}
+					}
+				}
+			}
+			reverse_add_opinion = {
+				target = scope:target
+				modifier = suspicion_opinion
+				opinion = -2
+			}
+		}
+	}
+}
+
+vi_manipulation_on_going_minor_negative = {
+	trigger = {
+		scope:scheme = {
+			var:vi_scheme_goal ?= flag:negative
+		}
+	}
+	effect = {
+		send_interface_toast = {
+			title = vi_manipulation_on_going_minor_msg
+			left_icon = scope:target
+			scope:target = {
+				send_interface_toast = {
+					title = vi_manipulation_on_going_minor_msg
+					random_list = {
+						50 = {
+							add_prestige = minor_prestige_loss
+						}
+						50 = {
+							remove_short_term_gold = minor_gold_value
+						}
+						20 = {
+							add_character_modifier = {
+								modifier = vi_minor_negative_vassal_modifier
+								years = 3
+							}
+						}
+						20 = {
+							add_character_modifier = {
+								modifier = vi_minor_negative_income_modifier
+								years = 3
+							}
+						}
+						20 = {
+							add_character_modifier = {
+								modifier = vi_minor_negative_levy_modifier
+								years = 3
+							}
+						}
+					}
+				}
+			}
+			reverse_add_opinion = {
+				target = scope:target
+				modifier = suspicion_opinion
+				opinion = -5
+			}
+		}
+	}
+}
+
+vi_manipulation_on_going_minor_effects = {
+	effect = {
+		scope:owner = {
+			send_interface_toast = {
+				title = vi_manipulation_on_going_minor_msg
+				left_icon = scope:target
+				random_list = {
+					50 = {
+						add_prestige = miniscule_prestige_loss
+						scope:target = {
+							random_vassal = {
+								limit = {
+									NOT = {
+										scope:owner = {
+											has_hook = prev
+										}
+									}
+								}
+								scope:owner = {
+									add_hook = {
+										type = favor_hook
+										target = prev
+										years = 3
+									}
+								}
+							}
+						}
+					}
+					30 = {
+						add_prestige = minor_prestige_gain
+					}
+					30 = {
+						scope:target = {
+							pay_short_term_gold = {
+								target = scope:owner
+								gold = minor_gold_value
+							}
+						}
+					}
+					5 = {
+						add_character_modifier = {
+							modifier = vi_stewardship_insights_modifier
+							years = 3
+						}
+					}
+					5 = {
+						add_character_modifier = {
+							modifier = vi_diplomacy_insights_modifier
+							years = 3
+						}
+					}
+					5 = {
+						add_character_modifier = {
+							modifier = vi_martial_insights_modifier
+							years = 3
+						}
+					}
+
+					5 = {
+						add_prestige = miniscule_prestige_loss
+						add_hook = {
+							type = favor_hook
+							target = prev
+							years = 3
+						}
+						modifier = {
+							has_hook = scope:target
+							add = -5
+						}
+					}
+				}
+				scope:target = {
+					add_opinion = {
+						target = scope:owner
+						modifier = suspicion_opinion
+						opinion = -5
+					}
+				}
+			}
+		}
+	}
+}

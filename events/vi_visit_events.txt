@@ -1,0 +1,357 @@
+﻿namespace = vi_visit
+
+scripted_trigger vi_visit_hook_option_trigger = {
+	has_perk = vi_persuasion_perk
+	scope:vi_victim = {
+		NOT = {
+			vi_holy_artifact_nearby_trigger = yes
+		}
+	}
+	OR = {
+		has_perk = vi_presence_perk
+		scope:vi_victim = {
+			NOR = {
+				vi_is_vampire_trigger = yes
+				has_trait = vi_dhampir
+			}
+		}
+	}
+	NOT = {
+		has_hook = scope:vi_victim
+	}
+}
+
+scripted_trigger vi_visit_soothe_option_trigger = {
+	has_perk = vi_soothe_perk
+	scope:vi_victim = {
+		NOT = {
+			vi_holy_artifact_nearby_trigger = yes
+		}
+	}
+	OR = {
+		has_perk = vi_presence_perk
+		scope:vi_victim = {
+			NOR = {
+				vi_is_vampire_trigger = yes
+				has_trait = vi_dhampir
+			}
+		}
+	}
+}
+
+scripted_trigger vi_visit_enthrall_option_trigger = {
+	has_perk = vi_enthrall_perk
+	scope:vi_victim = {
+		custom_tooltip = {
+			text = vi_visit_holy_artifact_tt
+			NOT = {
+				vi_holy_artifact_nearby_trigger = yes
+			}
+		}
+		custom_tooltip = {
+			text = vi_visit.option_enthrall.relation_tt
+			OR = {
+				has_relation_friend = scope:vi_vampire
+				has_relation_lover = scope:vi_vampire
+				has_relation_best_friend = scope:vi_vampire
+				has_relation_soulmate = scope:vi_vampire
+			}
+		}
+	}
+	
+	custom_tooltip = {
+		text = vi_need_presence_tt
+		OR = {
+			has_perk = vi_presence_perk
+			scope:vi_victim = {
+				NOR = {
+					vi_is_vampire_trigger = yes
+					has_trait = vi_dhampir
+				}
+			}
+		}
+	}
+	
+	NOT = {
+		has_strong_hook = scope:vi_victim
+	}
+}
+
+scripted_effect vi_visit_end_effect = {
+	current_travel_plan ?= {
+		if = {
+			limit = { is_paused = yes }
+			resume_travel_plan = yes 
+		}
+	}
+}
+
+vi_visit.9999 = {
+	hidden = yes
+
+	immediate = {
+		if = {
+			limit = {
+				scope:recipient = {
+					OR = {
+						is_alive = no 
+						is_imprisoned = yes
+					}
+				}
+			}
+			trigger_event = {
+				on_action = vi_visit_travel_planner_exit
+			}
+		}
+		else = {
+			trigger_event = {
+				on_action = vi_visit_arrival_selector
+			}
+		}
+		current_travel_plan ?= {
+			delay_travel_plan = { days = 90 }
+		}
+	}
+}
+
+vi_visit.0001 = { #Most generic possible
+	type = character_event
+	title = vi_visit.0001.t
+	desc = {
+		desc = vi_visit.0001.desc
+		triggered_desc = {
+			trigger = {
+				scope:recipient = {
+					vi_holy_artifact_nearby_trigger = yes
+				}
+			}
+			desc = vi_visit.artifact.desc
+		}
+		desc = vi_visit.0001.welcome.desc
+	}
+	
+	theme = seduction
+
+	right_portrait = {
+		character = root
+		animation = personality_dishonorable
+	}
+	left_portrait = scope:recipient
+
+	override_icon = {
+		reference = "gfx/interface/icons/event_types/type_relation_friendly.dds"
+	}
+
+	# override_background = {
+	# 	trigger = { is_travelling_not_at_activity = yes }
+	# 	reference = terrain_travel
+	# }
+	# override_background = {
+	# 	trigger = { is_travelling_at_activity = yes }
+	# 	reference = ep2_activity
+	# }
+	
+	trigger = {
+		scope:recipient = {
+			is_alive = yes
+			is_imprisoned = no
+		}
+	}
+
+	immediate = {
+		save_scope_as = vi_vampire
+		scope:recipient = {
+			save_scope_as = vi_victim
+		}
+		vi_instant_charm_effect = yes
+	}
+
+	option = {
+		name = vi_visit.0001.a
+
+		stress_impact = {
+			shy = medium_stress_impact_gain
+			reclusive = medium_stress_impact_gain
+			gregarious = minor_stress_impact_loss
+		}
+
+		scope:vi_victim = {
+			send_interface_message = {
+				title = vi_visit.0001.t
+				desc = vi_visit.chat.msg_desc
+				stress_impact = {
+					base = minor_stress_impact_loss
+					shy = medium_stress_impact_gain
+					reclusive = minor_stress_impact_gain
+					gregarious = medium_stress_impact_loss
+				}
+			}
+		}
+
+		hidden_effect = { #Nudge towards friendship
+			if = {
+				limit = {
+					NOR = {
+						has_relation_friend = scope:vi_victim
+						has_relation_potential_friend = scope:vi_victim
+					}
+				}
+				set_relation_potential_friend = scope:vi_victim
+			}
+		}
+
+		ai_chance = {
+			base = 10
+
+			opinion_modifier = {
+				opinion_target = scope:vi_victim
+				who = scope:vi_vampire
+				multiplier = 1
+			}
+		}
+	}
+
+	option = {
+		name = vi_visit.option_hook
+		trigger = {
+			vi_visit_hook_option_trigger = yes
+		}
+		show_as_unavailable = {
+			has_perk = vi_persuasion_perk
+			NOT = {
+				has_hook = scope:vi_victim
+			}
+		}
+		if = {
+			limit = {
+				scope:vi_victim = {
+					vi_holy_artifact_nearby_trigger = yes
+				}
+			}
+			custom_tooltip = vi_visit_holy_artifact_tt
+		}
+		
+		vi_persuasion_effect = yes
+
+		ai_chance = {
+			base = 50
+			vi_power_use_ai_chance_modifier = yes
+		}
+	}
+
+	option = {
+		name = vi_visit.option_soothe
+		trigger = {
+			vi_visit_soothe_option_trigger = yes
+		}
+		show_as_unavailable = {
+			has_perk = vi_soothe_perk
+		}
+
+		if = {
+			limit = {
+				scope:vi_victim = {
+					vi_holy_artifact_nearby_trigger = yes
+				}
+			}
+			custom_tooltip = vi_visit_holy_artifact_tt
+		}
+		vi_soothe_effect = yes
+
+		ai_chance = {
+			base = 0
+			vi_power_use_ai_chance_modifier = yes
+		}
+	}
+
+	option = {
+		name = vi_visit.option_enthrall
+		trigger = {
+			vi_visit_enthrall_option_trigger = yes
+		}
+		show_as_unavailable = {
+			has_perk = vi_enthrall_perk
+			# OR = {
+			# 	has_relation_friend = scope:vi_vampire
+			# 	has_relation_lover = scope:vi_vampire
+			# 	has_relation_best_friend = scope:vi_vampire
+			# 	has_relation_soulmate = scope:vi_vampire
+			# }
+			NOT = {
+				has_strong_hook = scope:vi_victim
+			}
+		}
+
+		if = {
+			limit = {
+				scope:vi_victim = {
+					vi_holy_artifact_nearby_trigger = yes
+				}
+			}
+			custom_tooltip = vi_visit_holy_artifact_tt
+		}
+		vi_soothe_effect = yes
+
+		ai_chance = {
+			base = 100
+			vi_power_use_ai_chance_modifier = yes
+		}
+	}
+
+	after = {
+		#vi_visit_end_effect = yes
+	}
+}
+
+vi_visit.4001 = { #Use Persuasion Success
+	type = character_event
+	title = vi_visit.4001.t
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					always = no
+				}
+				desc = x
+			}
+			desc = vi_visit.4001.desc
+		}
+	}
+	theme = seduction
+
+	right_portrait = {
+		character = root
+	}
+	left_portrait = scope:recipient
+
+	immediate = {
+		show_as_tooltip = {
+			vi_persuasion_success = yes
+		}
+	}
+
+	option = {
+		name = vi_visit.option_soothe
+		trigger = {
+			vi_visit_soothe_option_trigger = yes
+		}
+		show_as_unavailable = {
+			has_perk = vi_soothe_perk
+		}
+
+		if = {
+			limit = {
+				scope:vi_victim = {
+					vi_holy_artifact_nearby_trigger = yes
+				}
+			}
+			custom_tooltip = vi_visit_holy_artifact_tt
+		}
+		vi_soothe_effect = yes
+
+		ai_chance = {
+			base = 0
+			vi_power_use_ai_chance_modifier = yes
+		}
+	}
+}

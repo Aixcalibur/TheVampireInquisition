@@ -1,0 +1,66 @@
+﻿on_travel_plan_start = {
+	on_actions = {
+		vi_on_travel_plan_start_sunlight_burns
+	}
+}
+
+on_travel_plan_movement = {
+	on_actions = {
+		#vi_seriously_cancel_ai_travel_on_action
+	}
+}
+
+vi_on_travel_plan_start_sunlight_burns = {
+	trigger = {	
+		has_trait_with_flag = vi_sunlight_burns
+		exists = involved_activity
+	}
+
+	effect = {
+		if = {
+			limit = {
+				OR = {
+					involved_activity = { has_activity_type = activity_tournament }
+					involved_activity = { has_activity_type = activity_hunt }
+
+					# AND = {
+					# 	is_ai = yes
+					# 	involved_activity = { has_activity_type = activity_feast }
+					# 	involved_activity.activity_host = {
+					# 		vi_is_vampire_trigger = no
+					# 	}
+					# }
+				}
+			}
+
+			if = {
+				limit = {
+					is_ai = yes
+				}
+				current_travel_plan = { cancel_travel_plan = yes }
+			}
+			else = {
+				trigger_event = {
+					id = vi_travel_prohibition.0001
+					days = 2
+				}
+			}
+		}
+	}
+}
+
+vi_seriously_cancel_ai_travel_on_action = { #Made this because I thought the other one wasn't firing, but it is firing.
+	trigger = {	
+		is_ai = yes
+		has_trait_with_flag = vi_sunlight_burns
+		exists = involved_activity
+		OR = {
+			involved_activity = { has_activity_type = activity_tournament }
+			involved_activity = { has_activity_type = activity_hunt }
+		}
+	}
+
+	effect = {
+		current_travel_plan = { cancel_travel_plan = yes }
+	}
+}

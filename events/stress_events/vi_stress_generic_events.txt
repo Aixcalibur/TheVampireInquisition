@@ -1,0 +1,654 @@
+﻿namespace = vi_stress_generic
+
+vi_stress_generic.0001 = { #Standing over a kill
+	type = character_event
+	title = vi_stress_generic.0001.t
+	desc = vi_stress_generic.0001.desc
+
+	theme = mental_break
+	override_background = {
+		trigger = { is_travelling = yes }
+		reference = terrain
+	}
+	left_portrait = {
+		character = root
+		animation = rage
+	}
+
+	right_portrait = {
+		character = scope:vi_victim
+		animation = fear
+	}
+
+	trigger = {
+		vi_is_vampire_trigger = yes
+		# NOR = {
+		# 	has_trait = callous
+		# 	has_trait = sadistic
+		# }
+
+		NOT = {
+			has_character_flag = had_vi_stress_generic0001
+		}
+	}
+
+	weight_multiplier = {
+		base = 1
+	}
+
+	widget = {
+		gui = "event_window_widget_stress"
+		container = "custom_widgets_container"
+	}
+
+	immediate = {
+		root = { save_scope_as = stress_character } # For stress widget
+
+		save_scope_as = vi_vampire
+
+		add_character_flag = had_vi_stress_generic0001
+
+		create_character = {
+			template = generic_peasant_character
+			location = root.location
+			dynasty = none
+			culture = root.location.culture
+			faith = root.location.faith
+			save_scope_as = vi_victim
+		}
+
+		vi_vampire_drain_kill_effect = yes
+
+		stress_threshold_event_post_immediate = yes
+	}
+
+	option = { # "I must not let the thirst control me!"
+		name = vi_stress_generic.0001.a
+
+		add_character_modifier = {
+			modifier = vi_vampire_strain_modifier
+			years = 20
+		}
+
+		stress_impact = {
+			base = medium_stress_impact_gain
+			arbitrary = minor_stress_impact_gain
+			compassionate = minor_stress_impact_loss
+			just = miniscule_stress_impact_loss
+		}
+
+		ai_chance = {
+			base = -10
+
+			modifier = {
+				stress_level >= 2
+				add = -1000
+			}
+
+			modifier = {
+				has_trait = arbitrary
+				add = -50
+			}
+
+			modifier = {
+				has_trait = compassionate
+				add = 25
+			}
+
+			ai_value_modifier = {
+				ai_compassion = 1
+				ai_honor = 0.5
+				ai_rationality = 0.5
+			}
+		}
+	}
+
+	option = { # "It felt good to let loose."
+		name = vi_stress_generic.0001.b
+		stress_impact = {
+			base = medium_stress_impact_loss
+			compassionate = minor_stress_impact_gain
+			just = minor_stress_impact_gain
+		}
+		add_character_modifier = {
+			modifier = vi_vampire_madness_modifier
+		}
+
+		ai_chance = {
+			base = 50
+
+			modifier = {
+				has_trait = arbitrary
+				add = 50
+			}
+
+			ai_value_modifier = {
+				ai_compassion = -0.5
+				ai_honor = -0.5
+				ai_rationality = -0.5
+			}
+		}
+	}
+
+	after = {
+		stress_threshold_event_aftereffects = yes
+	}
+}
+
+vi_stress_generic.0002 = { #Killed a courtier
+	type = character_event
+	title = vi_stress_generic.0002.t
+	desc = vi_stress_generic.0002.desc
+
+	theme = mental_break
+	override_background = {
+		trigger = { is_travelling = yes }
+		reference = terrain
+	}
+	left_portrait = {
+		character = root
+		animation = personality_cynical
+	}
+
+	right_portrait = {
+		character = scope:vi_victim
+		animation = fear
+	}
+
+	trigger = {
+		vi_is_vampire_trigger = yes
+		# NOR = {
+		# 	has_trait = callous
+		# 	has_trait = sadistic
+		# }
+		NOT = {
+			has_character_flag = had_vi_stress_generic0002
+		}
+
+		NOT = {
+			has_trait = vi_exposed_vampire
+		}
+
+		NOT = {
+			faith = {
+				has_doctrine_parameter = vi_masquerade_not_required
+			}
+		}
+	}
+
+	weight_multiplier = {
+		base = 1
+
+		modifier = {
+			is_ai = yes
+			add = 4
+		}
+	}
+
+	widget = {
+		gui = "event_window_widget_stress"
+		container = "custom_widgets_container"
+	}
+
+	immediate = {
+		root = { save_scope_as = stress_character } # For stress widget
+
+		save_scope_as = vi_vampire
+
+		add_character_flag = {
+			flag = had_vi_stress_generic0002
+			years = 30
+		}
+
+		root.location.county_controller = {
+			save_scope_as = vi_local_lord
+			random_courtier_or_guest = {
+				limit = {
+					vi_is_vampire_trigger = no
+					age < 40
+					is_incapable = no
+					has_contagious_deadly_disease_trigger = no
+					NOR = {
+						has_relation_friend = root
+						has_relation_lover = root
+					}
+					vi_has_holy_artifact_equipped_trigger = no
+				}
+
+				weight = {
+					base = 1
+					modifier = {
+						add = 50
+						OR = {
+							has_trait = beauty_good_1
+							has_trait = beauty_good_2
+							has_trait = beauty_good_3
+							has_trait = pure_blooded
+						}
+					}
+
+					modifier = {
+						add = 25
+						exists = dynasty
+					}
+
+					modifier = {
+						add = 25
+						is_close_or_extended_family_of = scope:vi_local_lord
+					}
+
+					modifier = {
+						add = 10
+						has_any_court_position = yes
+					}
+				}
+
+				save_scope_as = vi_victim
+			}
+		}
+
+		vi_vampire_drain_kill_effect = yes
+		
+		scope:vi_local_lord = {
+			add_opinion = {
+				target = root
+				modifier = suspicion_opinion
+				opinion = -10
+			}
+		}
+
+		if = {
+			limit = {
+				is_valid_for_legitimacy_change = yes
+			}
+			add_legitimacy = miniscule_legitimacy_loss
+		}
+
+		stress_threshold_event_post_immediate = yes
+	}
+
+	option = { # "I must not let the thirst control me!"
+		name = vi_stress_generic.0002.a
+		stress_impact = {
+			base = medium_stress_impact_gain
+			arbitrary = minor_stress_impact_gain
+			compassionate = minor_stress_impact_loss
+			just = miniscule_stress_impact_loss
+		}
+
+		ai_chance = {
+			base = -10
+
+			modifier = {
+				add = 50
+				has_trait = just
+			}
+
+			modifier = {
+				has_trait = arbitrary
+				add = -50
+			}
+
+			ai_value_modifier = {
+				ai_compassion = 1
+				ai_honor = 0.5
+				ai_rationality = 0.5
+			}
+		}
+	}
+
+	option = { # "It felt good to let loose."
+		name = vi_stress_generic.0002.b
+		stress_impact = {
+			base = medium_stress_impact_loss
+			compassionate = minor_stress_impact_gain
+			just = minor_stress_impact_gain
+		}
+		add_character_modifier = {
+			modifier = vi_vampire_madness_modifier
+		}
+
+		ai_chance = {
+			base = 10
+
+			modifier = {
+				has_trait = arbitrary
+				add = 50
+			}
+
+			ai_value_modifier = {
+				ai_compassion = -0.5
+				ai_honor = -0.5
+				ai_rationality = -0.5
+			}
+		}
+	}
+
+	after = {
+		stress_threshold_event_aftereffects = yes
+	}
+}
+
+vi_stress_generic.0003 = { 
+	type = character_event
+	title = vi_stress_generic.0003.t
+	desc = vi_stress_generic.0003.desc
+
+	theme = mental_break
+	override_background = {
+		trigger = { is_travelling = yes }
+		reference = terrain
+	}
+	left_portrait = {
+		character = root
+		animation = rage
+	}
+
+	right_portrait = {
+		character = root
+		animation = fear
+	}
+
+	trigger = {
+		# NOR = {
+		# 	has_trait = callous
+		# 	has_trait = sadistic
+		# }
+		NOT = {
+			has_character_flag = had_vi_stress_generic0003
+		}
+
+		NOT = {
+			has_trait = vi_exposed_vampire
+		}
+
+		NOT = {
+			faith = {
+				has_doctrine_parameter = vi_masquerade_not_required
+			}
+		}
+	}
+
+	weight_multiplier = {
+		base = 1
+
+		modifier = {
+			is_ai = yes
+			add = 4
+		}
+	}
+
+	widget = {
+		gui = "event_window_widget_stress"
+		container = "custom_widgets_container"
+	}
+
+	immediate = {
+		save_scope_as = vi_vampire
+
+		add_character_flag = {
+			flag = had_vi_stress_generic0003
+			years = 30
+		}
+
+		root.location.county_controller = {
+			save_scope_as = vi_local_lord
+			random_courtier_or_guest = {
+				limit = {
+					vi_is_vampire_trigger = no
+					age < 40
+					is_adult = yes
+					is_incapable = no
+					has_contagious_deadly_disease_trigger = no
+					NOR = {
+						has_relation_friend = root
+						has_relation_lover = root
+					}
+					vi_has_holy_artifact_equipped_trigger = no
+				}
+
+				weight = {
+					base = 1
+					modifier = {
+						add = 50
+						OR = {
+							has_trait = beauty_good_1
+							has_trait = beauty_good_2
+							has_trait = beauty_good_3
+							has_trait = pure_blooded
+						}
+					}
+
+					modifier = {
+						add = 25
+						exists = dynasty
+					}
+
+					modifier = {
+						add = 25
+						is_close_or_extended_family_of = scope:vi_local_lord
+					}
+
+					modifier = {
+						add = 10
+						has_any_court_position = yes
+					}
+				}
+
+				save_scope_as = vi_victim
+			}
+		}
+
+		vi_vampire_drain_kill_effect = yes
+		
+		scope:vi_local_lord = {
+			add_opinion = {
+				target = root
+				modifier = suspicion_opinion
+				opinion = -10
+			}
+		}
+
+		if = {
+			limit = {
+				is_valid_for_legitimacy_change = yes
+			}
+			add_legitimacy = miniscule_legitimacy_loss
+		}
+
+		stress_threshold_event_post_immediate = yes
+	}
+
+	option = { # "I must not let the thirst control me!"
+		name = vi_stress_generic.0003.a
+		stress_impact = {
+			base = medium_stress_impact_gain
+			arbitrary = minor_stress_impact_gain
+			just = miniscule_stress_impact_loss
+		}
+
+		ai_chance = {
+			base = -10
+
+			modifier = {
+				add = 50
+				has_trait = just
+			}
+
+			modifier = {
+				has_trait = arbitrary
+				add = -50
+			}
+
+			ai_value_modifier = {
+				ai_compassion = 1
+				ai_honor = 0.5
+				ai_rationality = 0.5
+			}
+		}
+	}
+
+	option = { # "It felt good to let loose."
+		name = vi_stress_generic.0003.b
+		stress_impact = {
+			base = medium_stress_impact_loss
+			compassionate = minor_stress_impact_gain
+			just = minor_stress_impact_gain
+		}
+		add_character_modifier = {
+			modifier = vi_vampire_madness_modifier
+		}
+
+		ai_chance = {
+			base = 10
+
+			modifier = {
+				has_trait = arbitrary
+				add = 50
+			}
+
+			ai_value_modifier = {
+				ai_compassion = -0.5
+				ai_honor = -0.5
+				ai_rationality = -0.5
+			}
+		}
+	}
+
+	after = {
+		stress_threshold_event_aftereffects = yes
+	}
+}
+
+
+
+
+# Contemplation Based
+vi_stress_generic.1001 = { # Nights Blur
+	type = character_event
+	title = vi_stress_generic.1001.t
+	desc = vi_stress_generic.1001.desc
+
+	theme = mental_break
+
+	trigger = {
+		age > 60
+		NOR = {
+			has_trait = vi_vampire_1
+			has_character_modifier = vi_skittish_modifier
+		}
+	}
+
+	immediate = {
+		stress_threshold_event_post_immediate = yes
+	}
+
+	option = {
+
+	}
+
+	after = {
+		stress_threshold_event_aftereffects = yes
+	}
+}
+vi_stress_generic.5001 = {
+	hidden = yes
+
+	trigger = {
+		is_ai = yes
+		#is_ruler = no
+		vi_is_vampire_trigger = yes
+	}
+
+	immediate = {
+		stress_threshold_event_post_immediate = yes
+		save_scope_as = vi_vampire
+
+		location.county_controller = {
+			if = {
+				limit = {
+					vi_is_vampire_trigger = no
+				}
+				random_courtier = {
+					limit = {
+						vi_is_vampire_trigger = no
+					}
+					save_scope_as = vi_victim
+				}
+			}
+			else_if = {
+				limit = {
+					liege ?= {
+						vi_is_vampire_trigger = no
+					}
+				}
+				liege = {
+					random_courtier = {
+						limit = {
+							vi_is_vampire_trigger = no
+						}
+						save_scope_as = vi_victim
+					}
+				}
+			}
+		}
+
+		if = {
+			limit = {
+				exists = scope:vi_victim
+			}
+			vi_vampire_drain_effect = yes
+		}
+		else = {
+			add_stress = minor_stress_loss
+		}
+	}
+
+	after = {
+		stress_threshold_event_aftereffects = yes
+	}
+}
+
+vi_stress_generic.5002 = {
+	trigger = {
+		is_ai = yes
+		is_ruler = yes
+		vi_is_vampire_trigger = yes
+		any_prisoner = {
+			exists = yes
+			vi_is_vampire_trigger = no
+		}
+	}
+
+	immediate = {
+		stress_threshold_event_post_immediate = yes
+		save_scope_as = vi_vampire
+
+		random_prisoner = {
+			limit = {
+				vi_is_vampire_trigger = no
+			}
+			save_scope_as = vi_victim
+		}
+
+		if = {
+			limit = {
+				exists = scope:vi_victim
+			}
+			vi_vampire_drain_effect = yes
+		}
+		else = {
+			add_stress = minor_stress_loss
+		}
+	}
+
+	after = {
+		stress_threshold_event_aftereffects = yes
+	}
+
+}
+
+
+vi_stress_generic.9001 = {
+	hidden = yes
+}

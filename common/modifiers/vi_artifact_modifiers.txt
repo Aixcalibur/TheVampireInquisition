@@ -1,0 +1,16 @@
+﻿vi_vampire_artifact_modifier = {
+	life_expectancy = 10
+	fertility = -0.1
+	monthly_prestige = 0.2
+	monthly_piety_mult = -0.2
+}
+
+vi_bida_dead_modifier = {
+	icon = magic_positive
+	monthly_income = 2
+	monthly_income_mult = 0.05
+}
+
+vi_durendal_modifier = {
+	prowess_no_portrait = 20
+}

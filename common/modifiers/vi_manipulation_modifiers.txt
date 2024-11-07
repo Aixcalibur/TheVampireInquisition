@@ -1,0 +1,123 @@
+﻿# SCHEME MODIFIERS
+vi_manipulation_success_modifier = {
+	icon = intrigue_positive
+	scheme_success_chance = 10
+	stacking = yes
+}
+
+vi_manipulation_failure_modifier = {
+	icon = intrigue_negative
+	scheme_success_chance = -10
+	stacking = yes
+}
+
+vi_manipulation_infiltration_modifier = {
+	icon = intrigue_positive
+	scheme_success_chance = 10
+	scheme_phase_duration = -20
+	stacking = yes
+}
+
+# CHARACTER MODIFIERS
+vi_supported_rule_modifier = {
+	icon = social_positive
+	vassal_opinion = 5
+	diplomacy = 1
+}
+
+vi_solidified_rule_modifier = {
+	icon = social_positive
+	vassal_opinion = 20
+	vassal_taxes_mult = 0.05
+	diplomacy_per_prestige_level = 1
+}
+
+vi_incompetent_administration_modifier = {
+	icon = stewardship_negative
+	vassal_opinion = -10
+	monthly_income_mult = -0.15
+}
+
+vi_improved_administration_modifier = {
+	icon = stewardship_positive
+	monthly_income_mult = 0.1
+}
+
+vi_diplomacy_insights_modifier = {
+	icon = diplomacy_positive
+	diplomacy = 2
+}
+
+vi_martial_insights_modifier = {
+	icon = martial_positive
+	diplomacy = 2
+}
+
+vi_stewardship_insights_modifier = {
+	icon = stewardship_positive
+	stewardship = 2
+}
+
+vi_minor_positive_vassal_modifier = {
+	icon = prestige_positive
+	vassal_opinion = 5
+	vassal_tax_mult = 0.05
+	monthly_prestige_gain = 1
+}
+
+vi_minor_negative_vassal_modifier = {
+	icon = prestige_negative
+	vassal_opinion = -5
+	vassal_tax_mult = -0.05
+	monthly_prestige_gain_mult = -0.2
+}
+
+vi_minor_positive_income_modifier = {
+	icon = economy_positive
+	domain_tax_mult = 0.1
+}
+
+vi_minor_negatve_income_modifier = {
+	icon = economy_negative
+	domain_tax_mult = -0.1
+}
+
+vi_minor_positive_levy_modifier = {
+	icon = martial_positive
+	vassal_levy_contribution_mult = 0.1
+	levy_size = 0.1
+}
+
+vi_minor_negative_levy_modifier = {
+	icon = martial_positive
+	vassal_levy_contribution_mult = -0.1
+	levy_size = -0.1
+}
+
+vi_finale_positive_army_modifier = {
+	icon = martial_positive
+	martial_per_prestige_level = 1
+	monthly_war_income_mult = 0.25
+	men_at_arms_recruitment_cost = -0.5
+	army_maintenance_mult = -0.5
+	vassal_tax_mult = 0.2
+	ai_war_chance = 0.5
+	ai_war_cooldown = -0.5
+	ai_boldness = 50
+	ai_energy = 50
+	ai_greed = 50
+	ai_rationality = 50
+}
+
+vi_finale_positive_development_modifier = {
+	icon = stewardship_positive
+	stewardship_per_prestige_level = 1
+	build_gold_cost = -0.15
+	development_growth = 0.3
+	character_capital_county_monthly_development_growth_add = 0.5
+	monthly_income_mult = 0.2
+	ai_greed = -50
+	ai_energy = 50
+	ai_honor = 20
+	ai_rationality = 50
+}

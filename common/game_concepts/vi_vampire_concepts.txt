@@ -2,6 +2,10 @@
 	alias = { vampires }
 }
 
+dhampir = {
+	alias = { dhampirs }
+}
+
 vi_vampire_lifestyle = {
 	texture = "gfx/interface/icons/alerts/action_lifestyle_intrigue.dds"
 	framesize = { 144 144 }
@@ -10,6 +14,32 @@ vi_vampire_lifestyle = {
 }
 
 vi_vampire_princedom = {
-	
+	parent = government
 }
 
+vi_suspicion = {
+	parent = opinion
+}
+
+vi_visit_interaction = {
+	alias = { vi_visit vi_visiting }
+	parent = interaction
+}
+
+vi_court_favor = {
+	texture = "gfx/interface/icons/loyalty.dds"
+	framesize = { 60 60 }
+	parent = court
+
+	frame = 2
+}
+
+vi_compel_suicide_interaction = {
+	alias = { vi_compel_suicide }
+	parent = interaction
+}
+
+vi_instill_fear_interaction = {
+	alias = { vi_instill_fear }
+	parent = interaction
+}

@@ -1,0 +1,61 @@
+﻿vi_stimulate_life_decision = {
+	ai_check_interval = 0
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_personal_religious.dds"
+	}
+	desc = vi_stimulate_life_decision_desc
+
+	selection_tooltip = vi_stimulate_life_decision_tooltip
+
+	cooldown = { years = 5 }
+
+	is_shown = {
+		vi_is_vampire_trigger = yes
+	}
+
+	is_valid_showing_failures_only = {
+		is_available_adult = yes
+		OR = {
+			has_trait = vi_vampire_2
+			has_trait = vi_vampire_3
+			has_trait = vi_vampire_4
+			has_trait = vi_vampire_5
+		}
+	}
+
+	effect = {
+		send_interface_toast = {
+			type = event_toast_effect_neutral
+			title = msg_vi_stimulated_life
+			left_icon = root
+			add_character_modifier = {
+				modifier = vi_vampire_strain_modifier
+				years = 20
+			}
+			add_stress = minor_stress_gain
+			add_character_modifier = {
+				modifier = vi_vampire_fertility_modifier
+				years = 1
+			}
+
+			every_relation = {
+				type = lover
+				limit = {
+					has_character_modifier = vi_unnatural_youth_modifier
+				}
+				add_character_modifier = {
+					modifier = vi_vampire_fertility_modifier
+					years = 1
+				}
+			}
+		}
+	}
+	
+	ai_potential = {
+		always = no
+	}
+
+	ai_will_do = {
+		base = 0
+	}
+}

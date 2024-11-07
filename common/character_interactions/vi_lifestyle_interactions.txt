@@ -30,21 +30,35 @@
 	}
 
 	is_valid_showing_failures_only = {
-		custom_tooltip = {
-			scope:recipient = {
-				OR = {
-					vi_is_vampire_trigger = no
-					scope:actor = {
+		trigger_if = {
+			limit = {
+				scope:recipient = {
+					OR = {
+						vi_is_vampire_trigger = yes
+						has_trait = vi_dhampir
+					}
+				}
+				scope:actor = {
+					NOT = {
 						has_perk = vi_presence_perk
 					}
 				}
 			}
-			text = VI_MUST_HAVE_PRESENCE_PERK
+			custom_tooltip = {
+				text = vi_need_presence_tt
+				always = no
+			}
 		}
 
 		scope:recipient = {
 			NOT = {
 				has_trait = vi_heartstealer
+			}
+		}
+
+		scope:recipient = {
+			NOT = {
+				vi_has_holy_artifact_equipped_trigger = yes
 			}
 		}
 	}
@@ -55,36 +69,32 @@
 
 	on_send = {
 		scope:actor = {
-			# Moved to on_accept because these don't show up on UI
-			# add_character_modifier = {
-			# 	modifier = vi_vampire_strain_modifier
-			# 	years = 10
-			# }
-			# add_character_modifier = {
-			# 	modifier = vi_vampire_strain_modifier
-			# 	years = 10
-			# }
-			# stress_impact = {
-			# 	base = major_stress_impact_gain
-			# 	compassionate = minor_stress_impact_gain
-			# 	forgiving = miniscule_stress_impact_gain
-			# 	sadistic = minor_stress_impact_loss
-			# }
+			add_character_modifier = {
+				modifier = vi_vampire_strain_modifier
+				years = 10
+			}
+			add_character_modifier = {
+				modifier = vi_vampire_strain_modifier
+				years = 10
+			}
 		}
 	}
 
 	on_accept = {
 		scope:actor = {
-			add_character_modifier = {
-				modifier = vi_vampire_strain_modifier
-				years = 10
+			show_as_tooltip = {
+				add_character_modifier = {
+					modifier = vi_vampire_strain_modifier
+					years = 10
+				}
+				add_character_modifier = {
+					modifier = vi_vampire_strain_modifier
+					years = 10
+				}
 			}
-			add_character_modifier = {
-				modifier = vi_vampire_strain_modifier
-				years = 10
-			}
+
 			stress_impact = {
-				base = major_stress_impact_gain
+				base = medium_stress_impact_gain
 				compassionate = minor_stress_impact_gain
 				forgiving = miniscule_stress_impact_gain
 				sadistic = minor_stress_impact_loss
@@ -116,16 +126,18 @@
 	}
 	on_decline = {
 		scope:actor = {
-			add_character_modifier = {
-				modifier = vi_vampire_strain_modifier
-				years = 10
-			}
-			add_character_modifier = {
-				modifier = vi_vampire_strain_modifier
-				years = 10
+			show_as_tooltip = {
+				add_character_modifier = {
+					modifier = vi_vampire_strain_modifier
+					years = 10
+				}
+				add_character_modifier = {
+					modifier = vi_vampire_strain_modifier
+					years = 10
+				}
 			}
 			stress_impact = {
-				base = major_stress_impact_gain
+				base = medium_stress_impact_gain
 				compassionate = minor_stress_impact_gain
 				forgiving = miniscule_stress_impact_gain
 				sadistic = minor_stress_impact_loss
@@ -191,7 +203,7 @@
 
 		modifier = {
 			vi_is_vampire_trigger = yes
-			add = -50
+			add = -80
 			desc = VI_IS_VAMPIRE
 		}
 
@@ -200,7 +212,7 @@
 				has_trait = depressed_1
 				has_trait = depressed_genetic
 			}
-			add = 50
+			add = 100
 		}
 
  		opinion_modifier = {
@@ -321,6 +333,10 @@ vi_instill_fear_interaction = {
 			NOT = {
 				has_trait = vi_dragonsscion
 			}
+		}
+
+		scope:recipient = {
+			vi_has_holy_artifact_equipped_trigger = no
 		}
 	}
 

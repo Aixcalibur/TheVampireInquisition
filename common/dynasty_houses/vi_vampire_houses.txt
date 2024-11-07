@@ -32,10 +32,16 @@ house_vi_Bida = {
 house_vi_Venezia = {
 	name = "dynn_vi_Venezia"
 	dynasty = vi_dynasty_Aphrodisian
-	name = "dynn_vi_Venezia_motto"
+	motto = "dynn_vi_Venezia_motto"
 }
 
 house_vi_Underworld = {
 	name = "dynn_vi_Underworld"
 	dynasty = vi_dynasty_Underworld
+}
+
+house_vi_Orlok = {
+	name = "dynn_vi_Orlok"
+	dynasty = vi_dynasty_Nosferatu
+	motto = "dynn_vi_Orlok_motto"
 }

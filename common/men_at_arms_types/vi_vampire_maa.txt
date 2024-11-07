@@ -1,8 +1,12 @@
-﻿# standard costs
+﻿# standard costs #DO NOT DELETE THIS OR THE GAME WILL CRASH!!!!!
 @maa_buy_cost = 150
 @maa_low_maintenance_cost = 1.0
 @maa_high_maintenance_cost = 5.0
 @cultural_maa_extra_ai_score = 80 # Equivalent to having 8 extra regiments beyond what the code scoring would indicate (see NEGATIVE_SCORE_PER_EXISTING_REGIMENT)
+
+@vi_elite_buy_cost = 1000
+@vi_elite_low_maintenance_cost = 1.0
+@vi_elite_high_maintenance_cost = 10.0
 
 # Must be synced between files with the values located at "# Provisions Costs #".
 @provisions_cost_infantry_cheap = 3
@@ -20,6 +24,11 @@
 @provisions_cost_special_expensive = 18
 @provisions_cost_special_bankrupting = 24
 
+################################
+# REMEMBER TO UPDATE vi_is_vampire_maa TRIGGER
+################################
+
+
 vi_vampire_bats = {
 	type = animals
 	icon = bats
@@ -34,7 +43,7 @@ vi_vampire_bats = {
 	screen = 16
 
 	siege_tier = 4
-	siege_value = 0
+	siege_value = 0.001
 	
 	terrain_bonus = {
 		forest = { damage = 2 toughness = 2 }
@@ -54,30 +63,69 @@ vi_vampire_bats = {
 		light_cavalry = 2
 	}
 
-	buy_cost = { prestige = skirmisher_recruitment_cost piety = skirmisher_recruitment_cost }
-	low_maintenance_cost = { prestige = skirmisher_low_maint_cost }
-	high_maintenance_cost = { prestige = skirmisher_high_maint_cost }
+	buy_cost = { prestige = 100 piety = 100 }
+	low_maintenance_cost = { prestige = 1 }
+	high_maintenance_cost = { prestige = 1 }
 	provision_cost = @provisions_cost_infantry_cheap
 	
+	
 	stack = 250
-	ai_quality = {
-		value = culture_ai_weight_skirmishers
-		add = 50
+
+	allowed_in_hired_troops = no
+}
+
+vi_elite_vampires = {
+	type = heavy_infantry
+	icon = heavy_infantry
+
+	damage = 400
+	toughness = 100
+	pursuit = 100
+	screen = 50
+
+	siege_tier = 4
+	siege_value = 0.1
+
+	winter_bonus = {
+		normal_winter = { damage = 50 pursuit = 50 }
+		harsh_winter = { damage = 75 pursuit = 75 }
 	}
+
+	buy_cost = { gold = @vi_elite_buy_cost prestige = @vi_elite_buy_cost }
+	low_maintenance_cost = { gold = @vi_elite_low_maintenance_cost }
+	high_maintenance_cost = { prestige = @vi_elite_high_maintenance_cost }
+	provision_cost = @provisions_cost_infantry_bankrupting
+
+	max_sub_regiments = 4
+	stack = 25
+
+	can_recruit = {
+		OR = {
+			has_trait = vi_vampire_3
+			has_trait = vi_vampire_4
+			has_trait = vi_vampire_5
+			AND = {
+				has_government = vi_vampire_government
+				has_trait = vi_vampire_2
+			}
+		}
+	}
+
+	ai_quality = {
+		value = 100
+	}
+
+	allowed_in_hired_troops = no
 }
 
 vi_local_vampires = {
-	type = heavy_infantry
+	type = skirmisher
+	icon = skirmishers
 
-	damage = 60
-	toughness = 30
-	pursuit = 50
-	screen = 50
-	
-	terrain_bonus = {
-		taiga = { damage = 8 }
-		forest = { damage = 8 }
-	}
+	damage = 40
+	toughness = 10
+	pursuit = 30
+	screen = 5
 	
 	counters = {
 		pikemen = 1
@@ -89,8 +137,8 @@ vi_local_vampires = {
 	}
 
 	winter_bonus = {
-		normal_winter = { toughness = 6 screen = 6 }
-		harsh_winter = { toughness = 6 screen = 6 }
+		normal_winter = { damage = 10 pursuit = 10 }
+		harsh_winter = { damage = 10 pursuit = 10 }
 	}
 	
 	buy_cost = { gold = huscarls_recruitment_cost }
@@ -103,6 +151,7 @@ vi_local_vampires = {
 
 vi_health_point_maa = {
 	type = heavy_infantry
+	icon = heavy_infantry
 
 	damage = 10
 	toughness = 100

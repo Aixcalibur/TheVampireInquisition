@@ -16,6 +16,24 @@ vi_sated_modifier = {
 	stacking = yes
 }
 
+vi_soothed_modifier = {
+	icon = stress_positive
+	negate_health_penalty = 0.1
+	stress_loss_mult = 0.1
+	stress_gain_mult = -0.2
+}
+
+vi_inspired_modifier = {
+	icon = magic_positive
+	health = 0.25
+	diplomacy = 1
+	martial = 1
+	stewardship = 1
+	intrigue = 1
+	learning = 1
+	ai_energy = 50
+}
+
 vi_delicious_modifier = {
 	icon = health_positive
 	health = 0.25
@@ -52,6 +70,11 @@ vi_vampire_tiredness_modifier = {
 	stacking = yes
 }
 
+vi_vampire_fertility_modifier = {
+	icon = fertility_positive
+	fertility = 3
+}
+
 vi_silver_chains_modifier = {
 	icon = prison_negative
 	stress_gain_mult = 0.5
@@ -60,17 +83,10 @@ vi_silver_chains_modifier = {
 	prowess = -50
 }
 
-vi_grand_ambitions_modifier = {
-	icon = prestige_positive
-	health = 0.5
-	intrigue = 5
-	opinion_of_liege = -100
-}
-
 vi_unnatural_youth_modifier = {
 	icon = fertility_positive
 	health = 0.5
-	fertility = -0.9
+	fertility = -2
 	life_expectancy = 10000
 	no_prowess_loss_from_age = yes
 }
@@ -113,6 +129,48 @@ vi_instilledfear_modifier = {
 	ai_boldness = -100
 }
 
+vi_excommunicated_modifier = {
+	icon = magic_negative
+	stress_gain_mult = 0.1
+	enemy_hostile_scheme_success_chance_add = 10
+	enemy_hostile_scheme_phase_duration_add = -10
+	character_travel_safety = -20
+}
+
+vi_vassal_cooperative_modifier = {
+	icon = letter_positive
+	monthly_prestige = 0.15
+	legitimacy_gain_mult = 0.1
+	domicile_monthly_gold_mult = 0.05
+	stacking = yes
+}
+
+vi_vassal_uncooperative_modifier = {
+	icon = letter_negative
+	monthly_prestige = -0.25
+	legitimacy_gain_mult = -0.1
+	domicile_monthly_gold_mult = -0.05
+	stacking = yes
+}
+
+vi_receive_military_support_modifier = {
+	icon = martial_positive
+	opinion_of_liege = 10
+	monthly_county_control_growth_add = 0.3
+	army_maintenance_mult = -0.25
+	knight_limit = 5
+	knight_effectiveness_mult = 0.25
+	ai_war_chance = 0.25
+}
+
+vi_give_military_support_modifier = {
+	icon = martial_mixed
+	vassal_opinion = -5
+	monthly_county_control_growth_factor = -0.25
+	army_maintenance_mult = 0.25
+	knight_limit = -5
+	knight_effectiveness_mult = -0.25
+}
 
 # County Modifiers from Vampire Policy
 vi_county_discreet_modifier = {

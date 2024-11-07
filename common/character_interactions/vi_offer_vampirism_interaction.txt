@@ -51,17 +51,26 @@
 	}
 
 	is_valid_showing_failures_only = {
-		custom_tooltip = {
-			scope:recipient = {
-				is_ruler = yes
+		
+		scope:recipient = {
+			custom_tooltip = {
+				is_landed = yes
 				OR = {
 					has_relation_friend = scope:actor
 					has_relation_lover = scope:actor
 					has_relation_soulmate = scope:actor
 					has_relation_best_friend = scope:actor
 				}
+				text = VI_MUST_HAVE_RELATION_TO_OFFER
 			}
-			text = VI_MUST_HAVE_RELATION_TO_OFFER
+		}
+			
+		
+
+		scope:recipient = {
+			NOT = {
+				has_trait = vi_dhampir
+			}
 		}
 	}
 
@@ -81,9 +90,6 @@
 			}
 			save_scope_as = vi_vampire
 		}
-
-
-		
 
 		scope:recipient = {
 			add_opinion = {
@@ -389,16 +395,12 @@ vi_ask_vampirism_interaction = {
 			scope:actor = scope:recipient
 		}
 		scope:recipient = {
+			vi_is_vampire_trigger = yes
 			OR = {
 				has_government = vi_vampire_government
-				has_trait = vi_vampire_1
-				has_trait = vi_vampire_2
-				has_trait = vi_vampire_3
-				has_trait = vi_vampire_4
-				has_trait = vi_vampire_5
 				any_secret = {
-					secret_type = vi_vampire_secret
-					any_secret_knower = { this = scope:actor }
+					secret_type = secret_vi_vampire
+					is_known_by = scope:actor
 				}
 			}
 		}
@@ -426,16 +428,25 @@ vi_ask_vampirism_interaction = {
 		# 		}
 		# 	}
 		# }
-		# custom_description = {
-		# 	text = VI_MUST_KNOW_SECRET
-		# 	scope:recipient = {
-		# 		any_secret = {
-		# 			secret_type = vi_vampire_secret
-		# 			any_secret_knower = { this = scope:actor }
-		# 		}
-		# 	}
-		# }
-		
+		custom_description = {
+			text = VI_MUST_KNOW_SECRET
+			scope:recipient = {
+				any_secret = {
+					secret_type = secret_vi_vampire
+					is_known_by = scope:actor
+				}
+			}
+		}
+		scope:actor = {
+			NOT = {
+				has_trait = vi_dhampir
+			}
+		}
+		scope:actor = {
+			NOT = {
+				has_trait = vi_inquisitor
+			}
+		}
 	}
 
 	cost = {

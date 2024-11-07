@@ -1,0 +1,165 @@
+﻿@pos_compat_high = 30
+@pos_compat_medium = 15
+@pos_compat_low = 5
+
+@neg_compat_high = -30
+@neg_compat_medium = -15
+@neg_compat_low = -5
+
+vi_customizer = {
+	category = lifestyle
+	opposites = {
+		vi_dhampir
+		vi_inquisitor
+	}
+
+	ruler_designer_cost = 100
+	stress_gain_mult = 0.5
+	fertility = -1
+
+	immortal = yes
+	flag = can_murder_own_children
+	flag = immortal_visuals
+}
+
+vi_dhampir = {
+	physical = yes
+	#category = physical
+	opposites = {
+		vi_customizer
+	}
+
+	health = 0.25
+	fertility = -0.5
+	general_opinion = -5
+	dread_baseline_add = 10
+	life_expectancy = 20
+
+	negate_prowess_penalty_add = 5
+
+	#flag = vi_advantage_against_vampires
+	flag = vi_cannot_be_turned_into_vampire
+
+	ruler_designer_cost = 50
+
+	ai_boldness = 10
+}
+
+vi_inquisitor = {
+	category = lifestyle
+	#icon = blademaster.dds
+	opposites = {
+		vi_customizer
+	}
+
+	ruler_designer_cost = 10
+
+	# Modifiers
+	negate_health_penalty_add = 0.25
+	flag = vi_advantage_against_vampires
+	
+	#prowess = 3	
+
+	track = {
+		25 = {
+			intrigue = 1
+			#learning = 1
+			prowess = 1
+		}
+		50 = {
+			intrigue = 1
+			learning = 1
+			prowess = 2
+		}
+		75 = {
+			intrigue = 1
+			#learning = 1
+			prowess = 1
+		}
+		100 = {
+			intrigue = 1
+			learning = 1
+			prowess = 2
+		}
+	}
+
+	# Loc
+	name = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					exists = this
+					OR = {
+						has_trait = devoted
+						has_trait = order_member
+					}
+				}
+				desc = trait_vi_inquisitor_alt
+			}
+			#Legendary Blademaster
+			# triggered_desc = {
+			# 	trigger = {
+			# 		exists = this
+			# 		has_trait_xp = {
+			# 			trait = lifestyle_blademaster
+			# 			value >= 100
+			# 		}
+			# 	}
+			# 	desc = trait_vi_inquisitor_3
+			# }
+			# #Blademaster
+			# triggered_desc = {
+			# 	trigger = { 
+			# 		exists = this
+			# 		has_trait_xp = {
+			# 			trait = lifestyle_blademaster
+			# 			value >= 50
+			# 		}
+			# 	}
+			# 	desc = trait_vi_inquisitor_2
+			# }
+			#Aspiring Blademaster
+			desc = trait_vi_inquisitor
+		}
+	}
+
+	# Loc
+	desc = {
+		first_valid = {
+			#The trait can never go higher than the first level if it's not assigned to a character
+			triggered_desc = {
+				trigger = { 
+					NOT = { exists = this } 
+				}
+				desc = trait_vi_inquisitor_1_desc
+			}
+			# triggered_desc = {
+			# 	trigger = { 
+			# 		has_trait_xp = {
+			# 			trait = lifestyle_blademaster
+			# 			value >= 100
+			# 		}
+			# 	}
+			# 	desc = trait_blademaster_3_character_desc
+			# }
+			# triggered_desc = {
+			# 	trigger = { 
+			# 		has_trait_xp = {
+			# 			trait = lifestyle_blademaster
+			# 			value >= 50
+			# 		}
+			# 	}
+			# 	desc = trait_blademaster_2_character_desc
+			# }
+			desc = trait_vi_inquisitor_1_character_desc
+		}
+	}
+
+	compatibility = {
+		zealous = @pos_compat_low
+		vi_vampire_1 = @neg_compat_medium
+		vi_vampire_2 = @neg_compat_medium
+		vi_vampire_3 = @neg_compat_medium
+		vi_vampire_4 = @neg_compat_medium
+	}
+}

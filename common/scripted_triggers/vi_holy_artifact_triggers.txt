@@ -1,0 +1,82 @@
+﻿
+vi_has_holy_artifact_equipped_trigger = {
+	has_any_artifact = yes
+	any_equipped_character_artifact = {
+		category = inventory
+		vi_is_holy_artifact_trigger = yes
+	}
+}
+
+vi_has_holy_court_artifact_trigger = {
+	has_any_artifact = yes
+	any_equipped_character_artifact = {
+		category = court
+		vi_is_holy_artifact_trigger = yes
+	}
+}
+
+vi_holy_artifact_nearby_trigger = {
+	OR = {
+		AND = {
+			has_any_artifact = yes
+			any_equipped_character_artifact = {
+				vi_is_holy_artifact_trigger = yes
+			}
+		}
+		employer ?= {
+			vi_has_holy_court_artifact_trigger = yes
+		}
+	}
+}
+
+
+vi_is_holy_artifact_trigger = {
+	OR = {
+		is_unique = yes
+		rarity = illustrious
+	}
+	OR = {
+		exists = var:relic_religion
+		has_variable = relic
+	}
+}
+
+# vi_is_buddhist_artifact_trigger = {
+# 	OR = {
+# 		has_artifact_modifier = dhammapada_modifier
+# 	}
+# }
+
+# vi_is_hindu_artifact_trigger = {
+# 	OR = {
+# 		has_artifact_modifier = cintamani_modifier
+# 		has_artifact_modifier = shankha_conch_modifier
+# 	}
+# }
+
+# vi_is_muslim_artifact_trigger = {
+# 	OR = {
+# 		vi_is_abrahamic_artifact_trigger = yes
+# 		has_artifact_modifier = al_dawat_modifier
+# 		has_artifact_modifier = al_sayf_al_khass_modifier
+# 		has_artifact_modifier = banner_thankfulness
+# 		has_artifact_modifier = spear_prophet_modifier
+# 		has_artifact_modifier = mantle_prophet_modifier
+# 		has_artifact_modifier = muhammed_sword_modifier
+		
+# 	}
+# }
+
+# vi_is_christian_artifact_trigger = {
+# 	OR = {
+# 		vi_is_abrahamic_artifact_trigger = yes
+# 		has_artifact_modifier = artifact_wall_big_edessa_name
+# 	}
+# }
+
+# vi_is_abrahamic_artifact_trigger = {
+# 	OR = {
+# 		has_artifact_modifier = ark_of_covenant_modifier
+# 		has_artifact_modifier = david_harp_modifier
+# 	}
+# }

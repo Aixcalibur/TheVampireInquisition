@@ -1,11 +1,11 @@
 ﻿l_english:
- vi_procure_estate_interaction:0 "Seek Patronage"
- vi_procure_estate_interaction_desc:0 "Ask for a local Prince's aid in setting up a Vampire Princedom in your current location in exchange for fealty."
- NOT_vi_princedom_already_exists:0 "There is already a vampire population at this location."
- VI_FLEDGLING_REASON:0 "You are a mere fledgling: $VALUE|=+0$"
+ vi_procure_estate_interaction: "Swear Fealty"
+ vi_procure_estate_interaction_desc: "Ask for a local Prince's aid in setting up a Vampire Princedom in your current location in exchange for fealty."
+ NOT_vi_princedom_already_exists: "There is already a vampire population at this location."
+ VI_FLEDGLING_REASON: "You are a mere fledgling: $VALUE|=+0$"
 
- vi_you_gain_princedom:0 "You gain a Vampire Princedom"
+ vi_you_gain_princedom: "You gain a Vampire Princedom"
 
- vi_found_princedom_decision:0 "Found Princedom"
- vi_found_princedom_decision_desc:0 "Found a new Vampire Princedom at your current location"
- vi_found_princedom_decision_confirm:0 "I will rule the underworld!"
+ vi_found_princedom_decision: "Found Princedom"
+ vi_found_princedom_decision_desc: "Found a new Vampire Princedom at your current location"
+ vi_found_princedom_decision_confirm: "I will rule the underworld!"

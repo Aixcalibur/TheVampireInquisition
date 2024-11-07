@@ -1,0 +1,48 @@
+﻿namespace = vi_debug
+
+vi_debug.001 = {
+	type = character_event
+	title = vi_debug.001.t
+	desc = vi_debug.001.desc
+	
+	theme = seduction
+
+	override_icon = {
+		reference = "gfx/interface/icons/event_types/type_relation_friendly.dds"
+	}
+
+	left_portrait = {
+		character = root
+		#animation = war_attacker
+	}
+
+	right_portrait = {
+		character = root
+		#animation = war_attacker
+	}
+
+	trigger = {
+		
+	}
+
+	immediate = {
+		
+	}
+
+	option = {
+		name = vi_debug.001.a
+		save_scope_as = vi_vampire
+		send_interface_message = {
+			type = send_interface_message_good
+			title = vi_visit.0001.t
+			right_icon = root
+			custom_tooltip = vi_visit.chat.msg_desc
+			stress_impact = {
+				base = minor_stress_impact_loss
+				shy = medium_stress_impact_gain
+				reclusive = minor_stress_impact_gain
+				gregarious = medium_stress_impact_loss
+			}
+		}
+	}
+}

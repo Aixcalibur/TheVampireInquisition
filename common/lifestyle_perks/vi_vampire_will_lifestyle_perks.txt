@@ -240,12 +240,6 @@ vi_transformation_perk = {
 	}
 
 	effect = {
-		add_trait = lifestyle_blademaster
-		add_trait_xp = {
-			trait = lifestyle_blademaster
-			value = 50
-		}
-
 		custom_description_no_bullet = {
 			text = vi_transformation_perk_effect
 		}

@@ -1,9 +1,51 @@
-﻿vi_lord = {
+﻿vi_princedom = {
+	type = title
+	tier = duchy
+	governments = {
+		vi_vampire_government
+	}
+	priority = 40
+	flavourization_rules = { 
+		top_liege = no
+	}
+}
+
+vi_high_princedom = {
+	type = title
+	tier = kingdom
+	governments = {
+		vi_vampire_government
+	}
+	priority = 40
+	flavourization_rules = { 
+		top_liege = no
+	}
+}
+
+vi_streets = {
+	type = title
+	tier = duchy
+	governments = {
+		vi_vampire_government
+	}
+	flag = vi_urchin_flag
+	priority = 45
+	flavourization_rules = { 
+		top_liege = no
+	}
+}
+
+vi_lord = {
 	type = character
 	gender = male
-	special = domicile
-	domicile_type = vi_lair
+	tier = duchy
+	special = holder
+	#special = domicile
+	#domicile_type = vi_lair
 	priority = 29
+	governments = {
+		vi_vampire_government
+	}
 
 	flavourization_rules = {
 		top_liege = no 
@@ -15,9 +57,14 @@
 vi_lady = {
 	type = character
 	gender = female
-	special = domicile
-	domicile_type = vi_lair
+	tier = duchy
+	special = holder
+	#special = domicile
+	#domicile_type = vi_lair
 	priority = 29
+	governments = {
+		vi_vampire_government
+	}
 
 	flavourization_rules = {
 		top_liege = no
@@ -29,10 +76,14 @@ vi_lady = {
 vi_father = {
 	type = character
 	gender = male
-	special = domicile
-	domicile_type = vi_lair
+	special = holder
+	tier = duchy
+	#domicile_type = vi_lair
 	priority = 30
 	flag = vi_clergy_flag
+	governments = {
+		vi_vampire_government
+	}
 
 	flavourization_rules = {
 		top_liege = no
@@ -44,10 +95,14 @@ vi_father = {
 vi_mother = {
 	type = character
 	gender = female
-	special = domicile
-	domicile_type = vi_lair
+	special = holder
+	tier = duchy
+	#domicile_type = vi_lair
 	priority = 30
 	flag = vi_clergy_flag
+	governments = {
+		vi_vampire_government
+	}
 
 	flavourization_rules = {
 		top_liege = no

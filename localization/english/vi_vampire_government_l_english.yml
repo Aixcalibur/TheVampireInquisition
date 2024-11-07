@@ -1,4 +1,7 @@
 ﻿l_english:
+ vi_princedom: "Princedom"
+ vi_high_princedom: "High Princedom"
+
  vi_lady: "Lady"
  vi_lord: "Lord"
  vi_lady_esclarmonde: "Madame"
@@ -6,30 +9,91 @@
  vi_mother: "Mother"
  vi_father: "Father"
 
+ vi_courtier_temperament_high: "High [vi_court_favor|e]"
+ vi_courtier_temperament_low: "Low [vi_court_favor|e]"
+
  vi_acclamation_succession_law: "Vampire"
  vi_appointment_succession_law: "Vampire"
  vi_vampire_elective_succession_law: "Shadow Elective"
+ vi_vampire_elective_electors: "Shadow Electors"
+ vi_vampire_elective_candidates: "Candidates"
+
+ vi_sum_of_skills_desc: "[skills|E]: $VALUE|=+0$"
+ vi_tooltip_self_vote_strength: "Vampires command no power when they're gone: $VALUE|=+0$"
 
  vi_lair_domicile_type: "Lair"
  vi_lair_domicile_type_tooltip: "Lair"
  vi_lair_domicile_type_possessive: "Lair's"
 
- vi_estate_main_01_domicile_building: "Villa"
- vi_estate_main_02_domicile_building: "Manor"
- vi_estate_main_03_domicile_building: "Mansion"
- vi_estate_main_04_domicile_building: "Estate"
- vi_estate_main_05_domicile_building: "Grand Estate"
-
  vi_vampire_government: "Vampire Princedom"
  game_concept_vi_vampire_princedom: "Vampire Princedom"
  game_concept_vi_vampire_princedom_desc: "A Vampire Princedom is a territory claimed by a powerful [vampire|e], unbeknownst to the local mortal population."
+
+ game_concept_vi_court_favor: "Court Favor"
+ game_concept_vi_court_favor_desc: "Court Favor is the harmony of the local [vampires|E] at a Prince's [court|E].\n\nIt has a massive effect on [knight_effectiveness|E], but can invoke the wariness of your [vassals|E].\n\nOlder vampires contribute more to the bonuses gained."
  
  vi_vampire_government_adjective: "Vampire"
  vi_vampire_government_realm: "Vampire"
  vi_vampire_government_desc: "A Vampire Princedom is a territory claimed by a powerful [vampire|e], unbeknownst to the local mortal population."
- vi_vampire_government_with_icon: "@government_type_administrative! $administrative_government$"
+ vi_vampire_government_with_icon: "@government_type_feudal! $vi_vampire_government$"
 
- VI_NEW_CREATED_PRINCEDOM_NAME: "$DEFAULT_TITLE_NAME_ARTICLE$Princedom of [vi_title_county.GetNameNoTierNoTooltip]"
- VI_NEW_CREATED_HIGH_PRINCEDOM_NAME: "$DEFAULT_TITLE_NAME_ARTICLE$High Princedom of [vi_title_county.GetNameNoTierNoTooltip]"
+ vi_vampire_retinue_army: "Vampire Retinue"
+
+ VI_NEW_CREATED_PRINCEDOM_NAME: "[vi_title_county.GetNameNoTierNoTooltip]"
+ VI_NEW_CREATED_HIGH_PRINCEDOM_NAME: "[vi_title_county.GetNameNoTierNoTooltip]"
+
+ vi_placate_vassal_interaction: "Placate Vassal"
+ vi_placate_vassal_interaction_desc: "Please your [vassal|E] by showing them special favor."
+ 
+ VI_VASSAL_GOLD: "[gold_i] Offer [gold|E]"
+ VI_VASSAL_MILITARY_SUPPORT: "[knight_i] Offer Manpower"
+ VI_OFFERING_MILITARY_SUPPORT: "I get [knight_i][GetModifier('vi_receive_military_support_modifier').GetNameWithTooltip]: $VALUE|=+0$"
+
+ VI_VASSAL_IS_AMBITIOUS: "[recipient.GetShortUIName] is [GetTrait('ambitious').GetName( ROOT.Char )]: $VALUE|=+0$"
+ VI_VASSAL_IS_ARROGANT: "[recipient.GetShortUIName] is [GetTrait('arrogant').GetName( ROOT.Char )]: $VALUE|=+0$"
+ VI_VASSAL_IS_GREEDY: "[recipient.GetShortUIName] is [GetTrait('greedy').GetName( ROOT.Char )]: $VALUE|=+0$"
+ VI_VASSAL_IS_HUMBLE: "[recipient.GetShortUIName] is [GetTrait('humble').GetName( ROOT.Char )]: $VALUE|=+0$"
+ VI_VASSAL_IS_CONTENT: "[recipient.GetShortUIName] is [GetTrait('content').GetName( ROOT.Char )]: $VALUE|=+0$"
+ VI_VASSAL_IS_STUBBORN: "[recipient.GetShortUIName] is [GetTrait('stubborn').GetName( ROOT.Char )]: $VALUE|=+0$"
+ VI_VASSAL_IS_LOYAL: "[recipient.GetShortUIName] is [GetTrait('loyal').GetName( ROOT.Char )]: $VALUE|=+0$"
+ VI_VASSAL_IS_DISLOYAL: "[recipient.GetShortUIName] is [GetTrait('disloyal').GetName( ROOT.Char )]: $VALUE|=+0$"
+
+
+ vi_administrative_themes: "Available Administration Types"
+ vi_admin_theme_balanced: "@balanced_administration! Balanced Administration"
+ vi_admin_theme_balanced_short: "@balanced_administration! Balanced"
+ vi_admin_theme_balanced_text_icon: "@balanced_administration!"
+ vi_admin_theme_balanced_desc: "#flavor A well balanced administration seeks moderation to ensure equal attention in all areas of governance.#!"
+ vi_admin_theme_military: "@military_administration! Military Administration"
+ vi_admin_theme_military_short: "@military_administration! Military"
+ vi_admin_theme_military_text_icon: "@military_administration!"
+ vi_admin_theme_military_benefits: "#emphasis #bold [vassal|E] Benefits:#!#!\nIncreases [governor_efficiency|E] based on [martial|E]#indent_newline:4 \n#weak Adds an extra [EmptyScope.ScriptValue('efficiency_skill_increase_value')|+1%/] for each [skill|E] Point#!#!\nCannot have appointment revoked without a [revoke_title_reason|E]"
+ vi_admin_theme_military_desc: "#flavor A military administration puts all energy on recruiting and training formidable troops for the imperial army.#!"
+ vi_admin_theme_civilian: "@civilian_administration! Civilian Administration"
+ vi_admin_theme_civilian_short: "@civilian_administration! Civilian"
+ vi_admin_theme_civilian_text_icon: "@civilian_administration!"
+ vi_admin_theme_civilian_benefits: "#emphasis #bold [vassal|E] Benefits:#!#!\nIncreases [governor_efficiency|E] based on [stewardship|E]#indent_newline:4 \n#weak Adds an extra [EmptyScope.ScriptValue('efficiency_skill_increase_value')|+1%/] for each [skill|E] Point#!#!\n[influence|E] gained from constructing [buildings|E] in held [counties|E] is increased\nCannot have appointment revoked without a [revoke_title_reason|E]"
+ vi_admin_theme_civilian_desc: "#flavor Exempt from military service, a civilian administration focuses on improving the economy and well-being of the citizens.#!"
+ vi_admin_theme_frontier: "@frontier_administration! Frontier Administration"
+ vi_admin_theme_frontier_short: "@frontier_administration! Frontier"
+ vi_admin_theme_frontier_text_icon: "@frontier_administration!"
+ vi_admin_theme_frontier_benefits: "#emphasis #bold [liege|E] Benefits:#!#!\nUnlocks the #high $frontier_influence_war_interaction$#! [interaction|E] allowing the liege to request the [vassal|E] to declare war for a foreign [duchy|E]-tier [title|E]\n\n#emphasis #bold [vassal|E] Benefits:#!#!\nIncreases [governor_efficiency|E] based on [prowess|E]#indent_newline:4 \n#weak Adds an extra [EmptyScope.ScriptValue('efficiency_skill_increase_value')|+1%/] for each [skill|E] Point#!#!\nUnlocks the #high $EXPANSION_DUCHY_CB_NAME$#! [casus_belli|E]\nCannot have appointment revoked without a [revoke_title_reason|E]"
+ vi_admin_theme_frontier_desc: "#flavor One cannot leave the borders undefended. A frontier administration will ensure the realm's defenses and stand ready to repel any potential invaders.#!"
+ vi_admin_theme_imperial: "@imperial_administration! Imperial Administration"
+ vi_admin_theme_imperial_short: "@imperial_administration! Imperial"
+ vi_admin_theme_imperial_text_icon: "@imperial_administration!"
+ vi_admin_theme_imperial_benefits: "#emphasis #bold [vassal|E] Benefits:#!#!\nIncreases [governor_efficiency|E] based on [prestige_level|E]#indent_newline:4 \n#weak Adds an extra [EmptyScope.ScriptValue('efficiency_currency_level_increase_value')|+0%/] for each level#!#!\nIncreases [powerful_family|E] Rating\nCannot have appointment revoked without a [revoke_title_reason|E]"
+ vi_admin_theme_imperial_desc: "#flavor An imperial administration provides a significant level of autonomy and freedom from many regular responsibilities. It is the most prestigious administration one can have.#!"
+ vi_admin_theme_naval: "@naval_administration! Naval Administration"
+ vi_admin_theme_naval_short: "@naval_administration! Naval"
+ vi_admin_theme_naval_text_icon: "@naval_administration!"
+ vi_admin_theme_naval_benefits: "#emphasis #bold [liege|E] Benefits:#!#!\nUnlocks the #high $frontier_influence_war_interaction$#! [interaction|E] allowing the liege to request the [vassal|E] to declare war for a foreign [duchy|E]-tier [title|E]\n\n#emphasis #bold [vassal|E] Benefits:#!#!\nIncreases [governor_efficiency|E] for every controlled #high [GetBuilding('common_tradeport_01').GetTypeName]#!#indent_newline:4 \n#weak Adds an extra [EmptyScope.ScriptValue('efficiency_building_increase_value')|+0%/] for each [GetBuilding('common_tradeport_01').GetTypeName]#!#!\nUnlocks the #high $NAVAL_EXPANSION_DUCHY_CB_NAME$#! [casus_belli|E]"
+ vi_admin_theme_naval_desc: "#flavor The navy is the backbone of any expansive realm. With a dedicated naval administration, safety and efficiency at sea will be highly increased.#!"
+ ADMINISTRATIVE_CONTRACT: "[Character.Custom( 'GetProvinceConceptNoTooltip' )] Administration"
+ vi_admin_theme_frontier_valid_desc: "The [vassal.Custom( 'GetProvinceConceptNoTooltip' )] must border another [realm|E]"
+ vi_admin_theme_imperial_valid_desc: "Only one [vassal.Custom( 'GetProvinceConceptNoTooltip' )] can have this administration active"
+ vi_admin_theme_naval_valid_desc: "The [vassal.Custom( 'GetProvinceConceptNoTooltip' )] must be Coastal"
+ admin_contract_forbids_revocation_desc: "You cannot revoke [titles|E] or Appointments from a [vassal|E] governing with the [GetVassalContractType( 'administrative_themes' ).GetObligationName( 'admin_theme_imperial' )] unless you have a [revoke_title_reason|E]"
+ 
 
  

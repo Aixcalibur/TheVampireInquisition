@@ -9,14 +9,14 @@ A lot of the mechanics around vampirism revolve around Stress. This is in order 
 - Stress events (40%) (vi_stress_on_action) (need writing)
 - Drain/turn mortal (90%) (need events and polish pass)
 - Vampire secret and exposed vampire trait (60%) (scheme needs editing, methods of getting rid of exposed vampire need tuning)
-- Anti-Vampire Nuke (80%) (need more testing)
+- Anti-Vampire Nuke (90%) (need more testing)
 
 ### Vampire Solo Progression
 - Vampire Perks (80%) (Still a few effects need implementing)
 - Devour other vampires for experience (90%) (Want to polish it)
 - Drain special victims for experience (50%) (Need to generate tasty mortals)
 - Acquire Vampire artifacts (0%)
-- Lair domicile buildings and upgrades (0%)
+- Lair domicile buildings and upgrades (40%)
 
 ### Flavor Events
 Happen every 5-20 years.

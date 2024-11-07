@@ -31,7 +31,7 @@
 				uses_supply = no
 				men_at_arms = {
 					type = vi_health_point_maa
-					stacks = 30
+					stacks = 40
 				}
 				inheritable = no
 				location = scope:attacker.capital_province
@@ -44,7 +44,7 @@
 				uses_supply = no
 				men_at_arms = {
 					type = vi_health_point_maa
-					stacks = 30
+					stacks = 40
 				}
 				inheritable = no
 				location = scope:attacker.capital_province
@@ -57,7 +57,33 @@
 				uses_supply = no
 				men_at_arms = {
 					type = vi_health_point_maa
-					stacks = 30
+					stacks = 40
+				}
+				inheritable = no
+				location = scope:attacker.capital_province
+				war = scope:war
+				war_keep_on_attacker_victory = no
+				save_scope_as = new_army
+				name = vi_healthbar_army
+			}
+			spawn_army = {
+				uses_supply = no
+				men_at_arms = {
+					type = vi_health_point_maa
+					stacks = 40
+				}
+				inheritable = no
+				location = scope:attacker.capital_province
+				war = scope:war
+				war_keep_on_attacker_victory = no
+				save_scope_as = new_army
+				name = vi_healthbar_army
+			}
+			spawn_army = {
+				uses_supply = no
+				men_at_arms = {
+					type = vi_health_point_maa
+					stacks = 40
 				}
 				inheritable = no
 				location = scope:attacker.capital_province
@@ -187,9 +213,9 @@
 			}
 			scope:defender = {
 				every_held_title = {
-					# limit = {
-					# 	tier = scope:defender.primary_title.tier
-					# }
+					limit = {
+						is_head_of_faith = no
+					}
 					add_to_list = title_to_steal
 				}
 				every_in_list = {
@@ -241,8 +267,8 @@
 			death = {
 				death_reason = death_vi_holy_flames
 				killer = scope:attacker
+			}
 		}
-		
 		add_truce_attacker_victory_effect = yes
 
 		# FP1 memory
@@ -298,6 +324,7 @@
 	transfer_behavior = transfer
 	
 	# is_great_holy_war = yes
+	
 	imprisonment_by_attacker_give_war_score = no
 	imprisonment_by_defender_give_war_score = no
 	attacker_capital_gives_war_score = no

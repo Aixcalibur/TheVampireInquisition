@@ -1,0 +1,619 @@
+﻿vi_workshop_01 = {
+	construction_time = 730
+	allowed_domicile_types = { vi_lair }
+
+	cost = {
+		gold = {
+			value = estate_external_building_normal_cost_tier_1_value
+			if = {
+				limit = { has_character_modifier = raid_insight_workshop }
+				multiply = 0.75
+				desc = raid_insight_workshop
+			}
+		}
+	}
+
+	character_modifier = {
+		monthly_stewardship_lifestyle_xp_mult = 0.1
+		domicile_monthly_gold_add = 0.2
+		domicile_build_speed = -0.05
+	}
+	
+	ai_value = {
+		value = 9
+		add = estate_building_ai_modifier_value
+	}
+	
+	asset = {
+		trigger = {
+			domicile_location.culture = {
+				has_graphical_mena_culture_group_trigger = yes
+			}
+		}
+		icon = "gfx/interface/icons/domicile_building/domicile_building_workshop.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_workshop_mena.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_workshop_mena_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_workshop"
+	}
+	asset = {
+		trigger = {
+			domicile_location.culture = {
+				has_graphical_western_culture_group_trigger = yes
+			}
+		}
+		icon = "gfx/interface/icons/domicile_building/domicile_building_workshop.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_workshop_western.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_workshop_western_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_workshop"
+	}
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_building_workshop.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_workshop_byzantine.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_workshop_byzantine_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_workshop"
+	}
+}
+vi_workshop_02 = {
+	construction_time = 730
+	allowed_domicile_types = { vi_lair }
+	previous_building = vi_workshop_01
+
+	cost = {
+		gold = {
+			value = estate_external_building_normal_cost_tier_2_value
+			if = {
+				limit = { has_character_modifier = raid_insight_workshop }
+				multiply = 0.75
+				desc = raid_insight_workshop
+			}
+		}
+	}
+
+	character_modifier = {
+		domicile_monthly_gold_add = 0.1
+		domicile_build_speed = -0.05
+	}
+	
+	ai_value = {
+		value = 8
+		add = estate_building_ai_modifier_value
+	}
+	
+	asset = {
+		trigger = {
+			domicile_location.culture = {
+				has_graphical_mena_culture_group_trigger = yes
+			}
+		}
+		icon = "gfx/interface/icons/domicile_building/domicile_building_workshop.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_workshop_mena.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_workshop_mena_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_workshop"
+	}
+	asset = {
+		trigger = {
+			domicile_location.culture = {
+				has_graphical_western_culture_group_trigger = yes
+			}
+		}
+		icon = "gfx/interface/icons/domicile_building/domicile_building_workshop.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_workshop_western.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_workshop_western_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_workshop"
+	}
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_building_workshop.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_workshop_byzantine.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_workshop_byzantine_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_workshop"
+	}
+}
+
+# Carpenter sub-branch
+vi_workshop_carpenter_03 = {
+	construction_time = 730
+	allowed_domicile_types = { vi_lair }
+	previous_building = vi_workshop_02
+
+	can_construct = {
+		#estate_can_construct_workshop_carpenter_03_trigger = yes
+	}
+
+	cost = {
+		gold = {
+			value = estate_external_building_normal_cost_tier_3_value
+			if = {
+				limit = { has_character_modifier = raid_insight_workshop }
+				multiply = 0.75
+				desc = raid_insight_workshop
+			}
+		}
+	}
+
+	character_modifier = {
+		domicile_monthly_gold_add = 0.1
+		domicile_build_speed = -0.05
+	}
+	
+	parameters = {
+		estate_improved_inspirations_1 = yes
+	}
+	
+	ai_value = {
+		value = 7
+		add = estate_building_ai_modifier_value
+	}
+	
+	asset = {
+		trigger = {
+			domicile_location.culture = {
+				has_graphical_mena_culture_group_trigger = yes
+			}
+		}
+		icon = "gfx/interface/icons/domicile_building/domicile_building_carpenter.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_workshop_mena.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_workshop_mena_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_workshop_carpenter"
+	}
+	asset = {
+		trigger = {
+			domicile_location.culture = {
+				has_graphical_western_culture_group_trigger = yes
+			}
+		}
+		icon = "gfx/interface/icons/domicile_building/domicile_building_carpenter.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_workshop_western.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_workshop_western_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_workshop_carpenter"
+	}
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_building_carpenter.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_workshop_byzantine.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_workshop_byzantine_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_workshop_carpenter"
+	}
+}
+vi_workshop_carpenter_04 = {
+	construction_time = 730
+	allowed_domicile_types = { vi_lair }
+	previous_building = vi_workshop_carpenter_03
+
+	can_construct = {
+		#estate_can_construct_workshop_carpenter_04_trigger = yes
+	}
+
+	cost = {
+		gold = {
+			value = estate_external_building_normal_cost_tier_4_value
+			if = {
+				limit = { has_character_modifier = raid_insight_workshop }
+				multiply = 0.75
+				desc = raid_insight_workshop
+			}
+		}
+	}
+	
+	parameters = {
+		estate_improved_inspirations_1 = yes
+		estate_reduce_commission_artifact_cost = yes
+	}
+
+	character_modifier = {
+		domicile_monthly_gold_add = 0.1
+	}
+	
+	ai_value = {
+		value = 6
+		add = estate_building_ai_modifier_value
+	}
+	
+	asset = {
+		trigger = {
+			domicile_location.culture = {
+				has_graphical_mena_culture_group_trigger = yes
+			}
+		}
+		icon = "gfx/interface/icons/domicile_building/domicile_building_carpenter.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_workshop_mena.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_workshop_mena_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_workshop_carpenter"
+	}
+	asset = {
+		trigger = {
+			domicile_location.culture = {
+				has_graphical_western_culture_group_trigger = yes
+			}
+		}
+		icon = "gfx/interface/icons/domicile_building/domicile_building_carpenter.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_workshop_western.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_workshop_western_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_workshop_carpenter"
+	}
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_building_carpenter.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_workshop_byzantine.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_workshop_byzantine_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_workshop_carpenter"
+	}
+}
+vi_workshop_carpenter_05 = {
+	construction_time = 730
+	allowed_domicile_types = { vi_lair }
+	previous_building = vi_workshop_carpenter_04
+
+	can_construct = {
+		#estate_can_construct_workshop_carpenter_05_trigger = yes
+	}
+
+	cost = {
+		gold = {
+			value = estate_external_building_normal_cost_tier_5_value
+			if = {
+				limit = { has_character_modifier = raid_insight_workshop }
+				multiply = 0.75
+				desc = raid_insight_workshop
+			}
+		}
+	}
+	
+	parameters = {
+		estate_improved_inspirations_2 = yes
+		estate_reduce_commission_artifact_cost = yes
+	}
+
+	character_modifier = {
+		domicile_monthly_gold_add = 0.1
+		domicile_build_speed = -0.05
+	}
+	
+	ai_value = {
+		value = 5
+		add = estate_building_ai_modifier_value
+	}
+	
+	asset = {
+		trigger = {
+			domicile_location.culture = {
+				has_graphical_mena_culture_group_trigger = yes
+			}
+		}
+		icon = "gfx/interface/icons/domicile_building/domicile_building_carpenter.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_workshop_mena.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_workshop_mena_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_workshop_carpenter"
+	}
+	asset = {
+		trigger = {
+			domicile_location.culture = {
+				has_graphical_western_culture_group_trigger = yes
+			}
+		}
+		icon = "gfx/interface/icons/domicile_building/domicile_building_carpenter.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_workshop_western.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_workshop_western_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_workshop_carpenter"
+	}
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_building_carpenter.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_workshop_byzantine.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_workshop_byzantine_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_workshop_carpenter"
+	}
+}
+vi_workshop_carpenter_06 = {
+	construction_time = 730
+	allowed_domicile_types = { vi_lair }
+	previous_building = vi_workshop_carpenter_05
+
+	can_construct = {
+		#estate_can_construct_workshop_carpenter_06_trigger = yes
+	}
+
+	cost = {
+		gold = {
+			value = estate_external_building_normal_cost_tier_6_value
+			if = {
+				limit = { has_character_modifier = raid_insight_workshop }
+				multiply = 0.75
+				desc = raid_insight_workshop
+			}
+		}
+	}
+	
+	parameters = {
+		estate_improved_inspirations_2 = yes
+		estate_reduce_commission_artifact_cost = yes
+		estate_increase_antiquarian_aptitude = yes
+	}
+
+	character_modifier = {
+		domicile_monthly_gold_add = 0.1
+	}
+	
+	ai_value = {
+		value = 4
+		add = estate_building_ai_modifier_value
+	}
+	
+	asset = {
+		trigger = {
+			domicile_location.culture = {
+				has_graphical_mena_culture_group_trigger = yes
+			}
+		}
+		icon = "gfx/interface/icons/domicile_building/domicile_building_carpenter.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_workshop_mena.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_workshop_mena_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_workshop_carpenter"
+	}
+	asset = {
+		trigger = {
+			domicile_location.culture = {
+				has_graphical_western_culture_group_trigger = yes
+			}
+		}
+		icon = "gfx/interface/icons/domicile_building/domicile_building_carpenter.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_workshop_western.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_workshop_western_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_workshop_carpenter"
+	}
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_building_carpenter.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_workshop_byzantine.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_workshop_byzantine_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_workshop_carpenter"
+	}
+}
+
+vi_workshop_textile_03 = {
+	construction_time = 730
+	allowed_domicile_types = { vi_lair }
+	previous_building = vi_workshop_02
+
+	can_construct = {
+		#estate_can_construct_workshop_textile_03_trigger = yes
+	}
+
+	cost = {
+		gold = {
+			value = estate_external_building_normal_cost_tier_3_value
+			if = {
+				limit = { has_character_modifier = raid_insight_workshop }
+				multiply = 0.75
+				desc = raid_insight_workshop
+			}
+		}
+	}
+
+	character_modifier = {
+		domicile_monthly_gold_add = 0.2
+		domicile_monthly_prestige_mult = 0.05
+	}
+
+	parameters = {
+		estate_improved_inspirations_1 = yes
+	}
+	
+	ai_value = {
+		value = 7
+		add = estate_building_ai_modifier_value
+	}
+	
+	asset = {
+		trigger = {
+			domicile_location.culture = {
+				has_graphical_mena_culture_group_trigger = yes
+			}
+		}
+		icon = "gfx/interface/icons/domicile_building/domicile_building_textile.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_workshop_mena.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_workshop_mena_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_workshop_textile"
+	}
+	asset = {
+		trigger = {
+			domicile_location.culture = {
+				has_graphical_western_culture_group_trigger = yes
+			}
+		}
+		icon = "gfx/interface/icons/domicile_building/domicile_building_textile.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_workshop_western.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_workshop_western_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_workshop_textile"
+	}
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_building_textile.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_workshop_byzantine.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_workshop_byzantine_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_workshop_textile"
+	}
+}
+vi_workshop_textile_04 = {
+	construction_time = 730
+	allowed_domicile_types = { vi_lair }
+	previous_building = vi_workshop_textile_03
+
+	can_construct = {
+		#estate_can_construct_workshop_textile_04_trigger = yes
+	}
+
+	cost = {
+		gold = {
+			value = estate_external_building_normal_cost_tier_4_value
+			if = {
+				limit = { has_character_modifier = raid_insight_workshop }
+				multiply = 0.75
+				desc = raid_insight_workshop
+			}
+		}
+	}
+
+	character_modifier = {
+		domicile_monthly_gold_add = 0.2
+		domicile_monthly_prestige_mult = 0.05
+	}
+
+	parameters = {
+		estate_improved_inspirations_1 = yes
+	}
+	
+	ai_value = {
+		value = 6
+		add = estate_building_ai_modifier_value
+	}
+	
+	asset = {
+		trigger = {
+			domicile_location.culture = {
+				has_graphical_mena_culture_group_trigger = yes
+			}
+		}
+		icon = "gfx/interface/icons/domicile_building/domicile_building_textile.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_workshop_mena.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_workshop_mena_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_workshop_textile"
+	}
+	asset = {
+		trigger = {
+			domicile_location.culture = {
+				has_graphical_western_culture_group_trigger = yes
+			}
+		}
+		icon = "gfx/interface/icons/domicile_building/domicile_building_textile.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_workshop_western.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_workshop_western_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_workshop_textile"
+	}
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_building_textile.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_workshop_byzantine.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_workshop_byzantine_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_workshop_textile"
+	}
+}
+vi_workshop_textile_05 = {
+	construction_time = 730
+	allowed_domicile_types = { vi_lair }
+	previous_building = vi_workshop_textile_04
+
+	can_construct = {
+		#estate_can_construct_workshop_textile_05_trigger = yes
+	}
+
+	cost = {
+		gold = {
+			value = estate_external_building_normal_cost_tier_5_value
+			if = {
+				limit = { has_character_modifier = raid_insight_workshop }
+				multiply = 0.75
+				desc = raid_insight_workshop
+			}
+		}
+	}
+
+	character_modifier = {
+		domicile_monthly_gold_add = 0.2
+		domicile_monthly_prestige_mult = 0.05
+	}
+
+	parameters = {
+		estate_improved_inspirations_2 = yes
+	}
+	
+	ai_value = {
+		value = 5
+		add = estate_building_ai_modifier_value
+	}
+	
+	asset = {
+		trigger = {
+			domicile_location.culture = {
+				has_graphical_mena_culture_group_trigger = yes
+			}
+		}
+		icon = "gfx/interface/icons/domicile_building/domicile_building_textile.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_workshop_mena.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_workshop_mena_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_workshop_textile"
+	}
+	asset = {
+		trigger = {
+			domicile_location.culture = {
+				has_graphical_western_culture_group_trigger = yes
+			}
+		}
+		icon = "gfx/interface/icons/domicile_building/domicile_building_textile.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_workshop_western.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_workshop_western_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_workshop_textile"
+	}
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_building_textile.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_workshop_byzantine.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_workshop_byzantine_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_workshop_textile"
+	}
+}
+vi_workshop_textile_06 = {
+	construction_time = 730
+	allowed_domicile_types = { vi_lair }
+	previous_building = vi_workshop_textile_05
+
+	can_construct = {
+		#estate_can_construct_workshop_textile_06_trigger = yes
+	}
+
+	cost = {
+		gold = {
+			value = estate_external_building_normal_cost_tier_6_value
+			if = {
+				limit = { has_character_modifier = raid_insight_workshop }
+				multiply = 0.75
+				desc = raid_insight_workshop
+			}
+		}
+	}
+
+	character_modifier = {
+		domicile_monthly_gold_add = 0.2
+		domicile_monthly_prestige_mult = 0.05
+	}
+
+	parameters = {
+		estate_improved_inspirations_2 = yes
+	}
+	
+	ai_value = {
+		value = 4
+		add = estate_building_ai_modifier_value
+	}
+	
+	asset = {
+		trigger = {
+			domicile_location.culture = {
+				has_graphical_mena_culture_group_trigger = yes
+			}
+		}
+		icon = "gfx/interface/icons/domicile_building/domicile_building_textile.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_workshop_mena.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_workshop_mena_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_workshop_textile"
+	}
+	asset = {
+		trigger = {
+			domicile_location.culture = {
+				has_graphical_western_culture_group_trigger = yes
+			}
+		}
+		icon = "gfx/interface/icons/domicile_building/domicile_building_textile.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_workshop_western.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_workshop_western_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_workshop_textile"
+	}
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_building_textile.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_workshop_byzantine.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_workshop_byzantine_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_workshop_textile"
+	}
+}

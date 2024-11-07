@@ -1,0 +1,34 @@
+﻿namespace = vi_travel_prohibition
+
+vi_travel_prohibition.0001 = {
+	type = character_event
+	title = vi_travel_prohibition.0001.t
+	title = vi_travel_prohibition.0001.desc
+	theme = travel
+	trigger = {
+		has_trait_with_flag = vi_sunlight_burns
+		is_ai = no
+		#is_available_travelling = yes
+		#is_landed = yes
+		#exists = involved_activity
+		#involved_activity = { has_activity_type = activity_hunt }
+	}
+	immediate = {
+		#play_music_cue = mx_cue_travel_start
+		if = {
+			limit = {
+				NOT = { involved_activity.activity_host = root }
+			}
+			#Save the scope for loc
+			involved_activity.activity_host = { save_scope_as = host }
+		}
+	}
+
+	option = {
+		name = vi_travel_prohibition.0001.a
+	}
+
+	after = {
+		current_travel_plan = { cancel_travel_plan = yes }
+	}
+}

@@ -1,0 +1,32 @@
+﻿namespace = vi_war_manipulation
+
+
+#Every event has both schemer and target perspective
+vi_war_manipulation.1001 = {
+	type = character_event
+	title = vi_war_manipulation.1001.t
+	desc = vi_war_manipulation.1001.desc
+	
+	theme = realm
+
+	center_portrait = {
+		character = scope:owner
+	}
+
+	right_portrait = {
+		character = scope:target
+		animation = war_attacker
+	}
+
+	trigger = {
+		
+	}
+
+	immediate = {
+		
+	}
+
+	option = {
+		name = vi_inquisition.1002.a
+	}
+}

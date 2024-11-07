@@ -1,0 +1,41 @@
+﻿namespace = vi_alpha
+
+vi_alpha.0001 = {
+	type = character_event
+	title = vi_alpha.0001.t
+	desc = vi_alpha.0001.desc
+	
+	theme = murder_scheme
+
+	right_portrait = {
+		character = root
+		animation = personality_rational
+	}
+	override_background = { reference = corridor_night }
+
+	immediate = {
+		if = {
+			limit = {
+				age < 16
+			}
+			add_trait = celibate
+		}
+	}
+
+	option = {
+		name = vi_alpha.0001.a
+		trigger = {
+			has_trait = vi_customizer
+		}
+		trigger_event = vi_customization.0001
+	}
+
+	option = {
+		name = vi_alpha.0002.b
+		trigger = {
+			NOT = {
+				has_trait = vi_customizer
+			}
+		}
+	}
+}

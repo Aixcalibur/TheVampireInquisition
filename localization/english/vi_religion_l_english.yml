@@ -1,20 +1,32 @@
 ﻿l_english:
- rf_vi_vampire:0 "Vampiric"
+ rf_vi_vampire: "Vampire"
 
- vampirism_religious_head_title:0 "Adjudicator"
- vampirism_religious_head_title_name:0 "High Council"
+ vampirism_religious_head_title: "Adjudicator"
+ vampirism_religious_head_title_name: "High Council"
 
- vi_vampire_religion:0 "Vampirism"
- vi_vampire_religion_adj:0 "Vampiric"
- vi_vampire_religion_adherent:0 "Vampire"
- vi_vampire_religion_adherent_plural:0 "Vampires"
- vi_vampire_religion_desc:0 "Those who stalk the night have forsaken their ties to mortal religions and must find purpose elsewhere."
+ vi_vampire_religion: "Vampirism"
+ vi_vampire_religion_adj: "Vampiric"
+ vi_vampire_religion_adherent: "Vampire"
+ vi_vampire_religion_adherent_plural: "Vampires"
+ vi_vampire_religion_desc: "Those who stalk the night have forsaken their ties to mortal religions and must find purpose elsewhere."
 
- vi_nightcourt:0 "Court of Night"
- vi_nightcourt_adj:0 "Court of Night"
- vi_nightcourt_adherent:0 "Night Courtier"
- vi_nightcourt_adherent_plural:0 "Night Courtiers"
- vi_nightcourt_desc:0 "The way of un-life followed by those who pay obeisance to the Queen of the Night. By her decree, vampires shall live in secret harmony with the mortal population."
+ vi_nightcourt: "Court of Night"
+ vi_nightcourt_adj: "Court of Night"
+ vi_nightcourt_adherent: "Night Courtier"
+ vi_nightcourt_adherent_plural: "Night Courtiers"
+ vi_nightcourt_desc: "The way of un-life followed by those who pay obeisance to the Queen of the Night. By her decree, vampires shall live in secret harmony with the mortal population."
 
- holy_site_versailles_name:0 "Versailles"
- holy_site_versailles_effect_name:0 "From [holy_site|E] #weak ($holy_site_versailles_name$)#!"
+ doctrine_vi_masquerade_name: "Vampire Masquerade"
+
+ vi_masquerade_required_name: "Required"
+ vi_masquerade_required_desc: "The Masquerade refers to the obligation of all vampires to maintain the secret of vampirism."
+ doctrine_parameter_vi_masquerade: "Exposed vampires are [criminals|E]. Considers $vi_vampire_religion_adj$ [faiths|E] that require Masquerade to be $hostility_astray_tooltippable$ and [faiths|E] with that do not respect the Masquerade to be $hostility_evil_tooltippable$"
+ doctrine_parameter_hostility_override_vi_masquerade_required: ""
+ doctrine_parameter_hostility_override_vi_masquerade_not_required: ""
+
+ vi_masquerade_not_required_name: "Not Required"
+ vi_masquerade_not_required_desc: "The Masquerade refers to the obligation of all vampires to maintain the secret of vampirism."
+ doctrine_parameter_vi_no_masquerade: "Exposed vampires are fully accepted. Considers $vi_vampire_religion_adj$ [faiths|E] that do not require Masquerade to be $hostility_astray_tooltippable$ and [faiths|E] that require Masquerade to be $hostility_hostile_tooltippable$"
+
+ holy_site_versailles_name: "Versailles"
+ holy_site_versailles_effect_name: "From [holy_site|E] #weak ($holy_site_versailles_name$)#!"

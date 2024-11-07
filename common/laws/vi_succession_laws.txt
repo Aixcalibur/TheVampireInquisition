@@ -1,135 +1,135 @@
 ﻿# #######
-# We don't use these laws because the player cannot influence unlanded acclamation while NPCs can
+# We don't use the admin laws because the player cannot influence unlanded acclamation while NPCs can
 # #######
 
-# vi_succession_order_laws = {
-# 	flag = succession_order_laws
+vi_succession_order_laws = {
+	flag = succession_order_laws
 
-# 	vi_local_seniority_law = {
-# 		can_keep = {
-# 			vi_can_have_vampire_succession_law_trigger = yes
-# 		}
+	vi_local_seniority_law = {
+		can_keep = {
+			vi_can_have_vampire_succession_law_trigger = yes
+		}
 
-# 		can_pass = {
-# 			vi_can_have_vampire_succession_law_trigger = yes
-# 		}
+		can_pass = {
+			vi_can_have_vampire_succession_law_trigger = yes
+		}
 
-# 		can_have = {
-# 			vi_can_have_vampire_succession_law_trigger = yes
-# 		}
+		can_have = {
+			vi_can_have_vampire_succession_law_trigger = yes
+		}
 
-# 		should_start_with = {
-# 			has_government = vi_vampire_government
-# 		}
+		should_start_with = {
+			has_government = vi_vampire_government
+		}
 
-# 		succession = {
-# 			order_of_succession = inheritance
-# 			traversal_order = dynasty_house
-# 			rank = oldest
-# 			title_division = single_heir
-# 			limit_to_courtiers = yes
-# 		}
+		succession = {
+			order_of_succession = inheritance
+			traversal_order = dynasty_house
+			rank = oldest
+			title_division = single_heir
+			limit_to_courtiers = yes
+		}
 
-# 		flag = advanced_succession_law
-# 	}
+		flag = advanced_succession_law
+	}
 
-# 	# vi_acclamation_succession_law = {
-# 	# 	can_keep = {
-# 	# 		vi_can_have_vampire_succession_law_trigger = yes
-# 	# 	}
+	# vi_acclamation_succession_law = {
+	# 	can_keep = {
+	# 		vi_can_have_vampire_succession_law_trigger = yes
+	# 	}
 
-# 	# 	can_pass = {
-# 	# 		vi_can_have_vampire_succession_law_trigger = yes
-# 	# 	}
+	# 	can_pass = {
+	# 		vi_can_have_vampire_succession_law_trigger = yes
+	# 	}
 
-# 	# 	can_have = {
-# 	# 		vi_can_have_vampire_succession_law_trigger = yes
-# 	# 	}
+	# 	can_have = {
+	# 		vi_can_have_vampire_succession_law_trigger = yes
+	# 	}
 		
-# 	# 	should_start_with = {
-# 	# 		always = no
-# 	# 	}
+	# 	should_start_with = {
+	# 		always = no
+	# 	}
 		
-# 	# 	succession = {
-# 	# 		order_of_succession = appointment
-# 	# 		appointment_type = vi_admin_vampire
-# 	# 	}
-# 	# 	flag = advanced_succession_law
-# 	# 	flag = can_designate_heirs
-# 	# 	pass_cost = {
-# 	# 		prestige = change_succession_law_prestige_cost
-# 	# 	}
-# 	# 	ai_will_do = {
-# 	# 		value = 0
-# 	# 	}
-# 	# 	potential = {
-# 	# 		government_allows = administrative
-# 	# 	}
-# 	# }
+	# 	succession = {
+	# 		order_of_succession = appointment
+	# 		appointment_type = vi_admin_vampire
+	# 	}
+	# 	flag = advanced_succession_law
+	# 	flag = can_designate_heirs
+	# 	pass_cost = {
+	# 		prestige = change_succession_law_prestige_cost
+	# 	}
+	# 	ai_will_do = {
+	# 		value = 0
+	# 	}
+	# 	potential = {
+	# 		government_allows = administrative
+	# 	}
+	# }
 
-# 	# vi_appointment_succession_law = {
-# 	# 	can_keep = {
-# 	# 		government_allows = administrative
-# 	# 		is_independent_ruler = no
-# 	# 		has_government = vi_vampire_government
+	# vi_appointment_succession_law = {
+	# 	can_keep = {
+	# 		government_allows = administrative
+	# 		is_independent_ruler = no
+	# 		has_government = vi_vampire_government
 
-# 	# 		# Vassal Contract allows it
-# 	# 		custom_description = {
-# 	# 			text = succession_laws_must_not_be_forced_partition
-# 	# 			NAND = {
-# 	# 				is_independent_ruler = no
-# 	# 				vassal_contract_has_flag = locked_to_partition
-# 	# 			}
-# 	# 		}
-# 	# 	}
-# 	# 	can_have = {
-# 	# 		#can_have_single_heir_succession_law_trigger = yes
-# 	# 		government_allows = administrative
-# 	# 		is_independent_ruler = no
-# 	# 	}
-# 	# 	can_pass = {
-# 	# 		can_change_succession_law_trigger = yes
-# 	# 		government_allows = administrative
-# 	# 		is_independent_ruler = no
-# 	# 	}
-# 	# 	should_start_with = {
-# 	# 		always = no
-# 	# 		# government_allows = administrative
-# 	# 		# is_independent_ruler = no
-# 	# 	}
-# 	# 	succession = {
-# 	# 		order_of_succession = appointment
-# 	# 		appointment_type = admin_governor
-# 	# 	}
-# 	# 	flag = advanced_succession_law
-# 	# 	modifier = {
-# 	# 		glory_hound_opinion = -10
-# 	# 		parochial_opinion = -5
-# 	# 		player_heir_opinion = 20
-# 	# 		eligible_child_except_player_heir_opinion = -5
-# 	# 	}
-# 	# 	pass_cost = {
-# 	# 		prestige = change_succession_law_prestige_cost
-# 	# 	}
-# 	# 	revoke_cost = {
-# 	# 		prestige = change_succession_law_prestige_cost
-# 	# 	}
+	# 		# Vassal Contract allows it
+	# 		custom_description = {
+	# 			text = succession_laws_must_not_be_forced_partition
+	# 			NAND = {
+	# 				is_independent_ruler = no
+	# 				vassal_contract_has_flag = locked_to_partition
+	# 			}
+	# 		}
+	# 	}
+	# 	can_have = {
+	# 		#can_have_single_heir_succession_law_trigger = yes
+	# 		government_allows = administrative
+	# 		is_independent_ruler = no
+	# 	}
+	# 	can_pass = {
+	# 		can_change_succession_law_trigger = yes
+	# 		government_allows = administrative
+	# 		is_independent_ruler = no
+	# 	}
+	# 	should_start_with = {
+	# 		always = no
+	# 		# government_allows = administrative
+	# 		# is_independent_ruler = no
+	# 	}
+	# 	succession = {
+	# 		order_of_succession = appointment
+	# 		appointment_type = admin_governor
+	# 	}
+	# 	flag = advanced_succession_law
+	# 	modifier = {
+	# 		glory_hound_opinion = -10
+	# 		parochial_opinion = -5
+	# 		player_heir_opinion = 20
+	# 		eligible_child_except_player_heir_opinion = -5
+	# 	}
+	# 	pass_cost = {
+	# 		prestige = change_succession_law_prestige_cost
+	# 	}
+	# 	revoke_cost = {
+	# 		prestige = change_succession_law_prestige_cost
+	# 	}
 
-# 	# 	ai_will_do = {
-# 	# 		if = {
-# 	# 			limit = {
-# 	# 				OR = {
-# 	# 					has_realm_law = confederate_partition_succession_law
-# 	# 					has_realm_law = partition_succession_law
-# 	# 					has_realm_law = high_partition_succession_law
-# 	# 				}
-# 	# 			}
-# 	# 			value = 3
-# 	# 		}
-# 	# 	}
+	# 	ai_will_do = {
+	# 		if = {
+	# 			limit = {
+	# 				OR = {
+	# 					has_realm_law = confederate_partition_succession_law
+	# 					has_realm_law = partition_succession_law
+	# 					has_realm_law = high_partition_succession_law
+	# 				}
+	# 			}
+	# 			value = 3
+	# 		}
+	# 	}
 
-# 	# 	potential = {
-# 	# 		government_allows = administrative
-# 	# 	}
-# 	# }
-# }
+	# 	potential = {
+	# 		government_allows = administrative
+	# 	}
+	# }
+}

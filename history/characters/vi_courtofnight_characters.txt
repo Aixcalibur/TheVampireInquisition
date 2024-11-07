@@ -21,7 +21,7 @@
 	trait = education_diplomacy_5
 	trait = beauty_good_3
 	trait = vi_vampire_3
-	trait = vi_historical_character
+	#trait = vi_historical_character
 	trait = shrewd
 	trait = lifestyle_gardener
 	trait = lifestyle_herbalist
@@ -59,7 +59,7 @@ vi_ambrosius = {
 
 	diplomacy = 9
 	stewardship = 8
-	intrigue = 15
+	intrigue = 14
 	prowess = 0
 
 	trait = gregarious
@@ -88,6 +88,7 @@ vi_ambrosius = {
 			add_prowess_skill = 15
 			set_immortal_age = 30
 			vi_add_sirensong_effect = yes
+			vi_nightcourt_learn_languages = yes
 		}
 	}
 
@@ -129,6 +130,7 @@ vi_lucie = {
 	670.4.15 = {
 		employer = vi_ambrosius
 		effect = {
+			vi_nightcourt_learn_languages = yes
 			add_gold = 100
 			add_trait = vi_vampire_3
 			set_father = character:vi_ambrosius
@@ -170,7 +172,7 @@ vi_victor = {
 	trait = arbitrary
 
 	trait = gallowsbait
-	trait = education_stewardship_4
+	trait = education_diplomacy_4
 	trait = vi_vampire_2
 	trait = intellect_good_3
 	trait = overseer
@@ -188,6 +190,7 @@ vi_victor = {
 			add_prowess_skill = 3
 			set_immortal_age = 12
 			give_nickname = nick_vi_princeofurchins
+			vi_nightcourt_learn_languages = yes
 		}
 	}
 
@@ -239,6 +242,7 @@ vi_albert = {
 			vi_make_vampire_effect = yes
 			set_immortal_age = 70
 			add_prowess_skill = 14
+			vi_nightcourt_learn_languages = yes
 		}
 	}
 
@@ -296,6 +300,7 @@ vi_emily = {
 			vi_make_vampire_effect = yes
 			set_immortal_age = 14
 			add_prowess_skill = 10
+			vi_nightcourt_learn_languages = yes
 		}
 	}
 
@@ -363,6 +368,7 @@ vi_bookman = {
 				trait = lifestyle_physician
 				value = 100
 			}
+			vi_nightcourt_learn_languages = yes
 		}
 	}
 
@@ -472,6 +478,7 @@ vi_ysabel = {
 			set_immortal_age = 18
 			add_prowess_skill = 9
 			vi_add_sirensong_effect = yes
+			vi_nightcourt_learn_languages = yes
 		}
 	}
 
@@ -519,6 +526,7 @@ vi_jehanne = {
 			set_immortal_age = 18
 			add_prowess_skill = 7
 			vi_add_sirensong_effect = yes
+			vi_nightcourt_learn_languages = yes
 		}
 	}
 
@@ -564,6 +572,7 @@ vi_symonne = {
 	710.7.19 = {
 		# employer = vi_esclarmonde
 		effect = {
+			add_character_flag = do_not_generate_starting_family
 			add_gold = 100
 			add_trait = vi_vampire_3
 			set_mother = character:vi_esclarmonde
@@ -572,6 +581,7 @@ vi_symonne = {
 			vi_make_vampire_effect = yes
 			set_immortal_age = 18
 			add_prowess_skill = 5
+			vi_nightcourt_learn_languages = yes
 		}
 	}
 
@@ -585,7 +595,6 @@ vi_symonne = {
 		death = yes
 	}
 }
-
 
 vi_roland = {
 	name = "Roland"
@@ -627,6 +636,7 @@ vi_roland = {
 			vi_make_vampire_effect = yes
 			set_immortal_age = 29
 			add_prowess_skill = 18
+			vi_nightcourt_learn_languages = yes
 		}
 	}
 
@@ -683,6 +693,7 @@ vi_olivier = {
 			vi_make_vampire_effect = yes
 			set_immortal_age = 27
 			add_prowess_skill = 16
+			vi_nightcourt_learn_languages = yes
 		}
 	}
 
@@ -710,14 +721,18 @@ vi_lugh = {
 	faith = vi_nightcourt
 	culture = roman
 
-	stewardship = 8
+	diplomacy = 7
+	martial = 10
+	stewardship = 13
+	intrigue = 6
+	learning = 10
 	prowess = 0
 
 	trait = arrogant
 	trait = diligent
 	trait = eccentric
 
-	trait = education_stewardship_4
+	trait = education_stewardship_5
 	trait = vi_vampire_4
 	trait = physique_good_2
 	trait = architect
@@ -734,10 +749,53 @@ vi_lugh = {
 			set_immortal_age = 35
 			add_prowess_skill = 20
 			add_character_flag = do_not_generate_starting_family
+			vi_nightcourt_learn_languages = yes
 		}
 	}
 
 	1500.1.1 = {
+		death = yes
+	}
+}
+
+vi_orlok = {
+	name = "Vladimir"
+	dna = vi_orlok_dna
+	dynasty_house = house_vi_Orlok
+	sexuality = asexual
+	faith = vi_nightcourt
+	culture = vlach
+
+	diplomacy = 14
+	martial = 6
+	stewardship = 12
+	intrigue = 20
+	learning = 9
+	prowess = 4
+
+	trait = deceitful
+	trait = ambitious
+	trait = callous
+	trait = humble
+
+	trait = education_intrigue_5
+	trait = vi_vampire_3
+	trait = vi_allseeing
+	trait = avaricious
+	trait = albino
+	trait = intellect_good_2
+	trait = shrewd
+	trait = intrigue_court_2
+
+	563.7.17 = {
+		birth = yes
+		effect = {
+			vi_orlok_after_effect = yes
+			add_character_flag = do_not_generate_starting_family
+		}
+	}
+
+	1600.1.1 = {
 		death = yes
 	}
 }
@@ -748,6 +806,7 @@ vi_norman = {
 	faith = vi_nightcourt
 	culture = norse
 
+	martial = 16
 	prowess = 5
 
 	trait = ambitious
@@ -771,6 +830,7 @@ vi_norman = {
 			vi_make_vampire_effect = yes
 			set_immortal_age = 49
 			add_prowess_skill = 14
+			give_nickname = nick_the_wolf
 		}
 	}
 
@@ -817,7 +877,7 @@ vi_norman_wife = {
 			add_opinion = {
 				target = character:vi_norman
 				modifier = hate_opinion
-				opinion = -200
+				opinion = -100
 			}
 
 			change_target_weight = -30
@@ -847,6 +907,7 @@ vi_norman_baby = {
 	faith = vi_nightcourt
 	culture = french
 
+	trait = vi_dhampir
 	trait = beauty_good_2
 	trait = physique_good_2
 
@@ -857,15 +918,10 @@ vi_norman_baby = {
 		birth = yes
 	}
 
-	884.10.14 = {
-		effect = {
-			add_trait = vi_vampire_1
-			vi_make_vampire_effect = yes
-			set_immortal_age = 18
+	910.6.17 = {
+		death = {
+			death_reason = death_head_ripped_off
+			#killer = character:vi_norman
 		}
-	}
-
-	1200.1.1 = {
-		death = yes
 	}
 }

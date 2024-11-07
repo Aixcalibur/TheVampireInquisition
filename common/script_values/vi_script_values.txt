@@ -1,0 +1,92 @@
+﻿vi_arrogance_value = {
+	value = 0
+	add = prowess
+	multiply = 0.25
+	add = diplomacy
+	add = martial
+	add = stewardship
+	add = intrigue
+	# add = {
+	# 	value = diplomacy
+	# 	add = martial
+	# 	add = stewardship
+	# 	add = intrigue
+	# }
+	if = {
+		limit = {
+			has_trait = arrogant
+		}
+		multiply = 1.5
+	}
+	if = {
+		limit = {
+			has_trait = ambitious
+		}
+		multiply = 2
+	}
+	if = {
+		limit = {
+			has_trait = humble
+		}
+		multiply = 0.5
+	}
+	max = 120
+}
+
+vi_county_wealth_multiplier = {
+	value = 0
+	add = primary_title.title_capital_county.development_level
+}
+
+vi_court_favor_scaling_value = {
+	add = 0
+	every_courtier = {
+		if = {
+			limit = {
+				vi_is_vampire_trigger = yes
+			}
+			add = {
+				value = "opinion(root)"
+				if = {
+					limit = {
+						has_trait = vi_vampire_5
+					}
+					multiply = 3
+				}
+				else_if = {
+					limit = {
+						has_trait = vi_vampire_4
+					}
+					multiply = 2
+				}
+				else_if = {
+					limit = {
+						has_trait = vi_vampire_3
+					}
+					multiply = 1.5
+				}
+			}
+		}
+	}
+	divide = vi_amount_of_vampires_value
+	divide = 30
+	min = 1
+	max = {
+		value = vi_amount_of_vampires_value
+		divide = 3
+		min = 1
+		max = 5
+	}
+}
+
+vi_amount_of_vampires_value = {
+	value = 0
+	every_courtier = {
+		if = {
+			limit = {
+				vi_is_vampire_trigger = yes
+			}
+			add = 1
+		}
+	}
+}

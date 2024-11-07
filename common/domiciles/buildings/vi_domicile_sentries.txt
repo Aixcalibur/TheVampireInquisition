@@ -1,0 +1,406 @@
+﻿
+### Watchtower
+vi_watchtower_01 = {
+	construction_time = 730
+	allowed_domicile_types = { vi_lair }
+
+	cost = {
+		gold = {
+			value = estate_external_building_normal_cost_tier_1_value
+			if = {
+				limit = { has_character_modifier = raid_insight_watchtower }
+				multiply = 0.75
+				desc = raid_insight_watchtower
+			}
+		}
+	}
+
+	character_modifier = {
+		monthly_county_control_growth_factor = 0.03
+		defender_holding_advantage = 2
+		hostile_raid_time = 0.1
+		owned_hostile_scheme_success_chance_max_add = 10
+	}
+
+	parameters = {
+		reduce_success_of_raid_estate = yes
+		raids_less_likely_to_make_prisoners_1 = yes
+	}
+	
+	ai_value = {
+		value = 9
+		add = estate_building_ai_modifier_value
+	}
+	
+	asset = {
+		trigger = {
+			domicile_location.culture = {
+				has_graphical_mena_culture_group_trigger = yes
+			}
+		}
+		icon = "gfx/interface/icons/domicile_building/domicile_building_watchtower.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_watchtower_mena.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_watchtower_mena_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_watchtower"
+	}
+	asset = {
+		trigger = {
+			domicile_location.culture = {
+				has_graphical_western_culture_group_trigger = yes
+			}
+		}
+		icon = "gfx/interface/icons/domicile_building/domicile_building_watchtower.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_watchtower_western.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_watchtower_western_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_watchtower"
+	}
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_building_watchtower.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_watchtower_byzantine.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_watchtower_byzantine_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_watchtower"
+	}
+}
+vi_watchtower_02 = {
+	construction_time = 730
+	allowed_domicile_types = { vi_lair }
+	previous_building = vi_watchtower_01
+
+	cost = {
+		gold = {
+			value = estate_external_building_normal_cost_tier_2_value
+			if = {
+				limit = { has_character_modifier = raid_insight_watchtower }
+				multiply = 0.75
+				desc = raid_insight_watchtower
+			}
+		}
+	}
+
+	character_modifier = {
+		monthly_county_control_growth_factor = 0.03
+		defender_holding_advantage = 2
+		archers_damage_mult = 0.02
+		archers_toughness_mult = 0.01
+		hostile_raid_time = 0.1
+		owned_hostile_scheme_success_chance_max_add = 10
+	}
+
+	parameters = {
+		reduce_success_of_raid_estate = yes
+		raids_less_likely_to_make_prisoners_1 = yes
+	}
+	
+	ai_value = {
+		value = 8
+		add = estate_building_ai_modifier_value
+	}
+	
+	asset = {
+		trigger = {
+			domicile_location.culture = {
+				has_graphical_mena_culture_group_trigger = yes
+			}
+		}
+		icon = "gfx/interface/icons/domicile_building/domicile_building_watchtower.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_watchtower_mena.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_watchtower_mena_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_watchtower"
+	}
+	asset = {
+		trigger = {
+			domicile_location.culture = {
+				has_graphical_western_culture_group_trigger = yes
+			}
+		}
+		icon = "gfx/interface/icons/domicile_building/domicile_building_watchtower.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_watchtower_western.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_watchtower_western_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_watchtower"
+	}
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_building_watchtower.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_watchtower_byzantine.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_watchtower_byzantine_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_watchtower"
+	}
+}
+vi_watchtower_03 = {
+	construction_time = 730
+	allowed_domicile_types = { vi_lair }
+	previous_building = vi_watchtower_02
+
+	can_construct = {
+		domicile ?= { has_domicile_building_or_higher = vi_estate_main_02 }
+	}
+
+	cost = {
+		gold = {
+			value = estate_external_building_normal_cost_tier_3_value
+			if = {
+				limit = { has_character_modifier = raid_insight_watchtower }
+				multiply = 0.75
+				desc = raid_insight_watchtower
+			}
+		}
+	}
+	
+	parameters = {
+		reduce_success_of_raid_estate = yes
+		raids_less_likely_to_make_prisoners_2 = yes
+	}
+
+	character_modifier = {
+		monthly_county_control_growth_factor = 0.03
+		defender_holding_advantage = 2
+		archers_damage_mult = 0.02
+		archers_toughness_mult = 0.01
+		hostile_raid_time = 0.1
+		owned_hostile_scheme_success_chance_max_add = 5
+	}
+	
+	ai_value = {
+		value = 7
+		add = estate_building_ai_modifier_value
+	}
+	
+	asset = {
+		trigger = {
+			domicile_location.culture = {
+				has_graphical_mena_culture_group_trigger = yes
+			}
+		}
+		icon = "gfx/interface/icons/domicile_building/domicile_building_watchtower.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_watchtower_mena.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_watchtower_mena_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_watchtower"
+	}
+	asset = {
+		trigger = {
+			domicile_location.culture = {
+				has_graphical_western_culture_group_trigger = yes
+			}
+		}
+		icon = "gfx/interface/icons/domicile_building/domicile_building_watchtower.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_watchtower_western.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_watchtower_western_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_watchtower"
+	}
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_building_watchtower.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_watchtower_byzantine.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_watchtower_byzantine_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_watchtower"
+	}
+}
+vi_watchtower_04 = {
+	construction_time = 730
+	allowed_domicile_types = { vi_lair }
+	previous_building = vi_watchtower_03
+
+	can_construct = {
+		domicile ?= { has_domicile_building_or_higher = vi_estate_main_03 }
+	}
+
+	cost = {
+		gold = {
+			value = estate_external_building_normal_cost_tier_4_value
+			if = {
+				limit = { has_character_modifier = raid_insight_watchtower }
+				multiply = 0.75
+				desc = raid_insight_watchtower
+			}
+		}
+	}
+	
+	parameters = {
+		reduce_success_of_raid_estate = yes
+		raids_less_likely_to_make_prisoners_2 = yes
+		#house_head_can_ask_for_maa = yes
+	}
+
+	character_modifier = {
+		monthly_county_control_growth_factor = 0.03
+		defender_holding_advantage = 2
+		archers_damage_mult = 0.02
+		archers_toughness_mult = 0.01
+		hostile_raid_time = 0.2
+		hostile_scheme_phase_duration_add = -10
+		owned_hostile_scheme_success_chance_max_add = 5
+	}
+	
+	ai_value = {
+		value = 6
+		add = estate_building_ai_modifier_value
+	}
+	
+	asset = {
+		trigger = {
+			domicile_location.culture = {
+				has_graphical_mena_culture_group_trigger = yes
+			}
+		}
+		icon = "gfx/interface/icons/domicile_building/domicile_building_watchtower.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_watchtower_mena.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_watchtower_mena_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_watchtower"
+	}
+	asset = {
+		trigger = {
+			domicile_location.culture = {
+				has_graphical_western_culture_group_trigger = yes
+			}
+		}
+		icon = "gfx/interface/icons/domicile_building/domicile_building_watchtower.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_watchtower_western.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_watchtower_western_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_watchtower"
+	}
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_building_watchtower.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_watchtower_byzantine.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_watchtower_byzantine_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_watchtower"
+	}
+}
+vi_watchtower_05 = {
+	construction_time = 730
+	allowed_domicile_types = { estate }
+	previous_building = vi_watchtower_04
+
+	can_construct = {
+		domicile ?= { has_domicile_building_or_higher = vi_estate_main_04 }
+	}
+
+	cost = {
+		gold = {
+			value = estate_external_building_normal_cost_tier_5_value
+			if = {
+				limit = { has_character_modifier = raid_insight_watchtower }
+				multiply = 0.75
+				desc = raid_insight_watchtower
+			}
+		}
+	}
+	
+	parameters = {
+		reduce_success_of_raid_estate = yes
+		raids_less_likely_to_make_prisoners_3 = yes
+		#house_head_can_ask_for_maa = yes
+	}
+
+	character_modifier = {
+		monthly_county_control_growth_factor = 0.03
+		defender_holding_advantage = 2
+		archers_damage_mult = 0.02
+		archers_toughness_mult = 0.01
+		hostile_raid_time = 0.2
+		hostile_scheme_phase_duration_add = -10
+		owned_hostile_scheme_success_chance_max_add = 5
+	}
+	
+	ai_value = {
+		value = 5
+		add = estate_building_ai_modifier_value
+	}
+	
+	asset = {
+		trigger = {
+			domicile_location.culture = {
+				has_graphical_mena_culture_group_trigger = yes
+			}
+		}
+		icon = "gfx/interface/icons/domicile_building/domicile_building_watchtower.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_watchtower_mena.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_watchtower_mena_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_watchtower"
+	}
+	asset = {
+		trigger = {
+			domicile_location.culture = {
+				has_graphical_western_culture_group_trigger = yes
+			}
+		}
+		icon = "gfx/interface/icons/domicile_building/domicile_building_watchtower.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_watchtower_western.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_watchtower_western_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_watchtower"
+	}
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_building_watchtower.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_watchtower_byzantine.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_watchtower_byzantine_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_watchtower"
+	}
+}
+vi_watchtower_06 = {
+	construction_time = 730
+	allowed_domicile_types = { vi_lair }
+	previous_building = vi_watchtower_05
+
+	can_construct = {
+		domicile ?= { has_domicile_building_or_higher = vi_estate_main_05 }
+	}
+
+	cost = {
+		gold = {
+			value = estate_external_building_normal_cost_tier_6_value
+			if = {
+				limit = { has_character_modifier = raid_insight_watchtower }
+				multiply = 0.75
+				desc = raid_insight_watchtower
+			}
+		}
+	}
+	
+	parameters = {
+		reduce_success_of_raid_estate = yes
+		raids_less_likely_to_make_prisoners_3 = yes
+		estate_unlock_patrol_decision = yes
+		#house_head_can_ask_for_maa = yes
+	}
+
+	character_modifier = {
+		monthly_county_control_growth_factor = 0.03
+		defender_holding_advantage = 2
+		archers_damage_mult = 0.02
+		archers_toughness_mult = 0.01
+		hostile_raid_time = 0.3
+		hostile_scheme_phase_duration_add = -10
+		owned_hostile_scheme_success_chance_max_add = 5
+	}
+	
+	ai_value = {
+		value = 4
+		add = estate_building_ai_modifier_value
+	}
+	
+	asset = {
+		trigger = {
+			domicile_location.culture = {
+				has_graphical_mena_culture_group_trigger = yes
+			}
+		}
+		icon = "gfx/interface/icons/domicile_building/domicile_building_watchtower.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_watchtower_mena.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_watchtower_mena_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_watchtower"
+	}
+	asset = {
+		trigger = {
+			domicile_location.culture = {
+				has_graphical_western_culture_group_trigger = yes
+			}
+		}
+		icon = "gfx/interface/icons/domicile_building/domicile_building_watchtower.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_watchtower_western.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_watchtower_western_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_watchtower"
+	}
+	asset = {
+		icon = "gfx/interface/icons/domicile_building/domicile_building_watchtower.dds"
+		texture = "gfx/interface/window_domiciles/estate_building_watchtower_byzantine.dds"
+		intersectionmask_texture = "gfx/interface/window_domiciles/estate_building_watchtower_byzantine_mask.png"
+		soundeffect = "event:/DLC/EP3/SFX/UI/domicile_buildings/ep3_ui_domicile_buildings_watchtower"
+	}
+}

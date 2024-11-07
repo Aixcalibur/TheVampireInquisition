@@ -2,10 +2,6 @@
 # ESTATE BUILDINGS
 ##################
 
-### NOTE: If updating, adding, or changing buildings, ensure the following effects are updated too:
-### destroy_random_estate_building_variable_effect
-### destroy_random_estate_building_effect
-
 ### Estate Main Building - The Villa
 vi_estate_main_01 = {
 	slot_type = main
@@ -20,7 +16,7 @@ vi_estate_main_01 = {
 	character_modifier = {
 		domicile_monthly_gold_add = 0.25
 		domicile_monthly_influence_add = 1
-		domicile_external_slots_capacity_add = 2
+		domicile_external_slots_capacity_add = 3
 	}
 
 	ai_value = {
@@ -80,7 +76,7 @@ vi_estate_main_02 = {
 	}
 
 	character_modifier = {
-		domicile_monthly_gold_add = 0.5
+		domicile_monthly_gold_add = 0.25
 		domicile_monthly_influence_add = 0.5
 		domicile_external_slots_capacity_add = 1
 	}
@@ -271,7 +267,7 @@ vi_estate_main_05 = {
 		domicile_monthly_gold_add = 2
 		domicile_monthly_gold_mult = 0.05
 		domicile_monthly_influence_add = 0.5
-		domicile_external_slots_capacity_add = 1
+		#domicile_external_slots_capacity_add = 1
 	}
 
 	ai_value = {

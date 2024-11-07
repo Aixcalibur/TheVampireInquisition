@@ -1,1 +1,30 @@
-﻿
+﻿agent_vi_investigator = {
+	contribution_type = success_chance_max
+	contribution = {
+		value = scheme_agent_general_bonuses_contribution_score_value
+
+		add = {
+			value = intrigue
+			multiply = agent_3to1_3_skill_mult_value # 0.75 in vanilla
+			ceiling = yes
+			max = agent_max_skill_value # 25 in vanilla
+			desc = scheme_agent_aptitude.skill.intrigue
+		}
+
+		add = {
+			value = diplomacy
+			multiply = agent_3to1_1_skill_mult_value # 0.25 in vanilla for minor skills
+			ceiling = yes
+			max = agent_max_skill_value
+			desc = scheme_agent_aptitude.skill.diplomacy
+		}
+
+		add = {
+			value = learning
+			multiply = agent_3to1_1_skill_mult_value
+			ceiling = yes
+			max = agent_max_skill_value
+			desc = scheme_agent_aptitude.skill.learning
+		}
+	}
+}

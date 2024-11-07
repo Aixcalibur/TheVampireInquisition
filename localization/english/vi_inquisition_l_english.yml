@@ -1,4 +1,9 @@
 ﻿l_english:
+
+ vi_started_inquisition_opinion:0 "Started Inquisition"
+
+ vi_mortals_defect_tooltip:0 "Mortal [men_at_arms|E] defect from your army."
+
  vi_inquisition_defense_cb:0 "Inquisition"
  VI_INQUISITION_CB_NAME:0 "Inquisition"
  VI_INQUISITION_CB_WAR_NAME_BASE:0 "[ATTACKER.GetPrimaryTitle.GetAdjective] Inquisition"
@@ -45,6 +50,7 @@
  k_vi_heavenly_host_article:0 "$DEFAULT_TITLE_NAME_ARTICLE$"
  vi_healthbar_army:0 "Health Bar"
  vi_health_point_maa:0 "Health Points"
+ vi_health_point_maa_flavor:0 "A powerful adversary can count for thousands of men."
  vi_saint:0 "Saint"
  nick_vi_the_archangel:0 "the Archangel"
  nick_vi_the_archangel_desc:0 "He claims to be an Archangel. Seeing the golden flames that emanate from every swing of his sword, who could disagree?"

@@ -1,0 +1,132 @@
+﻿namespace = vi_manipulation_outcome
+
+
+vi_manipulation_outcome.0001 = {
+	type = character_event
+	title = vi_manipulation_outcome.0001.t
+	desc = vi_manipulation_outcome.0001.desc
+	
+	theme = realm
+
+	left_portrait = {
+		character = scope:owner
+		animation = personality_dishonorable
+	}
+
+	right_portrait = {
+		character = scope:target
+		animation = personality_honorable
+	}
+
+	trigger = {
+		scope:scheme = {
+			var:vi_scheme_goal ?= flag:positive
+		}
+	}
+
+	immediate = {
+		
+	}
+
+	option = {
+		name = vi_manipulation_outcome.0001.a
+		scope:target = {
+			add_character_modifier = {
+				modifier = vi_finale_positive_army_modifier
+				years = 10
+			}
+			if = {
+				limit = {
+					NOT = {
+						has_trait = strategist
+					}
+				}
+				add_trait = strategist
+			}
+			else_if = {
+				limit = {
+					NOT = {
+						has_trait = august
+					}
+				}
+				add_trait = august
+			}
+			else = {
+				add_martial_skill = 2
+			}
+
+			custom_tooltip = {
+				text = vi_manipulation_outcome.0001.a.tt
+				add_perk = absolute_control_perk
+				every_vassal = {
+					add_character_flag = vassal_directive_building_focus_economy
+				}
+			}
+
+			create_alliance = root
+
+			vi_declare_war_effect = yes
+			show_as_tooltip = {
+				ai_start_best_war = yes
+			}
+
+			hidden_effect = {
+
+			}
+		}
+		ai_chance = {
+			base = 20
+
+			ai_value_modifier = {
+				ai_boldness = 1
+			}
+		}
+	}
+	option = {
+		name = vi_manipulation_outcome.0001.b
+		scope:target = {
+			add_character_modifier = {
+				modifier = vi_finale_positive_development_modifier
+				years = 10
+			}
+			if = {
+				limit = {
+					NOT = {
+						has_trait = architect
+					}
+				}
+				add_trait = architect
+			}
+			else_if = {
+				limit = {
+					NOT = {
+						has_trait = administrator
+					}
+				}
+				add_trait = administrator
+			}
+			else = {
+				add_stewardship_skill = 2
+			}
+			custom_tooltip = {
+				text = vi_manipulation_outcome.0001.b.tt
+				add_perk = honored_to_serve_perk
+				every_vassal = {
+					add_character_flag = vassal_directive_building_focus_economy
+				}
+			}
+			
+		}
+
+		ai_chance = {
+			base = 50
+
+			ai_value_modifier = {
+				ai_rationality = 2
+			}
+		}
+	}
+	# option = {
+	# 	name = vi_manipulation_outcome.0001.c
+	# }
+}

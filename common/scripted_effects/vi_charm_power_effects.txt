@@ -1,0 +1,222 @@
+﻿vi_instant_charm_effect = {
+	if = {
+		limit = {
+			scope:vi_victim = {
+				NOR = {
+					vi_is_vampire_trigger = yes
+					has_trait = vi_dhampir
+				}
+			}
+		}
+		scope:vi_victim = {
+			add_opinion = {
+				modifier = charmed_opinion
+				target = scope:vi_vampire
+				opinion = {
+					value = scope:vi_victim.intrigue
+					multiply = -1
+					add = scope:vi_vampire.diplomacy
+					min = 5
+				}
+			}
+		}
+	}
+}
+
+vi_persuasion_effect = {
+	clear_saved_scope = vi_failure
+
+	scope:vi_vampire = {
+		add_character_modifier = {
+			modifier = vi_vampire_strain_modifier
+			years = 5
+		}
+		add_stress = minor_stress_gain
+	}
+
+	random_list = {
+		50 = {
+			vi_charm_power_modifier = yes
+			vi_persuasion_success = yes
+		}
+		50 = {
+			vi_charm_resistance_modifier = yes
+			modifier = {
+				always = yes
+				min = 5
+			}
+			vi_persuasion_failure = yes
+			save_scope_as = vi_failure
+		}
+	}
+}
+
+vi_persuasion_success = {
+	scope:vi_victim = {
+		send_interface_message = {
+			title = vi_visit.option_hook.msg_title
+			desc = vi_visit.option_hook.msg_desc
+			right_icon = scope:vi_vampire
+			scope:vi_vampire = {
+				add_hook = {
+					type = favor_hook
+					target = scope:vi_victim
+					years = 20
+				}
+			}
+			add_opinion = {
+				target = scope:vi_vampire
+				modifier = suspicion_opinion
+				opinion = {
+					value = intrigue
+					multiply = -0.5
+				}
+			}
+		}
+		
+	}
+}
+
+vi_persuasion_failure = {
+	scope:vi_victim = {
+		send_interface_message = {
+			title = vi_visit.option.failure.msg_title
+			desc = vi_visit.option.failure.msg_desc
+			right_icon = scope:vi_vampire
+			add_stress = miniscule_stress_gain
+			add_opinion = {
+				target = scope:vi_vampire
+				modifier = suspicion_opinion
+				opinion = {
+					value = intrigue
+					add = 20
+					multiply = -1
+				}
+			}
+		}
+	}
+}
+
+vi_soothe_effect = {
+	clear_saved_scope = vi_failure
+	clear_saved_scope = vi_suspicion_removed
+
+	scope:vi_vampire = {
+		add_character_modifier = {
+			modifier = vi_vampire_strain_modifier
+			years = 5
+		}
+		add_stress = miniscule_stress_gain
+	}
+
+	random_list = {
+		10 = {
+			vi_charm_power_modifier = yes
+			modifier = {
+				scope:vi_victim.stress_level >= 3
+				multiply = 3
+			}
+			modifier = {
+				scope:vi_victim.stress_level = 2
+				multiply = 2
+			}
+			vi_soothe_success = yes
+		}
+		10 = {
+			vi_charm_resistance_modifier = yes
+			# modifier = {
+			# 	always = yes
+			# 	min = 5
+			# }
+			modifier = {
+				scope:vi_victim.stress_level < 1
+				multiply = 2
+			}
+			vi_soothe_failure = yes
+			save_scope_as = vi_failure
+		}
+	}
+}
+
+vi_soothe_success = {
+	if = {
+		limit = {
+			exists = scope:vi_suspicion_removed
+		}
+		show_as_tooltip = {
+			scope:vi_victim = {
+				add_stress = {
+					value = miniscule_stress_loss
+					multiply = scope:vi_vampire.diplomacy
+					min = -150
+				}
+				remove_opinion = {
+					modifier = suspicion_opinion
+					target = scope:vi_vampire
+				}
+			}
+		}
+	}
+	else = {
+		scope:vi_victim = {
+			send_interface_message = {
+				title = vi_visit.option_soothe.success.msg_title
+				right_icon = scope:vi_vampire
+				add_character_modifier = {
+					modifier = vi_soothed_modifier
+					years = 10
+				}
+				add_stress = {
+					value = miniscule_stress_loss
+					multiply = scope:vi_vampire.diplomacy
+					min = -150
+				}
+				if = {
+					limit = {
+						has_opinion_modifier = {
+							modifier = suspicion_opinion
+							target = scope:vi_vampire
+						}
+					}
+					remove_opinion = {
+						modifier = suspicion_opinion
+						target = scope:vi_vampire
+					}
+					save_scope_as = vi_suspicion_removed
+				}
+				else = {
+					add_opinion = {
+						modifier = grateful_opinion
+						target = scope:vi_vampire
+						opinion = {
+							value = scope:vi_vampire.diplomacy
+							multiply = 0.5
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+vi_soothe_failure = {
+	scope:vi_victim = {
+		send_interface_toast = {
+			title = vi_visit.option.failure.msg_title
+			desc = vi_visit.option.failure.msg_desc
+			right_icon = scope:vi_vampire
+			show_as_tooltip = {
+
+			}
+			add_stress = miniscule_stress_gain
+			add_opinion = {
+				target = scope:vi_vampire
+				modifier = suspicion_opinion
+				opinion = {
+					value = intrigue
+					multiply = -0.5
+				}
+			}
+		}
+	}
+}

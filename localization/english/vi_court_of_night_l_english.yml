@@ -1,39 +1,56 @@
 ﻿l_english:
 
- k_vi_court_of_night_article:0 "$DEFAULT_TITLE_NAME_ARTICLE$"
- k_vi_court_of_night:0 "Court of Night"
- k_vi_court_of_night_adj:0 "Night"
-
- d_vi_paris_article:0 "$DEFAULT_TITLE_NAME_ARTICLE$"
- d_vi_paris:0 "Princedom of Paris"
-
- d_vi_cologne_article:0 "$DEFAULT_TITLE_NAME_ARTICLE$"
- d_vi_cologne:0 "Princedom of Cologne"
-
- d_vi_lyon_article:0 "$DEFAULT_TITLE_NAME_ARTICLE$"
- d_vi_lyon:0 "Princedom of Lugdunum"
-
- d_vi_normandy_article:0 "$DEFAULT_TITLE_NAME_ARTICLE$"
- d_vi_normandy:0 "Princedom of Rouen"
-
- d_vi_zurich_article:0 "$DEFAULT_TITLE_NAME_ARTICLE$"
- d_vi_zurich:0 "Abbey of Fraumünster"
-
- d_nf_vi_montmartre: "$dynn_vi_Montmartre$ Family"
+ k_vi_court_of_night_article: "$DEFAULT_TITLE_NAME_ARTICLE$"
+ k_vi_court_of_night: "Court of Night"
+ k_vi_court_of_night_adj: "Night"
  d_nf_vi_montmartre_article: "$DEFAULT_TITLE_NAME_ARTICLE$"
- d_nf_vi_normandy: "House of Neustria"
- d_nf_vi_normandy_article: "$DEFAULT_TITLE_NAME_ARTICLE$"
- d_nf_vi_lyon: "Lugdunum Family"
- d_nf_vi_lyon_article: "$DEFAULT_TITLE_NAME_ARTICLE$"
- d_nf_vi_cologne: "House of Cologne"
+ d_nf_vi_montmartre: "$dynn_vi_Montmartre$ Family"
+
+ #d_vi_paris_article: "$DEFAULT_TITLE_NAME_ARTICLE$"
+ d_vi_paris: "Paris"
+
+
+ #d_vi_cologne_article: "$DEFAULT_TITLE_NAME_ARTICLE$"
+ d_vi_cologne: $c_cologne$
+ d_vi_cologne_adj: $c_cologne_adj$
  d_nf_vi_cologne_article: "$DEFAULT_TITLE_NAME_ARTICLE$"
+ d_nf_vi_cologne: "House of Cologne"
+
+ #d_vi_lyon_article: "$DEFAULT_TITLE_NAME_ARTICLE$"
+ d_vi_lyon: "Lugdunum"
+ d_vi_lyon_adj: "Lugdunum"
+ d_nf_vi_lyon_article: "$DEFAULT_TITLE_NAME_ARTICLE$"
+ d_nf_vi_lyon: "Lugdunum Administration"
+
+ #d_vi_london_article: "$DEFAULT_TITLE_NAME_ARTICLE$"
+ vi_streets: "Streets"
+ d_vi_london: "London"
+ d_vi_london_adj: "London"
+ d_nf_vi_london_article: "$DEFAULT_TITLE_NAME_ARTICLE$"
+ d_nf_vi_london: "London Urchins"
+
+ #d_vi_normandy_article: "$DEFAULT_TITLE_NAME_ARTICLE$"
+ d_vi_normandy: "Rouen"
+ d_vi_normandy_adj: "Rouen"
+ d_nf_vi_normandy_article: "$DEFAULT_TITLE_NAME_ARTICLE$"
+ d_nf_vi_normandy: "House of Neustria"
+
+ #d_vi_zurich_article: "$DEFAULT_TITLE_NAME_ARTICLE$"
+ d_vi_zurich: "Abbey of Fraumünster"
+ 
+ d_vi_orleans: "Orléans"
+ d_vi_orleans_adj: "Orléanais"
+ d_nf_vi_orlok_article: "$DEFAULT_TITLE_NAME_ARTICLE$
+ d_nf_vi_orlok: "Orlok Family"
 
 
-
- Esclarmonde:0 "Esclarmonde"
+ Esclarmonde: "Esclarmonde"
  vi_historical_character.esclarmonde: "Esclarmonde's origins have been meticulously buried by the Queen herself."
+ nick_vi_queenofthenight: "the Queen of the Night"
+ nick_vi_queenofthenight_desc: "Civilization was brought to the nights of Gaul not through the blade or fang, but through unearthly charm and keen insight."
 
- nick_vi_queenofthenight:0 "the Queen of the Night"
- nick_vi_queenofthenight_desc:1 "Civilization was brought to the nights of Gaul not through the blade or fang, but through unearthly charm and keen insight."
+ nick_vi_princeofurchins: "the Prince of Urchins"
+ nick_vi_shadowless: "the Shadowless"
 
- nick_vi_princeofurchins:0 "the Prince of Urchins"
+
+ vi_artifact_durendal_description: "An ancient weapon whose origins have long be lost to history. The blade is indestructible and shears through boulders with consummate ease."

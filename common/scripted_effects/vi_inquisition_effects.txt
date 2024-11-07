@@ -123,6 +123,32 @@ vi_inquisition_imprison_effect = {
 	}
 }
 
+vi_inquisition_defection_effect = {
+	custom_tooltip = vi_mortals_defect_tooltip
+	every_maa_regiment = {
+		limit = {
+			NOT = {
+				vi_is_vampire_maa = yes
+			}
+		}
+
+		random_list = {
+			50 = {
+				#nothing happnes
+			}
+			40 = {
+				change_maa_regiment_size = {
+					size = -2
+					reinforce = no
+				}
+			}
+			10 = {
+				destroy_maa_regiment = yes
+			}
+		}
+	}
+}
+
 vi_inquisition_spawn_vampire_army_effect = {
 	save_scope_as = vampire_leader
 	spawn_army = {

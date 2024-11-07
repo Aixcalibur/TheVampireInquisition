@@ -88,7 +88,9 @@
 				return_to_court = yes
 			}
 		}
+
 		create_noble_family_effect = yes
+		
 		hidden_effect = {
 			# Return any escaped courtiers.
 			every_in_list = {
@@ -173,6 +175,8 @@ vi_adventure_create_princedom_effect = {
 	# Note our courtiers so that they don't escape.
 	every_courtier = { add_to_list = courtiers_list }
 	destroy_laamp_effect = { ADVENTURER = scope:actor }
+
+	#vi_create_noble_family_effect = yes
 	
 	create_dynamic_title = {
 		tier = kingdom
@@ -201,9 +205,14 @@ vi_adventure_create_princedom_effect = {
 	
 	resolve_title_and_vassal_change = scope:change
 
-	change_government = vi_vampire_government
+	every_held_title = {
+		limit = {
+			is_noble_family_title = yes
+		}
+		set_capital_county = scope:vi_title_county
+	}
 
-	# create_noble_family_effect = yes
+	change_government = vi_vampire_government
 
 	hidden_effect = {
 		# Return any escaped courtiers.
@@ -300,11 +309,13 @@ vi_create_noble_family_effect = {
 
 	debug_log = create_noble_family_title
 
-	$VI_COUNTY$ = {
-		save_scope_as = vi_title_county
-	}
+	# $VI_COUNTY$ = {
+	# 	save_scope_as = vi_title_county
+	# }
 
 	save_scope_as = new_noble_family_holder
+	save_scope_as = founder
+
 	hidden_effect = { # NF can only be held by house heads
 		house ?= {
 			if = {
@@ -319,6 +330,137 @@ vi_create_noble_family_effect = {
 		}
 	}
 
+	if = {
+		limit = {
+			vi_is_vampire_trigger = yes
+		}
+
+		create_dynamic_title = {
+			tier = duchy
+			#article = DEFAULT_TITLE_NAME_ARTICLE
+			name = noble_family_name
+		}
+		create_title_and_vassal_change = {
+			type = created
+			save_scope_as = change
+			add_claim_on_loss = no
+		}
+		scope:new_title = {
+			change_title_holder = {
+				holder = scope:founder
+				change = scope:change
+			}
+			#set_capital_county = scope:vi_title_county
+			#set_coa = scope:vi_title_county
+			set_landless_title = yes
+			set_definitive_form = yes
+			# set_noble_family = yes #Not sure if this is a thing
+			# add_title_law = vi_vampire_elective_succession_law
+		}
+
+		resolve_title_and_vassal_change = scope:change
+	}
+
+	give_noble_family_title = {
+		name = noble_family_name
+		#article = DEFAULT_TITLE_NAME_ARTICLE
+		save_scope_as = new_title
+	}
+
+	scope:new_title = {
+		holder = {
+			save_scope_as = noble_family_head
+		}
+		set_coa = scope:noble_family_head.house
+
+		# if = {
+		# 	limit = {
+		# 		exists = scope:vi_title_county
+		# 	}
+		# 	set_capital_county = scope:vi_title_county
+		# }
+	}
+
+
+	custom_description = {
+		text = create_noble_family_tt
+	}
+
+	#Notifications
+	# top_liege ?= {
+	# 	every_vassal = {
+	# 		limit = {
+	# 			is_ai = no
+	# 			NOT = { this = scope:new_noble_family_holder }
+	# 		}
+	# 		trigger_event = {
+	# 			id = ep3_emperor_yearly.2410
+	# 			days = 1
+	# 		}
+	# 	}
+	# }
+
+	debug_log_scopes = yes
+}
+
+vi_create_noble_family_effect_alt = {
+
+	#debug_log = create_noble_family_title
+
+	# $VI_COUNTY$ = {
+	# 	save_scope_as = vi_title_county
+	# }
+
+	save_scope_as = new_noble_family_holder
+	save_scope_as = founder
+
+	hidden_effect = { # NF can only be held by house heads
+		house ?= {
+			if = {
+				limit = { house_head != scope:new_noble_family_holder }
+				scope:new_noble_family_holder = {
+					found_cadet_house_decision_effect = {
+						CHARACTER = scope:new_noble_family_holder
+						PRESTIGE = 0
+					}
+				}
+			}
+		}
+	}
+
+	# if = {
+	# 	limit = {
+	# 		NOT = {
+	# 			government_allows = administrative
+	# 		}
+	# 	}
+
+	# 	create_dynamic_title = {
+	# 		tier = duchy
+	# 		#article = DEFAULT_TITLE_NAME_ARTICLE
+	# 		name = noble_family_name
+	# 	}
+	# 	create_title_and_vassal_change = {
+	# 		type = created
+	# 		save_scope_as = change
+	# 		add_claim_on_loss = no
+	# 	}
+	# 	scope:new_title = {
+	# 		change_title_holder = {
+	# 			holder = scope:founder
+	# 			change = scope:change
+	# 		}
+	# 		#set_capital_county = scope:vi_title_county
+	# 		#set_coa = scope:vi_title_county
+	# 		set_landless_title = yes
+	# 		set_definitive_form = yes
+	# 		set_noble_family = yes #Not sure if this is a thing
+	# 		# add_title_law = vi_vampire_elective_succession_law
+	# 	}
+
+	# 	resolve_title_and_vassal_change = scope:change
+	# }
+
 	give_noble_family_title = {
 		name = noble_family_name
 		article = DEFAULT_TITLE_NAME_ARTICLE
@@ -331,12 +473,12 @@ vi_create_noble_family_effect = {
 		}
 		set_coa = scope:noble_family_head.house
 
-		if = {
-			limit = {
-				exists = scope:vi_title_county
-			}
-			set_capital_county = scope:vi_title_county
-		}
+		# if = {
+		# 	limit = {
+		# 		exists = scope:vi_title_county
+		# 	}
+		# 	set_capital_county = scope:vi_title_county
+		# }
 	}
 
 

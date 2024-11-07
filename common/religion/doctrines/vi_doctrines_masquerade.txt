@@ -1,5 +1,5 @@
 ﻿doctrine_vi_masquerade = {
-	group = "main_group"
+	group = "crimes"
 	is_available_on_create = {
 		religion_tag = vi_vampire_religion
 	}
@@ -13,13 +13,15 @@
 			}
 		}
 		parameters = {
-			vi_masquerade
+			vi_masquerade = yes
+			hostility_override_vi_masquerade_required = 1
+			hostility_override_vi_masquerade_not_required = 3
 		}
 	}
 
 	vi_masquerade_not_required = {
 		piety_cost = {
-			value = faith_doctrine_cost_low
+			value = 6000
 			if = {
 				limit = { has_doctrine = vi_masquerade_not_required }
 				multiply = 0
@@ -27,7 +29,9 @@
 		}
 		
 		parameters = {
-			vi_no_masquerade
+			vi_no_masquerade = yes
+			hostility_override_vi_masquerade_required = 2
+			hostility_override_vi_masquerade_not_required = 1
 		}
 	}
 }

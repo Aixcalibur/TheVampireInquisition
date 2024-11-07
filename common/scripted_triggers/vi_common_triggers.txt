@@ -15,6 +15,13 @@ vi_is_vampire_accepting_trigger = {
 	}
 }
 
+vi_is_vampire_maa = { #Relevant for defecting MaA
+	OR = {
+		is_maa_type = vi_vampire_bats
+		is_maa_type = vi_elite_vampires
+	}
+}
+
 vi_knows_about_vampires_trigger = {
 	OR = {
 		vi_is_vampire_trigger = yes
@@ -31,7 +38,16 @@ vi_can_have_vampire_succession_law_trigger = {
 vi_is_suspicious_of = {
 	has_opinion_modifier = {
 		modifier = suspicion_opinion
-		target = scope:target
+		target = $TARGET$
+	}
+}
+
+has_focus_vi_vampire = {
+	OR = {
+		has_focus = vi_vampire_adventurer_focus
+		has_focus = vi_vampire_charm_focus
+		has_focus = vi_vampire_insight_focus
+		has_focus = vi_vampire_will_focus
 	}
 }
 
@@ -50,7 +66,7 @@ vi_ep3_laamp_diplo_range_extended_trigger = {
 				$TARGET$.host.capital_province ?= {
 					squared_distance = {
 						target = $LAAMP$.domicile.domicile_location
-						value < 50000
+						value < 100000
 					}
 				}
 			}
@@ -62,7 +78,7 @@ vi_ep3_laamp_diplo_range_extended_trigger = {
 				$TARGET$.location ?= {
 					squared_distance = {
 						target = $LAAMP$.domicile.domicile_location
-						value < 50000
+						value < 100000
 					}
 				}
 			}
@@ -70,11 +86,59 @@ vi_ep3_laamp_diplo_range_extended_trigger = {
 				$TARGET$.capital_province ?= {
 					squared_distance = {
 						target = $LAAMP$.domicile.domicile_location
-						value < 50000
+						value < 100000
 					}
 				}
 			}
 		}
 		trigger_else = { always = no }
+	}
+}
+
+vi_is_Disian_trigger = {
+	OR = {
+		has_character_modifier = vi_Disian_modifier
+		dynasty ?= {
+			has_dynasty_modifier = vi_Disian_modifier
+		}
+		house ?= {
+			has_house_modifier = vi_Disian_modifier
+		}
+	}
+}
+
+vi_is_Anunnaki_trigger = {
+	OR = {
+		has_character_modifier = vi_Anunnaki_modifier
+		dynasty ?= {
+			has_dynasty_modifier = vi_Anunnaki_modifier
+		}
+		house ?= {
+			has_house_modifier = vi_Anunnaki_modifier
+		}
+	}
+}
+
+vi_is_Nosferatu_trigger = {
+	OR = {
+		has_character_modifier = vi_Nosferatu_modifier
+		dynasty ?= {
+			has_dynasty_modifier = vi_Nosferatu_modifier
+		}
+		house ?= {
+			has_house_modifier = vi_Nosferatu_modifier
+		}
+	}
+}
+
+vi_is_Strix_trigger = {
+	OR = {
+		has_character_modifier = vi_Strix_modifier
+		dynasty ?= {
+			has_dynasty_modifier = vi_Strix_modifier
+		}
+		house ?= {
+			has_house_modifier = vi_Strix_modifier
+		}
 	}
 }

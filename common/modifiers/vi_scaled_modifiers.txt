@@ -1,0 +1,34 @@
+﻿vi_vampire_arrogance_modifier = {
+	icon = county_modifier_opinion_mixed
+	opinion_of_liege = -1
+	scale = vi_arrogance_value
+}
+
+vi_heavy_capital_wealth_modifier = {
+	icon = economy_positive
+	monthly_income = 0.1
+	domicile_monthly_gold_mult = 0.02
+	scale = primary_title.title_capital_county.development_level
+}
+
+vi_balanced_capital_wealth_modifier = {
+	icon = economy_positive
+	monthly_income = 0.05
+	domicile_monthly_gold_mult = 0.01
+	scale = primary_title.title_capital_county.development_level
+}
+
+vi_light_capital_wealth_modifier = {
+	icon = economy_positive
+	monthly_income = 0.02
+	domicile_monthly_gold_mult = 0.005
+	scale = primary_title.title_capital_county.development_level
+}
+
+vi_invest_capital_wealth_modifier = {
+	icon = economy_positive
+	#monthly_income = 0.01
+	domicile_monthly_gold_mult = 0.01
+	monthly_dynasty_prestige = 0.05
+	scale = primary_title.title_capital_county.development_level
+}

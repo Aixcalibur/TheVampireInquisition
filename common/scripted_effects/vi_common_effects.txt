@@ -9,8 +9,18 @@
 	add_secret = {
 		type = secret_vi_vampire
 	}
+	random_secret = { #Find the secret
+		limit = {
+			secret_type = secret_vi_vampire
+		}
+		disable_exposure_by = prev
+	}
 
 	add_character_modifier = vi_unnatural_youth_modifier
+
+	hidden_effect = {
+		vi_remove_nonvampire_traits_effect = yes
+	}
 
 	# Make it so vampires don't get the vanilla stress events any more
 	# EDIT: Actually, we'll just place this on the stress_on_action
@@ -19,6 +29,16 @@
 	# add_character_flag = stress_threshold_event_1_cooldown
 
 	# set_sexuality = asexual
+}
+
+vi_remove_nonvampire_traits_effect = {
+	remove_trait = vi_dhampir
+	remove_trait = incapable
+	remove_trait = inappetetic
+	remove_trait = comfort_eater
+	remove_trait = drunkard
+	remove_trait = hashishiyah
+	remove_trait = rakish
 }
 
 vi_recenter_domicile_effect = {
@@ -78,6 +98,9 @@ vi_turn_into_vampire_effect = {
 		if = {
 			limit = {
 				vi_is_vampire_trigger = no
+				NOT = {
+					has_trait = vi_dhampir
+				}
 			}
 
 			hidden_effect = {
@@ -121,20 +144,36 @@ vi_turn_into_vampire_effect = {
 				modifier = vi_skittish_modifier
 				years = 20
 			}
-
-			set_immortal_age = scope:vi_target.age
+			if = {
+				limit = {
+					scope:vi_target = {
+						age < 25
+					}
+				}
+				set_immortal_age = scope:vi_target.age
+			}
 
 			scope:vi_vampire = {
 				adopt = scope:vi_target
 			}
-			set_character_faith = scope:vi_vampire.faith
+			# set_character_faith = scope:vi_vampire.faith
 			# set_house = scope:vi_vampire.house
 		}
 	}
 }
 
 vi_become_dormant_effect = {
+
+	remove_character_modifier = vi_vampire_madness_modifier
+	remove_character_modifier = vi_vampire_strain_modifier
+	remove_character_modifier = vi_vampire_tiredness_modifier
+	add_stress = -1000
 	add_trait = vi_dormant
+
+	add_character_flag = {
+		flag = vi_recent_dormant
+		years = 50
+	}
 
 	if = {
 		limit = {
@@ -176,7 +215,6 @@ vi_become_dormant_effect = {
 		end_scheme = yes
 	}
 }
-
 
 vi_add_stacking_modifier_effect = {
 	if = {
@@ -243,5 +281,205 @@ vi_secret_exposed_vampire_effect = {
 			}
 			
 		}	
+	}
+}
+
+vi_hostile_scheme_monthly_discovery_chance_effect = {
+	# If we're in the first X months of a scheme, give a grace period.
+	if = {
+		limit = {
+			has_variable = secrecy_grace_period
+			var:secrecy_grace_period >= 1
+		}
+		change_variable = {
+			name = secrecy_grace_period
+			add = -1
+		}
+	}
+	# Otherwise we want to start checking for discovery.
+	else_if = {
+		# Without a spymaster, you can't discover schemes.
+		## This isn't tooltipped for the person doing the scheming: communicating it (and when it turns on, and when it turns off) would be erratic and spammy, so we just let them think they're getting nice'n'lucky.
+		limit = {
+			scope:scheme = {
+				# Character
+				trigger_if = {
+					limit = { exists = scheme_target_character.host }
+					scheme_target_character.host = { save_temporary_scope_as = breach_host_temp }
+				}
+				# Title
+				trigger_else_if = {
+					limit = { exists = scheme_target_title.holder }
+					scheme_target_title.holder = { save_temporary_scope_as = breach_host_temp }
+				}
+				# Fallback
+				trigger_else = { always = no }
+				scope:breach_host_temp ?= {
+					# Second for Adventurers
+					trigger_if = { 
+						limit = { is_landless_adventurer = yes }
+						court_position:second_camp_officer ?= { save_temporary_scope_as = breach_maker_temp }
+					}
+					# Spymaster for everyone else
+					trigger_else = {
+						cp:councillor_spymaster ?= { save_temporary_scope_as = breach_maker_temp }
+					}
+				}
+			}
+		}
+		# Sort scopes.
+		## Vs. titles.
+		if = {
+			limit = { exists = scope:target.holder }
+			scope:target.holder = { save_scope_as = target_character }
+		}
+		## Vs. characters.
+		else = {
+			scope:target = { save_scope_as = target_character }
+		}
+		## Nab the spymaster too.
+		scope:breach_maker_temp = { save_scope_as = spymaster }
+		# Alright, now we roll for discovery.
+		# Save chance for simple debugging
+		save_scope_value_as = {
+			name = discovery_chance
+			value = monthly_scheme_discovery_chance_value
+		}
+		## ... if scope:target lives at scope:owner's court.
+		if = {
+			limit = {
+				scope:breach_host_temp = scope:owner
+				NOT = { exists = scope:scheme.var:had_self_court_discovery }
+			}
+			random = {
+				chance = scope:discovery_chance
+				# Either increment breaches.
+				if = {
+					limit = { scheme_breaches >= scheme_breaches_about_to_hit_limit_value }
+					increment_breaches_with_message_effect = yes
+				}
+				# Or expose us generally.
+				else = {
+					add_scheme_breach = 1
+					scheme_owner = { play_sound_effect = "event:/DLC/EP3/SFX/Stingers/Scheme_Rework/ep3_mx_sting_schemerework_scheme_suffering_breaches" }
+					set_variable = {
+						name = had_self_court_discovery
+						value = yes
+						years = 3
+					}
+					scope:owner = {
+						if = {
+							limit = {
+								scope:scheme = { is_savable_murder_scheme_trigger = yes }
+							}
+							trigger_event = hostile_scheme_discovery.4002
+						}
+						else_if = {
+							limit = {
+								scope:scheme = {
+									scheme_type = vi_investigate
+								}
+							}
+							trigger_event = vi_investigate_secrets.011
+						}
+						else = { trigger_event = hostile_scheme_discovery.4001 }
+					}
+					# Flag that we're discovering something so that on-going events don't fire.
+					save_scope_value_as = {
+						name = discovery_event_happening
+						value = yes
+					}
+				}
+			}
+		}
+		## ... otherwise they're at different courts.
+		else_if = {
+			limit = {
+				NOR = {
+					# Spymaster won't expose their own Scheme
+					scope:owner = scope:spymaster
+					# Spymaster won't expose *your* (liege's) Scheme
+					scope:owner = scope:spymaster.liege
+					# Spymaster won't expose a scheme if they are an agent of it
+					## Secrecy is still relevant, you can still be discovered, just not on the monthly tick.
+					scheme_is_character_agent = scope:spymaster
+				}
+			}
+			# Roll to see whether we discover something.
+			random = {
+				chance = scope:discovery_chance
+				# If the scheme isn't exposed, then we do that first.
+				if = {
+					limit = { is_scheme_exposed = no }
+					# Increment our breaches.
+					increment_breaches_with_message_effect = yes
+					# Fire off an actual warning event.
+					scope:target_character.host ?= { trigger_event = hostile_scheme_discovery.2001 }
+					# Flag that we're discovering something so that on-going events don't fire.
+					save_scope_value_as = {
+						name = discovery_event_happening
+						value = yes
+					}
+				}
+				# Else, that means we've hit the limit for the scheme, so we discover and destroy it.
+				else_if = {
+					limit = { scheme_breaches >= scheme_breaches_about_to_hit_limit_value }
+					# Don't forget to increment breaches to max.
+					add_scheme_breach = 1
+					scheme_owner = { play_sound_effect = "event:/DLC/EP3/SFX/Stingers/Scheme_Rework/ep3_mx_sting_schemerework_scheme_suffering_breaches" }
+					# Fire off the correct event.
+					if = {
+						limit = {
+							scope:scheme = {
+								scheme_type = vi_investigate
+							}
+						}
+						scope:target_character.host ?= { trigger_event = vi_investigate_secrets.012 }
+					}
+					else = {
+						scope:target_character.host ?= { trigger_event = hostile_scheme_discovery.1002 }
+					}
+					
+					# Flag that we're discovering something so that on-going events don't fire.
+					save_scope_value_as = {
+						name = discovery_event_happening
+						value = yes
+					}
+				}
+				# Otherwise, we want to discover an agent.
+				else = {
+					# Increment our breaches.
+					increment_breaches_with_message_effect = yes
+					# And reveal an agent, if we can.
+					if = {
+						limit = {
+							any_scheme_agent_character = {
+								is_alive = yes
+								agent_valid_to_be_discovered_by_spymaster = yes
+							}
+						}
+						ordered_scheme_agent_character = {
+							limit = {
+								is_alive = yes
+								agent_valid_to_be_discovered_by_spymaster = yes
+							}
+							# Get the least stealthy agent.
+							order_by = {
+								value = 100
+								subtract = intrigue
+							}
+							save_scope_as = agent
+						}
+						# If we have a candidate, reveal them.
+						scope:target_character.host ?= { trigger_event = hostile_scheme_discovery.1001 }
+						# Flag that we're discovering something so that on-going events don't fire.
+						save_scope_value_as = {
+							name = discovery_event_happening
+							value = yes
+						}
+					}
+				}
+			}
+		}
 	}
 }

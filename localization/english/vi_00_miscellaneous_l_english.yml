@@ -1,0 +1,9 @@
+﻿l_english:
+ game_concept_vi_suspicion: "Suspicion"
+ game_concept_vi_suspicions: "Suspicions"
+ game_concept_vi_suspicious: "Suspicious"
+ game_concept_vi_suspicion_desc: "Many actions as a [vampire|e] cause mortals to gain a negative Suspicious [opinion|e]. Mortals that are suspicious of a [vampire|e] are able to use the [GetScheme('vi_investigate').GetTypeName] [scheme|e] to try to learn their [vampire|e] [secret|e] and expose them as a [vampire|e]. Landed [rulers|e] are more vulnerable to a [GetScheme('vi_investigate').GetTypeName] [scheme|e]."
+
+ game_concept_dhampir: "Dhampir"
+ game_concept_dhampirs: "Dhampirs"
+ game_concept_dhampir_desc: "Characters with the [GetTrait('vi_dhampir').GetName( GetNullCharacter )] trait are mortals with at least one [vampire|E] parent. This is possible when a [vampire|E] unnaturally stimulates the fertility of their undead body. Due to their heritage, they are more resistant to supernatural powers, but cannot gain true vampirism."

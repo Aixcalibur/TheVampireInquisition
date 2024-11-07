@@ -2,7 +2,7 @@
 vi_declare_inquisition_interaction = {
 	interface_priority = 90
 	category = interaction_category_admin
-	use_diplomatic_range = no
+	use_diplomatic_range = yes
 	ignores_pending_interaction_block = yes
 	icon = icon_raid_estate
 
@@ -11,13 +11,14 @@ vi_declare_inquisition_interaction = {
 		scope:recipient = {
 			is_ruler = yes
 			is_landed = no
-			OR = {
-				has_trait = vi_exposed_vampire
-				any_secret = {
-					secret_type = secret_vi_vampire
-					is_known_by = scope:actor
-				}
-			}
+			has_trait = vi_exposed_vampire
+			# OR = {
+			# 	has_trait = vi_exposed_vampire
+			# 	# any_secret = {
+			# 	# 	secret_type = secret_vi_vampire
+			# 	# 	is_known_by = scope:actor
+			# 	# }
+			# }
 			NOT = {
 				has_character_flag = vi_inquisition_target
 			}
@@ -102,14 +103,171 @@ vi_declare_inquisition_interaction = {
 	# }
 	on_accept = {
 		scope:recipient = {
-			
+			add_opinion = {
+				target = scope:actor
+				modifier = vi_started_inquisition_opinion
+			}
+			hidden_effect = {
+				every_close_family_member = {
+					if = {
+						limit = {
+							vi_is_vampire_trigger = yes
+						}
+						add_opinion = {
+							target = scope:actor
+							modifier = vi_started_inquisition_opinion
+						}
+					}
+				}
+	
+				every_vassal_or_below = {
+					if = {
+						limit = {
+							vi_is_vampire_trigger = yes
+						}
+						add_opinion = {
+							target = scope:actor
+							modifier = vi_started_inquisition_opinion
+						}
+					}
+				}
+			}
 		}
 
 		scope:actor = {
 			add_prestige = -250
 			add_piety = -250
 			custom_description = {
-				text = x
+				text = vi_starts_inquisition_desc
+				trigger_event = vi_inquisition.0001
+			}
+		}
+	}
+	auto_accept = yes
+}
+
+vi_declare_inquisition_landless_interaction = {
+	interface_priority = 90
+	category = interaction_category_admin
+	use_diplomatic_range = yes
+	ignores_pending_interaction_block = yes
+	icon = icon_raid_estate
+
+	is_shown = {
+		NOT = { scope:recipient = scope:actor }
+		scope:recipient = {
+			is_ruler = yes
+			is_landed = no
+			NOT = {
+				has_character_flag = vi_inquisition_target
+			}
+		}
+
+		scope:actor = {
+			is_ruler = yes
+			is_landless_adventurer = yes
+			has_trait = vi_inquisitor
+			#any_sub_realm_county = scope:recipient.capital_county
+		}
+	}
+
+	is_valid_showing_failures_only = {
+		
+		scope:recipient = {
+			OR = {
+				has_trait = vi_exposed_vampire
+				any_secret = {
+					secret_type = secret_vi_vampire
+					is_known_by = scope:actor
+				}
+			}
+		}
+
+		scope:actor = {
+
+			custom_description = {
+				text = "is_not_bankrupt"
+				gold > 0
+			}
+
+			NOT = {
+				custom_description = {
+					text = "is_in_an_activity"
+					exists = involved_activity
+				}
+			}
+			trigger_if = {
+				limit = {
+					culture = { has_cultural_parameter = cannot_attack_allies }
+				}
+				NOT = {
+					is_allied_to = scope:recipient
+				}
+			}
+			trigger_if = {
+				limit = {
+					culture = { has_cultural_parameter = cannot_attack_truces }
+				}
+				NOT = {
+					has_truce = scope:recipient
+				}
+			}
+			is_imprisoned = no
+		}
+
+		scope:recipient = { NOT = { has_strong_hook = scope:actor } }
+		scope:recipient = {
+			trigger_if = {
+				limit = { is_imprisoned = yes }
+				NOT = {
+					imprisoner = scope:actor
+				}
+			}
+		}
+	}
+
+	cost = {
+		piety = 500
+		prestige = 500
+	}
+
+	on_accept = {
+		scope:recipient = {
+			add_opinion = {
+				target = scope:actor
+				modifier = vi_started_inquisition_opinion
+			}
+
+			hidden_effect = {
+				every_close_family_member = {
+					if = {
+						limit = {
+							vi_is_vampire_trigger = yes
+						}
+						add_opinion = {
+							target = scope:actor
+							modifier = vi_started_inquisition_opinion
+						}
+					}
+				}
+	
+				every_vassal_or_below = {
+					if = {
+						limit = {
+							vi_is_vampire_trigger = yes
+						}
+						add_opinion = {
+							target = scope:actor
+							modifier = vi_started_inquisition_opinion
+						}
+					}
+				}
+			}
+		}
+
+		scope:actor = {
+			custom_description = {
+				text = vi_starts_inquisition_desc
 				trigger_event = vi_inquisition.0001
 			}
 		}

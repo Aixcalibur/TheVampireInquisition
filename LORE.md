@@ -33,4 +33,4 @@ The role of Holy Artifacts is to provide a significant and plausible threat to v
 * In terms of gameplay effects, this means that vampires will be unable to directly attack mortals with **Holy Artifacts** equipped.
 
 ### Michael the Archangel
-Sleeping in a hidden crypt in Rome is an immensely powerful vampire who identifies himself as Michael the Archangel. Considered by many vampires to be insane, Michael exclusively feeds on other vampires and considers it his personal mission to devour vampires that would threaten humanity at large. He acts like a lost resort and currently cannot be defeated by any means.
+Sleeping in a hidden crypt in Rome is an immensely powerful vampire who identifies himself as Michael the Archangel. Considered by many vampires to be insane, Michael exclusively feeds on other vampires and considers it his personal mission to devour vampires that would threaten humanity at large. He acts like a last resort and not meant to be beatable.

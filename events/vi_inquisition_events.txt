@@ -102,3 +102,105 @@ vi_inquisition.0002 = {
 		}
 	}
 }
+
+#Landless Inquisition
+vi_inquisition.1001 = {
+	type = character_event
+	title = vi_inquisition.1001.t
+	desc = vi_inquisition.1001.desc
+	
+	theme = war
+
+	left_portrait = {
+		character = scope:recipient
+		animation = war_defender
+	}
+
+	right_portrait = {
+		character = root
+		animation = war_attacker
+	}
+
+	trigger = {
+		
+	}
+
+	immediate = {
+		root = {
+			add_character_flag = vi_inquisition_leader
+			set_variable = {
+				name = vi_inquisition_targeting
+				value = scope:recipient
+			}
+		}
+		if = {
+			limit = {
+				NOT = {
+					exists = scope:recipient
+				}
+			}
+
+			# character:vi_esclarmonde = {
+			# 	save_scope_as = recipient
+				
+			# }
+		}
+		scope:recipient = {
+			add_character_flag = vi_inquisition_target
+			capital_county = {
+				holder = {
+					save_scope_as = vi_county_owner
+				}
+			}
+		}
+	}
+
+	option = {
+		name = vi_inquisition.1001.a
+
+		start_war = {
+			casus_belli = vi_inquisition_landless_war
+			target = scope:vi_county_owner
+		}
+
+		scope:recipient = {
+			trigger_event = {
+				id = vi_inquisition.1002
+			}
+		}
+	}
+}
+
+vi_inquisition.1002 = {
+	type = character_event
+	title = vi_inquisition.1002.t
+	desc = vi_inquisition.1002.desc
+	
+	theme = war
+
+	left_portrait = {
+		character = scope:recipient
+		animation = war_defender
+	}
+
+	right_portrait = {
+		character = scope:actor
+		animation = war_attacker
+	}
+
+	trigger = {
+		
+	}
+
+	immediate = {
+		show_as_tooltip = {
+			scope:war = {
+				add_defender = root
+			}
+		}
+	}
+
+	option = {
+		name = vi_inquisition.1002.a
+	}
+}

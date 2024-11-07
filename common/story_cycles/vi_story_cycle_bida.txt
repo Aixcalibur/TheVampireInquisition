@@ -105,6 +105,11 @@
 	}
 	
 	on_owner_death = {
+		story_owner.killer = {
+			vi_create_artifact_bida_head_effect = {
+				OWNER = this
+			}
+		}
 		end_story = yes
 	}
 	

@@ -1,0 +1,201 @@
+﻿vi_courtier_opinion_value = -50
+
+vi_relation_court_position_value = {
+	scope:employee = {
+		if = {
+			limit = {
+				is_close_or_extended_family_of = scope:liege
+			}
+			add = 60
+		}
+		if = {
+			limit = {
+				OR = {
+					has_relation_friend = scope:liege
+					has_relation_lover = scope:liege
+				}
+			}
+			add = 80
+		}
+	}
+}
+
+court_position_vi_galvanize_perk = {
+	if = {
+		limit = {
+			employer ?= { 
+				has_perk = vi_galvanize_perk 
+			}
+		}
+		add = {
+			value = employer.diplomacy
+			max = 25
+			desc = vi_galvanize_perk_bonus
+		}
+	}
+	if = {
+		limit = {
+			employer ?= { 
+				is_ai = yes
+			}
+		}
+		add = {
+			value = 40
+			desc = court_position_ai_bonus
+		}
+	}
+}
+
+court_position_vampire_tier = {
+	if = {
+		limit = {
+			has_trait = vi_vampire_3
+		}
+		add = {
+			value = 30
+			desc = court_position_vi_vampire_3_trait
+		}
+	}
+
+	if = {
+		limit = {
+			has_trait = vi_vampire_4
+		}
+		add = {
+			value = 50
+			desc = court_position_vi_vampire_4_trait
+		}
+	}
+}
+
+court_position_vampire_people_perks = {
+	value = 0
+	if = {
+		limit = { has_perk = vi_charm_perk }
+		add = 10
+	}
+	if = {
+		limit = { has_perk = vi_persuasion_perk }
+		add = 10
+	}
+	if = {
+		limit = { has_perk = vi_enthrall_perk }
+		add = 20
+	}
+	if = {
+		limit = { has_perk = vi_soothe_perk }
+		add = 10
+	}
+	if = {
+		limit = { has_perk = vi_galvanize_perk }
+		add = 5
+	}
+	if = {
+		limit = { has_perk = vi_presence_perk }
+		add = 15
+	}
+}
+
+court_position_vampire_insight_perks = {
+	value = 0
+	if = {
+		limit = { has_perk = vi_animal_speak_perk }
+		add = 10
+	}
+	if = {
+		limit = { has_perk = vi_animal_command_perk }
+		add = 10
+	}
+	if = {
+		limit = { has_perk = vi_auspex_perk }
+		add = 20
+	}
+	if = {
+		limit = { has_perk = vi_peopleofinterest_perk }
+		add = 5
+	}
+	if = {
+		limit = { has_perk = vi_heartsofmen_perk }
+		add = 10
+	}
+	if = {
+		limit = { has_perk = vi_propheticdreams_perk }
+		add = 5
+	}
+}
+
+court_position_vampire_prowess_perks = {
+	value = 0
+	if = {
+		limit = { has_perk = vi_presence_perk }
+		add = 5
+	}
+	if = {
+		limit = { has_perk = vi_celerity_perk }
+		add = 10
+	}
+	if = {
+		limit = { has_perk = vi_blink_perk }
+		add = 10
+	}
+	if = {
+		limit = { has_perk = vi_auspex_perk }
+		add = 5
+	}
+	if = {
+		limit = { has_perk = vi_fortitude_perk }
+		add = 5
+	}
+	if = {
+		limit = { has_perk = vi_strength_perk }
+		add = 10
+	}
+	if = {
+		limit = { has_perk = vi_regeneration_perk }
+		add = 10
+	}
+	if = {
+		limit = { has_perk = vi_shadowwalk_perk }
+		add = 20
+	}
+	if = {
+		limit = { has_perk = vi_storm_perk }
+		add = 20
+	}
+	if = {
+		limit = { has_perk = vi_transformation_perk }
+		add = 20
+	}
+}
+
+court_position_vampire_management_perks = {
+	value = 0
+	if = {
+		limit = { has_perk = vi_auspex_perk }
+		add = 10
+	}
+	if = {
+		limit = { has_perk = vi_peopleofinterest_perk }
+		add = 10
+	}
+	if = {
+		limit = { has_perk = vi_heartsofmen_perk }
+		add = 10
+	}
+	if = {
+		limit = { has_perk = vi_windfall_perk }
+		add = 10
+	}
+	if = {
+		limit = { has_perk = vi_mercantile_perk }
+		add = 10
+	}
+	if = {
+		limit = { has_perk = vi_guidance_perk }
+		add = 20
+	}
+	if = {
+		limit = { has_perk = vi_galvanize_perk }
+		add = 10
+	}
+}

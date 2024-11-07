@@ -1,7 +1,10 @@
 ﻿vi_bida_modifier = {
 	icon = magic_positive
 	monthly_income = 5
+	monthly_income_mult = 0.1
 }
+
+
 
 vi_holy_flames_modifier = {
 	icon = magic_positive

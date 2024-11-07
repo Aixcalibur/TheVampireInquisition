@@ -104,9 +104,9 @@ vi_vampire_insight_focus = {
 	}
 	
 	modifier = {
-		stewardship = -5
+		#stewardship = -5
 		monthly_lifestyle_xp_gain_mult = 0.25
-		stress_gain_mult = 0.1
+		stress_gain_mult = 0.2
 	}
 
 	auto_selection_weight = {

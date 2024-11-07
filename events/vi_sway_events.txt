@@ -74,6 +74,16 @@ vi_sway.1001 = {
 
 		trigger = {
 			has_perk = vi_charm_perk
+			scope:target = {
+				vi_has_holy_artifact_equipped_trigger = no
+			}
+		}
+
+		show_as_unavailable = {
+			has_perk = vi_charm_perk
+			scope:target = {
+				vi_has_holy_artifact_equipped_trigger = yes
+			}
 		}
 
 		add_character_modifier = {
@@ -193,6 +203,16 @@ vi_sway.1001 = {
 
 		trigger = {
 			has_perk = vi_galvanize_perk
+			scope:target = {
+				vi_has_holy_artifact_equipped_trigger = no
+			}
+		}
+
+		show_as_unavailable = {
+			has_perk = vi_galvanize_perk
+			scope:target = {
+				vi_has_holy_artifact_equipped_trigger = yes
+			}
 		}
 
 		add_character_modifier = {
@@ -326,6 +346,25 @@ vi_sway.2001 = {
 			NOT = {
 				has_hook = scope:target
 			}
+			scope:target = {
+				vi_has_holy_artifact_equipped_trigger = no
+			}
+		}
+
+		show_as_unavailable = {
+			has_perk = vi_persuasion_perk
+			scope:target = {
+				opinion = {
+					target = root
+					value >= 60
+				}
+			}
+			NOT = {
+				has_hook = scope:target
+			}
+			scope:target = {
+				vi_has_holy_artifact_equipped_trigger = yes
+			}
 		}
 
 		add_character_modifier = {
@@ -369,6 +408,20 @@ vi_sway.2001 = {
 
 	option = {
 		name = vi_sway.2001.b
+
+		trigger = {
+			has_perk = vi_soothe_perk
+			scope:target = {
+				vi_has_holy_artifact_equipped_trigger = no
+			}
+		}
+
+		show_as_unavailable = {
+			has_perk = vi_soothe_perk
+			scope:target = {
+				vi_has_holy_artifact_equipped_trigger = yes
+			}
+		}
 
 		add_character_modifier = {
 			modifier = vi_vampire_strain_modifier

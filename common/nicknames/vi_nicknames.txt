@@ -1,4 +1,6 @@
 ﻿
 nick_vi_queenofthenight = {}
 nick_vi_princeofurchins = {}
+nick_vi_shadowless = {}
+
 nick_vi_the_archangel = {}

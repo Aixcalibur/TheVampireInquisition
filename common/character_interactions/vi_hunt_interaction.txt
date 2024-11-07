@@ -71,6 +71,28 @@
 				LAAMP = scope:actor
 			}
 		}
+
+		scope:recipient = {
+			NOT = {
+				vi_has_holy_artifact_equipped_trigger = yes
+			}
+		}
+
+		trigger_if = {
+			limit = {
+				scope:recipient = {
+					OR = {
+						is_ruler = yes
+						AND = {
+							is_ruler = no
+							is_close_family_of = employer
+						}
+					}
+				}
+			}
+			always = no
+			custom_tooltip = vi_hunt_too_guarded_tt
+		}
 	}
 
 	desc = {
@@ -90,27 +112,27 @@
 
 	# Scheme Starter Packages
 	options_heading = schemes.t.agent_packages
-	send_options_exclusive = yes
-	## Balanced agents.
-	send_option = {
-		flag = agent_focus_balance
-		current_description = start_murder_interaction.tt.agent_focus_balance
-	}
-	## Focused on Success Chance.
-	send_option = {
-		flag = agent_focus_success
-		current_description = start_murder_interaction.tt.agent_focus_success
-	}
-	## Focused on Speed.
-	send_option = {
-		flag = agent_focus_speed
-		current_description = start_murder_interaction.tt.agent_focus_speed
-	}
-	## Focused on Secrecy.
-	send_option = {
-		flag = agent_focus_secrecy
-		current_description = start_murder_interaction.tt.agent_focus_secrecy
-	}
+	# send_options_exclusive = yes
+	# ## Balanced agents.
+	# send_option = {
+	# 	flag = agent_focus_balance
+	# 	current_description = start_murder_interaction.tt.agent_focus_balance
+	# }
+	# ## Focused on Success Chance.
+	# send_option = {
+	# 	flag = agent_focus_success
+	# 	current_description = start_murder_interaction.tt.agent_focus_success
+	# }
+	# ## Focused on Speed.
+	# send_option = {
+	# 	flag = agent_focus_speed
+	# 	current_description = start_murder_interaction.tt.agent_focus_speed
+	# }
+	# ## Focused on Secrecy.
+	# send_option = {
+	# 	flag = agent_focus_secrecy
+	# 	current_description = start_murder_interaction.tt.agent_focus_secrecy
+	# }
 
 	on_accept = {
 		scope:actor = {
@@ -128,73 +150,79 @@
 				left_icon = scope:actor					
 				right_icon = scope:recipient
 
-				# Success.
-				if = {
-					limit = { scope:agent_focus_success ?= yes }
-					begin_scheme_with_agents_effect = {
-						SCHEME_TYPE = vi_hunt
-						TARGET_TYPE = target_character
-						TARGET_SCOPE = scope:recipient
-						# Success.
-						AGENT_1 = agent_scout
-						AGENT_2 = agent_scout
-						AGENT_3 = agent_thug
-						# Speed.
-						AGENT_4 = agent_infiltrator
-						# Secrecy.
-						AGENT_5 = agent_decoy
-					}
+				begin_scheme_basic_effect = {
+					SCHEME_TYPE = vi_hunt
+					TARGET_TYPE = target_character
+					TARGET_SCOPE = scope:recipient
 				}
-				# Speed.
-				else_if = {
-					limit = { scope:agent_focus_speed ?= yes }
-					begin_scheme_with_agents_effect = {
-						SCHEME_TYPE = vi_hunt
-						TARGET_TYPE = target_character
-						TARGET_SCOPE = scope:recipient
-						# Speed.
-						AGENT_1 = agent_infiltrator
-						AGENT_2 = agent_infiltrator
-						AGENT_3 = agent_footpad
-						# Success.
-						AGENT_4 = agent_scout
-						# Secrecy.
-						AGENT_5 = agent_decoy
-					}
-				}
-				# Secrecy.
-				else_if = {
-					limit = { scope:agent_focus_secrecy ?= yes }
-					begin_scheme_with_agents_effect = {
-						SCHEME_TYPE = vi_hunt
-						TARGET_TYPE = target_character
-						TARGET_SCOPE = scope:recipient
-						# Secrecy.
-						AGENT_1 = agent_decoy
-						AGENT_2 = agent_decoy
-						AGENT_3 = agent_lookout
-						# Success.
-						AGENT_4 = agent_scout
-						# Speed.
-						AGENT_5 = agent_infiltrator
-					}
-				}
-				# Balanced.
-				else = {
-					begin_scheme_with_agents_effect = {
-						SCHEME_TYPE = vi_hunt
-						TARGET_TYPE = target_character
-						TARGET_SCOPE = scope:recipient
-						# Success.
-						AGENT_1 = agent_scout
-						AGENT_2 = agent_scout
-						# Speed.
-						AGENT_3 = agent_infiltrator
-						AGENT_4 = agent_footpad
-						# Secrecy.
-						AGENT_5 = agent_decoy
-					}
-				}
+
+				# # Success.
+				# if = {
+				# 	limit = { scope:agent_focus_success ?= yes }
+				# 	begin_scheme_with_agents_effect = {
+				# 		SCHEME_TYPE = vi_hunt
+				# 		TARGET_TYPE = target_character
+				# 		TARGET_SCOPE = scope:recipient
+				# 		# Success.
+				# 		AGENT_1 = agent_scout
+				# 		AGENT_2 = agent_scout
+				# 		AGENT_3 = agent_thug
+				# 		# Speed.
+				# 		AGENT_4 = agent_infiltrator
+				# 		# Secrecy.
+				# 		AGENT_5 = agent_decoy
+				# 	}
+				# }
+				# # Speed.
+				# else_if = {
+				# 	limit = { scope:agent_focus_speed ?= yes }
+				# 	begin_scheme_with_agents_effect = {
+				# 		SCHEME_TYPE = vi_hunt
+				# 		TARGET_TYPE = target_character
+				# 		TARGET_SCOPE = scope:recipient
+				# 		# Speed.
+				# 		AGENT_1 = agent_infiltrator
+				# 		AGENT_2 = agent_infiltrator
+				# 		AGENT_3 = agent_footpad
+				# 		# Success.
+				# 		AGENT_4 = agent_scout
+				# 		# Secrecy.
+				# 		AGENT_5 = agent_decoy
+				# 	}
+				# }
+				# # Secrecy.
+				# else_if = {
+				# 	limit = { scope:agent_focus_secrecy ?= yes }
+				# 	begin_scheme_with_agents_effect = {
+				# 		SCHEME_TYPE = vi_hunt
+				# 		TARGET_TYPE = target_character
+				# 		TARGET_SCOPE = scope:recipient
+				# 		# Secrecy.
+				# 		AGENT_1 = agent_decoy
+				# 		AGENT_2 = agent_decoy
+				# 		AGENT_3 = agent_lookout
+				# 		# Success.
+				# 		AGENT_4 = agent_scout
+				# 		# Speed.
+				# 		AGENT_5 = agent_infiltrator
+				# 	}
+				# }
+				# # Balanced.
+				# else = {
+				# 	begin_scheme_with_agents_effect = {
+				# 		SCHEME_TYPE = vi_hunt
+				# 		TARGET_TYPE = target_character
+				# 		TARGET_SCOPE = scope:recipient
+				# 		# Success.
+				# 		AGENT_1 = agent_scout
+				# 		AGENT_2 = agent_scout
+				# 		# Speed.
+				# 		AGENT_3 = agent_infiltrator
+				# 		AGENT_4 = agent_footpad
+				# 		# Secrecy.
+				# 		AGENT_5 = agent_decoy
+				# 	}
+				# }
 			}
 			# Plus any on_start modifiers we may need.
 			if = {
@@ -215,5 +243,5 @@
 	
 	auto_accept = yes
 
-	# AI for murders is handled in event murder_scheme_maintenance.1, fired from the five_year_playable_pulse
+	# Going to make it so hunts only happen when something special triggers it, partly for performance reasons
 }

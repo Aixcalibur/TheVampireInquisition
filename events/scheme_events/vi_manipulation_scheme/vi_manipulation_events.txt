@@ -1,0 +1,1125 @@
+﻿namespace = vi_manipulation
+
+scripted_trigger vi_bp1_yearly_3100_is_skilled_courtier_trigger = {
+	is_available_healthy_ai_adult = yes
+	is_landed = no
+	OR = {
+		diplomacy > high_skill_rating
+		martial > high_skill_rating
+		stewardship > high_skill_rating
+		intrigue > high_skill_rating
+		learning > high_skill_rating
+		prowess > high_skill_rating
+	}
+	trigger_if = {
+		limit = { exists = liege }
+		NOR = {
+			is_spouse_of = liege
+			is_heir_of = liege
+			is_councillor_of = liege
+		}
+		liege = { is_available_ai_adult = yes }
+	}
+	trigger_else = {
+		NOR = {
+			is_spouse_of = employer
+			is_heir_of = employer
+			is_councillor_of = employer
+		}
+		employer = { is_available_ai_adult = yes }
+	}
+}
+
+
+vi_manipulation.0001 = {
+	hidden = yes
+
+	immediate = {
+		vi_generic_scheme_process_ending_effect = {
+			RESULTS_TOOLTIP = vi_manipulation_successful_roll_tt
+			SUCCESS_EVENT_TYPE = on_action
+			SUCCESS_EVENT_ID = vi_manipulation_success_on_action
+			FAILURE_EVENT_TYPE = on_action
+			FAILURE_EVENT_ID = vi_manipulation_failure_on_action
+		}
+	}
+}
+
+vi_manipulation.0010 = { #Purpose
+	type = character_event
+	title = vi_manipulation.0010.t #Political Objectives
+	desc = vi_manipulation.0010.desc
+
+	theme = realm
+
+	left_portrait = {
+		character = scope:owner
+		animation = personality_callous
+	}
+
+	right_portrait = {
+		character = scope:target
+		animation = fear
+	}
+
+	trigger = {
+		
+	}
+
+	immediate = {
+		
+	}
+
+	option = {
+		name = vi_manipulation.1010.a
+
+		custom_tooltip = vi_manipulation.0010.a.tt
+
+		scope:scheme = {
+			set_variable = {
+				name = vi_scheme_goal
+				value = flag:positive
+			}
+		}
+
+		ai_chance = {
+			base = 10
+
+			opinion_modifier = {
+				opinion_target = scope:target
+				who = scope:owner
+				multiplier = 2
+			}
+		}
+	}
+
+	option = {
+		name = vi_manipulation.1010.b
+
+		custom_tooltip = vi_manipulation.0010.b.tt
+
+		scope:scheme = {
+			set_variable = {
+				name = vi_scheme_goal
+				value = flag:negative
+			}
+		}
+
+		ai_chance = { #Basically almost a player only choice
+			base = 10
+
+			opinion_modifier = {
+				opinion_target = scope:target
+				who = scope:owner
+				multiplier = -2
+			}
+		}
+	}
+}
+
+vi_manipulation.1001 = { #Spend Prestige
+	type = character_event
+	title = vi_manipulation.1001.t #A Hand in the Shadows
+	desc = vi_manipulation.1001.desc
+	
+	theme = realm
+
+	center_portrait = {
+		character = scope:owner
+	}
+
+	right_portrait = {
+		character = scope:target
+		animation = personality_honorable
+	}
+
+	weight_multiplier = {
+		base = 1
+
+		modifier = {
+			scope:target.prestige < 500
+			add = 5
+		}
+
+		modifier = {
+			scope:target = {
+				has_legitimacy = yes
+				legitimacy_level < 3
+			}
+			add = 5
+		}
+	}
+
+	trigger = {
+		scope:target = {
+			NOT = {
+				has_character_flag = had_vi_manipulation_1001
+			}
+		}
+
+		prestige > medium_prestige_value
+	}
+
+	immediate = {
+		scope:target = {
+			add_character_flag = {
+				flag = had_vi_manipulation_1001
+				days = 360
+			}
+		}
+	}
+
+	option = {
+		name = vi_manipulation.1001.a
+
+		add_prestige = medium_prestige_loss
+
+		scope:target = {
+
+			send_interface_message = {
+				type = send_interface_message_good
+				title = vi_manipulation.1001.t
+				desc = vi_manipulation.1001.msg_desc
+				add_legitimacy = medium_legitimacy_gain
+				add_prestige = major_prestige_gain
+				add_character_modifier = {
+					modifier = vi_supported_rule_modifier
+					years = 5
+				}
+			}
+			# trigger_event = {
+			# 	id = vi_manipulation.1002
+			# }
+		}
+
+		scope:scheme = {
+			add_scheme_modifier = vi_manipulation_success_modifier
+		}
+
+		ai_chance = {
+			base = 25
+
+			opinion_modifier = {
+				opinion_target = scope:target
+				who = scope:owner
+				multiplier = 1
+			}
+
+			ai_value_modifier = {
+				ai_rationality = 0.5
+			}
+		}
+	}
+
+	option = {
+		name = vi_manipulation.1001.b
+
+		trigger = {
+			prestige > 3000
+		}
+
+		add_prestige = -3000
+
+		send_interface_message = {
+			type = send_interface_message_good
+			title = vi_manipulation.1001.t
+			desc = vi_manipulation.1001.msg_desc
+			add_legitimacy = massive_legitimacy_gain
+			add_prestige = monumental_prestige_gain
+			add_character_modifier = {
+				modifier = vi_solidified_rule_modifier
+				years = 10
+			}
+		}
+
+		scope:scheme = {
+			add_scheme_modifier = vi_manipulation_success_modifier
+			change_opportunities = 2
+		}
+
+		ai_chance = { #Basically almost a player only choice
+			base = -20
+
+			modifier = {
+				has_relation_soulmate = scope:target
+				add = 100
+			}
+
+			modifier = {
+				has_relation_best_friend = scope:target
+				add = 100
+			}
+		}
+	}
+
+	option = {
+		name = vi_manipulation.1001.c
+
+		ai_chance = {
+			base = 25
+
+			opinion_modifier = {
+				opinion_target = scope:target
+				who = scope:owner
+				multiplier = -1
+			}
+
+			modifier = {
+				has_relation_rival = scope:target
+				add = 1000
+			}
+
+			ai_value_modifier = {
+				ai_greed = 0.25
+				ai_rationality = -0.5
+			}
+		}
+	}
+}
+
+vi_manipulation.1002 = {
+	type = character_event
+	title = vi_manipulation.1002.t
+	desc = vi_manipulation.1002.desc
+	
+	theme = realm
+
+	center_portrait = {
+		character = scope:owner
+	}
+
+	right_portrait = {
+		character = scope:target
+		animation = personality_honorable
+	}
+
+	trigger = {
+		
+	}
+
+	immediate = {
+		
+	}
+
+	option = {
+		name = vi_manipulation.1002.a
+		ai_chance = {
+			base = 25
+
+			ai_value_modifier = {
+				ai_rationality = 0.5
+			}
+		}
+	}
+
+	option = {
+		name = vi_manipulation.1002.b
+		ai_chance = {
+			base = 25
+
+			ai_value_modifier = {
+				ai_greed = 0.25
+				ai_rationality = -0.5
+			}
+		}
+	}
+
+	after = {
+		
+	}
+}
+
+vi_manipulation.1011 = { #Sending a Courtier 
+	type = character_event
+	title = vi_manipulation.1011.t
+	desc = vi_manipulation.1011.desc
+	
+	theme = realm
+
+	left_portrait = {
+		character = scope:3100_target_courtier
+	}
+	
+
+	center_portrait = {
+		character = scope:random_courtier
+	}
+
+	right_portrait = {
+		character = scope:target
+		animation = personality_honorable
+	}
+
+	trigger = {
+		any_courtier = {
+			vi_bp1_yearly_3100_is_skilled_courtier_trigger = yes
+		}
+		scope:target = {
+			NOT = {
+				has_character_flag = had_vi_manipulation_1011
+			}
+			opinion = {
+				target = scope:owner
+				value > 0
+			}
+		}
+	}
+
+	weight_multiplier = {
+		base = 3
+	}
+
+	immediate = {
+		scope:target = {
+			add_character_flag = {
+				flag = had_vi_manipulation_1011
+				days = 200
+			}
+		}
+
+		every_courtier = {
+			limit = { vi_bp1_yearly_3100_is_skilled_courtier_trigger = yes }
+			add_to_list = 3100_courtier_list
+		}
+
+		ordered_in_list = {
+			list = 3100_courtier_list
+			order_by = intrigue
+			save_scope_as = 3100_target_courtier
+		}
+
+		random_courtier = {
+			limit = {
+				NOR = {
+					this = scope:3100_target_courtier
+					is_spouse_of = employer
+					is_heir_of = employer
+					is_councillor_of = employer
+				}
+			}
+			save_scope_as = random_courtier
+		}
+	}
+
+	option = {
+		name = vi_manipulation.1011.a
+		
+		custom_tooltip = vi_manipulation.1011.tt
+
+		scope:target = {
+			trigger_event = {
+				id = vi_manipulation.1012
+			}
+		}
+
+		ai_chance = {
+			base = 40
+
+			opinion_modifier = {
+				opinion_target = scope:3100_target_courtier
+				who = scope:owner
+				multiplier = -1
+			}
+
+			ai_value_modifier = {
+				ai_sociability = 0.25
+				ai_rationality = 0.25
+			}
+		}
+	}
+
+	option = {
+		name = vi_manipulation.1011.b
+
+		custom_tooltip = vi_manipulation.1011.tt
+
+		scope:random_courtier = {
+			save_scope_as = 3100_target_courtier
+		}
+
+		scope:target = {
+			trigger_event = {
+				id = vi_manipulation.1012
+			}
+		}
+
+		ai_chance = {
+			base = 40
+
+			opinion_modifier = {
+				opinion_target = scope:random_courtier
+				who = scope:owner
+				multiplier = -1
+			}
+
+			ai_value_modifier = {
+				ai_sociability = 0.25
+				ai_rationality = 0.25
+			}
+		}
+	}
+
+	option = {
+		name = vi_manipulation.1011.c
+
+		ai_chance = {
+			base = 50
+		}
+	}
+}
+
+vi_manipulation.1012 = { # Vassal/Relative/Friend sends you a skilled courtier 
+	type = character_event
+	content_source = dlc_006
+	title = bp1_yearly.3100.t
+	desc = {
+		desc = bp1_yearly.3100.desc
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					scope:3100_target_courtier = {
+						highest_skill = diplomacy
+					}
+				}
+				desc = bp1_yearly.3100.desc.diplomacy
+			}
+			triggered_desc = {
+				trigger = {
+					scope:3100_target_courtier = {
+						highest_skill = intrigue
+					}
+				}
+				desc = bp1_yearly.3100.desc.intrigue
+			}
+			triggered_desc = {
+				trigger = {
+					scope:3100_target_courtier = {
+						highest_skill = stewardship
+					}
+				}
+				desc = bp1_yearly.3100.desc.stewardship
+			}
+			triggered_desc = {
+				trigger = {
+					scope:3100_target_courtier = {
+						highest_skill = martial
+					}
+				}
+				desc = bp1_yearly.3100.desc.martial
+			}
+			triggered_desc = {
+				trigger = {
+					scope:3100_target_courtier = {
+						highest_skill = learning
+					}
+				}
+				desc = bp1_yearly.3100.desc.learning
+			}
+			triggered_desc = {
+				trigger = {
+					scope:3100_target_courtier = {
+						highest_skill_including_prowess = prowess
+					}
+				}
+				desc = bp1_yearly.3100.desc.prowess
+			}
+		}
+		desc = bp1_yearly.3100.desc.conc
+	}
+	theme = friendly 
+	override_background = { reference = relaxing_room }
+
+	left_portrait = { 
+		character = root
+		animation = happiness
+	}
+
+	right_portrait = { 
+		character = scope:owner
+		animation = happiness
+	}
+
+	lower_center_portrait = {
+		character = scope:target_courtier
+	}
+	
+	cooldown = { years = 10 }
+
+	trigger = {
+	}
+
+	immediate = {
+		
+	}
+
+	option = { # Take the courtier
+		name = bp1_yearly.3100.a
+
+		send_interface_toast = {
+			title = bp1_yearly_3100_courtier_gained
+			left_icon = scope:3100_target_courtier
+			add_courtier = scope:3100_target_courtier
+		}
+		add_prestige = minor_prestige_loss
+		progress_towards_friend_effect = {
+			REASON = friend_accepted_courtier
+			CHARACTER = scope:3100_courtier_liege
+			OPINION = default_friend_opinion
+		}
+
+		stress_impact = {
+			arrogant = medium_stress_impact_gain
+			paranoid = massive_stress_impact_gain
+			trusting = minor_stress_impact_loss
+		}
+
+		scope:owner = {
+			trigger_event = {
+				id = vi_manipulation.1013
+			}
+		}
+
+		ai_chance = {
+			base = 50 
+			ai_value_modifier = {
+				ai_compassion = 25
+			}
+			modifier = {
+				factor = 0
+				has_trait = paranoid
+			}
+			modifier = {
+				factor = 2
+				has_trait = trusting
+			}
+			modifier = {
+				factor = 0
+				prestige <= minor_prestige_value
+			}
+		}
+	}
+
+	option = { # Leave the courtier
+		name = bp1_yearly.3100.b
+		
+		add_prestige = medium_prestige_gain
+		progress_towards_rival_effect = {
+			CHARACTER = scope:3100_courtier_liege
+			REASON = rival_rejected_courtier
+			OPINION = default_rival_opinion 
+		}
+
+		stress_impact = {
+			generous = medium_stress_impact_gain
+			compassionate = minor_stress_impact_gain
+			paranoid = minor_stress_impact_loss
+		}
+
+		scope:owner = {
+			trigger_event = {
+				id = vi_manipulation.1014
+			}
+		}
+
+		ai_chance = {
+			base = 50 
+			
+		}
+	}
+}
+
+vi_manipulation.1013 = {
+	hidden = yes
+
+	immediate = {
+		send_interface_toast = {
+			title = vi_manipulation.1013.t
+			left_icon = scope:3100_target_courtier
+			scope:scheme = {
+				add_scheme_modifier = vi_manipulation_infiltration_modifier
+				change_opportunities = 2
+			}
+			#add_courtier = scope:3100_target_courtier
+		}
+	}
+}
+
+vi_manipulation.1014 = {
+	hidden = yes
+
+	immediate = {
+		send_interface_toast = {
+			title = vi_manipulation.1014.t
+			left_icon = scope:3100_target_courtier
+			#add_courtier = scope:3100_target_courtier
+		}
+	}
+}
+
+vi_manipulation.1021 = { #Debt
+	type = character_event
+	title = vi_manipulation.1021.t #A Ruler in Debt
+	desc = vi_manipulation.1021.desc
+	
+	theme = realm
+
+	center_portrait = {
+		character = scope:owner
+	}
+
+	right_portrait = {
+		character = scope:target
+		animation = personality_honorable
+	}
+
+	weight_multiplier = {
+		base = 1
+		modifier = {
+			scope:target = {
+				gold < -100
+				add = 3
+			}
+		}
+	}
+
+	trigger = {
+		scope:target = {
+			NOT = {
+				has_character_flag = had_vi_manipulation_1021
+			}
+			gold < 0
+		}
+	}
+
+	immediate = {
+		scope:target = {
+			add_character_flag = {
+				flag = had_vi_manipulation_1021
+				days = 360
+			}
+			add_character_modifier = {
+				modifier = vi_incompetent_administration_modifier
+				years = 2
+			}
+		}
+	}
+
+	option = {
+		name = vi_manipulation.1021.a
+
+		custom_tooltip = vi_manipulation.1021.tt
+
+		scope:target = {
+			send_interface_toast = {
+				title = vi_manipulation.1021.a.msg_title
+				left_icon = scope:owner
+			
+				scope:owner = {
+					pay_short_term_gold = {
+						target = scope:target
+						gold = medium_gold_value
+					}
+				}
+				random_list = {
+					10 = {
+						remove_character_modifier = vi_incompetent_administration_modifier
+						add_character_modifier = {
+							modifier = vi_improved_administration_modifier
+							years = 5
+						}
+						modifier = {
+							add = {
+								value = scope:owner.stewardship
+								multiply = 0.5
+							}
+						}
+						scope:owner = {
+							add_hook = {
+								type = loyalty_hook
+								target = scope:target
+								years = 10
+							}
+						}
+					}
+
+					30 = {
+						remove_character_modifier = vi_incompetent_administration_modifier
+						modifier = {
+							add = {
+								value = scope:owner.stewardship
+								multiply = 0.25
+							}
+						}
+						scope:owner = {
+							if = {
+								limit = {
+									NOT = {
+										has_hook = scope:target
+									}
+								}
+								add_hook = {
+									type = favor_hook
+									target = scope:target
+									years = 10
+								}
+							}
+							else = {
+								reverse_add_opinion = {
+									target = scope:target
+									modifier = grateful_opinion
+									opinion = 20
+								}
+							}
+						}
+					}
+
+					50 = {
+						add_opinion = {
+							target = scope:owner
+							modifier = grateful_opinion
+							opinion = 20
+						}
+						modifier = {
+							add = {
+								value = scope:owner.stewardship
+								multiply = -0.5
+							}
+						}
+					}
+				}
+			}
+			
+		}
+		
+		ai_chance = {
+			base = 25
+
+			opinion_modifier = {
+				opinion_target = scope:target
+				who = scope:owner
+				multiplier = 1
+			}
+
+			ai_value_modifier = {
+				ai_greed = -1
+				ai_rationality = 0.5
+			}
+		}
+	}
+
+	option = {
+		name = vi_manipulation.1021.b
+
+		custom_tooltip = vi_manipulation.1021.tt
+
+		send_interface_toast = {
+			title = vi_manipulation.1021.b.msg_title
+			left_icon = scope:owner
+			random_list = {
+				10 = {
+					modifier = {
+						add = {
+							value = scope:owner.stewardship
+							multiply = 1
+						}
+					}
+					remove_character_modifier = vi_incompetent_administration_modifier
+					add_character_modifier = {
+						modifier = vi_improved_administration_modifier
+						years = 5
+					}
+					add_opinion = {
+						target = scope:owner
+						modifier = grateful_opinion
+						opinion = 20
+					}
+				}
+				40 = {
+					modifier = {
+						add = {
+							value = scope:owner.stewardship
+							multiply = 0.5
+						}
+					}
+					remove_character_modifier = vi_incompetent_administration_modifier
+					add_opinion = {
+						target = scope:owner
+						modifier = grateful_opinion
+						opinion = 10
+					}
+				}
+	
+				20 = {
+					modifier = {
+						always = yes
+						add = {
+							value = scope:owner.stewardship
+							multiply = -0.5
+						}
+					}
+					remove_short_term_gold = small_gold_value
+					reverse_add_opinion = {
+						target = scope:target
+						modifier = angry_opinion
+						opinion = -20
+					}
+				}
+				10 = {
+					modifier = {
+						always = yes
+						add = {
+							value = scope:owner.stewardship
+							multiply = -0.5
+						}
+					}
+					remove_short_term_gold = medium_gold_value
+					add_character_modifier = {
+						modifier = vi_incompetent_administration_modifier
+						years = 2
+					}
+					reverse_add_opinion = {
+						target = scope:target
+						modifier = angry_opinion
+						opinion = -60
+					}
+				}
+			}
+		}
+
+		ai_chance = {
+			base = -5
+
+			modifier = {
+				stewardship > 12
+				add = stewardship
+			}
+
+			modifier = {
+				gold < small_gold_value
+				add = stewardship
+			}
+		}
+	}
+
+	option = {
+		name = vi_manipulation.1021.c
+
+		ai_chance = {
+			base = 25
+
+			opinion_modifier = {
+				opinion_target = scope:target
+				who = scope:owner
+				multiplier = -1
+			}
+
+			modifier = {
+				has_relation_rival = scope:target
+				add = 1000
+			}
+
+			ai_value_modifier = {
+				ai_greed = 1
+				ai_rationality = -0.5
+			}
+		}
+	}
+}
+
+vi_manipulation.1031 = { #Vassal Relations
+	type = character_event
+	title = vi_manipulation.1031.t #Political Objectives
+	desc = vi_manipulation.1031.desc
+
+	theme = realm
+
+	left_portrait = {
+		character = scope:angry_vassal
+		animation = personality_callous
+	}
+
+	right_portrait = {
+		character = scope:target
+		animation = anger
+	}
+
+	trigger = {
+		scope:target = {
+			any_vassal = {
+				opinion = {
+					target = scope:target
+					value < -20
+				}
+			}
+		}
+		NOT = {
+			has_character_flag = had_vi_manipulation_1031
+		}
+	}
+
+	immediate = {
+		add_character_flag = {
+			flag = had_vi_manipulation_1031
+			days = 150
+		}
+		scope:target = {
+			random_vassal = {
+				limit = {
+					opinion = {
+						target = scope:target
+						value < -20
+					}
+				}
+				save_scope_as = angry_vassal
+			}
+		}
+	}
+
+	option = {
+		name = vi_manipulation.1031.a
+
+		duel = {
+			skill = diplomacy
+			target = scope:angry_vassal
+			50 = {
+				compare_modifier = {
+					 value = scope:duel_value
+					 multiplier = 3.5
+					 min = -49
+				}
+
+				send_interface_toast = {
+					title = vi_manipulation.1031.msg_title
+					left_icon = scope:angry_vassal
+					right_icon = scope:target
+					scope:angry_vassal = {
+						add_opinion = {
+							target = scope:target
+							modifier = respect_opinion
+							opinion = scope:owner.diplomacy
+						}
+					}
+					scope:scheme = {
+						add_scheme_modifier = vi_manipulation_success_modifier
+					}
+				}
+				
+			}
+			50 = {
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = -3.5
+					min = -49
+				}
+				send_interface_toast = {
+					title = vi_manipulation.1031.msg_title
+					left_icon = scope:angry_vassal
+					right_icon = scope:target
+					scope:angry_vassal = {
+						add_opinion = {
+							target = scope:target
+							modifier = disrespect_opinion
+							opinion = {
+								value = scope:owner.diplomacy
+								multiply = -0.5
+							}
+						}
+					}
+					scope:scheme = {
+						add_scheme_modifier = vi_manipulation_failure_modifier
+					}
+				}
+			}
+		}
+
+		ai_chance = {
+			base = 10
+
+			opinion_modifier = {
+				opinion_target = scope:target
+				who = scope:owner
+				multiplier = 2
+			}
+		}
+	}
+
+	option = {
+		name = vi_manipulation.1031.b
+
+		duel = {
+			skill = diplomacy
+			target = scope:angry_vassal
+			50 = {
+				compare_modifier = {
+					 value = scope:duel_value
+					 multiplier = 3.5
+					 min = -49
+				}
+				send_interface_toast = {
+					title = vi_manipulation.1031.msg_title
+					left_icon = scope:angry_vassal
+					right_icon = scope:target
+					scope:angry_vassal = {
+						add_opinion = {
+							target = scope:target
+							modifier = disrespect_opinion
+							opinion = {
+								value = scope:owner.diplomacy
+								multiply = -1
+							}
+						}
+					}
+					scope:scheme = {
+						add_scheme_modifier = vi_manipulation_success_modifier
+					}
+				}
+			}
+			50 = {
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = -3.5
+					min = -49
+				}
+				send_interface_toast = {
+					title = vi_manipulation.1031.msg_title
+					left_icon = scope:angry_vassal
+					right_icon = scope:target
+					scope:angry_vassal = {
+						add_opinion = {
+							target = scope:target
+							modifier = respect_opinion
+							opinion = {
+								value = scope:owner.diplomacy
+								multiply = 0.5
+							}
+						}
+					}
+					scope:scheme = {
+						add_scheme_modifier = vi_manipulation_failure_modifier
+					}
+				}
+			}
+		}
+
+		ai_chance = {
+			base = 10
+
+			opinion_modifier = {
+				opinion_target = scope:target
+				who = scope:owner
+				multiplier = -2
+			}
+		}
+	}
+	option = {
+		name = vi_manipulation.1031.c
+		ai_chance = {
+			base = 0
+
+			modifier = {
+				diplomacy < scope:angry_vassal.diplomacy
+				add = 50
+			}
+		}
+	}
+}

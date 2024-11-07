@@ -1,12 +1,12 @@
 ﻿l_english:
 
  vi_offer_vampirism_interaction:0 "Offer Vampirism"
- vi_offer_vampirism_interaction_desc:0 "Offer to turn [target.GetShortUIName] into a [vampire|E]"
+ vi_offer_vampirism_interaction_desc:0 "Offer to turn [recipient.GetShortUIName] into a [vampire|E]"
  vi_offer_vampirism_decline_summary:0 "@warning_icon! If [recipient.GetShortUINameNoTooltip] declines, [recipient.GetSheHe] will still learn of your vampire secret!"
  VI_MUST_HAVE_RELATION_TO_OFFER:0 "You must be [friends|E], [lovers|E], or [soulmates|E] to offer vampirism to a [ruler|E]"
 
- vi_ask_vampirism_interaction:0 "Ask to Become Vampire"
- vi_ask_vampirism_interaction_desc:0 "Ask to Become Vampire"
+ vi_ask_vampirism_interaction:0 "Seek Vampirism"
+ vi_ask_vampirism_interaction_desc:0 "Ask [recipient.GetShortUIName] to turn you into a [vampire|E]"
  VI_MUST_KNOW_SECRET:0 "You must know their Vampire secret"
  VI_ASK_TO_BE_ADOPTED:0 "Ask to Join House"
  VI_ASKING_TO_BE_ADOPTED:0 "Asking to Join House"

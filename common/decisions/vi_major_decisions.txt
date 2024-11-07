@@ -37,6 +37,7 @@
 
 	cost = {
 		gold = medium_gold_value
+		prestige = medium_prestige_value
 	}
 
 	effect = {
@@ -71,8 +72,6 @@
 			}
 		}
 
-		depose_effect = { DEPOSER = root }
-
 		if = {
 			limit = {
 				has_trait = vi_exposed_vampire
@@ -83,6 +82,8 @@
 				type = secret_vi_vampire
 			}
 		}
+
+		depose_effect = { DEPOSER = root }
 	}
 
 	ai_potential = {
@@ -209,29 +210,29 @@ vi_found_princedom_decision = {
 	effect = {
 		vi_adventure_create_princedom_effect = yes
 
-		if = {
-			limit = {
-				NOR = {
-					has_trait = vi_vampire_3
-					has_trait = vi_vampire_4
-					has_trait = vi_vampire_5
-				}
-			}
+		# if = {
+		# 	limit = {
+		# 		NOR = {
+		# 			has_trait = vi_vampire_3
+		# 			has_trait = vi_vampire_4
+		# 			has_trait = vi_vampire_5
+		# 		}
+		# 	}
 
-			every_ruler = {
-				limit = {
-					is_independent_ruler = yes
-					has_government = vi_vampire_government
-					is_landed = no
-					in_diplomatic_range = root
-				}
-				add_opinion = {
-					target = root
-					modifier = audacity_opinion
-					opinion = -50
-				}
-			}
-		}
+		# 	every_ruler = {
+		# 		limit = {
+		# 			is_independent_ruler = yes
+		# 			has_government = vi_vampire_government
+		# 			is_landed = no
+		# 			in_diplomatic_range = root
+		# 		}
+		# 		add_opinion = {
+		# 			target = root
+		# 			modifier = audacity_opinion
+		# 			opinion = -50
+		# 		}
+		# 	}
+		# }
 	}
 
 	ai_potential = {
@@ -242,5 +243,87 @@ vi_found_princedom_decision = {
 
 		base = 0
 
+	}
+}
+
+vi_become_dormant_decision = {
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_personal_religious.dds"
+	}
+	desc = vi_become_dormant_decision_desc
+	selection_tooltip = vi_become_dormant_decision_tooltip
+
+	decision_group_type = major
+	ai_check_interval = 600
+
+	is_shown = {
+		vi_is_vampire_trigger = yes
+	}
+
+	is_valid_showing_failures_only = {
+		not = { exists = involved_activity }
+		is_imprisoned = no
+		is_commanding_army = no
+		NOT = {
+			has_trait = vi_dormant
+		}
+	}
+
+	effect = {
+		vi_become_dormant_effect = yes
+	}
+
+	ai_potential = {
+		always = yes
+	}
+
+	ai_will_do = {
+
+		base = -25
+
+		modifier = {
+			add = 30
+			OR = {
+				has_trait = depressed_1
+				has_trait = depressed_genetic
+			}
+		}
+
+		# modifier = {
+		# 	add = 30
+		# 	stress_level >= 3
+		# }
+	}
+}
+
+vi_debug_decision = {
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_personal_religious.dds"
+	}
+	desc = vi_debug_decision_desc
+	selection_tooltip = vi_debug_decision_tooltip
+
+	decision_group_type = major
+
+	is_shown = {
+		debug_only = yes
+		is_ai = no
+	}
+
+	is_valid_showing_failures_only = {
+		debug_only = yes
+	}
+
+	effect = {
+		trigger_event = {
+			id = vi_debug.001
+		}
+	}
+
+	ai_potential = {
+		always = no
+	}
+
+	ai_will_do = {
 	}
 }

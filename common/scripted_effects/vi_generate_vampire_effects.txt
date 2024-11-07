@@ -1,0 +1,353 @@
+﻿vi_add_vampire_knight = {
+
+	create_character = {
+		template = knight_errant_character
+		dynasty = none
+		location = root.location
+		culture = location.culture
+		faith = location.faith
+		save_scope_as = vi_vampire_knight
+	}
+
+	scope:vi_vampire_knight = {
+		hidden_effect = {
+			set_immortal_age = age
+			add_trait = vi_vampire_2
+			vi_make_vampire_effect = yes
+		}
+
+		random_list = {
+			40 = {
+				set_age = {
+					value = age
+					add = 20
+				}
+			}
+
+			20 = {
+				set_age = {
+					value = age
+					add = 30
+				}
+				add_perk = vi_celerity_perk
+			}
+
+			20 = {
+				set_age = {
+					value = age
+					add = 30
+				}
+				add_perk = vi_fortitude_perk
+			}
+
+			10 = {
+				set_age = {
+					value = age
+					add = 50
+				}
+				add_perk = vi_celerity_perk
+				add_perk = vi_fortitude_perk
+			}
+		}
+	}
+
+	add_courtier = scope:vi_vampire_knight
+}
+
+vi_generate_knights = {
+	hidden_effect = {
+		set_local_variable = {
+			name = limit
+			value = { 5 8 }
+		}
+		set_local_variable = {
+			name = for_counter
+			value = 0
+		}
+		while = {
+			limit = {
+				exists = local_var:for_counter
+				exists = local_var:limit
+				local_var:limit > local_var:for_counter
+			}
+
+			vi_add_vampire_knight = yes
+
+			change_local_variable = {
+				name = for_counter
+				add = 1
+			}
+		}
+	}
+}
+
+vi_generate_inner_council_random_chance = {
+	if = {
+		limit = {
+			NOT = {
+				employs_court_position = vi_herald_position
+			}
+		}
+		random = {
+			chance = 60
+			vi_generate_herald = yes
+			scope:vi_herald ?= {
+				random = {
+					chance = 20
+					vi_add_sirensong_effect = yes
+				}
+			}
+		}
+	}
+	
+	if = {
+		limit = {
+			NOT = {
+				employs_court_position = vi_castellan_position
+			}
+		}
+		random = {
+			chance = 60
+			vi_generate_castellan = yes
+			scope:vi_castellan ?= {
+				random = {
+					chance = 20
+					vi_add_allseeing_effect = yes
+				}
+			}
+		}
+	}
+	
+	if = {
+		limit = {
+			NOT = {
+				employs_court_position = vi_castellan_position
+			}
+		}
+		random = {
+			chance = 60
+			vi_generate_shadow = yes
+			scope:vi_shadow ?= {
+				random = {
+					chance = 20
+					vi_add_dragonsscion_effect = yes
+				}
+			}
+		}
+	}
+	
+	if = {
+		limit = {
+			NOT = {
+				employs_court_position = vi_castellan_position
+			}
+		}
+		random = {
+			chance = 60
+			vi_generate_augur = yes
+			scope:vi_augur ?= {
+				random = {
+					chance = 20
+					vi_add_allseeing_effect = yes
+				}
+			}
+		}
+	}
+}
+
+vi_generate_shadow = {
+	random_culture_global = {
+		limit = {
+			exists = culture_head
+			culture_head = {
+				in_diplomatic_range = root
+			}
+		}
+		save_scope_as = random_event_culture
+	}
+
+	create_character = {
+		#location = root.capital_province
+		faith = root.faith
+		culture = scope:random_event_culture
+		template = vi_shadow_position_template
+		employer = root
+		save_scope_as = vi_shadow
+	}
+
+	vi_set_courtier_vampirism = {
+		COURTIER = scope:vi_shadow
+	}
+
+	save_scope_as = current_scope
+
+	court_position_grant_effect = {
+		EMPLOYER = scope:current_scope
+		POS = vi_shadow
+		CANDIDATE = scope:vi_shadow
+	}
+}
+
+vi_generate_herald = {
+	random_culture_global = {
+		limit = {
+			exists = culture_head
+			culture_head = {
+				in_diplomatic_range = root
+			}
+		}
+		save_scope_as = random_event_culture
+	}
+
+	create_character = {
+		#location = root.capital_province
+		faith = root.faith
+		culture = scope:random_event_culture
+		template = vi_herald_position_template
+		employer = root
+		save_scope_as = vi_herald
+	}
+
+	vi_set_courtier_vampirism = {
+		COURTIER = scope:vi_herald
+	}
+
+	save_scope_as = current_scope
+
+	court_position_grant_effect = {
+		EMPLOYER = scope:current_scope
+		POS = vi_herald
+		CANDIDATE = scope:vi_herald
+	}
+}
+
+vi_generate_sword = {
+	random_culture_global = {
+		limit = {
+			exists = culture_head
+			culture_head = {
+				in_diplomatic_range = root
+			}
+		}
+		save_scope_as = random_event_culture
+	}
+
+	create_character = {
+		#location = root.capital_province
+		faith = root.faith
+		culture = scope:random_event_culture
+		template = vi_sword_position_template
+		employer = root
+		save_scope_as = vi_sword
+	}
+
+	vi_set_courtier_vampirism = {
+		COURTIER = scope:vi_sword
+	}
+
+	appoint_court_position = {
+		recipient = scope:vi_sword
+		court_position = vi_sword_position
+	}
+}
+
+vi_generate_castellan = {
+	random_culture_global = {
+		limit = {
+			exists = culture_head
+			culture_head = {
+				in_diplomatic_range = root
+			}
+		}
+		save_scope_as = random_event_culture
+	}
+
+	create_character = {
+		#location = root.capital_province
+		faith = root.faith
+		culture = scope:random_event_culture
+		template = vi_castellan_position_template
+		employer = root
+		save_scope_as = vi_castellan
+	}
+
+	vi_set_courtier_vampirism = {
+		COURTIER = scope:vi_castellan
+	}
+
+	save_scope_as = current_scope
+
+	court_position_grant_effect = {
+		EMPLOYER = scope:current_scope
+		POS = vi_castellan
+		CANDIDATE = scope:vi_castellan
+	}
+}
+
+vi_generate_augur = {
+	random_culture_global = {
+		limit = {
+			exists = culture_head
+			culture_head = {
+				in_diplomatic_range = root
+			}
+		}
+		save_scope_as = random_event_culture
+	}
+
+	create_character = {
+		#location = root.capital_province
+		faith = root.faith
+		culture = scope:random_event_culture
+		template = vi_augur_position_template
+		employer = root
+		save_scope_as = vi_augur
+	}
+
+	vi_set_courtier_vampirism = {
+		COURTIER = scope:vi_augur
+	}
+
+	save_scope_as = current_scope
+
+	court_position_grant_effect = {
+		EMPLOYER = scope:current_scope
+		POS = vi_augur
+		CANDIDATE = scope:vi_augur
+	}
+}
+
+vi_set_courtier_vampirism = {
+	random_list = {
+		30 = {
+			$COURTIER$ = {
+				add_trait = vi_vampire_2
+				set_immortal_age = this.age
+				vi_make_vampire_effect = yes
+				set_age = {
+					value = this.age
+					add = {40 70 }
+				}
+				vi_add_random_perks = yes
+			}
+		}
+		1 = {
+			modifier = {
+				add = 9
+				age > 200
+			}
+
+			$COURTIER$ = {
+				add_trait = vi_vampire_3
+				set_immortal_age = this.age
+				vi_make_vampire_effect = yes
+				set_age = {
+					value = this.age
+					add = { 180 300 }
+				}
+				vi_add_random_perks = yes
+				vi_add_random_perks = yes
+			}
+		}
+	}
+}

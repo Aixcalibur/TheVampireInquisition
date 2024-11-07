@@ -1,0 +1,195 @@
+﻿start_vi_manipulation_interaction = {
+	icon = icon_scheme_political
+	interface_priority = 90
+	category = interaction_category_admin
+
+	send_name = START_SCHEME
+
+	scheme = vi_manipulation
+	ignores_pending_interaction_block = yes
+
+	ai_targets = {
+		ai_recipients = liege
+		ai_recipients = neighboring_rulers
+		max = 10
+	}
+
+	ai_frequency = 240
+	
+	is_shown = {
+		scope:actor = {
+			is_ruler = yes
+		}
+		scope:recipient = {
+			is_landed = yes
+			this != scope:actor
+			has_legitimacy = yes
+			OR = {
+				is_independent_ruler = yes
+				highest_held_title_tier >= tier_kingdom
+			}
+		}
+	}
+
+	is_valid_showing_failures_only = {
+		scope:actor = {
+			is_adult = yes
+			is_imprisoned = no
+			intrigue >= 25
+		}
+		scope:recipient = {
+			NOT = { has_strong_hook = scope:actor }
+		}
+	}
+
+	desc = scheme_interaction_tt_vi_manipulation
+
+	# Scheme Starter Packages
+	options_heading = schemes.t.agent_packages
+	send_options_exclusive = yes
+	## Balanced agents.
+	send_option = {
+		flag = agent_focus_balance
+		current_description = start_depose_interaction.tt.agent_focus_balance
+	}
+	## Focused on Success Chance.
+	send_option = {
+		flag = agent_focus_success
+		current_description = start_depose_interaction.tt.agent_focus_success
+	}
+	## Focused on Speed.
+	send_option = {
+		flag = agent_focus_speed
+		current_description = start_depose_interaction.tt.agent_focus_speed
+	}
+	## Focused on Secrecy.
+	send_option = {
+		flag = agent_focus_secrecy
+		current_description = start_depose_interaction.tt.agent_focus_secrecy
+	}
+
+	on_accept = {
+		scope:actor = {
+			send_interface_toast = {
+				type = event_toast_effect_neutral
+				title = start_vi_manipulation_notification
+
+				left_icon = scope:actor					
+				right_icon = scope:recipient
+
+				# Success.
+				if = {
+					limit = { scope:agent_focus_success ?= yes }
+					begin_scheme_with_agents_effect = {
+						SCHEME_TYPE = vi_manipulation
+						TARGET_TYPE = target_character
+						TARGET_SCOPE = scope:recipient
+						# Success.
+						AGENT_1 = agent_intermediary
+						AGENT_2 = agent_proponent
+						AGENT_3 = agent_sycophant
+						# Speed.
+						AGENT_4 = agent_political_socialite
+						# Secrecy.
+						AGENT_5 = agent_courtesan
+					}
+				}
+				# Speed.
+				else_if = {
+					limit = { scope:agent_focus_speed ?= yes }
+					begin_scheme_with_agents_effect = {
+						SCHEME_TYPE = vi_manipulation
+						TARGET_TYPE = target_character
+						TARGET_SCOPE = scope:recipient
+						# Speed.
+						AGENT_1 = agent_political_socialite
+						AGENT_2 = agent_political_socialite
+						AGENT_3 = agent_bureaucrat
+						# Success.
+						AGENT_4 = agent_proponent
+						# Secrecy.
+						AGENT_5 = agent_courtesan
+					}
+				}
+				# Secrecy.
+				else_if = {
+					limit = { scope:agent_focus_secrecy ?= yes }
+					begin_scheme_with_agents_effect = {
+						SCHEME_TYPE = vi_manipulation
+						TARGET_TYPE = target_character
+						TARGET_SCOPE = scope:recipient
+						# Secrecy.
+						AGENT_1 = agent_courtesan
+						AGENT_2 = agent_amanuensis
+						AGENT_3 = agent_eunuch_speed
+						# Success.
+						AGENT_4 = agent_proponent
+						# Speed.
+						AGENT_5 = agent_political_socialite
+					}
+				}
+				# Balanced.
+				else = {
+					begin_scheme_with_agents_effect = {
+						SCHEME_TYPE = vi_manipulation
+						TARGET_TYPE = target_character
+						TARGET_SCOPE = scope:recipient
+						# Success.
+						AGENT_1 = agent_intermediary
+						AGENT_2 = agent_proponent
+						# Speed.
+						AGENT_3 = agent_political_socialite
+						AGENT_4 = agent_bureaucrat
+						# Secrecy.
+						AGENT_5 = agent_courtesan
+					}
+				}
+			}
+			# Scheme bonuses from being the emperor/dominant family/powerful family
+
+			stress_impact = {
+				compassionate = minor_stress_impact_gain
+				honest = minor_stress_impact_gain
+				just = minor_stress_impact_gain
+				loyal = major_stress_impact_gain
+			}
+		}
+	}
+
+	ai_potential = {
+		always = no
+		NOT = {
+			any_scheme = {
+				is_scheme_category = hostile
+			}
+		}
+	}
+	
+	auto_accept = yes
+
+	ai_will_do = {
+		base = -100
+
+		#Personality
+		modifier = {
+			has_trait = ambitious
+			add = 50
+		}
+		modifier = {
+			has_trait = deceitful
+			add = 15
+		}
+		modifier = {
+			has_trait = honest
+			add = -15
+		}
+		modifier = {
+			has_trait = compassionate
+			add = -15
+		}
+		modifier = {
+			has_trait = just
+			add = -10
+		}
+	}
+}

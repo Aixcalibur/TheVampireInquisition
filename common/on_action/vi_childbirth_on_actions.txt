@@ -1,0 +1,54 @@
+﻿on_birth_child = {
+	on_actions = {
+		vi_on_birth_child		
+	}
+}
+
+on_pregnancy_mother = {
+	on_actions = {
+		delay = { days = 5 }
+		vi_on_pregnancy_mother
+	}
+}
+
+vi_on_birth_child = {
+	trigger = {
+		OR = {
+			scope:mother = {
+				vi_is_vampire_trigger = yes
+			}
+			scope:real_father = {
+				vi_is_vampire_trigger = yes
+			}
+		}
+	}
+	effect = {
+		add_trait = vi_dhampir
+	}
+}
+
+vi_on_pregnancy_mother = {
+	trigger = {
+		OR = {
+			scope:mother = {
+				vi_is_vampire_trigger = yes
+			}
+			scope:real_father = {
+				vi_is_vampire_trigger = yes
+			}
+		}
+
+		NOR = {
+			has_character_flag = birth_child_will_become_sickly
+			has_character_flag = birth_mother_will_die
+			has_character_flag = birth_mother_will_become_ill
+		}
+	}
+	
+	effect = {
+		add_character_flag = { #Flags blocks other birth events
+			flag = birth_child_will_become_sickly
+			days = 270
+		}
+	}
+}

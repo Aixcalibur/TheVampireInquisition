@@ -1,0 +1,3 @@
+﻿l_english:
+ vi_debug.001.t: "Debug Event"
+ vi_debug.001.desc: "This event exists to test out event settings on demand."

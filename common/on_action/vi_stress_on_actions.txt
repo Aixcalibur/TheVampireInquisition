@@ -1,32 +1,4 @@
-﻿# Here we block vanilla events from firing for vampires.
-
-on_stress_level_1 = {
-	# trigger = {
-	# 	NOT = { has_character_flag = recently_hit_stress_threshold } # Prevents multiple mental breaks from occuring on the same day (causes errors and creates an unbreakable stress loop).
-	# }
-	on_actions = {
-		vi_stress_on_action
-	}
-}
-
-on_stress_level_2 = {
-	# trigger = {
-	# 	NOT = { has_character_flag = recently_hit_stress_threshold } # Prevents multiple mental breaks from occuring on the same day (causes errors and creates an unbreakable stress loop).
-	# }
-	on_actions = {
-		vi_stress_on_action
-	}
-}
-
-on_stress_level_3 = {
-	# trigger = {
-	# 	NOT = { has_character_flag = recently_hit_stress_threshold } # Prevents multiple mental breaks from occuring on the same day (causes errors and creates an unbreakable stress loop).
-	# }
-	on_actions = {
-		vi_stress_on_action
-	}
-}
-
+﻿
 on_stress_level_4 = {
 	# trigger = {
 	# 	NOT = { has_character_flag = recently_hit_stress_threshold } # Prevents multiple mental breaks from occuring on the same day (causes errors and creates an unbreakable stress loop).
@@ -36,37 +8,106 @@ on_stress_level_4 = {
 	}
 }
 
-vi_stress_on_action = {
-	trigger = {
-		vi_is_vampire_trigger = yes
-	}
-
-	effect = {
-		add_character_flag = stress_threshold_event_3_cooldown
-		add_character_flag = stress_threshold_event_2_cooldown
-		add_character_flag = stress_threshold_event_1_cooldown
-	}
-
-	on_actions = {
-		delay = { days = 3 }
-		vi_stress_choose_on_action
-		
-	}
-}
-
-
-vi_stress_choose_on_action = {
-	random_events = {
-		100 = vi_stress_threshold.1001
-		200 = vi_stress_threshold.1010
-		10 = vi_stress_threshold.2010
-		10 = vi_stress_threshold.2020
-		10 = vi_stress_threshold.2030
-	}
-}
-
 vi_stress_level_4_on_action = {
-	random_events = {
-		100 = vi_stress_threshold.9001
+	effect = {
+		add_character_flag = vi_hit_stress_4
 	}
 }
+
+# vi_stress_on_action = {
+# 	trigger = {
+# 		vi_is_vampire_trigger = yes
+# 	}
+
+# 	effect = {
+# 		add_character_flag = stress_threshold_event_3_cooldown
+# 		add_character_flag = stress_threshold_event_2_cooldown
+# 		add_character_flag = stress_threshold_event_1_cooldown
+# 	}
+
+# 	on_actions = {
+# 		delay = { days = 3 }
+# 		vi_stress_choose_on_action
+		
+# 	}
+# }
+#Stress Threshold Event Tombolas
+stress_threshold_level_1_event = {
+	random_events = {
+		1000 = vi_stress_generic.5001 #AI-Only
+		1000 = vi_stress_generic.5002 #AI Rulers drinking from prisoners
+		500 = vi_stress_generic.0001
+		500 = vi_stress_generic.0002
+		#Vanilla events will still fire, they're just here for reference
+		# 100 = stress_threshold.1001 #Overwhelming Guilt
+		# 100 = stress_threshold.1011 #Desires of the Flesh
+		# 100 = stress_threshold.1501 #Nothing Matters
+		# 100 = stress_threshold.1502 #Insolent Fools
+		# 100 = stress_threshold.1503 #Emptiness Inside
+		# 100 = stress_threshold.1504 #Endless Toil
+		# 10 = stress_threshold.1601 #Generic event
+		# 10 = stress_threshold.1602 #Generic event
+
+		# 100 = stress_threshold.1701 # Prior Error: your personality has caused friction elsewhere.
+		# 100 = stress_threshold.1711 # Too Busy: everything just seems to pile up on you these days.
+		# 100 = stress_threshold.1721 # Impostor Syndrome: clearly you just aren't good enough for your rank!
+		# 100 = stress_threshold.1731 # No Time for Myself: your limited time to yourself is intruded on.		
+	}
+}
+
+stress_threshold_level_2_event = {
+	random_events = {
+		500 = vi_stress_generic.0001
+		500 = vi_stress_generic.0002
+		#Vanilla events will still fire, they're just here for reference
+		# 10 = stress_threshold.2001 # Generic event
+		# 10 = stress_threshold.2101 # Generic event
+		# 10 = stress_threshold.2201 # Generic event
+
+ 		# 100 = stress_threshold.2301 # Growing Need: you just want to drop everything and reengage with an old passion.
+ 		# 100 = stress_threshold.2311 # Haunted by the Past: you find yourself dwelling on the mistakes of yesteryear.
+ 		# 100 = stress_threshold.2321 # Befuddled by Court: it feels like everything you do, others take advantage of.
+ 		# 100 = stress_threshold.2331 # Estranged Authority: your brevity and certainty is mistaken for ruthlessness.
+ 		# 100 = stress_threshold.2341 # Shirked Duty: you half-arse your noble duties, and it shows.
+ 		# 100 = stress_threshold.2351 # Improprietous Remarks: increasingly frayed, you respond to a petitioner brashly.		
+ 		# 10 = stress_threshold.2360 # A bird tap tapping at your chamber door, player only.
+	}
+}
+
+stress_threshold_level_3_event = {
+	random_events = {
+		10000 = vi_stress_overload.0001
+		#Vanilla events will still fire, they're just here for reference
+		# 100 = stress_threshold.3001 # Generic event
+		# 100 = stress_threshold.3101 # Generic event
+		# 100 = stress_threshold.3201 # Generic event
+		# 100 = stress_threshold.3301 # Death
+		# 100 = stress_threshold.3401 # Shooting the Messenger: you dramatically punish someone for giving you bad news.
+		# 100 = stress_threshold.3411 # I am Unworthy: your impostor syndrome has become a full-blown complex.
+		# 100 = stress_threshold.3421 # Domain of Debauchery: your holdings burn, but you're too ensconsed in hiding from your stress to care.		
+	}
+}
+
+vi_stress_threshold_level_3_event = {
+	random_events = {
+		#Let's just remove the random death
+		100 = stress_threshold.3001 # Generic event
+		100 = stress_threshold.3101 # Generic event
+		100 = stress_threshold.3201 # Generic event
+		# 100 = stress_threshold.3301 # Death
+		100 = stress_threshold.3401 # Shooting the Messenger: you dramatically punish someone for giving you bad news.
+		100 = stress_threshold.3411 # I am Unworthy: your impostor syndrome has become a full-blown complex.
+		100 = stress_threshold.3421 # Domain of Debauchery: your holdings burn, but you're too ensconsed in hiding from your stress to care.		
+	}
+}
+
+
+# vi_stress_choose_on_action = {
+# 	random_events = {
+# 		100 = vi_stress_threshold.1001
+# 		200 = vi_stress_threshold.1010
+# 		10 = vi_stress_threshold.2010
+# 		10 = vi_stress_threshold.2020
+# 		10 = vi_stress_threshold.2030
+# 	}
+# }

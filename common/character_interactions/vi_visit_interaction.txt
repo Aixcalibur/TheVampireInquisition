@@ -1,0 +1,213 @@
+﻿vi_visit_interaction = {
+	icon = guest
+	common_interaction = yes
+	category = interaction_category_friendly
+	interface_priority = 100
+	desc = vi_visit_interaction_desc
+
+	cooldown = {
+		years = 1
+	}
+
+	cooldown_against_recipient = {
+		years = 5
+	}
+
+	is_shown = {
+		scope:recipient = {
+			is_adult = yes
+		}
+		scope:actor = {
+			has_perk = vi_charm_perk
+		}
+	}
+	
+	is_highlighted = {
+		always = no
+	}
+
+	is_valid_showing_failures_only = {
+		trigger_if = {
+			limit = {
+				scope:actor = {
+					NOT = {
+						knows_language_of_culture = scope:recipient.culture
+					}
+				}
+			}
+			custom_tooltip = {
+				text = vi_visit_language_tt
+				always = no
+			}
+		}
+		scope:actor = {
+			knows_language_of_culture = scope:recipient.culture
+			is_available_for_activity_trigger = yes
+			NOT = {
+				is_at_war_with = scope:recipient
+			}
+		}
+		scope:recipient = {
+			is_available_for_activity_trigger = yes
+			NOT = {
+				has_relation_rival = scope:actor
+			}
+			NOT = {
+				has_relation_nemesis = scope:actor
+			}
+			NOT = {
+				has_relation_grudge = scope:actor
+			}
+			opinion = {
+				target = scope:actor
+				value >= 30
+			}
+		}
+		
+	}
+
+	cost = {
+		prestige = {
+			value = 50
+			if = {
+				limit = {
+					scope:recipient = {
+						highest_held_title_tier >= tier_empire
+					}
+				}
+				multiply = 5
+			}
+			else_if = {
+				limit = {
+					scope:recipient = {
+						highest_held_title_tier >= tier_kingdom
+					}
+				}
+				multiply = 3
+			}
+			else_if = {
+				limit = {
+					scope:recipient = {
+						highest_held_title_tier >= tier_duchy
+					}
+				}
+				multiply = 1.5
+			}
+		}
+	}
+	
+	on_accept = {
+		scope:actor = {
+			stress_impact = {
+				gregarious = miniscule_stress_impact_loss
+				shy = medium_stress_impact_gain
+				reclusive = medium_stress_impact_gain
+			}
+
+			set_variable = {
+				name = vi_visit_target
+				value = scope:recipient
+			}
+		}
+
+		scope:recipient.location = {
+			save_scope_as = vi_visit_destination
+		}
+
+		if = {
+			limit = {
+				OR = {
+					scope:actor.location = scope:vi_visit_destination
+					scope:recipient.location = scope:actor.location
+				}
+			}
+			custom_tooltip = vi_visit_courtier_tt
+			trigger_event = {
+				on_action = vi_visit_start
+				days = 1
+			}
+		}
+		else = {
+			scope:actor = {
+				if = {
+					limit = {
+						scope:recipient = {
+							OR = {
+								vi_has_holy_court_artifact_trigger = yes
+								vi_has_holy_artifact_equipped_trigger = yes
+								employer ?= {
+									vi_has_holy_court_artifact_trigger = yes
+								}
+							}
+						}
+					}
+					custom_tooltip = vi_visit_holy_artifact_tt
+				}
+				else_if = {
+					limit = {
+						scope:recipient = {
+							OR = {
+								vi_is_vampire_trigger = yes
+								has_trait = vi_dhampir
+							}
+						}
+						NOT = {
+							has_perk = vi_presence_perk
+						}
+					}
+					custom_tooltip = vi_need_presence_tt
+				}
+				
+				custom_tooltip = vi_visit_travel_tt
+				start_travel_plan = {
+					destination = scope:vi_visit_destination
+					on_start_on_action = vi_visit_start
+					on_travel_planner_cancel_on_action = vi_visit_travel_planner_exit
+					on_arrival_event = vi_visit.9999
+					on_arrival_destinations = all_but_last
+				}
+			}
+		}
+	}
+	
+	auto_accept = {
+		custom_description = {
+			text = auto_accept_interaction_ai	
+			object = scope:recipient
+			scope:recipient = {
+				is_ai = yes
+			}
+		}
+	}
+
+	ai_frequency = 100
+
+	ai_targets = {
+		ai_recipients = guests
+		ai_recipients = courtiers
+	}
+
+	ai_target_quick_trigger = {
+		adult = yes
+	}
+
+	ai_potential = {
+		always = no
+		# is_at_war = no
+		# OR = {
+		# 	has_royal_court = yes
+		# 	government_has_flag = government_is_landless_adventurer
+		# 	has_government = vi_vampire_government
+		# }
+		# gold > ai_inspiration_desired_gold_value
+		# NOT = { has_character_flag = recently_fund_inspiration }
+		# ai_has_conqueror_personality = no
+		# ai_should_focus_on_building_in_their_capital = no
+	}
+
+	ai_will_do = {
+		base = -100
+		
+
+	}
+}

@@ -1,0 +1,352 @@
+﻿vi_placate_vassal_interaction = {
+	category = interaction_category_vassal
+	interface_priority = 99
+	icon = powerful_family_shield
+	desc = vi_placate_vassal_interaction_desc
+
+	#ai_maybe = yes
+	#can_send_despite_rejection = yes
+	# on_decline_summary = vi_offer_vampirism_decline_summary
+
+	# cooldown_against_recipient = {
+	# 	years = 5
+	# }
+	cooldown = {
+		years = 3
+	}
+
+	ai_instant_response = yes
+	
+	is_shown = {
+		NOT = {
+			scope:actor = scope:recipient
+		}
+		scope:actor = {
+			is_ruler = yes
+		}
+		scope:recipient = {
+			is_ai = yes
+			has_character_modifier = vi_vampire_arrogance_modifier
+			liege ?= scope:actor
+			
+		}
+	}
+
+	is_highlighted = {
+		scope:recipient = {
+			opinion = {
+				target = scope:actor
+				value <= -30
+			}
+		}
+	}
+
+	is_valid_showing_failures_only = {
+		scope:recipient = {
+			NOT = {
+				is_at_war_with = scope:actor
+			}
+		}
+	}
+
+	cost = {
+		prestige = 100
+	}
+
+	send_option = {
+		flag = gift
+		is_shown = {
+			always = yes
+		}
+		is_valid = {
+			scope:actor.gold > 0
+		}
+		localization = VI_VASSAL_GOLD
+	}
+
+	send_option = {
+		flag = offer_hook
+		is_shown = {
+			always = yes
+		}
+		is_valid = {
+			NOT = {
+				scope:recipient = { has_hook = scope:actor }
+			}
+		}
+		localization = SCHEME_AGENT_HOOK
+	}
+
+	send_option = {
+		flag = prestige
+		is_shown = {
+			always = yes
+		}
+		is_valid = {
+			scope:actor.prestige > 0
+		}
+		localization = SCHEME_AGENT_PRESTIGE
+	}
+
+	send_option = {
+		flag = vi_military_support
+		is_shown = {
+			scope:actor = {
+				NOT = {
+					has_character_modifier = vi_give_military_support_modifier
+				}
+			}
+		}
+		localization = VI_VASSAL_MILITARY_SUPPORT
+	}
+
+	send_options_exclusive = no
+
+	on_accept = {
+		scope:actor = {
+			if = {
+				limit = { always = scope:gift }
+				pay_short_term_gold = {
+					gold = bribe_value
+					target = scope:recipient
+				}
+				stress_impact = { greedy = minor_stress_impact_gain }
+			}
+			if = {
+				limit = { always = scope:vi_military_support }
+				add_character_modifier = {
+					modifier = vi_give_military_support_modifier
+					years = 5
+				}
+				stress_impact = { ambitious = minor_stress_impact_gain }
+			}
+			if = {
+				limit = { always = scope:offer_hook }
+				stress_impact = {
+					base = minor_stress_impact_gain
+					paranoid = major_stress_impact_gain
+				}
+				scope:recipient = {
+					add_hook = {
+						type = favor_hook
+						target = scope:actor
+					}
+				}
+			}
+			if = {
+				limit = { always = scope:prestige }
+				add_prestige = {
+					value = prestige_bribe_value
+					multiply = -1
+				}
+				scope:recipient = { add_prestige = prestige_bribe_value }
+			}
+		}
+
+		scope:recipient = {
+			remove_character_modifier = vi_vampire_arrogance_modifier
+			add_character_flag = vi_placated_vassal
+			if = {
+				limit = { always = scope:vi_military_support }
+				add_character_modifier = {
+					modifier = vi_receive_military_support_modifier
+					years = 5
+				}
+				stress_impact = { ambitious = minor_stress_impact_loss }
+			}
+			add_opinion = {
+				target = scope:actor
+				modifier = pleased_opinion
+				opinion = 20
+			}
+		}
+	}
+
+	on_decline = {
+		
+	}
+
+	ai_accept = {
+ 		base = -25
+
+ 		opinion_modifier = {
+ 			opinion_target = scope:actor
+ 			multiplier = 0.5
+ 			step = 5
+ 			max = 50
+ 		}
+
+		modifier = {
+			add = -20
+			has_trait = ambitious
+			desc = VI_VASSAL_IS_AMBITIOUS
+		}
+
+		modifier = {
+			add = -15
+			has_trait = arrogant
+			desc = VI_VASSAL_IS_ARROGANT
+		}
+
+		modifier = {
+			add = -20
+			has_trait = greedy
+			desc = VI_VASSAL_IS_GREEDY
+		}
+
+		modifier = {
+			add = -10
+			has_trait = stubborn
+			desc = VI_VASSAL_IS_STUBBORN
+		}
+
+		modifier = {
+			add = 25
+			has_trait = content
+			desc = VI_VASSAL_IS_CONTENT
+		}
+
+		modifier = {
+			add = 10
+			has_trait = humble
+			desc = VI_VASSAL_IS_HUMBLE
+		}
+
+		modifier = {
+			add = 25
+			has_trait = loyal
+			desc = VI_VASSAL_IS_LOYAL
+		}
+
+		modifier = {
+			add = -30
+			has_trait = disloyal
+			desc = VI_VASSAL_IS_DISLOYAL
+		}
+
+		modifier = {
+			add = {
+				value = 40
+				scope:recipient = {
+					# A bit more for greedy chars.
+					if = {
+						limit = { has_trait = greedy }
+						add = 20
+					}
+				}
+			}
+			scope:gift ?= yes
+			exists = scope:recipient
+			desc = SCHEME_WITH_GIFT
+		}
+
+		modifier = {
+			add = 60
+			scope:offer_hook ?= yes
+			exists = scope:recipient
+			desc = SCHEME_WITH_OFFER_HOOK
+		}
+
+		modifier = {
+			add = 60
+			scope:vi_military_support ?= yes
+			exists = scope:recipient
+			desc = VI_OFFERING_MILITARY_SUPPORT
+		}
+
+		modifier = {
+			add = {
+				value = 30
+				scope:recipient = {
+					# A bit more for arrogant chars.
+					if = {
+						limit = { has_trait = arrogant }
+						add = 10
+					}
+					# A bit less for humble ones.
+					if = {
+						limit = { has_trait = humble }
+						add = -10
+					}
+				}
+			}
+			scope:prestige ?= yes
+			exists = scope:recipient
+			desc = SCHEME_WITH_PRESTIGE
+		}
+	}
+
+	ai_potential = {
+		is_ruler = yes
+	}
+
+	ai_targets = {
+		ai_recipients = vassals
+	}
+
+	ai_frequency = 36
+
+	ai_will_do = {
+		base = -30
+
+		opinion_modifier = {
+			opinion_target = scope:actor
+			who = scope:recipient
+			multiplier = -1
+		}
+
+		modifier = {
+			scope:actor = {
+				opinion = {
+					target = scope:recipient
+					value < 0
+				}
+			}
+			add = -30
+		}
+
+		modifier = {
+			scope:actor = {
+				opinion = {
+					target = scope:recipient
+					value > 50
+				}
+			}
+			add = 30
+		}
+
+		modifier = {
+			scope:actor = {
+				gold > 300
+			}
+			add = 20
+		}
+
+		modifier = {
+			scope:actor = {
+				is_at_war = yes
+			}
+			add = -50
+		}
+		
+		modifier = {
+			factor = 0
+			scope:recipient = {
+				OR = {
+					has_relation_rival = scope:actor
+					has_relation_nemesis = scope:actor
+					is_at_war_with = scope:actor
+				}
+			}
+		}
+	}
+
+	# auto_accept = {
+	# 	custom_description = {
+	# 		text = "spending_hook"
+	# 		subject = scope:actor
+	# 		object = scope:recipient
+	# 		scope:hook = yes
+	# 	}
+	# }
+}

@@ -17,7 +17,7 @@ vi_vampire_drain_effect = {
 		add_opinion = {
 			target = scope:vi_vampire
 			modifier = suspicion_opinion
-			opinion = -60
+			opinion = -30
 		}
 
 		add_character_modifier = {

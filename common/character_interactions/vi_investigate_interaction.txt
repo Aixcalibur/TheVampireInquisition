@@ -1,9 +1,7 @@
-﻿
-# Challenge Status
-start_vi_investigate_interaction = {
+﻿start_vi_investigate_interaction = {
 	icon = debug_secret
-	interface_priority = 95
-	category = interaction_category_hostile
+	interface_priority = 100
+	category = interaction_category_admin
 
 	send_name = START_SCHEME
 
@@ -21,24 +19,41 @@ start_vi_investigate_interaction = {
 
 	ai_targets = {
 		ai_recipients = liege
+		ai_recipients = neighboring_rulers
+		ai_recipients = peer_vassals
 		ai_recipients = spouses
 		ai_recipients = vassals
 		ai_recipients = scripted_relations
-		max = 10
+		max = 20
 	}
 
-	ai_targets = {
-		ai_recipients = neighboring_rulers
-		ai_recipients = peer_vassals
-		max = 10
-	}
-
-	ai_frequency = 60
+	ai_frequency = 12 #We do want this to be a very common scheme for AI to do
 	
 	is_shown = {
 		scope:actor = {
 			is_ruler = yes
 			vi_is_vampire_trigger = no
+		}
+
+		OR = {
+			scope:actor = {
+				has_opinion_modifier = {
+					modifier = suspicion_opinion
+					target = scope:recipient
+				}
+			}
+			scope:recipient = {
+				has_government = vi_vampire_government
+			}
+			scope:actor = {
+				has_trait = vi_inquisitor
+			}
+		}
+
+		NOT = {
+			scope:recipient = {
+				has_trait = vi_dormant
+			}
 		}
 
 		scope:recipient != scope:actor
@@ -56,99 +71,142 @@ start_vi_investigate_interaction = {
 				type = vi_investigate
 				target_character = scope:recipient
 			}
-			has_opinion_modifier = {
-				modifier = suspicion_opinion
-				target = scope:recipient
+
+			custom_tooltip = {
+				text = vi_investigate_requirements
+				OR = {
+					has_opinion_modifier = {
+						modifier = suspicion_opinion
+						target = scope:recipient
+					}
+					has_trait = vi_inquisitor
+				}
 			}
+			
+			
+
+			# vi_is_suspicious_of = {
+			# 	TARGET = scope:recipient
+			# }
 		}
+
+
 	}
 
-	desc = vi_investigate_interaction_desc
+	desc = start_vi_investigate_interaction_desc
 
 	# Scheme Starter Packages
-	options_heading = schemes.t.agent_packages
-	send_options_exclusive = yes
-	## Balanced agents.
-	send_option = {
-		flag = agent_focus_balance
-		current_description = start_challenge_status_interaction.tt.agent_focus_balance
-	}
-	## Focused on Success Chance.
-	send_option = {
-		flag = agent_focus_success
-		current_description = start_challenge_status_interaction.tt.agent_focus_success
-	}
-	## Focused on Speed.
-	send_option = {
-		flag = agent_focus_speed
-		current_description = start_challenge_status_interaction.tt.agent_focus_speed
-	}
+	# options_heading = schemes.t.agent_packages
+	# send_options_exclusive = yes
+	# ## Balanced agents.
+	# send_option = {
+	# 	flag = agent_focus_balance
+	# 	current_description = start_vi_investigate_interaction.tt.agent_focus_balance
+	# }
+	# ## Focused on Success Chance.
+	# send_option = {
+	# 	flag = agent_focus_success
+	# 	current_description = start_vi_investigate_interaction.tt.agent_focus_success
+	# }
+	# ## Focused on Speed.
+	# send_option = {
+	# 	flag = agent_focus_speed
+	# 	current_description = start_vi_investigate_interaction.tt.agent_focus_speed
+	# }
+	# ## Focused on Secrecy
+	# send_option = {
+	# 	flag = agent_focus_secrecy
+	# 	current_description = start_vi_investigate_interaction.tt.agent_focus_secrecy
+	# }
 
 	on_accept = {
 		scope:actor = {
 			send_interface_toast = {
 				type = event_toast_effect_neutral
-				title = start_challenge_status_notification
+				title = start_vi_investigate_notification
 
 				left_icon = scope:actor
 				right_icon = scope:recipient
 
-				# Success.
-				if = {
-					limit = { scope:agent_focus_success ?= yes }
-					begin_scheme_with_agents_effect = {
-						SCHEME_TYPE = vi_investigate
-						TARGET_TYPE = target_character
-						TARGET_SCOPE = scope:recipient
-						# Success.
-						AGENT_1 = agent_proponent
-						AGENT_2 = agent_intermediary
-						AGENT_3 = agent_sycophant
-						# Speed.
-						AGENT_4 = agent_political_socialite
-						AGENT_5 = agent_bureaucrat
-					}
+				begin_scheme_basic_effect = {
+					SCHEME_TYPE = vi_investigate
+					TARGET_TYPE = target_character
+					TARGET_SCOPE = scope:recipient
 				}
-				# Speed.
-				else_if = {
-					limit = { scope:agent_focus_speed ?= yes }
-					begin_scheme_with_agents_effect = {
-						SCHEME_TYPE = vi_investigate
-						TARGET_TYPE = target_character
-						TARGET_SCOPE = scope:recipient
-						# Success.
-						AGENT_1 = agent_proponent
-						AGENT_2 = agent_intermediary
-						# Speed.
-						AGENT_3 = agent_political_socialite
-						AGENT_4 = agent_bureaucrat
-						AGENT_5 = agent_bureaucrat
-					}
-				}
-				# Balanced.
-				else = {
-					begin_scheme_with_agents_effect = {
-						SCHEME_TYPE = vi_investigate
-						TARGET_TYPE = target_character
-						TARGET_SCOPE = scope:recipient
-						# Success.
-						AGENT_1 = agent_proponent
-						AGENT_2 = agent_intermediary
-						# Speed.
-						AGENT_3 = agent_political_socialite
-						AGENT_4 = agent_bureaucrat
-						# Secrecy.
-						AGENT_5 = agent_amanuensis
-					}
-				}
+
+				# # Success.
+				# if = {
+				# 	limit = { scope:agent_focus_success ?= yes }
+				# 	begin_scheme_with_agents_effect = {
+				# 		SCHEME_TYPE = vi_investigate
+				# 		TARGET_TYPE = target_character
+				# 		TARGET_SCOPE = scope:recipient
+				# 		# Success.
+				# 		AGENT_1 = agent_theologian_success
+				# 		AGENT_2 = agent_cleric_success
+				# 		AGENT_3 = agent_thief
+				# 		# Speed.
+				# 		AGENT_4 = agent_socialite
+				# 		# Secrecy
+				# 		AGENT_5 = agent_gabbler_secrecy
+				# 	}
+				# }
+				# # Speed.
+				# else_if = {
+				# 	limit = { scope:agent_focus_speed ?= yes }
+				# 	begin_scheme_with_agents_effect = {
+				# 		SCHEME_TYPE = vi_investigate
+				# 		TARGET_TYPE = target_character
+				# 		TARGET_SCOPE = scope:recipient
+				# 		# Success.
+				# 		AGENT_1 = agent_theologian_success
+				# 		AGENT_2 = agent_thief
+				# 		# Speed.
+				# 		AGENT_3 = agent_socialite
+				# 		AGENT_4 = agent_infiltrator
+				# 		AGENT_5 = agent_tracker
+				# 	}
+				# }
+				# else_if = {
+				# 	limit = { scope:agent_focus_secrecy ?= yes }
+				# 	begin_scheme_with_agents_effect = {
+				# 		SCHEME_TYPE = vi_investigate
+				# 		TARGET_TYPE = target_character
+				# 		TARGET_SCOPE = scope:recipient
+				# 		# Success.
+				# 		AGENT_1 = agent_theologian_success
+				# 		AGENT_2 = agent_thief
+				# 		# Speed.
+				# 		AGENT_3 = agent_socialite
+				# 		# Secrecy
+				# 		AGENT_4 = agent_decoy
+				# 		AGENT_5 = agent_gabbler_secrecy
+				# 	}
+				# }
+				# # Balanced.
+				# else = {
+				# 	begin_scheme_with_agents_effect = {
+				# 		SCHEME_TYPE = vi_investigate
+				# 		TARGET_TYPE = target_character
+				# 		TARGET_SCOPE = scope:recipient
+				# 		# Success.
+				# 		AGENT_1 = agent_theologian_success
+				# 		AGENT_2 = agent_thief
+				# 		# Speed.
+				# 		AGENT_3 = agent_socialite
+				# 		AGENT_4 = agent_infiltrator
+				# 		# Secrecy.
+				# 		AGENT_5 = agent_gabbler_secrecy
+				# 	}
+				# }
 			}
 			# Scheme bonuses from being the emperor/dominant family/powerful family
 			# ep3_actor_scheme_modifier_effect = yes
-			# custom_tooltip = challenge_status_success_actor_tt
+			custom_tooltip = vi_investigate_success_actor_tt
 		}
 		scope:recipient = {
 			save_scope_as = target
-			custom_tooltip = challenge_status_success_recipient_tt
+			#custom_tooltip = vi_investigate_success_recipient_tt
 		}
 	}
 
@@ -169,6 +227,31 @@ start_vi_investigate_interaction = {
 		#Personality
 		modifier = {
 			has_trait = zealous
+			add = 25
+		}
+
+		modifier = {
+			has_trait = cynical
+			add = 25
+		}
+
+		modifier = {
+			has_trait = paranoid
+			add = 50
+		}
+
+		modifier = {
+			has_trait = trusting
+			add = -50
+		}
+
+		modifier = {
+			has_trait = craven
+			add = -10
+		}
+
+		modifier = {
+			has_trait = vi_inquisitor
 			add = 50
 		}
 

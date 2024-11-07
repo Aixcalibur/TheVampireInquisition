@@ -10,6 +10,7 @@
 	# scope:defender is the defender
 	allowed_for_character = {
 		has_character_flag = vi_inquisition_target
+		is_at_war = no
 	}
 	allowed_against_character = {
 		has_character_flag = vi_inquisition_leader
@@ -45,10 +46,8 @@
 
 	on_declaration = {
 		on_declared_war = yes
+		vi_inquisition_defection_effect = yes
 		vi_inquisition_spawn_vampire_army_effect = yes
-
-		
-
 		scope:defender = {
 			vi_inquisition_spawn_inquisition_army_effect = yes
 		}
@@ -102,12 +101,12 @@
 				}
 			}
 
-			custom_tooltip = ep3_laamp_raid_contract_cb_prisoners.tt_attacker
+			# custom_tooltip = ep3_laamp_raid_contract_cb_prisoners.tt_attacker
 
-			every_in_list = {
-				list = definite_captives_list
-				add_character_flag = captured_in_ep3_laamp_raid_contract_cb
-			}
+			# every_in_list = {
+			# 	list = definite_captives_list
+			# 	add_character_flag = captured_in_ep3_laamp_raid_contract_cb
+			# }
 			#complete the contract
 			# hidden_effect = {
 			# 	scope:raid_contract = {
@@ -593,7 +592,16 @@ vi_inquisition_religious_war = {
 
 	on_declaration = {
 		on_declared_war = yes
+		
 		vi_inquisition_spawn_inquisition_army_effect = yes
+		scope:defender = {
+			if = {
+				limit = {
+					has_trait = vi_exposed_vampire
+				}
+				vi_inquisition_defection_effect = yes
+			}
+		}
 		# scope:attacker = {
 		# 	if = {
 		# 		limit = {
@@ -946,4 +954,125 @@ vi_inquisition_religious_war = {
 			multiply = 0
 		}
 	}
+}
+
+vi_inquisition_landless_war = {
+	icon = ducal_conquest_cb
+	group = invasion
+	allow_hostages = no
+	target_top_liege_if_outside_realm = no
+
+	allowed_for_character = {
+		NOT = {
+			vi_is_vampire_trigger = yes
+		}
+		has_trait = vi_inquisitor
+		has_character_flag = vi_inquisition_leader
+		is_landless_adventurer = yes
+	}
+
+	on_declaration = {
+
+		on_declared_war = yes
+		scope:attacker = {
+			var:vi_inquisition_targeting = {
+				save_scope_as = vi_target_vampire
+			}
+		}
+
+		scope:war = {
+			add_defender = scope:vi_target_vampire
+		}
+		scope:defender = {
+			vi_inquisition_spawn_vampire_army_effect = yes
+		}
+	}
+
+	cost = {
+	}
+
+	on_invalidated_desc = msg_inquisition_invalidated_message
+
+	on_invalidated = {
+		scope:attacker = {
+			remove_character_flag = vi_inquisition_leader
+		}
+		scope:vi_target_vampire = {
+			remove_character_flag = vi_inquisition_target
+		}
+	}
+
+	should_invalidate = {
+		scope:attacker = {
+			NOT = {
+				has_trait = vi_inquisitor
+			}
+		}
+	}
+
+	on_victory_desc = vi_inquisition_victory_desc
+
+	on_victory = {
+		scope:vi_target_vampire = {
+			vi_inquisition_imprison_effect = {
+				IMPRISONER = scope:defender
+			}
+
+			custom_description = {
+				text = vi_inquisition_capture_realm_effect
+
+				every_courtier_or_guest = {
+					vi_inquisition_try_imprison_effect = {
+						IMPRISONER = scope:defender
+					}
+				}
+	
+				# every_vassal_or_below = {
+				# 	every_courtier_or_guest = {
+				# 		vi_inquisition_try_imprison_effect = {
+				# 			IMPRISONER = scope:defender
+				# 		}
+				# 	}
+				# 	vi_inquisition_try_imprison_effect = {
+				# 		IMPRISONER = scope:defender
+				# 	}
+				# }
+			}
+
+			depose = yes
+
+			# depose_effect = { DEPOSER = scope:defender }
+		}
+	}
+
+	on_defeat = {
+		scope:vi_target_vampire = {
+			imprison = {
+				target = scope:attacker
+				type = dungeon
+			}
+		}
+		
+	}
+
+	on_primary_attacker_death = invalidate
+	on_primary_defender_death = inherit
+
+	landless_attacker_needs_armies = yes
+	full_occupation_by_attacker_gives_victory = no
+	ticking_war_score_targets_entire_realm = yes
+	attacker_ticking_warscore = 0
+	attacker_wargoal_percentage = 0.01
+	attacker_score_from_occupation_scale = 50
+	defender_score_from_occupation_scale = 50
+	attacker_score_from_battles_scale = 200
+	defender_score_from_battles_scale = 200
+
+	max_attacker_score_from_battles = 200
+	max_defender_score_from_battles = 200
+	
+	max_defender_score_from_occupation = 150
+	max_attacker_score_from_occupation = 150
+
+	max_ai_diplo_distance_to_title = 500
 }
