@@ -16,44 +16,48 @@
 		remove_character_modifier = vi_light_capital_wealth_modifier
 		remove_character_modifier = vi_invest_capital_wealth_modifier
 	}
+	add_character_modifier = {
+		modifier = vi_vampire_connections_modifier
+		years = 5
+	}
 }
 
 vi_vampire_policy_after_effect = {
 	save_scope_as = vi_vassal
-	liege ?= {
-		save_scope_as = vi_liege
-		if = {
-			limit = {
-				scope:vi_vassal = {
-					NOT = {
-						is_independent_ruler = yes
-					}
-					opinion = {
-						target = scope:vi_liege
-						value > 20
-					}
-				}
-			}
-			add_character_modifier = {
-				modifier = vi_vassal_cooperative_modifier
-				years = 5
-			}
-		}
-		else_if = {
-			limit = {
-				scope:vi_vassal = {
-					opinion = {
-						target = scope:vi_liege
-						value < -20
-					}
-				}
-			}
-			add_character_modifier = {
-				modifier = vi_vassal_uncooperative_modifier
-				years = 5
-			}
-		}
-	}
+	# liege ?= {
+	# 	save_scope_as = vi_liege
+	# 	if = {
+	# 		limit = {
+	# 			scope:vi_vassal = {
+	# 				NOT = {
+	# 					is_independent_ruler = yes
+	# 				}
+	# 				opinion = {
+	# 					target = scope:vi_liege
+	# 					value > 50
+	# 				}
+	# 			}
+	# 		}
+	# 		add_character_modifier = {
+	# 			modifier = vi_vassal_cooperative_modifier
+	# 			years = 5
+	# 		}
+	# 	}
+	# 	else_if = {
+	# 		limit = {
+	# 			scope:vi_vassal = {
+	# 				opinion = {
+	# 					target = scope:vi_liege
+	# 					value < -20
+	# 				}
+	# 			}
+	# 		}
+	# 		add_character_modifier = {
+	# 			modifier = vi_vassal_uncooperative_modifier
+	# 			years = 5
+	# 		}
+	# 	}
+	# }
 }
 
 vi_vampire_county_normal_effect = {
@@ -145,11 +149,15 @@ vi_vampire_county_discreet_effect = {
 	}
 	if = {
 		limit = {
-			is_independent_ruler = yes
+			has_legitimacy = yes
 		}
 		add_legitimacy = minor_legitimacy_gain
 	}
-	else = {
+	
+	if = {
+		limit = {
+			is_independent_ruler = no
+		}
 		liege ?= {
 			send_interface_message = {
 				type = send_interface_message_good

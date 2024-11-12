@@ -147,6 +147,7 @@ vi_create_artifact_bida_head_effect = { #Create at start
 	scope:newly_created_artifact = {
 		set_variable = { name = historical_unique_artifact value = yes }
 		set_variable = vi_bida_head
+		set_variable = vampire_loot
 		save_scope_as = epic
 	}
 }
@@ -176,9 +177,46 @@ vi_create_artifact_durendal_effect = {
 
 	scope:newly_created_artifact = {
 		add_artifact_modifier = vi_durendal_modifier
-		set_variable = vampire_weapon
+		set_variable = vampire_loot
 		set_variable = { name = historical_unique_artifact value = yes }
 		set_variable = durendal
+		save_scope_as = epic
+		equip_artifact_to_owner = yes
+	}
+}
+
+vi_create_artifact_archangel_sword_effect = {
+	# Get the character the artifact is being made for.
+	$OWNER$ = { save_scope_as = owner }
+	# Not really used, but if we don't set the scopes we get errors in the feature selection
+	set_artifact_rarity_illustrious = yes
+
+	# Create the artifact
+	create_artifact = {
+		name = vi_archangel_sword_name
+		description = vi_archangel_sword_description
+		template = vi_archangel_artifact_template
+		type = sword
+		visuals = longsword
+		wealth = scope:wealth
+		quality = scope:quality
+		history = {
+			type = created_before_history
+		}
+		modifier = vi_archangel_sword_modifier
+		save_scope_as = newly_created_artifact
+		decaying = no
+	}
+
+	scope:newly_created_artifact = {
+		set_variable = vampire_loot
+		set_variable = relic
+		set_variable = {
+			name = relic_religion
+			value = faith:catholic
+		}
+		set_variable = vi_archangel_sword
+		set_variable = { name = historical_unique_artifact value = yes }
 		save_scope_as = epic
 		equip_artifact_to_owner = yes
 	}

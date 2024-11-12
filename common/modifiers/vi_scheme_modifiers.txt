@@ -1,0 +1,19 @@
+﻿vi_hunt_auspex_modifier = {
+	icon = magic_positive
+	scheme_success_chance = 20
+	scheme_power = -20
+	stacking = yes
+}
+
+vi_hunt_animalspeak_modifier = {
+	icon = cat_positive
+	scheme_success_chance = 20
+	scheme_secrecy = -10
+}
+
+vi_hunt_effort_modifier = {
+	icon = stress_positive
+	scheme_success_chance = 5
+	scheme_power = 10
+	stacking = yes
+}

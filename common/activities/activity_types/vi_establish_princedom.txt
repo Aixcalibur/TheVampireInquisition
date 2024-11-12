@@ -1,0 +1,488 @@
+﻿activity_vi_establish_princedom = {
+
+	is_shown = {
+		vi_is_vampire_trigger = yes
+		OR = {
+			has_government = vi_vampire_government
+			is_landless_adventurer = yes
+		}
+		is_ai = no
+		debug_only = yes
+		always = no
+	}
+
+	can_always_plan = no
+
+	can_start_showing_failures_only = {
+		
+	}
+
+	is_valid = {
+		scope:host = {
+			is_ai = no
+			is_alive = yes
+			is_imprisoned = no
+			NOT = { is_incapable = yes }
+		}
+	}
+
+	is_location_valid = {
+		county = {
+			NOT = {
+				has_county_modifier = vi_county_discreet_modifier
+			}
+			title_province = root
+		}
+		squared_distance = {
+			target = scope:host.primary_title.title_capital_county
+			value < 400000
+		}
+	}
+
+	on_enter_travel_state = {
+		#add_character_flag = roaming_character
+	}
+
+	on_invalidated = {
+		invalidation_imprisoned_effect = yes
+		invalidation_incapable_effect = yes
+		invalidation_unlanded_effect = yes
+	}
+
+	on_enter_active_state = {
+		#surveyor_no_stone_unturned_perk_effect = yes
+	}
+
+	on_complete = {
+		scope:activity.special_guest:honorary_guest_new_prince ?= { save_scope_as = special_guest }
+		if = {
+			limit = {
+				this = scope:host
+			}	
+		}
+	}
+
+	on_host_death = {
+		invalidation_host_death_effect = yes
+	}
+
+	province_filter = all
+	ai_province_filter = domain
+
+	max_province_icons = 3
+	allow_zero_guest_invites = yes
+	open_invite = no
+
+	province_description = {
+		desc = activity_roaming_province_desc
+		
+		triggered_desc = {
+			trigger = {
+				has_province_modifier = wayfarer_astronomical_phenomenon
+			}
+			desc = activity_roaming_astronomical_phenomenon
+		}
+
+		triggered_desc = {
+			trigger = {
+				OR = {
+					terrain = desert_mountains
+					terrain = mountains
+				}
+			}
+			desc = activity_roaming_good_terrain
+		}
+
+		triggered_desc = {
+			trigger = {
+				OR = {
+					terrain = oasis
+					terrain = hills
+					terrain = taiga
+					terrain = forest
+					terrain = jungle
+				}
+			}
+			desc = activity_roaming_ok_terrain
+		}
+
+		triggered_desc = {
+			trigger = { has_holding = no }
+			desc = activity_roaming_empty_holding
+		}
+	}
+
+	province_score = {
+		add = county.development_level
+	}
+
+	cost = {
+		gold = {
+			add = {
+				value = standard_roaming_activity_cost
+				desc = hunt_base_cost
+			}
+		}
+	}
+
+	ui_predicted_cost = {
+		gold = {
+			# Base Cost
+			value = standard_roaming_activity_cost
+			# Make it a multiple of 5 (rounded up)
+			divide = 5 
+			ceiling = yes 
+			multiply = 5
+		}
+	}
+
+	cooldown = { months = 1 }
+
+	###################
+	# PHASES AND OPTIONS
+	###################
+
+	phases = {
+		phase_roaming = {
+			is_predefined = yes
+			location_source = pickable
+
+			on_phase_active = {
+				scope:activity.special_guest:honorary_guest_new_prince ?= { save_scope_as = special_guest }
+				#trigger_event = { id = bp3_roaming.0005 }
+				if = {
+					limit = {
+						this = scope:host
+						scope:activity = {
+							has_activity_option = {
+								category = roaming_option_travel_length
+								option = roaming_long_length
+							}
+						}
+					}
+					scope:activity = { progress_activity_phase_after = { days = 90 } }
+					trigger_event = {
+						on_action = random_roaming_event_pulse
+						days = 15
+					}
+					trigger_event = {
+						on_action = random_roaming_event_pulse
+						days = 30
+					}
+					trigger_event = {
+						on_action = roaming_mid_activity_event_pulse
+						days = 45
+					}
+					trigger_event = {
+						on_action = random_roaming_event_pulse
+						days = 60
+					}
+					trigger_event = {
+						on_action = random_roaming_event_pulse
+						days = 75
+					}
+				}
+				else_if = {
+					limit = {
+						this = scope:host
+					}
+					scope:activity = { progress_activity_phase_after = { days = 60 } }
+					trigger_event = {
+						on_action = random_roaming_event_pulse
+						days = 15
+					}
+					trigger_event = {
+						on_action = roaming_mid_activity_event_pulse
+						days = 30
+					}
+					trigger_event = {
+						on_action = random_roaming_event_pulse
+						days = 45
+					}
+				}
+				if = {
+					limit = {
+						this = scope:host
+						scope:host.location = {
+							has_province_modifier = wayfarer_astronomical_phenomenon
+						}
+					}
+					trigger_event = {
+						id = bp3_roaming.0200
+						days = 40
+					}
+				}
+			}
+
+			on_end = {
+				
+			}
+		}
+	}
+
+	options = {
+		roaming_option_travel_length = {
+			roaming_short_length = {
+				default = yes
+			}
+			roaming_long_length = {
+				is_valid = {
+					has_perk = the_home_away_from_home_perk
+				}
+
+				cost = {
+					gold = {
+						add = {
+							value = 35
+							if = {
+								limit = {
+									has_perk = journey_planner_perk
+								}
+								multiply = {
+									value = voyager_journey_planner_value
+									desc = journey_planner_perk_name
+								}
+							}
+							desc = roaming_long_length
+						}
+					}
+				}
+			}
+		}
+	}
+
+	max_guest_arrival_delay_time = { months = 1 }
+	
+	
+	###################
+	# ACTIVITY-SPECIFIC PULSES
+	###################
+	
+	pulse_actions = {
+		entries = {
+			
+		}
+		chance_of_no_event = 0
+	}
+
+	###################
+	# AI VALUES
+	###################
+
+	# desc is only shown in debug AI watch window
+	ai_will_do = {
+		value = -100
+		
+		if = {
+			limit = {
+				has_trait = lazy
+			}
+			add = -10
+		}
+		
+		#Can you actually afford this?
+		if = {
+			limit = {
+				NOT = { can_make_expensive_purchase_trigger = { PRICE = activity_minor_gold_value } }
+			}
+			add = -75
+		}
+	}
+
+	ai_check_interval = 60
+
+	ai_will_select_province = {
+		value = 10
+	}
+
+	###################
+	# GUEST HANDLING
+	###################
+
+	host_intents = {
+		default = reduce_stress_intent
+		intents = { reduce_stress_intent roaming_storyteller_intent roaming_befriend_intent roaming_mystic_intent }
+	}
+
+	guest_intents = {
+		intents = { reduce_stress_intent }
+		default = reduce_stress_intent
+	}
+
+	can_be_activity_guest = {
+		vi_is_vampire_trigger = yes
+		is_courtier_of = scope:host
+		#roaming_activity_special_guest_trigger = yes
+	}
+
+	guest_invite_rules = {
+		defaults = {
+			2 = activity_invite_rule_lovers
+			1 = activity_invite_rule_friends
+			1 = activity_invite_rule_close_family
+			1 = activity_invite_spouses
+			1 = activity_invite_rule_knights
+		}
+	}
+
+	special_guests = {
+		honorary_guest_new_prince = {
+			is_required = yes
+			
+			is_shown = { 
+				
+			}
+
+			can_pick = {
+				#is_courtier_of = scope:host
+				OR = {
+					has_trait = vi_vampire_2
+					has_trait = vi_vampire_3
+					has_trait = vi_vampire_4
+				}
+			}
+			
+			ai_will_do = {
+				value = 10
+			}
+		}
+	}
+
+	travel_entourage_selection = {
+		weight = {
+			value = 10
+			if = {
+				limit = {
+					NOT = { is_in_list = special_guests }
+				}
+				multiply = 0
+			}
+		}
+
+		invite_rule_order = 1
+
+		# Up to how many characters to select for a player
+		max = 2
+		
+		# Up to how many characters to select for an AI
+		ai_max = 2
+	}
+
+	max_guests = 5
+
+	guest_join_chance = {
+		base = 10
+
+		modifier = {
+			factor = 0
+			is_ruler = yes
+		}
+	}
+
+	###################
+	# GRAPHICS
+	###################
+
+	# Travel
+	background = { # Bridge
+		trigger = {
+			scope:host.location = {
+				is_riverside_province = yes
+				geographical_region = world_europe
+				OR = {
+					terrain = farmlands
+					terrain = plains
+					terrain = mountains
+					terrain = hills
+				}
+			}
+		}
+		texture = "gfx/interface/illustrations/event_scenes/ep2_travel_bridge.dds"
+		environment = "environment_travel_bridge"
+		ambience = "event:/SFX/Events/Backgrounds/mountains_day"
+	}
+
+	background = { # Riverside
+		texture = "gfx/interface/illustrations/event_scenes/bp3_riverside.dds"
+		environment = "environment_event_bp1_plains"
+		ambience = "event:/DLC/EP2/SFX/Events/Grand_Activities/Hunts/ep2_event_grand_hunt_waterbank"
+	}
+
+	window_characters = {
+		
+		host = {
+			camera = camera_body
+			
+			effect = {
+				if = {
+					limit = {
+						scope:host.location = scope:activity.activity_location
+					}
+					scope:host = {
+						add_to_list = characters
+					}
+				}
+			}
+
+			scripted_animation = {
+				animation = survey_staff
+			}
+		}
+		
+		travel_host = {
+			camera = camera_activity_horse
+			
+			effect = {
+				if = {
+					limit = {
+						NOT = {
+							scope:host.location = scope:activity.activity_location
+						}
+					}
+					scope:host = {
+						add_to_list = characters
+					}
+				}
+			}
+
+			scripted_animation = {
+				triggered_animation = {
+					trigger = {
+						scope:character.location = { is_sea_province = yes }
+					}
+					animation = { idle }
+				}
+				triggered_animation = {
+					trigger = { scope:character = { has_trait = impatient } }
+					animation = { jockey_gallop }
+				}
+				animation = jockey_walk
+			}
+		}
+
+		guest = {
+			camera = camera_body
+			
+			effect = {
+				if = {
+					limit = {
+						scope:host.location = scope:activity.activity_location
+					}
+					every_attending_character = {
+						limit = {
+							location = scope:activity.activity_location
+							NOT = {
+								this = scope:host
+							}
+						}
+						add_to_list = characters
+					}
+				}
+			}
+
+			scripted_animation = {
+				animation = idle
+			}
+		}
+	}
+}

@@ -6,10 +6,12 @@ vi_stress_generic.0001 = { #Standing over a kill
 	desc = vi_stress_generic.0001.desc
 
 	theme = mental_break
+	
 	override_background = {
 		trigger = { is_travelling = yes }
 		reference = terrain
 	}
+
 	left_portrait = {
 		character = root
 		animation = rage

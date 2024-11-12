@@ -8,6 +8,7 @@
  vi_mademoiselle: "Mademoiselle"
  vi_mother: "Mother"
  vi_father: "Father"
+ vi_abbey: "Abbey"
 
  vi_courtier_temperament_high: "High [vi_court_favor|e]"
  vi_courtier_temperament_low: "Low [vi_court_favor|e]"
@@ -16,14 +17,21 @@
  vi_appointment_succession_law: "Vampire"
  vi_vampire_elective_succession_law: "Shadow Elective"
  vi_vampire_elective_electors: "Shadow Electors"
+ vi_vampire_elective_electors_tooltip: "All [vassals|E] are allowed to vote."
  vi_vampire_elective_candidates: "Candidates"
+ vi_vampire_elective_candidates_tooltip: "Any [vampire|E] inside the [realm|E] with the correct [faith|E] can become a [claimant|E]"
+
+ vi_local_seniority_law: "Local Seniority"
+ vi_kingdom_seniority_law: "Vampire Seniority"
+ vi_succession_order_laws: "Vampire Succession Laws"
+ vi_succession_order_laws_singular: "Succession Law"
 
  vi_sum_of_skills_desc: "[skills|E]: $VALUE|=+0$"
  vi_tooltip_self_vote_strength: "Vampires command no power when they're gone: $VALUE|=+0$"
 
- vi_lair_domicile_type: "Lair"
- vi_lair_domicile_type_tooltip: "Lair"
- vi_lair_domicile_type_possessive: "Lair's"
+ vi_lair_domicile_type: "[CHARACTER.GetFirstNameNoTooltip] Lair"
+ vi_lair_domicile_type_tooltip: "Vampire Lair"
+ vi_lair_domicile_type_possessive: "Vampire Lair's"
 
  vi_vampire_government: "Vampire Princedom"
  game_concept_vi_vampire_princedom: "Vampire Princedom"
@@ -36,6 +44,9 @@
  vi_vampire_government_realm: "Vampire"
  vi_vampire_government_desc: "A Vampire Princedom is a territory claimed by a powerful [vampire|e], unbeknownst to the local mortal population."
  vi_vampire_government_with_icon: "@government_type_feudal! $vi_vampire_government$"
+
+
+ 
 
  vi_vampire_retinue_army: "Vampire Retinue"
 
@@ -58,6 +69,8 @@
  VI_VASSAL_IS_LOYAL: "[recipient.GetShortUIName] is [GetTrait('loyal').GetName( ROOT.Char )]: $VALUE|=+0$"
  VI_VASSAL_IS_DISLOYAL: "[recipient.GetShortUIName] is [GetTrait('disloyal').GetName( ROOT.Char )]: $VALUE|=+0$"
 
+
+ vi_princely_obligations: "Princely Tribute"
 
  vi_administrative_themes: "Available Administration Types"
  vi_admin_theme_balanced: "@balanced_administration! Balanced Administration"

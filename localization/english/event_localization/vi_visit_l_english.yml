@@ -1,0 +1,63 @@
+﻿l_english:
+
+ vi_visit_interaction: "Visit"
+ vi_visit_interaction_desc: "Pay an evening visit to [recipient.GetShortUIName]"
+
+ vi_available_to_visit: "Too busy to visit"
+ vi_visit_courtier_tt: "You will visit [recipient.GetShortUIName] later after the sun sets"
+ vi_visit_travel_tt: "You will [travel|e] to visit [recipient.GetShortUIName]"
+ vi_visit_return_tt: "You conclude your visit"
+ vi_visit_holy_artifact_tt: "The presence of a Holy [artifact|E] at this location prevents the use of [vampire|E] powers."
+ vi_visit_holy_artifact_warning_tt: "@warning_icon! #X $vi_visit_holy_artifact_tt$ #!"
+ vi_visit_language_tt: "I must know the language of [recipient.GetShortUIName]." 
+
+ vi_visit.artifact.desc: "As I approached, I felt the repulsive presence of a Holy Artifact nearby drain me of my powers, but this would not deter me.\n\n"
+ 
+ vi_visit.chat.msg_desc: "[actor.GetShortUIName|U] visited [recipient.GetShortUIName|U] for a pleasant chat."
+
+ vi_visit.option_hook: "I will make [recipient.GetShortUIName] think [recipient.GetSheHe] owes me a favor."
+ vi_visit.option_hook.msg_title: "Unnatural Persuasion"
+ vi_visit.option_hook.msg_desc: "You just could not help but find [vi_vampire.GetShortUIName]'s words convincing."
+
+ vi_visit.option_enthrall: "[recipient.GetShortUIName] shall become my loyal thrall"
+ vi_visit.option_enthrall.msg_title: "Enthralling Gaze"
+ vi_visit.option_enthrall.relation_tt: "You must be [vi_victim.GetShortUIName]'s [friend|e] or [lover|e]"
+
+ vi_visit.option_soothe: "[recipient.GetShortUIName] needs to relax and lose any suspicions about me"
+ vi_visit.option_soothe.success.msg_title: "Comfort of a Friend"
+
+ vi_visit.option.failure.msg_title: "Suspicious Visit"
+ vi_visit.option.failure.msg_desc: "[vi_vampire.GetShortUIName] acted very strangely when they visited you at night. Could [vi_vampire.GetSheHe] be practicing witchcraft?"
+
+ vi_visit.option_leave: "Now, it's time for me to leave."
+ vi_visit.option_leave_fast: "I am getting out of here!"
+ vi_visit.option_seduce: "Perhaps I should stay the night..."
+ vi_visit.option_seduce_soulmate_tt: "[vi_victim.GetShortUIName] will not betray their soulmate."
+ vi_visit_option_seduce_stay_mortal_tt: "You stay until [vi_victim.GetShortUIName] falls asleep before quietly departing"
+
+ game_concept_vi_visit_interaction: "Visit"
+ game_concept_vi_visit: "Visit"
+ game_concept_vi_visiting: "Visiting"
+ game_concept_vi_visit_interaction_desc: "Pay an evening visit with another character that you know the [language|e] of and has a positive [opinion|E] of you. If you are not in the same location, you must [travel|E] to them."
+
+ vi_visit.0001.t: "An Evening Visit"
+ vi_visit.0001.desc: "I waited patiently for dusk to find my target. "
+ vi_visit.0001.welcome.desc: "[recipient.GetShortUIName] welcomed me in cordially despite the late hour."
+ vi_visit.0001.a: "Just have a pleasant conversation before leaving."
+
+ vi_visit.4001.t: "Persuasion Success"
+ vi_visit.4001.desc: "[vi_victim.GetShortUIName] seemed confused at first, but [vi_victim.GetHerHis] resistance slowly gave way like a broken dam against the torrent of my mental influence.\n\n"You're absolutely right," [vi_victim.GetSheHe] murmured as [vi_victim.GetHerHis] eyes glazed over. "I owe... so much to you.""
+
+ vi_visit.4010.t: "Soothing Voice"
+ vi_visit.4010.desc: "My words are like honey pouring into [vi_victim.GetShortUINamePossessive] ears. I can feel [vi_victim.GetHerHis] tension fade away, the stresses of the day gone like a bad dream."
+ # Triggered if suspcions were erased
+ vi_visit.4010.suspicions_desc: "\n\nFor a moment, [vi_victim.GetHerHis] eyes lose focus as I cloud [vi_victim.GetHerHis] thoughts and memories, burying [vi_victim.GetHerHis] suspicions of me deep where they will not be found again."
+
+ vi_visit.4020.t: "Mesmerizing, Enthralling"
+ vi_visit.4020.desc: "[vi_victim.GetShortUIName] is trapped the moment [vi_victim.GetSheHe] meets my eyes, unable to move or look away. For [vi_victim.GetHerHim], the world seems to fall away until I am the only one left, the only one that matters. An eternity passes in the space of a few seconds.\n\nFinally, I smile approvingly and allow [vi_victim.GetHerHim] to blink. [vi_victim.GetSheHe|U] is mine now."
+
+ vi_visit.4021.t: "Enthrall Failure"
+ vi_visit.4021.desc: "Just as [vi_victim.GetShortUIName] starts to sink into my gaze, [vi_victim.GetSheHe] pulls away as if by reflex. Just like that, the spell is broken. "
+
+ vi_visit.4021.mortal_desc: "\n\n"What foul witchcraft did you attempt on me?" [vi_victim.GetSheHe] demands."
+ vi_visit.4021.vampire_desc: "[vi_victim.GetShortUIName] is furious. "You tried to enthrall me!""

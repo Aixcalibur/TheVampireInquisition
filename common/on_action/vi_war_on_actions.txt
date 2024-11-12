@@ -1,0 +1,123 @@
+﻿#Simply to allow wrong-gender vampires to fight in wars
+
+on_war_started = {
+	on_actions = {
+		vi_on_war_started_attacker
+	}
+}
+
+on_join_war_as_secondary = {
+	on_actions = {
+		vi_on_join_war_as_secondary
+	}
+}
+
+on_war_won_attacker = {
+	on_actions = {
+		vi_on_war_ended
+	}
+}
+
+on_war_won_defender = {
+	on_actions = {
+		vi_on_war_ended
+	}
+}
+
+on_war_white_peace = {
+	on_actions = {
+		vi_on_war_ended
+	}
+}
+
+on_war_invalidated = {
+	on_actions = {
+		vi_on_war_ended
+	}
+}
+
+vi_on_war_started_attacker = {
+	trigger = {
+		scope:attacker = {
+			vi_is_vampire_trigger = yes
+		}
+	}
+
+	effect = {
+		scope:attacker = {
+			trigger_event = {
+				on_action = vi_on_war_started_effect_on_action
+			}
+		}
+	}
+}
+
+vi_on_war_started_attacker = {
+	trigger = {
+		scope:defender = {
+			vi_is_vampire_trigger = yes
+		}
+	}
+
+	effect = {
+		scope:defender = {
+			trigger_event = {
+				on_action = vi_on_war_started_effect_on_action
+			}
+		}
+	}
+}
+
+vi_on_join_war_as_secondary = {
+	trigger = {
+		vi_is_vampire_trigger = yes
+	}
+
+	effect = {
+		trigger_event = {
+			on_action = vi_on_war_started_effect_on_action
+		}
+	}
+}
+
+vi_on_war_started_effect_on_action = {
+	effect = {
+		every_courtier = {
+			limit = {
+				vi_is_vampire_trigger = yes
+				NOT = {
+					has_character_modifier = ignores_gender_army_rules
+				}
+			}
+			add_character_flag = vi_remove_ignore_after_war
+			add_character_modifier = {
+				modifier = ignores_gender_army_rules
+			}
+		}
+
+		add_character_modifier = {
+			modifier = vi_knight_effectiveness_modifier
+		}
+	}
+}
+
+vi_on_war_ended = {
+	trigger = {
+		vi_is_vampire_trigger = yes
+		is_at_war = no
+	}
+
+	effect = {
+		every_courtier = {
+			limit = {
+				vi_is_vampire_trigger = yes
+				has_character_modifier = ignores_gender_army_rules
+				has_character_flag = vi_remove_ignore_after_war
+			}
+			remove_character_flag = vi_remove_ignore_after_war
+			remove_character_modifier = ignores_gender_army_rules
+		}
+
+		remove_character_modifier = vi_knight_effectiveness_modifier
+	}
+}

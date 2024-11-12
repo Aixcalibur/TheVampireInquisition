@@ -11,7 +11,8 @@
 
 vi_is_vampire_accepting_trigger = {
 	faith = {
-		is_in_family = rf_vi_vampire
+		has_doctrine = vi_masquerade_not_required
+		#is_in_family = rf_vi_vampire
 	}
 }
 
@@ -48,6 +49,16 @@ has_focus_vi_vampire = {
 		has_focus = vi_vampire_charm_focus
 		has_focus = vi_vampire_insight_focus
 		has_focus = vi_vampire_will_focus
+	}
+}
+
+vi_is_part_of_inner_council = {
+	OR = {
+		has_court_position = vi_herald_court_position
+		has_court_position = vi_sword_court_position
+		has_court_position = vi_castellan_court_position
+		has_court_position = vi_shadow_court_position
+		has_court_position = vi_augur_court_position
 	}
 }
 

@@ -158,6 +158,15 @@ vi_turn_into_vampire_effect = {
 			}
 			# set_character_faith = scope:vi_vampire.faith
 			# set_house = scope:vi_vampire.house
+			if = {
+				limit = {
+					is_landed = yes
+					NOT = {
+						has_story_of_type = story_vi_landed
+					}
+				}
+				create_story = story_vi_landed
+			}
 		}
 	}
 }
@@ -203,7 +212,6 @@ vi_become_dormant_effect = {
 		remove_trait = vi_exposed_vampire
 		add_secret = {
 			type = secret_vi_vampire
-			target = THIS
 		}
 	}
 
@@ -481,5 +489,67 @@ vi_hostile_scheme_monthly_discovery_chance_effect = {
 				}
 			}
 		}
+	}
+}
+
+vi_on_perk_added_effect = {
+	if = {
+		limit = {
+			is_ai = no
+			years_from_game_start > 1
+		}
+		add_stress = medium_stress_gain
+	}
+	custom_description_no_bullet = {
+		text = vi_night_perk_effect
+	}
+}
+
+vi_consider_excommunicated_list = {
+	if = {
+		limit = {
+			faith = faith:vi_nightcourt
+			NOT = {
+				any_scheme = {
+					is_scheme_category = hostile
+				}
+			}
+		}
+		save_scope_as = exc_hunter
+		random_in_global_list = {
+			variable = vi_nightcourt_excommunicated
+			limit = {
+				is_alive = yes
+				has_character_modifier = vi_excommunicated_modifier
+				scope:exc_hunter = {
+					opinion = {
+						target = prev
+						value < -20
+					}
+				}
+				prowess < scope:exc_hunter.prowess
+			}
+			save_scope_as = exc_target
+		}
+
+		begin_scheme_basic_effect = {
+			SCHEME_TYPE = vi_hunt
+			TARGET_TYPE = target_character
+			TARGET_SCOPE = scope:exc_target
+		}
+	}
+}
+
+vi_fake_succession_prep_effect = {
+	save_scope_as = scheme
+	save_scope_value_as = {
+		name = follow_up_event
+		value = event_id:vi_fake_succession.1001
+	}
+	if = {
+		limit = {
+			NOT = { exists = scope:suppress_next_event }
+		}
+		scheme_owner = { trigger_event = scheme_critical_moments.0002 }
 	}
 }

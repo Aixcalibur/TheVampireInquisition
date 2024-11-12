@@ -59,3 +59,53 @@
 		base = 0
 	}
 }
+
+vi_become_dormant_decision = {
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_personal_religious.dds"
+	}
+	desc = vi_become_dormant_decision_desc
+	selection_tooltip = vi_become_dormant_decision_tooltip
+
+	decision_group_type = minor
+	ai_check_interval = 600
+
+	is_shown = {
+		vi_is_vampire_trigger = yes
+	}
+
+	is_valid_showing_failures_only = {
+		not = { exists = involved_activity }
+		is_imprisoned = no
+		is_commanding_army = no
+		NOT = {
+			has_trait = vi_dormant
+		}
+	}
+
+	effect = {
+		vi_become_dormant_effect = yes
+	}
+
+	ai_potential = {
+		always = yes
+	}
+
+	ai_will_do = {
+
+		base = -25
+
+		modifier = {
+			add = 30
+			OR = {
+				has_trait = depressed_1
+				has_trait = depressed_genetic
+			}
+		}
+
+		# modifier = {
+		# 	add = 30
+		# 	stress_level >= 3
+		# }
+	}
+}

@@ -70,7 +70,7 @@
 					}
 				}
 				add_opinion = {
-					target = scope:owner
+					target = scope:actor
 					modifier = suspicion_opinion
 					opinion = -10
 				}
@@ -97,13 +97,17 @@
 						multiplier = 0.25
 					}
 
-					add_character_modifier = {
-						modifier = vi_inspired_modifier
-						years = 5
+					send_interface_toast = {
+						title = vi_inspire_interaction
+						custom_tooltip = {
+							text = vi_inspire_effect_tt
+							add_character_modifier = {
+								modifier = vi_inspired_modifier
+								years = 5
+							}
+							grant_inspiration_to_character_no_court_artifacts_effect = { CHARACTER = scope:recipient }
+						}
 					}
-
-					grant_inspiration_to_character_no_court_artifacts_effect = { CHARACTER = this }
-
 				}
 
 				0 = {

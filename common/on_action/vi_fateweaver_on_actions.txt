@@ -1,0 +1,28 @@
+﻿vi_fateweaver_destiny_child = {
+	effect = {
+		scope:destiny_child = {
+			add_character_modifier = {
+				modifier = bp2_destined_modifier
+			}
+			set_variable = {
+				name = destiny_child
+				value = scope:destiny_child
+			}
+		}
+
+		create_story = {
+			type = story_destiny_child
+			save_scope_as = story
+		}
+
+		random_owned_story = {
+			limit = {
+				story_type = story_destiny_child
+			}
+			set_variable = {
+				name = destiny_child
+				value = scope:destiny_child
+			}
+		}
+	}
+}

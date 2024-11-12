@@ -1,0 +1,281 @@
+﻿vi_hunt_drink_ai_chance_modifier = {
+	modifier = {
+		scope:victim = {
+			vi_is_vampire_trigger = yes
+		}
+		add = -30
+	}
+
+	modifier = {
+		scope:vi_victim = {
+			has_trait = vi_dhampir
+		}
+		add = -1000
+	}
+
+	# opinion_modifier = {
+	# 	opinion_target = scope:vi_victim
+	# 	who = scope:vi_vampire
+	# 	multiplier = -0.25
+	# }
+
+	modifier = {
+		OR = {
+			has_trait = temperate
+			has_trait = humble
+			has_trait = content
+		}
+		scope:victim = {
+			vi_is_vampire_trigger = no
+		}
+		add = 50
+	}
+
+	ai_value_modifier = {
+		ai_greed = -0.25
+		ai_boldness = -0.25
+		ai_compassion = 0.25
+	}
+}
+
+vi_hunt_drain_kill_ai_chance_modifier = {
+
+	modifier = {
+		scope:victim = {
+			vi_is_vampire_trigger = yes
+		}
+		add = -30
+	}
+
+	modifier = {
+		scope:vi_victim = {
+			has_trait = vi_dhampir
+		}
+		add = -1000
+	}
+
+	modifier = {
+		has_relation_friend = scope:vi_victim
+		add = -50
+	}
+
+	modifier = {
+		has_relation_lover = scope:vi_victim
+		add = -50
+	}
+
+	modifier = {
+		has_relation_best_friend = scope:vi_victim
+		add = -500
+	}
+
+	modifier = {
+		has_relation_soulmate = scope:vi_victim
+		add = -500
+	}
+
+	modifier = {
+		scope:vi_victim = {
+			has_character_modifier = vi_excommunicated_modifier
+		}
+		add = 100
+	}
+
+	opinion_modifier = {
+		opinion_target = scope:vi_victim
+		who = scope:vi_vampire
+		multiplier = -1
+	}
+
+	# Maybe this is redundant?
+	# modifier = {
+	# 	OR = {
+	# 		has_trait = ambitious
+	# 		has_trait = gluttonous
+	# 		has_trait = greedy
+	# 	}
+	# 	add = 50
+	# }
+
+	ai_value_modifier = {
+		ai_greed = 0.5
+		ai_boldness = 0.25
+		ai_compassion = -0.5
+	}
+}
+
+vi_hunt_kill_ai_chance_modifier = {
+
+	modifier = {
+		scope:vi_victim = {
+			has_trait = vi_dhampir
+		}
+		add = 200
+	}
+
+	modifier = {
+		has_relation_friend = scope:vi_victim
+		add = -50
+	}
+
+	modifier = {
+		has_relation_lover = scope:vi_victim
+		add = -50
+	}
+
+	modifier = {
+		has_relation_best_friend = scope:vi_victim
+		add = -500
+	}
+
+	modifier = {
+		has_relation_soulmate = scope:vi_victim
+		add = -500
+	}
+
+	modifier = {
+		scope:vi_victim = {
+			has_character_modifier = vi_excommunicated_modifier
+		}
+		add = 50
+	}
+
+	# opinion_modifier = {
+	# 	opinion_target = scope:vi_victim
+	# 	who = scope:vi_vampire
+	# 	multiplier = -1
+	# }
+
+	ai_value_modifier = {
+		ai_greed = -0.5
+		ai_compassion = -0.5
+	}
+}
+
+vi_hunt_turn_ai_chance_modifier = {
+
+	modifier = {
+		has_relation_friend = scope:vi_victim
+		add = 50
+	}
+	
+	modifier = {
+		has_relation_lover = scope:vi_victim
+		add = 50
+	}
+
+	modifier = {
+		has_relation_soulmate = scope:vi_victim
+		add = 1000
+	}
+
+	modifier = {
+		has_relation_best_friend = scope:vi_victim
+		add = 1000
+	}
+
+	modifier = {
+		scope:vi_victim = {
+			OR = {
+				has_trait = intellect_good_3
+				has_trait = beauty_good_3
+			}
+		}
+		add = 50
+	}
+
+	modifier = {
+		scope:vi_victim = {
+			OR = {
+				has_trait = intellect_good_2
+				has_trait = beauty_good_2
+			}
+		}
+		add = 25
+	}
+
+	modifier = {
+		scope:vi_victim = {
+			OR = {
+				has_trait = intellect_good_1
+				has_trait = beauty_good_1
+			}
+		}
+		add = 10
+	}
+
+	modifier = {
+		always = yes
+		add = {
+			value = 0
+			add = scope:vi_victim.diplomacy
+			add = scope:vi_victim.martial
+			add = scope:vi_victim.stewardship
+			add = scope:vi_victim.intrigue
+			add = scope:vi_victim.prowess
+		}
+	}
+
+	modifier = {
+		scope:vi_victim = {
+			has_trait = disloyal
+		}
+		add = -50
+	}
+
+	opinion_modifier = {
+		opinion_target = scope:vi_victim
+		who = scope:vi_vampire
+		multiplier = 2
+	}
+	# ai_value_modifier = {
+	# 	ai_greed = 0.15
+	# }
+}
+
+
+
+vi_hunt_flee_ai_chance_modifier = {
+	modifier = {
+		has_trait = craven
+		add = 100
+	}
+
+	modifier = {
+		NOR = {
+			has_trait = brave
+			vi_is_vampire_trigger = yes
+			has_trait = vi_inquisitor
+			has_trait = vi_dhampir
+		}
+		add = 100
+	}
+
+	modifier = {
+		has_trait = zealous
+		add = -20
+	}
+
+	modifier = {
+		this = scope:vi_hunt_attacker
+		add = {
+			value = scope:vi_hunt_attacker_advantage
+			multiply = -1
+		}
+		add = scope:vi_hunt_defender_advantage
+	}
+
+	modifier = {
+		this = scope:vi_hunt_defender
+		add = {
+			value = scope:vi_hunt_defender_advantage
+			multiply = -1
+		}
+		add = scope:vi_hunt_attacker_advantage
+	}
+
+	ai_value_modifier = {
+		ai_boldness = -1
+		ai_rationality = 0.25
+	}
+}

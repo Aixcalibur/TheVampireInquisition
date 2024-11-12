@@ -9,6 +9,16 @@ vi_vampire_opinion = {
 
 vi_started_inquisition_opinion = {
 	opinion = -100
+	decaying = yes
+	years = 50
 	imprisonment_reason = yes
 	execute_reason = yes
+}
+
+vi_attempted_mind_control_opinion = { # From an event
+	opinion = -90
+	decaying = yes
+	years = 50
+	imprisonment_reason = yes
+	banish_reason = yes
 }

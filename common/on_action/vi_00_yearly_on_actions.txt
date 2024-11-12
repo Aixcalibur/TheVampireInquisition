@@ -9,8 +9,7 @@
 
 yearly_playable_pulse = {
 	on_actions = {
-		vi_vampire_policy_pulse
-		vi_vampire_exposed_check
+		vi_vampire_playable_pulse
 		# vi_vampire_friendship_pulse
 	}
 }
@@ -18,6 +17,31 @@ yearly_playable_pulse = {
 five_year_everyone_pulse = {
 	on_actions = {
 		vi_vampire_maintenance_pulse
+	}
+}
+
+vi_vampire_playable_pulse = {
+	trigger = {
+		vi_is_vampire_trigger = yes
+	}
+
+	on_actions = {
+		vi_vampire_landed_tracking
+		vi_vampire_policy_pulse
+		vi_vampire_exposed_check
+	}
+}
+
+vi_vampire_landed_tracking = {
+	trigger = {
+		is_landed = yes
+		NOT = {
+			owns_story_of_type = story_vi_landed
+		}
+	}
+
+	effect = {
+		create_story = story_vi_landed
 	}
 }
 
@@ -34,6 +58,19 @@ vi_vampire_policy_pulse = {
 			NOT = {
 				has_title_law = noble_family_succession_law
 			}
+		}
+	}
+
+	effect = {
+		if = {
+			limit = {
+				OR = {
+					has_character_flag = vi_newly_landed
+					has_character_flag = vi_land_tracked
+				}
+			}
+			remove_character_flag = vi_newly_landed
+			remove_character_flag = vi_land_tracked
 		}
 	}
 
@@ -64,6 +101,10 @@ vi_vampire_maintenance_pulse = {
 		# 		modifier = vi_vampire_arrogance_modifier
 		# 	}
 		# }
+		random = {
+			chance = 50
+			vi_consider_excommunicated_list = yes
+		}
 	}
 }
 
@@ -107,149 +148,5 @@ vi_vampire_upgrade_elder = {
 	effect = {
 		add_trait = vi_vampire_3
 		remove_trait = vi_vampire_2
-	}
-}
-
-vi_vampire_exposed_check = {
-	trigger = {
-		has_trait = vi_exposed_vampire
-		sub_realm_size >= major_realm_size
-	}
-
-	effect = {
-		save_scope_as = exposed_vampire
-		if = {
-			limit = {
-				exists = global_var:vi_vampire_threat
-			}
-
-			if = {
-				limit = {
-					global_var:vi_vampire_threat = {
-						sub_realm_size < scope:exposed_vampire.sub_realm_size
-					}
-				}
-				set_global_variable = {
-					name = vi_vampire_threat
-					value = scope:exposed_vampire
-				}
-			}
-		}
-		else = {
-			set_global_variable = {
-				name = vi_vampire_threat
-				value = scope:exposed_vampire
-			}
-		}
-	}
-}
-
-vi_awaken_archangel_pulse = {
-	trigger = {
-		exists = global_var:vi_vampire_threat
-
-		global_var:vi_vampire_threat = {
-			is_ruler = yes
-			is_landed = yes
-			has_trait = vi_exposed_vampire
-		}
-
-		character:vi_michael = {
-			is_ruler = yes
-			has_trait = vi_dormant
-		}
-	}
-
-	effect = {
-		character:vi_michael = {
-			remove_trait_force_tooltip = vi_dormant
-			add_trait_force_tooltip = possessed_1
-			add_gold = 500
-			trigger_event = {
-				on_action = vi_archangel_on_action
-				days = 360
-			}
-		}
-		
-		global_var:vi_vampire_threat = {
-			save_scope_as = vi_archangel_target
-		}
-
-		scope:vi_archangel_target = {
-			trigger_event = {
-				id = vi_archangel.0001
-			}
-		}
-
-		every_player = {
-			limit = {
-				vi_is_vampire_trigger = yes
-				NOT = {
-					this = scope:vi_archangel_target
-				}
-			}
-			trigger_event = {
-				id = vi_archangel.0001
-			}
-		}
-	}
-}
-
-vi_archangel_on_action = {
-	trigger = {
-		NOT = {
-			has_trait = vi_dormant
-		}
-	}
-
-	effect = {
-		remove_trait = wounded_1
-		remove_trait = wounded_2
-		remove_trait = wounded_3
-		remove_trait = incapable
-		remove_trait = maimed
-		remove_trait = blind
-		remove_trait = scarred
-
-		if = {
-			limit = {
-				gold < 0
-			}
-			add_gold = 500
-		}
-
-		if = {
-			limit = {
-				is_at_war = no
-			}
-			global_var:vi_vampire_threat = {
-				save_scope_as = vi_archangel_target
-			}
-			if = {
-				limit = {
-					scope:vi_archangel_target = {
-						exists = this
-						is_landed = yes
-						is_ruler = yes
-					}
-				}
-				
-				scope:vi_archangel_target = {
-					trigger_event = {
-						id = vi_archangel.0001
-					}
-				}
-			}
-			else = {
-				add_trait = vi_dormant
-			}
-		}
-	}
-
-	on_actions = {
-		delay = {
-			days = 360
-		}
-		vi_archangel_on_action
 	}
 }

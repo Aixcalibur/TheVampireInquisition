@@ -14,7 +14,7 @@ vi_estate_main_01 = {
 	}
 
 	character_modifier = {
-		domicile_monthly_gold_add = 0.25
+		domicile_monthly_gold_add = 0.5
 		domicile_monthly_influence_add = 1
 		domicile_external_slots_capacity_add = 3
 	}

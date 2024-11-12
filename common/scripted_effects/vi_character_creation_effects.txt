@@ -141,6 +141,15 @@ vi_esclarmonde_after_effect = {
 	}
 
 	vi_add_sirensong_effect = yes
+	vi_vampire_add_perk_effect = {
+		PERK = vi_celerity_perk
+	}
+	vi_vampire_add_perk_effect = {
+		PERK = vi_blink_perk
+	}
+	vi_vampire_add_perk_effect = {
+		PERK = vi_auspex_perk
+	}
 
 	add_trait = lifestyle_reveler
 
@@ -149,7 +158,7 @@ vi_esclarmonde_after_effect = {
 		value = 100
 	}
 
-	add_prowess_skill = 4
+	add_prowess_skill = 12
 
 	add_character_flag = vi_esclarmonde
 	give_nickname = nick_vi_queenofthenight
@@ -160,6 +169,9 @@ vi_esclarmonde_after_effect = {
 vi_orlok_after_effect = {
 	set_immortal_age = 44
 	change_influence = 2000
+
+	add_character_flag = vi_bald
+	add_character_flag = no_beard
 
 	set_variable = {
 		name = character_weight_variable
@@ -198,13 +210,44 @@ vi_orlok_after_effect = {
 		add_perk = court_of_shadows_perk
 	}
 
-	add_prowess_skill = 5
+	vi_vampire_add_perk_effect = {
+		PERK = vi_celerity_perk
+	}
+	vi_vampire_add_perk_effect = {
+		PERK = vi_blink_perk
+	}
+	vi_vampire_add_perk_effect = {
+		PERK = vi_shadowwalk_perk
+	}
+
+	add_prowess_skill = 14
 
 	vi_add_allseeing_effect = yes
 
 	add_character_flag = vi_orlok
 	give_nickname = nick_vi_shadowless
 	vi_nightcourt_learn_languages = yes
+}
+
+vi_add_perk_charm_elder_effect = {
+	vi_vampire_add_perk_effect = {
+		PERK = vi_charm_perk
+	}
+	vi_vampire_add_perk_effect = {
+		PERK = vi_animal_speak_perk
+	}
+	vi_vampire_add_perk_effect = {
+		PERK = vi_soothe_perk
+	}
+	vi_vampire_add_perk_effect = {
+		PERK = vi_galvanize_perk
+	}
+	vi_vampire_add_perk_effect = {
+		PERK = vi_persuasion_perk
+	}
+	vi_vampire_add_perk_effect = {
+		PERK = vi_enthrall_perk
+	}
 }
 
 vi_add_sirensong_effect = {
@@ -237,6 +280,24 @@ vi_add_sirensong_effect = {
 	}
 }
 
+vi_add_perk_might_elder_effect = {
+	vi_vampire_add_perk_effect = {
+		PERK = vi_celerity_perk
+	}
+	vi_vampire_add_perk_effect = {
+		PERK = vi_fortitude_perk
+	}
+	vi_vampire_add_perk_effect = {
+		PERK = vi_blink_perk
+	}
+	vi_vampire_add_perk_effect = {
+		PERK = vi_strength_perk
+	}
+	vi_vampire_add_perk_effect = {
+		PERK = vi_regeneration_perk
+	}
+}
+
 vi_add_dragonsscion_effect = {
 	vi_vampire_add_perk_effect = {
 		PERK = vi_celerity_perk
@@ -264,6 +325,24 @@ vi_add_dragonsscion_effect = {
 	}
 	vi_vampire_add_perk_effect = {
 		PERK = vi_dragons_scion_perk
+	}
+}
+
+vi_add_perk_insight_elder_effect = {
+	vi_vampire_add_perk_effect = {
+		PERK = vi_auspex_perk
+	}
+	vi_vampire_add_perk_effect = {
+		PERK = vi_peopleofinterest_perk
+	}
+	vi_vampire_add_perk_effect = {
+		PERK = vi_heartsofmen_perk
+	}
+	vi_vampire_add_perk_effect = {
+		PERK = vi_guidance_perk
+	}
+	vi_vampire_add_perk_effect = {
+		PERK = vi_propheticdreams_perk
 	}
 }
 

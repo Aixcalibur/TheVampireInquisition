@@ -19,6 +19,12 @@
 			vi_is_vampire_trigger = yes
 		}
 
+		NOT = {
+			scope:recipient = {
+				has_trait = vi_dormant
+			}
+		}
+
 		NAND = { # Game Rules!
 			has_game_rule = no_players_multiplayer_murder_schemes
 			scope:actor = {
@@ -81,6 +87,9 @@
 		trigger_if = {
 			limit = {
 				scope:recipient = {
+					NOT = {
+						vi_is_vampire_trigger = yes
+					}
 					OR = {
 						is_ruler = yes
 						AND = {
@@ -90,8 +99,37 @@
 					}
 				}
 			}
-			always = no
-			custom_tooltip = vi_hunt_too_guarded_tt
+			custom_tooltip = {
+				text = vi_hunt_too_guarded_tt
+				#always = no
+				scope:actor = {
+					OR = {
+						has_perk = vi_blink_perk
+						has_perk = vi_shadowwalk_perk
+					}
+				}
+			}
+		}
+
+		trigger_if = {
+			limit = {
+				scope:recipient = {
+					OR = {
+						has_trait = vi_vampire_2
+						has_trait = vi_vampire_3
+						has_trait = vi_vampire_4
+						has_trait = vi_vampire_5
+					}
+					is_ruler = yes
+				}
+			}
+			custom_tooltip = {
+				text = vi_hunt_too_guarded_vampire_tt
+				#always = no
+				scope:actor = {
+					has_perk = vi_shadowwalk_perk
+				}
+			}
 		}
 	}
 
@@ -109,30 +147,6 @@
 		}
 		
 	}
-
-	# Scheme Starter Packages
-	options_heading = schemes.t.agent_packages
-	# send_options_exclusive = yes
-	# ## Balanced agents.
-	# send_option = {
-	# 	flag = agent_focus_balance
-	# 	current_description = start_murder_interaction.tt.agent_focus_balance
-	# }
-	# ## Focused on Success Chance.
-	# send_option = {
-	# 	flag = agent_focus_success
-	# 	current_description = start_murder_interaction.tt.agent_focus_success
-	# }
-	# ## Focused on Speed.
-	# send_option = {
-	# 	flag = agent_focus_speed
-	# 	current_description = start_murder_interaction.tt.agent_focus_speed
-	# }
-	# ## Focused on Secrecy.
-	# send_option = {
-	# 	flag = agent_focus_secrecy
-	# 	current_description = start_murder_interaction.tt.agent_focus_secrecy
-	# }
 
 	on_accept = {
 		scope:actor = {
@@ -155,74 +169,6 @@
 					TARGET_TYPE = target_character
 					TARGET_SCOPE = scope:recipient
 				}
-
-				# # Success.
-				# if = {
-				# 	limit = { scope:agent_focus_success ?= yes }
-				# 	begin_scheme_with_agents_effect = {
-				# 		SCHEME_TYPE = vi_hunt
-				# 		TARGET_TYPE = target_character
-				# 		TARGET_SCOPE = scope:recipient
-				# 		# Success.
-				# 		AGENT_1 = agent_scout
-				# 		AGENT_2 = agent_scout
-				# 		AGENT_3 = agent_thug
-				# 		# Speed.
-				# 		AGENT_4 = agent_infiltrator
-				# 		# Secrecy.
-				# 		AGENT_5 = agent_decoy
-				# 	}
-				# }
-				# # Speed.
-				# else_if = {
-				# 	limit = { scope:agent_focus_speed ?= yes }
-				# 	begin_scheme_with_agents_effect = {
-				# 		SCHEME_TYPE = vi_hunt
-				# 		TARGET_TYPE = target_character
-				# 		TARGET_SCOPE = scope:recipient
-				# 		# Speed.
-				# 		AGENT_1 = agent_infiltrator
-				# 		AGENT_2 = agent_infiltrator
-				# 		AGENT_3 = agent_footpad
-				# 		# Success.
-				# 		AGENT_4 = agent_scout
-				# 		# Secrecy.
-				# 		AGENT_5 = agent_decoy
-				# 	}
-				# }
-				# # Secrecy.
-				# else_if = {
-				# 	limit = { scope:agent_focus_secrecy ?= yes }
-				# 	begin_scheme_with_agents_effect = {
-				# 		SCHEME_TYPE = vi_hunt
-				# 		TARGET_TYPE = target_character
-				# 		TARGET_SCOPE = scope:recipient
-				# 		# Secrecy.
-				# 		AGENT_1 = agent_decoy
-				# 		AGENT_2 = agent_decoy
-				# 		AGENT_3 = agent_lookout
-				# 		# Success.
-				# 		AGENT_4 = agent_scout
-				# 		# Speed.
-				# 		AGENT_5 = agent_infiltrator
-				# 	}
-				# }
-				# # Balanced.
-				# else = {
-				# 	begin_scheme_with_agents_effect = {
-				# 		SCHEME_TYPE = vi_hunt
-				# 		TARGET_TYPE = target_character
-				# 		TARGET_SCOPE = scope:recipient
-				# 		# Success.
-				# 		AGENT_1 = agent_scout
-				# 		AGENT_2 = agent_scout
-				# 		# Speed.
-				# 		AGENT_3 = agent_infiltrator
-				# 		AGENT_4 = agent_footpad
-				# 		# Secrecy.
-				# 		AGENT_5 = agent_decoy
-				# 	}
-				# }
 			}
 			# Plus any on_start modifiers we may need.
 			if = {

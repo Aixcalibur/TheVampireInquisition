@@ -23,18 +23,6 @@ vi_inquisition.0001 = {
 
 	immediate = {
 		add_character_flag = vi_inquisition_leader
-		if = {
-			limit = {
-				NOT = {
-					exists = scope:recipient
-				}
-			}
-
-			# character:vi_esclarmonde = {
-			# 	save_scope_as = recipient
-				
-			# }
-		}
 
 		scope:recipient = {
 			add_character_flag = vi_inquisition_target

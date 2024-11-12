@@ -1,0 +1,220 @@
+﻿namespace = vi_sponsor
+
+scripted_effect vi_travel_establish_princedom = {
+	custom_tooltip = vi_travel_princedom_tt_2
+	scope:vi_title_county = {
+		add_county_modifier = {
+			modifier = vi_county_discreet_modifier
+			years = 5
+		}
+	}
+	start_travel_plan = {
+		players_use_planner = no
+		destination = scope:vi_title_county.title_province
+		on_start_on_action = vi_visit_start
+		on_travel_planner_cancel_on_action = vi_visit_travel_planner_exit
+		on_arrival_event = vi_sponsor.002
+		on_arrival_destinations = last
+		return_trip = no
+	}
+}
+
+vi_sponsor.001 = {
+	type = character_event
+	title = vi_sponsor.001.t
+	desc = vi_sponsor.001.desc
+	theme = realm
+
+	left_portrait = {
+		character = root
+		animation = personality_rational
+	}
+	right_portrait = scope:recipient
+
+	immediate = {
+		top_liege = {
+			save_scope_as = vi_liege
+		}
+		capital_county.empire = {
+			ordered_de_jure_county = {
+				limit = {
+					NOR = {
+						has_county_modifier = vi_county_discreet_modifier
+						has_county_modifier = vi_holy_ground_modifier
+					}
+				}
+				order_by = development_level
+
+				save_scope_as = princedom_county_1
+			}
+
+			random_de_jure_county = {
+
+				limit = {
+					NOR = {
+						has_county_modifier = vi_county_discreet_modifier
+						this = scope:princedom_county_1
+						has_county_modifier = vi_holy_ground_modifier
+					}
+				}
+
+				weight = {
+					base = 1
+					add = this.development_level
+				}
+
+				save_scope_as = princedom_county_2
+			}
+
+			random_title_to_title_neighboring_empire = {
+				ordered_de_jure_county = {
+					limit = {
+						NOR = {
+							has_county_modifier = vi_county_discreet_modifier
+							has_county_modifier = vi_holy_ground_modifier
+						}
+					}
+					order_by = development_level
+					save_scope_as = princedom_county_3
+				}
+			}
+		}
+	}
+
+	option = {
+		name = vi_sponsor.001.a
+
+		scope:princedom_county_1 = {
+			save_scope_as = vi_title_county
+		}
+
+		add_prestige = -500
+
+		pay_short_term_gold = {
+			target = scope:recipient
+			gold = {
+				value = 10
+				multiply = scope:princedom_county_1.development_level
+				max = 500
+			}
+		}
+
+		scope:recipient = {
+			vi_travel_establish_princedom = yes
+		}
+		ai_chance = {
+			base = 20
+		}
+	}
+	option = {
+		name = vi_sponsor.001.b
+		scope:princedom_county_2 = {
+			save_scope_as = vi_title_county
+		}
+
+		add_prestige = -500
+
+		pay_short_term_gold = {
+			target = scope:recipient
+			gold = {
+				value = 10
+				multiply = scope:princedom_county_2.development_level
+				max = 500
+			}
+		}
+
+		scope:recipient = {
+			vi_travel_establish_princedom = yes
+		}
+
+		ai_chance = {
+			base = 10
+		}
+	}
+	option = {
+		name = vi_sponsor.001.c
+		scope:princedom_county_3 = {
+			save_scope_as = vi_title_county
+		}
+
+		add_prestige = -500
+
+		pay_short_term_gold = {
+			target = scope:recipient
+			gold = {
+				value = 10
+				multiply = scope:princedom_county_3.development_level
+				max = 500
+			}
+		}
+
+		scope:recipient = {
+			vi_travel_establish_princedom = yes
+		}
+
+		ai_chance = {
+			base = 10
+		}
+	}
+	option = {
+		name = vi_sponsor.001.d
+
+		reverse_add_opinion = {
+			target = scope:recipient
+			modifier = disappointed_opinion
+			opinion = -20
+		}
+
+		ai_chance = {
+			base = -100
+			modifier = {
+				OR = {
+					has_trait = arrogant
+					has_trait = greedy
+				}
+				add = 110
+			}
+		}
+	}
+}
+
+vi_sponsor.002 = {
+	hidden = yes
+
+	immediate = {
+		vi_create_vassal_princedom_effect = {
+			VI_LIEGE = scope:vi_liege
+			VI_COUNTY = scope:vi_title_county
+		}
+
+		add_character_modifier = {
+			modifier = vi_new_prince_modifier
+			years = 20
+		}
+
+		add_legitimacy = 300
+	}
+
+	after = {
+		trigger_event = {
+			id = vi_sponsor.003
+			days = { 20 40 }
+		}
+	}
+}
+
+vi_sponsor.003 = {
+	hidden = yes
+	immediate = {
+		every_courtier = {
+			limit = {
+				NOR = {
+					vi_is_vampire_trigger = yes
+					has_trait = vi_dhampir
+				}
+			}
+			vi_make_vampire_effect = yes
+			add_trait = vi_vampire_1
+		}
+	}
+}

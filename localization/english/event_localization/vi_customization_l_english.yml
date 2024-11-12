@@ -1,0 +1,42 @@
+﻿l_english:
+ vi_join_house_custom_interaction: "Choose Vampire Parent"
+ vi_join_house_custom_interaction_desc: "Choose [recipient.GetShortUINameNoTooltip] as the person who turned you"
+
+ vi_customization.0001.t: "Vampire Customization"
+ vi_customization.0001.desc: "Choose what level of vampire you are."
+ vi_customization.0001.a: "Fledgling"
+ vi_customization.0001.b: "Neonate"
+ vi_customization.0001.c: "Elder"
+ vi_customization.0001.d: "Nevermind, I don't want to be a vampire"
+
+ vi_free_trait_refund_tt: "Gain a Free Trait"
+ vi_increase_age_by_20_tt: "Increase your age by 20"
+ vi_increase_age_by_200_tt: "Increase your age by 200"
+
+ vi_customization.0002.t: "Further Customization Menu"
+ vi_customization.0002.desc: "Choose what level of vampire you are."
+ vi_customization.0002.a: "Change Age"
+ vi_customization.0002.b: "Choose Dynasty"
+ vi_customization.0002.c: "Change..."
+ vi_customization.0002.d: "I'm finished"
+
+ vi_choose_a_vampire_tt: "Interact with a vampire to join their house before continuing"
+ vi_become_their_child: "Become their child"
+
+ vi_customization.0010.t: "Age Customization"
+ vi_customization.0010.desc: "How old are you?"
+ vi_customization.0010.a: "Add 10 Years"
+ vi_customization.0010.b: "Remove 10 Years"
+ vi_customization.0010.c: "Add 1 Year"
+ vi_customization.0010.d: "Go Back"
+
+ vi_customization.1001.t: "Free Trait"
+ vi_customization.1001.desc: "This one is on me."
+ vi_customization.1001.next: "Next Page"
+ vi_customization.1001.none: "I don't want your charity!"
+
+
+ vi_alpha.0001.t: "CK3: The Vampire Inquisition - Alpha"
+ vi_alpha.0001.desc: "Thank you for participating in the alpha test of the Vampire Inquisition! A lot more content is planned, but it is a bit too much work for me to do alone. \n\nIf you would like to be involved in the mod, add your own lore or characters, please join us on Discord. New modders are welcome. We are open to all sorts of contributions."
+ vi_alpha.0001.a: "Continue to Vampire Customization."
+ vi_alpha.0001.b: "Continue..."

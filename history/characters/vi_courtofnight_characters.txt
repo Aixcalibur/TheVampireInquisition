@@ -11,7 +11,7 @@
 	martial = 6
 	stewardship = 7
 	intrigue = 10
-	learning = 5
+	learning = 7
 	prowess = 0
 
 	trait = gregarious
@@ -186,11 +186,14 @@ vi_victor = {
 	652.1.1 = {
 		effect = {
 			add_gold = 500
+			add_character_flag = vi_urchin_flag
 			vi_make_vampire_effect = yes
 			add_prowess_skill = 3
 			set_immortal_age = 12
 			give_nickname = nick_vi_princeofurchins
 			vi_nightcourt_learn_languages = yes
+			vi_add_random_perks = yes
+			vi_add_perk_insight_elder_effect = yes
 		}
 	}
 
@@ -243,6 +246,7 @@ vi_albert = {
 			set_immortal_age = 70
 			add_prowess_skill = 14
 			vi_nightcourt_learn_languages = yes
+			vi_add_perk_insight_elder_effect = yes
 		}
 	}
 
@@ -299,8 +303,10 @@ vi_emily = {
 		effect = {
 			vi_make_vampire_effect = yes
 			set_immortal_age = 14
-			add_prowess_skill = 10
+			add_character_flag = vi_urchin_flag
+			add_prowess_skill = 6
 			vi_nightcourt_learn_languages = yes
+			vi_add_perk_insight_elder_effect = yes
 		}
 	}
 
@@ -364,11 +370,13 @@ vi_bookman = {
 			vi_make_vampire_effect = yes
 			set_immortal_age = 15
 			add_prowess_skill = 2
+			add_character_flag = vi_urchin_flag
 			add_trait_xp = {
 				trait = lifestyle_physician
 				value = 100
 			}
 			vi_nightcourt_learn_languages = yes
+			vi_add_perk_insight_elder_effect = yes
 		}
 	}
 
@@ -431,6 +439,12 @@ vi_bruiser = {
 			vi_make_vampire_effect = yes
 			set_immortal_age = 15
 			add_prowess_skill = 15
+			vi_vampire_add_perk_effect = {
+				PERK = vi_fortitude_perk
+			}
+			vi_vampire_add_perk_effect = {
+				PERK = vi_strength_perk
+			}
 		}
 	}
 
@@ -452,6 +466,9 @@ vi_ysabel = {
 	sexuality = bisexual
 	culture = french
 
+	diplomacy = 7
+	stewardship = 5
+	intrigue = 7
 	prowess = 0
 
 	trait = deceitful
@@ -500,6 +517,8 @@ vi_jehanne = {
 	sexuality = bisexual
 	culture = french
 
+	martial = 7
+	stewardship = 8
 	prowess = 0
 
 	trait = arbitrary
@@ -525,7 +544,13 @@ vi_jehanne = {
 			vi_make_vampire_effect = yes
 			set_immortal_age = 18
 			add_prowess_skill = 7
-			vi_add_sirensong_effect = yes
+			vi_add_perk_charm_elder_effect = yes
+			vi_vampire_add_perk_effect = {
+				PERK = vi_celerity_perk
+			}
+			vi_vampire_add_perk_effect = {
+				PERK = vi_blink_perk
+			}
 			vi_nightcourt_learn_languages = yes
 		}
 	}
@@ -582,12 +607,13 @@ vi_symonne = {
 			set_immortal_age = 18
 			add_prowess_skill = 5
 			vi_nightcourt_learn_languages = yes
+			vi_add_perk_charm_elder_effect = yes
 		}
 	}
 
 	1000.1.1 = {
 		effect = {
-			vi_add_sirensong_effect = yes
+			#vi_add_sirensong_effect = yes
 		}
 	}
 
@@ -634,14 +660,22 @@ vi_roland = {
 			set_mother = character:vi_esclarmonde
 			set_relation_best_friend = { reason = friend_generic_history target = character:vi_olivier }
 			vi_make_vampire_effect = yes
+			set_relation_lover = {
+				reason = lover_history
+				target = character:vi_esclarmonde
+			}
 			set_immortal_age = 29
 			add_prowess_skill = 18
 			vi_nightcourt_learn_languages = yes
+			vi_vampire_add_perk_effect = {
+				PERK = vi_celerity_perk
+			}
 		}
 	}
 
 	1065.1.1 = {
 		effect = {
+			vi_add_perk_might_elder_effect = yes
 			add_trait = vi_vampire_3
 			remove_trait = vi_vampire_2
 			add_trait = tourney_participant
@@ -694,6 +728,9 @@ vi_olivier = {
 			set_immortal_age = 27
 			add_prowess_skill = 16
 			vi_nightcourt_learn_languages = yes
+			vi_vampire_add_perk_effect = {
+				PERK = vi_celerity_perk
+			}
 		}
 	}
 
@@ -702,6 +739,7 @@ vi_olivier = {
 			add_trait = vi_vampire_3
 			remove_trait = vi_vampire_2
 			add_trait = tourney_participant
+			vi_add_perk_insight_elder_effect = yes
 			add_random_tourney_participant_level_effect = yes
 			add_random_tourney_participant_level_effect = yes
 			add_random_tourney_participant_level_effect = yes
@@ -750,6 +788,8 @@ vi_lugh = {
 			add_prowess_skill = 20
 			add_character_flag = do_not_generate_starting_family
 			vi_nightcourt_learn_languages = yes
+			vi_add_perk_might_elder_effect = yes
+			vi_add_perk_insight_elder_effect = yes
 		}
 	}
 
@@ -776,7 +816,7 @@ vi_orlok = {
 	trait = deceitful
 	trait = ambitious
 	trait = callous
-	trait = humble
+	trait = temperate
 
 	trait = education_intrigue_5
 	trait = vi_vampire_3
@@ -831,6 +871,7 @@ vi_norman = {
 			set_immortal_age = 49
 			add_prowess_skill = 14
 			give_nickname = nick_the_wolf
+			vi_add_perk_might_elder_effect = yes
 		}
 	}
 

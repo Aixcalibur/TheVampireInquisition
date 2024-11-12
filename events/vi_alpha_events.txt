@@ -31,7 +31,7 @@ vi_alpha.0001 = {
 	}
 
 	option = {
-		name = vi_alpha.0002.b
+		name = vi_alpha.0001.b
 		trigger = {
 			NOT = {
 				has_trait = vi_customizer

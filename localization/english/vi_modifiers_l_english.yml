@@ -54,5 +54,22 @@
  vi_invest_capital_wealth_modifier: "Underworld Businesses"
  vi_invest_capital_wealth_modifier_desc: "By investing in the local population, one can keep wealth flowing like lifeblood. #weak Effects scale with [development|E]. #!"
 
+ vi_vampire_connections_modifier: "Dark Connections"
+ vi_vampire_connections_modifier_desc: "The benefits of cooperation among [vampires|e] are many. #weak Effects scale with the number of [vassals|e] in the same [realm|e] with high [opinion|e] of you. #!"
+
+ vi_knight_effectiveness_modifier: "Vampire Unity"
+ vi_knight_effectiveness_modifier_desc: "[Vampires|E] have immense personal [prowess|e] under the cover of night, but require a strong leader in order to make them work together. #weak Effects scale with the [opinion|e] of your [vampire|e] [knights|e]. #!"
+
  vi_bida_modifier: "Golden Serpent"
  vi_bida_modifier_desc: "The Golden Serpent"
+
+ vi_excommunicated_modifier: "Marked for Death"
+ vi_excommunicated_modifier_desc: "This character has been marked for death by the local vampire community."
+
+ vi_new_prince_modifier: "New Prince"
+ vi_new_prince_modifier_desc: "A newly established Prince has yet to get their bearings."
+
+ vi_holy_ground_modifier: "Holy Ground"
+ vi_holy_ground_modifier_desc: "The holy presence in this area prevents vampires from settling here."
+
+ vi_avoiding_scrutiny_modifier: "Avoiding Scrutiny"

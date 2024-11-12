@@ -20,6 +20,9 @@ vi_on_artifact_changed_owner = {
 		if = {
 			limit = {
 				vi_is_holy_artifact_trigger = yes
+				NOT = {
+					exists = var:vampire_loot
+				}
 			}
 
 			save_scope_as = this_artifact

@@ -25,7 +25,13 @@
 			vi_is_vampire_trigger = yes
 		}
 		
-
+		custom_tooltip = {
+			text = vi_investigate_soothed_tt
+			NOT = {
+				has_character_modifier = vi_soothed_modifier
+			}
+		}
+		
 		scope:target = {
 			vi_is_vampire_trigger = yes
 			NOT = {
@@ -46,6 +52,12 @@
 		scope:target = {
 			NOT = {
 				has_trait = vi_exposed_vampire
+			}
+		}
+
+		scope:owner = {
+			NOT = {
+				has_character_modifier = vi_soothed_modifier
 			}
 		}
 	}
@@ -216,21 +228,21 @@
 		scheme_owner = { save_scope_as = owner }
 		scope:scheme = {
 			scheme_owner = {
-				# # DISCOVERY ROLL
-				# save_scope_value_as = {
-				# 	name = discovery_chance
-				# 	value = {
-				# 		value = 100
-				# 		subtract = scope:scheme.scheme_secrecy
-				# 	}
-				# }
-				# random = {
-				# 	chance = scope:discovery_chance
-				# 	save_scope_value_as = {
-				# 		name = scheme_discovered
-				# 		value = yes
-				# 	}
-				# }
+				# DISCOVERY ROLL
+				save_scope_value_as = {
+					name = discovery_chance
+					value = {
+						value = 100
+						subtract = scope:scheme.scheme_secrecy
+					}
+				}
+				random = {
+					chance = scope:discovery_chance
+					save_scope_value_as = {
+						name = scheme_discovered
+						value = yes
+					}
+				}
 
 				#SUCCESS ROLL
 				random = {
@@ -269,7 +281,6 @@
 		scheme_owner = {
 			save_scope_as = owner
 		}
-
 		#Do Stuff
 	}
 }

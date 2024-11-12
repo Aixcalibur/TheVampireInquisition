@@ -15,13 +15,13 @@
 	map_pin_lobby = yes
 
 	# provisions = yes
-	domicile_temperament_high_modifier = {
-		name = vi_courtier_temperament_high
-		knight_effectiveness_mult = 1
-		knight_limit = 1
-		vassal_opinion = -5
-		scale = vi_court_favor_scaling_value
-	}
+	# domicile_temperament_high_modifier = {
+	# 	name = vi_courtier_temperament_high
+	# 	knight_effectiveness_mult = 1
+	# 	knight_limit = 1
+	# 	vassal_opinion = -5
+	# 	scale = vi_court_favor_scaling_value
+	# }
 
 	domicile_temperament_low_modifier = {
 		name = vi_courtier_temperament_low

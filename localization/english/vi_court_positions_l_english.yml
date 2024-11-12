@@ -18,17 +18,18 @@
  vi_augur_court_position_desc: "The Augur is a part of a Vampire Prince's Inner Council and serves as a spiritual guide."
 
  vi_thrall_keeper_court_position: "Thrall Keeper"
- vi_thrall_keeper_court_position_desc: "The $vi_thrall_keeper_position$ is in charge of taking care of the blood thralls for the court."
+ vi_thrall_keeper_court_position_desc: "The $vi_thrall_keeper_court_position$ is in charge of taking care of the human thralls for the court."
  vi_sentinel_court_position: "Vampire Sentinel"
  vi_sentinel_court_position_desc: "The $vi_sentinel_position$ oversees the local vampire population to make sure they follow the laws of the Princedom."
  vi_hound_court_position: "Hound"
  vi_hound_court_position_desc: "The Hound is a vampire's personal thug to take care of matters without getting their hands dirty."
 
- vi_merchant_liaison_position: "Merchant Liaison"
- vi_merchant_liaison_position_desc: "The $vi_merchant_liaison_position$ maintains connections with merchants."
- domicile_building_parameter_vi_unlock_merchant_liaison: "Unlocks the [GetCourtPositionType('vi_merchant_liaison_position').GetName()] [court position|E] for further bonuses to [domicile|E] income."
+ vi_merchant_liaison_court_position: "Merchant Liaison"
+ vi_merchant_liaison_court_position_desc: "The $vi_merchant_liaison_court_position$ maintains connections with merchants."
+ domicile_building_parameter_vi_unlock_merchant_liaison: "Unlocks the [GetCourtPositionType('vi_merchant_liaison_court_position').GetName()] [court position|E] for further bonuses to [domicile|E] income."
 
  court_position_disian: "Disian Bloodline"
+ court_position_busy_inner_council: "Busy with Inner Council"
  court_position_nosferatu: "Nosferatu Bloodline"
  court_position_anunnaki: "Anunnaki Bloodline"
  court_position_strix: "Strix Bloodline"

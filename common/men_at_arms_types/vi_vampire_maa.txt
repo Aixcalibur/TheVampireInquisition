@@ -68,7 +68,7 @@ vi_vampire_bats = {
 	high_maintenance_cost = { prestige = 1 }
 	provision_cost = @provisions_cost_infantry_cheap
 	
-	
+	max_sub_regiments = 12
 	stack = 250
 
 	allowed_in_hired_troops = no
@@ -78,8 +78,8 @@ vi_elite_vampires = {
 	type = heavy_infantry
 	icon = heavy_infantry
 
-	damage = 400
-	toughness = 100
+	damage = 500
+	toughness = 200
 	pursuit = 100
 	screen = 50
 
@@ -119,8 +119,8 @@ vi_elite_vampires = {
 }
 
 vi_local_vampires = {
-	type = skirmisher
-	icon = skirmishers
+	icon = light_footmen
+	type = skirmishers
 
 	damage = 40
 	toughness = 10
@@ -147,6 +147,43 @@ vi_local_vampires = {
 	provision_cost = @provisions_cost_special_expensive
 
 	allowed_in_hired_troops = no
+}
+
+vi_vampire_huscarl = {
+	type = heavy_infantry
+
+	damage = 400
+	toughness = 260
+	pursuit = 100
+	screen = 240
+	
+	terrain_bonus = {
+		taiga = { damage = 80 }
+		forest = { damage = 160 }
+	}
+	
+	counters = {
+		pikemen = 1
+		archers = 1
+	}
+
+	can_recruit = {
+		always = no
+	}
+
+	winter_bonus = {
+		normal_winter = { toughness = 120 screen = 120 }
+		harsh_winter = { toughness = 120 screen = 120 }
+	}
+	
+	buy_cost = { gold = huscarls_recruitment_cost }
+	low_maintenance_cost = { gold = huscarls_low_maint_cost }
+	high_maintenance_cost = { gold = huscarls_high_maint_cost }
+	provision_cost = @provisions_cost_infantry_cheap
+	
+	stack = 25
+	ai_quality = { value = @cultural_maa_extra_ai_score }
+	icon = danish_huskarls
 }
 
 vi_health_point_maa = {

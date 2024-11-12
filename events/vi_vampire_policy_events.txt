@@ -17,6 +17,10 @@ vi_vampire_policy.001 = {
 		animation = personality_rational
 	}
 
+	override_background = {
+		reference = vi_council_chamber_night
+	}
+
 	immediate = {
 
 		add_character_flag = {

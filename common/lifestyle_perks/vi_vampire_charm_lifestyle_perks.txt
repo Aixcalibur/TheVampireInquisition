@@ -51,6 +51,7 @@
 		custom_description_no_bullet = {
 			text = vi_charm_perk_effect
 		}
+		vi_on_perk_added_effect = yes
 	}
 }
 
@@ -67,7 +68,9 @@ vi_animal_speak_perk = {
 		enemy_scheme_secrecy_add = -15
 		character_travel_safety_add = 10
 	}
-
+	effect = {
+		vi_on_perk_added_effect = yes
+	}
 }
 
 
@@ -108,6 +111,7 @@ vi_animal_command_perk = {
 		custom_description_no_bullet = {
 			text = vi_animal_command_perk_effect
 		}
+		vi_on_perk_added_effect = yes
 	}
 }
 
@@ -128,6 +132,7 @@ vi_soothe_perk = {
 		custom_description_no_bullet = {
 			text = vi_soothe_perk_effect
 		}
+		vi_on_perk_added_effect = yes
 	}
 }
 
@@ -149,6 +154,7 @@ vi_galvanize_perk = {
 		custom_description_no_bullet = {
 			text = vi_galvanize_perk_effect
 		}
+		vi_on_perk_added_effect = yes
 	}
 }
 
@@ -169,6 +175,7 @@ vi_persuasion_perk = {
 		custom_description_no_bullet = {
 			text = vi_persuasion_perk_effect
 		}
+		vi_on_perk_added_effect = yes
 	}
 }
 
@@ -198,6 +205,7 @@ vi_enthrall_perk = {
 		custom_description_no_bullet = {
 			text = vi_enthrall_perk_effect
 		}
+		vi_on_perk_added_effect = yes
 	}
 }
 
@@ -230,6 +238,7 @@ vi_presence_perk = {
 		custom_description_no_bullet = {
 			text = vi_presence_perk_effect
 		}
+		vi_on_perk_added_effect = yes
 	}
 }
 
@@ -253,52 +262,72 @@ vi_heartstealer_perk = {
 	
 	trait = vi_heartstealer
 	effect = {
-		add_trait_force_tooltip = vi_heartstealer
+		if = {
+			limit = {
+				is_ai = no
+				years_from_game_start > 1
+			}
+			show_as_tooltip = {
+				add_trait_force_tooltip = vi_heartstealer
+			}
+			trigger_event = vi_perk.1000
+		}
+		else = {
+			add_trait_force_tooltip = vi_heartstealer
+		}
 	}
 }
 
-vi_charm_repeatable_1_perk = {
+vi_charm_diplomacy_perk = {
 	lifestyle = vi_vampire_lifestyle
 	tree = vi_charm_tree
 	position = { 0.5 5.5 }
-	icon = repeatable_perk
+	icon = icon_skill_diplomacy
 
 	auto_selection_weight = {
 		value = 0
 	}
 
-	can_be_picked = { 
-		has_perk = vi_presence_perk
+	can_be_picked = {
+		OR = {
+			has_perk = vi_presence_perk
+			is_ai = no
+		}
 	}
 
 	effect = {
 		add_diplomacy_skill = 1
 		#add_intrigue_skill = 1
 		hidden_effect = {
-			remove_perk = vi_charm_repeatable_1_perk
+			remove_perk = vi_charm_diplomacy_perk
 		}
+		add_stress = miniscule_stress_gain
 	}
 }
 
-vi_charm_repeatable_2_perk = {
+vi_charm_intrigue_perk = {
 	lifestyle = vi_vampire_lifestyle
 	tree = vi_charm_tree
 	position = { 3.5 5.5 }
-	icon = repeatable_perk
+	icon = icon_skill_intrigue
 
 	auto_selection_weight = {
 		value = 0
 	}
 
-	can_be_picked = { 
-		has_perk = vi_presence_perk
+	can_be_picked = {
+		OR = {
+			has_perk = vi_presence_perk
+			is_ai = no
+		}
 	}
 
 	effect = {
 		#add_diplomacy_skill = 1
 		add_intrigue_skill = 1
 		hidden_effect = {
-			remove_perk = vi_charm_repeatable_2_perk
+			remove_perk = vi_charm_intrigue_perk
 		}
+		add_stress = miniscule_stress_gain
 	}
 }

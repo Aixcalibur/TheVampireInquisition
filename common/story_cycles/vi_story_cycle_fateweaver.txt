@@ -1,0 +1,416 @@
+﻿story_vi_fateweaver = {
+	
+	on_setup = {
+
+
+	}
+	
+	on_end = {
+		
+	}
+	
+	on_owner_death = {
+		var:destiny_child = {
+			send_interface_toast = {
+				title = vi_fateunraveled_msg
+				left_icon = story_owner
+				var:destiny_child = {
+					if = {
+						limit = {
+							is_alive = yes
+						}
+						remove_character_modifier = bp2_destined_modifier
+						add_character_modifier = {
+							modifier = vi_fateunraveled_modifier
+						}
+					}
+				}
+			}
+		}
+		end_story = yes
+	}
+	
+	# Something happens - random events
+
+	effect_group = {
+		days = 30
+		trigger = {
+			always = yes
+		}
+
+		triggered_effect = {
+			trigger = {
+				OR = {
+					NOT = {
+						exists = var:destiny_child
+					}
+					var:destiny_child = {
+						is_courtier_of = story_owner
+					}
+					var:destiny_child = {
+						has_relation_ward = story_owner
+					}
+					var:destiny_child = {
+						liege = story_owner
+					}
+					var:destiny_child = {
+						is_spouse_of = story_owner
+					}
+				}
+			}
+			effect = {
+				story_owner = {
+					send_interface_toast = {
+						title = vi_fateunraveled_msg
+						left_icon = var:destiny_child
+						var:destiny_child = {
+							if = {
+								limit = {
+									is_alive = yes
+								}
+								remove_character_modifier = bp2_destined_modifier
+								add_character_modifier = {
+									modifier = vi_fateunraveled_modifier
+								}
+							}
+						}
+					}
+				}
+				end_story = yes
+			}
+		}
+	}
+
+	effect_group = {
+		days = 365
+		trigger = {
+			var:destiny_child = {
+				is_adult = no
+			}
+		}
+
+		first_valid = {
+			triggered_effect = {
+				trigger = {
+					story_owner = {
+						has_bp2_dlc_trigger = yes
+					}
+					var:destiny_child = {
+						NOT = {
+							has_character_modifier = bp2_destined_modifier
+						}
+						age >= 8
+						age < 12
+					}
+				}
+				effect = {
+					var:destiny_child = {
+
+						save_scope_as = destiny_child
+
+						liege_or_court_owner = {
+							save_scope_as = vi_destiny_story_owner
+						}
+					}
+
+					scope:destiny_child = {
+						add_character_modifier = {
+							modifier = bp2_destined_modifier
+						}
+						set_variable = {
+							name = destiny_child
+							value = scope:destiny_child
+						}
+					}
+
+					if = {
+						limit = {
+							exists = scope:vi_destiny_story_owner
+						}
+						scope:vi_destiny_story_owner = {
+							create_story = {
+								type = story_destiny_child
+								save_scope_as = story
+							}
+					
+							random_owned_story = {
+								limit = {
+									story_type = story_destiny_child
+								}
+								set_variable = {
+									name = destiny_child
+									value = scope:destiny_child
+								}
+							}
+						}
+					}
+					
+				}
+			}
+			triggered_effect = {
+				trigger = {
+					var:destiny_child = {
+						age >= 7
+						NOT = {
+							has_trait = ambitious
+						}
+					}
+				}
+				effect = {
+					var:destiny_child = {
+						remove_trait = content
+						add_trait = ambitious
+					}
+				}
+			}
+			triggered_effect = {
+				trigger = {
+					var:destiny_child = {
+						has_trait = lazy
+					}
+				}
+				effect = {
+					var:destiny_child = {
+						remove_trait = lazy
+						add_trait = patient
+					}
+				}
+			}
+			triggered_effect = {
+				trigger = {
+					var:destiny_child = {
+						has_trait = craven
+					}
+				}
+				effect = {
+					var:destiny_child = {
+						remove_trait = craven
+						add_trait = cynical
+					}
+				}
+			}
+			triggered_effect = {
+				trigger = {
+					var:destiny_child = {
+						has_trait = shy
+					}
+				}
+				effect = {
+					var:destiny_child = {
+						remove_trait = shy
+						add_trait = calm
+					}
+				}
+			}
+			triggered_effect = {
+				trigger = {
+					var:destiny_child = {
+						has_trait = paranoid
+					}
+				}
+				effect = {
+					var:destiny_child = {
+						remove_trait = paranoid
+						add_trait = diligent
+					}
+				}
+			}
+			triggered_effect = {
+				trigger = {
+					var:destiny_child = {
+						age > 13
+						NOT = {
+							has_trait = strong
+						}
+					}
+				}
+				effect = {
+					var:destiny_child = {
+						add_trait = strong
+					}
+				}
+			}
+			triggered_effect = {
+				trigger = {
+					var:destiny_child = {
+						age > 13
+						NOT = {
+							has_trait = shrewd
+						}
+					}
+				}
+				effect = {
+					var:destiny_child = {
+						add_trait = shrewd
+					}
+				}
+			}
+			triggered_effect = {
+				trigger = {
+					var:destiny_child = {
+						age >= 14
+						NOT = {
+							has_trait = shrewd
+						}
+					}
+				}
+				effect = {
+					add_trait = shrewd
+				}
+			}
+		}
+	}
+
+	effect_group = {
+		days = {300 600}
+		trigger = {
+			var:destiny_child = {
+				is_adult = yes
+			}
+		}
+
+		first_valid = {
+			triggered_effect = {
+				trigger = {
+					var:destiny_child = {
+						is_independent_ruler = yes
+						is_landed = yes
+						current_military_strength >= 3000
+					}
+				}
+				effect = {
+					var:destiny_child = {
+						if = {
+							limit = {
+								NOT = {
+									has_story_of_type = story_conqueror
+								}
+							}
+							create_story = story_conqueror
+						}
+					}
+					story_owner = {
+						send_interface_toast = {
+							title = vi_fateachieved_msg
+							left_icon = var:destiny_child
+							var:destiny_child = {
+								show_as_tooltip = {
+									add_trait = conqueror
+								}
+							}
+							add_vi_vampire_lifestyle_xp = 1000
+						}
+					}
+
+					end_story = yes
+				}
+			}
+			triggered_effect = {
+				trigger = {
+					story_owner = {
+						has_dlc_feature = roads_to_power
+					}
+					var:destiny_child = {
+						is_ruler = no
+					}
+				}
+				effect = {
+					var:destiny_child = {
+						create_landless_adventurer_title_effect = {
+							REASON = flag:voluntary
+							FLAVOR_CHAR = root
+						}
+						add_perk = planned_cultivation_perk
+					}
+					story_owner = {
+						send_interface_message = {
+							title = vi_fateinfluence_msg
+							right_icon = var:destiny_child
+							var:destiny_child = {
+								create_landless_adventurer_title_tooltip_effect = yes
+								add_gold = 200
+							}
+						}
+					}
+				}
+			}
+			triggered_effect = {
+				trigger = {
+					var:destiny_child = {
+						is_ruler = yes
+					}
+				}
+				effect = {
+					set_local_variable = {
+						name = troopsize
+						value = {
+							value = 100
+							multiply = var:destiny_child.primary_title.tier
+						}
+					}
+					save_scope_value_as = {
+						name = reinforcements
+						value = local_var:troopsize
+					}
+
+					var:destiny_child = {
+						send_interface_message = {
+							title = vi_fateinfluence_msg
+							add_short_term_gold = 50
+							add_stress = medium_stress_loss
+							spawn_army = {
+								levies = scope:reinforcements
+								men_at_arms = {
+									type = handpicked_faithful
+									men = scope:reinforcements
+								}
+								location = var:destiny_child.capital_province
+								name = event_troop_default_name
+							}
+						}
+					}
+
+					story_owner = {
+						send_interface_message = {
+							title = vi_fateinfluence_msg
+							right_icon = var:destiny_child
+							var:destiny_child = {
+								show_as_tooltip = {
+									spawn_army = {
+										levies = scope:reinforcements
+										men_at_arms = {
+											type = handpicked_faithful
+											men = scope:reinforcements
+										}
+										location = var:destiny_child.capital_province
+										name = event_troop_default_name
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+			triggered_effect = {
+				trigger = {
+					always = yes
+				}
+				effect = {
+					var:destiny_child = {
+						random_list = {
+							50 = {
+								add_gold = 50
+							}
+							50 = {
+								add_stress = minor_stress_loss
+							}
+							20 = {
+								add_martial_skill = 1
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

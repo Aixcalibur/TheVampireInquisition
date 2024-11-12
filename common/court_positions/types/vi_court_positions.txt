@@ -1269,30 +1269,27 @@ vi_castellan_court_position = {
 	# These modifiers are employed based on what level the aptitude reaches (levels are defined as breakpoints)
 	scaling_employer_modifiers = {
 		terrible = {
-			political_scheme_phase_duration_add = -10
+			monthly_stewardship_lifestyle_xp_gain_mult = 0.05
 			negate_stewardship_penalty_add = 2
 		}
 		poor = {
 			stewardship = 1
-			political_scheme_phase_duration_add = -10
+			monthly_stewardship_lifestyle_xp_gain_mult = 0.1
 			negate_stewardship_penalty_add = 4
 		}
 		average = {
 			stewardship = 2
-			political_scheme_phase_duration_add = -20
-			owned_political_scheme_success_chance_add = 5
+			monthly_stewardship_lifestyle_xp_gain_mult = 0.2
 			negate_stewardship_penalty_add = 6
 		}
 		good = {
 			stewardship = 4
-			political_scheme_phase_duration_add = -30
-			owned_political_scheme_success_chance_add = 10
+			monthly_stewardship_lifestyle_xp_gain_mult = 0.3
 			negate_stewardship_penalty_add = 8
 		}
 		excellent = {
 			stewardship = 8
-			political_scheme_phase_duration_add = -40
-			owned_political_scheme_success_chance_add = 20
+			monthly_stewardship_lifestyle_xp_gain_mult = 0.4
 			negate_stewardship_penalty_add = 10
 		}
 	}
@@ -1650,26 +1647,31 @@ vi_shadow_court_position = {
 	scaling_employer_modifiers = {
 		terrible = {
 			negate_intrigue_penalty_add = 2
+			monthly_intrigue_lifestyle_xp_gain_mult = 0.05
 		}
 		poor = {
 			intrigue = 1
 			enemy_hostile_scheme_success_chance_add = -5
 			negate_intrigue_penalty_add = 4
+			monthly_intrigue_lifestyle_xp_gain_mult = 0.1
 		}
 		average = {
 			intrigue = 2
 			enemy_hostile_scheme_success_chance_add = -10
 			negate_intrigue_penalty_add = 6
+			monthly_intrigue_lifestyle_xp_gain_mult = 0.2
 		}
 		good = {
 			intrigue = 4
 			enemy_hostile_scheme_success_chance_add = -15
 			negate_intrigue_penalty_add = 8
+			monthly_intrigue_lifestyle_xp_gain_mult = 0.3
 		}
 		excellent = {
 			intrigue = 8
 			enemy_hostile_scheme_success_chance_add = -20
 			negate_intrigue_penalty_add = 10
+			monthly_intrigue_lifestyle_xp_gain_mult = 0.4
 		}
 	}
 
@@ -2080,29 +2082,29 @@ vi_augur_court_position = {
 	# These modifiers are employed based on what level the aptitude reaches (levels are defined as breakpoints)
 	scaling_employer_modifiers = {
 		terrible = {
-			monthly_lifestyle_experience_mult = 0.05
+			monthly_learning_lifestyle_experience_mult = 0.05
 			negate_learning_penalty_add = 2
 		}
 		poor = {
 			stress_gain_mult = -0.05
-			monthly_lifestyle_experience_mult = 0.05
+			monthly_learning_lifestyle_experience_mult = 0.1
 			negate_learning_penalty_add = 4
 		}
 		average = {
 			stress_gain_mult = -0.08
-			monthly_lifestyle_experience_mult = 0.05
+			monthly_learning_lifestyle_experience_mult = 0.15
 			negate_learning_penalty_add = 6
 		}
 		good = {
 			learning = 1
 			stress_gain_mult = -0.1
-			monthly_lifestyle_experience_mult = 0.1
+			monthly_learning_lifestyle_experience_mult = 0.25
 			negate_learning_penalty_add = 8
 		}
 		excellent = {
 			learning = 2
 			stress_gain_mult = -0.12
-			monthly_lifestyle_experience_mult = 0.2
+			monthly_learning_lifestyle_experience_mult = 0.5
 			negate_learning_penalty_add = 10
 		}
 	}
@@ -2219,7 +2221,6 @@ vi_thrall_keeper_court_position = {
 		}
 		add = {
 			value = intrigue
-			multiply = 1.5
 			desc = court_position_skill_intrigue
 		}
 		add = {
@@ -2270,6 +2271,15 @@ vi_thrall_keeper_court_position = {
 			add = {
 				value = 20
 				desc = court_position_compassionate_trait
+			}
+		}
+		if = {
+			limit = {
+				vi_is_part_of_inner_council = yes
+			}
+			add = {
+				value = -100
+				desc = court_position_busy_inner_council
 			}
 		}
 		if = {
@@ -2397,22 +2407,27 @@ vi_thrall_keeper_court_position = {
 	# These modifiers are employed based on what level the aptitude reaches (levels are defined as breakpoints)
 	scaling_employer_modifiers = {
 		terrible = {
+			courtier_opinion = 5
 			stress_loss_mult = 0.05
 		}
 		poor = {
+			courtier_opinion = 5
 			stress_loss_mult = 0.1
 			legitimacy_gain_mult = 0.05
 		}
 		average = {
+			courtier_opinion = 10
 			stress_loss_mult = 0.15
 			legitimacy_gain_mult = 0.1
 		}
 		good = {
+			courtier_opinion = 15
 			stress_gain_mult = -0.05
 			stress_loss_mult = 0.2
 			legitimacy_gain_mult = 0.2
 		}
 		excellent = {
+			courtier_opinion = 20
 			stress_gain_mult = -0.1
 			stress_loss_mult = 0.25
 			legitimacy_gain_mult = 0.3
@@ -2437,7 +2452,8 @@ vi_thrall_keeper_court_position = {
 	candidate_score = {
 		value = 100
 		#add = scope:base_value
-		add = court_position_candidate_score_base_value
+		add = court_position_candidate_aptitude_value
+		#add = court_position_candidate_score_base_value
 		add = court_position_debt_considerations_value
 	}
 
@@ -2445,7 +2461,7 @@ vi_thrall_keeper_court_position = {
 		value = 300
 		if = {
 			limit = {
-				NOT = { employs_court_position = vi_thrall_keeper_position }
+				NOT = { employs_court_position = vi_thrall_keeper_court_position }
 				any_courtier = {
 					vi_is_vampire_trigger = yes
 				}
@@ -2582,6 +2598,15 @@ vi_sentinel_court_position = {
 		}
 		if = {
 			limit = {
+				vi_is_part_of_inner_council = yes
+			}
+			add = {
+				value = -100
+				desc = court_position_busy_inner_council
+			}
+		}
+		if = {
+			limit = {
 				has_trait = trusting
 			}
 			add = {
@@ -2705,31 +2730,28 @@ vi_sentinel_court_position = {
 	# These modifiers are employed based on what level the aptitude reaches (levels are defined as breakpoints)
 	scaling_employer_modifiers = {
 		terrible = {
-			courtier_opinion = 5
+			dread_baseline_add = 5
 			enemy_hostile_scheme_phase_duration_add = 5
 		}
 		poor = {
-			courtier_opinion = 5
+			dread_baseline_add = 5
 			enemy_hostile_scheme_phase_duration_add = 10
 			legitimacy_gain_mult = 0.05
 		}
 		average = {
-			courtier_opinion = 10
-			dread_baseline_add = 5
+			dread_baseline_add = 10
 			enemy_hostile_scheme_phase_duration_add = 20
 			enemy_hostile_scheme_success_chance_add = -5
 			legitimacy_gain_mult = 0.1
 		}
 		good = {
-			courtier_opinion = 15
-			dread_baseline_add = 5
+			dread_baseline_add = 15
 			enemy_hostile_scheme_phase_duration_add = 30
 			enemy_hostile_scheme_success_chance_add = -10
 			legitimacy_gain_mult = 0.2
 		}
 		excellent = {
-			courtier_opinion = 20
-			dread_baseline_add = 10
+			dread_baseline_add = 20
 			enemy_hostile_scheme_phase_duration_add = 30
 			enemy_hostile_scheme_success_chance_add = -20
 			legitimacy_gain_mult = 0.3
@@ -2774,344 +2796,353 @@ vi_sentinel_court_position = {
 	}
 }
 
-vi_hound_court_position = {
-	max_available_positions = 1
-	category = court_position_category_special
-	minimum_rank = duchy # Should only be available for dukes and above
-	skill = intrigue
+# vi_hound_court_position = { #Redundant with Shadow IMO
+# 	max_available_positions = 1
+# 	category = court_position_category_special
+# 	minimum_rank = duchy # Should only be available for dukes and above
+# 	skill = intrigue
 
-	opinion = {
-		#value = regular_court_position_opinion
-		value = 10
-		if = {
-			limit = {
-				scope:liege = {
-					has_government = vi_vampire_government
-				}
-			}
-			add = {
-				value = vi_courtier_opinion_value
-				multiply = -1
-			}
-		}
-	}
+# 	opinion = {
+# 		#value = regular_court_position_opinion
+# 		value = 10
+# 		if = {
+# 			limit = {
+# 				scope:liege = {
+# 					has_government = vi_vampire_government
+# 				}
+# 			}
+# 			add = {
+# 				value = vi_courtier_opinion_value
+# 				multiply = -1
+# 			}
+# 		}
+# 	}
 
-	# How high the aptitude has to be to reach the 5 different modifier levels
-	aptitude_level_breakpoints = { 40 80 120 160 }
+# 	# How high the aptitude has to be to reach the 5 different modifier levels
+# 	aptitude_level_breakpoints = { 40 80 120 160 }
 
-	# How good is this character in this position? root scope is the holder of the court position
-	aptitude = {
-		value = 1
-		add = court_position_aptitude_boon_voyager_trait
-		add = court_position_vi_galvanize_perk
-		add = court_position_vampire_tier
+# 	# How good is this character in this position? root scope is the holder of the court position
+# 	aptitude = {
+# 		value = 1
+# 		add = court_position_aptitude_boon_voyager_trait
+# 		add = court_position_vi_galvanize_perk
+# 		add = court_position_vampire_tier
 		
-		if = {
-			limit = {
-				vi_is_Anunnaki_trigger = yes
-			}
-			add = {
-				value = 5
-				desc = court_position_anunnaki
-			}
-		}
-		if = {
-			limit = {
-				vi_is_Nosferatu_trigger = yes
-			}
-			add = {
-				value = 30
-				desc = court_position_nosferatu
-			}
-		}
+# 		if = {
+# 			limit = {
+# 				vi_is_Anunnaki_trigger = yes
+# 			}
+# 			add = {
+# 				value = 5
+# 				desc = court_position_anunnaki
+# 			}
+# 		}
+# 		if = {
+# 			limit = {
+# 				vi_is_Nosferatu_trigger = yes
+# 			}
+# 			add = {
+# 				value = 30
+# 				desc = court_position_nosferatu
+# 			}
+# 		}
 
-		add = {
-			value = martial
-			multiply = 2
-			desc = court_position_skill_martial
-		}
-		add = {
-			value = intrigue
-			multiply = 2
-			desc = court_position_skill_intrigue
-		}
-		add = {
-			value = prowess
-			multiply = 1.5
-			desc = court_position_skill_prowess
-		}
-		add = {
-			value = 0
-			add = court_position_vampire_insight_perks
-			add = {
-				value = court_position_vampire_prowess_perks
-				multiply = 1.5
-			}
-			desc = court_position_vampire_perks
-		}
+# 		add = {
+# 			value = martial
+# 			multiply = 2
+# 			desc = court_position_skill_martial
+# 		}
+# 		add = {
+# 			value = intrigue
+# 			multiply = 2
+# 			desc = court_position_skill_intrigue
+# 		}
+# 		add = {
+# 			value = prowess
+# 			multiply = 1.5
+# 			desc = court_position_skill_prowess
+# 		}
+# 		add = {
+# 			value = 0
+# 			add = court_position_vampire_insight_perks
+# 			add = {
+# 				value = court_position_vampire_prowess_perks
+# 				multiply = 1.5
+# 			}
+# 			desc = court_position_vampire_perks
+# 		}
 		
-		if = {
-			limit = {
-				has_trait = vi_allseeing
-			}
-			add = {
-				value = 50
-				desc = court_position_vi_allseeing_trait
-			}
-		}
-		if = {
-			limit = {
-				has_trait = vi_dragonsscion
-			}
-			add = {
-				value = 50
-				desc = court_position_vi_dragonsscion_trait
-			}
-		}
-		if = {
-			limit = {
-				has_trait = vi_heartstealer
-			}
-			add = {
-				value = 30
-				desc = court_position_vi_heartstealer_trait
-			}
-		}
+# 		if = {
+# 			limit = {
+# 				has_trait = vi_allseeing
+# 			}
+# 			add = {
+# 				value = 50
+# 				desc = court_position_vi_allseeing_trait
+# 			}
+# 		}
+# 		if = {
+# 			limit = {
+# 				has_trait = vi_dragonsscion
+# 			}
+# 			add = {
+# 				value = 50
+# 				desc = court_position_vi_dragonsscion_trait
+# 			}
+# 		}
+# 		if = {
+# 			limit = {
+# 				has_trait = vi_heartstealer
+# 			}
+# 			add = {
+# 				value = 30
+# 				desc = court_position_vi_heartstealer_trait
+# 			}
+# 		}
 
-		if = {
-			limit = {
-				has_trait = callous
-			}
-			add = {
-				value = 20
-				desc = court_position_callous_trait
-			}
-		}
-		if = {
-			limit = {
-				has_trait = sadistic
-			}
-			add = {
-				value = 20
-				desc = court_position_sadistic_trait
-			}
-		}
-		if = {
-			limit = {
-				has_trait = vengeful
-			}
-			add = {
-				value = 20
-				desc = court_position_vengeful_trait
-			}
-		}
-		if = {
-			limit = {
-				has_trait = forgiving
-			}
-			add = {
-				value = -20
-				desc = court_position_forgiving_trait
-			}
-		}
-		if = {
-			limit = {
-				has_trait = compassionate
-			}
-			add = {
-				value = -50
-				desc = court_position_compassionate_trait
-			}
-		}
-		if = {
-			limit = {
-				has_trait = trusting
-			}
-			add = {
-				value = -50
-				desc = court_position_trusting_trait
-			}
-		}
+# 		if = {
+# 			limit = {
+# 				has_trait = callous
+# 			}
+# 			add = {
+# 				value = 20
+# 				desc = court_position_callous_trait
+# 			}
+# 		}
+# 		if = {
+# 			limit = {
+# 				has_trait = sadistic
+# 			}
+# 			add = {
+# 				value = 20
+# 				desc = court_position_sadistic_trait
+# 			}
+# 		}
+# 		if = {
+# 			limit = {
+# 				has_trait = vengeful
+# 			}
+# 			add = {
+# 				value = 20
+# 				desc = court_position_vengeful_trait
+# 			}
+# 		}
+# 		if = {
+# 			limit = {
+# 				vi_is_part_of_inner_council = yes
+# 			}
+# 			add = {
+# 				value = -100
+# 				desc = court_position_busy_inner_council
+# 			}
+# 		}
+# 		if = {
+# 			limit = {
+# 				has_trait = forgiving
+# 			}
+# 			add = {
+# 				value = -20
+# 				desc = court_position_forgiving_trait
+# 			}
+# 		}
+# 		if = {
+# 			limit = {
+# 				has_trait = compassionate
+# 			}
+# 			add = {
+# 				value = -50
+# 				desc = court_position_compassionate_trait
+# 			}
+# 		}
+# 		if = {
+# 			limit = {
+# 				has_trait = trusting
+# 			}
+# 			add = {
+# 				value = -50
+# 				desc = court_position_trusting_trait
+# 			}
+# 		}
 
-		if = {
-			limit = {
-				has_trait = blind
-			}
-			add = {
-				value = -50
-				desc = court_position_blind_trait
-			}
-		}
-		if = {
-			limit = {
-				has_trait = infirm
-			}
-			add = {
-				value = -75
-				desc = court_position_infirm_trait
-			}
-		}
-		add = court_position_aptitude_traveling_friends_value
-		add = court_position_aptitude_eunuch_tradition_value
-		add = court_position_aptitude_family_business_value
-	}
+# 		if = {
+# 			limit = {
+# 				has_trait = blind
+# 			}
+# 			add = {
+# 				value = -50
+# 				desc = court_position_blind_trait
+# 			}
+# 		}
+# 		if = {
+# 			limit = {
+# 				has_trait = infirm
+# 			}
+# 			add = {
+# 				value = -75
+# 				desc = court_position_infirm_trait
+# 			}
+# 		}
+# 		add = court_position_aptitude_traveling_friends_value
+# 		add = court_position_aptitude_eunuch_tradition_value
+# 		add = court_position_aptitude_family_business_value
+# 	}
 
-	# Is this an available position for this court? (root is court owner)
-	is_shown = {
-		vi_is_vampire_trigger = yes
-		NOT = {
-			is_landless_adventurer = yes
-		}
-	}
+# 	# Is this an available position for this court? (root is court owner)
+# 	is_shown = {
+# 		vi_is_vampire_trigger = yes
+# 		NOT = {
+# 			is_landless_adventurer = yes
+# 		}
+# 	}
 
-	valid_position = {
-		vi_is_vampire_trigger = yes
-		NOT = {
-			is_landless_adventurer = yes
-		}
-	}
+# 	valid_position = {
+# 		vi_is_vampire_trigger = yes
+# 		NOT = {
+# 			is_landless_adventurer = yes
+# 		}
+# 	}
 
-	is_shown_character = {
-		scope:employee = {
-			vi_is_vampire_trigger = yes
-			is_courtier_of = scope:liege
-			is_imprisoned = no
-		}
-	}
+# 	is_shown_character = {
+# 		scope:employee = {
+# 			vi_is_vampire_trigger = yes
+# 			is_courtier_of = scope:liege
+# 			is_imprisoned = no
+# 		}
+# 	}
 
-	valid_character = {
-		scope:employee = {
-			is_courtier_of = scope:liege
-		}
-	}
+# 	valid_character = {
+# 		scope:employee = {
+# 			is_courtier_of = scope:liege
+# 		}
+# 	}
 
-	revoke_cost = { # root is the liege, no other scopes are passed here!
-		prestige =  {
-			value = major_court_position_prestige_revoke_cost
-			# Set to 0 via obligation hook
-			# Avoid AI prestige issues
-			if = {
-				limit = {
-					exists = this
-					is_ai = yes
-				}
-				multiply = 0
-			}
-			# Special case for events
-			if = {
-				limit = {
-					exists = this
-					has_character_flag = free_revoke_cost
-				}
-				multiply = 0
-			}
-			#Lowering for LAAMPS, to match Camp Officer revoke cost
-			if = {
-				limit = { 
-					exists = this
-					is_landless_adventurer = yes
-				}
-				value = minor_court_position_prestige_revoke_cost
-			}
-		}
-	}
+# 	revoke_cost = { # root is the liege, no other scopes are passed here!
+# 		prestige =  {
+# 			value = major_court_position_prestige_revoke_cost
+# 			# Set to 0 via obligation hook
+# 			# Avoid AI prestige issues
+# 			if = {
+# 				limit = {
+# 					exists = this
+# 					is_ai = yes
+# 				}
+# 				multiply = 0
+# 			}
+# 			# Special case for events
+# 			if = {
+# 				limit = {
+# 					exists = this
+# 					has_character_flag = free_revoke_cost
+# 				}
+# 				multiply = 0
+# 			}
+# 			#Lowering for LAAMPS, to match Camp Officer revoke cost
+# 			if = {
+# 				limit = { 
+# 					exists = this
+# 					is_landless_adventurer = yes
+# 				}
+# 				value = minor_court_position_prestige_revoke_cost
+# 			}
+# 		}
+# 	}
 
-	salary = {
-		round = no
-		gold = {
-			value = minor_court_position_salary # Update X_salary_tooltip if script_value is changed
-			if = {
-				limit = {
-					scope:liege ?= {
-						is_ai = yes
-					}
-				}
-				multiply = 0.1
-			}
-			#You're working with LAAMPS now
+# 	salary = {
+# 		round = no
+# 		gold = {
+# 			value = minor_court_position_salary # Update X_salary_tooltip if script_value is changed
+# 			if = {
+# 				limit = {
+# 					scope:liege ?= {
+# 						is_ai = yes
+# 					}
+# 				}
+# 				multiply = 0.1
+# 			}
+# 			#You're working with LAAMPS now
 			
 
-			if = {
-				limit = { 
-					scope:liege ?= { is_landless_adventurer = yes }
-				}
-				multiply = {
-					value = 0
-					desc = court_position_laamps_free
-					format = "BASE_VALUE_FORMAT_DECIMALS_MINUS_POSITIVE"
-				}
-			}
-		}
-	}
+# 			if = {
+# 				limit = { 
+# 					scope:liege ?= { is_landless_adventurer = yes }
+# 				}
+# 				multiply = {
+# 					value = 0
+# 					desc = court_position_laamps_free
+# 					format = "BASE_VALUE_FORMAT_DECIMALS_MINUS_POSITIVE"
+# 				}
+# 			}
+# 		}
+# 	}
 
-	is_powerful_agent = yes
+# 	is_powerful_agent = yes
 
-	# These modifiers are employed based on what level the aptitude reaches (levels are defined as breakpoints)
-	scaling_employer_modifiers = {
-		terrible = {
-			owned_hostile_scheme_phase_duration_add = -5
-		}
-		poor = {
-			dread_baseline_add = 5
-			owned_hostile_scheme_phase_duration_add = -10
-		}
-		average = {
-			dread_baseline_add = 10
-			owned_hostile_scheme_phase_duration_add = -15
-		}
-		good = {
-			dread_baseline_add = 15
-			owned_hostile_scheme_phase_duration_add = -25
-		}
-		excellent = {
-			dread_baseline_add = 20
-			owned_hostile_scheme_success_chance_add = 10
-			owned_hostile_scheme_phase_duration_add = -40
-			legitimacy_gain_mult = 0.1
-		}
-	}
+# 	# These modifiers are employed based on what level the aptitude reaches (levels are defined as breakpoints)
+# 	scaling_employer_modifiers = {
+# 		terrible = {
+# 			owned_hostile_scheme_phase_duration_add = -5
+# 		}
+# 		poor = {
+# 			dread_baseline_add = 5
+# 			owned_hostile_scheme_phase_duration_add = -10
+# 		}
+# 		average = {
+# 			dread_baseline_add = 10
+# 			owned_hostile_scheme_phase_duration_add = -15
+# 		}
+# 		good = {
+# 			dread_baseline_add = 15
+# 			owned_hostile_scheme_phase_duration_add = -25
+# 		}
+# 		excellent = {
+# 			dread_baseline_add = 20
+# 			owned_hostile_scheme_success_chance_add = 10
+# 			owned_hostile_scheme_phase_duration_add = -40
+# 			legitimacy_gain_mult = 0.1
+# 		}
+# 	}
 
-	modifier = {
-		monthly_prestige = minor_court_position_prestige_salary
-		dread_baseline_add = 20
-		owned_hostile_scheme_phase_duration_add = -10
-		owned_hostile_scheme_success_chance_add = 10
-		prowess_no_portrait = 3
-		ai_boldness = 20
-		ai_compassion = -20
-	}
+# 	modifier = {
+# 		monthly_prestige = minor_court_position_prestige_salary
+# 		dread_baseline_add = 20
+# 		owned_hostile_scheme_phase_duration_add = -10
+# 		owned_hostile_scheme_success_chance_add = 10
+# 		prowess_no_portrait = 3
+# 		ai_boldness = 20
+# 		ai_compassion = -20
+# 	}
 
-	on_court_position_received = {
-		basic_gained_court_position_effect = yes
-	}
-	on_court_position_revoked = {
-		basic_revoked_court_position_effect = yes
-	}
-	on_court_position_invalidated = {
-		basic_invalidated_court_position_effect = yes
-	}
-	# Scripted value to determine whether an AI will hire/fire a position or not. Hires over 0, fires under -50. Look in _court_positions.info for more extensive documentation!
-	candidate_score = {
-		value = 100
-		#add = scope:base_value
-		add = court_position_candidate_aptitude_value
-		add = court_position_candidate_score_base_value
-		add = court_position_debt_considerations_value
-	}
+# 	on_court_position_received = {
+# 		basic_gained_court_position_effect = yes
+# 	}
+# 	on_court_position_revoked = {
+# 		basic_revoked_court_position_effect = yes
+# 	}
+# 	on_court_position_invalidated = {
+# 		basic_invalidated_court_position_effect = yes
+# 	}
+# 	# Scripted value to determine whether an AI will hire/fire a position or not. Hires over 0, fires under -50. Look in _court_positions.info for more extensive documentation!
+# 	candidate_score = {
+# 		value = 100
+# 		#add = scope:base_value
+# 		add = court_position_candidate_aptitude_value
+# 		add = court_position_candidate_score_base_value
+# 		add = court_position_debt_considerations_value
+# 	}
 
-	sort_order = {
-		value = 300
-		if = {
-			limit = {
-				NOT = { employs_court_position = vi_hound_position }
-				any_courtier = {
-					vi_is_vampire_trigger = yes
-				}
-			}
-			add = 100
-		}
-	}
-}
+# 	sort_order = {
+# 		value = 300
+# 		if = {
+# 			limit = {
+# 				NOT = { employs_court_position = vi_hound_position }
+# 				any_courtier = {
+# 					vi_is_vampire_trigger = yes
+# 				}
+# 			}
+# 			add = 100
+# 		}
+# 	}
+# }
 
 vi_merchant_liaison_court_position = {
 	max_available_positions = 1
@@ -3220,6 +3251,15 @@ vi_merchant_liaison_court_position = {
 			add = {
 				value = 50
 				desc = court_position_diplomat_trait
+			}
+		}
+		if = {
+			limit = {
+				vi_is_part_of_inner_council = yes
+			}
+			add = {
+				value = -100
+				desc = court_position_busy_inner_council
 			}
 		}
 		if = {
@@ -3397,12 +3437,12 @@ vi_merchant_liaison_court_position = {
 		value = 300
 		if = {
 			limit = {
-				NOT = { employs_court_position = vi_nerchant_liaison_position }
+				NOT = { employs_court_position = vi_nerchant_liaison_court_position }
 				any_courtier = {
 					vi_is_vampire_trigger = yes
 				}
 			}
-			add = 100
+			add = 200
 		}
 	}
 }

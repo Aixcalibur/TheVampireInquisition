@@ -33,6 +33,61 @@
 	max = 120
 }
 
+vi_vampire_connections_scaling = {
+	value = 0
+	if = {
+		limit = {
+			is_ai = yes
+		}
+		liege ?= {
+			every_vassal = {
+				limit = {
+					vi_is_vampire_trigger = yes
+					has_domicile = yes
+					opinion = {
+						target = root
+						value > 20
+					}
+				}
+				if = {
+					limit = {
+						is_powerful_vassal = yes
+					}
+					add = 1.5
+				}
+				else = {
+					add = 0.75
+				}
+			}
+		}
+	}
+	else = {
+		liege ?= {
+			every_vassal = {
+				limit = {
+					vi_is_vampire_trigger = yes
+					has_domicile = yes
+					opinion = {
+						target = root
+						value >= 40
+					}
+				}
+				if = {
+					limit = {
+						is_powerful_vassal = yes
+					}
+					add = 1
+				}
+				else = {
+					add = 0.5
+				}
+			}
+		}
+	}
+	round = yes
+	max = 10
+}
+
 vi_county_wealth_multiplier = {
 	value = 0
 	add = primary_title.title_capital_county.development_level
@@ -82,11 +137,50 @@ vi_court_favor_scaling_value = {
 vi_amount_of_vampires_value = {
 	value = 0
 	every_courtier = {
-		if = {
-			limit = {
-				vi_is_vampire_trigger = yes
-			}
-			add = 1
+		limit = {
+			vi_is_vampire_trigger = yes
 		}
+		add = 1
+	}
+}
+
+vi_knight_effectiveness_scaling_value = {
+	value = 0
+	every_knight = {
+		limit = {
+			OR = {
+				vi_is_vampire_trigger = yes
+				has_trait = vi_dhampir
+			}
+		}
+		add = {
+			value = "opinion(root)"
+			if = {
+				limit = {
+					has_trait = vi_vampire_5
+				}
+				multiply = 3
+			}
+			else_if = {
+				limit = {
+					has_trait = vi_vampire_4
+				}
+				multiply = 2
+			}
+			else_if = {
+				limit = {
+					has_trait = vi_vampire_3
+				}
+				multiply = 1.5
+			}
+		}
+	}
+	divide = vi_knight_count
+}
+
+vi_knight_count = {
+	value = 0
+	every_knight = {
+		add = 1
 	}
 }

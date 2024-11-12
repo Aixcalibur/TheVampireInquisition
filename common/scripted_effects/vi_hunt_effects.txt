@@ -1,0 +1,302 @@
+﻿vi_hunt_monthly_discovery_chance_effect = {
+	if = {
+		limit = {
+			has_variable = secrecy_grace_period
+			var:secrecy_grace_period >= 1
+		}
+		if = {
+			limit = {
+				scope:target = {
+					has_perk = vi_auspex_perk
+				}
+			}
+			change_variable = {
+				name = secrecy_grace_period
+				add = -2
+			}
+		}
+		else = {
+			change_variable = {
+				name = secrecy_grace_period
+				add = -1
+			}
+		}
+	}
+	else = {
+		save_scope_value_as = {
+			name = discovery_chance
+			value = monthly_scheme_discovery_chance_value
+		}
+
+		random = {
+			chance = scope:discovery_chance
+			increment_breaches_with_message_effect = yes
+
+			scope:target = {
+				send_interface_toast = {
+					type = msg_scheme_breached
+					title = feed_message.t.scheme_breached
+					left_icon = scope:target
+					scope:scheme = { add_scheme_breach = 1 }
+					play_sound_effect = "event:/DLC/EP3/SFX/Stingers/Scheme_Rework/ep3_mx_sting_schemerework_scheme_suffering_breaches"
+				}
+			}
+
+			scope:scheme = {
+				expose_scheme = yes
+			}
+		}
+	}
+
+	
+}
+
+vi_hunt_outcome_setup_effect = {
+	save_scope_as = vi_vampire
+	if = {
+		limit = {
+			exists = scope:target
+		}
+		scope:target = {
+			save_scope_as = vi_victim
+		}
+	}
+	else = {
+		create_character = {
+			template = generic_peasant_character
+			location = root.location
+			dynasty = none
+			culture = root.location.culture
+			faith = root.location.faith
+			save_scope_as = vi_victim
+		}
+	}
+
+	save_scope_as = vi_hunt_attacker
+
+	scope:vi_victim = {
+		save_scope_as = vi_hunt_defender
+	}
+
+	if = {
+		limit = {
+			exists = scope:scheme
+		}
+		# vi_hunt_add_attacker_advantage = {
+		# 	VALUE = scope:scheme.scheme_success_chance
+		# }
+		if = {
+			limit = {
+				exists = scope:scheme_successful
+				always = scope:scheme_successful
+			}
+			vi_hunt_add_attacker_advantage = {
+				VALUE = 50
+			}
+		}
+		else = {
+			vi_hunt_add_attacker_advantage = {
+				VALUE = -100
+			}
+		}
+	}
+	else = {
+		vi_hunt_add_attacker_advantage = {
+			VALUE = 0
+		}
+	}
+
+	vi_hunt_add_defender_advantage = {
+		VALUE = 0
+	}
+
+	vi_hunt_outcome_perspective_effect = yes
+}
+
+vi_hunt_outcome_perspective_effect = {
+	#clear_scope_value = vi_hunt_opponent
+
+	#There is a lot of redundancy in the scopes to avoid confusion
+	#and ensure consistency
+
+	if = {
+		limit = {
+			this = scope:vi_hunt_defender
+		}
+
+		scope:vi_hunt_attacker = {
+			save_scope_as = vi_hunt_opponent
+		}
+	}
+	else_if = {
+		limit = {
+			this = scope:vi_hunt_attacker
+		}
+		scope:vi_hunt_defender = {
+			save_scope_as = vi_hunt_opponent
+		}
+	}
+	else = {
+		scope:target = {
+			save_scope_as = vi_hunt_opponent
+		}
+	}
+}
+
+
+
+vi_hunt_outcome_victim_resolve_effect = {
+	if = {
+		limit = {
+			exists = scope:vi_hunt_end_drain_kill
+		}
+		vi_vampire_drain_kill_effect = yes
+	}
+	else_if = {
+		limit = {
+			exists = scope:vi_hunt_end_kill
+		}
+		unknown_murder_effect = {
+			VICTIM = scope:vi_victim
+			MURDERER = scope:vi_vampire
+			REASON = death_mysterious
+		}
+	}
+	else_if = {
+		limit = {
+			exists = scope:vi_hunt_end_turn
+		}
+		vi_vampire_drain_turn_hostile_effect = yes
+	}
+	else_if = {
+		limit = {
+			exists = scope:vi_hunt_end_drink
+		}
+		vi_vampire_drain_effect = yes
+	}
+}
+
+vi_hunt_add_attacker_advantage = {
+	scope:vi_hunt_attacker = {
+		if = {
+			limit = {
+				NOT = {
+					exists = vi_hunt_attacker_advantage
+				}
+			}
+			set_local_variable = {
+				name = advantage
+				value = {
+					value = 0
+					add = vi_hunt_base_advantage
+					add = $VALUE$
+				}
+			}
+		}
+		else = {
+			set_local_variable = {
+				name = advantage
+				value = {
+					value = scope:vi_hunt_attacker_advantage
+					add = $VALUE$
+				}
+			}
+		}
+	
+		save_scope_value_as = {
+			name = vi_hunt_attacker_advantage
+			value = local_var:advantage
+		}
+	}
+}
+
+vi_hunt_add_defender_advantage = {
+	scope:vi_hunt_defender = {
+		if = {
+			limit = {
+				NOT = {
+					exists = vi_hunt_defender_advantage
+				}
+			}
+			set_local_variable = {
+				name = advantage
+				value = {
+					value = 0
+					add = vi_hunt_base_advantage
+					add = $VALUE$
+				}
+			}
+		}
+		else = {
+			set_local_variable = {
+				name = advantage
+				value = {
+					value = scope:vi_hunt_defender_advantage
+					add = $VALUE$
+				}
+			}
+		}
+	
+		save_scope_value_as = {
+			name = vi_hunt_defender_advantage
+			value = local_var:advantage
+		}
+	}
+}
+
+vi_hunt_add_this_advantage = {
+	if = {
+		limit = {
+			this = scope:vi_hunt_attacker
+		}
+		vi_hunt_add_attacker_advantage = {
+			VALUE = $VALUE$
+		}
+	}
+	else_if = {
+		limit = {
+			this = scope:vi_hunt_defender
+		}
+		vi_hunt_add_defender_advantage = {
+			VALUE = $VALUE$
+		}
+	}
+}
+
+
+
+vi_hunt_ambush_effect = {
+	clear_saved_scope = vi_hunt_ambush_failure
+	
+	random_list = {
+		50 = {
+			custom_tooltip = vi_hunt_ambush_advantage_tt
+			modifier = {
+				add = scope:vi_vampire.intrigue
+			}
+			vi_hunt_ambush_success_effect = yes
+			vi_trait_power_modifier = yes
+		}
+
+		50 = {
+			custom_tooltip = vi_hunt_ambush_failure_tt
+			modifier = {
+				add = {
+					value = scope:vi_vampire.intrigue
+					multiply = -1
+					add = scope:vi_victim.intrigue
+				}	
+			}
+
+			save_scope_as = vi_hunt_ambush_failure
+
+			vi_trait_resistance_modifier = yes
+		}
+	}	
+}
+
+vi_hunt_ambush_success_effect = {
+	scope:vi_victim = {
+		increase_wounds_effect = { REASON = fight }
+	}
+}

@@ -12,7 +12,11 @@
 				multiply = 0
 			}
 		}
+		character_modifier = {
+			#faith_creation_piety_cost_add = 
+		}
 		parameters = {
+			unattractive_for_character_conversions = yes
 			vi_masquerade = yes
 			hostility_override_vi_masquerade_required = 1
 			hostility_override_vi_masquerade_not_required = 3
@@ -21,7 +25,7 @@
 
 	vi_masquerade_not_required = {
 		piety_cost = {
-			value = 6000
+			value = 1000000
 			if = {
 				limit = { has_doctrine = vi_masquerade_not_required }
 				multiply = 0
@@ -29,6 +33,7 @@
 		}
 		
 		parameters = {
+			unattractive_for_character_conversions = yes
 			vi_no_masquerade = yes
 			hostility_override_vi_masquerade_required = 2
 			hostility_override_vi_masquerade_not_required = 1

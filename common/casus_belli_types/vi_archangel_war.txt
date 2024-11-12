@@ -27,71 +27,8 @@
 
 	on_declaration = {
 		scope:attacker = {
-			spawn_army = {
-				uses_supply = no
-				men_at_arms = {
-					type = vi_health_point_maa
-					stacks = 40
-				}
-				inheritable = no
-				location = scope:attacker.capital_province
-				war = scope:war
-				war_keep_on_attacker_victory = no
-				save_scope_as = new_army
-				name = vi_healthbar_army
-			}
-			spawn_army = {
-				uses_supply = no
-				men_at_arms = {
-					type = vi_health_point_maa
-					stacks = 40
-				}
-				inheritable = no
-				location = scope:attacker.capital_province
-				war = scope:war
-				war_keep_on_attacker_victory = no
-				save_scope_as = new_army
-				name = vi_healthbar_army
-			}
-			spawn_army = {
-				uses_supply = no
-				men_at_arms = {
-					type = vi_health_point_maa
-					stacks = 40
-				}
-				inheritable = no
-				location = scope:attacker.capital_province
-				war = scope:war
-				war_keep_on_attacker_victory = no
-				save_scope_as = new_army
-				name = vi_healthbar_army
-			}
-			spawn_army = {
-				uses_supply = no
-				men_at_arms = {
-					type = vi_health_point_maa
-					stacks = 40
-				}
-				inheritable = no
-				location = scope:attacker.capital_province
-				war = scope:war
-				war_keep_on_attacker_victory = no
-				save_scope_as = new_army
-				name = vi_healthbar_army
-			}
-			spawn_army = {
-				uses_supply = no
-				men_at_arms = {
-					type = vi_health_point_maa
-					stacks = 40
-				}
-				inheritable = no
-				location = scope:attacker.capital_province
-				war = scope:war
-				war_keep_on_attacker_victory = no
-				save_scope_as = new_army
-				name = vi_healthbar_army
-			}
+			vi_archangel_army_spawn_effect = yes
+			vi_archangel_army_spawn_effect = yes
 
 			add_opinion = {
 				target = scope:defender

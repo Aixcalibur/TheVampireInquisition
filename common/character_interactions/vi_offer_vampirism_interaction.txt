@@ -1,6 +1,6 @@
 ﻿vi_offer_vampirism_interaction = {
 	category = interaction_category_admin
-	icon = guest
+	icon = icon_dead
 	desc = vi_offer_vampirism_interaction_desc
 
 	ai_maybe = yes
@@ -53,20 +53,22 @@
 	is_valid_showing_failures_only = {
 		
 		scope:recipient = {
-			custom_tooltip = {
-				is_landed = yes
-				OR = {
-					has_relation_friend = scope:actor
-					has_relation_lover = scope:actor
-					has_relation_soulmate = scope:actor
-					has_relation_best_friend = scope:actor
+			trigger_if = {
+				limit = {
+					is_landed = yes
+					is_ruler = yes
 				}
-				text = VI_MUST_HAVE_RELATION_TO_OFFER
+				custom_tooltip = {
+					OR = {
+						has_relation_friend = scope:actor
+						has_relation_lover = scope:actor
+						has_relation_soulmate = scope:actor
+						has_relation_best_friend = scope:actor
+					}
+					text = VI_MUST_HAVE_RELATION_TO_OFFER
+				}
 			}
 		}
-			
-		
-
 		scope:recipient = {
 			NOT = {
 				has_trait = vi_dhampir
@@ -128,13 +130,12 @@
 	}
 
 	ai_accept = {
- 		base = -50
+ 		base = -25
 
  		opinion_modifier = {
  			opinion_target = scope:actor
  			multiplier = 0.5
  			step = 5
- 			max = 40
  		}
 
  		#Relations & relatives (with actor)
@@ -149,7 +150,54 @@
 
 		modifier = {
 			has_trait = zealous
+			faith = {
+				NOT = {
+					is_in_family = rf_vi_vampire
+				}
+			}
 			add = -50
+			desc = VI_ZEALOUS
+		}
+
+		modifier = {
+			has_trait = vi_inquisitor
+			add = -50
+		}
+
+		modifier = {
+			OR = {
+				has_trait = sadistic
+				has_trait = callous
+				ai_compassion < -50
+			}
+			add = 25
+			desc = VI_DOESNT_MIND_BLOOD
+		}
+
+		modifier = {
+			OR = {
+				has_trait = compassionate
+				ai_compassion > 50
+			}
+			add = -25
+			desc = VI_MINDS_BLOOD
+		}
+
+		modifier = {
+			NOR = {
+				has_trait = zealous
+				has_trait = humble
+				has_trait = content
+			}
+			OR = {
+				has_trait = ambitious
+				AND = {
+					ai_greed > 50
+					ai_boldness > 30
+				}
+			}
+			desc = VI_WANTS_TO_LIVE
+			add = 100
 		}
 
 		modifier = {
@@ -175,7 +223,7 @@
 
  		modifier = {
  			is_child_of = scope:actor
- 			add = 100
+ 			add = 50
  			desc = AI_YOUR_CHILD
  		}
 
@@ -193,7 +241,7 @@
 		
 		modifier = {
  			this.top_liege = scope:actor
- 			add = 25
+ 			add = 40
  			desc = AI_YOU_ARE_THE_SOVEREIGN
  		}
 		
@@ -379,7 +427,7 @@
 
 vi_ask_vampirism_interaction = {
 	category = interaction_category_admin
-	icon = guest
+	icon = icon_dead
 	desc = vi_ask_vampirism_interaction_desc
 
 	ai_maybe = yes
@@ -411,23 +459,7 @@ vi_ask_vampirism_interaction = {
 	}
 
 	is_valid_showing_failures_only = {
-		# custom_tooltip = {
-		# 	trigger_if = {
-		# 		limit = {
-		# 			scope:recipient = {
-		# 				any_secret = {
-		# 					secret_type = vi_vampire_secret
-		# 					# any_secret_knower = { this = scope:actor }
-		# 					is_known_by = scope:actor
-		# 				}
-		# 			}
-		# 		}
-		# 		custom_description = {
-					
-		# 			always = no
-		# 		}
-		# 	}
-		# }
+		
 		custom_description = {
 			text = VI_MUST_KNOW_SECRET
 			scope:recipient = {
@@ -570,6 +602,7 @@ vi_ask_vampirism_interaction = {
 				is_landed = yes
 			}
 			add = -50
+			desc = VI_LANDED_RULERS
 		}
 
 		modifier = {

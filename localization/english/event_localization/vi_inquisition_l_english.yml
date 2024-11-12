@@ -1,0 +1,78 @@
+﻿l_english:
+
+ vi_started_inquisition_opinion: "Started Inquisition"
+
+ vi_mortals_defect_tooltip: "Mortal [men_at_arms|E] defect from your army."
+
+ vi_inquisition_defense_cb: "Inquisition"
+ VI_INQUISITION_CB_NAME: "Inquisition"
+ VI_INQUISITION_CB_WAR_NAME_BASE: "[ATTACKER.GetPrimaryTitle.GetAdjective] Inquisition"
+ VI_INQUISITION_CB_WAR_NAME: "Inquisition against [ATTACKER.GetShortUINameNotMe]"
+ VI_STARTS_INQUISITION: "Starts an Inquisition against [recipient.GetShortUINameNotMe]"
+
+ vi_inquisition_religious_war: "Inquisition"
+
+ VI_INQUISITION_REALM_CAPTURE: "Vampires inside throughout the realm will be captured"
+
+ vi_declare_inquisition_interaction: "Declare Inquisition"
+ vi_declare_inquisition_interaction_desc: "This will force an unlanded [vampire|E] ruler in your realm to start a war. If you win, you will imprison the vampires in your realm."
+ vi_inquisition_defense_war_defeat_desc_defender:1 "You capture [vampires|E] throughout the realm."
+ vi_inquisition_defense_war_defeat_desc:1 "[defender.GetShortUIName|U] keeps [defender.GetHerHis] [titles|E] and capture [vampires|E] throughout the realm."
+
+ vi_inquisition_war_victory_desc: "Vampires throughout the realm are captured."
+ vi_inquisition_leader_modifier: "Inquisition Leader"
+
+ vi_inquisition.0001.t: "Inquisition Begins"
+ vi_inquisition.0001.desc: "News about the vampire, [recipient.GetShortUIName], has spread across the realm, and fear grips the hearts of the people. Rumors seep through villages and towns, each tale more terrible than the last. Monsters that wear human guises, stalking in the shadows, feeding upon the innocent, and sowing wickedness across the land.\n\nThe clergy fan the flames, calling for faith and vigilance, urging the people to stand firm in the face of this unholy threat. As the sovereign of this land, it falls to me to lead the war against darkness."
+ vi_inquisition.0001.a: "Burn the vampires!"
+
+ vi_inquisition.0002.t: "Inquisition Begins"
+ vi_inquisition.0002.desc: "[actor.GetName] has roused up the people and declared an Inquisition against [recipient.GetNameOrMe]."
+ vi_inquisition.0002.a: "Let us fight for our survival."
+ vi_inquisition.0002.b: "We must avoid getting involved!"
+
+ vi_inquisition_vampire_army: "Roused Vampires"
+ vi_inquisition_human_army: "Inquisition Army"
+
+ vi_archangel.0001.t: "The Archangel Awakens"
+ vi_archangel.0001.desc: "There was a moment felt by all vampires across the world, a moment where it felt like the world had grown a few degrees hotter. Rumors from Rome tell of a ceremony where [pope.GetShortUIName] descended into the Catacombs of Callixtus to invoke a being thought to be mere myth, an ancient vampire who calls himself [vi_archangel.GetNameNicknamed]."
+ vi_archangel.0001.desc_nopope: "There was a moment felt by all vampires across the world, a moment where it felt like the world had grown a few degrees hotter. Rumors from Rome tell of a ceremony where the remnants of the Catholic Church descended into the Catacombs of Callixtus to invoke a being thought to be mere myth, an ancient vampire who calls [vi_archangel.GetHerHim]self [vi_archangel.GetNameNicknamed]."
+ vi_archangel.0001.desc_target: "\n\nFurther reports speak of a streak of light in the sky heading in the direction of [vi_archangel_destination.GetShortUIName]."
+
+ vi_archangel.0001.target: "Prepare our defenses!"
+ vi_archangel.0001.vampire: "Let us hope [vi_archangel.GetSheHe] does not turn [vi_archangel.GetHerHis] sights on us next..."
+ vi_archangel.0001.observer: "The world has gone mad..."
+ vi_archangel.0001.arrogant: "I could take him on."
+ 
+ vi_archangel_modifier: "Archangel"
+ vi_archangel_modifier_desc: "An archangel is capable of taking on the legions of Hell alone."
+
+ vi_archangel_war: "Anti-Vampire Crusade"
+ VI_ARCHANGEL_WAR_NAME: "Crusade against [DEFENDER.GetShortUINameNotMe]"
+ VI_ARCHANGEL_WAR_NAME_BASE: "[ATTACKER.GetShortUIName]'s Crusade"
+ VI_ARCHANGEL_CB_NAME: "Anti-Vampire Crusade"
+ 
+ vi_archangel.3001.t: "Radiance"
+ vi_archangel.3001.vampire_desc: "For once, the thirst is completely gone. "
+ vi_archangel.3001.desc: "The flames, white-gold and iridescent, swallow me whole, but after a moment of agony, there is no more pain—only a strange, deep calm. My skin is peeling, bones cracking in the heat, yet within me, there is only silence, a vast emptiness free of fear, free of regret. At last, my sins, along with my body, dissolve in the light."
+ vi_archangel.3001.a: "Is this salvation...?"
+ 
+ vi_archangel_sword_name: "Flaming Sword of the Archangel"
+ vi_archangel_sword_description: "Golden flames flicker along the blade when held. Perhaps only its original owner could bring out its full potential, but this holy sword is still formidable."
+
+ k_vi_heavenly_host: "Heavenly Host"
+ k_vi_heavenly_host_article: "$DEFAULT_TITLE_NAME_ARTICLE$"
+ vi_healthbar_army: "Health Bar"
+ vi_health_point_maa: "Health Points"
+ vi_health_point_maa_flavor: "A single powerful adversary can count for thousands of men."
+ vi_saint: "Saint"
+ nick_vi_the_archangel: "the Archangel"
+ nick_vi_the_archangel_desc: "He claims to be an Archangel. Seeing the golden flames that sweep the battlefield with every swing of his sword, who could disagree?"
+ death_vi_holy_flames: "was incinerated by holy fire"
+ death_vi_holy_flames_killer: "was incinerated by the holy flames of [TARGET_CHARACTER.GetUIName]"
+ vi_holy_flames_modifier: "Holy Flames"
+
+ vi_archangel_killed_enemy_enemy: "Our $knight_culture_player_no_tooltip_lowercase$ [TARGET_CHARACTER.GetShortUINameNoTooltip] was incinerated by the holy flames of [CHARACTER.GetShortUINameNoTooltip]!"
+ vi_archangel_killed_enemy_friendly: "[CHARACTER.GetShortUINameNoTooltip] incinerated [TARGET_CHARACTER.GetShortUINameNoTooltip] with holy fire!"
+ vi_archangel_killed_army_enemy: "Our troops were bathed in holy fire!"
+ vi_archangel_killed_army_friendly: "Their troops were bathed in holy fire."

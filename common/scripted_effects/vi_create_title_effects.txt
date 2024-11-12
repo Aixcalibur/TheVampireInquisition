@@ -270,7 +270,7 @@ vi_create_vassal_princedom_effect = {
 		set_capital_county = scope:vi_title_county
 		set_coa = scope:vi_title_county
 		set_landless_title = yes
-		set_definitive_form = yes
+		#set_definitive_form = yes
 		set_de_jure_liege_title = scope:vi_liege.primary_title
 		# add_title_law = vi_vampire_elective_succession_law
 	}

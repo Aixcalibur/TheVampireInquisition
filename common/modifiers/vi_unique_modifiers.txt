@@ -4,7 +4,12 @@
 	monthly_income_mult = 0.1
 }
 
-
+vi_archangel_modifier = {
+	icon = magic_positive
+	movement_speed = 1
+	monthly_income = 2
+	monthly_piety = 5
+}
 
 vi_holy_flames_modifier = {
 	icon = magic_positive

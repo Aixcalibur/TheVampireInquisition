@@ -410,7 +410,6 @@ vi_dynasty_Aphrodisian = {
 
 }
 
-
 vi_montmartre_v1 = {
 	custom=yes
 	pattern="pattern_horizontal_split_02.dds"

@@ -1,0 +1,201 @@
+﻿vi_vassal_gets_suspicious = {
+	clear_saved_scope = vi_suspicious_vassal
+	
+	random_vassal = {
+		limit = {
+			vi_is_vampire_trigger = no
+			NOT = {
+				has_opinion_modifier = {
+					modifier = suspicion_opinion
+					target = liege_or_court_owner
+				}
+			}
+		}
+		weight = {
+			base = 20
+
+			modifier = {
+				has_trait = paranoid
+				add = 50
+			}
+
+			modifier = {
+				is_councillor = yes
+				add = 100
+			}
+
+			modifier = {
+				has_trait = zealous
+				add = 50
+			}
+
+			modifier = {
+				has_trait = brave
+				add = 50
+			}
+
+			modifier = {
+				always = yes
+				add = this.intrigue
+			}
+		}
+		save_scope_as = vi_suspicious_vassal
+	}
+
+	if = {
+		limit = {
+			NOT = {
+				exists = scope:vi_suspicious_vassal
+			}
+		}
+		random_courtier = {
+			limit = {
+				vi_is_vampire_trigger = no
+				NOT = {
+					has_opinion_modifier = {
+						modifier = suspicion_opinion
+						target = liege_or_court_owner
+					}
+				}
+				is_adult = yes
+			}
+			# weight = {
+			# 	base = 1
+			# }
+			save_scope_as = vi_suspicious_vassal
+		}
+	}
+
+	send_interface_message = {
+		title = vi_rising_suspicion_msg
+		right_icon = scope:vi_suspicious_vassal
+		scope:vi_suspicious_vassal = {
+			add_character_modifier = {
+				modifier = vi_roused_suspicion_modifier
+				years = 5
+			}
+		}
+		reverse_add_opinion = {
+			target = scope:vi_suspicious_vassal
+			modifier = suspicion_opinion
+			opinion = -30
+		}
+	}
+
+	scope:vi_suspicious_vassal = {
+		random = {
+			chance = {
+				value = 20
+				add = intrigue
+				if = {
+					limit = {
+						has_trait = paranoid
+					}
+					add = 80
+				}
+				if = {
+					limit = {
+						has_trait = zealous
+					}
+					add = 30
+				}
+				max = 90
+			}
+			begin_scheme_basic_effect = {
+				SCHEME_TYPE = vi_investigate
+				TARGET_TYPE = target_character
+				TARGET_SCOPE = liege_or_court_owner
+			}
+		}
+	}
+}
+
+vi_neighboring_ruler_gets_suspicious = {
+	clear_saved_scope = vi_suspicious_ruler
+
+	save_scope_as = vi_suspicion_target
+
+	random_neighboring_top_liege_realm_owner = {
+		limit = {
+			vi_is_vampire_trigger = no
+			NOT = {
+				has_opinion_modifier = {
+					modifier = suspicion_opinion
+					target = scope:vi_suspicion_target
+				}
+			}
+		}
+
+		weight = {
+			base = 1
+
+			if = {
+				limit = {
+					highest_held_title_tier >= tier_kingdom
+				}
+				add = 5
+			}
+		}
+
+		save_scope_as = vi_suspicious_ruler
+	}
+
+	send_interface_message = {
+		title = vi_rising_suspicion_msg
+		right_icon = scope:vi_suspicious_ruler
+		scope:vi_suspicious_ruler = {
+			add_character_modifier = {
+				modifier = vi_roused_suspicion_modifier
+				years = 3
+			}
+		}
+		reverse_add_opinion = {
+			target = scope:vi_suspicious_ruler
+			modifier = suspicion_opinion
+			opinion = -20
+		}
+	}
+
+	
+
+	scope:vi_suspicious_ruler = {
+		if = {
+			limit = {
+				NOT = {
+					any_scheme = {
+						is_scheme_category = hostile
+					}
+				}
+			}
+			begin_scheme_basic_effect = {
+				SCHEME_TYPE = vi_investigate
+				TARGET_TYPE = target_character
+				TARGET_SCOPE = scope:vi_suspicion_target
+			}
+		}
+	}
+	
+}
+
+
+vi_neighboring_rulers_all_inquisition = {
+	save_scope_as = vi_suspicion_target
+	every_neighboring_top_liege_realm_owner = {
+		limit = {
+			vi_is_vampire = no
+			is_at_war = no
+		}
+
+		ai_start_best_war = {
+			cb = {
+				vi_inquisition_religious_war
+			}
+
+			on_failure = {
+				debug_log_scopes = no
+				debug_log = " tried to start Inquisition"
+			}
+		}
+	}
+}
+

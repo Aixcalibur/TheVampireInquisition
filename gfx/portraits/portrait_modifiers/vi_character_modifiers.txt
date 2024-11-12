@@ -106,5 +106,24 @@
 			}
 		}
 	}
+
+	vi_bald = {
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = hairstyles
+				template = no_hairstyles
+				value = 0
+			}
+		}
+
+		weight = {
+			base = 0
+			modifier = {
+				add = 500
+				has_character_flag = vi_bald
+			}
+		}
+	}
 }
 

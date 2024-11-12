@@ -109,7 +109,9 @@ d_vi_london = {
 		government = vi_vampire_government
 		# succession_laws = { vi_vampire_elective_succession_law }
 		liege = k_vi_court_of_night
-		set_variable = vi_urchin_flag
+		effect = {
+			set_variable = vi_urchin_flag
+		}
 	}
 }
 

@@ -21,7 +21,122 @@ vi_vampire_game_start = {
 
 vi_vampire_game_start_ancient_regime = {
 	effect = {
+		every_independent_ruler = {
+			limit = {
+				# vi_is_vampire_trigger = yes
+				has_government = vi_vampire_government
+				is_landed = no
+			}
 
+			# add_character_modifier = {
+			# 	modifier = vi_ancient_regime_modifier
+			# 	years = 3
+			# }
+
+			every_held_title = {
+				if = {
+					limit = {
+						is_noble_family_title = no
+						tier >= tier_kingdom
+					}
+					add_title_law = vi_vampire_elective_succession_law
+				}			
+			}
+
+			house ?= {
+				set_variable = {
+					name = ai_random_harm_cooldown
+					value = yes
+				}
+			}
+
+			every_vassal = {
+				limit = {
+					vi_is_vampire_trigger = yes
+					highest_held_title_tier = tier_duchy
+				}
+				trigger_event = {
+					on_action = vi_vampire_game_start_vampire_ruler
+					days = { 1 3 }
+					delayed = yes
+				}
+			}
+
+			trigger_event = {
+				on_action = vi_vampire_game_start_vampire_ruler
+				days = { 1 3 }
+				delayed = yes
+			}
+
+			#vi_vampire_policy_start_effect = yes
+		}
+	}
+}
+
+vi_vampire_game_start_vampire_ruler = {
+	effect = {
+		primary_title.title_capital_county = {
+			add_county_modifier = {
+				modifier = vi_county_discreet_modifier
+				years = 2
+			}
+		}
+
+		vi_build_upgrade_effect = {
+			BUILDING = vi_estate
+		}
+		vi_build_upgrade_effect = {
+			BUILDING = vi_market
+		}
+
+		vi_build_upgrade_random_effect = yes
+		vi_build_upgrade_random_effect = yes
+
+		every_courtier = {
+			limit = {
+				vi_is_vampire_trigger = no
+			}
+			vi_make_vampire_effect = yes
+			add_trait = vi_vampire_1
+			add_prowess_skill = { 3 8 }
+		}
+
+		if = {
+			limit = {
+				is_ai = yes
+			}
+			vi_generate_inner_council_random_chance = yes
+		}
+
+		vi_generate_vampire_artifact_effect = { OWNER = this }
+
+		if = {
+			limit = {
+				has_legitimacy = yes
+				legitimacy_level < 3
+			}
+			add_legitimacy = 400
+		}
+	}
+}
+
+vi_bida_game_start = {
+	trigger = {
+		character:vi_bida = {
+			is_alive = yes
+			is_ruler = yes
+		}
+	}
+
+	effect = {
+		character:vi_bida = {
+			create_story = story_vi_bida
+		}
+	}
+}
+
+vi_vampire_game_start_after_lobby = {
+	effect = {
 		dynasty:vi_dynasty_Aphrodisian = {
 			add_dynasty_modifier = {
 				modifier = vi_Disian_modifier
@@ -46,109 +161,30 @@ vi_vampire_game_start_ancient_regime = {
 			}
 		}
 
-		every_independent_ruler = {
-			limit = {
-				# vi_is_vampire_trigger = yes
-				has_government = vi_vampire_government
-				is_landed = no
+		title:c_roma = {
+			add_county_modifier = {
+				modifier = vi_holy_ground_modifier
 			}
-
-			add_character_modifier = {
-				modifier = vi_ancient_regime_modifier
-				years = 3
-			}
-
-			capital_county = {
-				add_county_modifier = {
-					modifier = vi_county_discreet_modifier
-					years = 2
-				}
-			}
-
-			every_held_title = {
-				if = {
-					limit = {
-						is_noble_family_title = no
-						tier >= tier_kingdom
-					}
-					add_title_law = vi_vampire_elective_succession_law
-				}			
-			}
-
-			every_courtier = {
-				if = {
-					limit = {
-						vi_is_vampire_trigger = no
-						is_councillor = yes
-					}
-
-					vi_make_vampire_effect = yes
-					add_trait = vi_vampire_1
-				}
-			}
-
-			vi_generate_knights = yes
-			vi_generate_vampire_artifact_effect = { OWNER = this }
-
-			house ?= {
-				set_variable = {
-					name = ai_random_harm_cooldown
-					value = yes
-				}
-			}
-
-			if = {
-				limit = {
-					is_ai = yes
-					OR = {
-						has_trait = vi_vampire_3
-						has_trait = vi_vampire_4
-						has_trait = vi_vampire_5
-					}
-				}
-				trigger_event = {
-					on_action = vi_generate_inner_council_on_action
-					days = {10 30 }
-					delayed = yes
-				}
-			}
-
-			#vi_vampire_policy_start_effect = yes
 		}
-	}
-}
 
-vi_generate_inner_council_on_action = {
-	effect = {
-		vi_generate_inner_council_random_chance = yes
-	}
-}
-
-vi_bida_game_start = {
-	trigger = {
-		character:vi_bida = {
-			is_alive = yes
-			is_ruler = yes
+		title:c_byzantion = {
+			add_county_modifier = {
+				modifier = vi_holy_ground_modifier
+			}
 		}
-	}
 
-	effect = {
-		character:vi_bida = {
-			create_story = story_vi_bida
-		}
-	}
-}
-
-vi_vampire_game_start_after_lobby = {
-	effect = {
 		title:k_vi_court_of_night.holder = {
-			create_artifact_pedestal_christian_relic_effect_hist = { OWNER = this }
+			#create_artifact_pedestal_christian_relic_effect_hist = { OWNER = this }
 			spawn_army = {
 				men_at_arms = {
-					type = vi_local_vampires
-					stacks = 3
+					type = vi_elite_vampires
+					stacks = 4
 				}
-				levies = 300
+				men_at_arms = {
+					type = vi_local_vampires
+					stacks = 2
+				}
+				levies = 200
 				inheritable = no
 				location = title:k_vi_court_of_night.holder.capital_province
 				save_scope_as = new_army
@@ -164,7 +200,19 @@ vi_vampire_game_start_after_lobby = {
 					is_alive = yes
 				}
 				vi_create_artifact_durendal_effect = {
-					OWNER = character:vi_roland
+					OWNER = this
+				}
+			}
+		}
+
+		character:vi_michael = {
+			if = {
+				limit = {
+					exists = this
+					is_alive = yes
+				}
+				vi_create_artifact_archangel_sword_effect = {
+					OWNER = this
 				}
 			}
 		}

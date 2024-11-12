@@ -26,6 +26,10 @@ vi_visit_interaction = {
 	parent = interaction
 }
 
+vi_masquerade = {
+	
+}
+
 vi_court_favor = {
 	texture = "gfx/interface/icons/loyalty.dds"
 	framesize = { 60 60 }
@@ -41,5 +45,10 @@ vi_compel_suicide_interaction = {
 
 vi_instill_fear_interaction = {
 	alias = { vi_instill_fear }
+	parent = interaction
+}
+
+vi_weave_fate_interaction = {
+	alias = {vi_weave_fate_interaction}
 	parent = interaction
 }

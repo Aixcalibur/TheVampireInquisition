@@ -7,12 +7,20 @@ vi_archangel.0001 = {
 		first_valid = {
 			triggered_desc = {
 				trigger = {
-					this = scope:vi_archangel_target
+					exists = scope:pope
 				}
-				desc = vi_archangel.0001.desc_target
+				desc = vi_archangel.0001.desc
 			}
-			desc = vi_archangel.0001.desc
+			desc = vi_archangel.0001.desc_nopope
 		}
+
+		desc = vi_archangel.0001.desc_target
+		# triggered_desc = {
+		# 	trigger = {
+		# 		this = scope:vi_archangel_target
+		# 	}
+		# 	desc = vi_archangel.0001.desc_target
+		# }
 	}
 
 	theme = battle
@@ -39,16 +47,30 @@ vi_archangel.0001 = {
 	}
 
 	immediate = {
+		title:k_papal_state.holder ?= {
+			save_scope_as = pope
+		}
+
+		character:vi_michael = {
+			save_scope_as = vi_archangel
+		}
+
+		scope:vi_archangel_target = {
+			capital_county = {
+				save_scope_as = vi_archangel_destination
+			}
+		}
 		show_as_tooltip = {
 			character:vi_michael = {
 				remove_trait_force_tooltip = vi_dormant
 				add_trait_force_tooltip = possessed_1
+				vi_archangel_army_initial_spawn_effect = yes
 			}
 		}
 	}
 
 	option = {
-		name = vi_archangel.0001.a
+		name = vi_archangel.0001.target
 		trigger = {
 			this = scope:vi_archangel_target
 		}
@@ -64,7 +86,27 @@ vi_archangel.0001 = {
 	}
 
 	option = {
-		name = vi_archangel.0001.b
+		name = vi_archangel.0001.arrogant
+		trigger = {
+			OR = {
+				has_trait = arrogant
+				has_trait = brave
+			}
+		}
+	}
+
+	option = {
+		name = vi_archangel.0001.vampire
+		trigger = {
+			NOT = {
+				this = scope:vi_archangel_target
+			}
+			vi_is_vampire_trigger = yes
+		}
+	}
+
+	option = {
+		name = vi_archangel.0001.observer
 		trigger = {
 			NOT = {
 				this = scope:vi_archangel_target
@@ -73,11 +115,74 @@ vi_archangel.0001 = {
 	}
 
 	after = {
-		character:vi_michael = {
-			start_war = {
-				casus_belli = vi_archangel_war
-				target = scope:vi_archangel_target
+		if = {
+			limit = {
+				this = scope:vi_archangel_target
+			}
+			character:vi_michael = {
+				start_war = {
+					casus_belli = vi_archangel_war
+					target = scope:vi_archangel_target
+				}
 			}
 		}
+		else = {
+			show_as_tooltip = {
+				character:vi_michael = {
+					start_war = {
+						casus_belli = vi_archangel_war
+						target = scope:vi_archangel_target
+					}
+				}
+			}
+		}
+		
+	}
+}
+
+vi_archangel.3001 = {
+	type = character_event
+	title = vi_archangel.3001.t
+	desc = {
+		triggered_desc = {
+			trigger = {
+				vi_is_vampire_trigger = yes
+			}
+			desc = vi_archangel.3001.vampire_desc
+		}
+		desc = vi_archangel.3001.desc
+	}
+	window = scheme_target_event
+	theme = murder_scheme
+
+	left_portrait = {
+		character = root
+		#animation = scheme
+		#animation = marshal
+		animation = personality_zealous
+	}
+
+	immediate = {
+		vi_hunt_outcome_perspective_effect = yes
+
+		if = {
+			limit = {
+				NOT = {
+					exists = scope:vi_hunt_opponent
+				}
+			}
+			character:vi_michael = {
+				save_scope_as = vi_hunt_opponent
+			}
+		}
+
+		death = {
+			death_reason = death_vi_holy_flames
+			killer = scope:vi_hunt_opponent
+		}
+	}
+
+	option = {
+		name = vi_archangel.3001.a
 	}
 }

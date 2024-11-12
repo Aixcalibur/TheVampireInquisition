@@ -1,0 +1,153 @@
+﻿namespace = vi_hunt_ongoing
+
+vi_hunt_ongoing.0001 = {
+	title = vi_hunt_ongoing.0001.t
+	desc = vi_hunt_ongoing.0001.desc
+	theme = murder_scheme
+
+	left_portrait = {
+		character = root
+		animation = personality_rational
+	}
+
+	immediate = {
+		scope:scheme = {
+			scheme_freeze = { days = 10 }
+		}
+	}
+
+	option = {
+		name = vi_hunt_ongoing.option_auspex
+		trigger = {
+			has_perk = vi_auspex_perk
+		}
+		add_character_modifier = {
+			modifier = vi_vampire_strain_modifier
+			years = 3
+		}
+		scope:scheme = {
+			add_scheme_modifier = {
+				type = vi_hunt_auspex_modifier
+				days = 300
+			}
+		}
+		if = {
+			limit = {
+				has_trait = vi_allseeing
+			}
+			scope:scheme = {
+				add_scheme_modifier = {
+					type = vi_hunt_auspex_modifier
+					days = 300
+				}
+			}
+		}
+
+		ai_chance = {
+			base = 50
+		}
+	}
+
+	option = {
+		name = vi_hunt_ongoing.option_animalspeak
+		trigger = {
+			scope:scheme = {
+				NOT = {
+					has_scheme_modifier = vi_hunt_animalspeak_modifier
+				}
+			}
+			has_perk = vi_animal_speak_perk
+		}
+		add_character_modifier = {
+			modifier = vi_vampire_strain_modifier
+			years = 3
+		}
+		scope:scheme = {
+			add_scheme_modifier = {
+				type = vi_hunt_animalspeak_modifier
+				days = 300
+			}
+		}
+
+		ai_chance = {
+			base = 50
+		}
+	}
+
+	option = {
+		name = vi_hunt_ongoing.option_tryharder
+		add_character_modifier = {
+			modifier = vi_vampire_strain_modifier
+			years = 3
+		}
+		add_stress = medium_stress_gain
+		scope:scheme = {
+			add_scheme_modifier = {
+				type = vi_hunt_effort_modifier
+				days = 300
+			}
+		}
+
+		ai_chance = {
+			base = 10
+
+			modifier = {
+				has_trait = diligent
+				add = 50
+			}
+
+			modifier = {
+				has_trait = lazy
+				add = -50
+			}
+		}
+	}
+
+	option = {
+		name = vi_hunt_ongoing.option_giveup
+		scope:scheme ?= {
+			end_scheme = yes
+		}
+
+		ai_chance = {
+			base = 100
+
+			modifier = {
+				add = {
+					value = scope:scheme.scheme_success_chance
+					multiply = -2.5
+				}
+			}
+
+			modifier = {
+				has_trait = lazy
+				add = 50
+			}
+
+			modifier = {
+				OR = {
+					has_trait = diligent
+					has_trait = ambitious
+					has_trait = vengeful
+					has_trait = greedy
+				}
+				add = -50
+			}
+		}
+	}
+}
+
+vi_hunt_ongoing.1001 = {
+	title = vi_hunt_ongoing.1001.t
+	desc = vi_hunt_ongoing.1001.desc
+	theme = murder_scheme
+
+	left_portrait = {
+		character = root
+		animation = personality_rational
+	}
+
+	option = {
+		name = vi_hunt_ongoing.1001.a
+	}
+}

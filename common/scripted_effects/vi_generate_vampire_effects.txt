@@ -58,7 +58,7 @@ vi_generate_knights = {
 	hidden_effect = {
 		set_local_variable = {
 			name = limit
-			value = { 5 8 }
+			value = { 4 8 }
 		}
 		set_local_variable = {
 			name = for_counter
@@ -349,5 +349,20 @@ vi_set_courtier_vampirism = {
 				vi_add_random_perks = yes
 			}
 		}
+	}
+}
+
+
+vi_generate_bg_override_dummy = {
+	create_character = {
+		template = knight_errant_character
+		dynasty = none
+		location = root.location
+		culture = location.culture
+		faith = location.faith
+		save_scope_as = bg_override_char
+	}
+	scope:bg_override_char = {
+		add_trait = vi_vampire_3
 	}
 }

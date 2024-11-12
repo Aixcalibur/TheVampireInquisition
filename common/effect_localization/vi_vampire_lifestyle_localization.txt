@@ -1,6 +1,6 @@
-﻿
-
-
+﻿vi_visit_holy_artifact_warning_tt = {
+	global = vi_visit_holy_artifact_warning_tt
+}
 
 add_vi_vampire_lifestyle_xp = {
 	global = GAINS_VAMPIRE_LIFESTYLE_XP
@@ -57,4 +57,38 @@ vi_presence_perk_effect = {
 	global = vi_presence_perk_effect
 	first = vi_presence_perk_effect
 	third = vi_presence_perk_effect
+}
+
+vi_blink_perk_effect = {
+	global = vi_blink_perk_effect
+	first = vi_blink_perk_effect
+	third = vi_blink_perk_effect
+}
+
+vi_regeneration_perk_effect = {
+	global = vi_regeneration_perk_effect
+	first = vi_regeneration_perk_effect
+	third = vi_regeneration_perk_effect
+}
+
+vi_night_perk_effect = {
+	global = vi_night_perk_effect
+	first = vi_night_perk_effect
+	third = vi_night_perk_effect
+}
+
+vi_shadowwalk_perk_effect = {
+	global = vi_shadowwalk_perk_effect
+	first = vi_shadowwalk_perk_effect
+	third = vi_shadowwalk_perk_effect
+}
+
+vi_storm_perk_effect = {
+	global = vi_storm_perk_effect
+	first = vi_storm_perk_effect
+	third = vi_storm_perk_effect
+}
+
+vi_fateweaver_perk_effect = {
+	global = vi_fateweaver_perk_effect
 }

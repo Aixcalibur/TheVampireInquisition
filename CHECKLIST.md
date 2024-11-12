@@ -5,8 +5,8 @@ We're trying to get the most basic features in place as a proof of concept sort 
 A lot of the mechanics around vampirism revolve around Stress. This is in order to synergize with base game mechanics.
 
 ### Basic Vampire Mechanics
-- Vampire Character Creation (90%) (Need polish pass)
-- Stress events (40%) (vi_stress_on_action) (need writing)
+- Vampire Character Creation (70%) (Need polish pass)
+- Stress events (50%) (vi_stress_on_action) (need writing)
 - Drain/turn mortal (90%) (need events and polish pass)
 - Vampire secret and exposed vampire trait (60%) (scheme needs editing, methods of getting rid of exposed vampire need tuning)
 - Anti-Vampire Nuke (90%) (need more testing)

@@ -111,6 +111,25 @@ vi_mother = {
 	}
 }
 
+vi_abbey = {
+	type = title
+	tier = duchy
+	governments = {
+		vi_vampire_government
+	}
+	priority = 50
+	flag = vi_clergy_flag
+	governments = {
+		vi_vampire_government
+	}
+
+	flavourization_rules = {
+		top_liege = no
+		# top_liege = yes
+		spouse_takes_title = yes
+	}
+}
+
 vi_lady_esclarmonde = {
 	type = character
 	gender = female

@@ -1,0 +1,1289 @@
+﻿namespace = vi_hunt_outcome
+
+############################
+#1000 - Initial Event/Ambush
+#2000 - Target Response
+#3000 - Attacker Response
+#4000 - Critical Moment
+#9000 - Finish
+
+
+# Kept for posterity, but not used for now...
+vi_hunt_outcome.0001 = {
+	hidden = yes
+
+	immediate = {
+		scope:scheme = {
+			vi_generic_scheme_process_ending_effect = {
+				RESULTS_TOOLTIP = murder_successful_roll_tt
+				SUCCESS_EVENT_TYPE = on_action
+				SUCCESS_EVENT_ID = vi_hunt_success_pre_filter_on_action
+				FAILURE_EVENT_TYPE = on_action
+				FAILURE_EVENT_ID = vi_hunt_failure_pre_filter_on_action
+			}
+		}
+	}
+}
+
+scripted_trigger vi_charm_option_trigger = {
+	OR = {
+		has_perk = vi_charm_perk
+		AND = {
+			scope:vi_hunt_defender = {
+				is_attracted_to_gender_of = scope:vi_vampire
+			}
+			has_trait = seducer
+		}
+		has_trait = vi_heartstealer
+		has_perk = vi_persuasion_perk
+		has_perk = vi_enthrall_perk
+	}
+	
+	trigger_if = {
+		limit = {
+			scope:vi_hunt_defender = {
+				OR = {
+					has_trait = vi_dhampir
+					vi_is_vampire_trigger = yes
+				}
+			}
+		}
+		has_perk = vi_presence_perk
+	}
+}
+
+#scripted_effect vi_hunt
+#Important event themes:
+	#travel - terrain_travel bg
+	#murder_scheme - corridor_night bg
+
+vi_hunt_outcome.1001 = {
+	type = character_event
+	title = vi_hunt_outcome.1001.t
+	desc = {
+		desc = vi_hunt_outcome.1001.desc
+		triggered_desc = {
+			trigger = {
+				NOT = {
+					has_character_flag = vi_seen_hunt_notice
+				}
+			}
+			desc = vi_hunt_outcome.alpha_notice_desc
+		}
+		triggered_desc = {
+			trigger = {
+				debug_only = yes
+			}
+			desc = vi_hunt_outcome.debug_advantage
+		}
+	}
+
+	window = scheme_target_event
+	#window = scheme_successful_event
+	theme = murder_scheme
+
+	left_portrait = {
+		character = scope:vi_hunt_attacker
+		#animation = assassin
+		animation = inspect_weapon
+		#animation = aggressive_sword
+		#animation = aggressive_unarmed
+	}
+
+	right_portrait = {
+		character = scope:vi_hunt_defender
+		#animation = map_fear
+		#animation = map_dismissal
+		animation = map_worry
+	}
+
+	trigger = {
+		# scope:target = {
+		# 	vi_is_vampire_trigger = no
+		# }
+	}
+
+	immediate = {
+		vi_hunt_outcome_setup_effect = yes
+	}
+
+	option = {
+		name = vi_hunt_outcome.option_ambush
+		vi_hunt_ambush_effect = yes
+
+		if = {
+			limit = {
+				exists = scope:vi_hunt_ambush_failure
+			}
+		}
+		else = {
+			vi_hunt_add_attacker_advantage = {
+				VALUE = vi_hunt_speed_value
+			}
+		}
+
+		scope:scheme ?= {
+			end_scheme = yes
+		}
+
+		trigger_event = {
+			on_action = vi_hunt_ambush_calculate
+		}
+
+		ai_chance = {
+			base = 100
+		}
+	}
+
+	option = {
+		name = vi_hunt_outcome.option_charm
+
+		trigger = {
+			vi_charm_option_trigger = yes
+			always = no
+		}
+
+		show_as_unavailable = {
+			debug_only = yes
+		}
+
+		ai_chance = {
+			base = 100
+		}
+	}
+
+	option = {
+		name = vi_hunt_outcome.option_delay
+
+		ai_chance = {
+			base = -50
+		}
+	}
+
+	option = {
+		name = vi_hunt_outcome.option_end
+
+		scope:scheme ?= {
+			end_scheme = yes
+		}
+
+		ai_chance = {
+			base = -100
+		}
+	}
+
+	after = {
+		if = {
+			limit = {
+				is_ai = no
+			}
+			add_character_flag = vi_seen_hunt_notice
+		}
+	}
+}
+
+vi_hunt_outcome.2001 = {
+	type = character_event
+	title = vi_hunt_outcome.2001.t
+	desc = {
+		desc = vi_hunt_outcome.2001.desc
+		# first_valid = {
+
+		# }
+		triggered_desc = {
+			trigger = {
+				debug_only = yes
+			}
+			desc = vi_hunt_outcome.debug_advantage
+		}
+	}
+	window = scheme_target_event
+	theme = murder_scheme
+	#window = scheme_successful_event
+	left_portrait = {
+		character = scope:vi_hunt_attacker
+		animation = assassin
+		#animation = inspect_weapon
+		#animation = aggressive_sword
+		#animation = aggressive_unarmed
+	}
+	right_portrait = {
+		character = scope:vi_hunt_defender
+		triggered_animation = {
+			trigger = {
+				exists = scope:vi_hunt_ambush_failure
+			}
+			animation = aggressive_unarmed
+		}
+		animation = map_fear
+		#animation = map_fear
+		#animation = map_dismissal
+		#animation = map_worry
+	}
+	immediate = {
+		vi_hunt_outcome_perspective_effect = yes
+
+		if = {
+			limit = {
+				NOT = {
+					exists = scope:vi_hunt_ambush_failure
+				}
+			}
+			show_as_tooltip = {
+				vi_hunt_ambush_success_effect = yes
+			}
+		}
+
+		scope:vi_hunt_opponent = {
+			save_scope_value_as = {
+				name = enemy_speed
+				value = vi_hunt_speed_value
+			}
+		}
+	}
+	option = {
+		name = vi_hunt_outcome.option_callforhelp
+		custom_tooltip = vi_hunt_outcome.option_callforhelp_tt
+		trigger = {
+			always = no #We'll implement this later
+		}
+	}
+	option = {
+		name = vi_hunt_outcome.option_insight
+		trigger = {
+			OR = {
+				has_perk = vi_auspex_perk
+				has_trait = vi_allseeing
+			}
+		}
+		show_as_unavailable = {
+			debug_only = yes
+		}
+		if = {
+			limit = {
+				debug_only = yes
+			}
+			save_temporary_scope_value_as = {
+				name = debug_insight
+				value = vi_hunt_insight_value
+			}
+			scope:vi_hunt_attacker = {
+				send_interface_message = {
+					title = "Insight"
+					custom_tooltip = vi_hunt_outcome.debug_tt_insight
+				}
+			}
+		}
+
+		save_scope_value_as = {
+			name = vi_hunt_defender_move
+			value = flag:option_insight
+		}
+	}
+	option = {
+		name = vi_hunt_outcome.option_psychic
+		trigger = {
+			OR = {
+				has_perk = vi_enthrall_perk
+				has_perk = vi_presence_perk
+				has_trait = vi_heartstealer
+			}	
+		}
+		show_as_unavailable = {
+			debug_only = yes
+		}
+		if = {
+			limit = {
+				debug_only = yes
+			}
+			save_temporary_scope_value_as = {
+				name = debug_charm
+				value = vi_hunt_charm_power_value
+			}
+			scope:vi_hunt_attacker = {
+				send_interface_message = {
+					title = "Charm"
+					custom_tooltip = vi_hunt_outcome.debug_tt_charm
+				}
+			}
+			
+		}
+
+		save_scope_value_as = {
+			name = vi_hunt_defender_move
+			value = flag:option_psychic
+		}
+
+		ai_chance = {
+			base = -50
+			modifier = {
+				add = vi_hunt_charm_power_value
+			}
+		}
+	}
+	option = {
+		name = vi_hunt_outcome.option_trade
+
+		trigger = {
+			OR = {
+				has_perk = vi_fortitude_perk
+				has_perk = vi_regeneration_perk
+				has_perk = vi_transformation_perk
+				has_trait = vi_dragonsscion
+				health > 5
+			}
+		}
+		show_as_unavailable = {
+			debug_only = yes
+		}
+
+		if = {
+			limit = {
+				debug_only = yes
+			}
+			save_temporary_scope_value_as = {
+				name = debug_durability
+				value = vi_hunt_durability_value
+			}
+			
+			scope:vi_hunt_attacker = {
+				send_interface_message = {
+					title = "Durability"
+					custom_tooltip = vi_hunt_outcome.debug_tt_durability
+				}
+			}
+		}
+
+		save_scope_value_as = {
+			name = vi_hunt_defender_move
+			value = flag:option_trade
+		}
+
+		ai_chance = {
+			base = -80
+
+			modifier = {
+				has_trait = brave
+				add = 30
+			}
+
+			modifier = {
+				add = vi_hunt_durability_value
+			}
+
+			modifier = {
+				add = scope:enemy_speed
+			}
+
+			modifier = {
+				add = {
+					value = vi_hunt_speed_value
+					multiply = -1
+				}
+			}
+		}
+	}
+	option = {
+		name = vi_hunt_outcome.option_flee
+		trait = craven
+
+		save_scope_value_as = {
+			name = vi_hunt_defender_move
+			value = flag:option_flee
+		}
+
+		save_scope_as = vi_hunt_defender_fleeing
+
+		ai_chance = {
+			base = -50
+			vi_hunt_flee_ai_chance_modifier = yes
+		}
+	}
+
+	after = {
+		trigger_event = {
+			on_action = vi_hunt_defense_calculate
+		}
+	}
+}
+
+vi_hunt_outcome.3001 = {
+	type = character_event
+	title = vi_hunt_outcome.3001.t
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					exists = scope:vi_hunt_ambush_failure
+				}
+				desc = vi_hunt_outcome.3001.miss_desc
+			}
+			desc = vi_hunt_outcome.3001.hit_desc
+		}
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					OR = {
+						scope:vi_hunt_attacker_advantage > scope:vi_hunt_defender_advantage
+						has_trait = arrogant
+					}
+					NOT = {
+						has_trait = craven
+					}
+				}
+				desc = vi_hunt_outcome.3001.confident_desc
+			}
+			desc = vi_hunt_outcome.3001.confident_desc_not
+		}
+
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					scope:vi_hunt_defender_move = flag:option_psychic
+				}
+				desc = vi_hunt_outcome.enemy_psychic
+			}
+			triggered_desc = {
+				trigger = {
+					scope:vi_hunt_defender_move = flag:option_speed
+					scope:vi_hunt_defender = {
+						has_perk = vi_blink_perk
+					}
+				}
+				desc = vi_hunt_outcome.enemy_afterimages
+			}
+			triggered_desc = {
+				trigger = {
+					scope:vi_hunt_defender_move = flag:option_speed
+				}
+				desc = vi_hunt_outcome.enemy_speed
+			}
+			triggered_desc = {
+				trigger = {
+					scope:vi_hunt_defender_move = flag:option_trade
+				}
+				desc = vi_hunt_outcome.enemy_trade
+			}
+			desc = vi_hunt_outcome.enemy_generic_1
+		}
+
+		triggered_desc = {
+			trigger = {
+				scope:vi_hunt_defender_move = flag:option_flee
+			}
+		}
+		# first_valid = {
+
+		# }
+		triggered_desc = {
+			trigger = {
+				debug_only = yes
+			}
+			desc = vi_hunt_outcome.debug_advantage
+		}
+	}
+	window = scheme_target_event
+	theme = murder_scheme
+	#window = scheme_successful_event
+	immediate = {
+		vi_hunt_outcome_perspective_effect = yes
+	}
+	left_portrait = {
+		character = scope:vi_hunt_attacker
+		animation = aggressive_sword
+		#animation = inspect_weapon
+		#animation = aggressive_sword
+		#animation = aggressive_unarmed
+	}
+
+	right_portrait = {
+		character = scope:vi_hunt_defender
+		triggered_animation = {
+			trigger = {
+				exists = scope:vi_hunt_ambush_failure
+			}
+			animation = aggressive_unarmed
+		}
+		animation = aggressive_sword
+		#animation = map_fear
+		#animation = map_dismissal
+		#animation = map_worry
+	}
+
+	option = {
+		name = vi_hunt_outcome.option_insight
+		trigger = {
+			OR = {
+				has_perk = vi_auspex_perk
+				has_trait = vi_allseeing
+			}
+		}
+		show_as_unavailable = {
+			debug_only = yes
+		}
+		if = {
+			limit = {
+				debug_only = yes
+			}
+			save_temporary_scope_value_as = {
+				name = debug_insight
+				value = vi_hunt_insight_value
+			}
+			scope:vi_hunt_attacker = {
+				send_interface_message = {
+					title = "Insight"
+					custom_tooltip = vi_hunt_outcome.debug_tt_insight
+				}
+			}
+		}
+
+		save_scope_value_as = {
+			name = vi_hunt_attacker_move
+			value = flag:option_insight
+		}
+	}
+	option = {
+		name = vi_hunt_outcome.option_psychic
+		trigger = {
+			OR = {
+				has_perk = vi_enthrall_perk
+				has_perk = vi_presence_perk
+				has_trait = vi_heartstealer
+			}	
+		}
+		show_as_unavailable = {
+			debug_only = yes
+		}
+		if = {
+			limit = {
+				debug_only = yes
+			}
+			save_temporary_scope_value_as = {
+				name = debug_charm
+				value = vi_hunt_charm_power_value
+			}
+			scope:vi_hunt_attacker = {
+				send_interface_message = {
+					title = "Charm"
+					custom_tooltip = vi_hunt_outcome.debug_tt_charm
+				}
+			}
+			
+		}
+
+		save_scope_value_as = {
+			name = vi_hunt_attacker_move
+			value = flag:option_psychic
+		}
+
+		ai_chance = {
+			base = -50
+			modifier = {
+				add = vi_hunt_charm_power_value
+			}
+		}
+	}
+	option = {
+		name = vi_hunt_outcome.option_trade
+
+		trigger = {
+			OR = {
+				has_perk = vi_fortitude_perk
+				has_perk = vi_regeneration_perk
+				has_perk = vi_transformation_perk
+				has_trait = vi_dragonsscion
+				health > 5
+			}
+		}
+		show_as_unavailable = {
+			debug_only = yes
+		}
+
+		if = {
+			limit = {
+				debug_only = yes
+			}
+			save_temporary_scope_value_as = {
+				name = debug_durability
+				value = vi_hunt_durability_value
+			}
+			
+			scope:vi_hunt_attacker = {
+				send_interface_message = {
+					title = "Durability"
+					custom_tooltip = vi_hunt_outcome.debug_tt_durability
+				}
+			}
+		}
+
+		save_scope_value_as = {
+			name = vi_hunt_attacker_move
+			value = flag:option_trade
+		}
+
+		ai_chance = {
+			base = -80
+
+			modifier = {
+				has_trait = brave
+				add = 30
+			}
+
+			modifier = {
+				add = vi_hunt_durability_value
+			}
+
+			modifier = {
+				add = scope:enemy_speed
+			}
+
+			modifier = {
+				add = {
+					value = vi_hunt_speed_value
+					multiply = -1
+				}
+			}
+		}
+	}
+	option = {
+		name = vi_hunt_outcome.option_flee
+		trait = craven
+
+		save_scope_value_as = {
+			name = vi_hunt_attacker_move
+			value = flag:option_flee
+		}
+
+		save_scope_as = vi_hunt_attacker_fleeing
+
+		ai_chance = {
+			base = -50
+			vi_hunt_flee_ai_chance_modifier = yes
+		}
+	}
+
+	after = {
+		trigger_event = {
+			on_action = vi_hunt_attack_calculate
+		}
+	}
+}
+
+vi_hunt_outcome.4001 = {
+	type = character_event
+	title = vi_hunt_outcome.4001.t
+	desc = {
+		desc = vi_hunt_outcome.4001.desc
+		first_valid = {
+			triggered_desc = { 
+				trigger = {
+					OR = {
+						AND = {
+							root = scope:vi_hunt_attacker
+							scope:vi_hunt_attacker_advantage > scope:vi_hunt_defender_advantage
+						}
+						AND = {
+							root = scope:vi_hunt_defender
+							scope:vi_hunt_attacker_advantage < scope:vi_hunt_defender_advantage
+						}
+					}
+				}
+				desc = vi_hunt_outcome.4001.winning_desc
+			}
+			triggered_desc = { 
+				trigger = {
+					OR = {
+						AND = {
+							root = scope:vi_hunt_attacker
+							scope:vi_hunt_attacker_advantage < scope:vi_hunt_defender_advantage
+						}
+						AND = {
+							root = scope:vi_hunt_defender
+							scope:vi_hunt_attacker_advantage > scope:vi_hunt_defender_advantage
+						}
+					}
+				}
+				desc = vi_hunt_outcome.4001.losing_desc
+			}
+			desc = vi_hunt_outcome.4001.tie_desc
+		}
+
+		triggered_desc = {
+			trigger = {
+				OR = {
+					AND = {
+						root = scope:vi_hunt_attacker
+						scope:vi_hunt_attacker_advantage < scope:vi_hunt_defender_advantage
+					}
+					AND = {
+						root = scope:vi_hunt_defender
+						scope:vi_hunt_attacker_advantage > scope:vi_hunt_defender_advantage
+					}
+				}
+				scope:vi_hunt_opponent = {
+					OR = {
+						has_trait = vi_vampire_3
+						has_trait = vi_vampire_4
+						#has_trait = vi_vampire_5
+					}
+				}
+				age < scope:vi_hunt_opponent.age
+			}
+			desc = vi_hunt_outcome.4001.losing_desc_elder
+		}
+
+		triggered_desc = {
+			trigger = {
+				debug_only = yes
+			}
+			desc = vi_hunt_outcome.debug_advantage
+		}
+	}
+
+	immediate = {
+		vi_hunt_outcome_perspective_effect = yes
+	}
+
+	window = scheme_target_event
+	theme = murder_scheme
+	#window = scheme_successful_event
+
+	left_portrait = {
+		character = scope:vi_hunt_attacker
+		animation = aggressive_sword
+		#animation = inspect_weapon
+		#animation = aggressive_sword
+		#animation = aggressive_unarmed
+	}
+
+	right_portrait = {
+		character = scope:vi_hunt_defender
+		animation = aggressive_sword
+		#animation = map_fear
+		#animation = map_dismissal
+		#animation = map_worry
+	}
+
+	option = {
+		name = vi_hunt_outcome.option_commit
+		vi_hunt_add_this_advantage = {
+			VALUE = vi_hunt_speed_value
+		}
+		ai_chance = {
+			base = 50
+		}
+	}
+
+	option = {
+		name = vi_hunt_outcome.option_exert
+		add_character_modifier = {
+			modifier = vi_vampire_strain_modifier
+			years = 20
+		}
+		vi_hunt_add_this_advantage = {
+			VALUE = vi_hunt_speed_value
+		}
+		vi_hunt_add_this_advantage = {
+			VALUE = vi_hunt_speed_value
+		}
+		vi_hunt_add_this_advantage = {
+			VALUE = vi_hunt_durability_value
+		}
+		ai_chance = {
+			base = 50
+		}
+	}
+
+	option = {
+		name = vi_hunt_outcome.option_flee
+
+		if = {
+			limit = {
+				root = scope:vi_hunt_attacker
+			}
+			save_scope_as = vi_hunt_attacker_fleeing
+		}
+		else = {
+			save_scope_as = vi_hunt_defender_fleeing
+		}
+		add_character_modifier = {
+			modifier = vi_vampire_strain_modifier
+			years = 20
+		}
+		vi_hunt_add_this_advantage = {
+			VALUE = vi_hunt_speed_value
+		}
+		vi_hunt_add_this_advantage = {
+			VALUE = vi_hunt_speed_value
+		}
+		vi_hunt_add_this_advantage = {
+			VALUE = vi_hunt_speed_value
+		}
+		ai_chance = {
+			base = 0
+			vi_hunt_flee_ai_chance_modifier = yes
+		}
+	}
+
+	after = {
+		if = {
+			limit = {
+				root = scope:vi_hunt_attacker
+			}
+			scope:vi_hunt_defender = {
+				trigger_event = vi_hunt_outcome.4001
+			}
+		}
+		else = {
+			trigger_event = {
+				on_action = vi_hunt_resolve_on_action
+			}
+		}
+	}
+}
+
+vi_hunt_outcome.9001 = {
+	type = character_event
+	title = vi_hunt_outcome.9001.t
+	desc = {
+		desc = vi_hunt_outcome.9001.desc
+		triggered_desc = {
+			trigger = {
+				debug_only = yes
+			}
+			desc = vi_hunt_outcome.debug_advantage
+		}
+	} 
+	window = scheme_successful_event
+	theme = murder_scheme
+
+	left_portrait = {
+		character = scope:vi_vampire
+		animation = scheme
+		#animation = marshal
+		#animation = war_over_win
+	}
+
+	right_portrait = {
+		character = scope:vi_victim
+		#animation = map_fear
+		#animation = map_dismissal
+		animation = map_fear
+	}
+
+	trigger = {
+		# scope:target = {
+		# 	vi_is_vampire_trigger = no
+		# }
+	}
+
+	immediate = {
+		vi_hunt_outcome_perspective_effect = yes
+
+		if = {
+			limit = {
+				NOT = {
+					this = scope:vi_hunt_defender
+				}
+				
+			}
+
+			save_scope_as = vi_vampire
+
+			scope:vi_hunt_defender = {
+				save_scope_as = vi_victim
+			}
+		}
+	}
+
+	option = {
+		name = vi_hunt_outcome.option_drink
+
+		show_as_tooltip = {
+			vi_vampire_drain_effect = yes
+		}
+
+		save_scope_as = vi_hunt_end_drink
+
+		ai_chance = {
+			base = 50
+			vi_hunt_drink_ai_chance_modifier = yes
+		}
+	}
+
+	option = {
+		name = vi_hunt_outcome.option_drain_kill
+		
+		show_as_tooltip = {
+			vi_vampire_drain_kill_effect = yes
+		}
+
+		save_scope_as = vi_hunt_end_drain_kill
+
+		ai_chance = {
+			base = 50
+			vi_hunt_drain_kill_ai_chance_modifier = yes
+		}
+	}
+
+	option = {
+		name = vi_hunt_outcome.option_turn
+
+		show_as_tooltip = {
+			vi_vampire_drain_turn_hostile_effect = yes
+		}
+
+		save_scope_as = vi_hunt_end_turn
+
+		trigger = {
+			scope:vi_victim = {
+				NOR = {
+					vi_is_vampire_trigger = yes
+					has_trait = vi_dhampir
+				}
+			}
+		}
+
+		ai_chance = {
+			base = -70
+			vi_hunt_turn_ai_chance_modifier = yes
+		}
+	}
+
+	option = {
+		name = vi_hunt_outcome.option_kill
+
+		trigger = {
+			scope:vi_victim = {
+				OR = {
+					vi_is_vampire_trigger = yes
+					has_trait = vi_dhampir
+				}
+			}
+		}
+
+		save_scope_as = vi_hunt_end_kill
+
+		show_as_tooltip = {
+			vi_hunt_outcome_victim_resolve_effect = yes
+		}
+
+		ai_chance = {
+			base = -50
+			vi_hunt_kill_ai_chance_modifier = yes
+		}
+	}
+
+	option = {
+		name = vi_hunt_outcome.option_end
+
+		# scope:scheme ?= {
+		# 	end_scheme = yes
+		# }
+
+		ai_chance = {
+			base = -100
+		}
+	}
+
+	after = {
+		scope:vi_victim = {
+			trigger_event = vi_hunt_outcome.9002
+		}
+	}
+}
+
+vi_hunt_outcome.9002 = {
+	type = character_event
+	title = vi_hunt_outcome.9002.t
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = { exists = scope:vi_hunt_struggled }
+				desc = vi_hunt_outcome.end.lose_desc
+			}
+			desc = vi_hunt_outcome.9002.desc
+		}
+		
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					OR = {
+						exists = scope:vi_hunt_end_drain_kill
+						exists = scope:vi_hunt_end_drink
+						exists = scope:vi_hunt_end_turn
+					}
+				}
+				desc = vi_hunt_outcome.end.drink_desc
+			}
+			triggered_desc = {
+				trigger = {
+					OR = {
+						is_alive = no
+						exists = scope:vi_hunt_end_kill
+					}
+				}
+				desc = vi_hunt_outcome.end.kill_desc
+			}
+			desc = vi_hunt_outcome.end.nothing_desc
+		}
+		triggered_desc = {
+			trigger = {
+				debug_only = yes
+			}
+			desc = vi_hunt_outcome.debug_advantage
+		}
+	}
+	window = scheme_target_event
+	theme = murder_scheme
+
+	left_portrait = {
+		character = scope:vi_vampire
+		#animation = scheme
+		#animation = marshal
+		animation = war_over_win
+	}
+
+	right_portrait = {
+		character = scope:vi_victim
+		#animation = map_fear
+		#animation = map_dismissal
+		animation = map_fear
+	}
+
+	immediate = {
+		vi_hunt_outcome_perspective_effect = yes
+		vi_hunt_outcome_victim_resolve_effect = yes
+	}
+
+	option = {
+		name = vi_hunt_outcome.option_question
+	}
+}
+
+vi_hunt_outcome.9101 = {
+	type = character_event
+	title = vi_hunt_outcome.9101.t
+	desc = {
+		desc = vi_hunt_outcome.9101.desc
+		triggered_desc = {
+			trigger = {
+				debug_only = yes
+			}
+			desc = vi_hunt_outcome.debug_advantage
+		}
+	} 
+	window = scheme_successful_event
+	theme = murder_scheme
+
+	left_portrait = {
+		character = scope:vi_vampire
+		animation = scheme
+		#animation = marshal
+		#animation = war_over_win
+	}
+
+	right_portrait = {
+		character = scope:vi_victim
+		#animation = map_fear
+		#animation = map_dismissal
+		animation = map_fear
+	}
+
+	trigger = {
+		
+	}
+
+	immediate = {
+		vi_hunt_outcome_perspective_effect = yes
+
+		if = {
+			limit = {
+				OR = {
+					vi_is_vampire_trigger = yes
+					has_trait = vi_dhampir
+				}
+			}
+			save_scope_as = vi_vampire
+
+			scope:vi_hunt_defender = {
+				save_scope_as = vi_victim
+			}
+		}
+	}
+
+	option = {
+		name = vi_hunt_outcome.option_drink
+
+		trigger = {
+			OR = {
+				vi_is_vampire_trigger = yes
+				has_trait = vi_dhampir
+			}
+		}
+
+		show_as_tooltip = {
+			vi_vampire_drain_effect = yes
+		}
+
+		save_scope_as = vi_hunt_end_drink
+
+		ai_chance = {
+			base = 50
+			vi_hunt_drink_ai_chance_modifier = yes
+		}
+	}
+
+	option = {
+		name = vi_hunt_outcome.option_drain_kill
+
+		trigger = {
+			OR = {
+				vi_is_vampire_trigger = yes
+				has_trait = vi_dhampir
+			}
+		}
+		
+		show_as_tooltip = {
+			vi_vampire_drain_kill_effect = yes
+		}
+
+		save_scope_as = vi_hunt_end_drain_kill
+
+		ai_chance = {
+			base = 50
+			vi_hunt_drain_kill_ai_chance_modifier = yes
+		}
+	}
+
+	option = {
+		name = vi_hunt_outcome.option_turn
+
+		show_as_tooltip = {
+			vi_vampire_drain_turn_hostile_effect = yes
+		}
+
+		save_scope_as = vi_hunt_end_turn
+
+		trigger = {
+			OR = {
+				vi_is_vampire_trigger = yes
+				has_trait = vi_dhampir
+			}
+			scope:vi_victim = {
+				NOR = {
+					vi_is_vampire_trigger = yes
+					has_trait = vi_dhampir
+				}
+			}
+		}
+
+		ai_chance = {
+			base = -70
+			vi_hunt_turn_ai_chance_modifier = yes
+		}
+	}
+
+	option = {
+		name = vi_hunt_outcome.option_kill
+
+		trigger = {
+			OR = {
+				vi_is_vampire_trigger = no
+				scope:vi_victim = {
+					OR = {
+						vi_is_vampire_trigger = yes
+						has_trait = vi_dhampir
+					}
+				}
+			}
+		}
+
+		save_scope_as = vi_hunt_end_kill
+
+		ai_chance = {
+			base = -50
+			vi_hunt_kill_ai_chance_modifier = yes
+		}
+	}
+
+	option = {
+		name = vi_hunt_outcome.option_end
+
+		scope:scheme ?= {
+			end_scheme = yes
+		}
+
+		ai_chance = {
+			base = -100
+		}
+	}
+
+	after = {
+		scope:vi_victim = {
+			trigger_event = vi_hunt_outcome.9102
+		}
+	}
+}
+
+vi_hunt_outcome.9102 = {
+	type = character_event
+	title = vi_hunt_outcome.9102.t
+	desc = {
+		desc = vi_hunt_outcome.9102.desc
+		
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					OR = {
+						exists = scope:vi_hunt_end_drain_kill
+						exists = scope:vi_hunt_end_drink
+						exists = scope:vi_hunt_end_turn
+					}
+				}
+				desc = vi_hunt_outcome.end.drink_desc
+			}
+			triggered_desc = {
+				trigger = {
+					OR = {
+						is_alive = no
+						exists = scope:vi_hunt_end_kill
+					}
+				}
+				desc = vi_hunt_outcome.end.kill_desc
+			}
+			desc = vi_hunt_outcome.end.nothing_desc
+		}
+		triggered_desc = {
+			trigger = {
+				debug_only = yes
+			}
+			desc = vi_hunt_outcome.debug_advantage
+		}
+	}
+	window = scheme_target_event
+	theme = murder_scheme
+
+	left_portrait = {
+		character = scope:vi_hunt_opponent
+		#animation = scheme
+		#animation = marshal
+		animation = war_over_win
+	}
+
+	right_portrait = {
+		character = root
+		#animation = map_fear
+		#animation = map_dismissal
+		animation = map_fear
+	}
+
+	immediate = {
+		vi_hunt_outcome_perspective_effect = yes
+		vi_hunt_outcome_victim_resolve_effect = yes
+	}
+
+	option = {
+		name = vi_hunt_outcome.option_question
+	}
+}

@@ -11,14 +11,18 @@ vi_debug.001 = {
 		reference = "gfx/interface/icons/event_types/type_relation_friendly.dds"
 	}
 
+	override_background = {
+		reference = vi_bedchamber_night
+	}
+
 	left_portrait = {
 		character = root
-		#animation = war_attacker
+		animation = interested
 	}
 
 	right_portrait = {
 		character = root
-		#animation = war_attacker
+		animation = flirtation_left
 	}
 
 	trigger = {

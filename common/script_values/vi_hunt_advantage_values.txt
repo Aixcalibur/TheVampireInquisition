@@ -1,0 +1,481 @@
+﻿vi_hunt_base_advantage = {
+	value = 0
+	add = vi_hunt_speed_value
+	add = vi_hunt_durability_value
+	if = {
+		limit = {
+			has_trait = vi_vampire_5
+		}
+		add = 1000
+	}
+	else_if = {
+		limit = {
+			has_trait = vi_vampire_4
+		}
+		add = 400
+	}
+	else_if = {
+		limit = {
+			has_trait = vi_vampire_3
+		}
+		add = 200
+	}
+	else_if = {
+		limit = {
+			age > 100
+		}
+		add = 100
+	}
+}
+
+vi_hunt_age_stat_value = {
+	value = 0
+	if = {
+		limit = {
+			has_trait = vi_vampire_5
+		}
+		add = 100
+	}
+	else_if = {
+		limit = {
+			has_trait = vi_vampire_4
+		}
+		add = 60
+	}
+	else_if = {
+		limit = {
+			has_trait = vi_vampire_3
+		}
+		add = 40
+	}
+	else_if = {
+		limit = {
+			age > 100
+		}
+		add = 20
+	}
+}
+
+vi_hunt_speed_value = {
+	value = 0
+
+	add = prowess #This is daytime prowess
+	add = intrigue
+	add = martial
+	add = vi_hunt_age_stat_value
+
+	if = {
+		limit = {
+			has_perk = vi_celerity_perk
+		}
+		add = 50
+	}
+
+	if = {
+		limit = {
+			has_perk = vi_blink_perk
+		}
+		add = 50
+	}
+
+	if = {
+		limit = {
+			has_perk = vi_strength_perk
+		}
+		add = 20 #strength is speed yo
+	}
+
+	if = {
+		limit = {
+			has_perk = vi_shadowwalk_perk
+		}
+		add = 40
+	}
+
+	if = {
+		limit = {
+			has_perk = vi_storm_perk
+		}
+		add = 60
+	}
+
+	if = {
+		limit = {
+			has_perk = vi_transformation_perk
+		}
+		add = 30
+	}
+
+	if = {
+		limit = {
+			has_trait = vi_dragonsscion
+		}
+		add = 25
+	}
+}
+
+vi_hunt_durability_value = {
+	value = 0
+	add = prowess
+	add = {
+		value = health #I think this is capped at 7?
+		multiply = 10
+		max = 100 #nevertheless, let's cap this.
+	}
+	add = vi_hunt_age_stat_value
+
+	if = {
+		limit = {
+			has_trait = wounded_3
+		}
+		add = -50
+	}
+	else_if = {
+		limit = {
+			has_trait = wounded_2
+		}
+		add = -30
+	}
+	else_if = {
+		limit = {
+			has_trait = wounded_1
+		}
+		add = -15
+	}
+
+	if = {
+		limit = {
+			has_trait = maimed
+		}
+		add = -60
+	}
+	
+
+	if = {
+		limit = {
+			has_perk = vi_fortitude_perk
+		}
+		add = 50
+	}
+
+	if = {
+		limit = {
+			has_perk = vi_strength_perk
+		}
+		add = 20
+	}
+
+	if = {
+		limit = {
+			has_perk = vi_regeneration_perk
+		}
+		add = 50
+	}
+
+	if = {
+		limit = {
+			has_perk = vi_transformation_perk
+		}
+		add = 40
+	}
+
+	if = {
+		limit = {
+			has_trait = vi_dragonsscion
+		}
+		add = 50
+	}
+}
+
+vi_hunt_insight_value = {
+	value = 0
+	add = {
+		value = martial
+		add = stewardship
+		add = intrigue
+		multiply = 0.5
+	}
+	add = {
+		value = learning
+		multiply = 0.25
+	}
+	add = {
+		value = vi_hunt_speed_value
+		multiply = 0.5
+	}
+	add = {
+		value = vi_hunt_durability_value
+		multiply = 0.25
+	}
+
+	if = {
+		limit = {
+			has_trait = intellect_good_3
+		}
+		add = 30
+	}
+	else_if = {
+		limit = {
+			has_trait = intellect_good_2
+		}
+		add = 20
+	}
+	else_if = {
+		limit = {
+			has_trait = intellect_good_1
+		}
+		add = 10
+	}
+
+	if = {
+		limit = {
+			has_trait = shrewd
+		}
+		add = 15
+	}
+
+	if = {
+		limit = {
+			has_trait = lifestyle_blademaster
+		}
+		add = 10
+	}
+
+	if = {
+		limit = {
+			has_trait = vi_allseeing
+		}
+		multiply = 2
+	}
+}
+
+vi_hunt_charm_power_value = {
+	value = 0
+	add = {
+		value = diplomacy
+		multiply = 2
+	}
+	add = intrigue
+
+	if = {
+		limit = {
+			has_perk = vi_soothe_perk
+		}
+		add = 40
+	}
+	if = {
+		limit = {
+			has_perk = vi_persuasion_perk
+		}
+		add = 40
+	}
+	if = {
+		limit = {
+			has_perk = vi_enthrall_perk
+		}
+		add = 80
+	}
+	if = {
+		limit = {
+			has_perk = vi_presence_perk
+		}
+		add = 60
+	}
+	if = {
+		limit = {
+			has_trait = vi_heartstealer
+		}
+		add = 80
+	}
+
+	if = {
+		limit = {
+			exists = scope:vi_hunt_opponent
+		}
+		if = {
+			limit = {
+				scope:vi_hunt_opponent = {
+					is_attracted_to_gender_of = prev
+				}
+				has_trait = seducer
+			}
+			add = 40
+		}
+	}
+
+	if = {
+		limit = {
+			exists = scope:vi_hunt_opponent
+			scope:vi_hunt_opponent = {
+				is_attracted_to_gender_of = prev
+			}
+		}
+		add = 10
+		
+		if = {
+			limit = {
+				has_trait = seducer
+			}
+			add = 40
+		}
+
+		if = {
+			limit = {
+				has_trait = beauty_good_3
+			}
+			add = 30
+		}
+		else_if = {
+			limit = {
+				has_trait = beauty_good_2
+			}
+			add = 20
+		}
+		else_if = {
+			limit = {
+				has_trait = beauty_good_1
+			}
+			add = 10
+		}
+	}
+}
+
+vi_hunt_mental_resistance_value = {
+	value = 0
+	
+	add = {
+		value = vi_hunt_age_stat_value
+		multiply = 2
+	}
+
+	add = ai_boldness
+	add = {
+		value = stress
+		multiply = -0.25
+	}
+
+	if = {
+		limit = {
+			has_perk = vi_presence_perk
+		}
+		add = 100
+	}
+	if = {
+		limit = {
+			has_trait = irritable
+		}
+		add = -20
+	}
+
+	if = {
+		limit = {
+			has_trait = chaste
+		}
+		add = 20
+	}
+	if = {
+		limit = {
+			has_trait = zealous
+		}
+		add = 50
+	}
+	if = {
+		limit = {
+			has_trait = diligent
+		}
+		add = 40
+	}
+	if = {
+		limit = {
+			has_trait = temperate
+		}
+		add = 40
+	}
+	if = {
+		limit = {
+			has_trait = ambitious
+		}
+		add = 10 #Ambitious can kinda go either way
+	}
+	if = {
+		limit = {
+			has_trait = wrathful
+		}
+		add = 20
+	}
+	if = {
+		limit = {
+			has_trait = calm
+		}
+		add = 10
+	}
+	if = {
+		limit = {
+			has_trait = patient
+		}
+		add = 20
+	}
+	if = {
+		limit = {
+			has_trait = lustful
+		}
+		add = -30
+	}
+	if = {
+		limit = {
+			has_trait = lunatic
+		}
+		add = -20
+	}
+	if = {
+		limit = {
+			has_trait = rakish
+		}
+		add = -40
+	}
+	if = {
+		limit = {
+			has_trait = drunkard
+		}
+		add = -40
+	}
+	if = {
+		limit = {
+			has_trait = hashishiyah
+		}
+		add = -25
+	}
+	if = {
+		limit = {
+			has_trait = athletic
+		}
+		add = 10
+	}
+	if = {
+		limit = {
+			has_trait = journaller
+		}
+		add = 10
+	}
+
+
+	if = {
+		limit = {
+			has_trait = vi_heartstealer
+		}
+		add = 20 #You should already have the presence perk boost, so no need for extra
+	}
+	if = {
+		limit = {
+			has_trait = vi_dragonsscion
+		}
+		add = 60
+	}
+	if = {
+		limit = {
+			has_trait = vi_allseeing_perk
+		}
+		add = 25
+	}
+	
+}

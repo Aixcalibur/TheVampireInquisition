@@ -2,15 +2,15 @@
 
 #Main functionality here is to enable travel events for landless vampires
 
-is_landless_administrative = {
-	OR = {
-		government_allows = administrative
-		has_government = vi_vampire_government
-	}
-	is_landed = no
-	is_house_head = yes
-	has_domicile = yes
-}
+# is_landless_administrative = {
+# 	OR = {
+# 		government_allows = administrative
+# 		has_government = vi_vampire_government
+# 	}
+# 	is_landed = no
+# 	is_house_head = yes
+# 	has_domicile = yes
+# }
 
 is_playable_character = {
 	OR = {
@@ -18,7 +18,7 @@ is_playable_character = {
 		is_landless_administrative = yes
 		is_landless_adventurer = yes
 		has_government = vi_vampire_government
-		#is_ai = no
+		is_ai = no
 	}
 }
 

@@ -38,12 +38,17 @@
 			has_trait = vi_vampire_3
 			has_trait = vi_vampire_4
 			has_trait = vi_vampire_5
+			has_trait = vi_dhampir
 		}
 	}
 
 	character_modifier = {
 		stress_loss_mult = -0.1
 		intrigue_per_stress_level = 4
+	}
+
+	effect = {
+		vi_on_perk_added_effect = yes
 	}
 }
 
@@ -63,6 +68,9 @@ vi_peopleofinterest_perk = {
 		custom_description_no_bullet = {
 			text = vi_peopleofinterest_perk_effect
 		}
+
+		vi_on_perk_added_effect = yes
+
 	}
 }
 
@@ -78,6 +86,9 @@ vi_windfall_perk = {
 		monthly_income = 0.5
 		monthly_income_mult = 0.05
 	}
+	effect = {
+		vi_on_perk_added_effect = yes
+	}
 }
 
 vi_mercantile_perk = {
@@ -91,6 +102,9 @@ vi_mercantile_perk = {
 	character_modifier = {
 		monthly_income_mult = 0.15
 		character_capital_county_monthly_development_growth_add = 0.1
+	}
+	effect = {
+		vi_on_perk_added_effect = yes
 	}
 }
 
@@ -111,6 +125,9 @@ vi_heartsofmen_perk = {
 		custom_description_no_bullet = {
 			text = vi_heartsofmen_perk_effect
 		}
+
+		vi_on_perk_added_effect = yes
+
 	}
 }
 
@@ -134,6 +151,7 @@ vi_guidance_perk = {
 		custom_description_no_bullet = {
 			text = vi_guidance_perk_effect
 		}
+		vi_on_perk_added_effect = yes
 	}
 }
 
@@ -154,6 +172,7 @@ vi_propheticdreams_perk = {
 		custom_description_no_bullet = {
 			text = vi_propheticdreams_perk_effect
 		}
+		vi_on_perk_added_effect = yes
 	}
 }
 
@@ -175,6 +194,7 @@ vi_fateweaver_perk = {
 			text = vi_fateweaver_perk_effect
 		}
 		add_trait_force_tooltip = shrewd
+		vi_on_perk_added_effect = yes
 	}
 }
 
@@ -190,5 +210,60 @@ vi_allseeing_perk = {
 	trait = vi_allseeing
 	effect = {
 		add_trait_force_tooltip = vi_allseeing
+		vi_on_perk_added_effect = yes
+	}
+}
+
+vi_insight_stewardship_perk = {
+	lifestyle = vi_vampire_lifestyle
+	tree = vi_insight_tree
+	position = { -0.5 5.5 }
+	icon = icon_skill_stewardship
+
+	auto_selection_weight = {
+		value = 0
+	}
+
+	can_be_picked = {
+		OR = {
+			has_perk = vi_fateweaver_perk
+			is_ai = no
+		}
+	}
+
+	effect = {
+		add_stewardship_skill = 1
+		#add_intrigue_skill = 1
+		hidden_effect = {
+			remove_perk = vi_insight_stewardship_perk
+		}
+		add_stress = miniscule_stress_gain
+	}
+}
+
+vi_insight_learning_perk = {
+	lifestyle = vi_vampire_lifestyle
+	tree = vi_insight_tree
+	position = { 2.5 5.5 }
+	icon = icon_skill_learning
+
+	auto_selection_weight = {
+		value = 0
+	}
+
+	can_be_picked = {
+		OR = {
+			has_perk = vi_fateweaver_perk
+			is_ai = no
+		}
+	}
+
+	effect = {
+		#add_diplomacy_skill = 1
+		add_learning_skill = 1
+		hidden_effect = {
+			remove_perk = vi_will_prowess_perk
+		}
+		add_stress = miniscule_stress_gain
 	}
 }

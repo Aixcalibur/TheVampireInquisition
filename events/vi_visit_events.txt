@@ -2,9 +2,12 @@
 
 scripted_trigger vi_visit_hook_option_trigger = {
 	has_perk = vi_persuasion_perk
-	scope:vi_victim = {
-		NOT = {
-			vi_holy_artifact_nearby_trigger = yes
+	custom_tooltip = {
+		text = vi_visit_holy_artifact_tt
+		scope:vi_victim = {
+			NOT = {
+				vi_holy_artifact_nearby_trigger = yes
+			}
 		}
 	}
 	OR = {
@@ -23,9 +26,12 @@ scripted_trigger vi_visit_hook_option_trigger = {
 
 scripted_trigger vi_visit_soothe_option_trigger = {
 	has_perk = vi_soothe_perk
-	scope:vi_victim = {
-		NOT = {
-			vi_holy_artifact_nearby_trigger = yes
+	custom_tooltip = {
+		text = vi_visit_holy_artifact_tt
+		scope:vi_victim = {
+			NOT = {
+				vi_holy_artifact_nearby_trigger = yes
+			}
 		}
 	}
 	OR = {
@@ -77,13 +83,60 @@ scripted_trigger vi_visit_enthrall_option_trigger = {
 	}
 }
 
-scripted_effect vi_visit_end_effect = {
-	current_travel_plan ?= {
-		if = {
-			limit = { is_paused = yes }
-			resume_travel_plan = yes 
+scripted_trigger vi_visit_seduce_option_trigger = {
+	scope:vi_vampire = {
+		OR = {
+			is_attracted_to_gender_of = scope:vi_victim
+			has_trait = seducer
+		}
+
+		NOT = {
+			has_trait = chaste
+			has_trait = celibate
 		}
 	}
+	scope:vi_victim = {
+		NOT = {
+			is_ai = no
+			has_trait = chaste
+			has_trait = celibate
+		}
+		is_attracted_to_gender_of = scope:vi_vampire
+		trigger_if = {
+			trigger = {
+				any_relation = {
+					type = soulmate
+					this = {
+						is_alive = yes
+					}
+				}
+			}
+			custom_tooltip = {
+				text = vi_visit.option_seduce_soulmate_tt
+				OR = {
+					has_relation_lover = scope:vi_vampire
+					has_relation_soulmate = scope:vi_vampire
+				}
+			}
+		}
+	}
+}
+
+scripted_effect vi_visit_end_effect = {
+	
+	if = {
+		limit = {
+			exists = current_travel_plan
+		}
+		current_travel_plan ?= {
+			if = {
+				limit = { is_paused = yes }
+				resume_travel_plan = yes 
+			}
+		}
+	}
+
+	custom_tooltip = vi_visit_return_tt
 }
 
 vi_visit.9999 = {
@@ -132,24 +185,23 @@ vi_visit.0001 = { #Most generic possible
 	
 	theme = seduction
 
+	left_portrait = {
+		character = scope:recipient
+		animation = interested
+	}
+
 	right_portrait = {
 		character = root
-		animation = personality_dishonorable
+		animation = flirtation_left
 	}
-	left_portrait = scope:recipient
 
 	override_icon = {
 		reference = "gfx/interface/icons/event_types/type_relation_friendly.dds"
 	}
 
-	# override_background = {
-	# 	trigger = { is_travelling_not_at_activity = yes }
-	# 	reference = terrain_travel
-	# }
-	# override_background = {
-	# 	trigger = { is_travelling_at_activity = yes }
-	# 	reference = ep2_activity
-	# }
+	override_background = {
+		reference = vi_relaxing_room_night
+	}
 	
 	trigger = {
 		scope:recipient = {
@@ -164,6 +216,102 @@ vi_visit.0001 = { #Most generic possible
 			save_scope_as = vi_victim
 		}
 		vi_instant_charm_effect = yes
+	}
+
+	option = {
+		name = vi_visit.option_hook
+		trigger = {
+			vi_visit_hook_option_trigger = yes
+		}
+		show_as_unavailable = {
+			has_perk = vi_persuasion_perk
+			NOT = {
+				has_hook = scope:vi_victim
+			}
+		}
+		
+		vi_persuasion_effect = yes
+
+		if = {
+			limit = {
+				exists = scope:vi_failure
+			}
+			vi_visit_end_effect = yes
+		}
+		else = {
+			trigger_event = {
+				id = vi_visit.4001
+				days = 1
+			}
+		}
+
+		ai_chance = {
+			base = 50
+			vi_power_use_ai_chance_modifier = yes
+		}
+	}
+
+	option = {
+		name = vi_visit.option_soothe
+		trigger = {
+			vi_visit_soothe_option_trigger = yes
+		}
+		show_as_unavailable = {
+			has_perk = vi_soothe_perk
+		}
+
+		vi_soothe_effect = yes
+		if = {
+			limit = {
+				exists = scope:vi_failure
+			}
+			vi_visit_end_effect = yes
+		}
+		else = {
+			trigger_event = {
+				id = vi_visit.4010
+				days = 1
+			}
+		}
+		ai_chance = {
+			base = 0
+			vi_power_use_ai_chance_modifier = yes
+		}
+	}
+
+	option = {
+		name = vi_visit.option_enthrall
+		trigger = {
+			vi_visit_enthrall_option_trigger = yes
+		}
+		show_as_unavailable = {
+			has_perk = vi_enthrall_perk
+			NOT = {
+				has_strong_hook = scope:vi_victim
+			}
+		}
+
+		vi_enthrall_effect = yes
+		if = {
+			limit = {
+				exists = scope:vi_failure
+			}
+			trigger_event = {
+				id = vi_visit.4021
+				days = 1
+			}
+		}
+		else = {
+			trigger_event = {
+				id = vi_visit.4020
+				days = 1
+			}
+		}
+
+		ai_chance = {
+			base = -50
+			vi_power_use_ai_chance_modifier = yes
+		}
 	}
 
 	option = {
@@ -200,6 +348,8 @@ vi_visit.0001 = { #Most generic possible
 			}
 		}
 
+		vi_visit_end_effect = yes
+
 		ai_chance = {
 			base = 10
 
@@ -208,93 +358,6 @@ vi_visit.0001 = { #Most generic possible
 				who = scope:vi_vampire
 				multiplier = 1
 			}
-		}
-	}
-
-	option = {
-		name = vi_visit.option_hook
-		trigger = {
-			vi_visit_hook_option_trigger = yes
-		}
-		show_as_unavailable = {
-			has_perk = vi_persuasion_perk
-			NOT = {
-				has_hook = scope:vi_victim
-			}
-		}
-		if = {
-			limit = {
-				scope:vi_victim = {
-					vi_holy_artifact_nearby_trigger = yes
-				}
-			}
-			custom_tooltip = vi_visit_holy_artifact_tt
-		}
-		
-		vi_persuasion_effect = yes
-
-		ai_chance = {
-			base = 50
-			vi_power_use_ai_chance_modifier = yes
-		}
-	}
-
-	option = {
-		name = vi_visit.option_soothe
-		trigger = {
-			vi_visit_soothe_option_trigger = yes
-		}
-		show_as_unavailable = {
-			has_perk = vi_soothe_perk
-		}
-
-		if = {
-			limit = {
-				scope:vi_victim = {
-					vi_holy_artifact_nearby_trigger = yes
-				}
-			}
-			custom_tooltip = vi_visit_holy_artifact_tt
-		}
-		vi_soothe_effect = yes
-
-		ai_chance = {
-			base = 0
-			vi_power_use_ai_chance_modifier = yes
-		}
-	}
-
-	option = {
-		name = vi_visit.option_enthrall
-		trigger = {
-			vi_visit_enthrall_option_trigger = yes
-		}
-		show_as_unavailable = {
-			has_perk = vi_enthrall_perk
-			# OR = {
-			# 	has_relation_friend = scope:vi_vampire
-			# 	has_relation_lover = scope:vi_vampire
-			# 	has_relation_best_friend = scope:vi_vampire
-			# 	has_relation_soulmate = scope:vi_vampire
-			# }
-			NOT = {
-				has_strong_hook = scope:vi_victim
-			}
-		}
-
-		if = {
-			limit = {
-				scope:vi_victim = {
-					vi_holy_artifact_nearby_trigger = yes
-				}
-			}
-			custom_tooltip = vi_visit_holy_artifact_tt
-		}
-		vi_soothe_effect = yes
-
-		ai_chance = {
-			base = 100
-			vi_power_use_ai_chance_modifier = yes
 		}
 	}
 
@@ -319,10 +382,19 @@ vi_visit.4001 = { #Use Persuasion Success
 	}
 	theme = seduction
 
+	left_portrait = {
+		character = scope:recipient
+		animation = admiration
+	}
+
 	right_portrait = {
 		character = root
+		animation = personality_content
 	}
-	left_portrait = scope:recipient
+
+	override_background = {
+		reference = vi_relaxing_room_night
+	}
 
 	immediate = {
 		show_as_tooltip = {
@@ -338,20 +410,401 @@ vi_visit.4001 = { #Use Persuasion Success
 		show_as_unavailable = {
 			has_perk = vi_soothe_perk
 		}
+		vi_soothe_effect = yes
+		if = {
+			limit = {
+				exists = scope:vi_failure
+			}
+			vi_visit_end_effect = yes
+		}
+		else = {
+			trigger_event = {
+				id = vi_visit.4010
+				days = 1
+			}
+		}
+
+		ai_chance = {
+			base = -30
+			
+			modifier = {
+				scope:vi_victim = {
+					opinion = {
+						target = scope:vi_vampire
+						value >= 50
+					}
+				}
+				add = -100
+			}
+
+			vi_power_use_ai_chance_modifier = yes
+		}
+	}
+
+	option = {
+		name = vi_visit.option_seduce
+		trigger = {
+			vi_visit_seduce_option_trigger = yes
+		}
+
+		show_as_unavailable = {
+			OR = {
+				is_attracted_to_gender_of = scope:vi_vampire
+				has_trait = seducer
+			}
+		}
+
+		had_sex_with_effect = {
+			CHARACTER = scope:vi_victim
+			PREGNANCY_CHANCE = 50
+		}
+
+		if = {
+			limit = {
+				can_set_relation_potential_lover_trigger = { CHARACTER = scope:vi_victim }
+			}
+			set_relation_potential_lover = scope:vi_victim
+		}
 
 		if = {
 			limit = {
 				scope:vi_victim = {
-					vi_holy_artifact_nearby_trigger = yes
+					vi_is_vampire_trigger = no
 				}
 			}
-			custom_tooltip = vi_visit_holy_artifact_tt
+			custom_tooltip = {
+				text = vi_visit_option_seduce_stay_mortal_tt
+				vi_visit_end_effect = yes
+			}
 		}
-		vi_soothe_effect = yes
+		else = {
+			vi_visit_end_effect = yes
+		}
 
 		ai_chance = {
-			base = 0
+			base = -25
+
+			modifier = {
+				has_trait = seducer
+				add = 10
+			}
+
+			opinion_modifier = {
+				opinion_target = scope:vi_victim
+				who = scope:vi_vampire
+				multiplier = 1
+			}
+
+			modifier = {
+				has_trait = lustful
+				add = 55
+			}
+		}
+	}
+
+	option = {
+		name = vi_visit.option_leave
+		vi_visit_end_effect = yes
+		ai_chance = {
+			base = 20
+		}
+	}
+}
+
+vi_visit.4010 = { #Soothe Success
+	type = character_event
+	title = vi_visit.4010.t
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					always = no
+				}
+				desc = x
+			}
+			desc = vi_visit.4010.desc
+		}
+		triggered_desc = {
+			trigger = {
+				exists = scope:vi_suspicion_removed
+			}
+			desc = vi_visit.4010.suspicions_desc
+		}
+	}
+	theme = seduction
+
+	left_portrait = {
+		character = scope:recipient
+		animation = love
+	}
+
+	right_portrait = {
+		character = root
+		animation = personality_compassionate
+	}
+
+	override_background = {
+		reference = vi_relaxing_room_night
+	}
+
+	immediate = {
+		show_as_tooltip = {
+			vi_soothe_success = yes
+		}
+	}
+
+	option = {
+		name = vi_visit.option_seduce
+		trigger = {
+			vi_visit_seduce_option_trigger = yes
+		}
+
+		show_as_unavailable = {
+			OR = {
+				is_attracted_to_gender_of = scope:vi_victim
+				has_trait = seducer
+			}
+		}
+
+		had_sex_with_effect = {
+			CHARACTER = scope:vi_victim
+			PREGNANCY_CHANCE = 50
+		}
+
+		if = {
+			limit = {
+				can_set_relation_potential_lover_trigger = { CHARACTER = scope:vi_victim }
+			}
+			set_relation_potential_lover = scope:vi_victim
+		}
+
+		if = {
+			limit = {
+				scope:vi_victim = {
+					vi_is_vampire_trigger = no
+				}
+			}
+			custom_tooltip = {
+				text = vi_visit_option_seduce_stay_mortal_tt
+				vi_visit_end_effect = yes
+			}
+		}
+		else = {
+			vi_visit_end_effect = yes
+		}
+
+		ai_chance = {
+			base = -25
+
+			modifier = {
+				has_trait = seducer
+				add = 10
+			}
+
+			opinion_modifier = {
+				opinion_target = scope:vi_victim
+				who = scope:vi_vampire
+				multiplier = 1
+			}
+
+			modifier = {
+				has_trait = lustful
+				add = 55
+			}
+		}
+	}
+
+	option = {
+		name = vi_visit.option_leave
+		vi_visit_end_effect = yes
+	}
+}
+
+vi_visit.4020 = { #Enthrall Success
+	type = character_event
+	title = vi_visit.4020.t
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					always = no
+				}
+				desc = x
+			}
+			desc = vi_visit.4020.desc
+		}
+	}
+	theme = seduction
+	
+	left_portrait = {
+		character = scope:recipient
+		animation = personality_zealous
+	}
+	right_portrait = {
+		character = root
+		animation = personality_dishonorable
+	}
+
+	override_background = {
+		reference = vi_relaxing_room_night
+	}
+	
+
+	immediate = {
+		show_as_tooltip = {
+			vi_enthrall_success = yes
+		}
+	}
+
+	option = {
+		name = vi_visit.option_seduce
+		trigger = {
+			vi_visit_seduce_option_trigger = yes
+		}
+
+		show_as_unavailable = {
+			OR = {
+				is_attracted_to_gender_of = scope:vi_victim
+				has_trait = seducer
+			}
+		}
+
+		had_sex_with_effect = {
+			CHARACTER = scope:vi_victim
+			PREGNANCY_CHANCE = 50
+		}
+
+		if = {
+			limit = {
+				can_set_relation_potential_lover_trigger = { CHARACTER = scope:vi_victim }
+			}
+			set_relation_potential_lover = scope:vi_victim
+		}
+
+		if = {
+			limit = {
+				scope:vi_victim = {
+					vi_is_vampire_trigger = no
+				}
+			}
+			custom_tooltip = {
+				text = vi_visit_option_seduce_stay_mortal_tt
+				vi_visit_end_effect = yes
+			}
+		}
+		else = {
+			vi_visit_end_effect = yes
+		}
+
+		ai_chance = {
+			base = -25
+
+			modifier = {
+				has_trait = seducer
+				add = 10
+			}
+
+			opinion_modifier = {
+				opinion_target = scope:vi_victim
+				who = scope:vi_vampire
+				multiplier = 1
+			}
+
+			modifier = {
+				has_trait = lustful
+				add = 55
+			}
+		}
+	}
+
+	option = {
+		name = vi_visit.option_leave
+		vi_visit_end_effect = yes
+	}
+}
+
+vi_visit.4021 = { #Enthrall Failure
+	type = character_event
+	title = vi_visit.4021.t
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					OR = {
+						vi_is_vampire_trigger = yes
+						has_trait = vi_dhampir
+						has_trait = vi_inquisitor
+					}
+				}
+				desc = vi_visit.4021.vampire_desc
+			}
+			desc = vi_visit.4021.mortal_desc
+		}
+	}
+	theme = seduction
+
+	left_portrait = {
+		character = scope:recipient
+		animation = rage
+	}
+
+	right_portrait = {
+		character = root
+		animation = map_fear
+	}
+
+	override_background = {
+		reference = vi_relaxing_room_night
+	}
+	
+
+	immediate = {
+		show_as_tooltip = {
+			vi_enthrall_failure = yes
+		}
+	}
+
+	option = {
+		name = vi_visit.option_soothe
+		trigger = {
+			vi_visit_soothe_option_trigger = yes
+		}
+		show_as_unavailable = {
+			has_perk = vi_soothe_perk
+		}
+		vi_soothe_effect = yes
+		if = {
+			limit = {
+				exists = scope:vi_failure
+			}
+			vi_visit_end_effect = yes
+		}
+		else = {
+			trigger_event = {
+				id = vi_visit.4010
+				days = 1
+			}
+		}
+
+		ai_chance = {
+			base = -25
 			vi_power_use_ai_chance_modifier = yes
+		}
+	}
+
+	option = {
+		name = vi_visit.option_leave_fast
+		scope:vi_victim = {
+			add_opinion = {
+				target = scope:vi_vampire
+				modifier = suspicion_opinion
+				opinion = -30
+			}
+		}
+		vi_visit_end_effect = yes
+
+		ai_chance = {
+			base = 100
 		}
 	}
 }

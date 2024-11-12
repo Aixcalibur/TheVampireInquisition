@@ -16,6 +16,7 @@
  dynn_vi_London_motto: "Leave Nothing Behind"
 
  dynn_vi_Tuatha_De: "Tuatha Dé"
+ dynn_vi_Tuatha_De_motto: "Waiting in Vigilance"
 
  dynn_vi_Anunnaki: "Anunnaki"
  dynn_vi_Anunnaki_motto: "Sheperds of Man"
@@ -32,9 +33,7 @@
  dynn_vi_Helsing_motto: "In Unrelenting Pursuit"
 
 
- vi_Disian_modifier: "Disian"
- vi_Annunaki_modifier: "Anunnaki"
- vi_Anunnaki_modifier: "Anunnaki"
-
- vi_Nosferatu_modifier: "Nosferatu"
- vi_Strix_modifier: "Strix"
+ vi_Disian_modifier: "Eternal Beauty"
+ vi_Anunnaki_modifier: "Shepherds of Man"
+ vi_Nosferatu_modifier: "Into the Gloom"
+ vi_Strix_modifier: "Minds over Matter"

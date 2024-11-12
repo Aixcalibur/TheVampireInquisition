@@ -1,0 +1,40 @@
+﻿demand_conversion_tenet_impact = {
+	value = 0
+	if = {
+		limit = {
+			faith = {
+				has_doctrine_parameter = sanctioned_false_conversion
+				NOT = { has_doctrine_parameter = unattractive_for_character_conversions }
+			}
+		}
+		add = -20
+	}
+	if = {
+		limit = {
+			faith = { has_doctrine_parameter = tenet_adaptive_conversion_resistance }
+		}
+		add = -20
+	}
+	if = {
+		limit = {
+			faith = { has_doctrine_parameter = unattractive_for_character_conversions }
+		}
+		add = 20
+	}
+
+	if = {
+		limit = {
+			NOT = {
+				vi_is_vampire_trigger = yes
+			}
+			NOT = {
+				has_trait = vi_dhampir
+			}
+			scope:actor.faith = {
+				has_doctrine_parameter = vi_masquerade
+			}
+		}
+		add = -3000
+		desc = vi_mortal_masquerade_conversion
+	}
+}

@@ -50,6 +50,10 @@
 			has_government = vi_vampire_government
 		}
 		NOT = { scope:recipient = scope:actor }
+		OR = {
+			years_from_game_start >= 1
+			debug_only = yes
+		}
 	}
 
 	is_valid_showing_failures_only = {
@@ -719,21 +723,31 @@
 }
 
 vi_sponsor_princedom_interaction = {
-	category = interaction_category_vassal
+	category = interaction_category_admin
 	icon = support_candidacy
-	interface_priority = 95
-	desc = invite_to_court_interaction_desc
+	interface_priority = 200
+	desc = vi_sponsor_princedom_interaction_desc
 	
 	is_shown = {
-		always = no
+		#always = no
 		scope:actor = {
 			has_government = vi_vampire_government
 			is_landed = no
+			highest_held_title_tier >= tier_duchy
 		}
 		scope:recipient = {
 			is_courtier_of = scope:actor
 			vi_is_vampire_trigger = yes
 		}
+		OR = {
+			years_from_game_start >= 1
+			debug_only = yes
+		}
+		
+	}
+
+	cooldown = {
+		years = 10
 	}
 
 	is_valid_showing_failures_only = {
@@ -741,12 +755,19 @@ vi_sponsor_princedom_interaction = {
 			NOT = {
 				has_trait = vi_vampire_1
 			}
+			is_available = yes
 		}
 		scope:actor = {
 			gold > 0
+			prestige > 400
+			prestige_level >= 3
 		}
 	}
 	
+	cost = {
+		gold = 50
+		prestige = 50
+	}
 	#Pay som gold to persuade a wandering character to come to your court
 	# send_option = {
 	# 	is_shown = {
@@ -755,82 +776,58 @@ vi_sponsor_princedom_interaction = {
 	# 	flag = cover_travel_expenses
 	# 	localization = COVER_TRAVEL_EXPENSES
 	# }
-	send_option = { # EP3 Influence
-		is_shown = { # Actor must have a government that uses influence 
-			scope:actor = {
-				government_has_flag = government_has_influence
-			}
-		}
-		is_valid = {
-			# Actor has enough influence
-			scope:actor = { influence >= medium_influence_value }
-			# Both characters are within the same top realm
-			scope:recipient.top_liege = scope:actor.top_liege
-		}
-		flag = influence_send_option
-		localization = TRADE_INFLUENCE_FOR_BETTER_AI_ACCEPTANCE
-	}
-	send_option = {
-		is_valid = {
-			scope:actor = {
-				has_usable_hook = scope:recipient
-			}
-		}
-		flag = hook
-		localization = SCHEME_HOOK
-	}
-	should_use_extra_icon = {
-		scope:actor = { has_usable_hook = scope:recipient }
-	}
-	extra_icon = "gfx/interface/icons/character_interactions/hook_icon.dds"
 
-	send_options_exclusive = no
-
-	cost = {
-		influence = {
-			value = 0
-			if = {
-				limit = { scope:influence_send_option = yes }
-				add = scope:actor.medium_influence_value
-				desc = INFLUENCE_INTERACTION_ACCEPTANCE_SEND_OPTION
-			}
-		}
-	}
+	#send_options_exclusive = no
 
 	on_accept = {
 		
 		scope:actor = {
 
-			capital_county.empire = {
-				ordered_de_jure_county = {
-					limit = {
-						NOT = {
-							has_county_modifier = vi_county_discreet_modifier
-						}
-					}
-					order_by = development_level
+			custom_tooltip = vi_choose_princedom_tt
 
-					save_scope_as = princedom_county
-				}
-			}
+			trigger_event = vi_sponsor.001
 			
-			send_interface_message = {
-				type = event_generic_neutral
-				title = vi_sponsor_princedom_interaction
-				right_icon = scope:recipient
 
-				scope:recipient = {
-					vi_create_vassal_princedom_effect = {
-						VI_LIEGE = scope:actor.top_liege
-						VI_COUNTY = scope:princedom_county
-					}
-				}
+			# capital_county.empire = {
+			# 	ordered_de_jure_county = {
+			# 		limit = {
+			# 			NOT = {
+			# 				has_county_modifier = vi_county_discreet_modifier
+			# 			}
+			# 		}
+			# 		order_by = development_level
 
-				if = {
-					limit = { always = scope:hook }
-					scope:actor = {
-						use_hook = scope:recipient
-					}
+			# 		save_scope_as = princedom_county
+			# 	}
+			# }
+			
+			# send_interface_message = {
+			# 	type = event_generic_neutral
+			# 	title = vi_sponsor_princedom_interaction
+			# 	right_icon = scope:recipient
+
+			# 	scope:recipient = {
+			# 		vi_create_vassal_princedom_effect = {
+			# 			VI_LIEGE = scope:actor.top_liege
+			# 			VI_COUNTY = scope:princedom_county
+			# 		}
+			# 	}
+
+			# 	if = {
+			# 		limit = { always = scope:hook }
+			# 		scope:actor = {
+			# 			use_hook = scope:recipient
+			# 		}
+			# 	}
+			# }
+		}
+
+		scope:recipient = {
+			custom_tooltip = vi_travel_princedom_tt
+			show_as_tooltip = {
+				add_character_modifier = {
+					modifier = vi_new_prince_modifier
+					years = 20
 				}
 			}
 		}
@@ -919,15 +916,6 @@ vi_sponsor_princedom_interaction = {
 			add = 50
 			scope:influence_send_option = yes
 			desc = INFLUENCE_INTERACTION_ACCEPTANCE_SEND_OPTION
-		}
-	}
-
-	auto_accept = {
-		custom_description = {
-			text = "spending_hook"
-			subject = scope:actor
-			object = scope:recipient
-			scope:hook = yes
 		}
 	}
 }

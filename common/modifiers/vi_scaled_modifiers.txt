@@ -30,5 +30,24 @@ vi_invest_capital_wealth_modifier = {
 	#monthly_income = 0.01
 	domicile_monthly_gold_mult = 0.01
 	monthly_dynasty_prestige = 0.05
+	domicile_build_gold_cost = -0.01
 	scale = primary_title.title_capital_county.development_level
+}
+
+vi_vampire_connections_modifier = {
+	icon = mask_positive
+	opinion_of_liege = 2
+	domicile_monthly_gold_mult = 0.05
+	men_at_arms_recruitment_cost = -0.02
+	men_at_arms_maintenance = -0.01
+	domicile_build_gold_cost = -0.06
+	owned_hostile_scheme_success_chance_add = 2
+	enemy_hostile_scheme_success_chance_add = -2
+	scale = vi_vampire_connections_scaling
+}
+
+vi_knight_effectiveness_modifier = {
+	icon = prowess_positive
+	knight_effectiveness_mult = 0.05
+	scale = vi_knight_effectiveness_scaling_value
 }

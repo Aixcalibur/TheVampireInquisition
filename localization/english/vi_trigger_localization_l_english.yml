@@ -1,8 +1,8 @@
 ﻿l_english:
  IS_VAMPIRE_TRIGGER:0 "Is a [vampire|E]"
  NOT_IS_VAMPIRE_TRIGGER:0 "Is not a [vampire|E]"
- I_AM_VAMPIRE_TRIGGER:0 "I am a [vampire|E]"
- NOT_I_AM_VAMPIRE_TRIGGER:0 "I am not a [vampire|E]"
+ I_AM_VAMPIRE_TRIGGER:0 "You are a [vampire|E]"
+ NOT_I_AM_VAMPIRE_TRIGGER:0 "You are not a [vampire|E]"
  THEY_ARE_VAMPIRE_TRIGGER:0 "[CHARACTER.GetShortUIName|V] is a [vampire|E]"
  NOT_THEY_ARE_VAMPIRE_TRIGGER:0 "[CHARACTER.GetShortUIName|V] is not a [vampire|E]"
 

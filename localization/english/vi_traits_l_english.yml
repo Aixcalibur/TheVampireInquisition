@@ -5,8 +5,8 @@
  game_concept_vampire_desc:0 "Vampires are undead beings that subsist on human blood. They live in the shadows of human civilization and avoid discovery at all costs."
 
  TRAIT_FLAG_DESC_vi_sunlight_burns: "Cannot attend daytime events"
- vi_travel_prohibition.0001.t:0 "Sunlight Burns"
- vi_travel_prohibition.0001.desc:0 "As I set out, it occurs that I would not be able to participant in activities during daylight."
+ vi_travel_prohibition.0001.t: "The Curse of the Sun"
+ vi_travel_prohibition.0001.desc: "As I set out, it occurs that I would not be able to participant in activities during daylight."
  vi_travel_prohibition.0001.a:0 "I should return home."
 
 

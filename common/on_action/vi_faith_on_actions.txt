@@ -1,0 +1,25 @@
+﻿on_character_faith_change = {
+	on_actions = {
+		vi_on_character_faith_change
+	}
+}
+
+vi_on_character_faith_change = { #Non-vampires cannot have vampire faiths
+	trigger = {
+		exists = scope:old_faith
+	}
+	effect = {
+		if = {
+			limit = {
+				faith = {
+					has_doctrine = vi_masquerade_required
+				}
+				vi_is_vampire_trigger = no
+				NOT = {
+					has_trait = vi_dhampir
+				}
+			}
+			set_character_faith = scope:old_faith
+		}
+	}
+}

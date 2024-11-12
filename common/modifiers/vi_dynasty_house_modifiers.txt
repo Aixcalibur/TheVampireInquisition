@@ -7,27 +7,12 @@
 	intrigue = 2
 }
 
-vi_Annunaki_modifer = {
+vi_Anunnaki_modifier = {
 	icon = stewardship_positive
-
 	stress_loss_mult = -0.2
-
 	martial = 2
 	stewardship = 2
 	parochial_opinion = 5
-
-	ai_rationality = 20
-}
-
-vi_Anunnaki_modifer = {
-	icon = stewardship_positive
-
-	stress_loss_mult = -0.2
-
-	martial = 2
-	stewardship = 2
-	parochial_opinion = 5
-
 	ai_rationality = 20
 }
 

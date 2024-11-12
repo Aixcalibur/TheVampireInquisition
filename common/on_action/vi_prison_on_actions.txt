@@ -21,8 +21,6 @@ vi_vampire_prison_on_action = {
 			}
 		}
 
-		
-
 		if = {
 			limit = {
 				OR = {
@@ -68,7 +66,9 @@ vi_vampire_prison_on_action = {
 				}
 			}
 		}
-		else_if = {
+
+
+		if = {
 			limit = {
 				NOT = {
 					has_character_modifier = vi_silver_chains_modifier
@@ -83,6 +83,25 @@ vi_vampire_prison_on_action = {
 
 			trigger_event = {
 				on_action = escape_from_prison_success
+			}
+		}
+		else = {
+			random_character_artifact = {
+				limit = {
+					exists = var:vampire_loot
+				}
+				save_scope_as = artifact_to_steal
+			}
+
+			if = {
+				limit = {
+					exists = scope:artifact_to_steal
+				}
+				steal_artifact_in_event_effect = {
+					THIEF = scope:imprisoner
+					VICTIM = this
+					ARTIFACT = scope:artifact_to_steal
+				}
 			}
 		}
 	}

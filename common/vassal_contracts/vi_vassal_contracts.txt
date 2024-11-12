@@ -1,4 +1,30 @@
-﻿vi_administrative_themes = {
+﻿vi_princely_obligations = {
+	uses_opinion_of_liege = yes
+
+	obligation_levels = {
+		default = {
+			levies = {
+				value = 0.1
+				add = {
+					value = 0.003
+					multiply = scope:opinion_of_liege
+					min = -0.1
+				}
+			}
+
+			tax = {
+				value = 0.1
+				add = {
+					value = 0.003
+					multiply = scope:opinion_of_liege
+					min = -0.05
+				}
+			}
+		}
+	}
+}
+
+vi_administrative_themes = {
 	display_mode = radiobutton
 	is_shown = {
 		scope:vassal.primary_title.tier >= tier_duchy
@@ -253,7 +279,8 @@
 				# }
 			}
 			
-			tax_factor = 0.1
+			levies_factor = 0.5
+			tax_factor = -0.5
 
 			liege_modifier = {
 				monthly_prestige_gain_per_legitimacy_level_add = 0.5

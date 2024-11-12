@@ -17,6 +17,7 @@
 	ai_frequency = 240
 	
 	is_shown = {
+		always = no
 		scope:actor = {
 			is_ruler = yes
 		}
@@ -29,6 +30,8 @@
 				highest_held_title_tier >= tier_kingdom
 			}
 		}
+
+		debug_only = yes
 	}
 
 	is_valid_showing_failures_only = {

@@ -1,10 +1,10 @@
 ﻿vi_vampire_drain_stress_effect = {
 	stress_impact = {
-		base = medium_stress_impact_loss
-		compassionate = miniscule_stress_impact_gain
-		gluttonous = minor_stress_impact_loss
-		sadistic = miniscule_stress_impact_loss
-		callous = miniscule_stress_impact_loss
+		base = major_stress_impact_loss
+		#compassionate = miniscule_stress_impact_gain
+		#gluttonous = minor_stress_impact_loss
+		#sadistic = miniscule_stress_impact_loss
+		#callous = miniscule_stress_impact_loss
 	}
 }
 
@@ -31,7 +31,7 @@ vi_vampire_drain_effect = {
 
 		add_character_modifier = {
 			modifier = vi_sated_modifier
-			years = 3
+			years = 1
 		}
 
 		if = {
@@ -141,12 +141,16 @@ vi_vampire_drain_turn_hostile_effect = {
 	}
 
 	scope:vi_vampire = {
+		add_character_modifier = {
+			modifier = vi_vampire_strain_modifier
+			years = 3
+		}
 		vi_vampire_drain_stress_effect = yes
 
-		add_character_modifier = {
-			modifier = vi_sated_modifier
-			years = 5
-		}
+		# add_character_modifier = {
+		# 	modifier = vi_sated_modifier
+		# 	years = 5
+		# }
 	}
 }
 
@@ -158,7 +162,7 @@ vi_vampire_drain_kill_effect = {
 
 		add_character_modifier = {
 			modifier = vi_sated_modifier
-			years = 5
+			years = 3
 		}
 
 		if = {

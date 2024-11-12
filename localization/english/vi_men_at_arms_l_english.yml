@@ -2,10 +2,13 @@
  animals: "Animals"
 
  vi_vampire_bats: "Bats"
- vi_vampire_bats_flavor: "The sky turns black as legions of bats descend upon their target."
+ vi_vampire_bats_flavor: "#F The sky turns black as legions of bats descend upon their target.#!"
 
- vi_elite_vampires: "Elite Vampire"
- vi_elite_vampires_flavor: "No mortal fighting force could hope to match the prowess of a vampire with a century of training."
+ vi_elite_vampires: "Elite Vampires"
+ vi_elite_vampires_flavor: "#F No mortal fighting force could hope to match the prowess of a vampire with a century of training.#!"
 
  vi_local_vampires: "Local Vampires"
- vi_local_vampires_flavor: "An army of local vampires, roused to defend their homes."
+ vi_local_vampires_flavor: "#F An army of local vampires, roused to defend their homes.#!"
+
+ vi_vampire_huscarl: "Vampire Huscarls"
+ vi_vampire_huscarl_flavor: "#F Germanic Huscarls are masters of using shield walls to block incoming volleys of arrows.#!"

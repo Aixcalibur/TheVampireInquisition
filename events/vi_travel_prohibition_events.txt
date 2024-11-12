@@ -3,8 +3,11 @@
 vi_travel_prohibition.0001 = {
 	type = character_event
 	title = vi_travel_prohibition.0001.t
-	title = vi_travel_prohibition.0001.desc
+	desc = vi_travel_prohibition.0001.desc
 	theme = travel
+
+	left_portrait = root
+
 	trigger = {
 		has_trait_with_flag = vi_sunlight_burns
 		is_ai = no

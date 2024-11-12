@@ -11,8 +11,8 @@
 
 
  #d_vi_cologne_article: "$DEFAULT_TITLE_NAME_ARTICLE$"
- d_vi_cologne: $c_cologne$
- d_vi_cologne_adj: $c_cologne_adj$
+ d_vi_cologne: "Cologne"
+ d_vi_cologne_adj: "Cologne"
  d_nf_vi_cologne_article: "$DEFAULT_TITLE_NAME_ARTICLE$"
  d_nf_vi_cologne: "House of Cologne"
 
@@ -36,7 +36,8 @@
  d_nf_vi_normandy: "House of Neustria"
 
  #d_vi_zurich_article: "$DEFAULT_TITLE_NAME_ARTICLE$"
- d_vi_zurich: "Abbey of Fraumünster"
+ d_vi_zurich: "Fraumünster"
+ d_vi_zurich_adj: "Fraumünster"
  
  d_vi_orleans: "Orléans"
  d_vi_orleans_adj: "Orléanais"
@@ -50,7 +51,17 @@
  nick_vi_queenofthenight_desc: "Civilization was brought to the nights of Gaul not through the blade or fang, but through unearthly charm and keen insight."
 
  nick_vi_princeofurchins: "the Prince of Urchins"
- nick_vi_shadowless: "the Shadowless"
+ nick_vi_princeofurchins_desc: "Is [CHARACTER.GetTitledFirstNameNoTooltip|U] the patron of downtrodden orphans or are they simply tools in [CHARACTER.GetHerHis] ambitions?"
+ nick_vi_shadowless: "the Prodigious Shadow"
+ nick_vi_shadowless_desc: "[CHARACTER.GetTitledFirstNamePossessiveNoTooltip|U] immense size does not hinder [CHARACTER.GetHerHim] in the slightest when it comes to moving without sound or appearing where [CHARACTER.GetSheHe] is least expected."
+ nick_vi_perfumer: "the Perfumer"
 
+ vi_artifact_durendal_description: "An indestructible sword of unknown origin. The blade shears through boulders with consummate ease."
 
- vi_artifact_durendal_description: "An ancient weapon whose origins have long be lost to history. The blade is indestructible and shears through boulders with consummate ease."
+ vi_excommunicate_interaction: "Mark for Death"
+ vi_excommunicate_interaction_desc: "Place a bounty on [recipient.GetShortUIName] and marking [recipient.GetHerHim] officially as an outlaw to [vampires|e]"
+ vi_excommunicate_interaction_tt_court: "Members of your [court|e] may start a [GetScheme('vi_hunt').GetTypeName] against [recipient.GetShortUIName]"
+ vi_excommunicate_interaction_tt_bounty: "If [recipient.GetShortUIName] is killed, you will pay a bounty to the killer"
+
+ vi_lift_excommunication_interaction: "Lift Execution Order"
+ vi_lift_excommunication_interaction_desc: "Lift the execution order on [recipient.GetShortUIName]"

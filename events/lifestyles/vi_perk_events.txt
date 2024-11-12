@@ -1,0 +1,111 @@
+﻿namespace = vi_perk
+
+vi_perk.1000 = {
+	type = character_event
+	title = vi_perk.vi_heartstealer.t
+	desc = {
+		desc = vi_perk.vi_heartstealer.desc
+	}
+	theme = intrigue_temptation_focus
+
+	left_portrait = {
+		character = root
+		animation = personality_zealous
+	}
+
+	option = {
+		name = vi_perk.vi_heartstealer.a
+		add_character_modifier = {
+			modifier = vi_vampire_strain_modifier
+			years = 10
+		}
+		stress_impact = {
+			base = minor_stress_impact_gain
+			sadistic = major_stress_impact_loss
+			callous = minor_stress_impact_loss
+			compassionate = major_stress_impact_gain
+			forgiving = medium_stress_impact_gain
+		}
+		random_list = {
+			50 = {
+				modifier = {
+					add = intrigue
+					add = diplomacy
+				}
+				modifier = {
+					OR = {
+						has_trait = vi_vampire_4
+					}
+				}
+				show_as_tooltip = {
+					add_trait_force_tooltip = vi_heartstealer
+				}
+			}
+			50 = {
+				send_interface_toast = {
+					title = vi_perk.failure.t
+					add_stress = major_stress_gain
+					hidden_effect = {
+						remove_perk = vi_heartstealer_perk
+					}
+				}
+			}
+		}
+		
+	}
+	option = {
+		name = vi_perk.vi_heartstealer.b
+		hidden_effect = {
+			remove_perk = vi_heartstealer_perk
+		}
+		
+
+		stress_impact = {
+			ambitious = major_stress_impact_gain
+			callous = medium_stress_impact_gain
+			sadistic = major_stress_impact_gain
+			just = medium_stress_impact_gain
+			compassionate = major_stress_impact_loss
+			forgiving = medium_stress_impact_loss
+			content = minor_stress_impact_loss
+		}
+	}
+}
+
+vi_perk.1001 = {
+	type = character_event
+	title = vi_perk.vi_heartstealer.t
+	desc = {
+		desc = vi_perk.vi_heartstealer.desc
+	}
+	theme = intrigue_temptation_focus
+
+	immediate = {
+		add_trait_force_tooltip = vi_heartstealer
+	}
+
+	option = {
+		name = vi_perk.vi_heartstealer.a
+		add_character_modifier = {
+			modifier = vi_vampire_madness_modifier
+		}
+		stress_impact = {
+			base = medium_stress_impact_loss
+			arrogant = major_stress_impact_loss
+			ambitious = major_stress_impact_loss
+			compassionate = minor_stress_impact_gain
+		}
+	}
+
+	option = {
+		name = vi_perk.vi_heartstealer.success_b
+		stress_impact = {
+			base = minor_stress_impact_gain
+			arrogant = major_stress_impact_gain
+			ambitious = major_stress_impact_gain
+			temperate = minor_stress_impact_loss
+			just = minor_stress_impact_loss
+		}
+	}
+}
+

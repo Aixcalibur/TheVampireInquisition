@@ -7,3 +7,10 @@
  game_concept_dhampir: "Dhampir"
  game_concept_dhampirs: "Dhampirs"
  game_concept_dhampir_desc: "Characters with the [GetTrait('vi_dhampir').GetName( GetNullCharacter )] trait are mortals with at least one [vampire|E] parent. This is possible when a [vampire|E] unnaturally stimulates the fertility of their undead body. Due to their heritage, they are more resistant to supernatural powers, but cannot gain true vampirism."
+
+ game_concept_vi_masquerade: "Masquerade"
+ game_concept_vi_masquerade_desc: "The Masquerade refers to the secrecy of the existence of [vampires|e] which vampires seek to maintain."
+
+ vi_attempted_mind_control_opinion: "Attempted Mind Control"
+
+ 

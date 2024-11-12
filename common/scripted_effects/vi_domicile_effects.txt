@@ -1,0 +1,155 @@
+﻿vi_build_upgrade_effect = {
+	if = {
+		limit = {
+			domicile ?= { has_domicile_building = $BUILDING$_06 }
+		}
+		debug_log_scopes = no
+		debug_log = "tried to upgrade when lair building is already maxed!"
+	}
+	else_if = {
+		limit = {
+			domicile ?= { has_domicile_building = $BUILDING$_05 }
+		}
+		domicile ?= {
+			add_domicile_building = $BUILDING$_06
+		}
+	}
+	else_if = {
+		limit = {
+			domicile ?= { has_domicile_building = $BUILDING$_04 }
+		}
+		domicile ?= {
+			add_domicile_building = $BUILDING$_05
+		}
+	}
+	else_if = {
+		limit = {
+			domicile ?= { has_domicile_building = $BUILDING$_04 }
+		}
+		domicile ?= {
+			add_domicile_building = $BUILDING$_05
+		}
+	}
+	else_if = {
+		limit = {
+			domicile ?= { has_domicile_building = $BUILDING$_03 }
+		}
+		domicile ?= {
+			add_domicile_building = $BUILDING$_04
+		}
+	}
+	else_if = {
+		limit = {
+			domicile ?= { has_domicile_building = $BUILDING$_02 }
+		}
+		domicile ?= {
+			add_domicile_building = $BUILDING$_03
+		}
+	}
+	else_if = {
+		limit = {
+			domicile ?= { has_domicile_building = $BUILDING$_01 }
+		}
+		domicile ?= {
+			add_domicile_building = $BUILDING$_02
+		}
+	}
+	else_if = {
+		limit = {
+			domicile ?= {
+				NOT = {
+					has_domicile_building_or_higher = $BUILDING$_01
+				} 
+			}
+		}
+		domicile ?= {
+			add_domicile_building = $BUILDING$_01
+		}
+	}
+}
+
+vi_build_upgrade_random_effect = {
+	random_list = {
+		10 = {
+			vi_build_upgrade_effect = {
+				BUILDING = vi_market
+			}
+		}
+		10 = {
+			vi_build_upgrade_effect = {
+				BUILDING = vi_barracks
+			}
+		}
+		10 = {
+			vi_build_upgrade_effect = {
+				BUILDING = vi_watchtower
+			}
+		}
+		10 = {
+			vi_build_upgrade_effect = {
+				BUILDING = vi_workshop
+			}
+		}
+		10 = {
+			vi_build_upgrade_effect = {
+				BUILDING = vi_temple_small
+			}
+		}
+	}
+}
+
+vi_fill_external_lair_building_effect = {
+	switch = {
+		trigger = has_domicile_building_or_higher
+		vi_estate_main_05 = {
+			while = {
+				limit = { free_external_domicile_building_slots >= 1 }
+				add_random_external_estate_building = yes
+			}
+		}
+		vi_estate_main_04 = {
+			while = {
+				limit = { free_external_domicile_building_slots >= 2 }
+				add_random_external_estate_building = yes
+			}
+		}
+		vi_estate_main_03 = {
+			while = {
+				limit = { free_external_domicile_building_slots >= 3 }
+				add_random_external_estate_building = yes
+			}
+		}
+		vi_estate_main_02 = {
+			while = {
+				limit = { free_external_domicile_building_slots >= 4 }
+				vi_add_random_external_lair_building = yes
+			}
+		}
+		vi_estate_main_01 = {
+			while = {
+				limit = { free_external_domicile_building_slots >= 5 }
+				vi_add_random_external_lair_building = yes
+			}
+		}
+	}
+}
+
+vi_add_random_external_lair_building = {
+	if = {
+		limit = {
+			free_external_domicile_building_slots >= 1
+		}
+		random_list = {
+			10 = {
+				trigger = {
+					NOT = { has_domicile_building_or_higher = vi_market_01 }
+				}
+				add_domicile_building = vi_market_01
+				if = {
+					limit = { has_domicile_building = vi_estate_main_03 }
+					add_domicile_building = vi_market_02
+				}
+			}
+		}
+	}
+}

@@ -9,11 +9,15 @@
  vi_ask_vampirism_interaction_desc:0 "Ask [recipient.GetShortUIName] to turn you into a [vampire|E]"
  VI_MUST_KNOW_SECRET:0 "You must know their Vampire secret"
  VI_ASK_TO_BE_ADOPTED:0 "Ask to Join House"
- VI_ASKING_TO_BE_ADOPTED:0 "Asking to Join House"
+ VI_ASKING_TO_BE_ADOPTED:0 "Asking to Join House: $VALUE|=+0$"
 
+ VI_LANDED_RULERS: "[landed|e] [rulers|E] are a major risk to the [vi_masquerade|e]: $VALUE|=+0$"
 
-
-
+ VI_WANTS_TO_LIVE: "[recipient.GetShortUIName] wants to live forever: $VALUE|=+0$"
+ VI_DOESNT_MIND_BLOOD: "[recipient.GetShortUIName] doesn't mind blood: $VALUE|=+0$"
+ VI_MINDS_BLOOD: "[recipient.GetShortUIName] doesn't want to drink blood: $VALUE|=+0$"
+ VI_ZEALOUS: "[recipient.GetShortUIName] is [GetTrait('zealous').GetName( ROOT.Char )]: $VALUE|=+0$"
+ VI_IS_VAMPIRE_HUNTER: "[recipient.GetShortUIName] is a [GetTrait('vi_inquisitor').GetName( ROOT.Char )]: $VALUE|=+0$"
 
 
  vi_become_vampire.001.t:0 "A Nighttime Offer"

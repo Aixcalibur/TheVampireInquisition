@@ -1,163 +1,369 @@
 ﻿
-# This is for adding unique murder interception
-# pick_repeatable_murder_intercept_on_action = {
-# 	random_events = {
-# 		# Old events.
-# 		# 300 = murder_save.0010		# A Varangian saves them
-# 		# 100 = murder_save.0006		# Their personal guard protects them from a band of thugs
-# 		# 100 = court_position.9001	# Saved from poisoned food by food taster
-# 		# 50 = court_position.9011	# Saved from poison by cup-bearer
-# 		# 5 = murder_save.0013		# Saved from poisoned food by gluttonous trait
-# 		# 100 = court_position.9021	# A Bodyguard saves you from an assassin
-# 		# 600 = fp1_shieldmaiden.0021	# A Shieldmaiden saves them
-# 	}
-# }
-
-# This determines which type of murder we want to go with, as well as sorts general murder effects.
-vi_hunt_success_pre_filter_on_action = {
+#We have one big on_action for hunt outcomes. Some outcomes are available for both success and failure
+vi_hunt_outcome_on_action = {
 	effect = {
-		scope:owner = {
+		scope:scheme = {
+			scheme_freeze_days = 5000
+		}
+		
+	}
+	random_events = {
+		100 = vi_hunt_outcome.1001
+	}
+}
 
-			trigger_event = { on_action = vi_hunt_success_standard_event_list_on_action }
-
-			# Right, which murder list do we want?
-			## Incapable murders: for hitting bedridden characters.
-			# if = {
-			# 	limit = {
-			# 		scope:target = { is_incapable = yes }
-			# 	}
-			# 	trigger_event = { on_action = murder_success_incapable_event_list_on_action }
-			# }
-			# ## Imprisoned murders: for anyone who is in house arrest or the dungeons.
-			# else_if = {
-			# 	limit = {
-			# 		scope:target = { is_imprisoned = yes }
-			# 	}
-			# 	trigger_event = { on_action = murder_success_imprisoned_event_list_on_action }
-			# }
-			# ## Child murders: for free, child characters capable of independent movement.
-			# else_if = {
-			# 	limit = {
-			# 		scope:target = { is_adult = no }
-			# 	}
-			# 	trigger_event = { on_action = murder_success_child_event_list_on_action }
-			# }
-			# ## Standard murders: for free, adult characters capable of independent movement.
-			# else = {
-			# 	trigger_event = { on_action = murder_success_standard_event_list_on_action }
-			# }
-
-			
-			# Plus we always want music.
-			play_music_cue = "mx_cue_murder"
-
-			# Achievements.
-			every_scheme = {
-				limit = { scheme_type = vi_hunt }
-				# The Things We Do For Love.
-				if = {
-					limit = {
-						scheme_target_character ?= {
-							any_spouse = {
-								any_relation = {
-									type = lover
-									this = scope:owner
-								}
-							}
-						}
-					}
-					scope:owner = {
-						add_achievement_flag_effect = { FLAG = achievement_the_things_we_do_for_love_flag }
-					}
+vi_hunt_ambush_calculate = {
+	effect = {
+		if = {
+			limit = {
+				scope:vi_hunt_defender = {
+					has_character_modifier = vi_archangel_modifier
 				}
-				# An Unfortunate Accident.
-				if = {
-					limit = {
-						scheme_target_character = {
-							save_temporary_scope_as = murder_target
-							scope:owner = { is_heir_of = scope:murder_target }
-						}
-					}
-					scope:owner = {
-						add_achievement_flag_effect = { FLAG = achievement_an_unfortunate_accident_flag }
-					}
-				}
-				# Death Did Us Part.
-				if = {
-					limit = {
-						scheme_target_character = {
-							any_spouse = { this = scope:owner }
-						}
-					}
-					scope:owner = {
-						add_achievement_flag_effect = { FLAG = achievement_death_did_us_part_flag }
-					}
-				}
-				# Royal Flush.
-				if = {
-					limit = {
-						exists = scheme_target_character
-						scope:owner = { 
-							is_ai = no 
-							faith = { has_doctrine = tenet_fp3_fedayeen }
-						}
-					}
-					if = {
-						limit = {
-							scope:target = { highest_held_title_tier = tier_empire }
-						}
-						scope:owner = { add_character_flag = fp3_assassinated_tier3 }
-					}
-					else_if = {
-						limit = {
-							scope:target = { highest_held_title_tier = tier_kingdom }
-						}
-						scope:owner = { add_character_flag = fp3_assassinated_tier2 }
-					}
-					else_if = {
-						limit = {
-							scope:target = { is_lowborn  = yes }
-						}
-						scope:owner = { add_character_flag = fp3_assassinated_tier1 }
+			}
+			trigger_event = vi_archangel.3001
+		}
+		else_if = {
+			limit = {
+				scope:vi_hunt_defender = {
+					NOR = {
+						vi_is_vampire_trigger = yes
+						has_trait = vi_dhampir
+						has_trait = vi_inquisitor
 					}
 				}
 			}
-			# BP2: If you did a murder based on your imaginary friend, fire the follow-up event
-			if = {
-				limit = { var:imaginary_friend_murder_target ?= scope:scheme.scheme_target_character }
-				# if you have murdered a sufficient amount, we fire a special ending 
-				if = {
-					limit = {
-						has_variable = imaginary_friend_murder_count
-						var:imaginary_friend_murder_count >= 4
-					}
-					trigger_event = {
-						id = bp2_yearly.2025
-						days = 1
-					}
-				}
-				else = {
-					trigger_event = {
-						id = bp2_yearly.2022
-						days = 1
-					}
-				}
-			}
-			# Aaaaand this is quite memorable.
-			create_character_memory = {
-				type = successful_murder
-				participants = {
-					victim = scope:scheme.scheme_target_character
+			trigger_event = vi_hunt_outcome.9001
+		}
+		else = {
+			save_scope_as = vi_hunt_struggled
+			scope:vi_hunt_defender = {
+				trigger_event = {
+					on_action = vi_hunt_initial_after
 				}
 			}
 		}
 	}
 }
 
-vi_hunt_success_standard_event_list_on_action = {
+vi_hunt_initial_after = {
 	random_events = {
-		# Old events.
-		300 = vi_hunt.2001
-		100 = vi_hunt.3001
+		100 = vi_hunt_outcome.2001
+	}
+}
+
+vi_hunt_defense_calculate = {
+	effect = {
+		if = {
+			limit = {
+				scope:vi_hunt_defender_move = flag:option_flee
+			}
+			set_local_variable = {
+				name = advantage
+				value = {
+					value = 0
+					add = vi_hunt_speed_value
+					multiply = 3
+				}
+			}
+			vi_hunt_add_defender_advantage = {
+				VALUE = advantage
+			}
+			scope:vi_hunt_attacker = {
+				set_local_variable = {
+					name = advantage
+					value = vi_hunt_speed_value
+				}
+				vi_hunt_add_attacker_advantage = {
+					VALUE = advantage
+				}
+			}
+
+			trigger_event = {
+				on_action = vi_hunt_resolve_on_action
+			}
+		}
+		else = {
+			else_if = {
+				limit = {
+					scope:vi_hunt_defender_move = flag:option_insight
+				}
+				vi_hunt_add_defender_advantage = {
+					VALUE = vi_hunt_insight_value
+				}
+			}
+			else_if = {
+				limit = {
+					scope:vi_hunt_defender_move = flag:option_psychic
+				}
+				vi_hunt_add_defender_advantage = {
+					VALUE = vi_hunt_charm_power_value
+				}
+				scope:vi_hunt_attacker = {
+					vi_hunt_add_attacker_advantage = {
+						VALUE = vi_hunt_mental_resistance_value
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					scope:vi_hunt_defender_move = flag:option_speed
+				}
+				vi_hunt_add_defender_advantage = {
+					VALUE = vi_hunt_insight_value
+				}
+			}
+			else_if = {
+				limit = {
+					scope:vi_hunt_defender_move = flag:option_trade
+				}
+				set_local_variable = {
+					name = advantage
+					value = {
+						value = vi_hunt_durability_value
+						multiply = 0.75
+					}
+				}
+				change_local_variable = {
+					name = advantage
+					add = {
+						value = vi_hunt_speed_value
+						multiply = 0.25
+					}
+				}
+				vi_hunt_add_defender_advantage = {
+					VALUE = advantage
+				}
+			}
+			scope:vi_hunt_attacker = {
+				trigger_event = {
+					on_action = vi_hunt_defense_after
+				}
+			}
+		}
+	}
+}
+
+vi_hunt_defense_after = {
+	random_events = {
+		100 = vi_hunt_outcome.3001
+	}
+}
+
+vi_hunt_attack_calculate = {
+	effect = {
+		if = {
+			limit = {
+				scope:vi_hunt_defender_move = flag:option_flee
+			}
+			set_local_variable = {
+				name = advantage
+				value = {
+					value = 0
+					add = vi_hunt_speed_value
+					multiply = 3
+				}
+			}
+			vi_hunt_add_attacker_advantage = {
+				VALUE = advantage
+			}
+			scope:vi_hunt_defender = {
+				set_local_variable = {
+					name = advantage
+					value = vi_hunt_speed_value
+				}
+				vi_hunt_add_defender_advantage = {
+					VALUE = advantage
+				}
+			}
+
+			trigger_event = {
+				on_action = vi_hunt_resolve_on_action
+			}
+		}
+		else = {
+			else_if = {
+				limit = {
+					scope:vi_hunt_attacker_move = flag:option_insight
+				}
+				vi_hunt_add_attacker_advantage = {
+					VALUE = vi_hunt_insight_value
+				}
+			}
+			else_if = {
+				limit = {
+					scope:vi_hunt_attacker_move = flag:option_psychic
+				}
+				vi_hunt_add_attacker_advantage = {
+					VALUE = vi_hunt_charm_power_value
+				}
+				scope:vi_hunt_defender = {
+					vi_hunt_add_defender_advantage = {
+						VALUE = vi_hunt_mental_resistance_value
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					scope:vi_hunt_attacker_move = flag:option_speed
+				}
+				vi_hunt_add_attacker_advantage = {
+					VALUE = vi_hunt_insight_value
+				}
+			}
+			else_if = {
+				limit = {
+					scope:vi_hunt_attacker_move = flag:option_trade
+				}
+				set_local_variable = {
+					name = advantage
+					value = {
+						value = vi_hunt_durability_value
+						multiply = 0.75
+					}
+				}
+				change_local_variable = {
+					name = advantage
+					add = {
+						value = vi_hunt_speed_value
+						multiply = 0.25
+					}
+				}
+				vi_hunt_add_attacker_advantage = {
+					VALUE = advantage
+				}
+			}
+			scope:vi_hunt_attacker = {
+				trigger_event = {
+					on_action = vi_hunt_attack_after
+				}
+			}
+		}
+	}
+}
+
+vi_hunt_attack_after = {
+	random_events = {
+		100 = vi_hunt_outcome.4001
+	}
+}
+
+vi_hunt_resolve_on_action = {
+	effect = {
+		scope:scheme ?= {
+			end_scheme = yes
+		}
+		random_list = {
+			50 = {
+				modifier = {
+					exists = scope:vi_hunt_attacker
+					add = scope:vi_hunt_attacker_advantage
+				}
+				modifier = {
+					exists = scope:vi_hunt_defender
+					add = {
+						value = scope:vi_hunt_defender_advantage
+						multiply = -0.5
+					}
+				}
+
+				if = {
+					limit = {
+						exists = scope:vi_hunt_attacker_fleeing
+					}
+					scope:vi_hunt_attacker = {
+						trigger_event = {
+							on_action = vi_hunt_attacker_flee
+						}
+					}
+					
+				}
+				else = {
+					scope:vi_hunt_attacker = {
+						trigger_event = {
+							on_action = vi_hunt_attacker_win
+						}
+					}
+				}
+				
+			}
+			50 = {
+				modifier = {
+					exists = scope:vi_hunt_defender
+					add = scope:vi_hunt_defender_advantage
+				}
+				modifier = {
+					exists = scope:vi_hunt_attacker
+					add = {
+						value = scope:vi_hunt_attacker_advantage
+						multiply = -0.5
+					}
+				}
+
+				if = {
+					limit = {
+						exists = scope:vi_hunt_defender_fleeing
+					}
+					scope:vi_hunt_defender = {
+						trigger_event = {
+							on_action = vi_hunt_defender_flee
+						}
+					}
+					
+				}
+				else = {
+					scope:vi_hunt_defender = {
+						trigger_event = {
+							on_action = vi_hunt_defender_win
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+vi_hunt_attacker_win = {
+	random_events = {
+		100 = vi_hunt_outcome.9001
+	}
+}
+
+vi_hunt_attacker_flee = {
+	effect = {
+		send_interface_toast = {
+			title = vi_hunt_fled_title
+			left_icon = scope:vi_hunt_attacker
+			#desc = vi_hunt_attacker_fled_toast
+			scope:vi_hunt_defender = {
+				send_interface_toast = {
+					title = vi_hunt_fled_title
+					left_icon = scope:vi_hunt_attacker
+					custom_tooltip = vi_hunt_attacker_fled_toast
+				}
+			}
+		}
+	}
+}
+
+vi_hunt_defender_win = {
+	random_events = {
+		100 = vi_hunt_outcome.9101
+	}
+}
+
+vi_hunt_defender_flee = {
+	effect = {
+		send_interface_toast = {
+			title = vi_hunt_fled_title
+			left_icon = scope:vi_hunt_defender
+			#desc = vi_hunt_defender_fled_toast
+			scope:vi_hunt_attacker = {
+				send_interface_toast = {
+					title = vi_hunt_fled_title
+					left_icon = scope:vi_hunt_defender
+					custom_tooltip = vi_hunt_defender_fled_toast
+				}
+			}
+		}
 	}
 }

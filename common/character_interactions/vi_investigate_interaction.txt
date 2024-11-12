@@ -7,12 +7,12 @@
 
 	scheme = vi_investigate
 
-	cooldown = {
-		years = 1
-	}
+	# cooldown = {
+	# 	years = 1
+	# }
 
 	cooldown_against_recipient = {
-		years = 5
+		years = 10
 	}
 	
 	ignores_pending_interaction_block = yes
@@ -65,12 +65,8 @@
 
 	is_valid_showing_failures_only = {
 		scope:actor = {
-			is_adult = yes
+			age >= 12
 			is_imprisoned = no
-			can_start_scheme = {
-				type = vi_investigate
-				target_character = scope:recipient
-			}
 
 			custom_tooltip = {
 				text = vi_investigate_requirements
@@ -82,42 +78,17 @@
 					has_trait = vi_inquisitor
 				}
 			}
-			
-			
 
-			# vi_is_suspicious_of = {
-			# 	TARGET = scope:recipient
-			# }
+			can_start_scheme = {
+				type = vi_investigate
+				target_character = scope:recipient
+			}
 		}
 
 
 	}
 
 	desc = start_vi_investigate_interaction_desc
-
-	# Scheme Starter Packages
-	# options_heading = schemes.t.agent_packages
-	# send_options_exclusive = yes
-	# ## Balanced agents.
-	# send_option = {
-	# 	flag = agent_focus_balance
-	# 	current_description = start_vi_investigate_interaction.tt.agent_focus_balance
-	# }
-	# ## Focused on Success Chance.
-	# send_option = {
-	# 	flag = agent_focus_success
-	# 	current_description = start_vi_investigate_interaction.tt.agent_focus_success
-	# }
-	# ## Focused on Speed.
-	# send_option = {
-	# 	flag = agent_focus_speed
-	# 	current_description = start_vi_investigate_interaction.tt.agent_focus_speed
-	# }
-	# ## Focused on Secrecy
-	# send_option = {
-	# 	flag = agent_focus_secrecy
-	# 	current_description = start_vi_investigate_interaction.tt.agent_focus_secrecy
-	# }
 
 	on_accept = {
 		scope:actor = {
@@ -133,72 +104,6 @@
 					TARGET_TYPE = target_character
 					TARGET_SCOPE = scope:recipient
 				}
-
-				# # Success.
-				# if = {
-				# 	limit = { scope:agent_focus_success ?= yes }
-				# 	begin_scheme_with_agents_effect = {
-				# 		SCHEME_TYPE = vi_investigate
-				# 		TARGET_TYPE = target_character
-				# 		TARGET_SCOPE = scope:recipient
-				# 		# Success.
-				# 		AGENT_1 = agent_theologian_success
-				# 		AGENT_2 = agent_cleric_success
-				# 		AGENT_3 = agent_thief
-				# 		# Speed.
-				# 		AGENT_4 = agent_socialite
-				# 		# Secrecy
-				# 		AGENT_5 = agent_gabbler_secrecy
-				# 	}
-				# }
-				# # Speed.
-				# else_if = {
-				# 	limit = { scope:agent_focus_speed ?= yes }
-				# 	begin_scheme_with_agents_effect = {
-				# 		SCHEME_TYPE = vi_investigate
-				# 		TARGET_TYPE = target_character
-				# 		TARGET_SCOPE = scope:recipient
-				# 		# Success.
-				# 		AGENT_1 = agent_theologian_success
-				# 		AGENT_2 = agent_thief
-				# 		# Speed.
-				# 		AGENT_3 = agent_socialite
-				# 		AGENT_4 = agent_infiltrator
-				# 		AGENT_5 = agent_tracker
-				# 	}
-				# }
-				# else_if = {
-				# 	limit = { scope:agent_focus_secrecy ?= yes }
-				# 	begin_scheme_with_agents_effect = {
-				# 		SCHEME_TYPE = vi_investigate
-				# 		TARGET_TYPE = target_character
-				# 		TARGET_SCOPE = scope:recipient
-				# 		# Success.
-				# 		AGENT_1 = agent_theologian_success
-				# 		AGENT_2 = agent_thief
-				# 		# Speed.
-				# 		AGENT_3 = agent_socialite
-				# 		# Secrecy
-				# 		AGENT_4 = agent_decoy
-				# 		AGENT_5 = agent_gabbler_secrecy
-				# 	}
-				# }
-				# # Balanced.
-				# else = {
-				# 	begin_scheme_with_agents_effect = {
-				# 		SCHEME_TYPE = vi_investigate
-				# 		TARGET_TYPE = target_character
-				# 		TARGET_SCOPE = scope:recipient
-				# 		# Success.
-				# 		AGENT_1 = agent_theologian_success
-				# 		AGENT_2 = agent_thief
-				# 		# Speed.
-				# 		AGENT_3 = agent_socialite
-				# 		AGENT_4 = agent_infiltrator
-				# 		# Secrecy.
-				# 		AGENT_5 = agent_gabbler_secrecy
-				# 	}
-				# }
 			}
 			# Scheme bonuses from being the emperor/dominant family/powerful family
 			# ep3_actor_scheme_modifier_effect = yes

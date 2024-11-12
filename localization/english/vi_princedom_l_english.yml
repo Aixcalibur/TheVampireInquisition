@@ -9,3 +9,19 @@
  vi_found_princedom_decision: "Found Princedom"
  vi_found_princedom_decision_desc: "Found a new Vampire Princedom at your current location"
  vi_found_princedom_decision_confirm: "I will rule the underworld!"
+ vi_found_princedom_decision_enough_vampires: "You have at least 6 [courtiers|e] who are non-fledgling [vampires|E]"
+
+
+ vi_sponsor_princedom_interaction: "Sponsor Prince"
+ vi_sponsor_princedom_interaction_desc: "Sponsor this vampire to establish a new Vampire Princedom in the same [realm|e]"
+ vi_choose_princedom_tt: "Will choose from 3 counties to establish a Vampire Princedom"
+ vi_travel_princedom_tt: "Will travel to the selected location to establish a new Princedom"
+ vi_travel_princedom_tt_2: "[recipient.GetName] will travel to [vi_title_county.GetNameNoTier] to establish a new Princedom"
+
+ vi_sponsor.001.t: "Founding of a New Princedom"
+ vi_sponsor.001.desc: "As the Inner Council comes together, we have decided on three locations which would be of great value to establishing a new vassal Princedom. The final choice now lies to me."
+
+ vi_sponsor.001.a: "[princedom_county_1.GetNameNoTier] is in need of a new Prince."
+ vi_sponsor.001.b: "Perhaps, we should establish a Princedom in [princedom_county_2.GetNameNoTier]."
+ vi_sponsor.001.c: "It's time to expand all the way to [princedom_county_3.GetNameNoTier]."
+ vi_sponsor.001.d: "I've changed my mind."

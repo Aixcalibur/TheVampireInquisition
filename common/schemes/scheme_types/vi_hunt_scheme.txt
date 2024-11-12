@@ -2,24 +2,26 @@
 	# Basic Setup
 	skill = intrigue
 	desc = murder_desc_general
-	success_desc = "MURDER_SUCCESS_DESC"
-	discovery_desc = "MURDER_DISCOVERY_DESC"
+	success_desc = "vi_hunt_success_desc"
+	discovery_desc = "vi_hunt_discovery_desc"
 	icon = icon_scheme_hostile
 	illustration = "gfx/interface/illustrations/event_scenes/corridor.dds"
 	category = hostile
 	target_type = character
 	is_secret = yes
-	maximum_breaches = 5
+	maximum_breaches = 10
 	cooldown = { years = 5 }
 
 	is_basic = yes
+	freeze_scheme_when_traveling = yes
 
 	# Parameters
 	speed_per_skill_point = t2_spsp_owner_value
 	speed_per_target_skill_point = t3_spsp_target_value
 	base_progress_goal = t3_base_phase_length_value #70 Days
 	maximum_secrecy = 95
-	base_maximum_success = t2_base_max_success_value
+	base_maximum_success = 75
+	#base_maximum_success = t2_base_max_success_value
 	phases_per_agent_charge = 1
 	success_chance_growth_per_skill_point = t2_scgpsp_value
 	
@@ -46,22 +48,16 @@
 				NOT = { imprisoner = scope:owner }
 			}
 		}
-		# custom_description = {
-		# 	object = scope:target
-		# 	text = i_have_been_caught_trying_to_murder_target
-		# 	scope:target = {
-		# 		NOT = {
-		# 			has_opinion_modifier = {
-		# 				target = prev
-		# 				modifier = murder_personal_grudge_opinion
-		# 			}
-		# 		}
-		# 	}
-		# }
 		scope:target = {
 			OR = {
 				exists = location
 				in_diplomatic_range = scope:owner
+			}
+		}
+
+		scope:target = {
+			NOT = {
+				has_trait = vi_dormant
 			}
 		}
 		# Special AI exceptions
@@ -83,16 +79,16 @@
 	}
 
 	# Agents
-	agent_leave_threshold = -25
-	agent_join_chance = {
-		base = -25
+	# agent_leave_threshold = -25
+	# agent_join_chance = {
+	# 	base = -25
 		
-		ai_agent_join_chance_basic_suite_modifier = yes
-		ai_agent_join_chance_hostile_grievous_modifier = yes
-	}
-	agent_groups_owner_perspective = { courtiers guests }
-	agent_groups_target_character_perspective = { courtiers guests }
-	valid_agent = { is_valid_agent_standard_trigger = yes }
+	# 	ai_agent_join_chance_basic_suite_modifier = yes
+	# 	ai_agent_join_chance_hostile_grievous_modifier = yes
+	# }
+	# agent_groups_owner_perspective = { courtiers guests }
+	# agent_groups_target_character_perspective = { courtiers guests }
+	# valid_agent = { is_valid_agent_standard_trigger = yes }
 
 	odds_prediction = {
 		add = hostile_scheme_base_odds_prediction_target_is_char_value
@@ -111,13 +107,22 @@
 		hostile_scheme_base_chance_modifier = yes
 
 		# Countermeasures.
+		apply_calculated_scheme_success_chance_adjustments_modifier = yes
 		apply_opportunistic_scheme_success_chance_adjustments_modifier = yes
-
+		
 		modifier = {
-			add = -100
+			add = -50
 			desc = "SCHEME_TARGET_IS_A_RULER"
 			scope:target = {
 				is_ruler = yes
+			}
+		}
+
+		modifier = {
+			add = 50
+			desc = "VI_HUNT_TARGET_IS_TRAVELLING"
+			scope:target = {
+				is_travelling = yes
 			}
 		}
 
@@ -149,7 +154,7 @@
 		}
 
 		modifier = {
-			add = -50
+			add = -25
 			desc = "SCHEME_TARGET_IS_A_VAMPIRE"
 			scope:target = {
 				has_trait = vi_vampire_2
@@ -157,7 +162,7 @@
 		}
 
 		modifier = {
-			add = -100
+			add = -50
 			desc = "SCHEME_TARGET_IS_A_ELDER_VAMPIRE"
 			scope:target = {
 				has_trait = vi_vampire_3
@@ -165,7 +170,7 @@
 		}
 
 		modifier = {
-			add = -150
+			add = -75
 			desc = "SCHEME_TARGET_IS_A_ANCIENT_VAMPIRE"
 			scope:target = {
 				has_trait = vi_vampire_4
@@ -173,7 +178,7 @@
 		}
 
 		modifier = {
-			add = -1000
+			add = -100
 			desc = "SCHEME_TARGET_IS_A_PROGENITOR_VAMPIRE"
 			scope:target = {
 				has_trait = vi_vampire_5
@@ -181,66 +186,11 @@
 		}
 
 		modifier = {
-			add = -60
+			add = -50
 			desc = "SCHEME_TARGET_IS_PARANOID"
 			scope:target = {
 				has_trait = paranoid
 			}
-		}
-
-		modifier = {
-			add = {
-				value = 0
-				if = {
-					limit = {
-						scope:target = {
-							has_perk = vi_celerity_perk
-						}
-					}
-					add = -25
-				}
-				if = {
-					limit = {
-						scope:target = {
-							has_perk = vi_blink_perk
-						}
-					}
-					add = -25
-				}
-				if = {
-					limit = {
-						scope:target = {
-							has_perk = vi_shadowwalk_perk
-						}
-					}
-					add = -25
-				}
-				if = {
-					limit = {
-						scope:owner = {
-							has_perk = vi_celerity_perk
-						}
-					}
-					add = 25
-				}
-				if = {
-					limit = {
-						scope:target = {
-							has_perk = vi_blink_perk
-						}
-					}
-					add = 25
-				}
-				if = {
-					limit = {
-						scope:owner = {
-							has_perk = vi_shadowwalk_perk
-						}
-					}
-					add = 25
-				}
-			}
-			desc = "SCHEME_TARGET_RELATIVE_SPEED"
 		}
 
 		modifier = {
@@ -426,6 +376,7 @@
 			desc = has_fp3_struggle_caliph_super_suspicious_modifier
 		}
 	}
+
 	base_secrecy = {
 		add = 60 #We make this scheme more secretive since it's mostly a solo scheme
 		add = secrecy_base_value
@@ -436,54 +387,62 @@
 	on_start = {
 		set_variable = {
 			name = apply_countermeasures
-			value = flag:calculating
+			value = flag:opportunistic
 		}
-		add_scheme_starting_opportunities_intrigue_effect = yes
-		# Fallback agents — a balanced config if you start the scheme from script.
-		if = {
-			limit = {
-				scheme_owner = {
-					NOT = { has_variable = agents_added }
-				}
-			}
-			add_agent_slot = agent_assassin
-			add_agent_slot = agent_assassin
-			add_agent_slot = agent_thug
-			add_agent_slot = agent_infiltrator
-			add_agent_slot = agent_alibi
-		}
-		else = {
-			scheme_owner = { remove_variable = agents_added }
-		}
-		# scheme_owner = {
-		# 	if = {
-		# 		limit = {
-		# 			domicile ?= { has_domicile_parameter = camp_unlocks_poisoner_scheme_agents }
-		# 		}
-		# 		root = { add_agent_slot = agent_poisoner }
-		# 	}
-		# }
+		#add_scheme_starting_opportunities_intrigue_effect = yes
 	}
 	on_phase_completed = {
-		suppress_scheme_follow_up_event_till_input_given_effect = yes
-		
-		#This is the effect that fires the end result
-		vi_hunt_scheme_prep_effect = yes
+		# Grab our scopes.
+		save_scope_as = scheme
+		scheme_target_character = { save_scope_as = target }
+		scheme_owner = { save_scope_as = owner }
+		scope:scheme = {
+			scheme_owner = {
+				# DISCOVERY ROLL
+				save_scope_value_as = {
+					name = discovery_chance
+					value = {
+						value = 100
+						subtract = scope:scheme.scheme_secrecy
+					}
+				}
+				random = {
+					chance = scope:discovery_chance
+					save_scope_value_as = {
+						name = scheme_discovered
+						value = yes
+					}
+				}
 
+				#SUCCESS ROLL
+				random = {
+					chance = scope:scheme.scheme_success_chance
 
-		cap_schemes_and_fire_reminders_effect = yes
-	}
-	on_hud_click  = { vi_hunt_scheme_prep_effect = yes }
-	on_semiyearly = {
-		if = {
-			limit = {
-				scheme_owner = { is_ai = yes }
+					save_scope_value_as = {
+						name = scheme_successful
+						value = yes
+					}
+				}
+
+				
+				if = {
+					limit = { exists = scope:scheme_successful }
+					trigger_event = {
+						on_action = vi_hunt_outcome_on_action
+					}
+				}
+				else = {
+					trigger_event = {
+						id = vi_hunt_ongoing.0001
+					}
+				}
 			}
-			vi_hunt_scheme_prep_effect = yes
 		}
 	}
+
 	on_monthly = {
 		# hostile_scheme_monthly_discovery_chance_effect = yes
+
 		if = {
 			limit = {
 				NOT = { exists = scope:discovery_event_happening }
@@ -516,28 +475,28 @@
 		# 	}
 		# }
 		# else = {
-		# 	if = { #Did the character die in another way?
-		# 		limit = {
-		# 			scope:target = {
-		# 				is_alive = no
-		# 				NOT = { killer = scope:owner }
-		# 			}
-		# 		}
-		# 		scope:owner = {
-		# 			trigger_event = murder_outcome.2000
-		# 		}
-		# 	}
+		if = { #Did the character die in another way?
+			limit = {
+				scope:target = {
+					is_alive = no
+					NOT = { killer = scope:owner }
+				}
+			}
+			scope:owner = {
+				trigger_event = murder_outcome.2000
+			}
+		}
 
-		# 	if = { #Did the character move outside of diplomatic range
-		# 		limit = {
-		# 			scope:target = {
-		# 				NOT = { in_diplomatic_range = scope:owner }
-		# 			}
-		# 		}
-		# 		scope:owner = {
-		# 			trigger_event = murder_outcome.2500
-		# 		}
-		# 	}
+		if = { #Did the character move outside of diplomatic range
+			limit = {
+				scope:target = {
+					NOT = { in_diplomatic_range = scope:owner }
+				}
+			}
+			scope:owner = {
+				trigger_event = murder_outcome.2500
+			}
+		}
 		# }
 	}
 }

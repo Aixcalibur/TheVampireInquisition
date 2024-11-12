@@ -1,0 +1,31 @@
+﻿l_english:
+ vi_fake_succession_decision: "Fake Succession"
+ vi_fake_succession_decision_desc: "As a landed vampire, it is important to regularly fake your succession to reduce suspicion."
+ vi_fake_succession_decision_tooltip: "I fake my own death and succession"
+ vi_fake_succession_decision_confirm: "I die and live again!"
+ vi_fake_succession_decision_effect_tt: "You will begin a [scheme|e] to fake your own death. This will remove your relations with mortals and end any other schemes from mortals against you."
+
+ vi_fake_succession_scheme: "False Succession"
+ vi_fake_succession_scheme_desc: "I seek to fake my own succession in order to ward off suspicions of my immortality."
+ vi_fake_succession_scheme_desc_general: "Vampires that wish to remain [landed|e] [rulers|e] must fake their own succession to stave off suspicions about their eternal youth."
+ vi_fake_succession_scheme_SUCCESS_DESC: "You will clear suspicions of your immortality... for now."
+ vi_fake_succession_scheme_action: "Fake the Succession of"
+
+
+
+
+ vi_fake_succession.0001.t: "The Eternal Legacy"
+ vi_fake_succession.0001.desc: "I have ruled for decades now, watching those around me age, weaken, and perish, while I remain untouched by the cruelty of time. Now, rumours have begun to spread with a persistence I can no longer ignore.\n\nCourtiers and vassals alike have started wondering why their liege never seems to change, and whispers of dark magic or deals with the divine swirl through the halls.\n\nI should act now, before anyone finds out the truth."
+ vi_fake_succession.0001.a: "It's time to introduce a 'successor' and fake my own death."
+ vi_fake_succession.0001.b: "No, it's too risky..."
+
+ vi_fake_succession.1002.t: "A Rule Renewed"
+ vi_fake_succession.1002.desc: "The ruse has succeeded. Courtiers and vassals alike have accepted the transition, be it through the mourning of the 'late' ruler, the arrival of the 'hidden heir,' or the mysterious withdrawal from public life and scrutiny.\n\nMy ordeals are far from over, I have to rebuild my legitimacy as a ruler once more, but at least, for now, the rumors have quieted down."
+
+ vi_fake_succession.1002.a: "My rule begins anew..."
+
+ vi_fake_succession.1003.t: "Failure"
+ vi_fake_succession.1003.desc: "Despite all my attempts, the people were unconvinced. Rather, my attempts to fake my succession only served to rouse the suspicions of my subjects. \n\n"Who here has seen [actor.GetTitledFirstName] and [actor.GetTitledFirstName] II in the same room?" They would demand, and they would not accept any of my answers.\n\nFrom there, my subjects started to dig deeper, gathering clues until they reached the truth.\n\nMy secret has been exposed!"
+
+ vi_fake_succession.1003.a: "Now the world knows I am a vampire!"
+ 

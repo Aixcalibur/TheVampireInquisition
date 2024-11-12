@@ -110,7 +110,7 @@ vi_soothe_effect = {
 	}
 
 	random_list = {
-		10 = {
+		30 = {
 			vi_charm_power_modifier = yes
 			modifier = {
 				scope:vi_victim.stress_level >= 3
@@ -122,16 +122,19 @@ vi_soothe_effect = {
 			}
 			vi_soothe_success = yes
 		}
-		10 = {
+		30 = {
 			vi_charm_resistance_modifier = yes
-			# modifier = {
-			# 	always = yes
-			# 	min = 5
-			# }
+			
+			modifier = {
+				always = yes
+				min = 5
+			}
+			
 			modifier = {
 				scope:vi_victim.stress_level < 1
 				multiply = 2
 			}
+
 			vi_soothe_failure = yes
 			save_scope_as = vi_failure
 		}
@@ -145,6 +148,10 @@ vi_soothe_success = {
 		}
 		show_as_tooltip = {
 			scope:vi_victim = {
+				add_character_modifier = {
+					modifier = vi_soothed_modifier
+					years = 10
+				}
 				add_stress = {
 					value = miniscule_stress_loss
 					multiply = scope:vi_vampire.diplomacy
@@ -216,6 +223,123 @@ vi_soothe_failure = {
 					value = intrigue
 					multiply = -0.5
 				}
+			}
+		}
+	}
+}
+
+vi_enthrall_effect = {
+	clear_saved_scope = vi_failure
+
+	scope:vi_vampire = {
+		add_character_modifier = {
+			modifier = vi_vampire_strain_modifier
+			years = 5
+		}
+		add_stress = minor_stress_gain
+	}
+
+	random_list = {
+		50 = {
+			vi_charm_power_modifier = yes
+			vi_enthrall_success = yes
+		}
+		50 = {
+			vi_charm_resistance_modifier = yes
+			vi_charm_resistance_modifier = yes
+			vi_enthrall_failure = yes
+			save_scope_as = vi_failure
+		}
+	}
+}
+
+vi_enthrall_success = {
+	scope:vi_victim = {
+		send_interface_message = {
+			title = vi_visit.option_hook.msg_title
+			desc = vi_visit.option_hook.msg_desc
+			right_icon = scope:vi_vampire
+			add_stress = {
+				value = minor_stress_loss
+				multiply = scope:vi_vampire.diplomacy
+				min = -100
+			}
+			scope:vi_vampire = {
+				add_hook = {
+					type = loyalty_hook
+					target = scope:vi_victim
+					years = 20
+				}
+			}
+			add_opinion = {
+				target = scope:vi_vampire
+				modifier = suspicion_opinion
+				opinion = {
+					value = intrigue
+					multiply = -0.5
+				}
+			}
+		}
+	}
+}
+
+vi_enthrall_failure = {
+	scope:vi_victim = {
+		send_interface_message = {
+			title = vi_visit.option.failure.msg_title
+			desc = vi_visit.option.failure.msg_desc
+			right_icon = scope:vi_vampire
+			add_stress = miniscule_stress_gain
+			add_opinion = {
+				target = scope:vi_vampire
+				modifier = suspicion_opinion
+				opinion = {
+					value = intrigue
+					multiply = -2
+				}
+			}
+			if = {
+				limit = {
+					OR = {
+						vi_is_vampire_trigger = yes
+						has_trait = vi_dhampir
+						has_trait = vi_inquisitor
+					}
+				}
+				if = {
+					limit = {
+						vi_is_vampire_trigger = yes
+						has_trait = vi_dhampir
+					}
+					add_character_modifier = {
+						modifier = vi_vampire_strain_modifier
+						years = 5
+					}
+					add_stress = minor_stress_gain
+				}
+				add_opinion = {
+					target = scope:vi_vampire
+					modifier = vi_attempted_mind_control_opinion
+				}
+			}
+			if = {
+				limit = {
+					scope:vi_vampire = {
+						has_relation_friend = root
+					}
+				}
+				remove_relation_friend = scope:vi_vampire
+			}
+			else_if = {
+				limit = {
+					scope:vi_vampire = {
+						has_relation_lover = root
+					}
+				}
+				remove_relation_lover = scope:vi_vampire
+			}
+			else = {
+				remove_relation_potential_friend = scope:vi_vampire
 			}
 		}
 	}

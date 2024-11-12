@@ -8,18 +8,22 @@ vi_succession_order_laws = {
 	vi_local_seniority_law = {
 		can_keep = {
 			vi_can_have_vampire_succession_law_trigger = yes
+			is_independent_ruler = no
 		}
 
 		can_pass = {
 			vi_can_have_vampire_succession_law_trigger = yes
+			is_independent_ruler = no
 		}
 
 		can_have = {
 			vi_can_have_vampire_succession_law_trigger = yes
+			is_independent_ruler = no
 		}
 
 		should_start_with = {
 			has_government = vi_vampire_government
+			is_independent_ruler = no
 		}
 
 		succession = {
@@ -27,7 +31,41 @@ vi_succession_order_laws = {
 			traversal_order = dynasty_house
 			rank = oldest
 			title_division = single_heir
+			#exclude_rulers = yes
 			limit_to_courtiers = yes
+		}
+
+		flag = advanced_succession_law
+	}
+
+	vi_kingdom_seniority_law = {
+		can_keep = {
+			vi_can_have_vampire_succession_law_trigger = yes
+			#is_independent_ruler = no
+		}
+
+		can_pass = {
+			vi_can_have_vampire_succession_law_trigger = yes
+			#is_independent_ruler = no
+		}
+
+		can_have = {
+			vi_can_have_vampire_succession_law_trigger = yes
+			#is_independent_ruler = no
+		}
+
+		should_start_with = {
+			has_government = vi_vampire_government
+			#is_independent_ruler = no
+		}
+
+		succession = {
+			order_of_succession = inheritance
+			traversal_order = dynasty_house
+			rank = oldest
+			title_division = single_heir
+			#exclude_rulers = yes
+			#limit_to_courtiers = yes
 		}
 
 		flag = advanced_succession_law

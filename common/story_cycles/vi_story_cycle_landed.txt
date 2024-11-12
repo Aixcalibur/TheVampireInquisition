@@ -1,0 +1,173 @@
+﻿story_vi_landed = {
+	
+	on_setup = {
+		story_owner = {
+			if = {
+				limit = {
+					OR = {
+						effective_age <= 16
+						effective_age >= 70
+					}
+					
+				}
+				add_character_flag = {
+					flag = vi_newly_landed
+					years = 20
+				}
+			}
+			else_if = {
+				limit = {
+					effective_age < 40
+				}
+				add_character_flag = {
+					flag = vi_newly_landed
+					years = 40
+				}
+			}
+			else = {
+				add_character_flag = {
+					flag = vi_newly_landed
+					years = 30
+				}
+			}
+			
+		}
+	}
+	
+	on_end = {
+		debug_log = "Vampire Landed story ended on:"
+		debug_log_date = yes
+	}
+	
+	on_owner_death = {
+		every_child = {
+			if = {
+				limit = {
+					is_landed = yes
+					NOT = {
+						has_story_of_type = story_vi_landed
+					}
+					vi_is_vampire_trigger = yes
+				}
+				create_story = story_vi_landed
+			}
+		}
+		end_story = yes
+	}
+	
+	# End story when no longer landed
+	effect_group = {
+		days = 300
+
+		trigger = {
+			story_owner = {
+				is_landed = no
+			}
+		}
+
+		triggered_effect = {
+			trigger = { always = yes }
+			effect = {
+				story_owner = {
+					remove_character_flag = vi_newly_landed
+				}
+				end_story = yes
+			}
+		}
+	}
+
+	effect_group = {
+		days = { 300 1500 }
+
+		trigger = {
+			story_owner = {
+				is_landed = yes
+				#has_character_flag = vi_newly_landed
+				NOT = {
+					has_trait = vi_exposed_vampire
+				}
+			}
+		}
+
+		triggered_effect = {
+			trigger = { always = yes }
+			effect = {
+				scope:story_owner = {
+					vi_vassal_gets_suspicious = yes
+				}
+			}
+		}
+	}
+
+	effect_group = {
+		days = { 300 900 }
+
+		trigger = {
+			story_owner = {
+				NOT = {
+					has_character_flag = vi_newly_landed
+				}
+				is_landed = yes
+				NOT = {
+					has_trait = vi_exposed_vampire
+				}
+			}
+		}
+
+		random_valid = {
+			triggered_effect = {
+				trigger = { always = yes }
+				effect = {
+					story_owner = {
+						vi_neighboring_ruler_gets_suspicious = yes
+					}
+				}
+			}
+		}
+	}
+
+	effect_group = {
+		days = { 100 300 }
+
+		trigger = {
+			story_owner = {
+				has_trait = vi_exposed_vampire
+				is_landed = yes
+			}
+		}
+
+		first_valid = {
+			triggered_effect = {
+				trigger = {
+					story_owner = {
+						OR = {
+							AND = {
+								exists = var:vi_inquisitions_beaten
+								var:vi_inquisitions_beaten >= 3
+							}
+							is_at_war_with = title:k_papal_state.holder
+						}
+						
+					}
+					character:vi_michael = {
+						is_alive = yes
+						is_at_war = no
+					}
+				}
+				effect = {
+					story_owner = {
+						vi_awaken_the_archangel = yes
+					}
+				}
+			}
+			triggered_effect = {
+				trigger = { always = yes }
+				effect = {
+					story_owner = {
+						vi_neighboring_rulers_all_inquisition = yes
+					}
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,155 @@
+﻿l_english:
+ vi_hunt_scheme_phase_duration_add: "[GetScheme('vi_hunt').GetTypeName] [scheme_speed_single|E]"
+
+ vi_hunt: "Hunt"
+ vi_hunt_desc: "Soon [SCHEME.GetTargetCharacter.GetShortUINameNoTooltip]'s blood will be mine!"
+ vi_hunt_desc_general: "$vi_hunt$ is a [hostile_scheme|E] that aims to track down the target. It is a [secret_scheme|E] based on [intrigue|E].\n\nA successful $vi_hunt$ will result in a direct confrontation where a vampire can decide to drink the target's blood or turn the target into a vampire."
+
+ vi_hunt_interaction: "Hunt"
+ vi_hunt_action: "Hunt"
+ vi_hunt_interaction_desc: "Attempt to personally hunt down [recipient.GetShortUINameNoTooltip]"
+ vi_hunt_interaction_vampire_desc: "Attempt to personally hunt down [recipient.GetShortUINameNoTooltip]"
+
+ MURDER_SUCCESS_DESC: "[TARGET_CHARACTER.GetShortUIName|U] is killed"
+ MURDER_DISCOVERY_DESC: "[TARGET_CHARACTER.GetShortUIName|U] doesn't know you're coming"
+
+ vi_hunt_too_guarded_tt: "Target is too well-guarded to hunt without [GetPerk('vi_blink_perk').GetName( GetNullCharacter )]"
+ vi_hunt_too_guarded_vampire_tt: "[vampire|e] [rulers|e] cannot be hunted without [GetPerk('vi_shadowwalk_perk').GetName( GetNullCharacter )]"
+
+ SCHEME_TARGET_IS_A_RULER: "[target.GetShortUIName] is a [ruler|E]: $VALUE|+0=$"
+ SCHEME_TARGET_IS_A_DHAMPIR: "[target.GetShortUIName] is a Dhampir: $VALUE|+0=$"
+ SCHEME_TARGET_IS_A_VAMPIRE: "Hunting a Vampire: $VALUE|+0=$"
+ SCHEME_TARGET_IS_A_ELDER_VAMPIRE: "Hunting an Elder Vampire: $VALUE|+0=$"
+ SCHEME_TARGET_IS_A_ANCIENT_VAMPIRE: "Hunting an Ancient Vampire: $VALUE|+0=$"
+ SCHEME_TARGET_IS_A_PROGENITOR_VAMPIRE: "Attacking a Progenitor is Suicide: $VALUE|+0=$"
+ SCHEME_TARGET_HAS_COURT_ARTIFACT: "[target.GetShortUIName] has a Holy Artifact at court: $VALUE|+0=$"
+ SCHEME_TARGET_LIEGE_HAS_COURT_ARTIFACT: "[target.GetShortUIName]'s liege has a Holy Artifact at court: $VALUE|+0=$"
+ SCHEME_TARGET_RELATIVE_SPEED: "Supernatural Speed Advantage: $VALUE|+0=$"
+
+ VI_HUNT_TARGET_IS_TRAVELLING: "[target.GetShortUIName] is travelling: $VALUE|+0=$"
+
+ I_AM_A_VAMPIRE: "I am a Vampire: $VALUE|+0=$"
+ I_AM_A_ELDER_VAMPIRE: "I am an Elder Vampire: $VALUE|+0=$"
+ I_AM_A_ANCIENT_VAMPIRE: "I am an Ancient Vampire: $VALUE|+0=$"
+ I_AM_A_PROGENITOR_VAMPIRE: "I am a Progenitor Vampire: $VALUE|+0=$"
+
+ vi_hunt_outcome.debug_advantage: "\n\nDEBUG:\n[vi_hunt_attacker.GetShortUIName] Advantage: [vi_hunt_attacker_advantage]\n[vi_hunt_defender.GetShortUIName] Advantage: [vi_hunt_defender_advantage]"
+ 
+ vi_hunt_outcome.debug_tt_durability: "Durability (Debug): [debug_durability]"
+ vi_hunt_outcome.debug_tt_speed: "Speed (Debug): [debug_speed]"
+ vi_hunt_outcome.debug_tt_charm: "Charm (Debug): [debug_charm]"
+ vi_hunt_outcome.debug_tt_insight: "Insight (Debug): [debug_insight]"
+
+
+ vi_hunt_outcome.option_ambush: "I must strike now before [vi_victim.GetSheHe] notices me."
+ vi_hunt_outcome.option_ambush_alt: "[vi_victim.GetShortUIName] is mine!"
+ vi_hunt_ambush_advantage_tt: "You gain the upper hand by successfully ambushing your target!"
+ vi_hunt_ambush_failure_tt: "Your target is able to react to your ambush..."
+
+ vi_hunt_outcome.option_charm: "[vi_victim.GetShortUIName] shall come to me willingly."
+ vi_hunt_outcome.option_charm_alt: "There is no need for violence, when charm can do the work."
+ vi_hunt_charm_success_tt: "You manage to charm your target."
+ vi_hunt_charm_failure_tt: "Your target becomes suspicious..."
+
+ vi_hunt_outcome.option_delay: "This is not the right time..."
+ vi_hunt_outcome.option_delay_alt: "I need to prepare myself more."
+ vi_hunt_outcome.option_end: "No, I shouldn't do this."
+
+ vi_hunt_outcome.option_psychic: "My powers of mind will stop [vi_hunt_opponent.GetShortUIName] in [vi_hunt_opponent.GetHerHis] tracks."
+ vi_hunt_outcome.option_speed: "No one can match my speed!"
+ vi_hunt_outcome.option_speed_harry: "[vi_hunt_opponent.GetShortUIName] will die by a thousand cuts."
+ vi_hunt_outcome.option_trade: "There is no need to dodge, I will use the opportunity to counterattack."
+ vi_hunt_outcome.option_trade_tt: "This option counters the enemy's speed if they go for a decisive attack."
+
+ vi_hunt_outcome.option_insight: "I can see [vi_hunt_opponent.GetFirstNamePossessive] every move!"
+ vi_hunt_outcome.option_trade_tt: "This option counters the enemy's speed."
+
+ vi_hunt_outcome.option_drink: "Sating my thirst is enough for now."
+ vi_hunt_outcome.option_drain_kill: "I will drink [vi_victim.GetHerHim] dry!"
+ vi_hunt_outcome.option_kill: "[vi_victim.GetShortUIName] dies today!"
+ vi_hunt_outcome.option_turn: "[vi_victim.GetShortUIName] shall awaken as a vampire."
+
+ vi_hunt_outcome.option_callforhelp: "Help! I am being attacked!"
+ vi_hunt_outcome.option_callforhelp_tt: "You call for help."
+
+ vi_hunt_outcome.enemy_psychic: "[vi_hunt_opponent.GetShortUIName] attempts to use their powers of mental domination on me to cause me to stumble."
+ vi_hunt_outcome.enemy_weapon: "[vi_hunt_opponent.GetShortUIName] pulls out [vi_victim.GetHerHis] weapon to counterattack."
+ vi_hunt_outcome.enemy_speed: "[vi_hunt_opponent.GetTitledFirstNamePossessive] form blurs as [vi_hunt_opponent.GetSheHe] moves with superhuman speed."
+ vi_hunt_outcome.enemy_afterimages: "[vi_hunt_opponent.GetShortUIName] leaves countless afterimages in [vi_hunt_opponent.GetHerHis] wake as [vi_hunt_opponent.GetSheHe] seeks an angle of attack. "
+ vi_hunt_outcome.enemy_trade: "[vi_hunt_opponent.GetShortUIName] makes no attempt to avoid my attack, opting to take the opportunity counterattack at the same time."
+ vi_hunt_outcome.enemy_insight: "[vi_hunt_opponent.GetShortUIName] fights in a measured manner to deflect my blows."
+ vi_hunt_outcome.enemy_generic_1: "[vi_hunt_opponent.GetShortUIName] retaliates furiously."
+
+ vi_hunt_outcome.enemy_flee: "Then, [vi_hunt_opponent.GetSheHe] takes the first opportunity to disengage and try to flee."
+
+ vi_hunt_outcome.1001.t: "A Perfect Opportunity"
+ vi_hunt_outcome.1001.desc: "Patience is a predator's greatest virtue, and tonight, my virtues are paying off as I find my prey alone and undefended."
+ vi_hunt_outcome.alpha_notice_desc: "@warning_icon! #X Hunt is technically feature-complete, but in need of a lot more flavor variations. This notice will only show once per character. #!"
+
+ vi_hunt_outcome.2001.t: "Ambushed"
+ vi_hunt_outcome.2001.desc: "Just when I thought I was alone, I was attacked by [vi_attacker.GetShortUIName]!"
+
+ vi_hunt_outcome.3001.t: "First Strike"
+ vi_hunt_outcome.3001.miss_desc: "My first attack fails to land. "
+ vi_hunt_outcome.3001.hit_desc: "My attack lands, but is insufficient to incapacitate [vi_victim.GetShortUIName]. "
+ vi_hunt_outcome.3001.confident_desc: "No matter, I have surely claimed the upper hand in this encounter."
+ vi_hunt_outcome.3001.confident_desc_not: "I am not as certain of my chances any more."
+
+ vi_hunt_outcome.4001.t: "Critical Moments"
+ vi_hunt_outcome.4001.desc: "As our battle rages on, "
+ vi_hunt_outcome.4001.winning_desc: "I am overpowering [vi_hunt_opponent.GetShortUIName]. "
+ vi_hunt_outcome.4001.losing_desc: "it becomes apparent [vi_hunt_opponent.GetShortUIName] is overpowering me. "
+ vi_hunt_outcome.4001.tie_desc: "we seem evenly matched. "
+ vi_hunt_outcome.4001.losing_desc_elder: "It was perhaps a mistake to fight an older vampire."
+
+
+
+ vi_hunt_outcome.option_flee: "I should escape!"
+ vi_hunt_outcome.option_commit: "I will press my advantage."
+ vi_hunt_outcome.option_exert: "I must use every ounce of my power!"
+
+ vi_hunt_outcome.9001.t: "Victory" #Attacker Victory
+ vi_hunt_outcome.9001.desc: "I slam [vi_victim.GetShortUIName] onto the ground. [vi_victim.GetSheHe|U] is completely pinned, unable to resist my strength or avoid my fangs."
+
+ vi_hunt_outcome.9002.t: "Assailant in the Dark"
+ vi_hunt_outcome.9002.desc: "In my rare moment of solitude, I was attacked and pinned down! "
+
+ vi_hunt_outcome.9101.t: "Turnaround Victory"
+ vi_hunt_outcome.9101.desc: "Despite [vi_hunt_attacker.GetTitledFirstNamePossessive] attempt to ambush me, I swiftly turned the tables on [vi_attacker.GetHerHim]."
+ vi_hunt_outcome.9101.fled_desc: "\n\nUnfortunately, the coward fled before I could pin [vi_attacker.GetHerHim] down."
+
+ vi_hunt_outcome.9102.t: "When Hunter Becomes the Hunted"
+ vi_hunt_outcome.9102.desc: "It was a grave mistake to challenge [vi_hunt_defender.GetShortUIName]..."
+
+
+ vi_hunt_outcome.end.lose_desc: "I was defeated and pinned down. "
+ vi_hunt_outcome.end.drink_desc: "Unable to fight back, I watch helplessly as my assailant leans down and bites into my neck..."
+ vi_hunt_outcome.end.kill_desc: "With all the fight in me gone, my attacker ends my life."
+ vi_hunt_outcome.end.nothing_desc: "Despite my helplessness, my assailant ultimately departs, leaving me bruised but alive."
+
+ vi_hunt_outcome.option_question: "What happens to me now...?"
+
+ vi_hunt_outcome.9011.t: "Powers of Seduction"
+ vi_hunt_outcome.9011.desc: "[vi_victim.GetShortUIName] is surprised to see me, but all other thoughts turn to desire. I urge [vi_victim.GetHerHim] to come with me and [vi_victim.GetSheHe] gladly obliges..."
+
+ vi_hunt_fled_title: "Fled!"
+ vi_hunt_attacker_fled_toast: "[vi_hunt_attacker.GetShortUIName] fled the battle!"
+ vi_hunt_defender_fled_toast: "[vi_hunt_defender.GetShortUIName] fled the battle!"
+
+
+
+ vi_hunt_ongoing.0001.t: "More Time Needed"
+ vi_hunt_ongoing.0001.desc: "I have followed [target.GetShortUIName] for weeks, but have yet to find an appropriate opportunity to ambush them."
+
+ vi_hunt_ongoing.option_auspex: "I must draw upon my powers of precognition..."
+ vi_hunt_auspex_modifier: "Precognitive Paths"
+
+
+ vi_hunt_ongoing.option_animalspeak: "[target.GetShortUIName] shall be secretly watched by creatures of the night."
+ vi_hunt_animalspeak_modifier: "Animal Spies"
+
+ vi_hunt_ongoing.option_tryharder: "Alas, I must devote more time and effort into this!"
+ vi_hunt_effort_modifier: "Diligence"
+
+
+ vi_hunt_ongoing.option_giveup: "No, it's time to give this a rest."

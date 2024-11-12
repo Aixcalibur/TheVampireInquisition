@@ -69,9 +69,9 @@ vi_vampire_3 = {
 	health = 1
 	#fertility = -1
 	stress_gain_mult = 0.25
-	character_travel_speed_mult = -0.5
+	character_travel_speed_mult = -0.25
 
-	# prowess_no_portrait = 5
+	prowess_no_portrait = 10
 	monthly_vi_vampire_lifestyle_xp_gain_add = 2
 	enemy_hostile_scheme_phase_duration_add = major_scheme_phase_duration_malus_value
 	enemy_hostile_scheme_success_chance_add = -50
@@ -101,9 +101,9 @@ vi_vampire_4 = {
 	health = 2
 	general_opinion = -10
 	stress_gain_mult = 0.25
-	character_travel_speed_mult = -0.5
+	character_travel_speed_mult = -0.25
 	
-	# prowess_no_portrait = 10
+	prowess_no_portrait = 20
 	monthly_vi_vampire_lifestyle_xp_gain_add = 3
 	enemy_hostile_scheme_phase_duration_add = monumental_scheme_phase_duration_malus_value
 	enemy_hostile_scheme_success_chance_add = -80
@@ -132,7 +132,7 @@ vi_vampire_5 = {
 	health = 20
 	general_opinion = -10
 	#fertility = -1
-	character_travel_speed_mult = 0.5
+	character_travel_speed_mult = -0.25
 
 	prowess_no_portrait = 100
 	enemy_hostile_scheme_phase_duration_add = 200
@@ -158,6 +158,7 @@ vi_exposed_vampire = {
 	dread_baseline_add = 20
 	enemy_hostile_scheme_phase_duration_add = major_scheme_phase_duration_bonus_value
 	enemy_hostile_scheme_success_chance_add = 30
+	county_opinion_add = -100
 	triggered_opinion = {
 		parameter = vi_no_masquerade
 		check_missing = yes	
@@ -194,7 +195,7 @@ vi_heartstealer = {
 	shown_in_ruler_designer = no
 
 	attraction_opinion = 20
-	stress_loss_mult = -0.15
+	#stress_loss_mult = -0.15
 	diplomacy_per_stress_level = 2
 	intrigue_per_stress_level = 2
 
@@ -206,7 +207,7 @@ vi_dragonsscion = {
 	shown_in_ruler_designer = no
 
 	martial_per_stress_level = 4
-	stress_loss_mult = -0.15
+	#stress_loss_mult = -0.15
 	dread_baseline_add = 40
 	dread_gain_mult = 0.5
 	prowess_no_portrait = 4
@@ -219,7 +220,7 @@ vi_allseeing = {
 	shown_in_ruler_designer = no
 
 	stewardship_per_stress_level = 4
-	stress_loss_mult = -0.25
+	#stress_loss_mult = -0.25
 	stress_gain_mult = 0.25
 	dread_baseline_add = 10
 	enemy_scheme_secrecy_add = -50

@@ -1,0 +1,285 @@
+﻿namespace = vi_fake_succession
+
+vi_fake_succession.0001 = {
+	type = character_event
+	title = vi_fake_succession.0001.t
+	desc = vi_fake_succession.0001.desc
+	theme = realm
+	#override_background = { reference = docks }
+	
+	left_portrait = {
+		character = root
+		animation = debating
+	}
+	# right_portrait = {
+	# 	character = scope:aide
+	# 	animation = scepter
+	# }
+
+	immediate = {
+		
+	}
+
+	option = { #Use the city's native capabilities to produce what's needed
+		name = vi_fake_succession.0001.a
+		save_scope_as = actor
+
+		add_character_flag = {
+			flag = fake_succession_decision_flag
+			years = 10
+		}
+
+		# start_scheme = {
+		# 	type = vi_fake_succession_scheme
+		# 	target_character = root
+		# }
+		
+		begin_scheme_with_agents_effect = {
+			SCHEME_TYPE = vi_fake_succession_scheme
+			TARGET_TYPE = target_character
+			TARGET_SCOPE = root
+			# Success.
+			AGENT_1 = agent_physic
+			AGENT_2 = agent_diplomat
+			AGENT_3 = agent_cleric_success
+			AGENT_4 = agent_scribe
+			# Speed.
+			AGENT_5 = agent_planner
+		}
+
+		ai_chance = {
+			base = 100
+			
+		}
+	}
+	option = { #Actually... never mind
+		name = vi_fake_succession.0001.b
+		#remove_decision_cooldown = vi_fake_succession_decision
+		
+		ai_chance = {
+			base = 0
+			
+		}
+	}
+}
+
+vi_fake_succession.1001 = {
+	hidden = yes
+
+	immediate = {
+		scope:scheme = {
+			scheme_owner = {
+				save_scope_as = owner
+				#SUCCESS ROLL
+				random = {
+					chance = scope:scheme.scheme_success_chance
+					save_scope_value_as = {
+						name = scheme_successful
+						value = yes
+					}
+				}
+				if = {
+					limit = { exists = scope:scheme_successful }
+					trigger_event = {
+						id = vi_fake_succession.1002
+						days = 1
+					}
+				}
+				else = {
+					trigger_event = {
+						id = vi_fake_succession.1003
+						days = 1
+					}	
+				}
+			}
+		}
+	}
+}
+
+
+# Success
+vi_fake_succession.1002 = {
+	type = character_event
+	title = vi_fake_succession.1002.t
+	desc = vi_fake_succession.1002.desc
+	theme = realm
+	left_portrait = {
+		character = root
+		animation = personality_bold
+	}
+
+	immediate = {
+
+		every_relation = {
+			limit = {
+				NOR = {
+					vi_is_vampire_trigger = yes
+					has_trait = vi_dhampir
+				}
+			}
+			add_opinion = {
+				target = root
+				modifier = suspicion_opinion
+				opinion = -10
+			}
+			if = {
+				limit = {
+					has_relation_lover = root
+				}
+				remove_relation_lover = root
+			}
+			if = {
+				limit = {
+					has_relation_friend = root
+				}
+				remove_relation_friend = root
+			}
+			if = {
+				limit = {
+					has_relation_best_friend = root
+				}
+				remove_relation_best_friend = root
+			}
+			if = {
+				limit = {
+					has_relation_soulmate = root
+				}
+				remove_relation_soulmate = root
+			}
+		}
+
+		every_targeting_scheme = {
+			limit = {
+				scope:owner = {
+					NOR = {
+						vi_is_vampire_trigger = yes
+						has_trait = dhampir
+					}
+				}
+			}
+			end_scheme = yes
+		}
+
+		add_character_modifier = {
+			modifier = vi_avoiding_scrutiny_modifier
+			years = 3
+		}
+
+		add_legitimacy = -500
+
+		add_prestige_level = {
+			value = root.prestige_level
+			multiply = -1
+			add = 1
+			max = -1
+		}
+
+		add_piety_level = {
+			value = root.piety_level
+			multiply = -1
+			add = 1
+			max = -1
+		}
+
+		add_prestige = {
+			value = root.prestige
+			multiply = -1
+		}
+
+		add_piety = {
+			value = root.piety
+			multiply = -1
+		}
+
+		hidden_effect = {
+			every_secret = {
+				type = vi_vampire_secret
+				remove_secret = yes
+			}
+			add_secret = {
+				type = secret_vi_vampire
+			}
+		}
+		
+	}
+
+	option = {
+		name = vi_fake_succession.1002.a
+		scope:scheme = { end_scheme = yes }
+	}
+}
+
+# Failure
+vi_fake_succession.1003 = {
+	type = character_event
+	title = vi_fake_succession.1003.t
+	desc = vi_fake_succession.1003.desc
+	theme = realm
+	
+	left_portrait = {
+		character = root
+		animation = rage
+	}
+
+	right_portrait = {
+		character = scope:vi_vassal
+		animation = map_fear
+	}
+
+	immediate = {
+		save_scope_as = actor
+
+		add_legitimacy = -2000
+
+		every_secret = {
+			type = secret_vi_vampire
+			expose_secret = root
+		}
+
+		show_as_tooltip = {
+			add_trait = vi_exposed_vampire
+		}
+
+		random_vassal = {
+			limit = {
+				vi_is_vampire_trigger = no
+			}
+
+			save_scope_as = vi_vassal
+		}
+
+		if = {
+			limit = {
+				NOT = {
+					exists = scope:vi_vassal
+				}
+			}
+			random_courtier_or_guest = {
+				limit = {
+					vi_is_vampire_trigger = no
+				}
+				save_scope_as = vi_vassal
+			}
+		}
+	}
+
+	#Option A: Too bad
+	option = {
+		name = vi_fake_succession.1003.a
+		scope:scheme = { end_scheme = yes }
+	}
+
+	after = {
+		if = {
+			limit = {
+				NOT = {
+					has_trait = vi_exposed_vampire
+				}
+			}
+			hidden_effect = {
+				add_trait = vi_exposed_vampire
+			}
+			
+		}
+	}
+}

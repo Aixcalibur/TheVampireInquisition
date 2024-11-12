@@ -39,7 +39,7 @@ k_vi_court_of_night = {
 
 	d_vi_cologne = {
 		#definite_form = yes
-		ruler_uses_title_name = no
+		#ruler_uses_title_name = no
 		landless = yes
 		can_be_named_after_dynasty = no
 		capital = c_cologne
@@ -49,7 +49,7 @@ k_vi_court_of_night = {
 
 	d_vi_orleans = {
 		#definite_form = yes
-		ruler_uses_title_name = no
+		#ruler_uses_title_name = no
 		landless = yes
 		can_be_named_after_dynasty = no
 		capital = c_orleans
@@ -59,7 +59,7 @@ k_vi_court_of_night = {
 
 	d_vi_zurich = {
 		#definite_form = yes
-		ruler_uses_title_name = no
+		#ruler_uses_title_name = no
 		landless = yes
 		can_be_named_after_dynasty = no
 		capital = c_zurich
@@ -69,7 +69,7 @@ k_vi_court_of_night = {
 
 	d_vi_normandy = {
 		#definite_form = yes
-		ruler_uses_title_name = no
+		#ruler_uses_title_name = no
 		landless = yes
 		can_be_named_after_dynasty = no
 		capital = c_rouen
@@ -79,7 +79,7 @@ k_vi_court_of_night = {
 
 	d_vi_lyon = {
 		#definite_form = yes
-		ruler_uses_title_name = no
+		#ruler_uses_title_name = no
 		landless = yes
 		can_be_named_after_dynasty = no
 		capital = c_lyon
@@ -90,8 +90,8 @@ k_vi_court_of_night = {
 }
 
 d_vi_venezia = {
-	definite_form = yes
-	ruler_uses_title_name = no
+	#definite_form = yes
+	#ruler_uses_title_name = no
 	landless = yes
 	can_be_named_after_dynasty = no
 	capital = c_venezia
@@ -100,8 +100,8 @@ d_vi_venezia = {
 }
 
 d_vi_prague = {
-	definite_form = yes
-	ruler_uses_title_name = no
+	#definite_form = yes
+	#ruler_uses_title_name = no
 	landless = yes
 	can_be_named_after_dynasty = no
 	capital = c_praha
@@ -110,8 +110,8 @@ d_vi_prague = {
 }
 
 d_vi_london = {
-	definite_form = yes
-	ruler_uses_title_name = no
+	#definite_form = yes
+	#ruler_uses_title_name = no
 	landless = yes
 	can_be_named_after_dynasty = no
 	capital = c_middlesex

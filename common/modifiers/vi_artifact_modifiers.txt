@@ -14,3 +14,11 @@ vi_bida_dead_modifier = {
 vi_durendal_modifier = {
 	prowess_no_portrait = 20
 }
+
+vi_archangel_sword_modifier = {
+	health = -5
+	monthly_dynasty_prestige = 1
+	tolerance_advantage_mod = 12
+	knight_effectiveness_per_prowess = 0.01
+	prowess_per_piety_level = 6
+}

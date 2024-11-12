@@ -20,13 +20,14 @@
 
  vi_masquerade_required_name: "Required"
  vi_masquerade_required_desc: "The Masquerade refers to the obligation of all vampires to maintain the secret of vampirism."
- doctrine_parameter_vi_masquerade: "Exposed vampires are [criminals|E]. Considers $vi_vampire_religion_adj$ [faiths|E] that require Masquerade to be $hostility_astray_tooltippable$ and [faiths|E] with that do not respect the Masquerade to be $hostility_evil_tooltippable$"
+ doctrine_parameter_vi_masquerade: "Characters with the [GetTrait('vi_exposed_vampire').GetName( GetNullCharacter )] [trait|E] are [criminals|E]\n$EFFECT_LIST_BULLET$Mortals cannot follow this [faith|E]\n$EFFECT_LIST_BULLET$Considers $vi_vampire_religion_adj$ [faiths|E] that require Masquerade to be $hostility_astray_tooltippable$ and [faiths|E] with that do not respect the Masquerade to be $hostility_evil_tooltippable$"
  doctrine_parameter_hostility_override_vi_masquerade_required: ""
  doctrine_parameter_hostility_override_vi_masquerade_not_required: ""
+ vi_mortal_masquerade_conversion: "Mortals cannot convert to this faith"
 
  vi_masquerade_not_required_name: "Not Required"
  vi_masquerade_not_required_desc: "The Masquerade refers to the obligation of all vampires to maintain the secret of vampirism."
- doctrine_parameter_vi_no_masquerade: "Exposed vampires are fully accepted. Considers $vi_vampire_religion_adj$ [faiths|E] that do not require Masquerade to be $hostility_astray_tooltippable$ and [faiths|E] that require Masquerade to be $hostility_hostile_tooltippable$"
+ doctrine_parameter_vi_no_masquerade: "Characters with the [GetTrait('vi_exposed_vampire').GetName( GetNullCharacter )] [trait|E] are fully accepted\n$EFFECT_LIST_BULLET$Considers $vi_vampire_religion_adj$ [faiths|E] that do not require Masquerade to be $hostility_astray_tooltippable$ and [faiths|E] that require Masquerade to be $hostility_hostile_tooltippable$"
 
  holy_site_versailles_name: "Versailles"
  holy_site_versailles_effect_name: "From [holy_site|E] #weak ($holy_site_versailles_name$)#!"

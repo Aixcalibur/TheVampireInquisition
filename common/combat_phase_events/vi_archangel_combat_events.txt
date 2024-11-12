@@ -32,31 +32,61 @@
 		# Trigger the battle event indicating we have been Wounded.
 		random_list = {
 			50 = {
-				scope:combat_side.enemy_side = {
-					random_side_knight = {
-						limit = {
-							is_alive = yes
+				if = {
+					limit = {
+						scope:combat_side.enemy_side = {
+							any_side_knight = {
+								is_alive = yes
+								#vi_is_vampire_trigger = yes
+							}
 						}
-						save_scope_as = enemy_knight
+					}
+					scope:combat_side.enemy_side = {
+						random_side_knight = {
+							limit = {
+								is_alive = yes
+							}
+							save_scope_as = enemy_knight
+						}
+					}
+					
+					scope:combat_side = {
+						battle_event = {
+							key = "vi_archangel_killed_enemy"
+							left_portrait = root
+							right_portrait = scope:enemy_knight
+							type = death
+							target_right = yes
+						}
+					}
+		
+					scope:enemy_knight = {
+						save_died_in_battle_variables_effect = {
+							ENEMY = scope:combat_side.side_primary_participant
+							LEADER = scope:combat_side.enemy_side.side_primary_participant
+							LOCATION = scope:combat_side.combat.location
+						}
+						death = {
+							death_reason = death_vi_holy_flames
+							killer = root
+						}
+					}
+				}
+				else = {
+					scope:combat_side = {
+						battle_event = {
+							key = "vi_archangel_killed_army"
+							left_portrait = root
+							type = death
+						}
+					}
+		
+					add_character_modifier = {
+						modifier = vi_holy_flames_modifier
+						days = 20
 					}
 				}
 				
-				scope:combat_side = {
-					battle_event = {
-						key = "vi_archangel_killed_enemy"
-						left_portrait = root
-						right_portrait = scope:enemy_knight
-						type = death
-						target_right = yes
-					}
-				}
-	
-				scope:enemy_knight = {
-					death = {
-						death_reason = death_vi_holy_flames
-						killer = root
-					}
-				}
 			}
 			50 = {
 				if = {
@@ -116,9 +146,6 @@
 		
 					# scope:combat_side.enemy_side = {
 					# 	every_side_commander = {
-					# 		this.commanding_army = {
-					# 			deplete_army_by_percentage = 0.4
-					# 		}
 					# 		if = {
 					# 			limit = {
 					# 				vi_is_vampire_trigger = yes

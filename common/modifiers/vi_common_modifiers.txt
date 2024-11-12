@@ -23,6 +23,13 @@ vi_soothed_modifier = {
 	stress_gain_mult = -0.2
 }
 
+vi_avoiding_scrutiny_modifier = {
+	icon = mask_mixed
+	enemy_hostile_scheme_success_chance_add = -10
+	general_opinion = -10
+	stewardship = -1
+}
+
 vi_inspired_modifier = {
 	icon = magic_positive
 	health = 0.25
@@ -41,6 +48,28 @@ vi_delicious_modifier = {
 	life_expectancy = 5
 	fertility = 0.1
 	inbreeding_chance = -0.25
+}
+
+vi_roused_suspicion_modifier = {
+	icon = stress_mixed
+	stress_gain_mult = 0.25
+	intrigue = 6
+}
+
+vi_fateunraveled_modifier = {
+	icon = magic_negative
+	stress_gain_mult = 0.25
+	health = -0.5
+	monthly_lifestyle_xp_gain_mult = -0.5
+	life_expectancy = -10
+}
+
+vi_inquisition_leader_modifier = {
+	icon = martial_postiive
+	martial = 2
+	levy_reinforcement_rate = 0.5
+	levy_size = 0.5
+	army_maintenance_mult = -0.5
 }
 
 vi_vampire_strain_modifier = {
@@ -96,9 +125,20 @@ vi_skittish_modifier = {
 	stress_gain_mult = 0.5
 }
 
+vi_holy_ground_modifier = {
+	icon = magic_positive
+	development_growth = 0.1
+}
+
 vi_unbreakable_calm_modifier = {
 	icon = magic_positive
 	stress_gain_mult = -10
+}
+
+vi_new_prince_modifier = {
+	icon = prestige_negative
+	stress_gain_mult = 0.5
+	monthly_income_mult = -0.4
 }
 
 vi_ancient_regime_modifier = {
@@ -130,7 +170,7 @@ vi_instilledfear_modifier = {
 }
 
 vi_excommunicated_modifier = {
-	icon = magic_negative
+	icon = mask_negative
 	stress_gain_mult = 0.1
 	enemy_hostile_scheme_success_chance_add = 10
 	enemy_hostile_scheme_phase_duration_add = -10

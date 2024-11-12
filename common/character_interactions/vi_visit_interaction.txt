@@ -5,20 +5,29 @@
 	interface_priority = 100
 	desc = vi_visit_interaction_desc
 
-	cooldown = {
-		years = 1
-	}
+	# cooldown = {
+	# 	years = 1
+	# }
 
-	cooldown_against_recipient = {
-		years = 5
-	}
+	# cooldown_against_recipient = {
+	# 	years = 5
+	# }
 
 	is_shown = {
-		scope:recipient = {
-			is_adult = yes
-		}
+		# scope:recipient = {
+		# 	is_adult = yes #this is already part of the is available trigger
+		# }
 		scope:actor = {
 			has_perk = vi_charm_perk
+			NOT = {
+				this = scope:recipient
+			}
+		}
+
+		scope:recipient = {
+			NOT = {
+				is_incapable = yes
+			}
 		}
 	}
 	
@@ -42,13 +51,21 @@
 		}
 		scope:actor = {
 			knows_language_of_culture = scope:recipient.culture
-			is_available_for_activity_trigger = yes
+			is_available = yes
 			NOT = {
 				is_at_war_with = scope:recipient
 			}
 		}
 		scope:recipient = {
-			is_available_for_activity_trigger = yes
+			is_adult = yes
+			is_available = yes
+			# custom_tooltip = {
+			# 	text = vi_available_to_visit
+			# 	NOR = {
+			# 		exists = var:booked_for_a_party
+			# 		exists = var:engaged_in_single_combat
+			# 	}
+			# }
 			NOT = {
 				has_relation_rival = scope:actor
 			}
@@ -121,43 +138,16 @@
 					scope:recipient.location = scope:actor.location
 				}
 			}
-			custom_tooltip = vi_visit_courtier_tt
-			trigger_event = {
-				on_action = vi_visit_start
-				days = 1
+			scope:actor = {
+				custom_tooltip = vi_visit_courtier_tt
+				trigger_event = {
+					on_action = vi_visit_arrival_selector
+					days = 1
+				}
 			}
 		}
 		else = {
 			scope:actor = {
-				if = {
-					limit = {
-						scope:recipient = {
-							OR = {
-								vi_has_holy_court_artifact_trigger = yes
-								vi_has_holy_artifact_equipped_trigger = yes
-								employer ?= {
-									vi_has_holy_court_artifact_trigger = yes
-								}
-							}
-						}
-					}
-					custom_tooltip = vi_visit_holy_artifact_tt
-				}
-				else_if = {
-					limit = {
-						scope:recipient = {
-							OR = {
-								vi_is_vampire_trigger = yes
-								has_trait = vi_dhampir
-							}
-						}
-						NOT = {
-							has_perk = vi_presence_perk
-						}
-					}
-					custom_tooltip = vi_need_presence_tt
-				}
-				
 				custom_tooltip = vi_visit_travel_tt
 				start_travel_plan = {
 					destination = scope:vi_visit_destination
@@ -167,6 +157,39 @@
 					on_arrival_destinations = all_but_last
 				}
 			}
+		}
+		if = {
+			limit = {
+				scope:recipient = {
+					OR = {
+						vi_has_holy_court_artifact_trigger = yes
+						vi_has_holy_artifact_equipped_trigger = yes
+						employer ?= {
+							vi_has_holy_court_artifact_trigger = yes
+						}
+					}
+				}
+			}
+
+			custom_description_no_bullet = {
+				text = vi_visit_holy_artifact_warning_tt
+			}
+		}
+		else_if = {
+			limit = {
+				scope:recipient = {
+					OR = {
+						vi_is_vampire_trigger = yes
+						has_trait = vi_dhampir
+					}
+				}
+				scope:actor = {
+					NOT = {
+						has_perk = vi_presence_perk
+					}
+				}
+			}
+			custom_tooltip = vi_need_presence_warning_tt
 		}
 	}
 	
