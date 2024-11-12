@@ -15,7 +15,8 @@
 	
 	modifier = {
 		general_opinion = 10
-		stress_gain_mult = 0.2
+		stress_gain_mult = 0.1
+		stress_loss_mult = -0.2
 	}
 
 	auto_selection_weight = {
@@ -28,13 +29,21 @@
 				}
 				
 			}
-			add = 1989
+			add = 1000
+		}
+		if = {
+			limit = {
+				NOT = {
+					has_education_martial_trigger = yes
+				}
+			}
+			add = 989
 		}
 		if = {
 			limit = {
 				has_trait = shy
 			}
-			multiply = 0.1
+			multiply = 0.5
 		}
 		if = {
 			limit = {
@@ -61,8 +70,10 @@ vi_vampire_will_focus = {
 	}
 	
 	modifier = {
-		prowess = 7
-		stress_gain_mult = 0.2
+		knight_effectiveness_mult = 0.5
+		prowess = 3
+		stress_gain_mult = 0.1
+		stress_loss_mult = -0.2
 	}
 
 	auto_selection_weight = {
@@ -105,22 +116,12 @@ vi_vampire_insight_focus = {
 	
 	modifier = {
 		#stewardship = -5
-		monthly_lifestyle_xp_gain_mult = 0.25
-		stress_gain_mult = 0.2
+		monthly_lifestyle_xp_gain_mult = 0.3
+		stress_gain_mult = 0.5
 	}
 
 	auto_selection_weight = {
-		value = 11
-		if = {
-			limit = {
-				OR = {
-					has_education_stewardship_trigger = yes
-					has_education_learning_trigger = yes
-				}
-				
-			}
-			add = 1989
-		}
+		value = 0
 
 		if = {
 			limit = {
@@ -154,10 +155,9 @@ vi_vampire_adventurer_focus = {
 	}
 	
 	modifier = {
-		prowess = 3
+		prowess = 4
 		vi_hunt_scheme_phase_duration_add = -50
 		monthly_lifestyle_xp_gain_mult = 0.2
-		stress_gain_mult = 0.2
 	}
 
 	auto_selection_weight = {

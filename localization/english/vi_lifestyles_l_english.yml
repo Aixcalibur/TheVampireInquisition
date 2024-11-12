@@ -145,10 +145,6 @@
  vi_will_martial_perk_name: "Martial"
  vi_will_prowess_perk_name: "Prowess"
 
-
-
-
-
  vi_insight_tree_name: "All-Seeing"
 
  vi_vampire_insight_focus: "$vi_vampire_insight_focus_short$ Focus"
@@ -162,6 +158,7 @@
 
 
  vi_peopleofinterest_perk_name: "Discerning Eye"
+ vi_pending_perk_effect: "Pending a more interesting perk effect"
  vi_peopleofinterest_perk_effect: "Can use the [vi_seek_talent|E] [decision|E]"
 
  game_concept_vi_seek_talent: "Seek Talent"

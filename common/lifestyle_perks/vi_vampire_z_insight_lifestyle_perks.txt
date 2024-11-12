@@ -61,12 +61,12 @@ vi_peopleofinterest_perk = {
 	parent = vi_auspex_perk
 
 	character_modifier = {
-		diplomacy = 3
+		
 	}
 
 	effect = {
 		custom_description_no_bullet = {
-			text = vi_peopleofinterest_perk_effect
+			text = vi_pending_perk_effect
 		}
 
 		vi_on_perk_added_effect = yes
@@ -118,12 +118,12 @@ vi_heartsofmen_perk = {
 
 	character_modifier = {
 		enemy_hostile_scheme_success_chance_growth_add = -1
-		vassal_opinion = 10
+		intrigue = 2
 	}
 
 	effect = {
 		custom_description_no_bullet = {
-			text = vi_heartsofmen_perk_effect
+			text = vi_pending_perk_effect
 		}
 
 		vi_on_perk_added_effect = yes
