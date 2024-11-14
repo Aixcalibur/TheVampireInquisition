@@ -883,7 +883,7 @@ vi_orlok = {
 	trait = intellect_good_2
 	trait = shrewd
 	trait = intrigue_court_2
-	mother = vi_orlok_wife
+	
 
 	563.7.17 = {
 		birth = yes
@@ -931,6 +931,7 @@ vi_beshim = {
 	trait = intrigue_court_1
 
 	father = vi_orlok
+	mother = vi_orlok_wife
 
 	give_nickname = nick_longsword
 
@@ -1075,6 +1076,7 @@ vi_alexia = {
 
 vi_orlok_wife = {
 	name = "Stevana"
+	female = yes
 	faith = orthodox
 	culture = vlach
 	575.1.1 = {
