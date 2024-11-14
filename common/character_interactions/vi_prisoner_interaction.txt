@@ -96,6 +96,15 @@ vi_drain_prisoner_interaction = {
 				dark_insights_skill_gain_roll_effect = yes
 			}
 		}
+
+		scope:actor = {
+			save_scope_as = vi_vampire
+		}
+
+		scope:recipient = {
+			save_scope_as = vi_victim
+			vi_vampire_drain_effect = yes
+		}
 	}
 
 	auto_accept = yes
