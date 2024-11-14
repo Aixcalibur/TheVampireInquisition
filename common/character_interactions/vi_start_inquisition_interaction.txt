@@ -144,6 +144,77 @@ vi_declare_inquisition_interaction = {
 		}
 	}
 	auto_accept = yes
+
+	ai_frequency = 60
+
+	ai_potential = {
+		is_landed = yes
+	}
+
+	ai_will_do = {
+		base = 25
+
+		#Personality
+		modifier = {
+			has_trait = zealous
+			add = 25
+		}
+
+		modifier = {
+			has_trait = craven
+			add = -100
+		}
+
+		modifier = {
+			has_trait = vi_inquisitor
+			add = 50
+		}
+
+		# House & Family
+
+		#Feuds
+		modifier = {
+			house.house_head ?= {
+				any_owned_story = {
+					story_type = story_cycle_house_feud
+					has_variable = house_feud_house
+					var:house_feud_house = scope:recipient.house
+				}
+			}
+			add = 50
+		}
+
+		# Relationships
+		modifier = {
+			add = 25
+			has_any_mild_bad_relationship_with_character_trigger = { CHARACTER = scope:recipient }
+		}
+
+		modifier = {
+			add = 50
+			has_any_moderate_bad_relationship_with_character_trigger = { CHARACTER = scope:recipient }
+		}
+
+		modifier = {
+			add = 100
+			has_any_worst_bad_relationship_with_character_trigger = { CHARACTER = scope:recipient }
+		}
+
+		modifier = {
+			add = -15
+			has_any_mild_good_relationship_with_character_trigger = { CHARACTER = scope:recipient }
+		}
+
+		modifier = {
+			add = -20
+			has_any_moderate_good_relationship_with_character_trigger = { CHARACTER = scope:recipient }
+		}
+
+		modifier = {
+			factor = 0
+			has_any_best_good_relationship_with_character_trigger = { CHARACTER = scope:recipient }
+		}
+	}
 }
 
 vi_declare_inquisition_landless_interaction = {
@@ -273,4 +344,8 @@ vi_declare_inquisition_landless_interaction = {
 		}
 	}
 	auto_accept = yes
+
+	ai_potential = {
+		always = no
+	}
 }

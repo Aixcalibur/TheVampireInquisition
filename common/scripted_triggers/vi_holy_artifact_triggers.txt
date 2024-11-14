@@ -34,6 +34,7 @@ vi_is_holy_artifact_trigger = {
 	OR = {
 		is_unique = yes
 		rarity = illustrious
+		rarity = famed
 	}
 	OR = {
 		exists = var:relic_religion

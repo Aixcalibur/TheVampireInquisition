@@ -44,6 +44,8 @@
  d_nf_vi_orlok_article: "$DEFAULT_TITLE_NAME_ARTICLE$
  d_nf_vi_orlok: "Orlok Family"
 
+ d_laamp_vi_helsing: "Wild Hunters"
+
 
  Esclarmonde: "Esclarmonde"
  vi_historical_character.esclarmonde: "Esclarmonde's origins have been meticulously buried by the Queen herself."
@@ -55,6 +57,8 @@
  nick_vi_shadowless: "the Prodigious Shadow"
  nick_vi_shadowless_desc: "[CHARACTER.GetTitledFirstNamePossessiveNoTooltip|U] immense size does not hinder [CHARACTER.GetHerHim] in the slightest when it comes to moving without sound or appearing where [CHARACTER.GetSheHe] is least expected."
  nick_vi_perfumer: "the Perfumer"
+ nick_vi_samildanach: "Samildánach"
+
 
  vi_artifact_durendal_description: "An indestructible sword of unknown origin. The blade shears through boulders with consummate ease."
 

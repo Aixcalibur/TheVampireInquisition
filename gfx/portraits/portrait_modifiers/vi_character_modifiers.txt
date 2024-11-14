@@ -1,7 +1,7 @@
 ﻿vi_character_accessories = {
 	usage = game
 	selection_behavior = max
-	priority = 2
+	priority = 11
 
 	vi_no_veil = {
 		dna_modifiers = {
@@ -36,6 +36,8 @@
             }
         }
 	}
+
+	
 
 	vi_esclarmonde = {
 		dna_modifiers = {
@@ -101,11 +103,61 @@
 				scope:age < 25 
 			}
 			modifier = {
-				add = 200
-				has_character_flag = vi_vampire
+				add = 500
+				vi_is_vampire_trigger = yes
+				NOT = {
+					has_character_flag = vi_bald
+				}
 			}
 		}
 	}
+
+	vi_braids = { # Let out but with smaller braids braided in
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = hairstyles
+				template = scripted_character_hairstyles_03
+				value = 0.4 # For the randomness to work correctly
+			}
+		}
+		weight = {
+			base = 0
+
+			 modifier = {
+				add = 999
+				exists = this
+				exists = character:vi_alexia
+				this = character:vi_alexia
+			}
+		}
+	}
+
+	vi_iconic_locks = {
+        dna_modifiers = {
+            accessory = {
+                mode = add
+                gene = hairstyles
+                template = ep3_byzantine_hairstyle
+                accessory = m_hair_ep3_byzantine_04
+            }
+            # accessory = {
+            #     mode = add
+            #     gene = beards
+            #     template = ep3_beards_straight
+            #     accessory = m_beard_ep3_byzantine_02
+            # }
+        }
+        weight = {
+            base = 0
+            modifier = {
+                add = 500
+                exists = this
+                exists = character:vi_michael
+                this = character:vi_michael
+            }
+        }
+    }
 
 	vi_bald = {
 		dna_modifiers = {

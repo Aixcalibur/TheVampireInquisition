@@ -12,11 +12,12 @@
 	is_basic = yes
 
 	# Parameters
-	speed_per_skill_point = 2
-	spymaster_speed_per_skill_point = 2
+	speed_per_skill_point = -2
+	speed_per_target_skill_point = 1
+	spymaster_speed_per_skill_point = -2
 	base_progress_goal = 365
 	base_maximum_success = 95
-	minimum_success = 1
+	minimum_success = 5
 	
 	# Core Triggers
 	allow = {
@@ -24,7 +25,6 @@
 		NOT = {
 			vi_is_vampire_trigger = yes
 		}
-		
 		custom_tooltip = {
 			text = vi_investigate_soothed_tt
 			NOT = {
@@ -48,13 +48,11 @@
 				in_diplomatic_range = scope:owner
 			}
 		}
-
 		scope:target = {
 			NOT = {
 				has_trait = vi_exposed_vampire
 			}
 		}
-
 		scope:owner = {
 			NOT = {
 				has_character_modifier = vi_soothed_modifier
@@ -73,18 +71,23 @@
 	odds_prediction = {
 		add = base_odds_prediction_target_is_char_value
 		add = odds_skill_contribution_intrigue_value
-		#add = odds_seduce_scheme_misc_value
 		min = 0
 	}
 
 	# Base Chances
 	base_success_chance = {
 		base = 50
-		scheme_type_skill_success_chance_modifier = { SKILL = INTRIGUE }
-		scheme_type_skill_success_chance_modifier = { SKILL = LEARNING }
 
-		#Countermeasures
-		apply_indirect_scheme_success_chance_adjustments_modifier = yes
+		#hostile_scheme_base_chance_modifier = yes
+
+		scheme_type_skill_success_chance_modifier = { SKILL = LEARNING }
+		modifier = {
+			add = {
+				value = scope:owner.intrigue
+				multiply = 2
+			}
+			desc = SCHEME_YOUR_INTRIGUE
+		}
 		
 		modifier = {
 			desc = "VI_VAMPIRE_HUNTER_SKILL"
@@ -133,61 +136,65 @@
 			scope:target = {
 				is_landed = yes
 			}
-			add = 25
+			add = 20
 		}
-
 		modifier = {
 			desc = "SCHEME_TARGET_IS_A_KING"
 			scope:target = {
 				is_landed = yes
 				highest_held_title_tier = tier_kingdom
 			}
-			add = 25
+			add = 20
 		}
-
 		modifier = {
 			desc = "SCHEME_TARGET_IS_AN_EMPEROR"
 			scope:target = {
 				is_landed = yes
 				highest_held_title_tier = tier_empire
 			}
-			add = 45
+			add = 40
+		}
+		modifier = {
+			desc = "VI_SCHEME_TARGET_REALM_SIZE"
+			scope:target = {
+				is_landed = yes
+			}
+			add = {
+				value = scope:target.sub_realm_size
+				if = {
+					limit = {
+						scope:target.sub_realm_size >= major_realm_size
+					}
+					multiply = 2
+				}
+				else_if = {
+					limit = {
+						scope:target.sub_realm_size >= medium_realm_size
+					}
+					multiply = 1.5
+				}
+				else_if = {
+					limit = {
+						scope:target.sub_realm_size >= minor_realm_size
+					}
+					multiply = 1.2
+				}
+				round = yes
+			}
 		}
 
 		modifier = {
 			desc = "SCHEME_TARGET_LEGITIMACY"
 			scope:target = {
 				has_legitimacy = yes
-				legitimacy_level > 3
 			}
-			add = -50
-		}
-
-		modifier = {
-			desc = "SCHEME_TARGET_LEGITIMACY"
-			scope:target = {
-				has_legitimacy = yes
-				legitimacy_level = 2
+			add = {
+				value = 50
+				add = {
+					value = -20
+					multiply = scope:target.legitimacy_level
+				}
 			}
-			add = 25
-		}
-
-		modifier = {
-			desc = "SCHEME_TARGET_LEGITIMACY"
-			scope:target = {
-				has_legitimacy = yes
-				legitimacy_level = 1
-			}
-			add = 50
-		}
-
-		modifier = {
-			desc = "SCHEME_TARGET_LEGITIMACY"
-			scope:target = {
-				has_legitimacy = yes
-				legitimacy_level = 0
-			}
-			add = 100
 		}
 		
 		# Target's intrigue
@@ -196,6 +203,7 @@
 			add = {
 				value = scope:target.intrigue
 				multiply = -2
+				#min = -50
 			}
 		}
 		
@@ -215,10 +223,10 @@
 	
 	# On Actions
 	on_start = {
-		set_variable = {
-			name = apply_countermeasures
-			value = flag:indirect
-		}
+		# set_variable = {
+		# 	name = apply_countermeasures
+		# 	value = flag:indirect
+		# }
 	}
 
 	on_phase_completed = {
@@ -243,7 +251,6 @@
 						value = yes
 					}
 				}
-
 				#SUCCESS ROLL
 				random = {
 					chance = scope:scheme.scheme_success_chance
@@ -253,8 +260,6 @@
 						value = yes
 					}
 				}
-
-				
 				if = {
 					limit = { exists = scope:scheme_successful }
 					trigger_event = vi_investigate_secrets.001 #Success event

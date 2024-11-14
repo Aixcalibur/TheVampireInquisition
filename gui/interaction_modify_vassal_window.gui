@@ -129,7 +129,7 @@ types ModifyVassalContractsShared
 		vbox_administrative_negotiation = {
 			datacontext = "[CharacterInteractionConfirmationWindow.GetRecipient]"
 			name = "administrative_vassal_paper_contract"
-			visible = "[OR( IsAdministrativeRuler( Character ), Character.GetGovernment.IsType('vi_vampire_government'))]"
+			visible = "[Or( Character.GetGovernment.IsType('vi_vampire_government'), IsAdministrativeRuler( Character ) )]"
 			layoutpolicy_horizontal = expanding
 			layoutpolicy_vertical = expanding
 			margin = { 20 5 }

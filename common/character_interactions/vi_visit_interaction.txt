@@ -85,7 +85,7 @@
 
 	cost = {
 		prestige = {
-			value = 50
+			value = 25
 			if = {
 				limit = {
 					scope:recipient = {
@@ -206,8 +206,7 @@
 	ai_frequency = 100
 
 	ai_targets = {
-		ai_recipients = guests
-		ai_recipients = courtiers
+		ai_recipients = neighboring_rulers
 	}
 
 	ai_target_quick_trigger = {
@@ -215,8 +214,8 @@
 	}
 
 	ai_potential = {
-		always = no
-		# is_at_war = no
+		#always = no
+		is_at_war = no
 		# OR = {
 		# 	has_royal_court = yes
 		# 	government_has_flag = government_is_landless_adventurer
@@ -229,8 +228,7 @@
 	}
 
 	ai_will_do = {
-		base = -100
-		
+		base = 25
 
 	}
 }

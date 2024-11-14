@@ -8,6 +8,7 @@ d_vi_prague = c_praha
 d_vi_normandy = c_rouen
 d_vi_rouen = c_rouen
 d_vi_london = b_london
+d_vi_orleans = c_orleans
 
 k_vi_court_of_night = {
 	#custom=yes
@@ -411,7 +412,6 @@ vi_dynasty_Aphrodisian = {
 }
 
 vi_montmartre_v1 = {
-	custom=yes
 	pattern="pattern_horizontal_split_02.dds"
 	color1=red
 	color2=blue
@@ -468,3 +468,187 @@ vi_montmartre_v1 = {
 	}
 
 }
+
+house_vi_London = {
+		pattern="pattern_checkers_02.dds"
+		color1=grey
+		color2=white
+		color3=black
+		colored_emblem={
+			color1=black
+			color2=yellow
+			color3=white
+			texture="ce_bendlet.dds"
+			instance={
+				scale={ 0.000000 0.000000 }
+				depth=2.010000
+			}
+	
+		}
+	
+		colored_emblem={
+			color1=black
+			color2=red
+			color3=white
+			texture="ce_eagle_head.dds"
+			instance={
+				position={ 0.500000 0.490000 }
+				scale={ 0.860000 0.860000 }
+			}
+	
+		}
+	
+		colored_emblem={
+			color1=white
+			color2=grey
+			color3=black
+			texture="ce_fret_01.dds"
+			instance={
+				scale={ 0.000000 0.000000 }
+				depth=1.010000
+			}
+	
+		}
+	
+}
+
+house_vi_Orlok ={
+
+	pattern="pattern__solid_designer.dds"
+	color1=white
+	color2=grey
+	color3=black
+
+	colored_emblem={
+		color1=rgb { 45 44 43 }
+		texture="ce_vol.dds"
+		instance={
+			position={ 0.480000 0.560000 }
+			depth=6.010000
+		}
+
+	}
+
+	colored_emblem={
+		color1=rgb { 186 186 186 }
+		texture="ce_demi_vol.dds"
+		instance={
+			position={ 0.640000 0.660000 }
+			scale={ 0.750000 0.690000 }
+			depth=3.010000
+			rotation=347
+		}
+
+	}
+
+	colored_emblem={
+		color1=white
+		texture="ce_circle_mask.dds"
+		instance={
+			position={ 0.580000 0.370000 }
+			scale={ 0.030000 0.030000 }
+		}
+
+		instance={
+			position={ 0.420000 0.370000 }
+			scale={ 0.030000 0.030000 }
+			depth=1.010000
+		}
+
+	}
+
+	colored_emblem={
+		color1=black
+		texture="ce_block_01.dds"
+		instance={
+			position={ 0.750000 0.500000 }
+			depth=5.010000
+			rotation=90
+		}
+
+	}
+
+	colored_emblem={
+		color1=grey
+		color2=red
+		texture="ce_african_ceremonial_mask_02.dds"
+		instance={
+			position={ 0.500000 0.420000 }
+			scale={ 0.880000 0.880000 }
+			depth=4.010000
+		}
+
+	}
+
+	colored_emblem={
+		color1=white
+		texture="ce_religion_christianity_generic.dds"
+		instance={
+			position={ 0.500000 0.200000 }
+			scale={ 0.230000 -0.230000 }
+			depth=2.010000
+		}
+
+	}
+
+}
+
+vi_dynasty_Nosferatu = {
+	pattern="pattern_solid.dds"
+	color1=black
+	color2=yellow
+	color3=green
+	colored_emblem={
+		color1=white
+		texture="ce_cross_07.dds"
+		instance={
+			scale={ 0.700000 0.700000 }
+		}
+
+	}
+
+}
+
+vi_dynasty_Anunnaki = {
+	pattern="pattern_diagonal_split_02.dds"
+	color1=white
+	color2=black
+	color3=black
+	colored_emblem={
+		color1=red
+		color2=black
+		texture="ce_mena_sun.dds"
+		instance={
+			position={ 0.500000 0.420000 }
+			depth=2.010000
+		}
+
+	}
+
+	colored_emblem={
+		color1=black
+		color2=grey
+		texture="ce_sword_simple.dds"
+		instance={
+			position={ 0.500000 0.430000 }
+			scale={ 0.840000 -0.790000 }
+			depth=1.010000
+		}
+
+	}
+
+	colored_emblem={
+		color1=yellow
+		color2=black
+		texture="ce_crown_head.dds"
+		instance={
+			position={ 0.500000 0.710000 }
+			scale={ 0.540000 0.540000 }
+		}
+
+	}
+
+}
+
+
+

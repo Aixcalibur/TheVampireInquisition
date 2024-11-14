@@ -1,0 +1,251 @@
+﻿vi_baphomet = {
+	name = "Baphomet"
+	dna = vi_baphomet_dna
+	dynasty_house = house_vi_Baphomet
+	sexuality = asexual
+	faith = vi_baphometi
+	culture = levantine
+
+	diplomacy = 6
+	martial = 6
+	stewardship = 6
+	intrigue = 6
+	learning = 6
+	prowess = 6
+
+	trait = wrathful
+	trait = temperate
+	trait = diligent
+	trait = generous
+	
+	trait = education_learning_5
+	trait = vi_vampire_3
+	trait = intellect_good_3
+	trait = shrewd
+	trait = theologian
+	trait = scholar
+	trait = journaller
+	trait = athletic
+	trait = sayyid
+	trait = lifestyle_physician
+	trait = lifestyle_mystic
+	trait = lifestyle_herbalist
+	trait = possessed_1
+	trait = lunatic_1
+	trait = witch
+
+	give_nickname = nick_vi_horned_god
+
+	666.6.6 = {
+		birth = yes
+		effect = {
+			vi_make_vampire_effect = yes
+			set_immortal_age = 30
+
+			add_secret = { type = secret_witch }
+			add_character_flag = has_scripted_appearance
+			#add_character_flag = no_headgear
+			vi_add_allseeing_effect = yes
+			add_prowess_skill = 6
+		}
+	}
+
+	863.6.6 = {
+		effect = {
+			
+			set_relation_friend = {
+				reason = friend_pedagogy
+				target = character:vi_apollo
+			}
+			set_relation_friend = {
+				reason = friend_pedagogy
+				target = character:vi_artemis
+			}
+		}
+	}
+
+	1000.1.1. = {
+		death = yes
+	}
+}
+
+vi_apollo = {
+	name = hellenism_good_god_apollo
+	dna = vi_twinb_dna
+	dynasty_house = house_vi_Baphomet
+	sexuality = bisexual
+	faith = vi_baphometi
+	culture = greek
+
+	trait = deceitful
+	trait = arrogant
+	trait = arbitrary
+
+	diplomacy = 7
+	martial = 5
+	stewardship = 4
+	intrigue = 12
+	learning = 9
+	prowess = 0
+
+	trait = education_intrigue_4
+	trait = vi_vampire_1
+	trait = twin
+	trait = intellect_good_1
+	trait = beauty_good_3
+	trait = physique_good_1
+	trait = confider
+
+	father = vi_baphomet
+	mother = vi_twinsmother
+	
+	848.7.12 = {
+		birth = yes
+	}
+
+	863.6.6 = {
+		effect = {
+			set_relation_friend = {
+				reason = friend_pedagogy
+				target = character:vi_baphomet
+			}
+		}
+	}
+
+	867.1.1 = {
+		effect = {
+			vi_make_vampire_effect = yes
+			set_immortal_age = 19
+			add_character_modifier = {
+				modifier = vi_skittish_modifier
+				years = 14
+			}
+			add_secret = { type = secret_witch }
+			add_character_flag = has_scripted_appearance
+			add_character_flag = no_beard
+			add_prowess_skill = 7
+			vi_vampire_weight_stabilize_effect = yes
+		}
+		employer = vi_baphomet
+	}
+
+	1000.1.1 = {
+		effect = {
+			remove_trait = vi_vampire_1
+			add_trait = vi_vampire_2
+			vi_add_perk_charm_elder_effect = yes
+			#change_first_name = "Baphomet"
+		}
+		give_nickname = nick_vi_horned_god
+	}
+
+	2000.1.1 = {
+		death = yes
+	}
+}
+
+vi_artemis = {
+	name = hellenism_good_god_artemis
+	dna = vi_twing_dna
+	female = yes
+	dynasty_house = house_vi_Baphomet
+	sexuality = bisexual
+	faith = vi_baphometi
+	culture = greek
+
+	diplomacy = 7
+	martial = 12
+	stewardship = 5
+	intrigue = 9
+	learning = 8
+	prowess = 0
+
+	trait = chaste
+	trait = brave
+	trait = temperate
+
+	trait = education_martial_4
+	trait = flexible_leader
+	trait = vi_vampire_1
+	trait = twin
+	trait = intellect_good_2
+	trait = beauty_good_2
+	trait = physique_good_1
+	trait = athletic
+	trait = confider
+
+	father = vi_baphomet
+	mother = vi_twinsmother
+
+	848.7.12 = {
+		birth = yes
+	}
+
+	847.4.15 = {
+		effect = {
+			set_relation_friend = {
+				reason = friend_childhood_random
+				target = character:vi_apollo
+			}
+		}
+	}
+
+	863.6.6 = {
+		effect = {
+			set_relation_friend = {
+				reason = friend_pedagogy
+				target = character:vi_baphomet
+			}
+		}
+	}
+
+	867.1.1 = {
+		effect = {
+			vi_make_vampire_effect = yes
+			set_immortal_age = 19
+			add_character_modifier = {
+				modifier = vi_skittish_modifier
+				years = 14
+			}
+			add_secret = { type = secret_witch }
+			add_character_flag = has_scripted_appearance
+			add_prowess_skill = 7
+			vi_vampire_weight_stabilize_effect = yes
+		}
+		employer = vi_baphomet
+	}
+
+	1000.1.1 = {
+		effect = {
+			remove_trait = vi_vampire_1
+			add_trait = vi_vampire_2
+			vi_add_perk_insight_elder_effect = yes
+		}
+	}
+
+	2000.1.1 = {
+		death = yes
+	}
+}
+
+vi_twinsmother = {
+	name = "Anna"
+	dynasty = none
+	female = yes
+	faith = orthodox
+	culture = greek
+
+	trait = education_diplomacy_2
+	trait = beauty_good_3
+	trait = physique_good_2
+	trait = shrewd
+
+	828.1.1 = {
+		birth = yes
+	}
+
+	848.7.13 = {
+		death = yes
+	}
+
+}

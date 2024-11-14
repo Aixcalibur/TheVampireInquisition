@@ -24,6 +24,20 @@ vi_vampire_skinny_effect = {
 	change_current_weight = -25
 }
 
+vi_vampire_weight_stabilize_effect = {
+	set_variable = {
+		name = character_weight_variable
+		value = {
+			value = base_weight
+			multiply = -1
+		}
+	}
+	change_current_weight = {
+		value = base_weight
+		multiply = -1
+	}
+}
+
 vi_gain_random_trait_effect = {
 	random_list = {
 		40 = {

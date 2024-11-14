@@ -13,4 +13,4 @@ tags={
 }
 
 name="Vampire Inquisition"
-supported_version="1.13.*"
+supported_version="1.14.*"

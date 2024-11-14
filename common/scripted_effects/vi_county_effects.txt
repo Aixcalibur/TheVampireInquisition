@@ -23,6 +23,21 @@
 }
 
 vi_vampire_policy_after_effect = {
+
+	if = {
+		limit = {
+			is_ai = yes
+			OR = {
+				primary_title = title:k_vi_court_of_night
+				this = character:vi_esclarmonde
+			}
+		}
+		add_short_term_gold = 400
+		ai_attempt_to_host_activity = activity_feast
+	}
+
+
+
 	save_scope_as = vi_vassal
 	# liege ?= {
 	# 	save_scope_as = vi_liege
@@ -254,7 +269,6 @@ vi_vampire_county_drain_effect = {
 
 	add_legitimacy = medium_legitimacy_loss
 }
-
 
 vi_vampire_county_investment_effect = {
 

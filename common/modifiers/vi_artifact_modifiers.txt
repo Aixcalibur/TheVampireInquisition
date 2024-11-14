@@ -22,3 +22,18 @@ vi_archangel_sword_modifier = {
 	knight_effectiveness_per_prowess = 0.01
 	prowess_per_piety_level = 6
 }
+
+vi_baphomet_book_modifier = {
+	health = -0.6
+	stress_gain_mult = 0.25
+	stress_loss_mult = -0.25
+	martial_per_stress_level = 6
+	intrigue_per_stress_leve = 6
+	learning_per_stress_level = 6
+}
+
+vi_longsword_modifier = {
+	prowess = -10
+	prowess_no_portrait = 16
+	martial_per_prestige_level = 1
+}

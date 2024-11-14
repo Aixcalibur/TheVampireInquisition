@@ -1,5 +1,5 @@
 ﻿l_english:
- vi_lair_domicile_title: "[CHARACTER.GetBaseNamePossessive] Lair"
+ vi_lair_domicile_title: "[CHARACTER.GetNamePossessive] Lair"
 
  vi_estate_main_01_domicile_building: "Villa"
  vi_estate_main_02_domicile_building: "Manor"

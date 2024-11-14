@@ -3,4 +3,10 @@ nick_vi_queenofthenight = {}
 nick_vi_princeofurchins = {}
 nick_vi_shadowless = {}
 
+nick_vi_perfumer = {}
+
+nick_vi_horned_god = {}
+
+nick_vi_samildanach = {}
+
 nick_vi_the_archangel = {}

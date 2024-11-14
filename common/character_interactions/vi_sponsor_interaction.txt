@@ -779,8 +779,7 @@ vi_sponsor_princedom_interaction = {
 
 	#send_options_exclusive = no
 
-	on_accept = {
-		
+	on_accept = {	
 		scope:actor = {
 
 			custom_tooltip = vi_choose_princedom_tt
@@ -830,9 +829,20 @@ vi_sponsor_princedom_interaction = {
 					years = 20
 				}
 			}
+
+			found_cadet_house_decision_effect = {
+				CHARACTER = scope:recipient
+				PRESTIGE = 0
+			}
 		}
 		
 		
+	}
+
+	ai_frequency = 132
+
+	ai_potential = {
+		has_government = vi_vampire_government
 	}
 
 	ai_accept = {
@@ -917,5 +927,9 @@ vi_sponsor_princedom_interaction = {
 			scope:influence_send_option = yes
 			desc = INFLUENCE_INTERACTION_ACCEPTANCE_SEND_OPTION
 		}
+	}
+
+	ai_will_do = {
+		base = 100
 	}
 }

@@ -31,7 +31,7 @@
 	}
 
 	valid = {
-		#has_character_flag = fake_succession_decision_flag
+		is_landed = yes
 	}
 
 	# Agents
@@ -43,6 +43,9 @@
 	valid_agent = {
 		is_valid_agent_standard_trigger = yes
 		OR = {
+			scope:owner = {
+				is_ai = no
+			}
 			vi_is_vampire_trigger = yes
 			has_trait = vi_dhampir
 		}
@@ -56,18 +59,74 @@
 
 	# Base Chances
 	base_success_chance = {
-		base = -30
+		base = 0
 
-		# Skill
-		
+		modifier = {
+			desc = "VI_NUM_OF_VASSALS"
+			add = {
+				value = 0
+				scope:owner = {
+					every_vassal = {
+						limit = {
+							vi_is_vampire_trigger = no
+						}
+						add = {
+							value = primary_title.title_tier
+							multiply = -1
+						}
+					}
+				}
+				
+			}
+		}
+
+		modifier = {
+			desc = "VI_MY_TITLE_TIER"
+			add = {
+				value = scope:owner.primary_title.title_tier
+				multiply = -10
+			}
+		}
+
+		modifier = {
+			desc = "VI_MY_REALM_SIZE"
+			add = {
+				value = scope:owner.sub_realm_size
+				if = {
+					limit = {
+						scope:target.sub_realm_size >= massive_realm_size
+					}
+					multiply = -2.5
+				}
+				else_if = {
+					limit = {
+						scope:target.sub_realm_size >= major_realm_size
+					}
+					multiply = -2
+				}
+				else_if = {
+					limit = {
+						scope:target.sub_realm_size >= medium_realm_size
+					}
+					multiply = -1.5
+				}
+				else_if = {
+					limit = {
+						scope:target.sub_realm_size >= minor_realm_size
+					}
+					multiply = -1.25
+				}
+				else = {
+					multiply = -1
+				}
+				round = yes
+			}
+		}
 	}
 
 	# On Actions
 	on_start = {
-		set_variable = {
-			name = apply_countermeasures
-			value = flag:indirect
-		}
+		
 		# Fallback agents — a balanced config if you start the scheme from script.
 		if = {
 			limit = {
@@ -95,6 +154,9 @@
 			}
 			vi_fake_succession_prep_effect = yes
 		}
+	}
+	on_monthly = {
+		vi_fake_succession_monthly_effect = yes
 	}
 
 	## Invalidation

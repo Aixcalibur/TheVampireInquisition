@@ -71,7 +71,7 @@ vi_customization.0001 = {
 			}
 		}
 
-		add_vi_vampire_lifestyle_xp = 3000
+		add_vi_vampire_lifestyle_xp = 5000
 
 		trigger_event = {
 			id = vi_customization.0002
@@ -201,6 +201,14 @@ vi_customization.0010 = {
 			value = age
 			add = 10
 		}
+		trigger = {
+			NOT = {
+				has_trait = vi_vampire_1
+			}
+		}
+		show_as_unavailabe = {
+			always = yes
+		}
 		trigger_event = vi_customization.0010
 	}
 
@@ -209,6 +217,12 @@ vi_customization.0010 = {
 		set_age = {
 			value = age
 			add = -10
+		}
+		trigger = {
+			age >= 16
+		}
+		show_as_unavailabe = {
+			always = yes
 		}
 		trigger_event = vi_customization.0010
 	}

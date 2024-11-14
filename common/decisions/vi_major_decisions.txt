@@ -19,6 +19,10 @@
 				}
 			}
 			#debug_only = yes
+			AND = {
+				debug_only = yes
+				is_ai = no
+			}
 		}
 		vi_is_vampire_trigger = yes
 	}

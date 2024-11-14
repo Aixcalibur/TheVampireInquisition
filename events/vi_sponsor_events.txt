@@ -1,6 +1,11 @@
 ﻿namespace = vi_sponsor
 
 scripted_effect vi_travel_establish_princedom = {
+	add_opinion = {
+		target = scope:actor
+		modifier = grateful_opinion
+		opinion = 50
+	}
 	custom_tooltip = vi_travel_princedom_tt_2
 	scope:vi_title_county = {
 		add_county_modifier = {
@@ -192,7 +197,7 @@ vi_sponsor.002 = {
 			years = 20
 		}
 
-		add_legitimacy = 300
+		add_legitimacy = 200
 	}
 
 	after = {

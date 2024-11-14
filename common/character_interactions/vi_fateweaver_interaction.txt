@@ -1,7 +1,7 @@
 ﻿vi_fateweaver_interaction = {
 	icon = child
 	common_interaction = yes
-	category = interaction_category_admin
+	category = interaction_category_diplomacy
 	interface_priority = 100
 	desc = vi_fateweaver_interaction_desc
 
@@ -28,7 +28,7 @@
 		}
 
 		scope:recipient = {
-			age < 5
+			age <= 5
 		}
 	}
 	

@@ -8,13 +8,37 @@
  vi_vampire_religion_adj: "Vampiric"
  vi_vampire_religion_adherent: "Vampire"
  vi_vampire_religion_adherent_plural: "Vampires"
- vi_vampire_religion_desc: "Those who stalk the night have forsaken their ties to mortal religions and must find purpose elsewhere."
+ vi_vampire_religion_desc: "Those who stalk the night have forsaken their ties to mortal religions."
 
  vi_nightcourt: "Court of Night"
  vi_nightcourt_adj: "Court of Night"
  vi_nightcourt_adherent: "Night Courtier"
  vi_nightcourt_adherent_plural: "Night Courtiers"
  vi_nightcourt_desc: "The way of un-life followed by those who pay obeisance to the Queen of the Night. By her decree, vampires shall live in secret harmony with the mortal population."
+
+ vi_baphometi: "Cult of the Horned God"
+ vi_baphometi_adj: "Baphometi"
+ vi_baphometi_adherent: "Disciple"
+ vi_baphometi_adherent_plural: "Disciples"
+ vi_baphometi_desc: "The teachings of the mad prophet Baphomet who channeled demons through his mind as he wrote. The actual practices are incomprehensible without years of study."
+
+ vi_bloodreign: "Reign of Blood"
+ vi_bloodreign_adj: "Bloodreign"
+ vi_bloodreign_adherent: "Disciple"
+ vi_bloodreign_adherent_plural: "Disciples"
+ vi_bloodreign_desc: "No longer shall the wolf hide from the sheep. With the coming of the Great One, the world shall be ruled by the worthy."
+ 
+ vi_unreformed: "Vampirism"
+ vi_unreformed_adj: "Vampiric"
+ vi_unreformed_adherent: "Vampire"
+ vi_unreformed_adherent_plural: "Vampires"
+ vi_unreformed_desc: "Those who stalk the night have forsaken their ties to mortal religions. Where shall they find purpose now?"
+
+
+
+
+
+
 
  doctrine_vi_masquerade_name: "Vampire Masquerade"
 

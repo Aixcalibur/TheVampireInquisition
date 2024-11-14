@@ -8,6 +8,7 @@
  vi_ask_vampirism_interaction:0 "Seek Vampirism"
  vi_ask_vampirism_interaction_desc:0 "Ask [recipient.GetShortUIName] to turn you into a [vampire|E]"
  VI_MUST_KNOW_SECRET:0 "You must know their Vampire secret"
+
  VI_ASK_TO_BE_ADOPTED:0 "Ask to Join House"
  VI_ASKING_TO_BE_ADOPTED:0 "Asking to Join House: $VALUE|=+0$"
 

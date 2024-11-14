@@ -61,7 +61,8 @@ vi_peopleofinterest_perk = {
 	parent = vi_auspex_perk
 
 	character_modifier = {
-		
+		stewardship = 1
+		diplomacy = 1
 	}
 
 	effect = {

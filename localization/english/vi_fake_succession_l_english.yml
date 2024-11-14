@@ -11,8 +11,12 @@
  vi_fake_succession_scheme_SUCCESS_DESC: "You will clear suspicions of your immortality... for now."
  vi_fake_succession_scheme_action: "Fake the Succession of"
 
+ VI_NUM_OF_VASSALS: "Number of [vassals|e]: $VALUE|+0=$" 
+ VI_MY_TITLE_TIER: "My [title|E] [title_tier|E]: $VALUE|+0=$"
+ VI_MY_REALM_SIZE: "My [realm_size|E]: $VALUE|+0=$"
 
-
+ vi_fake_succession_agent_suspicious: "Scheme Agent becomes Suspicious"
+ vi_fake_succession_agent_learns_truth: "Scheme Agent learns Truth"
 
  vi_fake_succession.0001.t: "The Eternal Legacy"
  vi_fake_succession.0001.desc: "I have ruled for decades now, watching those around me age, weaken, and perish, while I remain untouched by the cruelty of time. Now, rumours have begun to spread with a persistence I can no longer ignore.\n\nCourtiers and vassals alike have started wondering why their liege never seems to change, and whispers of dark magic or deals with the divine swirl through the halls.\n\nI should act now, before anyone finds out the truth."
@@ -25,7 +29,7 @@
  vi_fake_succession.1002.a: "My rule begins anew..."
 
  vi_fake_succession.1003.t: "Failure"
- vi_fake_succession.1003.desc: "Despite all my attempts, the people were unconvinced. Rather, my attempts to fake my succession only served to rouse the suspicions of my subjects. \n\n"Who here has seen [actor.GetTitledFirstName] and [actor.GetTitledFirstName] II in the same room?" They would demand, and they would not accept any of my answers.\n\nFrom there, my subjects started to dig deeper, gathering clues until they reached the truth.\n\nMy secret has been exposed!"
+ vi_fake_succession.1003.desc: "Despite all my attempts, the people were unconvinced. Rather, my attempts to fake my succession only served to rouse the suspicions of my subjects. \n\n"Who here has ever seen [actor.GetTitledFirstName] and [actor.GetTitledFirstName] II in the same room?" They would demand, and they would not accept any of my perfectly logical answers.\n\nFrom there, my subjects started to dig deeper, gathering clues until they reached the truth.\n\nMy secret has been exposed!"
 
  vi_fake_succession.1003.a: "Now the world knows I am a vampire!"
  

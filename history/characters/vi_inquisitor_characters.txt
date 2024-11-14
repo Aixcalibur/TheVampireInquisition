@@ -9,6 +9,7 @@
 
 	trait = education_martial_3
 	trait = physique_good_2
+	trait = vi_inquisitor
 
 
 	809.3.30 = {
@@ -39,6 +40,7 @@ vi_Ivar_Helsing = {
 
 	trait = lifestyle_hunter
 	trait = lifestyle_physician
+	trait = vi_inquisitor
 
 	father = vi_Thorolf_Helsing
 

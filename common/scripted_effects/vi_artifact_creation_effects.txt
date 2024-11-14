@@ -133,12 +133,12 @@ vi_create_artifact_bida_head_effect = { #Create at start
 		visuals = pouch
 		wealth = scope:wealth
 		quality = scope:quality
-		history = {
-			type = created
-			date = current_date
-			recipient = scope:owner #Konstantinos I the Great
-			location = scope:owner.location #Constantinople
-		}
+		# history = {
+		# 	type = created
+		# 	date = current_date
+		# 	recipient = scope:owner #Konstantinos I the Great
+		# 	location = scope:owner.location #Constantinople
+		# }
 		modifier = vi_bida_dead_modifier
 		save_scope_as = newly_created_artifact
 		decaying = no
@@ -217,6 +217,109 @@ vi_create_artifact_archangel_sword_effect = {
 		}
 		set_variable = vi_archangel_sword
 		set_variable = { name = historical_unique_artifact value = yes }
+		save_scope_as = epic
+		equip_artifact_to_owner = yes
+	}
+}
+
+vi_create_holy_artifact_effect = {
+	$OWNER$ = { save_scope_as = owner }
+	# Not really used, but if we don't set the scopes we get errors in the feature selection
+	set_artifact_rarity_famed = yes
+
+	create_artifact = {	
+		name = vi_holy_relic_generic_name
+		type = miscellaneous
+		description = vi_holy_relic_generic_desc
+		template = small_religious_carving_template
+		visuals = pouch
+		modifier = artifact_monthly_piety_1_modifier
+		wealth = scope:wealth
+		quality = scope:quality
+		history = {
+			type = created_before_history
+		}
+		save_scope_as = newly_created_artifact
+	}
+	scope:newly_created_artifact = {
+		set_variable = {
+			name = relic_religion
+			value = scope:owner.faith.religion
+		}
+		set_variable = small_wooden_carving_artifact
+		vi_add_random_artifact_modifier_effect = yes
+		equip_artifact_to_owner = yes
+		vi_add_random_artifact_modifier_effect = yes
+		#flag_as_trash_artifact = yes
+	}
+}
+
+vi_create_baphomet_book_effect = {
+
+	set_global_variable = vi_baphomet_book_written
+
+	$OWNER$ = { save_scope_as = owner }
+
+	character:vi_baphomet = {
+		add_character_flag = had_seasoned_visitor_decision
+	}
+
+	create_artifact = {
+		name = baphomet_book_title
+		type = journal
+		template = marco_polo_book
+		creator = character:vi_baphomet
+		description = marco_polo_book_desc 
+		visuals = book
+		save_scope_as = newly_created_artifact
+		modifier = vi_baphomet_book_modifier
+		wealth = 50
+		quality = 10
+	}
+
+	scope:newly_created_artifact = {
+		add_artifact_modifier = artifact_monthly_lifestyle_xp_4_modifier
+		set_artifact_rarity = illustrious
+		equip_artifact_to_owner = yes
+	}
+}
+
+vi_create_artifact_longsword_effect = {
+	# Get the character the artifact is being made for.
+	$OWNER$ = { save_scope_as = owner }
+
+	# if = {
+	# 	limit = {
+	# 		NOT = {
+	# 			exists = scope:owner
+	# 		}
+	# 	}
+	# 	character:vi_beshim = {
+	# 		save_scope_as = owner
+	# 	}
+	# }
+	# Not really used, but if we don't set the scopes we get errors in the feature selection
+	set_artifact_rarity_famed = yes
+
+	# Create the artifact
+	create_artifact = {
+		name = vi_artifact_longsword_name
+		description = vi_artifact_longsword_desc
+		template = general_unique_template
+		type = sword
+		visuals = longsword
+		wealth = scope:wealth
+		quality = scope:quality
+		history = {
+			type = created_before_history
+		}
+		modifier = vi_longsword_modifier
+		save_scope_as = newly_created_artifact
+		decaying = no
+	}
+
+	scope:newly_created_artifact = {
+		set_variable = vampire_loot
 		save_scope_as = epic
 		equip_artifact_to_owner = yes
 	}

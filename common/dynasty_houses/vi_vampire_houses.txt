@@ -23,6 +23,12 @@ house_vi_Tuatha_De = {
 	motto = "dynn_vi_Tuatha_De_motto"
 }
 
+house_vi_Baphomet = {
+	name = "dynn_vi_Baphomet"
+	dynasty = vi_dynasty_Strix
+	motto = "dynn_vi_Baphomet_motto"
+}
+
 house_vi_Bida = {
 	name = bidu_high_god_name
 	dynasty = vi_dynasty_Anunnaki

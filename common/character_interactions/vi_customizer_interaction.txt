@@ -13,11 +13,26 @@
 		NOT = {
 			scope:actor = scope:recipient
 		}
-		scope:actor = {
-			vi_is_vampire_trigger = yes
-			has_trait = vi_customizer
-			has_character_flag = vi_choosing_dynasty
+		OR = {
+			AND = {
+				scope:actor = {
+					has_trait = vi_dhampir
+					is_ai = no
+					NOR = {
+						exists = mother
+						exists = father
+					}
+				}
+			}
+			AND = {
+				scope:actor = {
+					vi_is_vampire_trigger = yes
+					has_trait = vi_customizer
+					has_character_flag = vi_choosing_dynasty
+				}
+			}
 		}
+		
 		scope:recipient = {
 			vi_is_vampire_trigger = yes
 			house = {
@@ -38,11 +53,20 @@
 
 	send_option = {
 		flag = become_their_child
+		# is_shown = {
+		# 	NOT = {
+		# 		scope:actor = {
+		# 			has_trait = dhampir
+		# 		}
+		# 	}
+		# }
 		can_be_changed = {
 			always = yes
 		}
 		localization = vi_become_their_child
 	}
+
+	send_options_exclusive = no
 
 	on_send = {
 		
@@ -51,12 +75,14 @@
 	on_accept = {
 		scope:actor = {
 			set_house = scope:recipient.house
+			scope:recipient = {
+				adopt = scope:actor
+			}
 			if = {
 				limit = {
 					scope:become_their_child = yes
 				}
-				scope:recipient = {
-					adopt = scope:actor
+				scope:recipient.house = {
 					house_head = {
 						add_hook = {
 							type = house_head_hook

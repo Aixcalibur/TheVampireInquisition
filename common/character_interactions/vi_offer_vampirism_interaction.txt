@@ -80,6 +80,34 @@
 		piety = 100
 	}
 
+	send_option = { 
+		is_shown = { 
+			scope:actor = {
+				exists = house
+			}
+			scope:recipient = {
+				house ?= {
+					NOT = {
+						this = scope:actor.house
+					}
+				}
+			}
+		}
+		can_be_changed = {
+			always = yes
+		}
+		is_valid = {
+			scope:actor = {
+				#exists = house
+				house ?= {
+					house_head = scope:actor
+				}
+			}
+		}
+		flag = adoption_send_option
+		localization = VI_ASK_TO_BE_ADOPTED
+	}
+
 	on_accept = {
 		
 		scope:actor = {
@@ -106,9 +134,23 @@
 
 			if = {
 				limit = {
-					is_ai = no
+					scope:actor = {
+						is_ai = no
+					}
 				}
 				add_trait = vi_vampire_1
+			}
+
+			if = {
+				limit = {
+					OR = {
+						NOT = {
+							exists = house
+						}
+						always = scope:adoption_send_option
+					}
+				}
+				set_house = scope:actor.house
 			}
 		}
 	}
@@ -137,6 +179,18 @@
  			multiplier = 0.5
  			step = 5
  		}
+
+		modifier = {
+			add = -20
+			AND = {
+				scope:adoption_send_option = yes
+				scope:recipient = {
+					exists = dynasty
+				}
+			}
+			
+			desc = VI_ASK_TO_BE_ADOPTED
+		}
 
  		#Relations & relatives (with actor)
  		modifier = {
@@ -511,9 +565,9 @@ vi_ask_vampirism_interaction = {
 		}
 		is_valid = {
 			scope:recipient = {
-				exists = dynasty
-				dynasty ?= {
-					dynast = scope:recipient
+				exists = house
+				house ?= {
+					house_head = scope:recipient
 				}
 			}
 		}

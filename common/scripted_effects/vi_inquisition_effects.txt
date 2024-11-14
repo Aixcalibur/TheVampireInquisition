@@ -133,12 +133,22 @@ vi_inquisition_defection_effect = {
 		}
 
 		random_list = {
-			50 = {
+			20 = {
 				#nothing happnes
+			}
+			20 = {
+				change_maa_regiment_size = {
+					size = -2
+					reinforce = no
+				}
 			}
 			40 = {
 				change_maa_regiment_size = {
-					size = -2
+					size = {
+						value = maa_size
+						multiply = -0.5
+						round = yes
+					}
 					reinforce = no
 				}
 			}

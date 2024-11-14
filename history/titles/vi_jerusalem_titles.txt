@@ -1,0 +1,38 @@
+﻿d_laamp_vi_baphomet = { 
+	867.1.1 = {
+		liege = 0
+		holder = vi_baphomet
+		government = landless_adventurer_government
+		succession_laws = { landless_adventurer_succession_law }
+		effect = {
+			create_landless_adventurer_title_history_effect = yes
+			set_variable = { name = adventurer_creation_reason value = flag:historical }
+		}
+	}
+	867.1.1 = {
+		effect = {
+			destroy_landless_title_no_dlc_effect = { DATE = 867.1.1 }
+		}
+	}
+	1000.9.1 = {
+		holder = 0
+	}
+}
+
+k_vi_jerusalem = {
+	1000.1.1 = {
+		holder = vi_apollo
+		government = vi_vampire_government
+		# succession_laws = { vi_vampire_elective_succession_law }
+		liege = 0
+	}
+}
+
+d_nf_vi_baphomet = {
+	1000.1.1 = {
+		holder = vi_apollo
+		government = vi_vampire_government
+		succession_laws = { noble_family_succession_law }
+		liege = k_vi_jerusalem
+	}
+}

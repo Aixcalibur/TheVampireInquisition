@@ -1,0 +1,85 @@
+﻿vi_fake_succession_prep_effect = {
+	save_scope_as = scheme
+	save_scope_value_as = {
+		name = follow_up_event
+		value = event_id:vi_fake_succession.1001
+	}
+	if = {
+		limit = {
+			NOT = { exists = scope:suppress_next_event }
+		}
+		scheme_owner = { trigger_event = scheme_critical_moments.0002 }
+	}
+}
+
+vi_fake_succession_monthly_effect = {
+	random = {
+		chance = 10
+		if = {
+			limit = {
+				any_scheme_agent_character = {
+					is_alive = yes
+					NOT = {
+						vi_is_vampire_trigger = yes
+					}
+				}
+			}
+			random_scheme_agent_character = {
+				limit = {
+					is_alive = yes
+				}
+				save_scope_as = agent
+			}
+			if = {
+				limit = {
+					scope:agent = {
+						vi_is_vampire_trigger = no
+					}
+					scheme_owner = {
+						any_secret = {
+							secret_type = secret_vi_vampire
+							NOT = {
+								is_known_by = scope:agent
+							}
+						}
+					}
+				}
+				random_list = {
+					40 = {
+						scheme_owner = {
+							send_interface_message = {
+								title = vi_fake_succession_agent_msg
+								right_icon = scope:agent
+								reverse_add_opinion = {
+									target = scope:agent
+									modifier = suspicion_opinion
+									opinion = -20
+								}
+								add_scheme_progress = -20
+							}
+						}
+					}
+					20 = {
+						scheme_owner = {
+							send_interface_message = {
+								title = vi_fake_succession_agent_learns_truth
+								right_icon = scope:agent
+								random_secret = {
+									limit = {
+										secret_type = secret_vi_vampire
+									}
+									reveal_to = scope:agent
+								}
+								add_scheme_progress = -50
+							}
+						}
+					}
+				}
+				
+				
+				
+			}
+		}
+	}
+	
+}

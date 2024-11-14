@@ -184,6 +184,8 @@ vi_vampire_huscarl = {
 	stack = 25
 	ai_quality = { value = @cultural_maa_extra_ai_score }
 	icon = danish_huskarls
+
+	allowed_in_hired_troops = no
 }
 
 vi_health_point_maa = {

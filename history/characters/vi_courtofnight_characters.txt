@@ -90,6 +90,7 @@ vi_ambrosius = {
 			vi_add_sirensong_effect = yes
 			vi_nightcourt_learn_languages = yes
 		}
+		give_nickname = nick_vi_perfumer
 	}
 
 	1060.1.1 = {
@@ -469,6 +470,7 @@ vi_ysabel = {
 	diplomacy = 7
 	stewardship = 5
 	intrigue = 7
+
 	prowess = 0
 
 	trait = deceitful
@@ -496,6 +498,7 @@ vi_ysabel = {
 			add_prowess_skill = 9
 			vi_add_sirensong_effect = yes
 			vi_nightcourt_learn_languages = yes
+			vi_vampire_weight_stabilize_effect = yes
 		}
 	}
 
@@ -552,6 +555,7 @@ vi_jehanne = {
 				PERK = vi_blink_perk
 			}
 			vi_nightcourt_learn_languages = yes
+			vi_vampire_weight_stabilize_effect = yes
 		}
 	}
 
@@ -624,6 +628,7 @@ vi_symonne = {
 
 vi_roland = {
 	name = "Roland"
+	dna = vi_roland_dna
 	dynasty_house = house_vi_Montmartre
 	sexuality = heterosexual
 	faith = vi_nightcourt
@@ -670,6 +675,7 @@ vi_roland = {
 			vi_vampire_add_perk_effect = {
 				PERK = vi_celerity_perk
 			}
+			vi_vampire_weight_stabilize_effect = yes
 		}
 	}
 
@@ -759,19 +765,21 @@ vi_lugh = {
 	faith = vi_nightcourt
 	culture = roman
 
-	diplomacy = 7
-	martial = 10
-	stewardship = 13
-	intrigue = 6
-	learning = 10
+	diplomacy = 12
+	martial = 12
+	stewardship = 12
+	intrigue = 12
+	learning = 12
 	prowess = 0
 
-	trait = arrogant
 	trait = diligent
 	trait = eccentric
+	trait = arrogant
+	trait = content
 
 	trait = education_stewardship_5
 	trait = vi_vampire_4
+	trait = intellect_good_2
 	trait = physique_good_2
 	trait = architect
 	trait = reclusive
@@ -791,10 +799,59 @@ vi_lugh = {
 			vi_add_perk_might_elder_effect = yes
 			vi_add_perk_insight_elder_effect = yes
 		}
+		give_nickname = nick_vi_samildanach
 	}
 
 	1500.1.1 = {
 		death = yes
+	}
+}
+
+vi_beatrice = {
+	name = "Beatrice"
+	dna = vi_beatrice_dna
+	female = yes
+	dynasty_house = house_vi_Tuatha_De
+	sexuality = heterosexual
+	faith = vi_nightcourt
+	culture = french
+
+	trait = ambitious
+	trait = eccentric
+	trait = arbitrary
+
+	trait = education_diplomacy_4
+	trait = vi_vampire_2
+	trait = beauty_good_2
+	trait = intellect_good_1
+
+	diplomacy = 9
+	stewardship = 8
+	learning = 7
+	prowess = 0
+
+	765.3.15 = {
+		birth = yes
+	}
+
+	788.6.7 = {
+		add_spouse = vi_lugh
+		effect = {
+			vi_make_vampire_effect = yes
+			set_immortal_age = 23
+			add_prowess_skill = 8
+			vi_nightcourt_learn_languages = yes
+			vi_add_perk_insight_elder_effect = yes
+			set_relation_lover = {
+				reason = lover_history
+				target = character:vi_lugh
+			}
+			set_relation_friend = {
+				reason = friend_generic_history
+				target = character:vi_lugh
+			}
+		}
+		
 	}
 }
 
@@ -806,10 +863,10 @@ vi_orlok = {
 	faith = vi_nightcourt
 	culture = vlach
 
-	diplomacy = 14
+	diplomacy = 9
 	martial = 6
-	stewardship = 12
-	intrigue = 20
+	stewardship = 7
+	intrigue = 18
 	learning = 9
 	prowess = 4
 
@@ -826,16 +883,206 @@ vi_orlok = {
 	trait = intellect_good_2
 	trait = shrewd
 	trait = intrigue_court_2
+	mother = vi_orlok_wife
 
 	563.7.17 = {
 		birth = yes
 		effect = {
 			vi_orlok_after_effect = yes
+			add_character_flag = has_scripted_appearance
 			add_character_flag = do_not_generate_starting_family
 		}
 	}
 
 	1600.1.1 = {
+		death = yes
+	}
+}
+
+vi_beshim = {
+	name = "Beshim"
+	dna = vi_beshim_dna
+	dynasty_house = house_vi_Orlok
+	sexuality = heterosexual
+	faith = vi_nightcourt
+	culture = vlach
+
+	diplomacy = 5
+	martial = 13
+	stewardship = 5
+	intrigue = 9
+	learning = 9
+	prowess = 0
+
+	trait = humble
+	trait = brave
+	trait = sadistic
+
+	trait = education_martial_4
+	trait = flexible_leader
+	trait = vi_vampire_3
+	trait = albino
+	trait = intellect_good_2
+	trait = physique_good_3
+	trait = twin
+	trait = lifestyle_blademaster
+	trait = overseer
+	trait = loyal
+	trait = intrigue_court_1
+
+	father = vi_orlok
+
+	give_nickname = nick_longsword
+
+	603.4.27 = {
+		birth = yes
+		effect = {
+			vi_make_vampire_effect = yes
+			set_immortal_age = 27
+			add_prowess_skill = 22
+			add_character_flag = has_scripted_appearance
+			add_character_flag = no_beard
+			add_character_flag = do_not_generate_starting_family
+			vi_add_dragonsscion_effect = yes
+			add_trait_xp = {
+				trait = lifestyle_blademaster
+				value = 100
+			}
+			vi_vampire_weight_stabilize_effect = yes
+		}
+	}
+
+	1600.1.1 = {
+		death = yes
+	}
+}
+
+vi_emerik = {
+	name = "Emerik"
+	dna = vi_emerik_dna
+	dynasty_house = house_vi_Orlok
+	sexuality = heterosexual
+	faith = vi_nightcourt
+	culture = vlach
+
+	diplomacy = 6
+	martial = 7
+	stewardship = 13
+	intrigue = 8
+	learning = 7
+	prowess = 0
+
+	trait = arrogant
+	trait = stubborn
+	trait = wrathful
+
+	trait = education_stewardship_4
+	trait = vi_vampire_3
+	trait = albino
+	trait = intellect_good_3
+	trait = dwarf
+	trait = twin
+	trait = administrator
+	trait = loyal
+	trait = intrigue_court_1
+
+	father = vi_orlok
+	mother = vi_orlok_wife
+
+	603.4.27 = {
+		birth = yes
+		effect = {
+			vi_make_vampire_effect = yes
+			set_immortal_age = 27
+			add_prowess_skill = 15
+			add_character_flag = has_scripted_appearance
+			add_character_flag = no_headgear
+			add_character_flag = do_not_generate_starting_family
+			vi_add_allseeing_effect = yes
+		}
+	}
+
+	1600.1.1 = {
+		death = yes
+	}
+}
+
+vi_alexia = {
+	name = "Alexia"
+	female = yes
+	dna = vi_alexia_dna
+	dynasty_house = house_vi_Orlok
+	sexuality = bisexual
+	faith = vi_nightcourt
+	culture = vlach
+
+	diplomacy = 9
+	martial = 6
+	stewardship = 7
+	intrigue = 13
+	learning = 11
+	prowess = 0
+
+	trait = deceitful
+	trait = sadistic
+	trait = lustful
+
+	trait = education_learning_4
+	trait = vi_vampire_3
+	trait = albino
+	trait = beauty_good_3
+	trait = intellect_good_2
+	trait = disloyal
+	trait = schemer
+	trait = journaller
+	trait = intrigue_court_1
+
+	father = vi_orlok
+	mother = vi_orlok_wife
+
+	609.10.13 = {
+		birth = yes
+		effect = {
+			vi_make_vampire_effect = yes
+			set_immortal_age = 25
+			add_prowess_skill = 9
+			add_character_flag = has_scripted_appearance
+			vi_add_sirensong_effect = yes
+			vi_vampire_weight_stabilize_effect = yes
+		}
+	}
+
+	867.1.1 = {
+		employer = vi_esclarmonde
+		set_relation_friend = {
+			reason = friend_generic_history
+			target = character:vi_beshim
+		}
+		set_relation_friend = {
+			reason = friend_generic_history
+			target = character:vi_emerik
+		}
+		set_relation_friend = {
+			reason = friend_generic_history
+			target = character:vi_ysabel
+		}
+	}
+
+	1600.1.1 = {
+		death = yes
+	}
+}
+
+vi_orlok_wife = {
+	name = "Stevana"
+	faith = orthodox
+	culture = vlach
+	575.1.1 = {
+		birth = yes
+		add_spouse = vi_orlok
+	}
+
+	610.1.1 = {
 		death = yes
 	}
 }

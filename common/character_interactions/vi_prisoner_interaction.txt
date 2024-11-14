@@ -105,7 +105,7 @@ vi_drain_prisoner_interaction = {
 		ai_recipients = prisoners
 	}
 
-	ai_frequency = 24
+	ai_frequency = 12
 
 	ai_potential = {
 		always = yes
