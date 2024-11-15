@@ -58,7 +58,7 @@
  vi_vampire_connections_modifier_desc: "The benefits of cooperation among [vampires|e] are many. #weak Effects scale with the number of [vassals|e] in the same [realm|e] with high [opinion|e] of you. #!"
 
  vi_knight_effectiveness_modifier: "Vampire Unity"
- vi_knight_effectiveness_modifier_desc: "[Vampires|E] have immense personal [prowess|e] under the cover of night, but require a strong leader in order to make them work together. #weak Effects scale with the [opinion|e] of your [vampire|e] [knights|e]. #!"
+ vi_knight_effectiveness_modifier_desc: "[vampires|E] have immense personal [prowess|e] under the cover of night, but require a strong leader in order to make them work together. #weak Effects scale with the [opinion|e] of your [vampire|e] [knights|e]. #!"
 
  vi_bida_modifier: "Golden Serpent"
  vi_bida_modifier_desc: "The Golden Serpent"

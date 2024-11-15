@@ -28,7 +28,6 @@ vi_vampire_playable_pulse = {
 	on_actions = {
 		vi_vampire_landed_tracking
 		vi_vampire_policy_pulse
-		vi_vampire_exposed_check
 	}
 }
 
@@ -39,7 +38,6 @@ vi_vampire_landed_tracking = {
 			owns_story_of_type = story_vi_landed
 		}
 	}
-
 	effect = {
 		create_story = story_vi_landed
 	}
@@ -91,16 +89,77 @@ vi_vampire_maintenance_pulse = {
 	}
 
 	effect = {
-		# if = {
-		# 	limit = {
-		# 		age > 150
-		# 	}
+		save_scope_as = vi_vampire
+		if = {
+			limit = {
+				is_courtier = yes
+				liege_or_court_owner = {
+					vi_is_vampire_trigger = no
+				}
+				NOT = {
+					any_known_secret = {
+						secret_type = secret_vi_vampire
+						secret_owner = scope:vi_vampire
+					}
+				}
+			}
+			
+			liege_or_court_owner = {
+				send_interface_message = {
+					title = vi_suspicious_behavior_msg
+					right_icon = scope:vi_vampire
+					random_list = {
+						10 = {
+							custom_tooltip = vi_suspicious_behavior_tt
+						}
+						10 = {
+							custom_tooltip = vi_suspicious_behavior_tt_1
+						}
+					}
+					
+					add_stress = miniscule_stress_gain
+					add_opinion = {
+						target = scope:vi_vampire
+						modifier = suspicion_opinion
+						opinion = -10
+					}
+				}
+			}
+		}
 
-		# 	remove_character_modifier = vi_vampire_arrogance_modifier
-		# 	add_character_modifier = {
-		# 		modifier = vi_vampire_arrogance_modifier
-		# 	}
-		# }
+		every_relation = {
+			limit = {
+				NOT = {
+					this = scope:vi_vampire.liege_or_court_owner
+				}
+				vi_is_vampire_trigger = no
+				NOT = {
+					any_known_secret = {
+						secret_type = secret_vi_vampire
+						secret_owner = scope:vi_vampire
+					}
+				}
+			}
+			send_interface_message = {
+				title = vi_suspicious_behavior_msg
+				right_icon = scope:vi_vampire
+				random_list = {
+					10 = {
+						custom_tooltip = vi_suspicious_behavior_tt
+					}
+					10 = {
+						custom_tooltip = vi_suspicious_behavior_tt_1
+					}
+				}
+				add_stress = miniscule_stress_gain
+				add_opinion = {
+					target = scope:vi_vampire
+					modifier = suspicion_opinion
+					opinion = -10
+				}
+			}
+		}
+
 		random = {
 			chance = 50
 			vi_consider_excommunicated_list = yes
@@ -141,7 +200,7 @@ vi_vampire_upgrade_vampire = {
 
 vi_vampire_upgrade_elder = {
 	trigger = {
-		has_trait = vi_vampire_3
+		has_trait = vi_vampire_4
 		age >= 600
 	}
 

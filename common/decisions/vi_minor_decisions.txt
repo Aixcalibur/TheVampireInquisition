@@ -15,6 +15,9 @@
 
 	is_valid_showing_failures_only = {
 		is_available_adult = yes
+	}
+
+	is_valid = {
 		OR = {
 			has_trait = vi_vampire_2
 			has_trait = vi_vampire_3

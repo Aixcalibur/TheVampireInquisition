@@ -115,6 +115,7 @@ vi_neighboring_ruler_gets_suspicious = {
 
 	save_scope_as = vi_suspicion_target
 
+
 	random_neighboring_top_liege_realm_owner = {
 		limit = {
 			vi_is_vampire_trigger = no
@@ -129,12 +130,12 @@ vi_neighboring_ruler_gets_suspicious = {
 		weight = {
 			base = 1
 
-			if = {
-				limit = {
-					highest_held_title_tier >= tier_kingdom
-				}
-				add = 5
-			}
+			# if = {
+			# 	limit = {
+			# 		highest_held_title_tier >= tier_kingdom
+			# 	}
+			# 	add = 5
+			# }
 		}
 
 		save_scope_as = vi_suspicious_ruler
@@ -156,8 +157,6 @@ vi_neighboring_ruler_gets_suspicious = {
 		}
 	}
 
-	
-
 	scope:vi_suspicious_ruler = {
 		if = {
 			limit = {
@@ -174,7 +173,6 @@ vi_neighboring_ruler_gets_suspicious = {
 			}
 		}
 	}
-	
 }
 
 

@@ -13,4 +13,6 @@
 
  vi_attempted_mind_control_opinion: "Attempted Mind Control"
 
- 
+ vi_suspicious_behavior_msg: "Suspicious Behavior"
+ vi_suspicious_behavior_tt: "You can't get [vi_vampire.GetShortUINamePossessive] strangeness out of your head..."
+ vi_suspicious_behavior_tt_1: "There is just something off about [vi_vampire.GetShortUIName] that sticks to your mind..."
