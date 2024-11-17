@@ -46,7 +46,6 @@ vi_vampire_prison_on_action = {
 							vi_is_vampire_trigger = no
 						}
 					}
-	
 					expose_secret = scope:imprisoner
 				}
 			}
@@ -62,6 +61,33 @@ vi_vampire_prison_on_action = {
 					add_trait_xp = {
 						trait = vi_inquisitor
 						value = 3
+					}
+				}
+			}
+
+			scope:imprisoner = {
+				if = {
+					limit = {
+						has_trait = vi_inquisitor
+					}
+					add_trait_xp = {
+						trait = vi_inquisitor
+						value = 3
+					}
+				}
+				if = {
+					limit = {
+						vi_is_vampire_trigger = no
+						is_ai = yes
+						root = {
+							has_trait = vi_exposed_vampire
+						}
+					}
+					run_interaction = {
+						interaction = execute_prisoner_interaction
+						actor = scope:imprisoner
+						recipient = root
+						execute_threshold = decline
 					}
 				}
 			}

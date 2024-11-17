@@ -60,6 +60,7 @@ vi_vampire_policy_pulse = {
 	}
 
 	effect = {
+		vi_slow_regeneration_effect = yes
 		if = {
 			limit = {
 				OR = {
@@ -89,6 +90,7 @@ vi_vampire_maintenance_pulse = {
 	}
 
 	effect = {
+		vi_slow_regeneration_effect = yes
 		save_scope_as = vi_vampire
 		if = {
 			limit = {
@@ -200,12 +202,12 @@ vi_vampire_upgrade_vampire = {
 
 vi_vampire_upgrade_elder = {
 	trigger = {
-		has_trait = vi_vampire_4
+		has_trait = vi_vampire_3
 		age >= 600
 	}
 
 	effect = {
-		add_trait = vi_vampire_3
-		remove_trait = vi_vampire_2
+		add_trait = vi_vampire_4
+		remove_trait = vi_vampire_3
 	}
 }

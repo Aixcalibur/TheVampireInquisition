@@ -35,6 +35,7 @@
 	}
 	
 	on_end = {
+		debug_log_scopes = no
 		debug_log = "Vampire Landed story ended on:"
 		debug_log_date = yes
 	}
@@ -100,7 +101,7 @@
 	}
 
 	effect_group = {
-		days = { 300 900 }
+		days = { 300 500 }
 
 		trigger = {
 			story_owner = {
@@ -119,7 +120,45 @@
 				trigger = { always = yes }
 				effect = {
 					story_owner = {
+						if = {
+							limit = {
+								exists = var:vi_landed_countup
+							}
+							change_variable = {
+								name = vi_landed_countup
+								add = 1
+							}
+						}
+						else = {
+							set_variable = {
+								name = vi_landed_countup
+								value = 0
+							}
+						}
 						vi_neighboring_ruler_gets_suspicious = yes
+					}
+				}
+			}
+
+			triggered_effect = {
+				trigger = { always = yes }
+				effect = {
+					story_owner = {
+						if = {
+							limit = {
+								exists = var:vi_landed_countup
+							}
+							change_variable = {
+								name = vi_landed_countup
+								add = 1
+							}
+						}
+						else = {
+							set_variable = {
+								name = vi_landed_countup
+								value = 0
+							}
+						}
 					}
 				}
 			}
@@ -127,7 +166,7 @@
 	}
 
 	effect_group = {
-		days = { 100 300 }
+		days = { 100 600 }
 
 		trigger = {
 			story_owner = {
@@ -164,7 +203,14 @@
 				trigger = { always = yes }
 				effect = {
 					story_owner = {
-						vi_neighboring_rulers_all_inquisition = yes
+						random_list = {
+							50 = {
+								vi_vassal_uprising = yes
+							}
+							50 = {
+								vi_neighboring_rulers_all_inquisition = yes
+							}
+						}
 					}
 				}
 			}

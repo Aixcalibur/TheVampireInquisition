@@ -15,11 +15,20 @@
 		remove_character_modifier = vi_balanced_capital_wealth_modifier
 		remove_character_modifier = vi_light_capital_wealth_modifier
 		remove_character_modifier = vi_invest_capital_wealth_modifier
+		primary_title = {
+			save_scope_as = vi_title
+		}
+		every_relation = {
+			type = vi_spawn
+			add_unpressed_claim = scope:vi_title
+		}
 	}
 	add_character_modifier = {
 		modifier = vi_vampire_connections_modifier
 		years = 5
 	}
+
+	
 }
 
 vi_vampire_policy_after_effect = {
@@ -32,7 +41,10 @@ vi_vampire_policy_after_effect = {
 				this = character:vi_esclarmonde
 			}
 		}
-		add_short_term_gold = 400
+		add_short_term_gold = 300
+		add_character_flag = {
+			flag = feast_ai_override
+		}
 		ai_attempt_to_host_activity = activity_feast
 	}
 

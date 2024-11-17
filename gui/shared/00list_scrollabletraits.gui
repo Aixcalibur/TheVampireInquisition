@@ -1,0 +1,562 @@
+﻿types Lists
+{
+    type hbox_traits_list = hbox
+	{
+		layoutpolicy_horizontal = expanding
+
+		widget = {
+            layoutpolicy_horizontal = expanding
+            size = { 0 55 }
+
+            hbox = {
+                name = "3_personality_traits"
+                visible = "[LessThanOrEqualTo_int32(GetDataModelSize(TraitArrays.GetPersonalityTraits), '(int32)3')]"
+
+                fixedgridbox = {
+                    name = "personality_traits"
+                    datamodel = "[TraitArrays.GetPersonalityTraits]"
+                    flipdirection = yes
+                    addcolumn = 54
+                    addrow = 55
+                    maxhorizontalslots = 3
+
+                    item = {
+                        icon_trait = {
+                            blockoverride "icon_size"
+                            {
+                                size = { 55 55 }
+                            }
+                        }
+                    }
+                }
+
+                hbox = {
+                    visible = "[Not(IsDataModelEmpty(TraitArrays.GetTraits))]"
+                    layoutpolicy_vertical = expanding
+                    margin = { 5 10 }
+
+                    divider_light = {
+                        layoutpolicy_vertical = expanding
+                    }
+                }
+
+                dynamicgridbox = {
+                    name = "traits_big"
+                    datamodel = "[TraitArrays.GetTraits]"
+                    visible = "[LessThanOrEqualTo_int32(GetDataModelSize(TraitArrays.GetTraits), '(int32)5')]" ### URF
+                    flipdirection = yes
+                    addcolumn = 54
+                    addrow = 55
+                    maxhorizontalslots = 5
+                    maxverticalslots = 1
+
+                    item = {
+                        icon_trait = {
+                            blockoverride "icon_size"
+                            {
+                                size = { 55 55 }
+                            }
+                        }
+                    }
+
+                }
+
+                dynamicgridbox = {
+                    name = "traits_medium"
+                    datamodel = "[TraitArrays.GetTraits]"
+                    visible = "[And(GreaterThan_int32(GetDataModelSize(TraitArrays.GetTraits), '(int32)5'), LessThanOrEqualTo_int32(GetDataModelSize(TraitArrays.GetTraits), '(int32)7'))]" ### URF
+                    flipdirection = yes
+                    addcolumn = 38 ### URF
+                    addrow = 39 ### URF
+                    maxhorizontalslots = 7
+                    maxverticalslots = 1
+
+                    item = {
+                        icon_trait = {
+                            blockoverride "icon_size"
+                            {
+                                size = { 39 39 } ### URF
+                            }
+
+                            blockoverride "glow_radius"
+                            {
+                                glow_radius = 4
+                            }
+                        }
+                    }
+                }
+
+                dynamicgridbox = {
+                    name = "traits_small"
+                    datamodel = "[TraitArrays.GetTraits]"
+                    visible = "[And(GreaterThan_int32(GetDataModelSize(TraitArrays.GetTraits), '(int32)7'), LessThanOrEqualTo_int32(GetDataModelSize(TraitArrays.GetTraits), '(int32)10'))]" ### URF
+                    flipdirection = yes
+                    addcolumn = 28
+                    addrow = 29
+                    maxhorizontalslots = 10 ### URF
+                    maxverticalslots = 1
+
+
+                    item = {
+                        icon_trait = {
+                            blockoverride "icon_size"
+                            {
+                                size = { 28 28 }
+                            }
+
+                            blockoverride "glow_radius"
+                            {
+                                glow_radius = 3
+                            }
+                        }
+                    }
+                }
+                
+				scrollbox = {
+					name = "traits_scroller"
+					visible = "[GreaterThan_int32(GetDataModelSize(TraitArrays.GetTraits), '(int32)10')]"
+					size = { 0 55 }
+					layoutpolicy_vertical = fixed
+					layoutpolicy_horizontal = expanding
+					scrollbarpolicy_vertical = as_needed
+					blockoverride "scrollbox_margins" {
+							margin = { 0 2 }
+							margin_right = 10
+					}
+					using = Animation_Tab_Switch
+					blockoverride "scrollbox_content"
+					{
+                        dynamicgridbox = {
+                            name = "traits_tiny"
+                            datamodel = "[TraitArrays.GetTraits]"
+                            visible = "[GreaterThan_int32(GetDataModelSize(TraitArrays.GetTraits), '(int32)9')]"
+                            flipdirection = yes
+                            addcolumn = 24
+                            addrow = 25
+                            maxhorizontalslots = 11 ### URF
+                            datamodel_wrap = 11 ### URF
+                            #maxverticalslots = 2
+                            maxverticalslots = 8
+                            item = {
+                                icon_trait = {
+                                    blockoverride "icon_size"
+                                    {
+                                        size = { 25 25 }
+                                    }
+        
+                                    blockoverride "glow_radius"
+                                    {
+                                        glow_radius = 2
+                                    }
+                                }
+                            }
+                        }
+
+						#spacing = 2
+					}
+				}
+
+                expand = {}
+            }
+
+            hbox = {
+                name = "4_personality_traits"
+                visible = "[GreaterThan_int32(GetDataModelSize(TraitArrays.GetPersonalityTraits), '(int32)3')]"
+
+                fixedgridbox = {
+                    name = "personality_traits"
+                    datamodel = "[TraitArrays.GetPersonalityTraits]"
+                    flipdirection = yes
+                    addcolumn = 54
+                    addrow = 55
+                    maxhorizontalslots = 4
+
+                    item = {
+                        icon_trait = {
+                            blockoverride "icon_size"
+                            {
+                                size = { 55 55 }
+                            }
+                        }
+                    }
+                }
+
+                hbox = {
+                    visible = "[Not(IsDataModelEmpty(TraitArrays.GetTraits))]"
+                    layoutpolicy_vertical = expanding
+                    margin = { 5 10 }
+
+                    divider_light = {
+                        layoutpolicy_vertical = expanding
+                    }
+                }
+
+                dynamicgridbox = {
+                    name = "traits_big"
+                    datamodel = "[TraitArrays.GetTraits]"
+                    visible = "[LessThanOrEqualTo_int32(GetDataModelSize(TraitArrays.GetTraits), '(int32)5')]" ### URF
+                    flipdirection = yes
+                    addcolumn = 39
+                    addrow = 40
+                    maxhorizontalslots = 5
+                    maxverticalslots = 1
+
+                    item = {
+						icon_trait = {
+							blockoverride "icon_size"
+							{
+								size = { 55 55 }
+							}
+						}
+					}
+                }
+
+                dynamicgridbox = {
+                    name = "traits_medium"
+                    datamodel = "[TraitArrays.GetTraits]"
+                    visible = "[And(GreaterThan_int32(GetDataModelSize(TraitArrays.GetTraits), '(int32)5'), LessThanOrEqualTo_int32(GetDataModelSize(TraitArrays.GetTraits), '(int32)7'))]" ### URF
+                    flipdirection = yes
+                    addcolumn = 35
+                    addrow = 35
+                    maxhorizontalslots = 7
+                    maxverticalslots = 1
+
+                    item = {
+						icon_trait = {
+							blockoverride "icon_size"
+							{
+								size = { 40 40 }
+							}
+
+							blockoverride "glow_radius"
+							{
+								glow_radius = 4
+							}
+						}
+					}
+                }
+
+                dynamicgridbox = {
+                    name = "traits_small"
+                    datamodel = "[TraitArrays.GetTraits]"
+                    visible = "[And(GreaterThan_int32(GetDataModelSize(TraitArrays.GetTraits), '(int32)7'), LessThanOrEqualTo_int32(GetDataModelSize(TraitArrays.GetTraits), '(int32)8'))]" ### URF
+                    flipdirection = yes
+                    addcolumn = 28
+                    addrow = 29
+                    maxhorizontalslots = 8 ### URF
+                    maxverticalslots = 1
+
+                    item = {
+						icon_trait = {
+							blockoverride "icon_size"
+							{
+								size = { 29 29 }
+							}
+
+							blockoverride "glow_radius"
+							{
+								glow_radius = 3
+							}
+						}
+					}
+                }
+
+                dynamicgridbox = {
+                    name = "traits_v_small"
+                    datamodel = "[TraitArrays.GetTraits]"
+                    visible = "[And(GreaterThan_int32(GetDataModelSize(TraitArrays.GetTraits), '(int32)8'), LessThanOrEqualTo_int32(GetDataModelSize(TraitArrays.GetTraits), '(int32)18'))]" ### URF
+                    flipdirection = yes
+                    addcolumn = 28
+                    addrow = 29
+                    maxhorizontalslots = 9
+                    datamodel_wrap = 9
+                    maxverticalslots = 2
+
+                    item = {
+						icon_trait = {
+							blockoverride "icon_size"
+							{
+								size = { 25 25 }
+							}
+
+							blockoverride "glow_radius"
+							{
+								glow_radius = 3
+							}
+						}
+					}
+                }
+
+                scrollbox = {
+					name = "traits_scroller"
+					visible = "[GreaterThan_int32(GetDataModelSize(TraitArrays.GetTraits), '(int32)18')]"
+					size = { 0 55 }
+					layoutpolicy_vertical = fixed
+					layoutpolicy_horizontal = expanding
+					scrollbarpolicy_vertical = as_needed
+					blockoverride "scrollbox_margins" {
+							margin = { 0 4 }
+							margin_right = 10
+					}
+					using = Animation_Tab_Switch
+					blockoverride "scrollbox_content"
+					{
+                        dynamicgridbox = {
+                            name = "traits_tiny"
+                            datamodel = "[TraitArrays.GetTraits]"
+                            #visible = "[GreaterThan_int32(GetDataModelSize(TraitArrays.GetTraits), '(int32)8')]" ### URF
+                            flipdirection = yes
+                            addcolumn = 24
+                            addrow = 25
+                            maxhorizontalslots = 8 ### URF
+                            datamodel_wrap = 8 ### URF
+                            # maxverticalslots = 2
+                            maxverticalslots = 8
+        
+                            item = {
+                                icon_trait = {
+                                    blockoverride "icon_size"
+                                    {
+                                        size = { 27 27 }
+                                    }
+        
+                                    blockoverride "glow_radius"
+                                    {
+                                        glow_radius = 2
+                                    }
+                                }
+                            }
+                        }
+					}
+				}
+
+                expand = {}
+            }
+        }
+        expand = {}
+	}
+
+	# type hbox_traits_list_small = hbox
+    # {
+    #     layoutpolicy_horizontal = expanding
+
+        
+    #     widget = {
+    #         layoutpolicy_horizontal = expanding
+    #         size = { 0 55 }
+
+    #         hbox = {
+    #             name = "3_personality_traits"
+    #             visible = "[LessThanOrEqualTo_int32(GetDataModelSize(TraitArrays.GetPersonalityTraits), '(int32)3')]"
+
+    #             fixedgridbox = {
+    #                 name = "personality_traits"
+    #                 datamodel = "[TraitArrays.GetPersonalityTraits]"
+    #                 flipdirection = yes
+    #                 addcolumn = 54
+    #                 addrow = 55
+    #                 maxhorizontalslots = 3
+
+    #                 item = {
+    #                     icon_trait = {
+    #                         blockoverride "icon_size"
+    #                         {
+    #                             size = { 55 55 }
+    #                         }
+    #                     }
+    #                 }
+    #             }
+
+    #             hbox = {
+    #                 visible = "[Not(IsDataModelEmpty(TraitArrays.GetTraits))]"
+    #                 layoutpolicy_vertical = expanding
+    #                 margin = { 5 10 }
+
+    #                 divider_light = {
+    #                     layoutpolicy_vertical = expanding
+    #                 }
+    #             }
+
+    #             fixedgridbox = {
+    #                 name = "traits_big"
+    #                 datamodel = "[TraitArrays.GetTraits]"
+    #                 visible = "[LessThanOrEqualTo_int32(GetDataModelSize(TraitArrays.GetTraits), '(int32)4')]"
+    #                 flipdirection = yes
+    #                 addcolumn = 39
+    #                 addrow = 40
+    #                 maxhorizontalslots = 4
+    #                 maxverticalslots = 1
+
+    #                 item = {
+    #                     icon_trait = {
+    #                         blockoverride "icon_size"
+    #                         {
+    #                             size = { 40 40 }
+    #                         }
+    #                     }
+    #                 }
+    #             }
+
+    #             fixedgridbox = {
+    #                 name = "traits_small"
+    #                 datamodel = "[TraitArrays.GetTraits]"
+    #                 visible = "[And(GreaterThan_int32(GetDataModelSize(TraitArrays.GetTraits), '(int32)4'), LessThanOrEqualTo_int32(GetDataModelSize(TraitArrays.GetTraits), '(int32)6'))]"
+    #                 flipdirection = yes
+    #                 addcolumn = 28
+    #                 addrow = 29
+    #                 maxhorizontalslots = 6
+    #                 maxverticalslots = 1
+
+    #                 item = {
+    #                     icon_trait = {
+    #                         blockoverride "icon_size"
+    #                         {
+    #                             size = { 29 29 }
+    #                         }
+
+    #                         blockoverride "glow_radius"
+    #                         {
+    #                             glow_radius = 3
+    #                         }
+    #                     }
+    #                 }
+    #             }
+
+    #             fixedgridbox = {
+    #                 name = "traits_tiny"
+    #                 datamodel = "[TraitArrays.GetTraits]"
+    #                 visible = "[GreaterThan_int32(GetDataModelSize(TraitArrays.GetTraits), '(int32)6')]"
+    #                 flipdirection = yes
+    #                 addcolumn = 24
+    #                 addrow = 25
+    #                 maxhorizontalslots = 7
+    #                 datamodel_wrap = 7
+    #                 maxverticalslots = 2
+
+    #                 item = {
+    #                     icon_trait = {
+    #                         blockoverride "icon_size"
+    #                         {
+    #                             size = { 25 25 }
+    #                         }
+
+    #                         blockoverride "glow_radius"
+    #                         {
+    #                             glow_radius = 2
+    #                         }
+    #                     }
+    #                 }
+    #             }
+
+    #             expand = {}
+    #         }
+
+    #         hbox = {
+    #             name = "4_personality_traits"
+    #             visible = "[GreaterThan_int32(GetDataModelSize(TraitArrays.GetPersonalityTraits), '(int32)3')]"
+
+    #             fixedgridbox = {
+    #                 name = "personality_traits"
+    #                 datamodel = "[TraitArrays.GetPersonalityTraits]"
+    #                 flipdirection = yes
+    #                 addcolumn = 54
+    #                 addrow = 55
+    #                 maxhorizontalslots = 4
+
+    #                 item = {
+    #                     icon_trait = {
+    #                         blockoverride "icon_size"
+    #                         {
+    #                             size = { 55 55 }
+    #                         }
+    #                     }
+    #                 }
+    #             }
+
+    #             hbox = {
+    #                 visible = "[Not(IsDataModelEmpty(TraitArrays.GetTraits))]"
+    #                 layoutpolicy_vertical = expanding
+    #                 margin = { 5 10 }
+
+    #                 divider_light = {
+    #                     layoutpolicy_vertical = expanding
+    #                 }
+    #             }
+
+    #             fixedgridbox = {
+    #                 name = "traits_big"
+    #                 datamodel = "[TraitArrays.GetTraits]"
+    #                 visible = "[LessThanOrEqualTo_int32(GetDataModelSize(TraitArrays.GetTraits), '(int32)4')]"
+    #                 flipdirection = yes
+    #                 addcolumn = 39
+    #                 addrow = 40
+    #                 maxhorizontalslots = 4
+    #                 maxverticalslots = 1
+
+    #                 item = {
+    #                     icon_trait = {
+    #                         blockoverride "icon_size"
+    #                         {
+    #                             size = { 40 40 }
+    #                         }
+    #                     }
+    #                 }
+    #             }
+
+    #             fixedgridbox = {
+    #                 name = "traits_small"
+    #                 datamodel = "[TraitArrays.GetTraits]"
+    #                 visible = "[And(GreaterThan_int32(GetDataModelSize(TraitArrays.GetTraits), '(int32)4'), LessThanOrEqualTo_int32(GetDataModelSize(TraitArrays.GetTraits), '(int32)6'))]"
+    #                 flipdirection = yes
+    #                 addcolumn = 28
+    #                 addrow = 29
+    #                 maxhorizontalslots = 6
+    #                 maxverticalslots = 1
+
+    #                 item = {
+    #                     icon_trait = {
+    #                         blockoverride "icon_size"
+    #                         {
+    #                             size = { 29 29 }
+    #                         }
+
+    #                         blockoverride "glow_radius"
+    #                         {
+    #                             glow_radius = 3
+    #                         }
+    #                     }
+    #                 }
+    #             }
+
+    #             fixedgridbox = {
+    #                 name = "traits_tiny"
+    #                 datamodel = "[TraitArrays.GetTraits]"
+    #                 visible = "[GreaterThan_int32(GetDataModelSize(TraitArrays.GetTraits), '(int32)6')]"
+    #                 flipdirection = yes
+    #                 addcolumn = 24
+    #                 addrow = 25
+    #                 maxhorizontalslots = 6
+    #                 datamodel_wrap = 6
+    #                 maxverticalslots = 2
+
+    #                 item = {
+    #                     icon_trait = {
+    #                         blockoverride "icon_size"
+    #                         {
+    #                             size = { 25 25 }
+    #                         }
+
+    #                         blockoverride "glow_radius"
+    #                         {
+    #                             glow_radius = 2
+    #                         }
+    #                     }
+    #                 }
+    #             }
+
+    #             expand = {}
+    #         }
+    #     }
+    #     expand = {}
+    # }
+}

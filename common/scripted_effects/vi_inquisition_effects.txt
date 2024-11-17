@@ -39,7 +39,7 @@
 				add = {
 					value = 0
 					add = scope:new_imprisoner.intrigue
-					multiply = 3
+					multiply = 4
 					add = scope:new_imprisoner.martial
 				}
 			}
@@ -48,7 +48,7 @@
 		50 = {
 			modifier = {
 				has_trait = vi_exposed_vampire
-				add = -100
+				add = -90
 			}
 
 			modifier = {
@@ -57,7 +57,7 @@
 			}
 
 			modifier = {
-				add = 50
+				add = 30
 				has_trait = vi_vampire_2
 			}
 
@@ -90,11 +90,10 @@
 				add = {
 					value = 0
 					add = scope:new_target.intrigue
-					multiply = 2
+					multiply = 4
 					add = scope:new_target.prowess
 				}
 			}
-
 		}
 	}
 }
@@ -214,23 +213,55 @@ vi_inquisition_spawn_inquisition_army_effect = {
 		value = 0
 	}
 
+	if = {
+		limit = {
+			has_game_rule = setting_vi_low_inquisition_strength
+		}
+
+		change_local_variable = {
+			name = for_counter
+			add = 1
+		}
+	}
+
 	while = {
 		limit = {
 			exists = local_var:for_counter
 			piety_level > local_var:for_counter
 		}
-		spawn_army = {
-			men_at_arms = {
-				type = teutonic_knights
-				stacks = 2
+
+		if = {
+			limit = {
+				has_game_rule = setting_vi_high_inquisition_strength
 			}
-			levies = 800
-			inheritable = no
-			location = scope:inquisition_leader.capital_province
-			war = scope:war
-			war_keep_on_attacker_victory = no
-			save_scope_as = new_army
-			name = vi_inquisition_human_army
+			spawn_army = {
+				men_at_arms = {
+					type = teutonic_knights
+					stacks = 5
+				}
+				levies = 1000
+				inheritable = no
+				location = scope:inquisition_leader.capital_province
+				war = scope:war
+				war_keep_on_attacker_victory = no
+				save_scope_as = new_army
+				name = vi_inquisition_human_army
+			}
+		}
+		else = {
+			spawn_army = {
+				men_at_arms = {
+					type = teutonic_knights
+					stacks = 2
+				}
+				levies = 800
+				inheritable = no
+				location = scope:inquisition_leader.capital_province
+				war = scope:war
+				war_keep_on_attacker_victory = no
+				save_scope_as = new_army
+				name = vi_inquisition_human_army
+			}
 		}
 		change_local_variable = {
 			name = for_counter

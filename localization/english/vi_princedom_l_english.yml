@@ -10,6 +10,7 @@
  vi_found_princedom_decision_desc: "Found a new Vampire Princedom at your current location"
  vi_found_princedom_decision_confirm: "I will rule the underworld!"
  vi_found_princedom_decision_enough_vampires: "You have at least 6 [courtiers|e] who are non-fledgling [vampires|E]"
+ vi_found_princedom_decision_enough_vampires_fledgling: "You have at least 10 [courtiers|e] who are [vampires|E]"
 
 
  vi_sponsor_princedom_interaction: "Sponsor Prince"

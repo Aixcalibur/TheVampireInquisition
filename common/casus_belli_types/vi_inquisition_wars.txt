@@ -894,6 +894,12 @@ vi_inquisition_religious_war = {
 
 vi_inquisition_landless_war = {
 	icon = ducal_conquest_cb
+
+	war_name = vi_inquisition_landless_war_name
+	my_war_name = vi_inquisition_landless_war_name # Used when the claimant and attacker is the same person
+	war_name_base = vi_inquisition_landless_war_name_base
+	my_war_name_base = vi_inquisition_landless_war_name_base
+
 	group = invasion
 	allow_hostages = no
 	target_top_liege_if_outside_realm = no
@@ -949,9 +955,12 @@ vi_inquisition_landless_war = {
 	on_victory_desc = vi_inquisition_victory_desc
 
 	on_victory = {
+		scope:attacker.var:vi_inquisition_targeting = {
+			save_scope_as = vi_target_vampire
+		}
 		scope:vi_target_vampire = {
 			vi_inquisition_imprison_effect = {
-				IMPRISONER = scope:defender
+				IMPRISONER = scope:attacker
 			}
 
 			custom_description = {
@@ -959,7 +968,7 @@ vi_inquisition_landless_war = {
 
 				every_courtier_or_guest = {
 					vi_inquisition_try_imprison_effect = {
-						IMPRISONER = scope:defender
+						IMPRISONER = scope:attacker
 					}
 				}
 	
@@ -975,7 +984,7 @@ vi_inquisition_landless_war = {
 				# }
 			}
 
-			depose = yes
+			#depose = yes
 
 			# depose_effect = { DEPOSER = scope:defender }
 		}
@@ -988,7 +997,6 @@ vi_inquisition_landless_war = {
 				type = dungeon
 			}
 		}
-		
 	}
 
 	on_primary_attacker_death = invalidate

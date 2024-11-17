@@ -1,0 +1,41 @@
+﻿l_french:
+vi_join_house_custom_interaction: "Choisir un parent vampire"
+vi_join_house_custom_interaction_desc: "Choisir [recipient.GetShortUINameNoTooltip] comme la personne qui vous a transformé"
+
+vi_customization.0001.t: "Personnalisation du vampire"
+vi_customization.0001.desc: "Choisissez votre niveau de vampire."
+vi_customization.0001.a: "Fledgling"
+vi_customization.0001.b: "Neonate"
+vi_customization.0001.c: "Elder"
+vi_customization.0001.d: "Nevermind, I don't want to be a vampire"
+
+vi_free_trait_refund_tt: "Gagnez un trait gratuit"
+vi_increase_age_by_20_tt: "Augmentez votre âge de 20ans"
+vi_increase_age_by_200_tt: "Augmentez votre âge de 200ans"
+
+vi_customization.0002.t: "Menu de personnalisation supplémentaire"
+vi_customization.0002.desc: "Choisissez votre niveau de vampire."
+vi_customization.0002.a: «Changer d'âge»
+vi_customization.0002.b: «Choisir la dynastie/la lignée»
+vi_customization.0002.c: «Modifier...»
+vi_customization.0002.d: «J'ai terminé»
+
+vi_choose_a_vampire_tt: «Interagir avec un vampire pour rejoindre sa maison avant de continuer»
+vi_become_their_child: «Rejoindre sa maison»
+
+vi_customization.0010.t: «Personnalisation de l'âge»
+vi_customization.0010.desc: «Quel âge avez-vous?»
+vi_customization.0010.a: «Ajouter 10ans»
+vi_customization.0010.b: «Supprimer 10ans»
+vi_customization.0010.c: «Ajouter 1an»
+vi_customization.0010.d: «Retour»
+
+vi_customization.1001.t: «Trait gratuit»
+vi_customization.1001.desc: «Celui-ci est pour moi».
+vi_customization.1001.next: «Page suivante»
+vi_customization.1001.none: «Je ne veux pas de votre charité!»
+
+vi_alpha.0001.t: «CK3: The Vampire Inquisition - Alpha»
+vi_alpha.0001.desc: «Merci d'avoir participé au test alpha de The Vampire Inquisition! Beaucoup plus de contenu est prévu, mais c'est un peu trop de travail pour moi de le faire seul. \n\nSi vous souhaitez participer au mod, ajouter votre propre histoire ou vos propres personnages, rejoignez-nous sur Discord. Les nouveaux moddeurs sont les bienvenus.»
+vi_alpha.0001.a: «Continuez vers la personnalisation des vampires.»
+vi_alpha.0001.b: «Continuez...»

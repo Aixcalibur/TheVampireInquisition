@@ -16,7 +16,7 @@
 			#faith_creation_piety_cost_add = 
 		}
 		parameters = {
-			unattractive_for_character_conversions = yes
+			#unattractive_for_character_conversions = yes
 			vi_masquerade = yes
 			hostility_override_vi_masquerade_required = 1
 			hostility_override_vi_masquerade_not_required = 3
@@ -33,10 +33,60 @@
 		}
 		
 		parameters = {
-			unattractive_for_character_conversions = yes
 			vi_no_masquerade = yes
 			hostility_override_vi_masquerade_required = 2
 			hostility_override_vi_masquerade_not_required = 1
+		}
+	}
+}
+
+doctrine_vi_diablerie = {
+	group = "crimes"
+	is_available_on_create = {
+		religion_tag = vi_vampire_religion
+	}
+
+	vi_diablerie_forbidden = {
+		piety_cost = {
+			value = faith_doctrine_cost_low
+			if = {
+				limit = { has_doctrine = vi_diablerie_forbidden }
+				multiply = 0
+			}
+		}
+		character_modifier = {
+			#faith_creation_piety_cost_add = 
+		}
+		parameters = {
+			hostility_override_vi_diablerie_allowed_not_required = 3
+		}
+	}
+
+	vi_diablerie_shunned = {
+		piety_cost = {
+			value = faith_doctrine_cost_low
+			if = {
+				limit = { has_doctrine = vi_diablerie_shunned }
+				multiply = 0
+			}
+		}
+		
+		parameters = {
+			
+		}
+	}
+
+	vi_diablerie_allowed = {
+		piety_cost = {
+			value = faith_doctrine_cost_low
+			if = {
+				limit = { has_doctrine = vi_diablerie_shunned }
+				multiply = 0
+			}
+		}
+		
+		parameters = {
+
 		}
 	}
 }

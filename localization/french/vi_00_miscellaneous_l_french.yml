@@ -1,0 +1,18 @@
+﻿l_french:
+game_concept_vi_suspicion: "Soupçon"
+game_concept_vi_suspicions: "Soupçons"
+game_concept_vi_suspicious: "Suspect"
+game_concept_vi_suspicion_desc: "De nombreuses actions en tant que [vampire|e] font que les mortels acquièrent une [opinion|e] Suspecte négative. Les mortels qui se méfient d'un [vampire|e] peuvent utiliser le [scheme|e] [GetScheme('vi_investigate').GetTypeName] pour essayer d'apprendre leur [secret|e] [vampire|e] et les exposer en tant que [vampire|e]. Les [rulers|e] terriens sont plus vulnérables à un [scheme|e] [GetScheme('vi_investigate').GetTypeName]. "
+
+game_concept_dhampir: "Dhampir"
+game_concept_dhampirs: "Dhampirs"
+game_concept_dhampir_desc: "Les personnages avec le trait [GetTrait('vi_dhampir').GetName( GetNullCharacter )] sont des mortels avec au moins un parent [vampire|E]. Cela est possible lorsqu'un [vampire|E] stimule de manière anormale la fertilité de leur corps mort-vivant. En raison de leur héritage, ils sont plus résistants aux pouvoirs surnaturels, mais ne peuvent pas acquérir le véritable vampirisme."
+
+game_concept_vi_masquerade: "Masquerade"
+game_concept_vi_masquerade_desc: "La Mascarade fait référence au secret de l'existence des [vampires|e] que les vampires cherchent à maintenir."
+
+vi_attempted_mind_control_opinion: "Tentative de contrôle mental"
+
+vi_suspicious_behavior_msg: "Comportement suspect"
+vi_suspicious_behavior_tt: "Vous n'arrivez pas à vous sortir de la tête l'étrangeté [vi_vampire.GetShortUINamePossessive]..."
+vi_suspicious_behavior_tt_1: "Il y a quelque chose de bizarre chez [vi_vampire.GetShortUIName] qui vous reste en tête..."

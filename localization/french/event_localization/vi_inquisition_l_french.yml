@@ -1,0 +1,78 @@
+﻿l_french:
+
+vi_started_inquisition_opinion: «L'Inquisition a commencé»
+
+vi_mortals_defect_tooltip: «Des [men_at_arms|E] mortels font défection dans votre armée.»
+
+vi_inquisition_defense_cb: "Inquisition"
+VI_INQUISITION_CB_NAME: "Inquisition"
+VI_INQUISITION_CB_WAR_NAME_BASE: "[ATTACKER.GetPrimaryTitle.GetAdjective] Inquisition"
+VI_INQUISITION_CB_WAR_NAME: "Inquisition contre [ATTACKER.GetShortUINameNotMe]"
+VI_STARTS_INQUISITION: "Démarre une Inquisition contre [recipient.GetShortUINameNotMe]"
+
+vi_inquisition_religious_war: "Inquisition"
+
+VI_INQUISITION_REALM_CAPTURE: "Les vampires à l'intérieur du royaume seront capturés"
+
+vi_declare_inquisition_interaction: "Déclarer l'Inquisition"
+vi_declare_inquisition_interaction_desc: "Cela forcera un dirigeant [vampire|E] non-débarqué de votre royaume à déclencher une guerre. Si si vous gagnez, vous emprisonnerez les vampires dans votre royaume."
+vi_inquisition_defense_war_defeat_desc_defender:1 "Vous capturez [vampires|E] dans tout le royaume."
+vi_inquisition_defense_war_defeat_desc:1 "[defender.GetShortUIName|U] garde [defender.GetHerHis] [titles|E] et capture [vampires|E] dans tout le royaume."
+
+vi_inquisition_war_victory_desc: "Les vampires de tout le royaume sont capturés."
+vi_inquisition_leader_modifier: "Chef de l'Inquisition"
+
+vi_inquisition.0001.t: "L'Inquisition commence"
+vi_inquisition.0001.desc: "Des nouvelles concernant le vampire, [recipient.GetShortUIName], se sont répandues dans tout le royaume, et la peur s'empare du cœur des gens. Des rumeurs s'infiltrent dans les villages et les villes, chaque histoire étant plus terrible que la précédente. Des monstres qui portent des apparences humaines, rôdent dans l'ombre, se nourrissent des innocents et sèment la méchanceté à travers le pays.\n\nLe clergé attise les flammes, appelle à la foi et à la vigilance, exhortant le peuple à rester ferme face à cette menace impie. En tant que souverain de ce pays, il m'incombe de mener la guerre contre les ténèbres."
+vi_inquisition.0001.a: "Brûlez les vampires !"
+
+vi_inquisition.0002.t: «L'inquisition commence»
+vi_inquisition.0002.desc: «[actor.GetName] a soulevé le peuple et a déclaré une inquisition contre [recipient.GetNameOrMe]».
+vi_inquisition.0002.a: «Luttons pour notre survie».
+vi_inquisition.0002.b: «Nous devons éviter de nous impliquer!»
+
+vi_inquisition_vampire_army: "Vampires réveillés"
+vi_inquisition_human_army: "Armée de l'Inquisition"
+
+vi_archangel.0001.t: "L'Archange se réveille"
+vi_archangel.0001.desc: "Il y a eu un moment ressenti par tous les vampires du monde, un moment où il semblait que le monde avait augmenté de quelques degrés. Des rumeurs venues de Rome parlent d'une cérémonie où [pope.GetShortUIName] est descendu dans les catacombes de Callixte pour invoquer un être considéré comme un simple mythe, un ancien vampire qui se fait appeler [vi_archangel.GetNameNicknamed]."
+vi_archangel.0001.desc_nopope: "Il y a eu un moment ressenti par tous les vampires du monde, un moment où il semblait que le monde avait augmenté de quelques degrés. Des rumeurs venues de Rome parlent d'une cérémonie où les restes de l'Église catholique sont descendus dans les catacombes de Callixte pour invoquer un être considéré comme un simple mythe, un ancien vampire qui s'appelle [vi_archangel.GetHerHim] [vi_archangel.GetNameNicknamed]. "
+vi_archangel.0001.desc_target: "\n\nD'autres rapports parlent d'une traînée de lumière dans le ciel se dirigeant vers [vi_archangel_destination.GetShortUIName]. "
+
+vi_archangel.0001.target: "Préparons nos défenses !"
+vi_archangel.0001.vampire: "Espérons que [vi_archangel.GetSheHe] ne se retourne pas contre nous ensuite..."
+vi_archangel.0001.observer: "Le monde est devenu fou..."
+vi_archangel.0001.arrogant: "Je pourrais l'affronter."
+
+vi_archangel_modifier: "Archange"
+vi_archangel_modifier_desc: "Un archange est capable d'affronter seul les légions de l'Enfer."
+
+vi_archangel_war: "Croisade anti-vampire"
+VI_ARCHANGEL_WAR_NAME: "Croisade contre [DEFENDER.GetShortUINameNotMe]"
+VI_ARCHANGEL_WAR_NAME_BASE: "Croisade de [ATTACKER.GetShortUIName]"
+VI_ARCHANGEL_CB_NAME: "Croisade anti-vampire"
+
+vi_archangel.3001.t: "Radiance"
+vi_archangel.3001.vampire_desc: "Pour une fois, la soif est complètement partie."
+vi_archangel.3001.desc: "Les flammes, d'or blanc et irisées, m'engloutissent tout entière, mais après un moment d'agonie, il n'y a plus de douleur, seulement un calme étrange et profond. Ma peau pèle, mes os craquent sous la chaleur, mais en moi, il n'y a que le silence, un vaste vide libre de peur, libre de regret. Enfin, mes péchés, ainsi que mon corps, se dissolvent dans la lumière."
+vi_archangel.3001.a: "Est-ce le salut...?"
+
+vi_archangel_sword_name: "Épée flamboyante de l'Archange"
+vi_archangel_sword_description: "Des flammes dorées scintillent le long de la lame lorsqu'elle est tenue. Peut-être que seul son propriétaire d'origine pourrait faire ressortir tout son potentiel, mais cette épée sacrée est toujours redoutable."
+
+k_vi_heavenly_host: "Hôte céleste"
+k_vi_heavenly_host_article: "$DEFAULT_TITLE_NAME_ARTICLE$"
+vi_healthbar_army: "Barre de santé"
+vi_health_point_maa: "Points de santé"
+vi_health_point_maa_flavor: "Un seul adversaire puissant peut compter pour des milliers d'hommes."
+vi_saint: "Saint"
+nick_vi_the_archangel: "l'Archange"
+nick_vi_the_archangel_desc: "Il prétend être un Archange. En voyant les flammes dorées qui balayent le champ de bataille à chaque coup d'épée, qui pourrait le contredire ?"
+death_vi_holy_flames: "A été incinéré par le feu sacré"
+death_vi_holy_flames_killer: "A été incinéré par les flammes sacrées de [TARGET_CHARACTER.GetUIName]"
+vi_holy_flames_modifier: "Flammes sacrées"
+
+vi_archangel_killed_enemy_enemy: "Notre $knight_culture_player_no_tooltip_lowercase$ [TARGET_CHARACTER.GetShortUINameNoTooltip] a été incinéré par les flammes sacrées de [CHARACTER.GetShortUINameNoTooltip] !"
+vi_archangel_killed_enemy_friendly: "[CHARACTER.GetShortUINameNoTooltip] a incinéré [TARGET_CHARACTER.GetShortUINameNoTooltip] avec le feu sacré !"
+vi_archangel_killed_army_enemy: "Nos troupes ont été baignées dans le feu sacré !"
+vi_archangel_killed_army_friendly: "Leurs troupes ont été baignées dans le feu sacré."

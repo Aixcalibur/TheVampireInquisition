@@ -1,7 +1,7 @@
 ﻿l_english:
 
  vi_started_inquisition_opinion: "Started Inquisition"
-
+ vi_starts_inquisition_desc: "Starts an Inquisition"
  vi_mortals_defect_tooltip: "Mortal [men_at_arms|E] defect from your army."
 
  vi_inquisition_defense_cb: "Inquisition"
@@ -10,12 +10,19 @@
  VI_INQUISITION_CB_WAR_NAME: "Inquisition against [ATTACKER.GetShortUINameNotMe]"
  VI_STARTS_INQUISITION: "Starts an Inquisition against [recipient.GetShortUINameNotMe]"
 
+ vi_inquisition_landless_war_name: "[ATTACKER.GetPrimaryTitle.GetAdjective] Vampire Hunt"
+ vi_inquisition_landless_war_name_base: "Vampire Hunt"
+
  vi_inquisition_religious_war: "Inquisition"
 
  VI_INQUISITION_REALM_CAPTURE: "Vampires inside throughout the realm will be captured"
 
  vi_declare_inquisition_interaction: "Declare Inquisition"
  vi_declare_inquisition_interaction_desc: "This will force an unlanded [vampire|E] ruler in your realm to start a war. If you win, you will imprison the vampires in your realm."
+
+ vi_declare_inquisition_landless_interaction: "Raid Vampire Lair"
+ vi_declare_inquisition_landless_interaction_desc: "You will declare war in order to raid the lair of this vampire and capture them."
+
  vi_inquisition_defense_war_defeat_desc_defender:1 "You capture [vampires|E] throughout the realm."
  vi_inquisition_defense_war_defeat_desc:1 "[defender.GetShortUIName|U] keeps [defender.GetHerHis] [titles|E] and capture [vampires|E] throughout the realm."
 
@@ -25,11 +32,14 @@
  vi_inquisition.0001.t: "Inquisition Begins"
  vi_inquisition.0001.desc: "News about the vampire, [recipient.GetShortUIName], has spread across the realm, and fear grips the hearts of the people. Rumors seep through villages and towns, each tale more terrible than the last. Monsters that wear human guises, stalking in the shadows, feeding upon the innocent, and sowing wickedness across the land.\n\nThe clergy fan the flames, calling for faith and vigilance, urging the people to stand firm in the face of this unholy threat. As the sovereign of this land, it falls to me to lead the war against darkness."
  vi_inquisition.0001.a: "Burn the vampires!"
+ vi_inquisition.0001.b: "(DEBUG) Cancel"
 
  vi_inquisition.0002.t: "Inquisition Begins"
  vi_inquisition.0002.desc: "[actor.GetName] has roused up the people and declared an Inquisition against [recipient.GetNameOrMe]."
  vi_inquisition.0002.a: "Let us fight for our survival."
  vi_inquisition.0002.b: "We must avoid getting involved!"
+
+ vi_inquisition.1001.t: "Raiding a Vampire Lair"
 
  vi_inquisition_vampire_army: "Roused Vampires"
  vi_inquisition_human_army: "Inquisition Army"

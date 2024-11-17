@@ -1,0 +1,32 @@
+﻿l_french:
+
+ k_vi_bida_article:0 "$DEFAULT_TITLE_NAME_ARTICLE$"
+ k_vi_bida:0 "Temple d'or"
+ k_vi_bida_adj:0 "Doré"
+
+ d_nf_vi_bida: "Maison de Bida"
+ d_nf_vi_bida_article: "$DEFAULT_TITLE_NAME_ARTICLE$"
+
+ d_vi_figuira_article:0 "$DEFAULT_TITLE_NAME_ARTICLE$"
+ d_vi_figuira:0 "Les mines d'or de Bure"
+ d_vi_figuira_adj:0 "Bure"
+
+ d_nf_vi_cisse: "Famille Cisse"
+ d_nf_vi_cisse_article: "$DEFAULT_TITLE_NAME_ARTICLE$"
+
+ d_vi_bambuk_article:0 "$DEFAULT_TITLE_NAME_ARTICLE$"
+ d_vi_bambuk:0 "Les mines d'or de Bambuk"
+ d_vi_bambuk_adj:0 "Bambuk"
+
+ d_vi_siguiri_article:0 "$DEFAULT_TITLE_NAME_ARTICLE$"
+ d_vi_siguiri:0 "Les mines d'or de Siguiri"
+ d_vi_siguiri_adj:0 "Siguiri"
+
+ d_vi_lobi_article:0 "$DEFAULT_TITLE_NAME_ARTICLE$"
+ d_vi_lobi:0 "Les mines d'or de Lobi"
+ d_vi_lobi_adj:0 "Lobi"
+
+ vi_serpent_bida:0 "Grand Serpent"
+
+ vi_artifact_bida_head_name:0 "Tête de Bida"
+ vi_artifact_bida_head_desc:0 "La tête du Grand Serpend, Bida."

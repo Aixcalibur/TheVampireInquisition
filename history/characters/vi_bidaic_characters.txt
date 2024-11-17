@@ -51,13 +51,14 @@ vi_dyabe = {
 	faith = west_african_bidu_pagan
 	culture = soninke
 
-	father = vi_bida
+	#father = vi_bida
 
 	trait = vi_vampire_2
 
 	770.1.1 = {
 		birth = yes
 		effect = {
+			set_relation_vi_sire = character:vi_bida
 			add_gold = 800
 			vi_make_vampire_effect = yes
 			add_prowess_skill = 15

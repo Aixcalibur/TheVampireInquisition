@@ -10,9 +10,9 @@
 vi_sated_modifier = {
 	icon = health_positive
 	health = 0.25
-	prowess = 2
-	stress_loss_mult = -0.25
-	# stress_gain_mult = -0.05
+	prowess = 3
+	stress_loss_mult = -0.2
+	#stress_gain_mult = -0.1
 	stacking = yes
 }
 

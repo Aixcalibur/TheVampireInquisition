@@ -43,6 +43,10 @@ vi_inquisition.0001 = {
 			}
 		}
 	}
+
+	option = {
+		name = vi_inquisition.0001.b
+	}
 }
 
 vi_inquisition.0002 = {
@@ -114,47 +118,16 @@ vi_inquisition.1001 = {
 	}
 
 	immediate = {
-		root = {
-			add_character_flag = vi_inquisition_leader
-			set_variable = {
-				name = vi_inquisition_targeting
-				value = scope:recipient
-			}
-		}
-		if = {
-			limit = {
-				NOT = {
-					exists = scope:recipient
-				}
-			}
-
-			# character:vi_esclarmonde = {
-			# 	save_scope_as = recipient
-				
-			# }
-		}
-		scope:recipient = {
-			add_character_flag = vi_inquisition_target
-			capital_county = {
-				holder = {
-					save_scope_as = vi_county_owner
-				}
-			}
-		}
+		
 	}
 
 	option = {
 		name = vi_inquisition.1001.a
 
-		start_war = {
-			casus_belli = vi_inquisition_landless_war
-			target = scope:vi_county_owner
-		}
+		trigger_event = vi_inquisition.1003
 
 		scope:recipient = {
-			trigger_event = {
-				id = vi_inquisition.1002
-			}
+			trigger_event = vi_inquisition.1002
 		}
 	}
 }
@@ -190,5 +163,15 @@ vi_inquisition.1002 = {
 
 	option = {
 		name = vi_inquisition.1002.a
+	}
+}
+
+vi_inquisition.1003 = {
+	hidden = yes
+	immediate = {
+		start_war = {
+			casus_belli = vi_inquisition_landless_war
+			target = scope:vi_county_owner
+		}
 	}
 }

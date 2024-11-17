@@ -23,8 +23,89 @@ vi_stress_overload.0001 = { #This event just serves to override any other non-va
 	}
 }
 
-#Needs to be edited. This will be the turning feral event.
+
 vi_stress_overload.1001 = {
+	type = character_event
+	title = vi_sterling_stress.0001.t
+	desc = {
+		random_valid = {
+			triggered_desc = {
+				trigger = {
+					OR = {
+						has_trait = vi_vampire_4
+						has_trait = vi_vampire_5
+						age > 600
+					}
+				}
+				desc = vi_sterling_stress.0001.desc_old
+			}
+			triggered_desc = {
+				trigger = {
+					NOR = {
+						has_trait = vi_vampire_4
+						has_trait = vi_vampire_5
+						age > 600
+					}
+				}
+				desc = vi_sterling_stress.0001.desc
+			}
+			triggered_desc = {
+				trigger = {
+					NOR = {
+						has_trait = vi_vampire_4
+						has_trait = vi_vampire_5
+						age > 600
+					}
+				}
+				desc = vi_sterling_stress.0001.desc_alt
+			}
+			
+		}
+	}
+	
+	
+	theme = mental_break
+	
+	left_portrait = {
+		character = root
+		animation = war_over_loss
+	}
+
+	trigger = {
+		vi_is_vampire_trigger = yes
+	}
+
+	widget = {
+		gui = "event_window_widget_stress"
+		container = "custom_widgets_container"
+	}
+	immediate = {
+		root = { save_scope_as = stress_character } # For stress widget
+
+		stress_threshold_event_post_immediate = yes
+	}
+
+
+	option = {
+		name = vi_sterling_stress.0001.a
+
+		vi_become_dormant_effect = yes
+	}
+
+	option = {
+		name = vi_sterling_stress.0001.b
+		trigger = {
+			debug_only = yes
+		}
+	}
+	
+	after = {
+		stress_threshold_event_aftereffects = yes # Perform stress threshold event clean-up and preparation for future stress threshold events.
+	}
+}
+
+#Needs to be edited. This will be the turning feral event.
+vi_stress_overload.1002 = {
 	type = character_event
 	title = vi_stress_overload.1001.t
 	desc = vi_stress_overload.1001.desc

@@ -1,0 +1,29 @@
+﻿vi_ai_vampire_activity = {
+	categories = {
+		difficulty ai historicity vampire
+	}
+
+	default = vi_default_ai_vampire_activity
+
+	vi_low_ai_vampire_activity = {}
+	
+	vi_default_ai_vampire_activity = {}
+
+	vi_heavy_ai_vampire_activity = {}
+
+}
+
+vi_inquisition_strength = {
+	categories = {
+		difficulty ai vampire
+	}
+
+	default = vi_default_inquisition_strength
+
+	vi_low_inquisition_strength = {}
+
+	vi_default_inquisition_strength = {}
+
+	vi_high_inquisition_strength = {}
+	
+}

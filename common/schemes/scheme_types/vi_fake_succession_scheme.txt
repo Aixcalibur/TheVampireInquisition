@@ -37,7 +37,7 @@
 	# Agents
 	agent_leave_threshold = -25
 	agent_join_chance = {
-		base = 0
+		base = 20
 		ai_agent_join_chance_basic_suite_modifier = yes
 	}
 	valid_agent = {
@@ -71,20 +71,20 @@
 							vi_is_vampire_trigger = no
 						}
 						add = {
-							value = primary_title.title_tier
+							value = highest_held_title_tier
 							multiply = -1
 						}
 					}
 				}
-				
+				min = -200
 			}
 		}
 
 		modifier = {
 			desc = "VI_MY_TITLE_TIER"
 			add = {
-				value = scope:owner.primary_title.title_tier
-				multiply = -10
+				value = -10
+				multiply = scope:owner.highest_held_title_tier
 			}
 		}
 
@@ -92,33 +92,35 @@
 			desc = "VI_MY_REALM_SIZE"
 			add = {
 				value = scope:owner.sub_realm_size
-				if = {
-					limit = {
-						scope:target.sub_realm_size >= massive_realm_size
-					}
-					multiply = -2.5
-				}
-				else_if = {
-					limit = {
-						scope:target.sub_realm_size >= major_realm_size
-					}
-					multiply = -2
-				}
-				else_if = {
-					limit = {
-						scope:target.sub_realm_size >= medium_realm_size
-					}
-					multiply = -1.5
-				}
-				else_if = {
-					limit = {
-						scope:target.sub_realm_size >= minor_realm_size
-					}
-					multiply = -1.25
-				}
-				else = {
-					multiply = -1
-				}
+				multiply = -1.5
+				# if = {
+				# 	limit = {
+				# 		scope:target.sub_realm_size >= massive_realm_size
+				# 	}
+				# 	multiply = -2.5
+				# }
+				# else_if = {
+				# 	limit = {
+				# 		scope:target.sub_realm_size >= major_realm_size
+				# 	}
+				# 	multiply = -2
+				# }
+				# else_if = {
+				# 	limit = {
+				# 		scope:target.sub_realm_size >= medium_realm_size
+				# 	}
+				# 	multiply = -1.5
+				# }
+				# else_if = {
+				# 	limit = {
+				# 		scope:target.sub_realm_size >= minor_realm_size
+				# 	}
+				# 	multiply = -1.25
+				# }
+				# else = {
+				# 	multiply = -1
+				# }
+				min = -100
 				round = yes
 			}
 		}

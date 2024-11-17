@@ -1,0 +1,69 @@
+﻿l_french:
+start_vi_manipulation_interaction: «Manipuler le royaume»
+start_vi_manipulation_interaction_desc: «Manipuler secrètement la politique du royaume de [recipient.GetShortUINameNoTooltip]».
+vi_manipulation: "Manipulation"
+
+vi_manipulation_success_modifier: "Manipulations réussies"
+vi_manipulation_infiltration_modifier: "Cour infiltrée"
+vi_supported_rule_modifier: "Règle soutenue"
+vi_solidified_rule_modifier: "Règle consolidée"
+vi_incompetent_administration_modifier: "Administrateurs incompétents"
+vi_improved_administration_modifier: "Administration améliorée"
+vi_stewardship_insights_modifier: "Informations sur l'intendance"
+vi_diplomacy_insights_modifier: "Informations sur la diplomatie"
+vi_martial_insights_modifier: "Informations martiales"
+vi_minor_positive_vassal_modifier: "Vassals favorables"
+vi_minor_negative_vassal_modifier: "Vassals non favorables"
+vi_minor_positive_income_modifier: "Domaine prospère"
+vi_minor_negatve_income_modifier: "Interférence des bandits"
+vi_minor_positive_levy_modifier: "Recrutement solide"
+vi_minor_negative_levy_modifier: "Recrutement médiocre"
+
+vi_finale_positive_army_modifier: "Grand projet: la guerre"
+vi_finale_positive_development_modifier: "Grand projet: le développement"
+
+vi_manipulation_on_going_minor_msg: "Machinations politiques"
+
+vi_manipulation.0010.t: "Un objectif"
+vi_manipulation.0010.desc: "Les faiblesses de [target.GetShortUIName] m'offrent d'innombrables opportunités, mais quelle direction dois-je prendre pour ce royaume?"
+vi_manipulation.0010.a: «Stabilisation»
+vi_manipulation.0010.a.tt: «Vos machinations offriront davantage d'opportunités de renforcer le royaume»
+vi_manipulation.0010.b: «Déstabilisation»
+vi_manipulation.0010.b.tt: «Vos machinations offriront davantage d'opportunités de renforcer le royaume»
+
+vi_manipulation.1001.t: «Une main dans l'ombre»
+vi_manipulation.1001.desc: «Une opportunité se présente pour influencer subtilement l'équilibre des pouvoirs à la cour de [target.GetShortUIName]. Envoyer quelques lettres et dire quelques mots en faveur de [target.GetHerHis] aux bonnes personnes serait d'un immense bénéfice pour [target.GetShortUIName], consolidant le règne de [target.GetHerHis] tout en faisant avancer mes machinations.»
+vi_manipulation.1001.msg_desc: "Un bienfaiteur secret vous a grandement soutenu dans les coulisses."
+vi_manipulation.1001.a: "J'aiderai [target.GetHerHim] dans l'ombre."
+vi_manipulation.1001.b: "[target.GetShortUIName] aura tout mon soutien !"
+vi_manipulation.1001.c: "Mon influence est mieux utilisée ailleurs."
+
+vi_manipulation.1011.t: "Envoi d'un courtisan"
+vi_manipulation.1011.desc: "J'ai de nombreux courtisans compétents à ma cour. L'un d'entre eux serait sûrement très utile comme yeux et oreilles à la cour de [target.GetShortUIName]. Cependant, je dois choisir un courtisan que [target.GetShortUINameNoTooltip] serait réellement prêt à accepter."
+vi_manipulation.1011.a: «[3100_target_courtier.GetShortUIName] serait sûrement accepté.»
+vi_manipulation.1011.b: «Non, j'enverrai plutôt [random_courtier.GetShortUIName].»
+vi_manipulation.1011.c: «Cela ne vaut pas la peine de perdre un courtisan compétent.»
+vi_manipulation.1011.tt: «Si [target.GetShortUINameNoTooltip] accepte votre courtisan, votre plan gagnera un coup de pouce à l'infiltration.»
+vi_manipulation.1013.t: "Courtier accepté"
+vi_manipulation.1014.t: "Courtier rejeté"
+
+vi_manipulation.1021.t: "Un dirigeant endetté"
+vi_manipulation.1021.desc: "Peut-être que ce sont mes machinations qui ont conduit à cela, mais [target.GetShortUIName] se retrouve endetté et son administration trop incompétente pour le sortir de là. Ce serait le moment idéal pour endetter [target.GetShortUIName] envers #moi en italique. #!"
+vi_manipulation.1021.a: "Aidez-moi à payer ses dettes et à améliorer la fiscalité."
+vi_manipulation.1021.a.msg_title: "Aide administrative"
+vi_manipulation.1021.b: "Interférer dans les affaires du royaume de [target.GetHerHis]."
+vi_manipulation.1021.b.msg_title: "Interférence dans le royaume"
+vi_manipulation.1021.c: "Les problèmes de [target.GetShortUIName] ne sont pas mon problème."
+vi_manipulation.1021.tt: "Défi de gestion"
+
+vi_manipulation.1031.t: "Un vassal indiscipliné"
+vi_manipulation.1031.desc: "Je me trouve en position de servir de médiateur entre [target.GetShortUIName] et [target.GetHerHis] vassal, [angry_vassal.GetShortUIName]. Ce faisant, je pourrai obtenir un certain avantage sur les deux."
+vi_manipulation.1031.msg_title: "Résultats de l'intervention"
+vi_manipulation.1031.a: "J'écrirai une lettre pour défendre [target.GetShortUIName]."
+vi_manipulation.1031.b: "J'amplifierai les fautes de [target.GetShortUIName] auprès de [angry_vassal.GetShortUIName]."
+vi_manipulation.1031.c: "Ce n'est pas le moment d'intervenir."
+
+vi_manipulation_outcome.0001.a: "Préparez-vous à la guerre!"
+vi_manipulation_outcome.0001.b: "Développez le royaume."
+vi_manipulation_outcome.0001.a.tt: "Les vassaux développent l'économie du royaume pour soutenir les guerres de leur suzerain."
+vi_manipulation_outcome.0001.b.tt : « Chaque vassal obtient la directive de développer l'économie du royaume. »

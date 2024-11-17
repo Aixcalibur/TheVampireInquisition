@@ -152,10 +152,10 @@ vi_turn_into_vampire_effect = {
 				}
 				set_immortal_age = scope:vi_target.age
 			}
-
-			scope:vi_vampire = {
-				adopt = scope:vi_target
-			}
+			set_relation_vi_sire = scope:vi_vampire
+			# scope:vi_vampire = {
+			# 	adopt = scope:vi_target
+			# }
 			# set_character_faith = scope:vi_vampire.faith
 			# set_house = scope:vi_vampire.house
 			if = {
@@ -540,17 +540,143 @@ vi_consider_excommunicated_list = {
 	}
 }
 
-vi_regenerate_effect = {
-	remove_trait = wounded_1
-	remove_trait = wounded_2
-	remove_trait = wounded_3
-	remove_trait = maimed
-	remove_trait = leper
-	remove_trait = one_legged
-	remove_trait = disfigured
-	remove_trait = infirm
-	remove_trait = incapable
-	remove_trait = blind
-	remove_trait = eunuch_1
-	remove_trait = beardless_eunuch
+vi_slow_regeneration_effect = {
+	send_interface_message = {
+		title = vampire_healing_msg
+		random_list = {
+			40 = {
+				trigger = {
+					has_trait = wounded_1
+				}
+				remove_trait = wounded_1
+				add_stress = 10
+			}
+			40 = {
+				trigger = {
+					has_trait = wounded_2
+				}
+				remove_trait = wounded_2
+				add_stress = 15
+			}
+			40 = {
+				trigger = {
+					has_trait = wounded_3
+				}
+				add_character_modifier = {
+					modifier = vi_vampire_strain_modifier
+					years = 1
+				}
+				remove_trait = wounded_3
+				add_stress = 20
+			}
+			40 = {
+				trigger = {
+					has_trait = maimed
+				}
+				add_character_modifier = {
+					modifier = vi_vampire_strain_modifier
+					years = 3
+				}
+				remove_trait = maimed
+				add_stress = 25
+			}
+			30 = {
+				trigger = {
+					has_trait = one_legged
+				}
+				add_character_modifier = {
+					modifier = vi_vampire_strain_modifier
+					years = 2
+				}
+				remove_trait = one_legged
+				add_stress = 25
+			}
+			30 = {
+				trigger = {
+					has_trait = infirm
+				}
+				remove_trait = infirm
+				add_character_modifier = {
+					modifier = vi_vampire_strain_modifier
+					years = 5
+				}
+				add_stress = 20
+			}
+			10 = {
+				trigger = {
+					NOT = {
+						has_character_flag = vi_permanently_disfigured
+					}
+					has_trait = disfigured
+				}
+				add_character_modifier = {
+					modifier = vi_vampire_strain_modifier
+					years = 2
+				}
+				remove_trait = disfigured
+				add_stress = 10
+			}
+			10 = {
+				trigger = {
+					NOT = {
+						has_character_flag = vi_permanently_one_eyed
+					}
+					has_trait = one_eyed
+				}
+				add_character_modifier = {
+					modifier = vi_vampire_strain_modifier
+					years = 1
+				}
+				remove_trait = one_eyed
+				add_stress = 10
+			}
+			10 = {
+				trigger = {
+					NOT = {
+						has_character_flag = vi_permanently_blind
+					}
+					has_trait = blind
+				}
+				add_character_modifier = {
+					modifier = vi_vampire_strain_modifier
+					years = 3
+				}
+				remove_trait = blind
+				add_stress = 20
+			}
+			5 = {
+				trigger = {
+					has_trait = scarred
+					is_ai = yes
+				}
+				remove_trait = scarred
+				add_stress = 5
+			}
+			10 = {
+				trigger = {
+					NOT = {
+						has_character_flag = vi_permanently_eunuch
+					}
+					OR = {
+						has_trait = eunuch_1
+						has_trait = beardless_eunuch
+					}
+				}
+				add_character_modifier = {
+					modifier = vi_vampire_strain_modifier
+					years = 1
+				}
+				if = {
+					limit = { has_trait = eunuch_1 }
+					remove_trait = eunuch_1
+				}
+				if = {
+					limit = { has_trait = beardless_eunuch }
+					remove_trait = beardless_eunuch
+				}
+				add_stress = 20
+			}
+		}
+	}
+	
 }

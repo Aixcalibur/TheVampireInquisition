@@ -1,0 +1,11 @@
+﻿vi_sire = {
+	title_grant_target = yes
+	opinion = 10
+	corresponding = vi_spawn
+}
+
+vi_spawn = {
+	title_grant_target = yes
+	#opinion = 30
+	corresponding = vi_sire
+}

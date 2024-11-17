@@ -109,98 +109,7 @@ vi_fake_succession.1002 = {
 	}
 
 	immediate = {
-
-		every_relation = {
-			limit = {
-				NOR = {
-					vi_is_vampire_trigger = yes
-					has_trait = vi_dhampir
-				}
-			}
-			add_opinion = {
-				target = root
-				modifier = suspicion_opinion
-				opinion = -10
-			}
-			if = {
-				limit = {
-					has_relation_lover = root
-				}
-				remove_relation_lover = root
-			}
-			if = {
-				limit = {
-					has_relation_friend = root
-				}
-				remove_relation_friend = root
-			}
-			if = {
-				limit = {
-					has_relation_best_friend = root
-				}
-				remove_relation_best_friend = root
-			}
-			if = {
-				limit = {
-					has_relation_soulmate = root
-				}
-				remove_relation_soulmate = root
-			}
-		}
-
-		every_targeting_scheme = {
-			limit = {
-				scope:owner = {
-					NOR = {
-						vi_is_vampire_trigger = yes
-						has_trait = dhampir
-					}
-				}
-			}
-			end_scheme = yes
-		}
-
-		add_character_modifier = {
-			modifier = vi_avoiding_scrutiny_modifier
-			years = 3
-		}
-
-		add_legitimacy = -500
-
-		add_prestige_level = {
-			value = root.prestige_level
-			multiply = -1
-			add = 1
-			max = -1
-		}
-
-		add_piety_level = {
-			value = root.piety_level
-			multiply = -1
-			add = 1
-			max = -1
-		}
-
-		add_prestige = {
-			value = root.prestige
-			multiply = -1
-		}
-
-		add_piety = {
-			value = root.piety
-			multiply = -1
-		}
-
-		hidden_effect = {
-			every_secret = {
-				type = vi_vampire_secret
-				remove_secret = yes
-			}
-			add_secret = {
-				type = secret_vi_vampire
-			}
-		}
-		
+		vi_fake_succession_success_effect = yes
 	}
 
 	option = {
@@ -244,7 +153,6 @@ vi_fake_succession.1003 = {
 			limit = {
 				vi_is_vampire_trigger = no
 			}
-
 			save_scope_as = vi_vassal
 		}
 

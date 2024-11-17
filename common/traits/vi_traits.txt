@@ -44,6 +44,7 @@ vi_vampire_2 = {
 	monthly_vi_vampire_lifestyle_xp_gain_add = 1
 	enemy_hostile_scheme_phase_duration_add = medium_scheme_phase_duration_malus_value
 	enemy_hostile_scheme_success_chance_add = -25
+	enemy_personal_scheme_success_chance_add = -10
 
 	shown_in_ruler_designer = no
 	immortal = yes
@@ -75,6 +76,7 @@ vi_vampire_3 = {
 	monthly_vi_vampire_lifestyle_xp_gain_add = 2
 	enemy_hostile_scheme_phase_duration_add = major_scheme_phase_duration_malus_value
 	enemy_hostile_scheme_success_chance_add = -50
+	enemy_personal_scheme_success_chance_add = -30
 
 	shown_in_ruler_designer = no
 	immortal = yes
@@ -107,6 +109,7 @@ vi_vampire_4 = {
 	monthly_vi_vampire_lifestyle_xp_gain_add = 3
 	enemy_hostile_scheme_phase_duration_add = monumental_scheme_phase_duration_malus_value
 	enemy_hostile_scheme_success_chance_add = -80
+	enemy_personal_scheme_success_chance_add = -50
 
 	shown_in_ruler_designer = no
 	immortal = yes
@@ -137,6 +140,7 @@ vi_vampire_5 = {
 	prowess_no_portrait = 100
 	enemy_hostile_scheme_phase_duration_add = 200
 	enemy_hostile_scheme_success_chance_add = -200
+	enemy_personal_scheme_success_chance_add = -80
 
 	shown_in_ruler_designer = no
 	immortal = yes

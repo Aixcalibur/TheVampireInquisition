@@ -197,3 +197,67 @@ vi_neighboring_rulers_all_inquisition = {
 	}
 }
 
+vi_vassal_uprising = {
+
+	save_scope_as = vi_liege
+
+	every_vassal = {
+		limit = {
+			vi_is_vampire_trigger = no
+			can_join_or_create_faction_against = {
+				who = scope:vi_liege
+				faction = independence_faction
+			}
+		}
+
+		if = {
+			limit = {
+				liege = {
+					any_targeting_faction = {
+						faction_is_type = independence_faction
+					}
+				}
+			}
+			run_interaction = {
+				interaction = join_independence_faction_interaction
+				actor = scope:vi_vassal
+				recipient = liege
+				execute_threshold = decline
+			}
+		}
+		else_if = {
+			limit = {
+				can_create_faction = {
+					target = liege
+					type = independence_faction
+				}
+			}
+			run_interaction = {
+				interaction = start_independence_faction_interaction
+				actor = scope:vi_vassal
+				recipient = liege
+				execute_threshold = decline
+			}
+		}
+
+		vi_inquisition_spawn_inquisition_army_effect = yes
+	}
+
+	random_targeting_faction = {
+		limit = {
+			faction_is_type = independence_faction
+		}
+
+		scope:vi_liege = {
+			if = {
+				limit = {
+					has_trait = vi_exposed_vampire
+				}
+				vi_inquisition_defection_effect = yes
+			}
+		}
+		
+		faction_start_war = {}
+	}
+
+}

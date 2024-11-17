@@ -522,6 +522,228 @@ vi_stress_generic.0003 = {
 	}
 }
 
+vi_stress_generic.0004 = { #Confider
+	type = character_event
+	title = vi_lep_confider1.0001.t
+	desc = vi_lep_confider1.0001.desc
+
+	theme = mental_break
+	override_background = {
+		trigger = { is_travelling = yes }
+		reference = terrain
+	}
+	left_portrait = {
+		character = root
+		animation = worry
+	}
+
+	right_portrait = scope:friend
+
+	trigger = {
+		vi_is_vampire_trigger = yes
+		
+		any_relation = {
+			type = friend
+			vi_is_vampire_trigger = no
+			is_ai = yes
+
+			NOT = {
+				any_known_secret = {
+					secret_owner = root
+					secret_type = secret_vi_vampire
+				}
+			}
+		}
+
+		OR = {
+			has_trait = confider
+			can_be_confider = yes
+		}
+
+		NOT = {
+			has_character_flag = had_vi_stress_generic0004
+		}
+	}
+
+	weight_multiplier = {
+		base = 1
+
+		modifier = {
+			can_be_confider = yes
+			add = 20
+		}
+
+		modifier = {
+			has_trait = confider
+			add = 30
+		}
+	}
+
+	widget = {
+		gui = "event_window_widget_stress"
+		container = "custom_widgets_container"
+	}
+
+	immediate = {
+		root = { save_scope_as = stress_character } # For stress widget
+
+		save_scope_as = vi_vampire
+
+		add_character_flag = {
+			flag = had_vi_stress_generic0004
+			years = 30
+		}
+
+		random_relation = {
+			type = friend
+			limit = {
+				vi_is_vampire_trigger = no
+				is_ai = yes
+				NOT = {
+					any_known_secret = {
+						secret_owner = root
+						secret_type = secret_vi_vampire
+					}
+				}
+			}
+			save_scope_as = friend
+		}
+
+		stress_threshold_event_post_immediate = yes
+	}
+
+	option = { # "I trust you, so I will tell you the truth about myself."
+		name = vi_lep_confider1.0001.a
+
+		stress_impact = {
+			confider = medium_stress_impact_loss
+			trusting = minor_stress_impact_loss
+		}
+
+		random_list = {
+			80 = {
+				custom_tooltip = vi_lep_confider1_tt_good
+
+				stress_impact = {
+					base = major_stress_impact_loss
+				}
+				
+				reverse_add_opinion = {
+					target = scope:friend
+					modifier = friendliness_opinion
+					opinion = 40
+				}
+			}
+			20 = {
+				custom_tooltip = vi_lep_confider1_tt_bad
+				
+				modifier = {
+					OR = {
+						has_relation_best_friend = scope:friend
+						has_relation_soulmate = scope:friend
+					}
+					add = -60
+				}
+
+				modifier = {
+					scope:friend = {
+						has_trait = zealous
+					}
+					add = 80
+				}
+
+				modifier = {
+					scope:friend = {
+						OR = {
+							has_trait = compassionate
+							has_trait = forgiving
+							has_trait = trusting
+						}
+					}
+
+					add = -60
+				}
+
+				modifier = {
+					scope:friend = {
+						OR = {
+							has_trait = callous
+							has_trait = sadistic
+							has_trait = paranoid
+						}
+					}
+					add = 30
+				}
+
+				reverse_add_opinion = {
+					target = scope:friend
+					modifier = suspicion_opinion
+					opinion = -40
+				}
+
+				remove_relation_friend = scope:friend
+
+				stress_impact = {
+					base = major_stress_impact_gain
+				}
+			}
+		}
+
+		ai_chance = {
+			base = 50
+			
+			modifier = {
+				has_trait = trusting
+				add = 50
+			}
+		}
+	}
+
+	option = { # "It's embarrassing, but one time..."
+		name = vi_lep_confider1.0001.b
+
+		random_secret = {
+			limit = {
+				NOR = {
+					secret_type = secret_vi_vampire
+					is_known_by = scope:friend
+				}
+			}
+			reveal_to = scope:friend
+		}
+
+		stress_impact = {
+			base = medium_stress_impact_loss
+			trusting = medium_stress_impact_gain
+			paranoid = minor_stress_impact_gain
+		}
+
+		ai_chance = {
+			base = 20
+
+			modifier = {
+				has_trait = trusting
+				add = -50
+			}
+		}
+	}
+
+	option = { # "It felt good to let loose."
+		name = vi_lep_confider1.0001.c
+		stress_impact = {
+			base = major_stress_impact_gain
+		}
+		
+		ai_chance = {
+			base = -100
+		}
+	}
+
+	after = {
+		stress_threshold_event_aftereffects = yes
+	}
+}
+
 
 
 

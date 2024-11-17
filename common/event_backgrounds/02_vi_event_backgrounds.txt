@@ -150,10 +150,12 @@ council_chamber = {
 			trigger_if = {
 				limit = { exists = scope:bg_override_char }
 				scope:bg_override_char = {
+					has_trait_with_flag = vi_sunlight_burns
 					location.culture ?= { has_building_gfx = indian_building_gfx }
 				}
 			}
 			trigger_else = {
+				has_trait_with_flag = vi_sunlight_burns
 				location.culture ?= { has_building_gfx = indian_building_gfx }
 			}
 		}
@@ -1146,6 +1148,8 @@ sitting_room = {
 	}
 }
 
+
+
 vi_sitting_room_night = {
 
 	background = { #LAAMPs meet around campfire instead 
@@ -1195,6 +1199,182 @@ vi_sitting_room_night = {
 		reference = "gfx/interface/illustrations/event_scenes/sittingroom_night.dds"
 		environment = "environment_event_sittingroom"
 		ambience = "event:/SFX/Events/Backgrounds/sittingroom_fireplace"
+	}
+}
+
+study = {
+
+	background = {
+		trigger = {
+			trigger_if = {
+				limit = { exists = scope:bg_override_char }
+				scope:bg_override_char = {
+					has_trait_with_flag = vi_sunlight_burns
+				}
+			}
+			trigger_else = {
+				has_trait_with_flag = vi_sunlight_burns
+			}
+		}
+		reference = "gfx/interface/illustrations/event_scenes/study_night.dds"
+		environment = "environment_event_corridor"
+		ambience = "event:/SFX/Events/Backgrounds/castle_corridor_night"
+		# environment = "environment_event_study"
+		# ambience = "event:/SFX/Events/Backgrounds/office_workplace"
+	}
+
+
+	background = { #LAAMPs
+		trigger = {
+			trigger_if = {
+				limit = { exists = scope:bg_override_char }
+				scope:bg_override_char = { is_landless_adventurer = yes }
+			}
+			trigger_else = { is_landless_adventurer = yes }
+		}
+		reference = "gfx/interface/illustrations/event_scenes/ep3_relaxing_tent.dds"
+		environment = "environment_ep3_living_tent_interior"
+		ambience = "event:/DLC/EP3/SFX/Events/Event_Images/ep3_evn_eventimage_living_tent_interior"
+	}
+	background = { # Byzantium/Greek Everyone else
+		trigger = {
+			trigger_if = {
+				limit = { exists = scope:bg_override_char }
+				scope:bg_override_char = {
+					location.culture ?= {
+						OR = {
+							has_cultural_pillar = heritage_byzantine
+							has_cultural_pillar = heritage_caucasian
+							has_cultural_pillar = heritage_latin
+							has_graphical_mediterranean_culture_group_trigger = yes 
+						}
+					}
+				}
+			}
+			trigger_else = {
+				location.culture ?= {
+					OR = {
+						has_cultural_pillar = heritage_byzantine
+						has_cultural_pillar = heritage_caucasian
+						has_cultural_pillar = heritage_latin
+						has_graphical_mediterranean_culture_group_trigger = yes 
+					}
+				}
+			}
+		}
+		reference = "gfx/interface/illustrations/event_scenes/ep3_medi_study.dds"
+		environment = "environment_ep3_relaxing_room"
+		ambience = "event:/SFX/Events/Backgrounds/office_workplace"
+	}
+	background = {	#Tribal Study
+		trigger = {
+			trigger_if = {
+				limit = { exists = scope:bg_override_char }
+				scope:bg_override_char = {
+					OR = {
+						location.culture ?= { has_building_gfx = norse_building_gfx }
+						should_use_tribal_realm_palace_graphics_trigger = yes
+						AND = {
+							government_has_flag = government_is_tribal
+							location.culture ?= { has_graphical_steppe_culture_group_trigger = yes }
+						}
+					}
+				}
+			}
+			trigger_else = {
+				OR = {
+					location.culture ?= { has_building_gfx = norse_building_gfx }
+					should_use_tribal_realm_palace_graphics_trigger = yes
+					AND = {
+						government_has_flag = government_is_tribal
+						location.culture ?= { has_graphical_steppe_culture_group_trigger = yes }
+					}
+				}
+			}
+		}
+		reference = "gfx/interface/illustrations/event_scenes/fp1_steward_study.dds"
+		environment = "environment_event_fp1_steward_study"
+		ambience = "event:/SFX/Events/Backgrounds/office_workplace"
+	}
+	background = { # Byzantium/Greek
+		trigger = {
+			trigger_if = {
+				limit = { exists = scope:bg_override_char }
+				scope:bg_override_char = {
+					location.culture ?= {
+						OR = {
+							has_cultural_pillar = heritage_byzantine
+							has_cultural_pillar = heritage_caucasian
+							has_cultural_pillar = heritage_latin
+							has_graphical_mediterranean_culture_group_trigger = yes 
+						}
+					}
+				}
+			}
+			trigger_else = {
+				location.culture ?= {
+					OR = {
+						has_cultural_pillar = heritage_byzantine
+						has_cultural_pillar = heritage_caucasian
+						has_cultural_pillar = heritage_latin
+						has_graphical_mediterranean_culture_group_trigger = yes 
+					}
+				}
+			}
+		}
+		reference = "gfx/interface/illustrations/event_scenes/ep3_relaxing_room.dds"
+		environment = "environment_ep3_relaxing_room"
+		ambience = "event:/DLC/EP3/SFX/Events/Event_Images/ep3_evn_eventimage_byzantine_relaxing_room"
+	}
+	background = { #MENA uses relaxing room as fallback
+		trigger = {
+			trigger_if = {
+				limit = { exists = scope:bg_override_char }
+				scope:bg_override_char = {
+					OR = {
+						location.culture ?= { has_graphical_mena_culture_group_trigger = yes }
+						location.culture ?= { has_building_gfx = iranian_building_gfx }
+						location.culture ?= { has_graphical_african_culture_group_trigger = yes }
+						location.culture ?= { has_graphical_steppe_culture_group_trigger = yes }
+						location.culture ?= { has_building_gfx = berber_group_building_gfx }
+					}
+				}
+			}
+			trigger_else = {
+				OR = {
+					location.culture ?= { has_graphical_mena_culture_group_trigger = yes }
+					location.culture ?= { has_building_gfx = iranian_building_gfx }
+					location.culture ?= { has_graphical_african_culture_group_trigger = yes }
+					location.culture ?= { has_graphical_steppe_culture_group_trigger = yes }
+					location.culture ?= { has_building_gfx = berber_group_building_gfx }
+				}
+			}
+		}
+		reference = "gfx/interface/illustrations/event_scenes/bp1_relaxing_room_mena.dds"
+		environment = "environment_event_bp1_relaxing_room_mena"
+		ambience = "event:/SFX/Events/Backgrounds/office_workplace"
+	}
+	background = {	#Indian Study
+		trigger = {
+			trigger_if = {
+				limit = { exists = scope:bg_override_char }
+				scope:bg_override_char = {
+					location.culture ?= { has_building_gfx = indian_building_gfx }
+				}
+			}
+			trigger_else = {
+				location.culture ?= { has_building_gfx = indian_building_gfx }
+			}
+		}
+		reference = "gfx/interface/illustrations/event_scenes/bp2_study_indian.dds"
+		environment = "environment_bp2_study_indian"
+		ambience = "event:/SFX/Events/Backgrounds/office_workplace"
+	}
+
+	background = {	#Fallback
+		reference = "gfx/interface/illustrations/event_scenes/study.dds"
+		environment = "environment_event_study"
+		ambience = "event:/SFX/Events/Backgrounds/office_workplace"
 	}
 }
 

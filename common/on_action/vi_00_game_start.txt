@@ -272,18 +272,17 @@ vi_vampire_game_start_after_lobby = {
 			}
 		}
 
-		character:vi_beshim = {
-			if = {
-				limit = {
-					exists = this
-					is_alive = yes
-				}
-				vi_create_artifact_longsword_effect = {
-					OWNER = this
-				}
-			}
-			
-		}
+		# character:vi_beshim = {
+		# 	if = {
+		# 		limit = {
+		# 			exists = this
+		# 			is_alive = yes
+		# 		}
+		# 		vi_create_artifact_longsword_effect = {
+		# 			OWNER = this
+		# 		}
+		# 	}
+		# }
 
 		if = {
 			limit = {

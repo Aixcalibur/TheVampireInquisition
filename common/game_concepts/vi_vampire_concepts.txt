@@ -52,3 +52,12 @@ vi_weave_fate_interaction = {
 	alias = {vi_weave_fate_interaction}
 	parent = interaction
 }
+
+vi_sire = {
+	parent = relation
+}
+
+vi_spawn = {
+	alias = { vi_spawns }
+	parent = relation
+}

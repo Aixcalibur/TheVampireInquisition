@@ -96,7 +96,7 @@ vi_apollo = {
 	trait = physique_good_1
 	trait = confider
 
-	father = vi_baphomet
+	father = vi_twinsfather
 	mother = vi_twinsmother
 	
 	848.7.12 = {
@@ -114,6 +114,7 @@ vi_apollo = {
 
 	867.1.1 = {
 		effect = {
+			set_relation_vi_sire = character:vi_baphomet
 			vi_make_vampire_effect = yes
 			set_immortal_age = 19
 			add_character_modifier = {
@@ -174,7 +175,7 @@ vi_artemis = {
 	trait = athletic
 	trait = confider
 
-	father = vi_baphomet
+	father = vi_twinsfather
 	mother = vi_twinsmother
 
 	848.7.12 = {
@@ -201,6 +202,7 @@ vi_artemis = {
 
 	867.1.1 = {
 		effect = {
+			set_relation_vi_sire = character:vi_baphomet
 			vi_make_vampire_effect = yes
 			set_immortal_age = 19
 			add_character_modifier = {
@@ -224,6 +226,21 @@ vi_artemis = {
 	}
 
 	2000.1.1 = {
+		death = yes
+	}
+}
+vi_twinsfather = {
+	name = "Marcus"
+	dynasty = none
+	#female = yes
+	faith = orthodox
+	culture = greek
+
+	829.1.1 = {
+		birth = yes
+	}
+
+	848.7.13 = {
 		death = yes
 	}
 }

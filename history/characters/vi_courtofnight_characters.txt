@@ -134,7 +134,7 @@ vi_lucie = {
 			vi_nightcourt_learn_languages = yes
 			add_gold = 100
 			add_trait = vi_vampire_3
-			set_father = character:vi_ambrosius
+			set_relation_vi_sire = character:vi_ambrosius
 			set_house = character:vi_ambrosius.house
 			vi_make_vampire_effect = yes
 			set_immortal_age = 18
@@ -223,7 +223,6 @@ vi_albert = {
 	dynasty_house = house_vi_London
 	faith = vi_nightcourt
 	culture = anglo_saxon
-	father = vi_victor
 
 	prowess = 5
 
@@ -243,6 +242,7 @@ vi_albert = {
 	670.1.1 = {
 		birth = yes
 		effect = {
+			set_relation_vi_sire = character:vi_victor
 			vi_make_vampire_effect = yes
 			set_immortal_age = 70
 			add_prowess_skill = 14
@@ -279,7 +279,7 @@ vi_emily = {
 	female = yes
 	sexuality = asexual
 	dynasty_house = house_vi_London
-	father = vi_victor
+	#father = vi_victor
 	faith = vi_nightcourt
 	culture = anglo_saxon
 
@@ -302,6 +302,7 @@ vi_emily = {
 
 	742.1.1 = {
 		effect = {
+			set_relation_vi_sire = character:vi_victor
 			vi_make_vampire_effect = yes
 			set_immortal_age = 14
 			add_character_flag = vi_urchin_flag
@@ -339,7 +340,7 @@ vi_bookman = {
 	name = "Bookman"
 	sexuality = asexual
 	dynasty_house = house_vi_London
-	father = vi_victor
+	#father = vi_victor
 	faith = vi_nightcourt
 	culture = anglo_saxon
 
@@ -368,6 +369,7 @@ vi_bookman = {
 
 	800.1.1 = {
 		effect = {
+			set_relation_vi_sire = character:vi_victor
 			vi_make_vampire_effect = yes
 			set_immortal_age = 15
 			add_prowess_skill = 2
@@ -409,7 +411,7 @@ vi_bruiser = {
 	name = "Bruiser"
 	sexuality = asexual
 	dynasty_house = house_vi_London
-	father = vi_victor
+	#father = vi_victor
 	faith = vi_nightcourt
 	culture = norse
 	
@@ -437,6 +439,7 @@ vi_bruiser = {
 	827.1.1 = {
 		
 		effect = {
+			set_relation_vi_sire = character:vi_victor
 			vi_make_vampire_effect = yes
 			set_immortal_age = 15
 			add_prowess_skill = 15
@@ -491,7 +494,8 @@ vi_ysabel = {
 		effect = {
 			add_gold = 100
 			add_trait = vi_vampire_3
-			set_mother = character:vi_esclarmonde
+			add_character_flag = no_headgear
+			set_relation_vi_sire = character:vi_esclarmonde
 			set_house = character:vi_esclarmonde.house
 			vi_make_vampire_effect = yes
 			set_immortal_age = 18
@@ -542,11 +546,12 @@ vi_jehanne = {
 		effect = {
 			add_gold = 100
 			add_trait = vi_vampire_3
-			set_mother = character:vi_esclarmonde
+			set_relation_vi_sire = character:vi_esclarmonde
 			set_house = character:vi_esclarmonde.house
 			vi_make_vampire_effect = yes
 			set_immortal_age = 18
 			add_prowess_skill = 7
+			add_character_flag = no_headgear
 			vi_add_perk_charm_elder_effect = yes
 			vi_vampire_add_perk_effect = {
 				PERK = vi_celerity_perk
@@ -604,7 +609,7 @@ vi_symonne = {
 			add_character_flag = do_not_generate_starting_family
 			add_gold = 100
 			add_trait = vi_vampire_3
-			set_mother = character:vi_esclarmonde
+			set_relation_vi_sire = character:vi_esclarmonde
 			set_house = character:vi_esclarmonde.house
 			add_character_flag = vi_clergy_flag
 			vi_make_vampire_effect = yes
@@ -662,7 +667,7 @@ vi_roland = {
 	778.8.15 = {
 		employer = vi_esclarmonde
 		effect = {
-			set_mother = character:vi_esclarmonde
+			set_relation_vi_sire = character:vi_esclarmonde
 			set_relation_best_friend = { reason = friend_generic_history target = character:vi_olivier }
 			vi_make_vampire_effect = yes
 			set_relation_lover = {
@@ -729,7 +734,7 @@ vi_olivier = {
 	778.8.15 = {
 		employer = vi_esclarmonde
 		effect = {
-			set_mother = character:vi_esclarmonde
+			set_relation_vi_sire = character:vi_esclarmonde
 			vi_make_vampire_effect = yes
 			set_immortal_age = 27
 			add_prowess_skill = 16
@@ -837,6 +842,7 @@ vi_beatrice = {
 	788.6.7 = {
 		add_spouse = vi_lugh
 		effect = {
+			set_relation_vi_sire = character:vi_lugh
 			vi_make_vampire_effect = yes
 			set_immortal_age = 23
 			add_prowess_skill = 8
@@ -938,6 +944,7 @@ vi_beshim = {
 	603.4.27 = {
 		birth = yes
 		effect = {
+			set_relation_vi_sire = character:vi_orlok
 			vi_make_vampire_effect = yes
 			set_immortal_age = 27
 			add_prowess_skill = 22
@@ -950,6 +957,9 @@ vi_beshim = {
 				value = 100
 			}
 			vi_vampire_weight_stabilize_effect = yes
+			vi_create_artifact_longsword_effect = {
+				OWNER = this
+			}
 		}
 	}
 
@@ -993,6 +1003,7 @@ vi_emerik = {
 	603.4.27 = {
 		birth = yes
 		effect = {
+			set_relation_vi_sire = character:vi_orlok
 			vi_make_vampire_effect = yes
 			set_immortal_age = 27
 			add_prowess_skill = 15
@@ -1044,6 +1055,7 @@ vi_alexia = {
 	609.10.13 = {
 		birth = yes
 		effect = {
+			set_relation_vi_sire = character:vi_orlok
 			vi_make_vampire_effect = yes
 			set_immortal_age = 25
 			add_prowess_skill = 9
@@ -1160,7 +1172,7 @@ vi_norman_wife = {
 
 	866.1.15 = {
 		employer = vi_norman
-		
+		set_relation_vi_sire = character:vi_norman
 		effect = {
 			set_relation_grudge = character:vi_norman
 
@@ -1178,7 +1190,7 @@ vi_norman_wife = {
 
 	870.1.1 = {
 		effect = {
-			set_father = character:vi_norman
+			set_relation_vi_sire = character:vi_norman
 			set_house = character:vi_norman.house
 			vi_make_vampire_effect = yes
 			set_immortal_age = 18

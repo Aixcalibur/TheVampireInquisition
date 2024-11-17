@@ -1,1 +1,17 @@
-﻿
+﻿set_relation_vi_sire = {
+	first = I_GAIN_VI_SIRE
+	first_past = I_GAINED_VI_SIRE
+	third = THEY_GAIN_VI_SIRE
+	third_past = THEY_GAINED_VI_SIRE
+	global = GAINS_VI_SIRE
+	global_past = GAINED_VI_SIRE
+}
+
+set_relation_vi_spawn = {
+	first = I_GAIN_VI_SPAWN
+	first_past = I_GAINED_VI_SPAWN
+	third = THEY_GAIN_VI_SPAWN
+	third_past = THEY_GAINED_VI_SPAWN
+	global = GAINS_VI_SPAWN
+	global_past = GAINED_VI_SPAWN
+}

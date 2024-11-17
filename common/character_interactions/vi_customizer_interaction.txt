@@ -75,9 +75,18 @@
 	on_accept = {
 		scope:actor = {
 			set_house = scope:recipient.house
-			scope:recipient = {
-				adopt = scope:actor
+			if = {
+				limit = {
+					has_trait = vi_dhampir
+				}
+				scope:recipient = {
+					adopt = scope:actor
+				}
 			}
+			else = {
+				set_relation_vi_sire = scope:recipient
+			}
+			
 			if = {
 				limit = {
 					scope:become_their_child = yes
@@ -100,6 +109,10 @@
 			remove_character_flag = vi_choosing_dynasty
 			trigger_event = vi_customization.0002
 		}
+
+		# scope:recipient = {
+		# 	set_relation_vi_spawn = root
+		# }
 	}
 
 	ai_potential = {

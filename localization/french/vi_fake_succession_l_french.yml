@@ -1,0 +1,33 @@
+﻿l_french:
+vi_fake_succession_decision: "Fausse succession"
+vi_fake_succession_decision_desc: "En tant que vampire terrien, il est important de simuler régulièrement votre succession pour réduire les soupçons."
+vi_fake_succession_decision_tooltip: "Je simule ma propre mort et ma succession"
+vi_fake_succession_decision_confirm: "Je meurs et je vis à nouveau !"
+vi_fake_succession_decision_effect_tt: "Vous commencerez un [plan|e] pour simuler votre propre mort. Cela supprimera vos relations avec les mortels et mettra fin à tout autre plan des mortels contre vous."
+
+vi_fake_succession_scheme: "Fausse succession"
+vi_fake_succession_scheme_desc: "Je cherche à simuler ma propre succession afin d'écarter les soupçons sur mon immortalité."
+vi_fake_succession_scheme_desc_general: "Les vampires qui souhaitent rester [dirigeants|e] [terrés] doivent simuler leur propre succession pour dissiper les soupçons sur leur jeunesse éternelle."
+vi_fake_succession_scheme_SUCCESS_DESC: "Vous allez dissiper les soupçons sur votre immortalité... pour l'instant."
+vi_fake_succession_scheme_action: "Fake the Succession of"
+
+VI_NUM_OF_VASSALS: "Number of [vassals|e]: $VALUE|+0=$"
+VI_MY_TITLE_TIER: "My [title|E] [title_tier|E]: $VALUE|+0=$"
+VI_MY_REALM_SIZE: "My [realm_size|E]: $VALUE|+0=$"
+
+vi_fake_succession_agent suspect: «L'agent du stratagème devient suspect»
+vi_fake_succession_agent apprend la vérité: «L'agent du stratagème apprend la vérité»
+vi_fake_succession.0001.t: «L'héritage éternel»
+vi_fake_succession.0001.desc: « Je règne depuis des décennies maintenant, regardant ceux qui m'entourent vieillir, s'affaiblir et périr, tandis que je reste intouchable face à la cruauté du temps. À présent, les rumeurs ont commencé à se répandre avec une persistance que je ne peux plus ignorer.\n\nLes courtisans comme les vassaux ont commencé à se demander pourquoi leur suzerain ne semble jamais changer, et des rumeurs de magie noire ou de pactes avec le divin tourbillonnent dans les couloirs.\n\nJe dois agir maintenant, avant que quiconque ne découvre la vérité. »
+vi_fake_succession.0001.a: "Il est temps de présenter un "successeur" et de simuler ma propre mort."
+vi_fake_succession.0001.b: "Non, c'est trop risqué..."
+
+vi_fake_succession.1002.t: "Un règne renouvelé"
+vi_fake_succession.1002.desc: "La ruse a réussi. Les courtisans comme les vassaux ont accepté la transition, que ce soit par le deuil du "défunt" dirigeant, l'arrivée de "l'héritier caché" ou le mystérieux retrait de la vie publique et de la surveillance.\n\nMes épreuves sont loin d'être terminées, je dois reconstruire ma légitimité en tant que dirigeant une fois de plus, mais au moins, pour l'instant, les rumeurs se sont apaisées."
+
+vi_fake_succession.1002.a: «Mon règne recommence»
+
+vi_fake_succession.1003.t: «Échec»
+vi_fake_succession.1003.desc: «Malgré toutes mes tentatives, les gens n'étaient pas convaincus. Au contraire, mes tentatives de simuler ma succession n'ont servi qu'à éveiller les soupçons de mes sujets. \n\n«Qui ici a déjà vu [actor.GetTitledFirstName] et [actor.GetTitledFirstName] II dans la même pièce?» demandaient-ils, et ils n'acceptaient aucune de mes réponses parfaitement logiques.\n\nÀ partir de là, mes sujets ont commencé à creuser plus profondément, à rassembler des indices jusqu'à ce qu'ils atteignent la vérité.\n\nMon secret a été dévoilé!»
+
+vi_fake_succession.1003.a: «Maintenant, le monde sait que je suis un vampire!»

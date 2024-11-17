@@ -1,0 +1,27 @@
+﻿l_french:
+
+vi_offer_vampirism_interaction:0 "Offrez le vampirisme"
+vi_offer_vampirism_interaction_desc:0 "Proposez de transformer [recipient.GetShortUIName] en [vampire|E]"
+vi_offer_vampirism_decline_summary:0 "@warning_icon! Si [recipient.GetShortUINameNoTooltip] décline, [recipient.GetSheHe] apprendra quand même votre secret de vampire!"
+VI_MUST_HAVE_RELATION_TO_OFFER:0 "Vous devez être [amis|E], [amants|E] ou [âmes sœurs|E] pour offrir le vampirisme à un [dirigeant|E]"
+
+vi_ask_vampirism_interaction:0 "Recherchez le vampirisme"
+vi_ask_vampirism_interaction_desc:0 "Demandez à [recipient.GetShortUIName] de vous transformer en [vampire|E]"
+VI_MUST_KNOW_SECRET:0 "Vous devez connaître leur secret de vampire"
+
+VI_ASK_TO_BE_ADOPTED:0 "Demandez à rejoindre la maison"
+VI_ASKING_TO_BE_ADOPTED:0 "Demandez à rejoindre la maison : $VALUE|=+0$"
+
+VI_LANDED_RULERS: "Les [landed|e] [rulers|E] représentent un risque majeur pour la [vi_masquerade|e]: $VALUE|=+0$"
+
+VI_WANTS_TO_LIVE: "[recipient.GetShortUIName] veut vivre éternellement: $VALUE|=+0$"
+VI_DOESNT_MIND_BLOOD: "[recipient.GetShortUIName] ne craint pas le sang: $VALUE|=+0$"
+VI_MINDS_BLOOD: "[recipient.GetShortUIName] ne veut pas boire de sang: $VALUE|=+0$"
+VI_ZEALOUS: "[recipient.GetShortUIName] est [GetTrait('zealous').GetName( ROOT.Char )]: $VALUE|=+0$"
+VI_IS_VAMPIRE_HUNTER: "[recipient.GetShortUIName] est un [GetTrait('vi_inquisitor').GetName( ROOT.Char )]: $VALUE|=+0$"
+
+vi_become_vampire.001.t:0 "Une offre nocturne"
+vi_become_vampire.001.desc:0 "Un soir, mon [actor.Custom2('RelationToMeShort', SCOPE.sC('vi_friend'))] [vi_friend.GetName] vient me voir avec un regard inquiet sur [vi_friend.GetHerHis]. "Mon cher [actor.GetFirstName], je m'inquiète parfois de ce que ce serait si tu n'étais plus là... Nos moments ensemble me manqueraient terriblement. Et si je te disais qu'il existe un moyen d'arrêter de vieillir et de vivre éternellement ?"\n\n [vi_friend.GetSheHe] sourit devant mon incrédulité. "Cela nécessiterait cependant que tu renonces à ton style de vie actuel, mais ce serait un petit prix à payer pour l'immortalité. Laisse-moi t'expliquer..."
+vi_become_vampire.001.a:0 "Fais de moi un vampire !"
+vi_become_vampire.001.b:0 "Je ne me transformerai pas en suceur de sang."
+vi_become_vampire.001.c:0 "Tu es un monstre !"

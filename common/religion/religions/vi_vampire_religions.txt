@@ -5,6 +5,7 @@
 	doctrine_background_icon = core_tenet_banner_christian.dds
 	doctrine = vi_vampiric_hostility_doctrine
 	doctrine = vi_masquerade_required
+	doctrine = vi_diablerie_shunned
 
 	#Main Group
 	doctrine = doctrine_temporal_head
@@ -16,7 +17,7 @@
 	doctrine = doctrine_concubines
 	doctrine = doctrine_divorce_allowed
 	doctrine = doctrine_bastardry_none
-	doctrine = doctrine_consanguinity_unrestricted
+	doctrine = doctrine_consanguinity_aunt_nephew_and_uncle_niece
 
 	#Crimes
 	doctrine = doctrine_homosexuality_shunned
@@ -254,6 +255,8 @@
 			doctrine = tenet_ritual_celebrations
 			doctrine = tenet_christian_syncretism
 			doctrine = tenet_sacred_shadows
+
+			doctrine = vi_diablerie_forbidden
 
 			doctrine = doctrine_monogamy
 
@@ -518,6 +521,7 @@
 			doctrine = unreformed_faith_doctrine
 
 			doctrine = vi_masquerade_not_required
+			doctrine = vi_diablerie_allowed
 
 			holy_site = paderborn
 			holy_site = constantinople

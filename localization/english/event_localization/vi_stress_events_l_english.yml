@@ -13,8 +13,32 @@
  vi_stress_generic.1001.desc: "Some days there's a strange hollowness to everything, like I'm watching life from atop a tall tower."
 
 
+ vi_lep_confider1.0001.t: "Mental Break: A Hand on the Mask"
+ vi_lep_confider1.0001.desc: "The counsel of others has long been a balm for my soul, but the burden of untold years weighs heavily upon me. I have accepted the many demands of my vampiric condition, but it still pains me to have to hide who I am from my trusted confidants. I invited [friend.GetShortUIName] to a private meeting this evening, resolved to tell [friend.GetHerHim] of my true nature. I am almost certain that [friend.GetSheHe] will accept me as I am, and yet I find myself hesitating now that the time for confession has come."
+
+ vi_lep_confider1.0001.a: "I trust you, so I will tell you the truth about myself." # Friend learns Secret: Vampire. Really high % chance Player loses significant Stress. Really low % chance they take it poorly, resulting in +Stress, -Opinion and removal of the Friend status.
+
+ vi_lep_confider1.0001.b: "It's embarrassing, but one time..." # Friend learns one of the player's non-Vampire secrets or gains a Weak Hook if none, and +Opinion. Player loses some Stress, modified by Trusting (+). 
+
+ vi_lep_confider1.0001.c: "Actually, it is of no importance. Carry on." # Friend gets -Opinion and +Suspicion.
+
+ vi_lep_confider1_tt_good: "[friend.GetShortUINameNoTooltip] takes the confession well"
+ vi_lep_confider1_tt_badd: "[friend.GetShortUINameNoTooltip] is horrified!"
+
+
+
+
+ vi_sterling_stress.0001.t: "Mental Break: No Such Thing As Finality" #death event, maximum stress (also a decision if Melancholic)
+ vi_sterling_stress.0001.desc: "There is no use denying it, I cannot prosper in this era. My spirit lies shattered and my body yearns for merciful slumber, and of what use would it be to deny it any longer? Having used the last of my vigor to get my affairs in order, I can finally secure the door of my coffin and rest. \n\nAs the mortal worries of this life wash away, all my previous anxieties seem suddenly laughable, as ephemeral as the people who were my tormentors—the people I leave behind today. \n\nWhen my slumber ends, the world I wake up to will surely be nothing like the one I've known. Perhaps it will be for the best."
+ vi_sterling_stress.0001.desc_alt: "There is no point denying it anymore, I cannot prosper in this era. My spirit lies shattered and my body yearns for merciful slumber, and of what use would it be to deny it any longer? Having used the last of my vigor to get my affairs in order, I can finally secure the door of my coffin and rest. \n\nAs the mortal worries of this life wash away, all my previous anxieties seem suddenly laughable, as ephemeral as the people who were my tormentors—the people I leave behind today. \n\nWhen my slumber ends, the world I wake up to will surely be nothing like the one I've known. Perhaps it will be for the best."
+ vi_sterling_stress.0001.desc_old: "What has the world come down to? The great empires of old crumbled as I was sleeping, and in place of their splendor they have left nothing but grime, pain and suffering. How many more unsufferable peons do I have to placate? How much of the squalor that this time's petty kings call luxury do I have to endure? How many times must I alone, helped by noone but idiots, try to restore a piece of the old glory before I believe that there is no more beauty to salvage? \n\nAs my body aches for eternal rest once more, I do not resist it this time. I clearly cannot prosper in this era. Nobody could prosper in this era. Whether the world heals and creates new wonder and glory for me to awake to, or finally dies and takes me with it in my sleep, I no longer care."
+ vi_sterling_stress.0001.a: "Omne ignotum pro magnifico." #Character dies
+ vi_sterling_stress.0001.b: "Debug Only Cheat: No, don't do that."
+
 
  vi_stress_overload.0001.t: "Mental Break: The Beast Wins"
  vi_stress_overload.0001.desc: "There is no point"
  vi_stress_overload.0001.a: "I must not let the thirst control me!"
  vi_stress_overload.0001.b: "It felt good to let loose."
+
+

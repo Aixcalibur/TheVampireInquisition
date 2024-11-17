@@ -10,6 +10,12 @@ on_travel_plan_movement = {
 	}
 }
 
+travel_events_on_action = {
+	random_events = {
+		100 = vi_lunaris_travel.0001
+	}
+}
+
 vi_on_travel_plan_start_sunlight_burns = {
 	trigger = {	
 		has_trait_with_flag = vi_sunlight_burns

@@ -8,7 +8,7 @@
 	target_type = character
 	category = hostile
 	is_secret = yes
-	maximum_breaches = 5
+	maximum_breaches = 10
 	is_basic = yes
 
 	# Parameters
@@ -18,10 +18,11 @@
 	base_progress_goal = 365
 	base_maximum_success = 95
 	minimum_success = 5
+	maximum_secrecy = 80
+	minimum_secrecy = 40
 	
 	# Core Triggers
 	allow = {
-		#is_adult = yes
 		NOT = {
 			vi_is_vampire_trigger = yes
 		}
@@ -62,10 +63,6 @@
 
 	use_secrecy = {
 		always = yes
-		# use_seduce_secrecy_trigger = {
-		# 	TARGET = scope:target
-		# 	OWNER = scope:owner
-		# }
 	}
 
 	odds_prediction = {
@@ -76,10 +73,8 @@
 
 	# Base Chances
 	base_success_chance = {
-		base = 50
-
+		base = 25
 		#hostile_scheme_base_chance_modifier = yes
-
 		scheme_type_skill_success_chance_modifier = { SKILL = LEARNING }
 		modifier = {
 			add = {
@@ -88,7 +83,6 @@
 			}
 			desc = SCHEME_YOUR_INTRIGUE
 		}
-		
 		modifier = {
 			desc = "VI_VAMPIRE_HUNTER_SKILL"
 			scope:owner = {
@@ -161,25 +155,7 @@
 			}
 			add = {
 				value = scope:target.sub_realm_size
-				if = {
-					limit = {
-						scope:target.sub_realm_size >= major_realm_size
-					}
-					multiply = 2
-				}
-				else_if = {
-					limit = {
-						scope:target.sub_realm_size >= medium_realm_size
-					}
-					multiply = 1.5
-				}
-				else_if = {
-					limit = {
-						scope:target.sub_realm_size >= minor_realm_size
-					}
-					multiply = 1.2
-				}
-				round = yes
+				max = 100
 			}
 		}
 
@@ -214,13 +190,11 @@
 			add = -50
 		}
 	}
-
 	base_secrecy = {
-		add = 50
+		add = 30
 		add = secrecy_base_value
 		add = countermeasure_apply_secrecy_maluses_value
 	}
-	
 	# On Actions
 	on_start = {
 		# set_variable = {

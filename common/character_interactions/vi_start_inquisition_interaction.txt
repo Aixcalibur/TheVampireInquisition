@@ -137,7 +137,7 @@ vi_declare_inquisition_interaction = {
 		scope:actor = {
 			add_prestige = -250
 			add_piety = -250
-			custom_description = {
+			custom_tooltip = {
 				text = vi_starts_inquisition_desc
 				trigger_event = vi_inquisition.0001
 			}
@@ -229,9 +229,9 @@ vi_declare_inquisition_landless_interaction = {
 		scope:recipient = {
 			is_ruler = yes
 			is_landed = no
-			NOT = {
-				has_character_flag = vi_inquisition_target
-			}
+			# NOT = {
+			# 	has_character_flag = vi_inquisition_target
+			# }
 		}
 
 		scope:actor = {
@@ -244,15 +244,19 @@ vi_declare_inquisition_landless_interaction = {
 
 	is_valid_showing_failures_only = {
 		
-		scope:recipient = {
-			OR = {
-				has_trait = vi_exposed_vampire
-				any_secret = {
-					secret_type = secret_vi_vampire
-					is_known_by = scope:actor
+		custom_tooltip = {
+			text = VI_MUST_KNOW_SECRET
+			scope:recipient = {
+				OR = {
+					has_trait = vi_exposed_vampire
+					any_secret = {
+						secret_type = secret_vi_vampire
+						is_known_by = scope:actor
+					}
 				}
 			}
 		}
+		
 
 		scope:actor = {
 
@@ -309,6 +313,13 @@ vi_declare_inquisition_landless_interaction = {
 				modifier = vi_started_inquisition_opinion
 			}
 
+			add_character_flag = vi_inquisition_target
+			capital_county = {
+				holder = {
+					save_scope_as = vi_county_owner
+				}
+			}
+
 			hidden_effect = {
 				every_close_family_member = {
 					if = {
@@ -337,9 +348,14 @@ vi_declare_inquisition_landless_interaction = {
 		}
 
 		scope:actor = {
-			custom_description = {
+			add_character_flag = vi_inquisition_leader
+			set_variable = {
+				name = vi_inquisition_targeting
+				value = scope:recipient
+			}
+			custom_tooltip = {
 				text = vi_starts_inquisition_desc
-				trigger_event = vi_inquisition.0001
+				trigger_event = vi_inquisition.1001
 			}
 		}
 	}

@@ -24,7 +24,7 @@ k_vi_court_of_night = {
 	}
 
 	destroy_if_invalid_heir = no
-	no_automatic_claims = yes
+	no_automatic_claims = no
 	de_jure_drift_disabled = yes
 
 	# d_vi_paris = {

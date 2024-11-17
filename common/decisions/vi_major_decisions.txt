@@ -255,15 +255,24 @@ vi_found_princedom_decision = {
 
 	is_valid = {
 		prestige_level >= 3
-		custom_tooltip = {
-			text = vi_found_princedom_decision_enough_vampires
-			any_courtier = {
-				count >= 6
-				OR = {
-					has_trait = vi_vampire_2
-					has_trait = vi_vampire_3
-					has_trait = vi_vampire_4
-					has_trait = vi_vampire_4
+		OR = {
+			custom_tooltip = {
+				text = vi_found_princedom_decision_enough_vampires
+				any_courtier = {
+					count >= 6
+					OR = {
+						has_trait = vi_vampire_2
+						has_trait = vi_vampire_3
+						has_trait = vi_vampire_4
+						has_trait = vi_vampire_4
+					}
+				}
+			}
+			custom_tooltip = {
+				text = vi_found_princedom_decision_enough_vampires_fledgling
+				any_courtier = {
+					count >= 10
+					vi_is_vampire_trigger = yes
 				}
 			}
 		}

@@ -1,0 +1,202 @@
+﻿l_french:
+
+action_lifestyle_vi_vampire: "$action_can_spend_perk_point$"
+action_lifestyle_vi_vampire_label: "$action_can_spend_perk_point_label$"
+action_lifestyle_vi_vampire_desc: "$action_can_spend_perk_point_desc$"
+action_lifestyle_vi_vampire_click: "$action_can_spend_perk_point_click$"
+
+vi_vampire_lifestyle_name: "Vampire"
+vi_vampire_lifestyle_desc: "Concentrez-vous sur le perfectionnement de vos pouvoirs surnaturels. Vous marcherez comme un dieu parmi les simples mortels... du moins tant que le soleil n'est pas là."
+
+game_concept_vi_vampire_lifestyle: "Le style de vie des vampires"
+game_concept_vi_vampire_lifestyle_i: "@vi_vampire_lifestyle_icon!"
+game_concept_vi_vampire_lifestyle_desc: "Le $game_concept_vi_vampire_lifestyle$ se concentre sur le perfectionnement des capacités surnaturelles d'un [vampire|E]."
+
+vi_vampire_lifestyle_xp_gain_add: «Gain d'expérience Vampire [lifestyle|E]»
+vi_vampire_lifestyle_xp_gain_mult: «$vi_vampire_lifestyle_xp_gain_add$»
+monthly_vi_vampire_lifestyle_xp_gain_add: «$monthly_vi_vampire_lifestyle_xp_gain_mult$»
+monthly_vi_vampire_lifestyle_xp_gain_mult: «Expérience Vampire [lifestyle|E] mensuelle»
+GAINS_VAMPIRE_LIFESTYLE_XP: «Gagne $VALUE|V0$ d'expérience [vi_vampire_lifestyle|E]»
+GAINED_VAMPIRE_LIFESTYLE_XP: «A gagné $VALUE|V0$ d'expérience [vi_vampire_lifestyle|E]»
+I_GAIN_VAMPIRE_LIFESTYLE_XP: «Vous gagnez $VALUE|V0$ [vi_vampire_lifestyle|E] Expérience»
+I_GAINED_VAMPIRE_LIFESTYLE_XP: «Vous gagnez $VALUE|V0$ [vi_vampire_lifestyle|E] Expérience»
+TARGET_GAINS_VAMPIRE_LIFESTYLE_XP: «[CHARACTER.GetShortUIName|U] gagne $VALUE|V0$ [vi_vampire_lifestyle|E] Expérience»
+TARGET_GAINED_VAMPIRE_LIFESTYLE_XP: «[CHARACTER.GetShortUIName|U] a gagné $VALUE|V0$ [vi_vampire_lifestyle|E] Expérience»
+
+vi_vampire_adventurer_focus: «Focalisation sur la chasse»
+vi_vampire_adventurer_focus_short: «Chasse»
+vi_vampire_adventurer_focus_modifier: «[GetFocus('vi_vampire_adventurer_focus').GetName]»
+
+vi_vampire_adventurer_focus_desc: «Libéré de la responsabilité des règles, un vampire peut se livrer à la traque des mortels les plus savoureux.»
+vi_vampire_adventurer_focus_effect_desc: "Se concentrer sur la chasse permet d'obtenir:"
+
+vi_charm_tree_name: "Chant de sirène"
+
+vi_vampire_charm_focus: "$vi_vampire_charm_focus_short$ Focus"
+vi_vampire_charm_focus_short: "Charisme"
+vi_vampire_charm_focus_modifier: "[GetFocus('vi_vampire_charm_focus').GetName]"
+vi_vampire_charm_focus_desc: "Être sombre, maussade et beau est le privilège d'un vampire."
+vi_vampire_charm_focus_effect_desc: "Se concentrer sur le Charisme confère:"
+
+vi_charm_perk_name: "Présence charmante"
+vi_charm_perk_effect: "Active l'interaction [vi_visit|E]"
+my_vi_charm_perk_effect: "Vous pouvez utiliser l'interaction [vi_visit|E]"
+their_vi_charm_perk_effect: "[CHARACTER.GetShortUIName|U] peut utiliser l'interaction [vi_visit|E]"
+
+game_concept_vi_charm_interaction: "Charme"
+game_concept_vi_charm_interaction_desc: "Charmer un autre personnage augmentera son [opinion|E] à votre égard tout en éveillant simultanément sa suspicion.\n\nPlus votre [diplomatie|E] est élevée, plus vous obtiendrez d'opinions.\n\nPlus son [intrigue|E] est élevée, plus vous perdrez d'opinion."
+
+vi_animal_speak_perk_name: "Parlez aux animaux"
+vi_animal_speak_perk_effect: "Déverrouille la $adopt_puppy_decision_name$ [decision|E]"
+
+vi_animal_command_perk_name: "Créatures de la nuit"
+vi_animal_command_perk_effect: "Peut recruter [GetMaA('vi_vampire_bats').GetName] comme [men_at_arms|E]"
+
+vi_soothe_perk_name: "Sweet Nothings"
+vi_soothe_perk_effect: "Peut effacer les soupçons et le stress des mortels lors d'une [vi_visit|E] ou d'une autre [activity|E]"
+my_vi_soothe_perk_effect: "Vous pouvez effacer les soupçons et le stress des mortels lors d'une [vi_visit|E] ou d'une autre [activity|E]"
+their_vi_soothe_perk_effect: "[CHARACTER.GetShortUIName|U] peut effacer les soupçons et le stress des mortels lors d'une [vi_visit|E] ou d'une autre [activité|E]"
+#game_concept_vi_soothe_interaction: "Apaiser"
+#game_concept_vi_soothe_interaction_desc: "Apaiser un autre personnage effacera ses soupçons et diminuera son [stress|E]."
+
+vi_galvanize_perk_name: "Inspiration de commandement"
+vi_galvanize_perk_effect: "Peut accorder aux courtisans mortels ayant une [opinion|e] positive élevée une [inspiration|E] pour créer un [artefact|E]"
+vi_inspire_interaction: "Inspirer"
+vi_inspire_interaction_desc: "Essayez d'accorder à [recipient.GetShortUINameNoTooltip] une [inspiration|E] pour créer un [artefact|E]"
+vi_inspire_effect_tt: "[recipient.GetShortUIName] devient inspiré !"
+# game_concept_vi_galvanize_interaction: "Galvaniser"
+# game_concept_vi_galvanize_interaction_desc: "Galvaniser un autre personnage améliorera temporairement sa [santé|E] et ses [prouesses|E]. "
+
+vi_persuasion_perk_name: "Persuasion"
+vi_persuasion_perk_effect: "Peut gagner des [hooks|E] temporaires sur les mortels lors d'une [vi_visit|E] ou d'une autre [activité|E]"
+#game_concept_vi_extract_hook_interaction: "Extraire une faveur"
+#game_concept_vi_extract_hook_interaction_desc: "Extraire une faveur d'un personnage sous la forme d'un crochet diminuera son [opinion|E] à votre égard."
+
+vi_enthrall_perk_name: «Regard captivant»
+vi_enthrall_perk_effect: «Peut gagner un [strong_hook|E] sur les [amis|E] et les [amants|E] mortels lors d'une [vi_visite|E] et immobiliser les assaillants potentiels»
+#game_concept_vi_enthrall_interaction: «Envoûter»
+#game_concept_vi_enthrall_interaction_desc: «Envoûter un personnage vous accordera un $loyalty_hook$ [hook|E] sur lui.»
+
+vi_presence_perk_name: «Majesté des ténèbres»
+vi_presence_perk_effect: «Permet aux pouvoirs $vi_vampire_charm_focus_short$ d'être utilisés sur d'autres [vampires|E] et [dhampirs|E]»
+vi_need_presence_tt: «[GetPerk('vi_presence_perk').GetName( GetNullCharacter )] est requis pour utiliser les pouvoirs $vi_vampire_charm_focus_short$ sur d'autres [vampires|E] et [dhampirs|E]»
+
+vi_need_presence_warning_tt: «@warning_icon! #X $vi_need_presence_tt$ #!»
+
+vi_heartstealer_perk_name: "Chant de sirène"
+vi_compel_suicide_interaction: "Obliger au suicide"
+vi_compel_suicide_interaction_desc: "Essayez de forcer [recipient.GetShortUINameNoTooltip] à se suicider ou à gagner un [stress|E] massif."
+game_concept_vi_compel_suicide: "$vi_compel_suicide_interaction$"
+game_concept_vi_compel_suicide_interaction: "$vi_compel_suicide_interaction$"
+game_concept_vi_compel_suicide_interaction_desc: "Force une cible à se suicider ou à gagner une quantité massive de [stress|E]."
+
+vi_compel_suicide_decline_summary: "@warning_icon! Si [recipient.GetShortUINameNoTooltip] décline, [recipient.GetSheHe] subira un [stress|E] angoissant !"
+vi_siren_call_accepted: "[recipient.GetShortUIName] se suicide"
+vi_siren_call_declined: "[recipient.GetShortUIName] a refusé l'appel de la sirène"
+VI_VERY_STRESSED: "[recipient.GetSheHe|U] est très stressé: $VALUE|=+0$"
+VI_TOO_STRESSED_TO_REFUSE: "[recipient.GetSheHe|U] est trop stressé pour refuser: $VALUE|=+0$"
+VI_IS_DEPRESSED: "[recipient.GetSheHe|U] est déprimé: $VALUE|=+0$"
+VI_IS_VAMPIRE: "[recipient.GetSheHe|U] est un [vampire|E]: $VALUE|=+0$"
+
+vi_charm_diplomacy_perk_name: "Diplomatie"
+vi_charm_intrigue_perk_name: "Intrigue"
+vi_insight_stewardship_perk_name: "Intendance"
+vi_insight_learning_perk_name: "Apprentissage"
+
+vi_will_tree_name: "Scion du dragon"
+
+vi_vampire_will_focus: "$vi_vampire_will_focus_short$ Focus"
+vi_vampire_will_focus_short: "Puissance"
+vi_vampire_will_focus_modifier: "[GetFocus('vi_vampire_will_focus').GetName]"
+vi_vampire_will_focus_desc: "Parfois, la force brute est tout ce qui est nécessaire."
+vi_vampire_will_focus_effect_desc: «Se concentrer sur la puissance confère:»
+
+vi_night_perk_effect: «\n@warning_icon! #X [vampires|e] ne peuvent démontrer leurs capacités que la nuit#!»
+
+vi_celerity_perk_name: "Célérité"
+vi_celerity_perk_effect: "Plus de chances de tuer des [chevaliers|e] ennemis dans [la bataille|e]"
+vi_blink_perk_name: "Pas éclair"
+vi_blink_perk_effect: "Permet l'utilisation du [scheme|E] [GetScheme('vi_hunt').GetTypeName] sur les [dirigeants|e] mortels et leur [famille proche|e]"
+
+vi_fortitude_perk_name: "Fortitude"
+vi_strength_perk_name: "Force surnaturelle"
+
+vi_regeneration_perk_name: "Régénération rapide"
+vi_regeneration_perk_effect: "Active la régénération [interaction|E] sur vous-même pour éliminer les blessures"
+vi_regenerate_interaction: "Régénérer"
+vi_regenerate_interaction_desc: "Soigne blessures et restaure les parties du corps perdues"
+vi_regeneration_valid_tt: "Vous n'êtes pas blessé"
+vi_shadowwalk_perk_name: "Traversée de l'ombre"
+vi_shadowwalk_perk_effect: "Permet l'utilisation du [scheme|E] [GetScheme('vi_hunt').GetTypeName] sur les [rulers|e] [vampire|e]\nPeut se faufiler dans les camps ennemis pour assassiner les commandants pendant la [bataille|e]"
+
+vi_storm_perk_name: "Tempête ambulante"
+vi_storm_perk_effect: "Peut fournir un bonus [advantage|e] en tant que [knight|e] dans une [army|e] pendant la [bataille|e]"
+vi_transformation_perk_name: "Transformation"
+
+vi_dragonsscion_perk_name: "Scion du dragon"
+
+vi_instill_fear_interaction: "Instiller la peur"
+vi_instill_fear_interaction_desc: «Rend la cible plus sensible à la peur. Vous obtenez un crochet sur les cibles qui étaient déjà effrayées."
+game_concept_vi_instill_fear: "Instiller la peur"
+game_concept_vi_instill_fear_interaction: "Instiller la peur"
+game_concept_vi_instill_fear_interaction_desc: "Un vampire vraiment puissant peut instiller la peur chez le plus robuste des mortels et même l'intimider pour lui accorder un crochet."
+vi_instilled_fear: "Instillation de la peur"
+
+vi_will_martial_perk_name: "Martial"
+vi_will_prowess_perk_name: "Prouesse"
+
+vi_insight_tree_name: "Tout voir"
+
+vi_vampire_insight_focus: "$vi_vampire_insight_focus_short$ Focus"
+vi_vampire_insight_focus_short: "Perspicacité"
+vi_vampire_insight_focus_modifier: "[GetFocus('vi_vampire_insight_focus').GetName]"
+vi_vampire_insight_focus_desc: "Lorsque vous regardez longtemps dans l'abîme, l'abîme vous regarde en retour."
+vi_vampire_insight_focus_effect_desc: "Se concentrer sur les subventions Insight:"
+
+vi_auspex_perk_name: "Auspex"
+vi_auspex_perk_effect: "Peut détecter plus facilement [GetScheme('vi_hunt').GetTypeName] [scheme|E] contre vous"
+
+vi_peopleofinterest_perk_name: "Oeil perspicace"
+vi_pending_perk_effect: "En attente d'un effet d'avantage plus intéressant"
+vi_peopleofinterest_perk_effect: "Peut utiliser la [vi_seek_talent|E] [decision|E]"
+
+game_concept_vi_seek_talent: "Chercher le talent"
+game_concept_vi_seek_talent_desc: "Trouve un mortel talentueux"
+
+vi_windfall_perk_name: "Aubaines constantes"
+vi_mercantile_perk_name: "Perspicacité dorée"
+
+vi_heartsofmen_perk_name: "Réserve de divination"
+vi_heartsofmen_perk_effect: "Débloque la [vi_see_secret_interaction|E] sur les mortels"
+
+vi_guidance_perk_name: "Guidance du Sage"
+vi_guidance_perk_effect: "Débloque la [vi_guidance_interaction|E]"
+
+vi_propheticdreams_perk_name: "Rêves prophétiques"
+
+vi_fateweaver_perk_name: "Tisse-destin"
+vi_fateweaver_perk_effect: "Peut utiliser la [vi_weave_fate_interaction|E] [interaction|E] sur un enfant mortel d'une autre dynastie"
+vi_fateweaver_interaction: "Tisse le destin"
+vi_fateweaver_interaction_desc: "Tisse le destin de cet [enfant|e], lui accordant un immense potentiel"
+vi_fateweaver_description_tt: "Deviendra un [GetTrait('conqueror').GetName( GetNullCharacter )] en devenant un [indépendant|E] [terrien|E] [dirigeant|E] avec une armée importante en tant qu'[adulte|E]"
+vi_fateweaver_warning_tt: "@warning_icon! #X Si vous mourez ou intervenez trop lourdement, par exemple en prenant [recipient.GetShortUIName] comme [pupille|e], [vassal|e], [époux|e] ou [courtisan|e], la magie se retournera contre vous ! #!"
+game_concept_vi_weave_fate_interaction: "Tisser le destin"
+game_concept_vi_weave_fate_interaction_desc: "Tisser le destin d'un enfant lui donnera le potentiel de devenir un [GetTrait('conqueror').GetName( GetNullCharacter )]. Cependant, si vous interagissez avec eux de trop près ou si vous mourez, la magie se retournera contre vous."
+vi_fateinfluence_msg: "L'influence du destin"
+vi_fateunraveled_msg: "Le destin dévoilé !"
+vi_fateachieved_msg: "Le destin accompli !"
+vi_fateunraveled_modifier: "Le destin dévoilé"
+
+vi_allseeing_perk_name: "Tout voir"
+
+vi_perk.vi_heartstealer.t: "Maîtrise des vampires : la sirène"
+vi_perk.vi_heartstealer.desc: "Je regarde les mortels rassemblés devant moi. Ils ne savent pas pourquoi ils sont là, seulement qu'ils ont dû venir. Je peux voir la confusion dans leurs yeux, une lueur de résistance qui disparaît au moment où mon attention tombe sur eux. "J'ai dépassé le contrôle brut maintenant, chaque pensée que je place est si profondément ancrée dans leur propre esprit qu'ils ne peuvent pas dire où je finis et où ils commencent.\n\nMaintenant, il reste une dernière étape dans mon voyage vers la maîtrise totale."
+vi_perk.vi_heartstealer.a: "Mesdames et messieurs, j'aimerais que vous vous suicidiez tous."
+vi_perk.vi_heartstealer.b: "Non, je ne peux pas faire ça !"
+
+vi_perk.success.t: "Maîtrise des vampires : succès !"
+vi_perk.failure.t: "Échec !"
+vi_perk.vi_heartstealer.success_desc: "Je regarde les cadavres maintenant éparpillés dans la pièce. Beaucoup d'entre eux n'avaient pas d'armes, mais persistaient néanmoins avec leurs propres mains et leurs ongles. Cependant, ils étaient loin d'être de simples marionnettes sans cervelle. Une fois que l'un d'eux a appris qu'il était plus facile de se briser le crâne sur le sol, beaucoup d'autres ont suivi son exemple. D'autres attendaient encore patiemment en cercle pour emprunter un poignard.\n\nIl ne fallut qu'une minute ou deux avant que la salle ne devienne silencieuse."
+vi_perk.vi_heartstealer.success_a: "Je suis maintenant un dieu."
+vi_perk.vi_heartstealer.success_b: "Ce pouvoir doit être utilisé avec précaution..."
+

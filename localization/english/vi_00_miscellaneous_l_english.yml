@@ -16,3 +16,53 @@
  vi_suspicious_behavior_msg: "Suspicious Behavior"
  vi_suspicious_behavior_tt: "You can't get [vi_vampire.GetShortUINamePossessive] strangeness out of your head..."
  vi_suspicious_behavior_tt_1: "There is just something off about [vi_vampire.GetShortUIName] that sticks to your mind..."
+
+ vi_sire: "[vi_sire|E]"
+ vi_spawn: "[vi_spawn|E]"
+
+ VI_SIRE_LABEL: "Sire"
+ VI_SPAWN_LABEL: "Spawn"
+
+ I_GAIN_VI_SIRE: "[TARGET_CHARACTER.GetShortUIName|U] becomes your [vi_sire|E]"
+ I_GAINED_VI_SIRE: "[TARGET_CHARACTER.GetShortUIName|U] becomes your [vi_sire|E]"
+ THEY_GAIN_VI_SIRE: "[TARGET_CHARACTER.GetShortUIName|U] becomes [CHARACTER.GetShortUINamePossessive|U] [vi_sire|E]"
+ THEY_GAINED_VI_SIRE: "[TARGET_CHARACTER.GetShortUIName|U] became [CHARACTER.GetShortUINamePossessive|U] [vi_sire|E]"
+ GAINS_VI_SIRE: "[TARGET_CHARACTER.GetShortUIName|U] becomes your [vi_sire|E]"
+ GAINED_VI_SIRE: "[TARGET_CHARACTER.GetShortUIName|U] became your [vi_sire|E]"
+
+ I_GAIN_VI_SPAWN: "[TARGET_CHARACTER.GetShortUIName|U] becomes your [vi_spawn|E]"
+ I_GAINED_VI_SPAWN: "[TARGET_CHARACTER.GetShortUIName|U] becomes your [vi_spawn|E]"
+ THEY_GAIN_VI_SPAWN: "[TARGET_CHARACTER.GetShortUIName|U] becomes [CHARACTER.GetShortUINamePossessive|U] [vi_spawn|E]"
+ THEY_GAINED_VI_SPAWN: "[TARGET_CHARACTER.GetShortUIName|U] became [CHARACTER.GetShortUINamePossessive|U] [vi_spawn|E]"
+ GAINS_VI_SPAWN: "[TARGET_CHARACTER.GetShortUIName|U] becomes a [vi_spawn|E]"
+ GAINED_VI_SPAWN: "[TARGET_CHARACTER.GetShortUIName|U] became a [vi_spawn|E]"
+
+ game_concept_vi_sire: "Sire"
+ game_concept_vi_sire_possessive: "Sire's"
+ #game_concept_vi_sirehood: "Sirehood"
+ game_concept_vi_sire_desc: "A $game_concept_vi_sire$ is a [vampire|E] who turned another [character|E] (called their [vi_spawn|E]) into a [vampire|E]."
+
+ game_concept_vi_spawn: "Spawn"
+ game_concept_vi_spawns: "Spawn"
+ game_concept_vi_spawn_possessive: "Spawn's"
+ game_concept_vi_spawns_possessive: "Spawns'"
+ game_concept_vi_spawn_desc: "A $game_concept_vi_spawn$ is a [character|E] who was turned into a [vampire|E] by their [vi_sire|E]."
+
+ game_rule_category_vampire: "Vampire"
+ rule_vi_ai_vampire_activity: "Vampire AI Activity"
+ setting_vi_default_ai_vampire_activity: "Subtle (Default)"
+ setting_vi_default_ai_vampire_activity_desc: "AI [vampires|E] will have a very subtle influence and rarely trigger Inquisitions on their own."
+ setting_vi_low_ai_vampire_activity: "Low"
+ setting_vi_low_ai_vampire_activity_desc: "AI [vampires|E] will almost never trigger Inquisitions on their own. Inquisition [struggle|E] is disabled."
+ setting_vi_heavy_ai_vampire_activity: "Heavy"
+ setting_vi_heavy_ai_vampire_activity_desc: "AI [vampires|E] will regularly interfere in mortal politics and sometimes cause Inquisitions to happen."
+
+ rule_vi_inquisition_strength: "Inquisition Strength"
+ setting_vi_low_inquisition_strength: "Low"
+ setting_vi_low_inquisition_strength_desc: "Inquisitions will get less reinforcements."
+ setting_vi_default_inquisition_strength: "Default"
+ setting_vi_default_inquisition_strength_desc: "Inquisitions will be a serious threat to vampires."
+ setting_vi_high_inquisition_strength: "High"
+ setting_vi_high_inquisition_strength_desc: "Inquisitions will seek to pummel vampires into the ground where they belong!"
+ 
+ vampire_healing_msg: "Vampire Regeneration"

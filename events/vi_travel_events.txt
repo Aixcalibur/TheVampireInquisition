@@ -1,0 +1,93 @@
+﻿namespace = vi_travel
+
+vi_travel.0001 = { #Triggered from travel_events_on_action
+	type = character_event
+	title = vi_lunaris_travel.0001.t
+	desc = vi_lunaris_travel.0001.desc
+	theme = travel
+
+	left_portrait = root
+	right_portrait = scope:vi_victim
+
+	trigger = { #Conditions for this event to be chosen
+		vi_is_vampire_trigger = yes
+		root.location = {
+			any_province_epidemic = {
+				count >= 1
+				outbreak_intensity >= major
+			}
+		}
+	}
+
+	immediate = { #Stuff that happens before the event is shown to player
+		play_music_cue = "mx_cue_illness"
+
+		save_scope_as = vi_vampire #This is just something we need to do before we use the vampire drain effect
+
+		root.location = { #Get current location
+
+			random_province_epidemic = { #Get epidemic at location
+				limit = {
+					outbreak_intensity >= major
+				}
+				weight = {
+					base = 1
+					modifier = {
+						add = 750
+						outbreak_intensity >= apocalyptic
+					}
+					modifier = {
+						add = 5
+						outbreak_intensity >= major
+					}
+				}
+				save_scope_as = epidemic_scope #This lets us refer to it later
+			}
+		}
+		
+		create_character = { #generate a random peasant child
+			template = peasant_child_character
+			location = root.location
+			dynasty = none
+			culture = root.location.culture
+			faith = root.location.faith
+			save_scope_as = vi_victim #this lets us reference this character
+		}
+
+		scope:vi_victim = { #Poor kid gets created to just be infected
+			infect_with_epidemic = scope:epidemic_scope
+		}
+	}
+
+	option = {
+		name = vi_lunaris_travel.0001.a
+
+		stress_impact = { #gain stress from traits
+			compassionate = major_stress_gain
+			sadistic = minor_stress_loss
+		}
+
+		vi_vampire_drain_kill_effect = yes #VI function to implement drain kill
+
+		ai_chance = {
+			base = -20
+
+			modifier = {
+				has_trait = callous
+				add = 25
+			}
+
+			ai_value_modifier = {
+				ai_compassion = -0.5
+			}
+		}
+	}
+
+	option = {
+		name = vi_lunaris_travel.0001.b
+
+		ai_chance = {
+			base = 20
+		}
+	}
+}

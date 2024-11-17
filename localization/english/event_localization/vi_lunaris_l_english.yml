@@ -1,0 +1,10 @@
+﻿l_english:
+ vi_lunaris_travel.0001.t: “The Stench of Death”
+ vi_lunaris_travel.0001.desc: “The peasants on our way warned us of the sickness lurking in these parts of the lands, yet their words did not prepare us for the true horror we were witness to. The sweet smell of blood was overshadowed by the reek of decay and rot within their flesh, strong enough to make even my stomach turn.\n\nOn our way through the village I see a malnourished child, nothing more than bones covered in skin, hiding behind an abandoned cart.”
+ vi_lunaris_travel.0001.a: “Diseases cannot harm a vampire. It would be a shame to waste this feast.” # vi_lunaris_travel.0002
+ vi_lunaris_travel.0001.b: “Rotten blood is not for my tongue. Let us move on, quickly.” # vi_lunaris_travel.0003
+
+ vi_lunaris_travel.0002.t: “Death Has Come”
+ vi_lunaris_travel.0002.desc: “We pass through village after village, each worse than the one before. Animals lie dead and forgotten in the mud, flies swarm the air like angry clouds and the few people that cling to life are nothing but moaning half-dead.\n\nOne of those soon-to-be-dead catches my eye. The front of their already dirty clothing is drenched in blood, the stench of it so vile that my eyes begin to tear, and their fingers, linked as if in prayer, are as black as charcoal. There is nothing here but the dead and the dying.”
+ vi_lunaris_travel.0002.a: “Maybe these peasants have some valuables hidden away? They won’t need them anymore.” #gain some gold or a clutter artefact
+ vi_lunaris_travel.0002.b: “There is nothing here for us but misery.”
