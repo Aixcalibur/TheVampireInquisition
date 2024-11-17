@@ -7,7 +7,7 @@
 		royal_court = yes
 		# administrative = yes
 		# religious = yes
-		# landless_playable = yes
+		landless_playable = yes
 		legitimacy = yes
 		state_faith = yes
 		allow_out_of_realm_inheritance = no

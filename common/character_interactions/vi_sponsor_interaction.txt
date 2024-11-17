@@ -337,7 +337,7 @@
 	ai_frequency = 120
 
 	ai_accept = {
-		base = 0 # Try to make it 0 for most interactions
+		base = 40 # Try to make it 0 for most interactions
 
 		modifier = {
 			add = -50

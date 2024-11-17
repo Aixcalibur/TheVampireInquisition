@@ -175,7 +175,6 @@ vi_neighboring_ruler_gets_suspicious = {
 	}
 }
 
-
 vi_neighboring_rulers_all_inquisition = {
 	save_scope_as = vi_suspicion_target
 	every_neighboring_top_liege_realm_owner = {
@@ -197,7 +196,7 @@ vi_neighboring_rulers_all_inquisition = {
 	}
 }
 
-vi_vassal_uprising = {
+vi_vassal_uprising_independence = {
 
 	save_scope_as = vi_liege
 

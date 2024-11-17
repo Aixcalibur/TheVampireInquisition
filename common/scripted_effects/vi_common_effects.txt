@@ -144,14 +144,11 @@ vi_turn_into_vampire_effect = {
 				modifier = vi_skittish_modifier
 				years = 20
 			}
-			if = {
-				limit = {
-					scope:vi_target = {
-						age < 25
-					}
-				}
+			
+			hidden_effect = {
 				set_immortal_age = scope:vi_target.age
 			}
+
 			set_relation_vi_sire = scope:vi_vampire
 			# scope:vi_vampire = {
 			# 	adopt = scope:vi_target
@@ -541,66 +538,87 @@ vi_consider_excommunicated_list = {
 }
 
 vi_slow_regeneration_effect = {
-	send_interface_message = {
-		title = vampire_healing_msg
+	
 		random_list = {
+			10 = {
+				add_stress = -5
+			}
 			40 = {
 				trigger = {
 					has_trait = wounded_1
 				}
-				remove_trait = wounded_1
-				add_stress = 10
+				send_interface_toast = {
+					title = vampire_healing_msg
+					remove_trait = wounded_1
+					add_stress = 5
+				}
 			}
 			40 = {
 				trigger = {
 					has_trait = wounded_2
 				}
-				remove_trait = wounded_2
-				add_stress = 15
+				send_interface_toast = {
+					title = vampire_healing_msg
+					remove_trait = wounded_2
+					add_stress = 10
+				}
 			}
 			40 = {
 				trigger = {
 					has_trait = wounded_3
 				}
-				add_character_modifier = {
-					modifier = vi_vampire_strain_modifier
-					years = 1
+				send_interface_toast = {
+					title = vampire_healing_msg
+					add_character_modifier = {
+						modifier = vi_vampire_strain_modifier
+						years = 1
+					}
+					
+					remove_trait = wounded_3
+					add_stress = 20
 				}
-				remove_trait = wounded_3
-				add_stress = 20
 			}
 			40 = {
 				trigger = {
 					has_trait = maimed
 				}
-				add_character_modifier = {
-					modifier = vi_vampire_strain_modifier
-					years = 3
+				send_interface_toast = {
+					title = vampire_healing_msg
+					add_character_modifier = {
+						modifier = vi_vampire_strain_modifier
+						years = 3
+					}
+					remove_trait = maimed
+					add_stress = 25
 				}
-				remove_trait = maimed
-				add_stress = 25
 			}
 			30 = {
 				trigger = {
 					has_trait = one_legged
 				}
-				add_character_modifier = {
-					modifier = vi_vampire_strain_modifier
-					years = 2
+				send_interface_toast = {
+					title = vampire_healing_msg
+					add_character_modifier = {
+						modifier = vi_vampire_strain_modifier
+						years = 2
+					}
+					remove_trait = one_legged
+					add_stress = 25
 				}
-				remove_trait = one_legged
-				add_stress = 25
 			}
 			30 = {
 				trigger = {
 					has_trait = infirm
 				}
-				remove_trait = infirm
-				add_character_modifier = {
-					modifier = vi_vampire_strain_modifier
-					years = 5
+				send_interface_toast = {
+					title = vampire_healing_msg
+					add_character_modifier = {
+						modifier = vi_vampire_strain_modifier
+						years = 5
+					}
+					remove_trait = infirm
+					add_stress = 20
 				}
-				add_stress = 20
 			}
 			10 = {
 				trigger = {
@@ -609,12 +627,15 @@ vi_slow_regeneration_effect = {
 					}
 					has_trait = disfigured
 				}
-				add_character_modifier = {
-					modifier = vi_vampire_strain_modifier
-					years = 2
+				send_interface_toast = {
+					title = vampire_healing_msg
+					add_character_modifier = {
+						modifier = vi_vampire_strain_modifier
+						years = 2
+					}
+					remove_trait = disfigured
+					add_stress = 10
 				}
-				remove_trait = disfigured
-				add_stress = 10
 			}
 			10 = {
 				trigger = {
@@ -623,12 +644,15 @@ vi_slow_regeneration_effect = {
 					}
 					has_trait = one_eyed
 				}
-				add_character_modifier = {
-					modifier = vi_vampire_strain_modifier
-					years = 1
+				send_interface_toast = {
+					title = vampire_healing_msg
+					add_character_modifier = {
+						modifier = vi_vampire_strain_modifier
+						years = 1
+					}
+					remove_trait = one_eyed
+					add_stress = 10
 				}
-				remove_trait = one_eyed
-				add_stress = 10
 			}
 			10 = {
 				trigger = {
@@ -637,12 +661,15 @@ vi_slow_regeneration_effect = {
 					}
 					has_trait = blind
 				}
-				add_character_modifier = {
-					modifier = vi_vampire_strain_modifier
-					years = 3
+				send_interface_toast = {
+					title = vampire_healing_msg
+					add_character_modifier = {
+						modifier = vi_vampire_strain_modifier
+						years = 3
+					}
+					remove_trait = blind
+					add_stress = 20
 				}
-				remove_trait = blind
-				add_stress = 20
 			}
 			5 = {
 				trigger = {
@@ -662,21 +689,22 @@ vi_slow_regeneration_effect = {
 						has_trait = beardless_eunuch
 					}
 				}
-				add_character_modifier = {
-					modifier = vi_vampire_strain_modifier
-					years = 1
+				send_interface_toast = {
+					title = vampire_healing_msg
+					add_character_modifier = {
+						modifier = vi_vampire_strain_modifier
+						years = 1
+					}
+					if = {
+						limit = { has_trait = eunuch_1 }
+						remove_trait = eunuch_1
+					}
+					if = {
+						limit = { has_trait = beardless_eunuch }
+						remove_trait = beardless_eunuch
+					}
+					add_stress = 20
 				}
-				if = {
-					limit = { has_trait = eunuch_1 }
-					remove_trait = eunuch_1
-				}
-				if = {
-					limit = { has_trait = beardless_eunuch }
-					remove_trait = beardless_eunuch
-				}
-				add_stress = 20
 			}
 		}
-	}
-	
 }

@@ -157,16 +157,20 @@
 
 	on_decline = {
 		scope:actor = {
-			random_secret = {
-				limit = {
-					secret_type = secret_vi_vampire
+			send_interface_toast = {
+				title = vi_vampirism_declined_msg
+				right_icon = scope:recipient
+				random_secret = {
+					limit = {
+						secret_type = secret_vi_vampire
+					}
+					reveal_to = scope:recipient
 				}
-				reveal_to = scope:recipient
-			}
-			add_opinion = {
-				target = scope:recipient
-				modifier = disappointed_opinion
-				opinion = -60
+				add_opinion = {
+					target = scope:recipient
+					modifier = disappointed_opinion
+					opinion = -60
+				}
 			}
 		}
 	}
