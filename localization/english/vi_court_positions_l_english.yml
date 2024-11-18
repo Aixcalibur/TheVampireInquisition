@@ -20,7 +20,7 @@
  vi_thrall_keeper_court_position: "Thrall Keeper"
  vi_thrall_keeper_court_position_desc: "The $vi_thrall_keeper_court_position$ is in charge of taking care of the human thralls for the court."
  vi_sentinel_court_position: "Vampire Sentinel"
- vi_sentinel_court_position_desc: "The $vi_sentinel_position$ oversees the local vampire population to make sure they follow the laws of the Princedom."
+ vi_sentinel_court_position_desc: "The $vi_sentinel_court_position$ oversees the local vampire population to make sure they follow the laws of the Princedom."
  vi_hound_court_position: "Hound"
  vi_hound_court_position_desc: "The Hound is a vampire's personal thug to take care of matters without getting their hands dirty."
 

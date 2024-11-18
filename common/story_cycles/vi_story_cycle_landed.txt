@@ -116,29 +116,6 @@
 		}
 
 		random_valid = {
-			triggered_effect = {
-				trigger = { always = yes }
-				effect = {
-					story_owner = {
-						if = {
-							limit = {
-								exists = var:vi_landed_countup
-							}
-							change_variable = {
-								name = vi_landed_countup
-								add = 1
-							}
-						}
-						else = {
-							set_variable = {
-								name = vi_landed_countup
-								value = 0
-							}
-						}
-						vi_neighboring_ruler_gets_suspicious = yes
-					}
-				}
-			}
 
 			triggered_effect = {
 				trigger = { always = yes }
@@ -159,7 +136,26 @@
 								value = 0
 							}
 						}
+
+						if = {
+							limit = {
+								var:vi_landed_countup > 5
+							}
+
+							random = {
+								chance = {
+									value = 8
+									multiply = var:vi_landed_countup
+								}
+
+							}
+						}
+						else = {
+							vi_neighboring_ruler_gets_suspicious = yes
+						}
 					}
+
+					
 				}
 			}
 		}
@@ -205,7 +201,10 @@
 					story_owner = {
 						random_list = {
 							50 = {
-								vi_vassal_uprising = yes
+								trigger = {
+									government_has_flag = government_is_administrative
+								}
+								vi_vassal_uprising_independence = yes
 							}
 							50 = {
 								vi_neighboring_rulers_all_inquisition = yes

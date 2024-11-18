@@ -6,6 +6,6 @@
 
 vi_spawn = {
 	title_grant_target = yes
-	#opinion = 30
+	opinion = 5
 	corresponding = vi_sire
 }

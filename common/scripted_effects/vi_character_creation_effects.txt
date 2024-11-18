@@ -123,6 +123,8 @@ vi_esclarmonde_after_effect = {
 
 	set_immortal_age = 25
 
+	add_character_flag = feasts_a_lot
+
 	add_prestige_level = 2
 
 	change_influence = 2000

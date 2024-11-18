@@ -337,3 +337,26 @@ vi_found_princedom_decision = {
 
 	}
 }
+
+vi_reopen_customizer_decision = {
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/ep3_decision_laamp_neutral_mountain.dds"
+	}
+
+	is_shown = {
+		is_ai = no
+		has_trait = vi_customizer
+	}
+
+	is_valid = {
+		years_from_game_start >= 1
+	}
+
+	effect = {
+		trigger_event = vi_customization.0001
+	}
+
+	ai_potential = {
+		always = no
+	}
+}

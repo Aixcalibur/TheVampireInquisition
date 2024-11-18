@@ -1,16 +1,16 @@
 ﻿l_english:
 
- vi_offer_vampirism_interaction:0 "Offer Vampirism"
- vi_offer_vampirism_interaction_desc:0 "Offer to turn [recipient.GetShortUIName] into a [vampire|E]"
- vi_offer_vampirism_decline_summary:0 "@warning_icon! If [recipient.GetShortUINameNoTooltip] declines, [recipient.GetSheHe] will still learn of your vampire secret!"
- VI_MUST_HAVE_RELATION_TO_OFFER:0 "You must be [friends|E], [lovers|E], or [soulmates|E] to offer vampirism to a [ruler|E]"
+ vi_offer_vampirism_interaction: "Offer Vampirism"
+ vi_offer_vampirism_interaction_desc: "Offer to turn [recipient.GetShortUIName] into a [vampire|E]"
+ vi_offer_vampirism_decline_summary: "@warning_icon! If [recipient.GetShortUINameNoTooltip] declines, [recipient.GetSheHe] will still learn of your vampire secret!"
+ VI_MUST_HAVE_RELATION_TO_OFFER: "You must be [friends|E], [lovers|E], or [soulmates|E] to offer vampirism to a [ruler|E]"
 
- vi_ask_vampirism_interaction:0 "Seek Vampirism"
- vi_ask_vampirism_interaction_desc:0 "Ask [recipient.GetShortUIName] to turn you into a [vampire|E]"
- VI_MUST_KNOW_SECRET:0 "You must know their [vampire|E] secret"
+ vi_ask_vampirism_interaction: "Seek Vampirism"
+ vi_ask_vampirism_interaction_desc: "Ask [recipient.GetShortUIName] to turn you into a [vampire|E]"
+ VI_MUST_KNOW_SECRET: "You must know their [vampire|E] secret"
 
- VI_ASK_TO_BE_ADOPTED:0 "Ask to Join House"
- VI_ASKING_TO_BE_ADOPTED:0 "Asking to Join House: $VALUE|=+0$"
+ VI_ASK_TO_BE_ADOPTED: "Ask to Join House"
+ VI_ASKING_TO_BE_ADOPTED: "Asking to Join House: $VALUE|=+0$"
 
  VI_LANDED_RULERS: "[landed|e] [rulers|E] are a major risk to the [vi_masquerade|e]: $VALUE|=+0$"
 
@@ -19,10 +19,11 @@
  VI_MINDS_BLOOD: "[recipient.GetShortUIName] doesn't want to drink blood: $VALUE|=+0$"
  VI_ZEALOUS: "[recipient.GetShortUIName] is [GetTrait('zealous').GetName( ROOT.Char )]: $VALUE|=+0$"
  VI_IS_VAMPIRE_HUNTER: "[recipient.GetShortUIName] is a [GetTrait('vi_inquisitor').GetName( ROOT.Char )]: $VALUE|=+0$"
+ vi_vampirism_declined_msg: "Vampirism Declined"
 
 
- vi_become_vampire.001.t:0 "A Nighttime Offer"
- vi_become_vampire.001.desc:0 "One late evening, my [actor.Custom2('RelationToMeShort', SCOPE.sC('vi_friend'))] [vi_friend.GetName] comes to me with an apprehensive look on [vi_friend.GetHerHis] face. "My dear [actor.GetFirstName], I worry sometimes of what it would be like if you were gone... I would sorely miss our times together. What if I told you there was a way you could stop aging and live forever?"\n\n [vi_friend.GetSheHe] smiled at my disbelief. "It would, however, require that you forfeit your current lifestyle, but that would be a small price to pay for immortality. Let me explain...""
- vi_become_vampire.001.a:0 "Make me a vampire!"
- vi_become_vampire.001.b:0 "I will not turn into a bloodsucker."
- vi_become_vampire.001.c:0 "You are a monster!"
+ vi_become_vampire.001.t: "A Nighttime Offer"
+ vi_become_vampire.001.desc: "One late evening, my [actor.Custom2('RelationToMeShort', SCOPE.sC('vi_friend'))] [vi_friend.GetName] comes to me with an apprehensive look on [vi_friend.GetHerHis] face. "My dear [actor.GetFirstName], I worry sometimes of what it would be like if you were gone... I would sorely miss our times together. What if I told you there was a way you could stop aging and live forever?"\n\n [vi_friend.GetSheHe] smiled at my disbelief. "It would, however, require that you forfeit your current lifestyle, but that would be a small price to pay for immortality. Let me explain...""
+ vi_become_vampire.001.a: "Make me a vampire!"
+ vi_become_vampire.001.b: "I will not turn into a bloodsucker."
+ vi_become_vampire.001.c: "You are a monster!"

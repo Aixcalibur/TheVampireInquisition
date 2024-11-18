@@ -40,3 +40,8 @@
  vi_alpha.0001.desc: "Thank you for participating in the alpha test of the Vampire Inquisition! A lot more content is planned, but it is a bit too much work for me to do alone. \n\nIf you would like to be involved in the mod, add your own lore or characters, please join us on Discord. New modders are welcome."
  vi_alpha.0001.a: "Continue to Vampire Customization."
  vi_alpha.0001.b: "Continue..."
+
+
+ vi_reopen_customizer_decision: "Reopen Vampire Customization"
+ vi_found_princedom_decision_desc: "Reopen the Vampire Customizer."
+ vi_found_princedom_decision_confirm: "Change me!"

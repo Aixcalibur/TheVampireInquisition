@@ -7,6 +7,8 @@
 
  vi_vampire_lifestyle_name: "Vampire"
  vi_vampire_lifestyle_desc: "Focus on honing your supernatural powers. You shall walk as a god among mere mortals... at least while the sun is not out."
+
+ vi_vampire_lifestyle_highlight_desc: "Some powers are limited to higher tier [vampires|E]."
  
  game_concept_vi_vampire_lifestyle: "Vampire Lifestyle"
  game_concept_vi_vampire_lifestyle_i: "@vi_vampire_lifestyle_icon!"

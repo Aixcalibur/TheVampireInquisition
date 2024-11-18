@@ -17,6 +17,7 @@
 		}
 		parameters = {
 			#unattractive_for_character_conversions = yes
+			sanctioned_false_conversion = yes
 			vi_masquerade = yes
 			hostility_override_vi_masquerade_required = 1
 			hostility_override_vi_masquerade_not_required = 3
