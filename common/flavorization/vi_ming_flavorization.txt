@@ -1,0 +1,11 @@
+﻿vi_heavenly_demon = { # Creates a special title for the leader of the Ming Cult
+	type = character
+	special = holder
+	tier = kingdom
+	priority = 301 # Head of Faith titles are one of the rare ones that need 301 priority
+	
+	titles = { k_vi_ming_cult }
+	flavourization_rules = { 
+		top_liege = no
+	}
+}

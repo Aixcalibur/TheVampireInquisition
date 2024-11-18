@@ -18,7 +18,10 @@ vi_inquisition.0001 = {
 	}
 
 	trigger = {
-		
+		exists = scope:recipient
+		scope:recipient = {
+			has_trait = vi_exposed_vampire
+		}
 	}
 
 	immediate = {

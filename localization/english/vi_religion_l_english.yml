@@ -16,6 +16,12 @@
  vi_nightcourt_adherent_plural: "Night Courtiers"
  vi_nightcourt_desc: "The way of un-life followed by those who pay obeisance to the Queen of the Night. By her decree, vampires shall live in secret harmony with the mortal population."
 
+ vi_mingcult: "Sun Moon Holy Cult"
+ vi_mingcult_adj: "Ming Cult"
+ vi_mingcult_adherent: "Ming Cultist"
+ vi_mingcult_adherent_plural: "Ming Cultists"
+ vi_mingcult_desc: "Blazing holy fire, burn my frail body. What sorrow is there in life, what suffering in death? To do good and vanquish evil, all for the sake of light. Joys and sorrows alike shall return to dust. Have pity on the people of this world, so burdened with woes! Have pity on the people of this world, so burdened with woes!"
+
  vi_baphometi: "Cult of the Horned God"
  vi_baphometi_adj: "Baphometi"
  vi_baphometi_adherent: "Disciple"
@@ -63,7 +69,6 @@
  vi_diablerie_shunned_desc: "The cannibalistic practicing of draining other [vampires|E], stealing a part of their essence and very soul, is a potent shortcut to power, but also has potential to lead vampires to turn feral."
  vi_diablerie_allowed_name: "Allowed"
  vi_diablerie_allowed_desc: "The cannibalistic practicing of draining other [vampires|E], stealing a part of their essence and very soul, is a potent shortcut to power, but also has potential to lead vampires to turn feral."
-
 
  holy_site_versailles_name: "Versailles"
  holy_site_versailles_effect_name: "From [holy_site|E] #weak ($holy_site_versailles_name$)#!"

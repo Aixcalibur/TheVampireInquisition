@@ -1,0 +1,6 @@
+﻿house_vi_Ming = {
+	#prefix = "dynnp_de"
+	name = "dynn_vi_Ming"
+	dynasty = vi_dynasty_Ming
+	motto = "dynn_vi_Ming_motto"
+}

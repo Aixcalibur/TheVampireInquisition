@@ -87,6 +87,27 @@
         }
 	}
 
+	vi_m_hair_fp3_iranian_01 = { # Long split strands
+		dna_modifiers = {
+			accessory = {
+				mode = add
+				gene = hairstyles
+				template = scripted_character_hairstyles_05
+				value = 0.1 # For the randomness to work correctly
+			}
+		}
+		weight = {
+			base = 0
+
+			modifier = {
+				add = 600
+				exists = this
+				exists = character:vi_dongfangbubai
+				this = character:vi_dongfangbubai
+			}
+		}
+	}
+
 	vi_no_baldness = {
 		dna_modifiers = {
 			morph = {

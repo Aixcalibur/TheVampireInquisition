@@ -338,10 +338,36 @@ vi_found_princedom_decision = {
 	}
 }
 
+vi_convert_to_shadow_government = {
+
+
+	is_shown = {
+		vi_is_vampire_trigger = yes
+		is_landed = yes
+		always = no
+	}
+
+	is_valid = {
+		NOT = {
+			has_trait = vi_exposed_vampire
+		}
+		NOT = {
+			is_at_war = yes
+		}
+	}
+
+	is_valid_showing_failures_only = {
+		is_available = yes
+	}
+
+
+}
+
 vi_reopen_customizer_decision = {
 	picture = {
 		reference = "gfx/interface/illustrations/decisions/ep3_decision_laamp_neutral_mountain.dds"
 	}
+	decision_group_type = major
 
 	is_shown = {
 		is_ai = no

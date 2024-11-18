@@ -12,3 +12,5 @@
  NOT_I_HAVE_HOLY_ARTIFACT_EQUIPPED_TRIGGER:0 "I do not have a Holy Artifact equipped"
  THEY_HAVE_HOLY_ARTIFACT_EQUIPPED_TRIGGER:0 "[CHARACTER.GetShortUIName|V] has a Holy Artifact equipped"
  NOT_THEY_HAVE_HOLY_ARTIFACT_EQUIPPED_TRIGGER:0 "[CHARACTER.GetShortUIName|V] does not have a Holy Artifact equipped"
+
+ HAS_RELATION_VI_SIRE_WITH_TARGET: "[TARGET_CHARACTER.GetShortUIName] is [CHARACTER.GetShortUINamePossessive] [vi_sire|E]"

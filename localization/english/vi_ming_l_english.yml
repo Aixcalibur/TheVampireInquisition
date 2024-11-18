@@ -1,0 +1,21 @@
+﻿l_english:
+ dongfangbubai: "Dongfang Bubai"
+ dynn_vi_Ming: "Ming"
+ dynn_vi_Ming_motto: "Joys and sorrows alike shall return to dust."
+ 
+ vi_heavenly_demon: "Heavenly Demon"
+
+ nick_vi_invincible_east: "the Invincible East"
+ nick_vi_invincible_east_desc: "[CHARACTER.GetShortUINameNoTooltipNoFormat|U] claimed to be undefeated in the entire Eastern hemisphere."
+
+ k_vi_ming_cult_article: "$DEFAULT_TITLE_NAME_ARTICLE$"
+ k_vi_ming_cult: "Sun Moon Holy Cult"
+ k_vi_ming_cult_adj: "Ming"
+
+ d_nf_vi_ming_article: "$DEFAULT_TITLE_NAME_ARTICLE$"
+ d_nf_vi_ming: "$dynn_vi_Ming$ Clan"
+
+ d_vi_samarkand: "Samarkand"
+ d_vi_samarkand_adj: "Samarkand"
+
+ Lianting: "Lianting" #Yang Lianting 楊蓮亭

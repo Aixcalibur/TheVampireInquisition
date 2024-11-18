@@ -1,0 +1,57 @@
+﻿vi_dynasty_Ming = {
+	#custom=yes
+	pattern="pattern_vertical_split_01.dds"
+	color1=black
+	color2=blue
+	color3=red
+	colored_emblem={
+		color1=white
+		texture="ce_moon_india.dds"
+		mask={ 1 0 0 }
+		instance={
+			position={ 0.500000 0.480000 }
+			scale={ 0.750000 0.750000 }
+		}
+	}
+
+	colored_emblem={
+		color1=yellow
+		texture="ce_sun_india.dds"
+		mask={ 0 2 0 }
+		instance={
+			position={ 0.500000 0.480000 }
+			depth=1.010000
+		}
+
+	}
+}
+
+k_vi_ming_cult = {
+	#custom=yes
+	pattern="pattern_vertical_split_01.dds"
+	color1=rgb { 20 62 102 }
+	color2=rgb { 191 133 47 }
+	color3=black
+	colored_emblem={
+		color1=rgb { 7 23 38 }
+		texture="ce_religion_dualism.dds"
+		mask={ 1 0 0 }
+		instance={
+			position={ 0.545000 0.480000 }
+		}
+
+	}
+
+	colored_emblem={
+		color1=rgb { 130 90 32 }
+		texture="ce_religion_dualism.dds"
+		mask={ 0 2 0 }
+		instance={
+			position={ 0.545000 0.480000 }
+			depth=1.010000
+		}
+
+	}
+}
+
+d_vi_samarkand = c_samarkand

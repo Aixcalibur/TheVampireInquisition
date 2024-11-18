@@ -1,0 +1,127 @@
+﻿vi_dongfangbubai = {
+	name = dongfangbubai # We need to set this in localization files.
+	dna = vi_dongfangbubai_dna
+	dynasty = vi_dynasty_Ming
+	# female = yes # Uncomment this if you are creating a female character
+	sexuality = bisexual
+	faith = vi_mingcult
+	culture = han
+
+	diplomacy = 10
+	martial = 7
+	stewardship = 6
+	intrigue = 9
+	learning = 6
+	prowess = 0 # We set the prowess to 0 for vampires because otherwise it will get removed by old age
+	# However, if you specifically want prowess loss to old age (e.g. for vampires that were turned later, you can do it)
+
+	trait = ambitious
+	trait = sadistic
+	# trait = brave
+	trait = deceitful
+
+	trait = education_intrigue_4
+	trait = vi_vampire_2
+	trait = flexible_leader
+	trait = gallant
+	trait = schemer
+	trait = beauty_good_2
+	trait = intellect_good_2
+	trait = shrewd
+	trait = lifestyle_mystic
+	trait = lifestyle_blademaster
+
+	give_nickname = nick_vi_invincible_east
+
+	690.10.12 = {
+		birth = yes
+	}
+
+	730.1.1 = {
+		effect = {
+			set_immortal_age = 20 # yes i know he's like 30 now, but we make him look young
+			
+			add_prowess_skill = 50 # He is, after all, the Invincible of the East
+			add_character_flag = do_not_generate_starting_family
+			add_character_flag = has_scripted_appearance
+			add_character_flag = vi_permanently_eunuch # to prevent regeneration from healing it
+			#add_character_flag = no_beard # this is unnecessary ofc since dongfangbubai has beardless eunuch trait
+			vi_make_vampire_effect = yes
+			vi_add_dragonsscion_effect = yes # Adds all vampire perks in the might tree
+			add_trait = beardless_eunuch
+
+			add_perk = vi_charm_perk
+
+			vi_vampire_weight_stabilize_effect = yes # stabilizes this character's weight
+
+			add_trait_xp = {
+				trait = lifestyle_mystic
+				value = 100
+			}
+
+			add_trait_xp = {
+				trait = lifestyle_blademaster
+				value = 100
+			}
+		}
+	}
+
+	1500.1.1 = {
+		death = yes
+	}
+}
+
+vi_lianting = {
+	name = "Lianting" # We need to set this in localization files.
+	#dna = vi_dongfangbubai_dna #DNA will be randomly generated
+	sexuality = bisexual
+	dynasty = vi_dynasty_Ming
+	faith = vi_mingcult
+	culture = han
+
+	diplomacy = 7
+	martial = 5
+	stewardship = 7
+	intrigue = 8
+	learning = 5
+	prowess = 0 # We set the prowess to 0 for vampires because otherwise it will get removed by old age
+	# However, if you specifically want prowess loss to old age (e.g. for vampires that were turned later, you can do it)
+
+	#if we leave personality traits blank, the game should generate them
+
+	trait = education_stewardship_3
+	trait = vi_vampire_2
+	trait = physique_good_2
+	trait = intellect_good_1
+	trait = lifestyle_mystic
+	trait = lifestyle_blademaster
+
+	763.5.7 = {
+		birth = yes
+	}
+
+	788.6.6 = {
+		effect = {
+			set_relation_vi_sire = character:vi_dongfangbubai
+			set_relation_lover = {
+				reason = lover_history
+				target = character:vi_dongfangbubai
+			}
+			set_immortal_age = 25 
+			vi_make_vampire_effect = yes
+			add_prowess_skill = 15
+			add_character_flag = do_not_generate_starting_family
+
+			vi_add_perk_might_elder_effect = yes
+
+			add_trait_xp = {
+				trait = lifestyle_blademaster
+				value = 100
+			}
+		}
+	}
+
+	1500.1.1 = {
+		death = yes
+	}
+}

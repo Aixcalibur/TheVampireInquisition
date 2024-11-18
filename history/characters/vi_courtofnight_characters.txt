@@ -650,7 +650,7 @@ vi_roland = {
 
 	trait = brave
 	trait = just
-	trait = impatient
+	trait = trusting
 	trait = vi_vampire_2
 	trait = beauty_good_2
 	trait = physique_good_3
@@ -679,6 +679,9 @@ vi_roland = {
 			vi_nightcourt_learn_languages = yes
 			vi_vampire_add_perk_effect = {
 				PERK = vi_celerity_perk
+			}
+			vi_vampire_add_perk_effect = {
+				PERK = vi_blink_perk
 			}
 			vi_vampire_weight_stabilize_effect = yes
 		}
@@ -741,6 +744,9 @@ vi_olivier = {
 			vi_nightcourt_learn_languages = yes
 			vi_vampire_add_perk_effect = {
 				PERK = vi_celerity_perk
+			}
+			vi_vampire_add_perk_effect = {
+				PERK = vi_blink_perk
 			}
 		}
 	}
@@ -1225,5 +1231,357 @@ vi_norman_baby = {
 			death_reason = death_head_ripped_off
 			#killer = character:vi_norman
 		}
+	}
+}
+
+vi_ogier = {
+	name = "Holmgeirr"
+	dynasty = vi_dynasty_Anunnaki
+	faith = vi_nightcourt
+	culture = norse
+	
+	diplomacy = 6
+	martial = 8
+	stewardship = 6
+	intrigue = 5
+	learning = 4
+	prowess = 0
+
+	trait = education_martial_4
+	trait = brave
+	trait = stubborn
+	trait = patient
+	trait = vi_vampire_2
+	trait = physique_good_3
+	trait = gallant
+
+	give_nickname = nick_the_dane
+
+	751.6.7 = {
+		birth = yes
+	}
+
+	788.9.9 = {
+		effect = {
+			vi_make_vampire_effect = yes
+			set_immortal_age = 37
+			add_prowess_skill = 20
+			vi_nightcourt_learn_languages = yes
+			vi_vampire_add_perk_effect = {
+				PERK = vi_fortitude_perk
+			}
+			vi_vampire_add_perk_effect = {
+				PERK = vi_strength_perk
+			}
+		}
+	}
+
+	1065.1.1 = {
+		effect = {
+			add_trait = vi_vampire_3
+			set_culture = culture:norman
+			remove_trait = vi_vampire_2
+			add_trait = tourney_participant
+			vi_add_perk_might_elder_effect = yes
+			add_random_tourney_participant_level_effect = yes
+			add_random_tourney_participant_level_effect = yes
+			add_random_tourney_participant_level_effect = yes
+			add_random_tourney_participant_level_effect = yes
+		}
+	}
+
+	1800.9.30 = {
+		death = yes
+	}
+}
+
+vi_fierabras = {
+	name = "Fierabras"
+	dynasty = vi_dynasty_Nosferatu
+	faith = vi_nightcourt
+	culture = andalusian
+
+	prowess = 0
+
+	trait = brave
+	trait = education_martial_4
+	trait = giant
+	trait = vi_vampire_2
+	trait = gallant
+
+	790.1.1 = {
+		birth = yes
+		effect = {
+			vi_make_vampire_effect = yes
+			set_immortal_age = 30
+			add_prowess_skill = 17
+			vi_vampire_add_perk_effect = {
+				PERK = vi_fortitude_perk
+			}
+			vi_vampire_add_perk_effect = {
+				PERK = vi_strength_perk
+			}
+		}
+	}
+
+	1000.1.1 = {
+		effect = {
+			add_trait = vi_vampire_3
+			remove_trait = vi_vampire_2
+			add_trait = tourney_participant
+			vi_add_perk_might_elder_effect = yes
+			add_random_tourney_participant_level_effect = yes
+			add_random_tourney_participant_level_effect = yes
+			add_random_tourney_participant_level_effect = yes
+			add_random_tourney_participant_level_effect = yes
+		}
+	}
+
+	1800.9.30 = {
+		death = yes
+	}
+}
+
+vi_gerin = {
+	name = "Gerin"
+	dynasty = vi_dynasty_Anunnaki
+	faith = vi_nightcourt
+	culture = french
+
+	prowess = 0
+
+	trait = brave
+	trait = education_martial_4
+	trait = vi_vampire_2
+	trait = gallant
+
+	750.1.1 = {
+		birth = yes
+		effect = {
+			vi_make_vampire_effect = yes
+			set_immortal_age = 25
+			add_prowess_skill = 14
+			vi_vampire_add_perk_effect = {
+				PERK = vi_fortitude_perk
+			}
+			vi_vampire_add_perk_effect = {
+				PERK = vi_celerity_perk
+			}
+		}
+	}
+
+	1000.1.1 = {
+		effect = {
+			add_trait = vi_vampire_3
+			remove_trait = vi_vampire_2
+			add_trait = tourney_participant
+			vi_add_perk_might_elder_effect = yes
+			add_random_tourney_participant_level_effect = yes
+			add_random_tourney_participant_level_effect = yes
+			add_random_tourney_participant_level_effect = yes
+			add_random_tourney_participant_level_effect = yes
+		}
+	}
+
+	1800.9.30 = {
+		death = yes
+	}
+}
+
+vi_gerier = {
+	name = "Gerier"
+	dynasty = vi_dynasty_Anunnaki
+	faith = vi_nightcourt
+	culture = french
+
+	prowess = 0
+
+	trait = brave
+	trait = education_martial_4
+	trait = vi_vampire_2
+	trait = gallant
+
+	750.1.1 = {
+		birth = yes
+		effect = {
+			vi_make_vampire_effect = yes
+			set_immortal_age = 25
+			add_prowess_skill = 14
+			vi_vampire_add_perk_effect = {
+				PERK = vi_fortitude_perk
+			}
+			vi_vampire_add_perk_effect = {
+				PERK = vi_celerity_perk
+			}
+		}
+	}
+
+	1000.1.1 = {
+		effect = {
+			add_trait = vi_vampire_3
+			remove_trait = vi_vampire_2
+			add_trait = tourney_participant
+			vi_add_perk_might_elder_effect = yes
+			add_random_tourney_participant_level_effect = yes
+			add_random_tourney_participant_level_effect = yes
+			add_random_tourney_participant_level_effect = yes
+			add_random_tourney_participant_level_effect = yes
+		}
+	}
+
+	1800.9.30 = {
+		death = yes
+	}
+}
+
+vi_berengier = {
+	name = "Berengier"
+	dynasty = vi_dynasty_Anunnaki
+	faith = vi_nightcourt
+	culture = french
+
+	prowess = 3
+
+	trait = brave
+	trait = education_martial_4
+	trait = vi_vampire_2
+	trait = gallant
+
+	737.1.1 = {
+		birth = yes
+		effect = {
+			vi_make_vampire_effect = yes
+			set_immortal_age = 45
+			add_prowess_skill = 16
+			vi_vampire_add_perk_effect = {
+				PERK = vi_fortitude_perk
+			}
+			vi_vampire_add_perk_effect = {
+				PERK = vi_celerity_perk
+			}
+		}
+	}
+
+	1000.1.1 = {
+		effect = {
+			add_trait = vi_vampire_3
+			remove_trait = vi_vampire_2
+			vi_add_perk_might_elder_effect = yes
+		}
+	}
+
+	1800.9.30 = {
+		death = yes
+	}
+}
+
+vi_turpin = {
+	name = "Turpin"
+	dynasty = vi_dynasty_Anunnaki
+	faith = vi_nightcourt
+	culture = french
+
+	diplomacy = 8
+	learning = 12
+	prowess = 10
+
+	trait = brave
+	trait = zealous
+	trait = humble
+	trait = education_learning_5
+	trait = vi_vampire_2
+	trait = theologian
+	trait = scholar
+	trait = lifestyle_physician
+	trait = loyal
+	trait = devoted
+	trait = gallant
+
+	725.2.16 = {
+		birth = yes
+	}
+
+	794.1.1 = {
+		employer = vi_esclarmonde
+		
+		effect = {
+			vi_make_vampire_effect = yes
+			set_immortal_age = 70
+			add_prowess_skill = 18
+			vi_vampire_add_perk_effect = {
+				PERK = vi_fortitude_perk
+			}
+			vi_vampire_add_perk_effect = {
+				PERK = vi_celerity_perk
+			}
+			add_trait_xp = {
+				trait = lifestyle_physician
+				value = 100
+			}
+		}
+	}
+
+	1000.1.1 = {
+		effect = {
+			add_trait = vi_vampire_3
+			remove_trait = vi_vampire_2
+			add_trait = tourney_participant
+			vi_add_perk_might_elder_effect = yes
+			add_random_tourney_participant_level_effect = yes
+			add_random_tourney_participant_level_effect = yes
+			add_random_tourney_participant_level_effect = yes
+			add_random_tourney_participant_level_effect = yes
+		}
+	}
+
+	1800.9.30 = {
+		death = yes
+	}
+}
+
+vi_otton = {
+	name = "Otton"
+	dynasty = vi_dynasty_Disian
+	faith = vi_nightcourt
+	culture = french
+
+	prowess = 0
+
+	trait = brave
+	trait = education_martial_4
+	trait = vi_vampire_2
+	trait = beauty_good_2
+	trait = gallant
+
+	800.1.1 = {
+		birth = yes
+		effect = {
+			vi_make_vampire_effect = yes
+			set_immortal_age = 25
+			add_prowess_skill = 12
+			vi_vampire_add_perk_effect = {
+				PERK = vi_fortitude_perk
+			}
+			vi_vampire_add_perk_effect = {
+				PERK = vi_celerity_perk
+			}
+		}
+	}
+
+	1000.1.1 = {
+		effect = {
+			add_trait = vi_vampire_3
+			remove_trait = vi_vampire_2
+			add_trait = tourney_participant
+			vi_add_perk_might_elder_effect = yes
+			add_random_tourney_participant_level_effect = yes
+			add_random_tourney_participant_level_effect = yes
+			add_random_tourney_participant_level_effect = yes
+			add_random_tourney_participant_level_effect = yes
+		}
+	}
+
+	1800.9.30 = {
+		death = yes
 	}
 }

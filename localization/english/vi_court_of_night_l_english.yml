@@ -48,6 +48,19 @@
 
 
  Esclarmonde: "Esclarmonde"
+
+
+ #Paladins
+ Roland: "Roland"
+ Olivier: "Olivier"
+ Holmgeirr: "Hólmgeirr"
+ Fierabras: "Fierabras"
+ Gerin: "Gérin"
+ Gerier: "Gérier"
+ Berengier: "Bérengier"
+ Otton: "Otton"
+ Turpin: "Turpin"
+
  vi_historical_character.esclarmonde: "Esclarmonde's origins have been meticulously buried by the Queen herself."
  nick_vi_queenofthenight: "the Queen of the Night"
  nick_vi_queenofthenight_desc: "Civilization was brought to the nights of Gaul not through the blade or fang, but through unearthly charm and keen insight."
@@ -69,3 +82,9 @@
 
  vi_lift_excommunication_interaction: "Lift Execution Order"
  vi_lift_excommunication_interaction_desc: "Lift the execution order on [recipient.GetShortUIName]"
+
+ vi_compose_the_chansons_decision: "Compose the Chansons de Geste"
+ vi_compose_the_chansons_decision_desc: "The legendary tales of the Twelve Paladins will form the foundation of a new tradition in France, granting purpose anew to languishing [vampire|E] knights."
+ vi_compose_the_chansons_decision_tooltip: "The Paladin Order will be formed."
+ vi_compose_the_chansons_decision_confirm: "Found the Paladins!"
+ vi_compose_the_chansons_decision_enough_high_level_knights: "You have at least 12 [vampire|E] Knights with either 40 [prowess|E] or higher or the [GetTrait('gallant').GetName( GetNullCharacter )] [trait|E]"

@@ -32,8 +32,8 @@ vi_vampire_2 = {
 	#icon = albino.dds
 	category = lifestyle
 
-	monthly_prestige_gain_mult = -0.75
-	monthly_piety_gain_mult = -0.75
+	monthly_prestige_gain_mult = -0.25
+	monthly_piety_gain_mult = -0.5
 
 	#general_opinion = -10
 	health = 0.25
@@ -63,8 +63,8 @@ vi_vampire_3 = {
 	#icon = albino.dds
 	category = lifestyle
 
-	monthly_prestige_gain_mult = -0.5
-	monthly_piety_gain_mult = -0.5
+	monthly_prestige_gain_mult = -0.75
+	monthly_piety_gain_mult = -0.75
 
 	general_opinion = -10
 	health = 1
@@ -96,8 +96,8 @@ vi_vampire_4 = {
 	#icon = albino.dds
 	category = lifestyle
 
-	monthly_prestige_gain_mult = -0.5
-	monthly_piety_gain_mult = -0.5
+	monthly_prestige_gain_mult = -0.75
+	monthly_piety_gain_mult = -0.75
 
 	#fertility = -1
 	health = 2

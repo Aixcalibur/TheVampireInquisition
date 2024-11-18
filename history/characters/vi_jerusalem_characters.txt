@@ -125,7 +125,7 @@ vi_apollo = {
 			add_character_flag = has_scripted_appearance
 			add_character_flag = no_beard
 			add_prowess_skill = 7
-			vi_vampire_weight_stabilize_effect = yes
+			#vi_vampire_weight_stabilize_effect = yes
 		}
 		employer = vi_baphomet
 	}
@@ -212,7 +212,7 @@ vi_artemis = {
 			add_secret = { type = secret_witch }
 			add_character_flag = has_scripted_appearance
 			add_prowess_skill = 7
-			vi_vampire_weight_stabilize_effect = yes
+			#vi_vampire_weight_stabilize_effect = yes
 		}
 		employer = vi_baphomet
 	}

@@ -1,0 +1,109 @@
+﻿vi_compose_the_chansons_decision = {
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/fp2_decision_struggle_hostility.dds"
+	}
+	decision_group_type = debug #major
+	desc = vi_compose_the_chansons_decision_desc
+	selection_tooltip = vi_compose_the_chansons_decision_tooltip
+
+	is_shown = {
+		vi_is_vampire_trigger = yes
+		capital_county.title_province ?= {
+			geographical_region = world_europe_west
+		}
+		NOT = {
+			is_target_in_global_variable_list = {
+				name = unavailable_unique_decisions
+				target = flag:vi_compose_the_chansons_decision
+			}
+		}
+		current_year <= 1200
+		debug_only = yes
+		is_ai = no
+		#always = no
+	}
+
+	is_valid_showing_failures_only = {
+		is_imprisoned = no
+		is_available_adult = yes
+		is_at_war = no
+	}
+
+	is_valid = {
+
+		prestige_level >= 3
+
+		faith = faith:vi_nightcourt
+
+		OR = {
+			has_trait = gallant
+			NOT = {
+				is_landless_adventurer = yes
+			}
+		}
+
+		OR = {
+			has_trait = poet
+			diplomacy >= 20
+		}
+
+		OR = {
+			has_title = title:k_vi_court_of_night
+			has_title = title:k_france
+			has_title = title:e_france
+			has_relation_lover = title:k_vi_court_of_night.holder
+			has_relation_friend = title:k_vi_court_of_night.holder
+			has_relation_vi_sire = title:k_vi_court_of_night.holder
+		}
+
+		custom_tooltip = {
+			text = vi_compose_the_chansons_decision_enough_high_level_knights
+			any_knight = {
+				count >= 12
+				vi_is_vampire_trigger = yes
+				OR = {
+					prowess >= 40
+					has_trait = gallant
+				}
+			}
+		}
+
+		calc_true_if = {
+			amount >= 3
+			has_trait = gallant
+			reverse_opinion = {
+				target = character:vi_roland
+				value >= 40
+			}
+			reverse_opinion = {
+				target = character:vi_olivier
+				value >= 40
+			}
+			reverse_opinion = {
+				target = character:vi_turpin
+				value >= 40
+			}
+			reverse_opinion = {
+				target = character:vi_ogier
+				value >= 40
+			}
+			reverse_opinion = {
+				target = character:vi_fierabras
+				value >= 40
+			}
+		}
+	}
+
+	cost = {
+		gold = 1200
+		prestige = monumental_prestige_value
+	}
+
+	effect = {
+		
+	}
+
+	ai_potential = {
+		always = no
+	}
+}

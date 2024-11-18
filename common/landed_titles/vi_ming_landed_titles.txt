@@ -1,0 +1,46 @@
+﻿@correct_culture_primary_score = 100
+@better_than_the_alternatives_score = 50
+@always_primary_score = 1000
+@never_primary_score = -1000
+
+k_vi_ming_cult = { #Sun Moon Holy Cult
+	color = { 255 255 255 }
+	definite_form = yes
+	#ruler_uses_title_name = yes
+	landless = yes
+	can_be_named_after_dynasty = no
+
+	capital = c_khotan #FOR LANDLESS TITLES, THE CAPITAL IS WHERE YOUR CHARACTER WILL BE LOCATED
+
+	ai_primary_priority = {
+		add = @always_primary_score
+	}
+
+	destroy_if_invalid_heir = no
+	no_automatic_claims = no
+	de_jure_drift_disabled = yes
+
+	d_vi_samarkand = { #Princedom of Samarkand
+		#definite_form = yes
+		#ruler_uses_title_name = no
+		landless = yes
+		can_be_named_after_dynasty = no
+		capital = c_samarkand
+		destroy_if_invalid_heir = no
+		de_jure_drift_disabled = yes
+	}
+}
+
+d_nf_vi_ming = { #Ming Clan - Noble Family Title... not really needed but whatever.
+	color = { 100 100 100 }
+	capital = c_khotan
+
+	definite_form = yes
+	landless = yes
+	ruler_uses_title_name = yes
+	always_follows_primary_heir = yes
+	no_automatic_claims = yes
+	noble_family = yes
+	destroy_if_invalid_heir = yes
+	ai_primary_priority = { add = @never_primary_score }
+}

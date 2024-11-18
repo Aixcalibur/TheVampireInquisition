@@ -35,3 +35,7 @@ VI_MUST_KNOW_SECRET = {
 	global = VI_MUST_KNOW_SECRET
 	global_not = VI_MUST_KNOW_SECRET
 }
+
+has_relation_vi_sire = {
+	global = HAS_RELATION_VI_SIRE_WITH_TARGET
+}

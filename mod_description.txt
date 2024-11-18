@@ -1,0 +1,43 @@
+﻿The Vampire Inquisition is a new ambitious vampire mod that allows vampires to be landless rulers and influence the world from the shadows. It is currently in an alpha state, with many systems implemented in place, but needing polish and balance. I hope to make a challenging and well-balanced experience for immortal rulers as I was not satisfied with the existing vampire mods, so please give me feedback (don't worry I have thick skin).
+
+[h2][b]Join the Discord:[/b] https://discord.gg/wsFVRQ8rxm[/h2]
+
+[img]https://i.imgur.com/grdgYel.png[/img]
+[list]
+ [*]Landless government type (landed gameplay is still very much supported)
+ [*]Landless vampire rulers
+ [*]Vampire Lifestyle
+ [*]New schemes and interactions
+ [*]Vampire-only court positions
+ [*]Mechanics for avoiding suspicion and faking your death as an immortal ruler
+ [*]Inquisitions
+ [*]Vampire Hunter trait
+ [*]Dhampirs (can gain vampire powers, but cannot become vampires)
+ [*]And many small features
+[/list]
+
+[img]https://i.imgur.com/GZNfwGx.png[/img]
+[list]
+ [*]New Vampire Courts (Join Discord if you would like to help design new vampires)
+ [*]Next release will focus more on Vampire Hunters while also fleshing out the vampire side too
+ [*]Extensive story and flavor content (Join the team if you're a writer please)
+ [*]Tons of new hand-drawn art and assets (I wanted to focus on making the systems work first)
+ [*]Challenging gameplay dynamics between Vampires and Hunters
+ [*]Well-designed vampire politics between scheming centuries-old politicians
+ [*]New unique AI for special characters
+[/list]
+
+[img]https://i.imgur.com/YDzE90w.png[/img]
+[list]
+ [*][b]中文:[/b] https://steamcommunity.com/sharedfiles/filedetails/?id=3367624537
+ [*][b]Français:[/b] C'est inclus, mais pas complet
+ [*][b]Deutsch:[/b] Looking for translators
+ [*][b]Русский:[/b] Looking for translators
+[/list]
+
+[img]https://i.imgur.com/TmivX9W.png[/img]
+[list]
+ [*]Princes of Darkness Team for assets and inspiration
+ [*]My writers who help add more flavor and events to the mod
+ [*]Members of my Discord for their support and ideas
+[/list]
