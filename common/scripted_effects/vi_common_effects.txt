@@ -543,6 +543,16 @@ vi_slow_regeneration_effect = {
 			10 = {
 				add_stress = -5
 			}
+			100 = {
+				trigger = {
+					has_trait = incapable
+				}
+				send_interface_toast = {
+					title = vampire_healing_msg
+					remove_trait = incapable
+					add_stress = 50
+				}
+			}
 			40 = {
 				trigger = {
 					has_trait = wounded_1

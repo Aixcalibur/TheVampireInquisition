@@ -108,6 +108,8 @@
 		localization = VI_ASK_TO_BE_ADOPTED
 	}
 
+	send_options_exclusive = no
+
 	on_accept = {
 		
 		scope:actor = {
@@ -185,15 +187,24 @@
  		}
 
 		modifier = {
-			add = -20
+			add = {
+				value = scope:recipient.dynasty.dynasty_prestige_level
+				multiply = -10
+			}
 			AND = {
-				scope:adoption_send_option = yes
+				always = scope:adoption_send_option
 				scope:recipient = {
 					exists = dynasty
+					dynasty ?= {
+						any_dynasty_member = {
+							count >= 3
+						}
+						dynasty_prestige_level >= 2
+					}
 				}
 			}
 			
-			desc = VI_ASK_TO_BE_ADOPTED
+			desc = VI_ASKING_TO_BE_ADOPTED
 		}
 
  		#Relations & relatives (with actor)
@@ -651,7 +662,7 @@ vi_ask_vampirism_interaction = {
 
 		modifier = {
 			add = -20
-			scope:adoption_send_option = yes
+			always = scope:adoption_send_option
 			desc = VI_ASK_TO_BE_ADOPTED
 		}
 

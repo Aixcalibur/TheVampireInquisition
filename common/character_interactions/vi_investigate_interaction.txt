@@ -60,6 +60,7 @@
 		
 		scope:recipient = {
 			vi_is_vampire_trigger = yes
+			
 		}
 	}
 
@@ -84,6 +85,12 @@
 				target_character = scope:recipient
 			}
 		}
+
+		# scope:recipient = {
+		# 	NOT = {
+		# 		is_landed_or_landless_administrative = yes
+		# 	}
+		# }
 
 
 	}

@@ -13,6 +13,21 @@ on_game_start_after_lobby = {
 	}
 }
 
+on_ruler_designer_finished = {
+	on_actions = {
+		vi_on_ruler_designer_finished
+	}
+}
+
+vi_on_ruler_designer_finished = {
+	trigger = {
+		is_ai = no
+	}
+	on_actions = {
+		trigger_event = vi_alpha.0001
+	}
+}
+
 vi_vampire_game_start = {
 	on_actions = {
 		#I don't really have anything I want to that's not to be done after lobby

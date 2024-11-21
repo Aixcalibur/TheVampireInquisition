@@ -23,3 +23,5 @@ vi_hunt_scheme_phase_duration_add = {
 	color = bad
 	decimals = 0
 }
+
+rf_vi_vampire_opinion = { decimals = 0 }

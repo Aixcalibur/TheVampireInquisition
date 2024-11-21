@@ -53,6 +53,38 @@ vi_drain_prisoner_interaction = {
 		}
 	}
 
+	send_option = { 
+		is_shown = { 
+			always = yes
+		}
+		can_be_changed = {
+			always = yes
+		}
+		is_valid = {
+			always = yes
+		}
+		flag = turn
+		localization = VI_TURN
+	}
+
+	send_option = { 
+		is_shown = { 
+			always = yes
+		}
+		can_be_changed = {
+			always = yes
+		}
+		is_valid = {
+			NOT = {
+				always = flag:turn
+			}
+		}
+		flag = kill
+		localization = VI_DRAIN_DRY
+	}
+
+	send_options_exclusive = no
+
 	on_accept = {
 		
 		scope:recipient = {
@@ -103,6 +135,22 @@ vi_drain_prisoner_interaction = {
 
 		scope:recipient = {
 			save_scope_as = vi_victim
+			
+		}
+
+		if = {
+			limit = {
+				always = scope:turn
+			}
+			vi_vampire_drain_turn_hostile_effect = yes
+		}
+		else_if = {
+			limit = {
+				always = scope:kill
+			}
+			vi_vampire_drain_kill_effect = yes
+		}
+		else = {
 			vi_vampire_drain_effect = yes
 		}
 	}
@@ -127,6 +175,13 @@ vi_drain_prisoner_interaction = {
 			has_trait = sadistic
 			add = 30
 		}
+
+		modifier = {
+			always = scope:kill
+			stress_level < 2
+			add = -20
+		}
+
 		ai_value_modifier = {
 			ai_compassion = tiny_chance_impact_negative_ai_value #Adds +50 for highly uncompassionate characters, -50 for highly compassionate characters
 		}

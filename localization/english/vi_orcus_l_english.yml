@@ -1,0 +1,25 @@
+﻿l_english:
+
+ # This is a Joke character, you don't have to translate this...
+ Orcus: "Orcus"
+ nick_vi_orcus: "the Tainted Blood"
+ nick_vi_orcus_desc: "The elves may not remember why they had to abandon this world, but patient Orcus has never forgotten the delicious blood of the fey."
+
+ vi_orcus_modifier: "Tainted Loins"
+ vi_orcus_modifier_desc: "Orcus's curse is unique among his kin, turning those who he drains."
+
+ vi_orcus_blood_modifier: "Blood of Orcus"
+ vi_orcus_blood_modifier_desc: "Tainted by the blood of Orcus, this character has been transformed into something hideous."
+
+ dynn_vi_Orcus: "Orcus"
+ dynn_vi_Orcus_motto: "Blood Curdles"
+
+ vi_stop_orcus_decision: "Banish Orcus"
+ vi_stop_orcus_decision_desc: "Orcus is banished to another player's game and His curse is lifted, but the memories and His legacy will remain."
+ vi_stop_orcus_decision_confirm: "Begone, foul creature!"
+
+ vi_orcus_seduction_memory: "Embraced by Orcus"
+ vi_orcus_seduction: "Embraced by Orcus"
+ vi_orcus_seduction_desc: "I sheltered in [orcus.GetFirstNamePossessive] passionate embrace, and let the rest of the world fall away."
+ vi_orcus_seduction_desc_second_perspective: "you sheltered in [orcus.GetFirstNamePossessive] passionate embrace, and let the rest of the world fall away."
+ vi_orcus_seduction_desc_third_perspective: "[orcus.GetName] sheltered in [storm_lover.GetFirstNamePossessive] passionate embrace, and let the rest of the world fall away."

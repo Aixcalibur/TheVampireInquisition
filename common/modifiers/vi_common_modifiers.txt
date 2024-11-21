@@ -30,6 +30,14 @@ vi_avoiding_scrutiny_modifier = {
 	stewardship = -1
 }
 
+vi_recently_raided_modifier = {
+	icon = martial_negative
+	domicile_monthly_gold_mult = -0.6
+	domain_tax_mult = -0.3
+	enemy_hostile_scheme_phase_duration_add = medium_scheme_phase_duration_bonus_value
+	enemy_hostile_scheme_success_chance_add = 30
+}
+
 vi_inspired_modifier = {
 	icon = magic_positive
 	health = 0.25
@@ -247,4 +255,11 @@ vi_sap_county_wealth_modifier = {
 	monthly_income = 0.3
 	domicile_monthly_gold_mult = 0.05
 	stacking = yes
+}
+
+vi_laying_low_modifier = {
+	icon = mask_negative
+	general_opinion = -20
+	monthly_prestige_gain_mult = -2
+	monthly_piety_gain_mult = -2
 }

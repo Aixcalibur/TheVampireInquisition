@@ -51,3 +51,9 @@ house_vi_Orlok = {
 	dynasty = vi_dynasty_Nosferatu
 	motto = "dynn_vi_Orlok_motto"
 }
+
+house_vi_Orcus = {
+	name = "dynn_vi_Orcus"
+	dynasty = vi_dynasty_Nosferatu
+	motto = "dynn_vi_Orcus_motto"
+}

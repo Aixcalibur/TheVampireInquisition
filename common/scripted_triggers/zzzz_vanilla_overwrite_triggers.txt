@@ -149,3 +149,13 @@ can_be_inappetetic = { # Must have a fitting personality. Cannot be vampire
 		has_trait = diligent
 	}
 }
+
+has_important_relationship_trigger = {
+	OR = {
+		has_relation_lover = $CHARACTER$
+		has_relation_rival = $CHARACTER$
+		has_relation_friend = $CHARACTER$
+		has_relation_vi_sire = $CHARACTER$
+		has_relation_vi_spawn = $CHARACTER$
+	}
+}

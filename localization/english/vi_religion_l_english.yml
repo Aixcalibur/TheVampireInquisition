@@ -16,6 +16,12 @@
  vi_nightcourt_adherent_plural: "Night Courtiers"
  vi_nightcourt_desc: "The way of un-life followed by those who pay obeisance to the Queen of the Night. By her decree, vampires shall live in secret harmony with the mortal population."
 
+ vi_penitence: "Penitence"
+ vi_penitence_adj: "Penitent"
+ vi_penitence_adherent: "Penitent"
+ vi_penitence_adherent_plural: "Penitents"
+ vi_penitence_desc: "Some vampires believe that their condition is a divine punishment or test from God and devote their time to penitence."
+
  vi_mingcult: "Sun Moon Holy Cult"
  vi_mingcult_adj: "Ming Cult"
  vi_mingcult_adherent: "Ming Cultist"

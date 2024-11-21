@@ -3,7 +3,6 @@
 		delay = {
 			days = { 10 90 }
 		}
-		vi_awaken_archangel_pulse
 	}
 }
 
@@ -132,7 +131,10 @@ vi_vampire_maintenance_pulse = {
 		every_relation = {
 			limit = {
 				NOT = {
-					this = scope:vi_vampire.liege_or_court_owner
+					has_opinion_modifier = {
+						modifier = suspicion_opinion
+						target = scope:vi_vampire
+					}
 				}
 				vi_is_vampire_trigger = no
 				NOT = {

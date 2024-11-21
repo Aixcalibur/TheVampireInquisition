@@ -41,8 +41,11 @@
  
  d_vi_orleans: "Orléans"
  d_vi_orleans_adj: "Orléanais"
- d_nf_vi_orlok_article: "$DEFAULT_TITLE_NAME_ARTICLE$
+ d_nf_vi_orlok_article: "$DEFAULT_TITLE_NAME_ARTICLE$"
  d_nf_vi_orlok: "Orlok Family"
+
+ d_laamp_vi_paladins_article: "$DEFAULT_TITLE_NAME_ARTICLE$"
+ d_laamp_vi_paladins: "Paladins"
 
  d_laamp_vi_helsing: "Wild Hunters"
 
@@ -53,7 +56,7 @@
  #Paladins
  Roland: "Roland"
  Olivier: "Olivier"
- Holmgeirr: "Hólmgeirr"
+ Oddgeir: "Oddgeir"
  Fierabras: "Fierabras"
  Gerin: "Gérin"
  Gerier: "Gérier"
@@ -88,3 +91,5 @@
  vi_compose_the_chansons_decision_tooltip: "The Paladin Order will be formed."
  vi_compose_the_chansons_decision_confirm: "Found the Paladins!"
  vi_compose_the_chansons_decision_enough_high_level_knights: "You have at least 12 [vampire|E] Knights with either 40 [prowess|E] or higher or the [GetTrait('gallant').GetName( GetNullCharacter )] [trait|E]"
+
+ vi_chansons_paladins_tooltip: "The Paladins are formed as an Adventurer Camp which adherents of the Court of Night can call into war."

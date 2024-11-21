@@ -1235,7 +1235,7 @@ vi_norman_baby = {
 }
 
 vi_ogier = {
-	name = "Holmgeirr"
+	name = "Oddgeir"
 	dynasty = vi_dynasty_Anunnaki
 	faith = vi_nightcourt
 	culture = norse
@@ -1279,7 +1279,7 @@ vi_ogier = {
 	1065.1.1 = {
 		effect = {
 			add_trait = vi_vampire_3
-			set_culture = culture:norman
+			set_culture = culture:danish
 			remove_trait = vi_vampire_2
 			add_trait = tourney_participant
 			vi_add_perk_might_elder_effect = yes
@@ -1478,7 +1478,7 @@ vi_berengier = {
 vi_turpin = {
 	name = "Turpin"
 	dynasty = vi_dynasty_Anunnaki
-	faith = vi_nightcourt
+	faith = vi_penitence #vi_nightcourt
 	culture = french
 
 	diplomacy = 8

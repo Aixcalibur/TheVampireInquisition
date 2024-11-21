@@ -1,0 +1,39 @@
+﻿vi_religion_traits_group = { # The key will be used for the doctrine icon, combined with the path in the define FAITH_DOCTRINE_ICON_PATH
+
+	group = "not_creatable"
+	is_available_on_create = { always = no } # When should this doctrine group be shown when choosing doctrines? If not shown, the group will go away entirely on create if present on the old faith
+	number_of_picks = 0		# How many doctrines within the group does the player get to choose? Defaults to 1. The UI will ensure no duplicates
+	
+	vi_virtue_brave = {
+		parameters = {
+			
+		}
+		visible = no 			# Should be shown on the religion interface
+		traits = {
+			virtues = { brave }
+			sins = { craven }
+		}
+	}
+
+	vi_virtue_just = {
+		parameters = {
+			
+		}
+		visible = no 			# Should be shown on the religion interface
+		traits = {
+			virtues = { just }
+			sins = { arbitrary }
+		}
+	}
+
+	vi_virtues_christianity = {
+		parameters = {
+			
+		}
+		visible = no 
+		traits = {
+			virtues = { forgiving compassionate chaste }
+			sins = { vengeful sadistic lustful callous }
+		}
+	}
+}

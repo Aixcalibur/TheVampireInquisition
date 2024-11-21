@@ -1,0 +1,40 @@
+﻿# Learning of Vampire Secret
+catalyst_vi_adventurer_learn_secret = {}
+catalyst_vi_baron_learn_secret = {}
+catalyst_vi_count_learn_secret = {}
+catalyst_vi_duke_learn_secret = {}
+catalyst_vi_king_learn_secret = {}
+
+# Relations
+catalyst_vi_count_friend = {}
+catalyst_vi_duke_friend = {}
+catalyst_vi_king_friend = {}
+catalyst_vi_prince_friend = {}
+
+catalyst_vi_count_lover = {}
+catalyst_vi_duke_lover = {}
+catalyst_vi_king_lover = {}
+catalyst_vi_prince_lover = {}
+
+# Suspicious Deaths
+catalyst_vi_count_killed = {}
+catalyst_vi_duke_killed = {}
+catalyst_vi_king_killed = {}
+
+# Yearly Suspicious Landed Rulers
+#catalyst_vi_count_yearly = {}
+catalyst_vi_duke_yearly = {}
+catalyst_vi_king_yearly = {}
+
+# Vampire Raids
+catalyst_vi_vampire_clash = {}
+catalyst_vi_vampire_attack = {}
+
+# Princedom Policy
+catalyst_vi_princedom_discreet = {}
+catalyst_vi_princedom_aggressive = {}
+
+# Secrets Exposed
+catalyst_vi_exposed_vampire = {}
+
+

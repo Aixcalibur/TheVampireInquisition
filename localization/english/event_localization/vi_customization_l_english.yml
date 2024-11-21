@@ -43,5 +43,5 @@
 
 
  vi_reopen_customizer_decision: "Reopen Vampire Customization"
- vi_found_princedom_decision_desc: "Reopen the Vampire Customizer."
- vi_found_princedom_decision_confirm: "Change me!"
+ vi_reopen_customizer_decision_desc: "Reopen the Vampire Customizer."
+ vi_reopen_customizer_decision_confirm: "Change me!"

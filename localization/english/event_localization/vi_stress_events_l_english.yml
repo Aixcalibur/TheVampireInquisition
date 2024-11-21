@@ -12,7 +12,6 @@
  vi_stress_generic.1001.t: "Mental Break: Dissociation"
  vi_stress_generic.1001.desc: "Some days there's a strange hollowness to everything, like I'm watching life from atop a tall tower."
 
-
  vi_lep_confider1.0001.t: "Mental Break: A Hand on the Mask"
  vi_lep_confider1.0001.desc: "The counsel of others has long been a balm for my soul, but the burden of untold years weighs heavily upon me. I have accepted the many demands of my vampiric condition, but it still pains me to have to hide who I am from my trusted confidants. I invited [friend.GetShortUIName] to a private meeting this evening, resolved to tell [friend.GetHerHim] of my true nature. I am almost certain that [friend.GetSheHe] will accept me as I am, and yet I find myself hesitating now that the time for confession has come."
 
@@ -41,4 +40,9 @@
  vi_stress_overload.0001.a: "I must not let the thirst control me!"
  vi_stress_overload.0001.b: "It felt good to let loose."
 
-
+ vi_millennium_cstressbreak.0001.t: "Mental Break: Festering Urges" #has compassionate
+ vi_millennium_cstressbreak.0001.desc: "As the accursed sun sinks below the horizon, I feel anything but renewed. My hands shake, palms so slick with sweat I find it difficult to grasp the bedposts to hoist myself up. The whole of my cold body prickles, and and the wood under my palm begins to crack. To a innocent mortal I would appear some sort of sick, but only I know what is coming.\n\n *Hunger*. Horrible, ravenous hunger. Not just for blood, but for violence.\n\n My eyes flick to my chamber door. I can hear the echo of every foot fall outside, and the beating of mortal hearts ring out like dinner bells. It would be all too easy to break their poor bodies, to wet my fangs with their crimson wine until I am satisfied.\n\n But I don't want to. The [man/woman] I once was has grown weak, but still they resist. It is the only thing that has prevented the slaughter my monstrous half longs for, but in a few moments what remains of me will no longer be enough. I must make a decision.\n\n *Now*."
+ vi_millennium_cstressbreak.0001.a: "Blood must stain stone." #Gain either Callous or Sadistic. Lose massive amount of stress, gain 45 Dread, gain massive amount of Suspicion. An encounter with the Inquisition will be all but guaranteed after this! If not Wounded, 50% change to gain Wounded. If Wounded, 60% chance to be Severely Wounded. If Severely Wounded, 75% chance to be Brutally Mauled. If Brutally Mauled, 95% chance of death.
+ vi_millennium_cstressbreak.0001.b: "I must resist...I must resist..." #Gain Lunatic, lose large amount of Prestige, 15% chance of death.
+ vi_millennium_cstressbreak.0001.c: "Tear off my clothes and fling myself from the window; the beast shall roam the wilds!" #Has Lunatic. Lose large amount of Prestige, lose large amount of Piety, lose medium amount of Stress, gain No Raiment. 5% chance of death (disappeared without a trace).
+ vi_millennium_cstressbreak.0001.d: "Slaughter the wolves, spare the sheep." #Has Just or Overseer. Prowl the night and bring retribution to petty criminals and outlaws alike, wherever they may be found. Gain +20 County Control in demesne, add unique county modifier to each held county (not sure what this would be yet). Lose medium amount of stress. If not Wounded, 45% chance to gain Wounded. If Wounded, 55% chance to be Severely Wounded. If Severely Wounded, 65% chance to be Brutally Mauled. If Brutally Mauled, 75% chance of death. Major increase in Suspicion?

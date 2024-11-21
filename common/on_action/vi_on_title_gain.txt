@@ -110,6 +110,6 @@ vi_on_title_gain_vampire_kingdom_fix = {
 	}
 }
 
-vi_on_vassal_gained = {
+# vi_on_vassal_gained = {
 	
-}
+# }

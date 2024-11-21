@@ -28,6 +28,7 @@ vi_alpha.0001 = {
 			has_trait = vi_customizer
 		}
 		trigger_event = vi_customization.0001
+		
 	}
 
 	option = {

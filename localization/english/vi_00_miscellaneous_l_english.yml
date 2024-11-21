@@ -66,3 +66,23 @@
  setting_vi_high_inquisition_strength_desc: "Inquisitions will seek to pummel vampires into the ground where they belong!"
  
  vampire_healing_msg: "Vampire Regeneration"
+
+ vi_travel_by_night_option: "Travel by Night"
+ vi_travel_by_night_option_desc: "For [vampires|e], traveling by night enables them to avoid many dangers as they gain access to their full powers. However, travel events are greatly reduced."
+ vi_travel_by_night_option.tt: "Characters without nightvision are removed from the travel [entourage|e]."
+ vi_travel_by_night_option.title: "You are traveling by night!"
+
+ vi_travel_with_speed_option: "Supernatural Speed"
+ vi_travel_with_speed_option_desc: "[vampires|E] can travel much faster than usual by exerting themselves and using supernatural speed to travel at night."
+ vi_travel_with_speed_option.tt: "Characters without supernatural speed are removed from the travel [entourage|e]."
+ vi_travel_with_speed_option.title: "You are traveling by night!"
+
+ VI_VAMPIRE_MARRIAGE_REASON: "[recipient.GetShortUIName] is too old for this nonsense: $VALUE|=+0$"
+
+ friend_vi_join_inner_council: "[TARGET_CHARACTER.GetShortUIName|U] appointed [CHARACTER.GetShortUIName] to [TARGET_CHARACTER.GetHerHis] Inner Council."
+ friend_vi_join_inner_council_corresponding: "[CHARACTER.GetShortUIName|U] appointed [TARGET_CHARACTER.GetShortUIName] to [CHARACTER.GetHerHis] Inner Council."
+
+ vi_drain_prisoner_interaction: "Drain Prisoner"
+ vi_drain_prisoner_interaction_desc: "Drink [recipient.GetShortUINameNoTooltip]'s blood."
+ VI_TURN: "Turn [recipient.GetShortUINameNoTooltip]"
+ VI_DRAIN_DRY: "Drain to Death"

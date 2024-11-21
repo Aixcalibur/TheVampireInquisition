@@ -33,10 +33,13 @@
 
 		prestige_level >= 3
 
-		faith = faith:vi_nightcourt
-
 		OR = {
-			has_trait = gallant
+			faith = faith:vi_nightcourt
+			faith = faith:catholic
+		}
+		
+		OR = {
+			has_trait = knight_errant
 			NOT = {
 				is_landless_adventurer = yes
 			}
@@ -69,28 +72,16 @@
 		}
 
 		calc_true_if = {
-			amount >= 3
+			amount >= 5
 			has_trait = gallant
-			reverse_opinion = {
-				target = character:vi_roland
-				value >= 40
-			}
-			reverse_opinion = {
-				target = character:vi_olivier
-				value >= 40
-			}
-			reverse_opinion = {
-				target = character:vi_turpin
-				value >= 40
-			}
-			reverse_opinion = {
-				target = character:vi_ogier
-				value >= 40
-			}
-			reverse_opinion = {
-				target = character:vi_fierabras
-				value >= 40
-			}
+			character:vi_roland.liege = root
+			character:vi_olivier.liege = root
+			character:vi_turpin.liege = root
+			character:vi_ogier.liege = root
+			character:vi_fierabras.liege = root
+			character:vi_berengier.liege = root
+			character:vi_gerier.liege = root
+			character:vi_gerin.liege = root
 		}
 	}
 
@@ -100,7 +91,30 @@
 	}
 
 	effect = {
+		if = {
+			limit = {
+				dynasty = title:k_vi_court_of_night.holder.dynasty
+			}
+			dynasty ?= {
+				add_dynasty_prestige = 5000
+			}
+		}
+		else = {
+			title:k_vi_court_of_night.holder.dynasty ?= {
+				add_dynasty_prestige = 2500
+			}
+			dynasty ?= {
+				add_dynasty_prestige = 2500
+			}
+		}
 		
+		character:vi_roland = {
+			create_landless_adventurer_title_tooltip_effect = yes
+		}
+		character:vi_roland = {
+			show_as_tooltip = { get_title = title:d_laamp_vi_paladins }
+		}
+
 	}
 
 	ai_potential = {

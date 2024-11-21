@@ -1,0 +1,126 @@
+﻿vi_travel_by_night_option = {
+	is_shown = {
+		OR = {
+			vi_is_vampire_trigger = yes
+			has_trait = vi_dhampir
+		}
+	}
+
+	#current_travel_plan ?= { has_travel_option = vi_traveL_by_night_option }
+
+	is_valid = {
+		OR = {
+			vi_is_vampire_trigger = yes
+			has_trait = vi_dhampir
+		}
+		# NOT = {
+		# 	current_travel_plan ?= { has_travel_option = vi_traveL_by_night_option }
+		# }
+	}
+
+	owner_modifier = {
+		domicile_travel_speed = -0.5
+	}
+	
+	travel_modifier = {
+		travel_safety = 30
+		travel_speed = -20
+	}
+	
+	on_applied_effect = {
+		custom_tooltip = vi_travel_by_night_option.tt
+		current_travel_plan = {
+			save_scope_as = travel_plan
+			every_entourage_character = {
+				limit = {
+					NOR = {
+						vi_is_vampire_trigger = yes
+						has_trait = vi_dhampir
+					}
+				}
+				scope:travel_plan = {
+					remove_character = prev
+				}
+			}
+		}
+	}
+	
+	ai_will_do = {
+		value = 100
+
+		modifier = {
+			has_trait_with_flag = vi_sunlight_burns
+			add = 1000
+		}
+	}
+}
+
+vi_travel_with_speed_option = {
+	is_shown = {
+		OR = {
+			vi_is_vampire_trigger = yes
+			has_trait = vi_dhampir
+		}
+	}
+
+	#current_travel_plan ?= { has_travel_option = vi_traveL_by_night_option }
+
+	is_valid = {
+		OR = {
+			has_perk = vi_celerity_perk
+			has_perk = vi_shadowwalk_perk
+			has_perk = vi_transformation_perk
+			has_perk = vi_animal_command_perk
+		}
+		OR = {
+			vi_is_vampire_trigger = yes
+			has_trait = vi_dhampir
+		}
+		
+		
+		#current_travel_plan ?= { has_travel_option = vi_traveL_by_night_option }
+	}
+
+	owner_modifier = {
+		enemy_hostile_scheme_success_chance_add = -30
+		enemy_hostile_scheme_phase_duration_add = 30
+		domicile_travel_speed = -0.5
+	}
+	
+	travel_modifier = {
+		travel_safety = 10
+		travel_speed = 100
+	}
+	
+	on_applied_effect = {
+		add_character_modifier = {
+			modifier = vi_vampire_strain_modifier
+			years = 3
+		}
+		custom_tooltip = vi_travel_with_speed_option.tt
+		current_travel_plan = {
+			save_scope_as = travel_plan
+			every_entourage_character = {
+				limit = {
+					NOR = {
+						has_perk = vi_celerity_perk
+						has_perk = vi_shadowwalk_perk
+						has_perk = vi_transformation_perk
+						has_perk = vi_animal_command_perk
+					}
+				}
+				add_character_modifier = {
+					modifier = vi_vampire_strain_modifier
+					years = 3
+				}
+				scope:travel_plan = {
+					remove_character = prev
+				}
+			}
+		}
+	}
+	
+	ai_will_do = {
+		value = 0
+	}
+}

@@ -1,4 +1,7 @@
 ﻿vi_is_vampire_trigger = {
+	# NOT = {
+	# 	government_has_flag = government_is_administrative
+	# }
 	OR = {
 		has_character_flag = vi_vampire
 		has_trait = vi_vampire_1
@@ -150,6 +153,16 @@ vi_is_Strix_trigger = {
 		}
 		house ?= {
 			has_house_modifier = vi_Strix_modifier
+		}
+	}
+}
+
+vi_is_traveling_by_night = {
+	is_travelling = yes
+	current_travel_plan ?= {
+		OR = {
+			has_travel_option = vi_traveL_by_night_option
+			has_travel_option = vi_traveL_with_speed_option
 		}
 	}
 }

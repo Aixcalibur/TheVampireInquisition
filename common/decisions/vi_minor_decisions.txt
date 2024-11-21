@@ -1,7 +1,7 @@
 ﻿vi_stimulate_life_decision = {
 	ai_check_interval = 0
 	picture = {
-		reference = "gfx/interface/illustrations/decisions/decision_personal_religious.dds"
+		reference = "gfx/interface/illustrations/event_scenes/garden_night.dds"
 	}
 	desc = vi_stimulate_life_decision_desc
 

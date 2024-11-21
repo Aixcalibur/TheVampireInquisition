@@ -53,3 +53,36 @@
 		death = yes
 	}
 }
+
+vi_orcus = {
+	name = "Orcus"
+	dynasty_house = house_vi_Orcus
+	dna = vi_orcus_dna
+	sexuality = bisexual
+	faith = hellenic_pagan
+	culture = trojan
+
+	prowess = 2
+	
+	trait = gluttonous
+	trait = lustful
+	trait = brave
+	trait = patient
+
+	trait = education_intrigue_5
+	trait = vi_vampire_4
+	trait = seducer
+	trait = immortal
+
+	300.1.1 = {
+		birth = yes
+		vi_orcus_after_effect = yes
+		move_to_pool = yes
+	}
+
+
+
+	1600.1.1 = {
+		death = yes
+	}
+}

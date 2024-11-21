@@ -1,0 +1,160 @@
+﻿vi_orcus_curse_effect = {
+	if = {
+		limit = {
+			is_target_in_global_variable_list = {
+				name = vi_orcus_targets
+				target = this
+			}
+		}
+		remove_list_global_variable = {
+			name = vi_orcus_targets
+			target = this
+		}
+	}
+	
+	hidden_effect = {
+		remove_trait = beauty_good_3
+		remove_trait = beauty_good_2
+		remove_trait = beauty_good_1
+		remove_trait = beauty_bad_1
+		remove_trait = beauty_bad_2
+		remove_trait = beauty_good_5
+		remove_trait = beauty_good_4
+		remove_trait = purer_blooded
+		remove_trait = pure_blooded
+		remove_trait = purest_blooded
+	}
+
+	add_trait = beauty_bad_3
+	add_trait = inbred
+	add_trait = lunatic_genetic
+	add_trait = possessed_genetic
+	add_trait = lovers_pox
+	add_character_modifier = vi_orcus_blood_modifier
+
+	if = {
+		limit = {
+			vi_is_vampire_trigger = no
+			NOT = {
+				has_trait = vi_dhampir
+			}
+			age >= 18
+		}
+		vi_make_vampire_effect = yes
+		add_trait = vi_vampire_1
+		if = {
+			limit = {
+				exists = global_var:vi_orcus_global
+			}
+			set_relation_vi_sire = global_var:vi_orcus_global
+		}
+	}
+	
+	add_to_global_variable_list = {
+		name = vi_orcus_victims
+		target = this
+	}
+}
+
+vi_orcus_after_effect = {
+	add_character_modifier = vi_orcus_modifier
+	vi_make_vampire_effect = yes
+	add_character_flag = has_scripted_appearance
+	add_trait = immortal
+	add_perk = like_weed_in_a_garden_perk 
+	add_perk = unshackled_lust_perk
+	add_perk = subtle_desire_perk
+	add_perk = mortal_adoration_perk
+	add_perk = enticing_opportunity_perk
+	add_perk = home_advantage_perk
+	add_perk = graceful_recovery_perk
+	add_perk = smooth_operator_perk
+	add_perk = seducer_perk
+	add_perk = open_minded_perk
+	add_perk = scholar_perk
+	vi_add_sirensong_effect = yes
+	set_immortal_age = 44
+	add_prowess_skill = 13
+
+	if = {
+		limit = {
+			NOT = {
+				this = character:vi_orcus
+			}
+			NOT = {
+				has_trait = vi_vampire_5
+			}
+		}
+		add_trait = giant
+		change_first_name = "Orcus"
+		add_trait = vi_vampire_4
+		remove_trait = vi_vampire_3
+		remove_trait = vi_vampire_2
+		remove_trait = vi_vampire_1
+		remove_trait = temperate
+		remove_trait = chaste
+		add_trait = lustful
+	}
+	give_nickname = nick_vi_orcus
+
+	remove_character_modifier = vi_orcus_blood_modifier
+
+	set_global_variable = {
+		name = vi_orcus_global
+		value = this
+	}
+}
+
+vi_orcus_target_effect = {
+	save_scope_as = orcus
+	random_in_global_list = {
+		variable = vi_orcus_targets
+		limit = {
+			is_ai = yes
+			is_attracted_to_gender_of = scope:orcus
+			is_incapable = no
+			in_diplomatic_range = scope:orcus
+		}
+		weight = {
+			base = 1
+			modifier = {
+				is_ruler = yes
+				add = 10
+			}
+		}
+		save_scope_as = orcus_target
+	}
+
+	if = {
+		limit = {
+			exists = scope:orcus_target
+		}
+		start_scheme = {
+			type = seduce
+			target_character = scope:orcus_target
+		}
+	}
+	else_if = {
+		limit = {
+			is_ruler = no
+		}
+		random = {
+			chance = 20
+			random_in_global_list = {
+				variable = vi_orcus_targets
+				limit = {
+					is_ai = yes
+					is_attracted_to_gender_of = scope:orcus
+					is_incapable = no
+					NOT = {
+						in_diplomatic_range = scope:orcus
+					}
+					is_ruler = yes
+				}
+				
+				add_courtier = scope:orcus
+			}
+			
+		}
+	}
+}

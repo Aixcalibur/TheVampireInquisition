@@ -1,0 +1,4 @@
+﻿vi_jylland = {
+	d_slesvig
+	d_jylland
+}

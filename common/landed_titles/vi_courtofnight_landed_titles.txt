@@ -198,6 +198,20 @@ d_nf_vi_lyon = {
 	ai_primary_priority = { add = @never_primary_score }
 }
 
+d_laamp_vi_paladins = {
+	color = { 222 222 222 }
+	capital = c_ile_de_france
+
+	definite_form = yes
+	landless = yes
+	require_landless = yes
+	ruler_uses_title_name = no
+	no_automatic_claims = yes
+	destroy_if_invalid_heir = yes
+
+	ai_primary_priority = { add = @never_primary_score }
+}
+
 d_laamp_vi_helsing = { 
 	color = { 100 100 100 }
 	capital = c_paderborn # Oinaion

@@ -6,6 +6,8 @@
 
 vi_archangel_modifier = {
 	icon = magic_positive
+	rf_abrahamic_opinion = 30
+	rf_vi_vampire_opinion = -100
 	movement_speed = 1
 	monthly_income = 2
 	monthly_piety = 5
@@ -15,4 +17,29 @@ vi_holy_flames_modifier = {
 	icon = magic_positive
 	advantage = 20
 	heavy_infantry_damage_add = 50
+}
+
+vi_paladin_leader = {
+	icon = martial_positive
+	ignore_different_faith_opinion = yes
+	martial_per_prestige_level = 2
+	movement_speed = 1
+}
+
+vi_orcus_modifier = {
+	icon = fertility_positive
+	attraction_opinion = 50
+	fertility = 10
+	stress_gain_mult = -1
+	stress_loss_mult = 1
+	max_personal_schemes_add = 5
+	ignore_different_faith_opinion = yes
+	ignore_opinion_of_different_faith = yes
+	ignore_negative_culture_opinion = yes
+	ignore_negative_opinion_of_culture = yes
+}
+
+vi_orcus_blood_modifier = {
+	icon = fertility_mixed
+	fertility = 10
 }

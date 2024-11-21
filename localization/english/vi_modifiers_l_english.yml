@@ -74,3 +74,8 @@
  vi_holy_ground_modifier_desc: "The holy presence in this area prevents vampires from settling here."
 
  vi_avoiding_scrutiny_modifier: "Avoiding Scrutiny"
+
+ vi_recently_raided_modifier: "Recently Raided"
+
+ vi_laying_low_modifier: "Laying Low"
+ vi_laying_low_modifier_desc: "Cannot join or create a Princedom while this effect persists."

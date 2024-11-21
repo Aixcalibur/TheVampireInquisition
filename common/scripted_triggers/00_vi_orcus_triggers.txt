@@ -1,0 +1,4 @@
+﻿#This should get overwritten by elf destiny
+is_any_elf_type = {
+	always = no
+}

@@ -237,7 +237,10 @@ vi_found_princedom_decision = {
 			limit = {
 				OR = {
 					domicile.domicile_location.county = {
-						has_county_modifier = vi_county_discreet_modifier
+						OR = {
+							has_county_modifier = vi_county_discreet_modifier
+							has_county_modifier = vi_holy_ground_modifier
+						}
 					}
 					# location.county = {
 					# 	has_county_modifier = vi_county_discreet_modifier
@@ -338,28 +341,53 @@ vi_found_princedom_decision = {
 	}
 }
 
-vi_convert_to_shadow_government = {
+vi_lunaris_become_shadow_ruler_decision = {
 
+	picture = {
+		reference = "gfx/interface/illustrations/event_scenes/ep2_holysite_western_night.dds"
+	}
+	desc = vi_lunaris_become_shadow_ruler_decision_desc
+	ai_check_interval = 1200
+
+	decision_group_type = major
 
 	is_shown = {
 		vi_is_vampire_trigger = yes
 		is_landed = yes
-		always = no
+		#always = no
 	}
 
 	is_valid = {
 		NOT = {
 			has_trait = vi_exposed_vampire
 		}
-		NOT = {
-			is_at_war = yes
+		any_sub_realm_county = {
+			NOR = {
+				has_county_modifier = vi_county_discreet_modifier
+				has_county_modifier = vi_holy_ground_modifier
+			}
 		}
 	}
 
-	is_valid_showing_failures_only = {
-		is_available = yes
+	effect = {
+		custom_tooltip = vi_lunaris_become_shadow_ruler_decision_effect_tt
+		show_as_tooltip = {
+			change_government = vi_vampire_government
+		}
+
+		trigger_event = vi_decision.0010
 	}
 
+	ai_potential = {
+		always = no
+	}
+
+	is_valid_showing_failures_only = {
+		is_at_war = no
+		is_alive = yes
+		is_available_adult = yes
+		has_contagious_deadly_disease_trigger = no
+	}
 
 }
 
@@ -367,6 +395,7 @@ vi_reopen_customizer_decision = {
 	picture = {
 		reference = "gfx/interface/illustrations/decisions/ep3_decision_laamp_neutral_mountain.dds"
 	}
+	desc = vi_reopen_customizer_decision_desc
 	decision_group_type = major
 
 	is_shown = {
@@ -384,5 +413,153 @@ vi_reopen_customizer_decision = {
 
 	ai_potential = {
 		always = no
+	}
+}
+
+vi_become_landless_adventurer_decision = {
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/ep3_decision_laamp_neutral_mountain.dds"
+	}
+	#sort_order = 82
+	ai_check_interval = 120
+
+	desc = become_landless_adventurer_decision_desc
+	decision_group_type = major
+	selection_tooltip = become_landless_adventurer_decision_tooltip
+
+	is_shown = {
+		#DLC check.
+		has_ep3_dlc_trigger = yes
+		OR = {
+			ai_can_valid_to_create_laamp_trigger = yes
+			is_ai = no
+		}
+		#Standard filter checks.
+		#is_landed = yes
+		# Relevant cultures/faiths
+		
+
+		OR = {
+			has_government = vi_vampire_government
+			has_trait = vi_exposed_vampire
+			debug_only = yes
+		}
+	}
+
+	is_valid = {
+		vi_is_vampire_trigger = yes
+		
+	}
+
+	is_valid_showing_failures_only = {
+		is_at_war = no
+		is_alive = yes
+		is_available_adult = yes
+		has_contagious_deadly_disease_trigger = no
+	}
+
+	effect = {
+		save_scope_as = adventurer
+
+		if = {
+			limit = {
+				player_heir ?= {
+					NOT = { this = root }
+					is_adult = yes
+				}
+			}
+			player_heir = {
+				save_scope_as = laamp_heir
+				save_scope_as = laamp_inheritor
+				custom_tooltip = become_landless_adventurer_decision_title_scope_tt
+			}
+		}
+		else_if = {
+			limit = { is_independent_ruler = no }
+			liege = {
+				save_scope_as = laamp_liege
+				save_scope_as = laamp_inheritor
+				custom_tooltip = become_landless_adventurer_decision_title_scope_tt
+			}
+		}
+		else = {
+			custom_tooltip = become_landless_adventurer_decision_title_created_tt
+			if = {
+				limit = {
+					NOT = { exists = scope:laamp_inheritor }
+				}
+				hidden_effect_new_object = {
+					create_character = {
+						template = laamp_inheritor_template
+						culture = root.capital_county.culture
+						faith = root.capital_county.faith
+						dynasty = generate
+						location = root.capital_province
+						after_creation = {
+							save_scope_as = laamp_inheritor
+							add_character_flag = new_laamp_inheritor
+						}
+					}
+				}
+			}
+		}
+		create_landless_adventurer_title_tooltip_effect = yes
+		show_as_tooltip = {
+			if = {
+				limit = {
+					has_trait = vi_exposed_vampire
+				}
+				remove_trait = vi_exposed_vampire
+				add_character_modifier = {
+					modifier = vi_laying_low_modifier
+					years = 10
+				}
+			}
+			add_character_modifier = {
+				modifier = ep3_voluntary_laamp_character_modifier
+				years = 5
+			}
+		}
+		trigger_event = { id = vi_decision.0001 }
+		# Debug tracking
+		if = {
+			limit = {
+				is_ai = yes
+				debug_only = yes
+			}
+			if = {
+				limit = { exists = global_var:ai_voluntary_laamp_count }
+				change_global_variable = {
+					name = ai_voluntary_laamp_count
+					add = 1
+				}
+			}
+			else = {
+				set_global_variable = {
+					name = ai_voluntary_laamp_count
+					value = 1
+				}
+			}
+			debug_log = "AI became adventurer voluntarily"
+			debug_log_scopes = yes
+		}
+	}
+
+	ai_potential = {
+		is_valid_for_laampdom = yes
+		trigger_if = { # Temujun stays, he needs to become Genghis Khan after all!
+			limit = {
+				exists = character:125501
+			}
+			NOT = { this = character:125501 }
+		}
+	}
+
+	ai_will_do = {
+		base = -75
+		modifier = {
+			has_trait = vi_exposed_vampire
+			add = 80
+		}
 	}
 }

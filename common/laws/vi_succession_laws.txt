@@ -31,7 +31,7 @@ vi_succession_order_laws = {
 			traversal_order = dynasty_house
 			rank = oldest
 			title_division = single_heir
-			#exclude_rulers = yes
+			exclude_rulers = yes
 			limit_to_courtiers = yes
 		}
 

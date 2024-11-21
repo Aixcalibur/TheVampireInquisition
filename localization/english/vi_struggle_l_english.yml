@@ -1,0 +1,58 @@
+﻿l_english:
+ game_concept_vi_inquisition_struggle: "Masquerade"
+ game_concept_vi_europe_west_struggle: "West Europe Masquerade"
+ game_concept_vi_inquisition_struggle_desc: "The $game_concept_vi_inquisition_struggle$ depicts the struggle of vampire princedoms to maintain their secrecy. \n\nMost [struggle_involved|E] [characters|E] are unsuspecting mortals, so it is the small number of [vampires|E] and vampire hunters that have the greatest effect on this struggle. \n\nThe [struggle|E] shifts between two [struggle_phase_phases|E] - [struggle_vi_phase_tranquility|E] and [struggle_vi_phase_suspicion|E] before culminating in [struggle_vi_phase_inquisition|E]." 
+
+ game_concept_struggle_vi_phase_tranquility: "Tranquility"
+ game_concept_struggle_vi_phase_tranquility_desc: "All is quiet, despite the presence of the supernatural in this area. \n\nThe tension might spiral into [struggle_vi_phase_suspicion|E], which would mean chaos to come."
+ struggle_vi_phase_tranquility: "[struggle_vi_phase_tranquility|E]"
+
+
+ game_concept_struggle_vi_phase_suspicion: "Suspicion"
+ game_concept_struggle_vi_phase_suspicion_desc: "Rumors abound speak of terrifying nighttime monsters. Locals start taking matters into their own hands to prove their suspicions. \n\nOver time, the situation might quiet back down to [struggle_vi_phase_tranquility|E] phase as suspicions fade."
+ struggle_vi_phase_suspicion: "[struggle_vi_phase_suspicion|E]"
+
+ game_concept_struggle_vi_phase_inquisition: "Inquisition"
+ game_concept_struggle_vi_phase_inquisition_desc: "At last, the existence of [vampires|E] becomes public knowledge and the Church has no choice but to respond in full force."
+
+
+ vi_europe_west_struggle: "[vi_inquisition_struggle|E]"
+
+ catalyst_vi_adventurer_learn_secret: "[adventurer|E] Learns Secret [struggle_catalyst_catalyst|E]"
+ catalyst_vi_adventurer_learn_secret_desc: "An [adventurer|E] learns about [vampires|E]"
+ catalyst_vi_baron_learn_secret: "[baron|E] learns about [vampires|E]"
+ catalyst_vi_count_learn_secret: "[count|E] learns about [vampires|E]"
+ catalyst_vi_duke_learn_secret: "[duke|E] learns about [vampires|E]"
+ catalyst_vi_king_learn_secret: "[king|E] or [emperor|E] learns about [vampires|E]"
+
+ # Relations
+ catalyst_vi_count_friend: ""
+ catalyst_vi_duke_friend: ""
+ catalyst_vi_king_friend: ""
+ catalyst_vi_prince_friend: ""
+
+ catalyst_vi_count_lover: ""
+ catalyst_vi_duke_lover: ""
+ catalyst_vi_king_lover: ""
+ catalyst_vi_prince_lover: ""
+
+# Suspicious Deaths
+ catalyst_vi_count_killed: ""
+ catalyst_vi_duke_killed: ""
+ catalyst_vi_king_killed: ""
+
+# Yearly Suspicious Landed Rulers
+#catalyst_vi_count_yearly: ""
+ catalyst_vi_duke_yearly: ""
+ catalyst_vi_king_yearly: ""
+
+# Vampire Raids
+ catalyst_vi_vampire_clash: ""
+ catalyst_vi_vampire_attack: ""
+
+# Princedom Policy
+ catalyst_vi_princedom_discreet: ""
+ catalyst_vi_princedom_aggressive: ""
+
+# Secrets Exposed
+ catalyst_vi_exposed_vampire: ""

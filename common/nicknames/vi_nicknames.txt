@@ -10,3 +10,5 @@ nick_vi_horned_god = {}
 nick_vi_samildanach = {}
 
 nick_vi_the_archangel = {}
+
+nick_vi_orcus = {}

@@ -323,3 +323,53 @@ vi_vampire_county_investment_effect = {
 		vi_recenter_domicile_effect = yes
 	}
 }
+
+vi_consider_subjugation_effect = {
+	save_scope_as = subjugator
+	every_independent_ruler = {
+		limit = {
+			NOT = {
+				this = scope:subjugator
+			}
+			has_government = vi_vampire_government
+			is_landed = no
+			capital_province ?= {
+				squared_distance = {
+					target = scope:subjugator.capital_province
+					value < 400000
+				}
+			}
+		}
+		if = {
+			limit = {
+				any_vassal = {
+					count = 0
+				}
+			}
+			add_to_list = princes
+		}
+		else = {
+			every_vassal = {
+				limit = {
+					has_government = vi_vampire_government
+					is_landed = no
+					capital_province ?= {
+						squared_distance = {
+							target = scope:subjugator.capital_province
+							value < 400000
+						}
+					}
+				}
+				add_to_list = princes
+			}
+		}
+	}
+
+	random_in_list = {
+		list = princes
+		limit = {
+			current_military_strength < scope:subjugator.current_military_strength
+		}
+		save_scope_as = subjugation_target
+	}
+}

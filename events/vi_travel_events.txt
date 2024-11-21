@@ -91,3 +91,40 @@ vi_travel.0001 = { #Triggered from travel_events_on_action
 		}
 	}
 }
+
+
+
+vi_travel.9001 = {
+
+	hidden = yes
+
+	weight_multiplier = {
+		base = 1
+		modifier = {
+			vi_is_vampire_trigger = yes
+			add = 5
+		}
+		modifier = {
+			has_trait_with_flag = vi_sunlight_burns
+			add = 4
+		}
+	}
+
+	trigger = {
+		# OR = {
+
+		# }
+		current_travel_plan ?= { has_travel_option = vi_travel_by_night_option }
+		#vi_is_vampire_trigger = yes
+	}
+
+	immediate = {
+		# send_interface_message = {
+		# 	title = vi_travel_by_night_option.title
+		# 	add_stress = -1
+		# }
+		trigger_event = {
+			on_action = vi_travel_by_night_events_on_action
+		}
+	}
+}

@@ -1,0 +1,29 @@
+﻿vi_orcus_seduction = {
+	categories = { positive relationships lover intimate private }
+	icon = "intimate.dds"
+	description = {
+		first_valid = {
+			desc = vi_orcus_seduction_desc
+		}
+	}
+
+	second_perspective_description = {
+		first_valid = {
+			desc = vi_orcus_seduction_desc_second_perspective
+		}
+	}
+
+	third_perspective_description = {
+		first_valid = {
+			desc = vi_orcus_seduction_desc_third_perspective
+		}
+	}
+
+	participants = {
+		orcus
+	}
+
+	duration = {
+		years = memory_default_duration
+	}
+}

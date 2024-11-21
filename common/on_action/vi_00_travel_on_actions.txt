@@ -12,7 +12,14 @@ on_travel_plan_movement = {
 
 travel_events_on_action = {
 	random_events = {
-		100 = vi_lunaris_travel.0001
+		800 = vi_travel.9001 #Travel by Night
+		100 = vi_travel.0001
+	}
+}
+
+vi_travel_by_night_events_on_action = {
+	random_events = {
+		
 	}
 }
 
@@ -70,3 +77,4 @@ vi_seriously_cancel_ai_travel_on_action = { #Made this because I thought the oth
 		current_travel_plan = { cancel_travel_plan = yes }
 	}
 }
+

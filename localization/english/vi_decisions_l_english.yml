@@ -9,3 +9,15 @@
  vi_become_dormant_decision_desc: "#F I will leave everything behind to go into hibernation.#.  Who knows how many centuries will pass before I reawaken?"
  vi_become_dormant_decision_tooltip: "I become Dormant"
  vi_become_dormant_decision_confirm: "Time to sleep..."
+
+ vi_become_landless_adventurer_decision: "Become a Wanderer"
+ vi_become_landless_adventurer_decision_confirm: "Disappear from view..."
+
+ vi_lunaris_become_shadow_ruler_decision: "Into the Twilight"
+ vi_lunaris_become_shadow_ruler_decision_desc: "After years of trying my best to find meaning and purpose in ruling over increasingly suspicious mortals, it is time to take a step back and focus on my own kind."
+ vi_lunaris_become_shadow_ruler_decision_tooltip: "You will abdicate and adopt the vampiric government type."
+ vi_lunaris_become_shadow_ruler_decision_confirm: "Abdicate."
+ vi_lunaris_become_shadow_ruler_decision_effect_tt: "Your [titles|E] will be given to their respective [heirs|E]."
+ vi_lunaris_shadowruler.0001.t: "A New Dawn"
+ vi_lunaris_shadowruler.0001.desc: "It is done — my affairs have been dealt with, the heir to my lands and titles has been called to attend their new court and all of my belongings have been taken to my estate days ago. I feel lighter, as if a hidden weight has been lifted from my aging shoulders. Now, far away from the eyes of all these bothersome mortals, I can pursue greater things from the shadows."
+ vi_lunaris_shadowruler.0001.a: "A toast to my promising future!"

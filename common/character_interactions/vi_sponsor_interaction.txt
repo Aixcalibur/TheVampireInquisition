@@ -1,6 +1,6 @@
 ﻿vi_procure_estate_interaction = {
 	category = interaction_category_laamp
-	icon = powerful_family_shield
+	icon = icon_liege
 
 	desc = vi_procure_estate_interaction_desc
 
@@ -97,7 +97,10 @@
 		trigger_if = { 
 			limit = {
 				scope:actor.domicile.domicile_location.county = {
-					has_county_modifier = vi_county_discreet_modifier
+					OR = {
+						has_county_modifier = vi_county_discreet_modifier
+						has_county_modifier = vi_holy_ground_modifier
+					}
 				}
 			}
 			custom_description = {
@@ -316,7 +319,6 @@
 					VI_LIEGE = scope:recipient.top_liege
 					VI_COUNTY = scope:princedom_county
 				}
-				
 			}
 		}
 		
@@ -721,7 +723,142 @@
 		}
 	}
 }
+vi_offer_fealty_interaction = {
+	category = interaction_category_admin
+	icon = icon_liege
+	desc = offer_fealty_interaction_desc
 
+	# cooldown_against_recipient = { years = 10 }
+
+	# notification_text = {
+	# 	first_valid = {
+	# 		triggered_desc = {
+	# 			trigger = {
+	# 				scope:hook = yes
+	# 			}
+	# 			desc = PROCURE_ESTATE_HOOK
+	# 		}
+	# 		triggered_desc = {
+	# 			trigger = {
+	# 				scope:gold_option = yes
+	# 			}
+	# 			desc = PROCURE_ESTATE_GOLD
+	# 		}
+	# 		triggered_desc = {
+	# 			trigger = {
+	# 				scope:piety_option = yes
+	# 			}
+	# 			desc = PROCURE_ESTATE_PIETY
+	# 		}
+	# 		desc = PROCURE_ESTATE_PRESTIGE
+	# 	}
+	# 	desc = PROCURE_ESTATE_PROPOSAL_OUTRO
+	# }
+
+	popup_on_receive = yes
+	pause_on_receive = yes
+
+	interface_priority = 100
+	ai_min_reply_days = 4
+	ai_max_reply_days = 9
+
+	is_shown = {
+		#has_ep3_dlc_trigger = yes
+		scope:actor = { has_government = vi_vampire_government }
+		scope:actor = {
+			vi_is_vampire_trigger = yes
+			is_landed = no
+		}
+		scope:recipient = {
+			is_landed = no
+			vi_is_vampire_trigger = yes
+			has_government = vi_vampire_government
+			is_independent_ruler = yes
+			highest_held_title_tier >= tier_kingdom
+		}
+		NOT = { scope:recipient = scope:actor }
+		OR = {
+			years_from_game_start >= 1
+			debug_only = yes
+		}
+	}
+
+	is_valid_showing_failures_only = {
+
+		NOT = {
+			scope:actor = {
+				is_at_war_with = scope:recipient
+			}
+		}
+		scope:recipient = {
+			is_busy_in_events_localised = yes
+			NOT = { has_strong_hook = scope:actor }
+		}
+	}
+
+	cost = {
+		prestige = 100
+	}
+
+	is_highlighted = {
+		always = no
+	}
+
+	on_accept = {
+		scope:actor = {
+			capital_county = {
+				save_scope_as = princedom_county	
+			}
+
+			custom_tooltip = vi_offer_fealty_interaction_tt
+			
+			hidden_effect = {
+				vi_create_vassal_princedom_effect = {
+					VI_LIEGE = scope:recipient.top_liege
+					VI_COUNTY = scope:princedom_county
+				}
+			}
+		}
+	}
+
+	on_decline = {
+		# scope:actor = {
+		# 	save_scope_as = adventurer
+		# 	trigger_event = ep3_interactions_events.0611
+		# }
+	}
+
+	ai_targets = {
+		ai_recipients = neighboring_rulers
+	}
+	ai_frequency = 600
+
+	ai_accept = {
+		base = 10 # Try to make it 0 for most interactions
+
+		opinion_modifier = { # Opinion Factor
+			who = scope:recipient
+			opinion_target = scope:actor
+			multiplier = 0.5
+			desc = AI_OPINION_REASON
+		}
+	}
+
+	ai_will_do = {
+		base = -25
+		opinion_modifier = { # Opinion Factor
+			who = scope:actor
+			opinion_target = scope:recipient
+			multiplier = 0.5
+		}
+
+		opinion_modifier = { # Opinion Factor
+			who = scope:actor
+			opinion_target = scope:actor.liege
+			multiplier = -1
+		}
+	}
+}
 vi_sponsor_princedom_interaction = {
 	category = interaction_category_admin
 	icon = support_candidacy

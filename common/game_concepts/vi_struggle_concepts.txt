@@ -1,0 +1,18 @@
+﻿vi_inquisition_struggle = {
+	alias = { vi_europe_west_struggle }
+	parent = struggle
+}
+
+vi_europe_west_struggle = {}
+
+struggle_vi_phase_tranquility = {
+	parent = vi_inquisition_struggle
+}
+
+struggle_vi_phase_suspicion = {
+	parent = vi_inquisition_struggle
+}
+
+struggle_vi_phase_inquisition = {
+	parent = vi_inquisition_struggle
+}

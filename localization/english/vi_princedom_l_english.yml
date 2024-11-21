@@ -3,7 +3,8 @@
  vi_procure_estate_interaction_desc: "Ask for a local Prince's aid in setting up a Vampire Princedom in your current location in exchange for fealty."
  NOT_vi_princedom_already_exists: "There is already a vampire population at this location."
  VI_FLEDGLING_REASON: "You are a mere fledgling: $VALUE|=+0$"
-
+ vi_offer_fealty_interaction: "Swear Fealty"
+ vi_offer_fealty_interaction_tt: "[recipient.GetShortUIName] becomes your liege"
  vi_you_gain_princedom: "You gain a Vampire Princedom"
 
  vi_found_princedom_decision: "Found Princedom"
