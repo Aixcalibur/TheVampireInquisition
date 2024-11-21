@@ -1,6 +1,6 @@
 ﻿
 vi_declare_inquisition_interaction = {
-	interface_priority = 90
+	#interface_priority = 90
 	category = interaction_category_admin
 	use_diplomatic_range = yes
 	ignores_pending_interaction_block = yes
@@ -27,6 +27,7 @@ vi_declare_inquisition_interaction = {
 		scope:actor = {
 			is_ruler = yes
 			is_landed = yes
+			vi_is_vampire_trigger = no
 			#any_sub_realm_county = scope:recipient.capital_county
 		}
 	}
@@ -218,7 +219,7 @@ vi_declare_inquisition_interaction = {
 }
 
 vi_declare_inquisition_landless_interaction = {
-	interface_priority = 90
+	#interface_priority = 90
 	category = interaction_category_admin
 	use_diplomatic_range = yes
 	ignores_pending_interaction_block = yes

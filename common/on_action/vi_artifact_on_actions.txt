@@ -9,31 +9,31 @@ on_artifact_changed_owner = {
 	}
 }
 
-vi_on_artifact_changed_owner = {
-	trigger = {
-		scope:owner = {
-			vi_is_vampire_trigger = yes
-		}
-	}
+# vi_on_artifact_changed_owner = {
+# 	trigger = {
+# 		scope:owner = {
+# 			vi_is_vampire_trigger = yes
+# 		}
+# 	}
 
-	effect = {
-		if = {
-			limit = {
-				vi_is_holy_artifact_trigger = yes
-				NOT = {
-					exists = var:vampire_loot
-				}
-			}
+# 	effect = {
+# 		if = {
+# 			limit = {
+# 				vi_is_holy_artifact_trigger = yes
+# 				NOT = {
+# 					exists = var:vampire_loot
+# 				}
+# 			}
 
-			save_scope_as = this_artifact
+# 			save_scope_as = this_artifact
 
-			scope:owner = {
-				send_interface_toast = {
-					title = artifact.0021.t
-					right_icon = scope:this_artifact
-					destroy_artifact = scope:this_artifact
-				}
-			}	
-		}
-	}
-}
+# 			scope:owner = {
+# 				send_interface_toast = {
+# 					title = artifact.0021.t
+# 					right_icon = scope:this_artifact
+# 					destroy_artifact = scope:this_artifact
+# 				}
+# 			}	
+# 		}
+# 	}
+# }

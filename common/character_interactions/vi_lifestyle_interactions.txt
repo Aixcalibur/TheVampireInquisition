@@ -484,7 +484,7 @@ vi_instill_fear_interaction = {
 
 vi_regenerate_interaction = {
 	icon = debug_good
-	interface_priority = 30
+	#interface_priority = 30
 	common_interaction = yes
 	category = interaction_category_admin
 	desc = vi_regenerate_interaction_desc
