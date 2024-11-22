@@ -1083,12 +1083,10 @@
 			scope:secondary_actor = {
 				age > 29
 				is_female = yes
-				
+				vi_is_vampire_trigger = no
 			}
 			scope:secondary_recipient = {
-				NOT = {
-					vi_is_vampire_trigger = yes
-				}
+				vi_is_vampire_trigger = no
 				is_adult = yes
 				OR = {
 					AND = {
@@ -1125,7 +1123,7 @@
 			scope:secondary_actor = {
 				age > 20
 				is_female = yes
-				vi_is_vampire_trigger = no
+				#vi_is_vampire_trigger = no
 			}
 			scope:secondary_recipient = {
 				is_adult = no

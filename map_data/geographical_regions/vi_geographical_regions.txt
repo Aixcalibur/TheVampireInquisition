@@ -1,4 +1,6 @@
 ﻿vi_jylland = {
-	d_slesvig
-	d_jylland
+	duchies = {
+		d_slesvig
+		d_jylland
+	}
 }

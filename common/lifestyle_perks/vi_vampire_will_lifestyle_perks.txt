@@ -205,6 +205,13 @@ vi_shadowwalk_perk = {
 		character_travel_safety = 20
 		vi_hunt_scheme_phase_duration_add = -20
 	}
+	can_be_picked = { 
+		OR = {
+			has_trait = vi_vampire_3
+			has_trait = vi_vampire_4
+			has_trait = vi_vampire_5
+		}
+	}
 
 	effect = {
 		custom_description_no_bullet = {
@@ -227,6 +234,13 @@ vi_storm_perk = {
 		advantage = 5
 		character_travel_safety = 20
 	}
+	can_be_picked = { 
+		OR = {
+			has_trait = vi_vampire_3
+			has_trait = vi_vampire_4
+			has_trait = vi_vampire_5
+		}
+	}
 
 	effect = {
 		add_trait = lifestyle_blademaster
@@ -238,6 +252,7 @@ vi_storm_perk = {
 		custom_description_no_bullet = {
 			text = vi_storm_perk_effect
 		}
+		custom_tooltip = vi_elder_perk_tt
 		vi_on_perk_added_effect = yes
 	}
 }
@@ -254,11 +269,19 @@ vi_transformation_perk = {
 		prowess = 2
 		owned_hostile_scheme_success_chance_add = 10
 	}
+	can_be_picked = { 
+		OR = {
+			has_trait = vi_vampire_3
+			has_trait = vi_vampire_4
+			has_trait = vi_vampire_5
+		}
+	}
 
 	effect = {
 		custom_description_no_bullet = {
 			text = vi_transformation_perk_effect
 		}
+		custom_tooltip = vi_elder_perk_tt
 		vi_on_perk_added_effect = yes
 	}
 }

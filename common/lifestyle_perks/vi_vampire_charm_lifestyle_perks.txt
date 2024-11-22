@@ -111,6 +111,7 @@ vi_animal_command_perk = {
 		custom_description_no_bullet = {
 			text = vi_animal_command_perk_effect
 		}
+		custom_tooltip = vi_elder_perk_tt
 		vi_on_perk_added_effect = yes
 	}
 }
@@ -205,6 +206,7 @@ vi_enthrall_perk = {
 		custom_description_no_bullet = {
 			text = vi_enthrall_perk_effect
 		}
+		custom_tooltip = vi_elder_perk_tt
 		vi_on_perk_added_effect = yes
 	}
 }
@@ -238,6 +240,7 @@ vi_presence_perk = {
 		custom_description_no_bullet = {
 			text = vi_presence_perk_effect
 		}
+		custom_tooltip = vi_elder_perk_tt
 		vi_on_perk_added_effect = yes
 	}
 }

@@ -21,7 +21,8 @@
 		anglo_saxon
 		cornish
 		welsh
-		scots
+		gaelic
+		scottish
 		cumbrian
 
 		#germania
@@ -30,6 +31,8 @@
 		franconian
 		swabian
 		bavarian
+
+		danish
 
 		#italia
 		cisalpine

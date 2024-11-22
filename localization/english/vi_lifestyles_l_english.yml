@@ -205,4 +205,5 @@
  vi_perk.vi_heartstealer.success_desc: "I look at the corpses now littered across the room. Many of them had lacked weapons, but persisted nonetheless with their own hands and nails. However, they were far from just mindless puppets. Once one of them learned it was easier to crack their skull on the ground, many others followed suit. Others still went waited patiently in a circle to borrow a dagger.\n\nIt was only a minute or two before the hall fell silent."
  vi_perk.vi_heartstealer.success_a: "I am now a god."
  vi_perk.vi_heartstealer.success_b: "This power must be used carefully..."
-
+ 
+ vi_elder_perk_tt: "\n@warning_icon! #X Must be an [GetTrait('vi_vampire_3').GetName( GetNullCharacter )] or above to select this perk. #!"

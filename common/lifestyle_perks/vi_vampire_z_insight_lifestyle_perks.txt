@@ -190,11 +190,20 @@ vi_fateweaver_perk = {
 		stress_loss_mult = -0.1
 	}
 
+	can_be_picked = { 
+		OR = {
+			has_trait = vi_vampire_3
+			has_trait = vi_vampire_4
+			has_trait = vi_vampire_5
+		}
+	}
+
 	effect = {
 		custom_description_no_bullet = {
 			text = vi_fateweaver_perk_effect
 		}
 		add_trait_force_tooltip = shrewd
+		custom_tooltip = vi_elder_perk_tt
 		vi_on_perk_added_effect = yes
 	}
 }

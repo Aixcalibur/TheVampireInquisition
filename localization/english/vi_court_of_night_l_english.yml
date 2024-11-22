@@ -93,3 +93,5 @@
  vi_compose_the_chansons_decision_enough_high_level_knights: "You have at least 12 [vampire|E] Knights with either 40 [prowess|E] or higher or the [GetTrait('gallant').GetName( GetNullCharacter )] [trait|E]"
 
  vi_chansons_paladins_tooltip: "The Paladins are formed as an Adventurer Camp which adherents of the Court of Night can call into war."
+
+ vi_chansions_paladins_no_dlc_tooltip: "The Paladins are formed as a landless title which adherents of the Court of Night can call into war."

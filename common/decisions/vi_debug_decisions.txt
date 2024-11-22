@@ -17,14 +17,14 @@
 	}
 
 	effect = {
-		trigger_event = {
-			id = vi_decision.0010 #id = vi_debug.001
-		}
-
-		# start_struggle = {
-		# 	struggle_type = vi_europe_west_struggle
-		# 	start_phase = struggle_vi_phase_tranquility
+		# trigger_event = {
+		# 	id = vi_decision.0010 #id = vi_debug.001
 		# }
+
+		start_struggle = {
+			struggle_type = vi_europe_west_struggle
+			start_phase = struggle_vi_phase_tranquility
+		}
 	}
 
 	ai_potential = {

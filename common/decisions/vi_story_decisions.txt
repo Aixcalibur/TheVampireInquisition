@@ -7,6 +7,7 @@
 	selection_tooltip = vi_compose_the_chansons_decision_tooltip
 
 	is_shown = {
+		has_ep3_dlc_trigger = yes
 		vi_is_vampire_trigger = yes
 		capital_county.title_province ?= {
 			geographical_region = world_europe_west
@@ -107,13 +108,13 @@
 				add_dynasty_prestige = 2500
 			}
 		}
+		if = {
+			limit = {
+				has_ep3_dlc_trigger = yes
+			}
+			custom_tooltip = vi_chansons_paladins_tooltip
+		}
 		
-		character:vi_roland = {
-			create_landless_adventurer_title_tooltip_effect = yes
-		}
-		character:vi_roland = {
-			show_as_tooltip = { get_title = title:d_laamp_vi_paladins }
-		}
 
 	}
 
