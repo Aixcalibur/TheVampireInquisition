@@ -1,26 +1,24 @@
 ﻿vi_Disian_modifier = {
 	icon = vi_rose_mixed
 	attraction_opinion = 10
-	stress_loss_mult = 0.2
-	
+	stress_loss_mult = 0.1
 	diplomacy = 1
 	intrigue = 2
 }
 
 vi_Anunnaki_modifier = {
 	icon = vi_crown_mixed
-	stress_loss_mult = -0.2
+	stress_loss_mult = -0.1
 	martial = 2
 	stewardship = 2
-	parochial_opinion = 5
+	parochial_opinion = 10
+	courtly_opinion = 5
 	ai_rationality = 20
 }
 
 vi_Nosferatu_modifier = {
 	icon = vi_snake_mixed
-
 	general_opinion = -10
-
 	dread_baseline_add = 10
 	dynasty_opinion = 10
 	intrigue = 3
@@ -29,9 +27,7 @@ vi_Nosferatu_modifier = {
 
 vi_Strix_modifier = {
 	icon = stress_negative
-
 	dynasty_opinion = 5
-
 	learning = 1
-	stress_gain_mult = 0.5
+	stress_gain_mult = 0.25
 }

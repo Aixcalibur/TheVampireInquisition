@@ -183,28 +183,9 @@ vi_bida_game_start = {
 
 vi_vampire_game_start_after_lobby = {
 	effect = {
-		dynasty:vi_dynasty_Aphrodisian = {
-			add_dynasty_modifier = {
-				modifier = vi_Disian_modifier
-			}
-		}
-
-		dynasty:vi_dynasty_Anunnaki = {
-			add_dynasty_modifier = {
-				modifier = vi_Anunnaki_modifier
-			}
-		}
-
-		dynasty:vi_dynasty_Nosferatu = {
-			add_dynasty_modifier = {
-				modifier = vi_Nosferatu_modifier
-			}
-		}
-
-		dynasty:vi_dynasty_Strix = {
-			add_dynasty_modifier = {
-				modifier = vi_Strix_modifier
-			}
+		set_global_variable = {
+			name = vi_mod_version
+			value = vi_mod_latest_version
 		}
 
 		title:c_roma = {

@@ -185,6 +185,39 @@ vi_turn_into_vampire_effect = {
 			}
 
 			set_relation_vi_sire = scope:vi_vampire
+
+			if = {
+				limit = {
+					scope:vi_vampire = {
+						has_character_modifier = vi_Disian_modifier
+					}
+				}
+				add_character_modifier = vi_Disian_modifier
+			}
+			if = {
+				limit = {
+					scope:vi_vampire = {
+						has_character_modifier = vi_Anunnaki_modifier
+					}
+				}
+				add_character_modifier = vi_Anunnaki_modifier
+			}
+			if = {
+				limit = {
+					scope:vi_vampire = {
+						has_character_modifier = vi_Nosferatu_modifier
+					}
+				}
+				add_character_modifier = vi_Nosferatu_modifier
+			}
+			if = {
+				limit = {
+					scope:vi_vampire = {
+						has_character_modifier = vi_Strix_modifier
+					}
+				}
+				add_character_modifier = vi_Strix_modifier
+			}
 			# scope:vi_vampire = {
 			# 	adopt = scope:vi_target
 			# }

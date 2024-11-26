@@ -13,17 +13,30 @@ on_pregnancy_mother = {
 
 vi_on_birth_child = {
 	trigger = {
-		OR = {
-			scope:mother = {
-				vi_is_vampire_trigger = yes
-			}
-			scope:real_father = {
-				vi_is_vampire_trigger = yes
-			}
+		scope:mother = {
+			has_character_flag = vi_dhampir_baby
 		}
 	}
 	effect = {
 		add_trait = vi_dhampir
+
+		if = {
+			limit = {
+				scope:mother = {
+					vi_is_vampire_trigger = yes
+				}
+			}
+			set_relation_vi_gui_progeny = scope:mother
+		}
+
+		if = {
+			limit = {
+				scope:father = {
+					vi_is_vampire_trigger = yes
+				}
+			}
+			set_relation_vi_gui_progeny = scope:father
+		}
 	}
 }
 
@@ -48,6 +61,10 @@ vi_on_pregnancy_mother = {
 	effect = {
 		add_character_flag = { #Flags blocks other birth events
 			flag = birth_child_will_become_sickly
+			days = 270
+		}
+		add_character_flag = {
+			flag = vi_dhampir_baby
 			days = 270
 		}
 	}
