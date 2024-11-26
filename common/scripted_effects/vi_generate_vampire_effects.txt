@@ -1,4 +1,73 @@
-﻿vi_add_vampire_knight = {
+﻿
+
+vi_generate_prince_vassal_effect = {
+	save_scope_as = vi_liege
+
+	random_culture_global = {
+		limit = {
+			exists = culture_head
+			culture_head = {
+				in_diplomatic_range = scope:vi_liege
+			}
+		}
+		save_scope_as = random_event_culture
+	}
+
+	create_character = {
+		#location = root.capital_province
+		faith = scope:vi_liege.faith
+		culture = scope:random_event_culture
+		template = vi_prince_template
+		employer = root
+		save_scope_as = vi_prince
+	}
+
+	scope:vi_prince = {
+		set_immortal_age = age
+		change_age = { 200 400}
+		vi_make_vampire_effect = yes
+		add_trait = vi_vampire_3
+		add_vi_vampire_lifestyle_xp = 12000
+	}
+
+	capital_county.empire = {
+		random_de_jure_county = {
+			limit = {
+				NOR = {
+					any_county_province = {
+						any_province_domicile = {
+							is_domicile_type = vi_lair
+						}
+					}
+					has_county_modifier = vi_holy_ground_modifier
+				}
+			}
+
+			weight = {
+				base = 1
+				add = this.development_level
+				add = -5
+			}
+
+			save_scope_as = vi_title_county
+		}
+	}
+
+	scope:vi_prince = {
+		vi_create_vassal_princedom_effect = {
+			VI_LIEGE = scope:vi_liege
+			VI_COUNTY = scope:vi_title_county
+		}
+
+		trigger_event = {
+			on_action = vi_vampire_game_start_vampire_ruler
+			days = 20
+			delayed = yes
+		}
+	}
+}
+
+vi_add_vampire_knight = {
 
 	create_character = {
 		template = knight_errant_character

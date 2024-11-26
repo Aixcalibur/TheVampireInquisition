@@ -19,10 +19,10 @@
 				}
 			}
 			#debug_only = yes
-			AND = {
-				debug_only = yes
-				is_ai = no
-			}
+			# AND = {
+			# 	debug_only = yes
+			# 	is_ai = no
+			# }
 		}
 		vi_is_vampire_trigger = yes
 	}
@@ -448,7 +448,9 @@ vi_become_landless_adventurer_decision = {
 
 	is_valid = {
 		vi_is_vampire_trigger = yes
-		
+		NOT = {
+			is_at_war = yes
+		}
 	}
 
 	is_valid_showing_failures_only = {

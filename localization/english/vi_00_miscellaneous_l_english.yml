@@ -19,9 +19,11 @@
 
  vi_sire: "[vi_sire|E]"
  vi_spawn: "[vi_spawn|E]"
+ vi_gui_progeny: "Progeny"
 
  VI_SIRE_LABEL: "Sire"
  VI_SPAWN_LABEL: "Spawn"
+ VI_SPAWN_HEADING: "Progeny #weak ([GetDataModelSize(CharacterWindow.GetRelationsOfType( GetRelation( 'vi_gui_progeny' ) ))])#!"
 
  I_GAIN_VI_SIRE: "[TARGET_CHARACTER.GetShortUIName|U] becomes your [vi_sire|E]"
  I_GAINED_VI_SIRE: "[TARGET_CHARACTER.GetShortUIName|U] becomes your [vi_sire|E]"
@@ -84,5 +86,5 @@
 
  vi_drain_prisoner_interaction: "Drain Prisoner"
  vi_drain_prisoner_interaction_desc: "Drink [recipient.GetShortUINameNoTooltip]'s blood."
- VI_TURN: "Turn [recipient.GetShortUINameNoTooltip]"
+ VI_TURN: "Turn into Vampire"
  VI_DRAIN_DRY: "Drain to Death"

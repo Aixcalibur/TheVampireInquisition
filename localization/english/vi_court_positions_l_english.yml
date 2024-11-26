@@ -41,3 +41,5 @@
  court_position_vi_vampire_4_trait: "[GetTrait('vi_vampire_4').GetName( ROOT.Char )]"
  court_position_possessed_trait: "[GetTrait('possessed_1').GetName( ROOT.Char )]"
  court_position_ai_bonus: "AI Bonus"
+
+ vi_inner_council_opinion_mod: "High [Opinion|E]"

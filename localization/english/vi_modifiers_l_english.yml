@@ -79,3 +79,6 @@
 
  vi_laying_low_modifier: "Laying Low"
  vi_laying_low_modifier_desc: "Cannot join or create a Princedom while this effect persists."
+
+ vi_humanity_modifier: "Humanity"
+ vi_humanity_modifier_desc: "To remember the joys and sorrows of one's human nature can be painful, but necessary to retain one's sense of self. #weak If you lose all effects of this, you can become Feral! #!"

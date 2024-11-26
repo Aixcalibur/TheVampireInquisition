@@ -51,3 +51,12 @@ vi_knight_effectiveness_modifier = {
 	knight_effectiveness_mult = 0.05
 	scale = vi_knight_effectiveness_scaling_value
 }
+
+vi_humanity_modifier = {
+	icon = vi_humanity
+	#diplomacy = 1
+	general_opinion = 1
+	stress_gain_mult = 0.05
+	stress_loss_mult = 0.03
+	scale = vi_humanity_scaling_value
+}

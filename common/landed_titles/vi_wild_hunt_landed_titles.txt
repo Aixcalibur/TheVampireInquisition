@@ -1,0 +1,3 @@
+﻿k_vi_wild_hunt = {
+	
+}

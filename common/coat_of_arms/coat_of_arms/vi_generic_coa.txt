@@ -1,0 +1,3 @@
+﻿k_vi_tunis = c_tunis
+k_vi_cordoba = c_cordoba
+k_vi_delhi = c_delhi

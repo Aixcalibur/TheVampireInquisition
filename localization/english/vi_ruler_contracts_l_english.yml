@@ -1,0 +1,43 @@
+﻿l_english:
+ vi_inquiry_scheme: "Inquiry"
+ vi_inquiry_scheme_action: "Investigate the"
+ vi_inquiry_scheme_desc: "In this [scheme|E], mysterious happenings are occurring in a holding which you need to send men to investigate."
+ vi_inquiry_scheme_desc_general: "$vi_inquiry_scheme_desc$"
+ vi_inquiry_scheme_desc_success: "Successfully completing this [scheme|E] will gain you clues on mysterious happenings."
+ 
+ vi_tier_2_contract_modifier: "Tier 2 Issue"
+ vi_tier_3_contract_modifier: "Tier 3 Issue"
+ vi_extra_resources_contract_modifier: "Extra Resources"
+
+ agent_vi_leader: "Leader"
+ agent_vi_leader_i: "[success_chance_max_i]"
+ agent_vi_leader_desc: "#WEAK True leadership shines brightest when the shadows grow darkest. #!\n$EFFECT_LIST_BULLET$ Provides [success_chance_max_i] [scheme_potential|E]\n$EFFECT_LIST_BULLET$ Requires all [skills|E], but especially [diplomacy_i] [diplomacy|E]\n$EFFECT_LIST_BULLET$ #P Benefits#! from [traits|E] like [GetTrait('diligent').GetName( GetNullCharacter )] and [GetTrait('overseer').GetName( GetNullCharacter )]\n$EFFECT_LIST_BULLET$ #N Suffers#! from [traits|E] like [GetTrait('lazy').GetName( GetNullCharacter )] and [GetTrait('shy').GetName( GetNullCharacter )]"
+
+
+
+ vi_peasant_disappearances_contract_modifier: "Peasant Disappearances"
+
+ vi_peasant_disappearances_contract: "Peasant Disappearances"
+ vi_peasant_disappearances_desc_title: "$vi_peasant_disappearances_contract$"
+ vi_peasant_disappearances_desc: "A village in this region is suffering from a string of mysterious disappearances. Local officials have found nothing in their investigations and now turn to you for aid."
+ vi_peasant_disappearances_request: "This situation requires you to complete a [GetScheme('vi_inquiry_scheme').GetTypeName] [scheme|E]"
+
+ vi_ruler_contract.0001.t: "Investigating Peasant Disappearances"
+ vi_ruler_contract.0001.desc: "People have been vanishing after sundown on a regular basis. Perhaps it is some sort of beast hunting the unwary, yet no signs of such an animal had be found. Before fear and panic spreads across the countryside, I should dispatch a band of trustworthy men to uncover the truth behind this matter."
+ vi_ruler_contract.costly_option: "Leave no stone unturned. Find the source of this menace at all costs."
+ vi_ruler_contract.normal_option: "Let's have a measured response to this issue."
+ vi_ruler_contract.cancel_option: "A few missing peasants does not concern me. Let the matter resolve itself."
+
+ vi_ruler_contract.0003.t: "Investigation: Success?"
+ vi_ruler_contract.0003.desc_1: "My men returned with their faces pale and their voices laced with unease. [leader.GetShortUIName] tells me of a beautiful young woman, eerily pale, who was apparently the cause of the disappearances. Buried near her residence were the bodies of the missing, drained of blood. \n\nWhen they attempted to confront her, she fled with unnatural swiftness, almost flying as she ran. Despite scouring the area for days, they could only return empty-handed."
+ #I will add variants of this
+ vi_ruler_contract.success_skeptical_option: "How could I believe such outlandish tales?"
+ vi_ruler_contract.success_neutral_option: "May [ROOT.Char.GetFaith.HighGodName] protect us if what my men said is true."
+ vi_ruler_contract.success_trust_option: "I trust my men. This is something that must be investigated further."
+
+ vi_ruler_contract.0004.t: "Investigation: Failure"
+ vi_ruler_contract.0004.desc: "After spending an inordinate amount of time on this issue, my men return defeated and empty-handed. It seems that this issue has ultimately resolved itself with the disappearances stopping on their own."
+ #I will add variants of this
+ vi_ruler_contract.failure_reprimand_option: "You useless louts! What do I pay you for?"
+ vi_ruler_contract.failure_relieved_option: "Perhaps it is for the best that it all ended here."
+

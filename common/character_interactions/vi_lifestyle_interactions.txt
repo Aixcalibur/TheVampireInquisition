@@ -501,28 +501,32 @@ vi_regenerate_interaction = {
 	}
 
 	is_valid_showing_failures_only = {
+		
 		custom_tooltip = {
 			text = vi_regeneration_valid_tt
-			OR = {
-				has_trait = wounded_1
-				has_trait = wounded_2
-				has_trait = wounded_3
-				has_trait = maimed
-				has_trait = leper
-				has_trait = one_eyed
-				has_trait = one_legged
-				has_trait = disfigured
-				has_trait = infirm
-				has_trait = incapable
-				has_trait = blind
-				has_trait = eunuch_1
-				has_trait = beardless_eunuch
-				has_trait = scarred
-				# has_trait_xp = {
-				# 	trait = scarred
-				# 	value >= 20
-				# }
+			scope:recipient = {
+				OR = {
+					has_trait = wounded_1
+					has_trait = wounded_2
+					has_trait = wounded_3
+					has_trait = maimed
+					has_trait = leper
+					has_trait = one_eyed
+					has_trait = one_legged
+					has_trait = disfigured
+					has_trait = infirm
+					has_trait = incapable
+					has_trait = blind
+					has_trait = eunuch_1
+					has_trait = beardless_eunuch
+					has_trait = scarred
+					# has_trait_xp = {
+					# 	trait = scarred
+					# 	value >= 20
+					# }
+				}
 			}
+			
 		}
 	}
 
@@ -557,57 +561,72 @@ vi_regenerate_interaction = {
 	send_option = {
 		flag = disfigured
 		is_shown = {
-			NOT = {
-				has_character_flag = vi_permanently_disfigured
+			scope:recipient = {
+				NOT = {
+					has_character_flag = vi_permanently_disfigured
+				}
+				has_trait = disfigured
 			}
-			has_trait = disfigured
+			
 		}
 		localization = trait_disfigured
 	}
 	send_option = {
 		flag = leper
 		is_shown = {
-			has_trait = leper
+			scope:recipient = {
+				has_trait = leper
+			}
 		}
 		localization = trait_leper
 	}
 	send_option = {
 		flag = one_eyed
 		is_shown = {
-			NOT = {
-				has_character_flag = vi_permanently_one_eyed
+			scope:recipient = {
+				NOT = {
+					has_character_flag = vi_permanently_one_eyed
+				}
+				has_trait = one_eyed
 			}
-			has_trait = one_eyed
 		}
 		localization = trait_one_eyed
 	}
 	send_option = {
 		flag = blind
 		is_shown = {
-			NOT = {
-				has_character_flag = vi_permanently_blind
+			scope:recipient = {
+				NOT = {
+					has_character_flag = vi_permanently_blind
+				}
+				has_trait = blind
 			}
-			has_trait = blind
 		}
 		localization = trait_one_eyed
 	}
 	send_option = {
 		flag = eunuch
 		is_shown = {
-			NOT = {
-				has_character_flag = vi_permanently_eunuch
+			scope:recipient = {
+				NOT = {
+					has_character_flag = vi_permanently_eunuch
+				}
+				OR = {
+					has_trait = eunuch_1
+					has_trait = beardless_eunuch
+				}
 			}
-			OR = {
-				has_trait = eunuch_1
-				has_trait = beardless_eunuch
-			}
+			
 		}
 		localization = trait_eunuch_1
 	}
 	send_option = {
 		flag = scarred
 		is_shown = {
-			has_trait = scarred
+			scope:recipient = {
+				has_trait = scarred
+			}
+			
 		}
 		localization = trait_scarred
 	}
@@ -616,93 +635,177 @@ vi_regenerate_interaction = {
 	
 	on_accept = {
 		scope:actor = {
+			save_scope_value_as = {
+				name = vi_stress
+				value = 5
+			}
 			add_character_modifier = {
 				modifier = vi_vampire_strain_modifier
 				years = 10
 			}
-		}
-		if = {
-			limit = {
-				has_trait = wounded_1
-			}
-			remove_trait = wounded_1
-			add_stress = 10
-		}
-		if = {
-			limit = {
-				has_trait = wounded_2
-			}
-			remove_trait = wounded_2
-			add_stress = 15
-		}
-		if = {
-			limit = {
-				has_trait = wounded_3
-			}
-			remove_trait = wounded_3
-			add_stress = 20
-		}
-		if = {
-			limit = {
-				has_trait = maimed
-			}
-			remove_trait = maimed
-			add_stress = 30
-		}
-		if = {
-			limit = {
-				has_trait = one_legged
-			}
-			remove_trait = one_legged
-			add_stress = 25
-		}
-		if = {
-			limit = {
-				has_trait = infirm
-			}
-			remove_trait = infirm
-			add_stress = 20
-		}
-		if = {
-			limit = {
-				has_trait = incapable
-			}
-			remove_trait = incapable
-			add_stress = 30
-		}
-		if = {
-			limit = { always = scope:disfigured }
-			remove_trait = disfigured
-			add_stress = 10
-		}
-		if = {
-			limit = { always = scope:one_eyed }
-			remove_trait = one_eyed
-			add_stress = 10
-		}
-		if = {
-			limit = { always = scope:blind }
-			remove_trait = blind
-			add_stress = 20
-		}
-		if = {
-			limit = { always = scope:scarred }
-			remove_trait = scarred
-			add_stress = 5
-		}
-		if = {
-			limit = { always = scope:eunuch }
 			if = {
-				limit = { has_trait = eunuch_1 }
-				remove_trait = eunuch_1
+				limit = {
+					has_trait = wounded_1
+				}
+				remove_trait = wounded_1
+				save_scope_value_as = {
+					name = vi_stress
+					value = {
+						value = scope:vi_stress
+						add = 10
+					}
+				}
 			}
 			if = {
-				limit = { has_trait = beardless_eunuch }
-				remove_trait = beardless_eunuch
+				limit = {
+					has_trait = wounded_2
+				}
+				remove_trait = wounded_2
+				save_scope_value_as = {
+					name = vi_stress
+					value = {
+						value = scope:vi_stress
+						add = 15
+					}
+				}
+				# change_variable = {
+				# 	name = vi_stress
+				# 	add = 15
+				# }
 			}
-			add_stress = 20
+			if = {
+				limit = {
+					has_trait = wounded_3
+				}
+				remove_trait = wounded_3
+				save_scope_value_as = {
+					name = vi_stress
+					value = {
+						value = scope:vi_stress
+						add = 20
+					}
+				}
+			}
+			if = {
+				limit = {
+					has_trait = maimed
+				}
+				remove_trait = maimed
+				save_scope_value_as = {
+					name = vi_stress
+					value = {
+						value = scope:vi_stress
+						add = 30
+					}
+				}
+			}
+			if = {
+				limit = {
+					has_trait = one_legged
+				}
+				remove_trait = one_legged
+				save_scope_value_as = {
+					name = vi_stress
+					value = {
+						value = scope:vi_stress
+						add = 25
+					}
+				}
+			}
+			if = {
+				limit = {
+					has_trait = infirm
+				}
+				remove_trait = infirm
+				save_scope_value_as = {
+					name = vi_stress
+					value = {
+						value = scope:vi_stress
+						add = 20
+					}
+				}
+			}
+			if = {
+				limit = {
+					has_trait = incapable
+				}
+				remove_trait = incapable
+				save_scope_value_as = {
+					name = vi_stress
+					value = {
+						value = scope:vi_stress
+						add = 30
+					}
+				}
+			}
+			if = {
+				limit = { always = scope:disfigured }
+				remove_trait = disfigured
+				save_scope_value_as = {
+					name = vi_stress
+					value = {
+						value = scope:vi_stress
+						add = 10
+					}
+				}
+			}
+			if = {
+				limit = { always = scope:one_eyed }
+				remove_trait = one_eyed
+				save_scope_value_as = {
+					name = vi_stress
+					value = {
+						value = scope:vi_stress
+						add = 10
+					}
+				}
+			}
+			if = {
+				limit = { always = scope:blind }
+				remove_trait = blind
+				save_scope_value_as = {
+					name = vi_stress
+					value = {
+						value = scope:vi_stress
+						add = 20
+					}
+				}
+			}
+			if = {
+				limit = { always = scope:scarred }
+				remove_trait = scarred
+				save_scope_value_as = {
+					name = vi_stress
+					value = {
+						value = scope:vi_stress
+						add = 5
+					}
+				}
+			}
+			if = {
+				limit = { always = scope:eunuch }
+				if = {
+					limit = { has_trait = eunuch_1 }
+					remove_trait = eunuch_1
+				}
+				if = {
+					limit = { has_trait = beardless_eunuch }
+					remove_trait = beardless_eunuch
+				}
+				save_scope_value_as = {
+					name = vi_stress
+					value = {
+						value = scope:vi_stress
+						add = 20
+					}
+				}
+			}
+			stress_impact = {
+				base = scope:vi_stress
+				flagellant = medium_stress_impact_gain
+			}
 		}
-		add_stress = minor_stress_loss
+		
 	}
 	
 	auto_accept = {

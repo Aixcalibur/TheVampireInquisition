@@ -28,3 +28,122 @@
 		}
 	}
 }
+
+agent_vi_leader = {
+	contribution_type = success_chance_max
+	contribution = {
+		value = scheme_agent_general_bonuses_contribution_score_value
+
+		if = {
+			limit = { has_trait = shy }
+			add = {
+				value = agent_trait_malus_t3_value
+				desc = scheme_agent_aptitude.trait.shy
+			}
+		}
+		if = {
+			limit = { has_trait = patient }
+			add = {
+				value = agent_trait_bonus_t2_value
+				desc = scheme_agent_aptitude.trait.patient
+			}
+		}
+		if = {
+			limit = { has_trait = impatient }
+			add = {
+				value = agent_trait_malus_t3_value
+				desc = scheme_agent_aptitude.trait.impatient
+			}
+		}
+		if = {
+			limit = { has_trait = brave }
+			add = {
+				value = agent_trait_bonus_t2_value
+				desc = scheme_agent_aptitude.trait.brave
+			}
+		}
+		if = {
+			limit = { has_trait = craven }
+			add = {
+				value = agent_trait_malus_t3_value
+				desc = scheme_agent_aptitude.trait.craven
+			}
+		}
+		if = {
+			limit = {
+				has_trait = diligent
+			}
+			add = agent_trait_bonus_t3_value
+			desc = scheme_agent_aptitude.trait.diligent
+		}
+		if = {
+			limit = { has_trait = lazy }
+			add = {
+				value = agent_trait_malus_t3_value
+				desc = scheme_agent_aptitude.trait.lazy
+			}
+		}
+		if = {
+			limit = { has_trait = paranoid }
+			add = {
+				value = agent_trait_bonus_t1_value
+				desc = scheme_agent_aptitude.trait.paranoid
+			}
+		}
+		if = {
+			limit = { has_trait = stubborn }
+			add = {
+				value = agent_trait_bonus_t1_value
+				desc = scheme_agent_aptitude.trait.stubborn
+			}
+		}
+		if = {
+			limit = { has_trait = overseer }
+			add = {
+				value = agent_trait_bonus_t3_value
+				desc = scheme_agent_aptitude.trait.overseer
+			}
+		}
+		
+
+		if = {
+			limit = {
+				has_trait = trusting
+			}
+			add = -20
+			desc = court_position_trusting_trait
+		}
+		
+		add = {
+			value = diplomacy
+			#multiply = 1
+			ceiling = yes
+			#max = agent_max_skill_value # 25 in vanilla
+			desc = scheme_agent_aptitude.skill.diplomacy
+		}
+
+		add = {
+			value = martial
+			multiply = 0.5
+			ceiling = yes
+			#max = agent_max_skill_value
+			desc = scheme_agent_aptitude.skill.martial
+		}
+
+		add = {
+			value = intrigue
+			multiply = 0.75
+			ceiling = yes
+			#max = agent_max_skill_value # 25 in vanilla
+			desc = scheme_agent_aptitude.skill.intrigue
+		}
+
+		add = {
+			value = learning
+			multiply = 0.5
+			ceiling = yes
+			#max = agent_max_skill_value
+			desc = scheme_agent_aptitude.skill.learning
+		}
+	}
+}

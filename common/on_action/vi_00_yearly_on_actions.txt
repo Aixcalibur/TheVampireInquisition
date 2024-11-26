@@ -1,7 +1,21 @@
 ﻿yearly_global_pulse = {
 	on_actions = {
-		delay = {
-			days = { 10 90 }
+		vi_version_tracking
+	}
+}
+
+vi_version_tracking = {
+	trigger = {
+		years_from_game_start > 1
+		OR = {
+			NOT = { exists = global_var:vi_mod_version }
+			global_var:vi_mod_version < vi_mod_latest_version
+		}
+	}
+	effect = {
+		set_global_variable = {
+			name = vi_mod_version
+			value = vi_mod_latest_version
 		}
 	}
 }
@@ -46,11 +60,9 @@ vi_vampire_policy_pulse = {
 	trigger = {
 		has_government = vi_vampire_government
 		is_landless_ruler = yes
-
 		NOT = {
 			has_character_flag = vi_vampire_policy_decided
 		}
-
 		any_held_title = {
 			NOT = {
 				has_title_law = noble_family_succession_law
@@ -89,18 +101,34 @@ vi_vampire_maintenance_pulse = {
 	}
 
 	effect = {
+		if = {
+			limit = {
+				NOT = {
+					exists = var:vi_humanity_value
+				}
+				OR = {
+					has_trait = vi_vampire_2
+					has_trait = vi_vampire_3
+					has_trait = vi_vampire_4
+					has_trait = vi_vampire_5
+				}
+			}
+			vi_initialize_humanity_effect = yes
+		}
+
 		vi_slow_regeneration_effect = yes
 		save_scope_as = vi_vampire
 		if = {
 			limit = {
 				is_courtier = yes
 				liege_or_court_owner = {
-					vi_is_vampire_trigger = no
-				}
-				NOT = {
-					any_known_secret = {
-						secret_type = secret_vi_vampire
-						secret_owner = scope:vi_vampire
+					NOR = {
+						vi_is_vampire_trigger = yes
+						any_known_secret = {
+							secret_type = secret_vi_vampire
+							secret_owner = scope:vi_vampire
+						}
+						has_character_modifier = vi_soothed_modifier
 					}
 				}
 			}
@@ -130,14 +158,13 @@ vi_vampire_maintenance_pulse = {
 
 		every_relation = {
 			limit = {
-				NOT = {
+				NOR = {
 					has_opinion_modifier = {
 						modifier = suspicion_opinion
 						target = scope:vi_vampire
 					}
-				}
-				vi_is_vampire_trigger = no
-				NOT = {
+					has_character_modifier = vi_soothed_modifier
+					vi_is_vampire_trigger = yes
 					any_known_secret = {
 						secret_type = secret_vi_vampire
 						secret_owner = scope:vi_vampire
@@ -185,6 +212,14 @@ vi_vampire_upgrade_fledgling = {
 	}
 
 	effect = {
+		if = {
+			limit = {
+				NOT = {
+					exists = var:vi_humanity_value
+				}
+			}
+			vi_initialize_humanity_effect = yes
+		}
 		add_trait = vi_vampire_2
 		remove_trait = vi_vampire_1
 	}
@@ -199,6 +234,7 @@ vi_vampire_upgrade_vampire = {
 	effect = {
 		add_trait = vi_vampire_3
 		remove_trait = vi_vampire_2
+		remove_trait = vi_vampire_1
 	}
 }
 
@@ -211,5 +247,6 @@ vi_vampire_upgrade_elder = {
 	effect = {
 		add_trait = vi_vampire_4
 		remove_trait = vi_vampire_3
+		remove_trait = vi_vampire_2
 	}
 }

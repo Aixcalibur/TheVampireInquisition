@@ -21,7 +21,7 @@ vi_vampire_skinny_effect = {
 			add = -20
 		}
 	}
-	change_current_weight = -25
+	change_current_weight = -15
 }
 
 vi_vampire_weight_stabilize_effect = {

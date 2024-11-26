@@ -4,6 +4,33 @@
 	add_character_flag = vi_vampire
 	hidden_effect = {
 		remove_character_modifier = vi_drained_modifier
+		vi_remove_nonvampire_traits_effect = yes
+	}
+
+	if = {
+		limit = {
+			NOR = {
+				exists = scope:vi_hide_vampirism
+				has_trait = vi_vampire_2
+				has_trait = vi_vampire_3
+				has_trait = vi_vampire_4
+				has_trait = vi_vampire_5
+			}
+		}
+		add_trait = vi_vampire_1
+	}
+
+	if = {
+		limit = {
+			NOT = {
+				exists = var:vi_humanity_value
+			}
+			NOR = {
+				exists = scope:vi_hide_vampirism
+				has_trait = vi_vampire_1
+			}
+		}
+		vi_initialize_humanity_effect = yes
 	}
 	
 	add_secret = {
@@ -18,8 +45,8 @@
 
 	add_character_modifier = vi_unnatural_youth_modifier
 
-	hidden_effect = {
-		vi_remove_nonvampire_traits_effect = yes
+	every_child = {
+		set_relation_vi_gui_sire = prev
 	}
 
 	# Make it so vampires don't get the vanilla stress events any more
@@ -82,6 +109,14 @@ vi_upgrade_vampire_effect = {
 		}
 		add_trait = vi_vampire_4
 		remove_trait = vi_vampire_3
+	}
+	if = {
+		limit = {
+			NOT = {
+				exists = var:vi_humanity_value
+			}
+		}
+		vi_initialize_humanity_effect = yes
 	}
 }
 

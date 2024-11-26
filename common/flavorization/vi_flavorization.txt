@@ -16,7 +16,7 @@ vi_high_princedom = {
 	governments = {
 		vi_vampire_government
 	}
-	priority = 40
+	priority = 120
 	flavourization_rules = { 
 		top_liege = no
 	}

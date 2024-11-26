@@ -69,14 +69,25 @@ vi_drain_prisoner_interaction = {
 
 	send_option = { 
 		is_shown = { 
-			always = yes
+			scope:recipient = {
+				NOR = {
+					has_trait = vi_dhampir
+					vi_is_vampire_trigger = yes
+				}
+			}
 		}
 		can_be_changed = {
 			always = yes
 		}
 		is_valid = {
 			NOT = {
-				always = flag:turn
+				always = scope:turn
+			}
+			scope:recipient = {
+				NOR = {
+					has_trait = vi_dhampir
+					vi_is_vampire_trigger = yes
+				}
 			}
 		}
 		flag = kill

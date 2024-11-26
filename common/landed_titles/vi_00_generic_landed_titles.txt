@@ -1,0 +1,75 @@
+﻿k_vi_thoth = {
+	color = { 100 100 100 }
+	definite_form = yes
+	ruler_uses_title_name = no
+	landless = yes
+	# noble_family = yes
+	can_be_named_after_dynasty = no
+
+	capital = c_baghdad
+
+	ai_primary_priority = {
+		add = @always_primary_score
+	}
+
+	destroy_if_invalid_heir = no
+	no_automatic_claims = no
+	de_jure_drift_disabled = yes
+}
+
+k_vi_tunis = {
+	color = { 100 100 100 }
+	definite_form = no
+	ruler_uses_title_name = no
+	landless = yes
+	# noble_family = yes
+	can_be_named_after_dynasty = no
+
+	capital = c_tunis
+
+	ai_primary_priority = {
+		add = @always_primary_score
+	}
+
+	destroy_if_invalid_heir = no
+	no_automatic_claims = no
+	de_jure_drift_disabled = yes
+}
+
+k_vi_cordoba = {
+	color = { 100 100 100 }
+	definite_form = no
+	ruler_uses_title_name = no
+	landless = yes
+	# noble_family = yes
+	can_be_named_after_dynasty = no
+
+	capital = c_cordoba
+
+	ai_primary_priority = {
+		add = @always_primary_score
+	}
+
+	destroy_if_invalid_heir = no
+	no_automatic_claims = no
+	de_jure_drift_disabled = yes
+}
+
+k_vi_delhi = {
+	color = { 100 100 100 }
+	definite_form = no
+	ruler_uses_title_name = no
+	landless = yes
+	# noble_family = yes
+	can_be_named_after_dynasty = yes
+
+	capital = c_delhi
+
+	ai_primary_priority = {
+		add = @always_primary_score
+	}
+
+	destroy_if_invalid_heir = no
+	no_automatic_claims = no
+	de_jure_drift_disabled = yes
+}

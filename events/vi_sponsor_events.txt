@@ -46,6 +46,11 @@ vi_sponsor.001 = {
 					NOR = {
 						has_county_modifier = vi_county_discreet_modifier
 						has_county_modifier = vi_holy_ground_modifier
+						any_county_province = {
+							any_province_domicile = {
+								is_domicile_type = vi_lair
+							}
+						}
 					}
 				}
 				order_by = development_level

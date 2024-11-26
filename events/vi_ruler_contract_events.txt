@@ -1,0 +1,279 @@
+﻿namespace = vi_ruler_contract
+
+
+scripted_effect roll_scheme_success_or_failure_effect = {
+	
+}
+
+#Peasant Disappearances
+vi_ruler_contract.0001 = {
+	type = character_event
+	title = vi_ruler_contract.0001.t
+	desc = vi_ruler_contract.0001.desc
+	theme = realm
+	left_portrait = {
+		character = root
+		animation = personality_bold
+	}
+	right_portrait = scope:employer
+
+	override_background = { reference = feast }
+	widget = {
+		gui = "event_window_widget_scheme"
+		container = "custom_widgets_container"
+	}
+
+	immediate = {
+		scope:task_contract.task_contract_employer = {
+			save_scope_as = employer
+			save_scope_as = bg_override_char
+		}
+		scope:scheme = {
+			increment_variable_effect = {
+				VAR = secrecy_grace_period
+				VAL = 2
+			}
+		}
+	}
+
+	# Focus on success chance agents.
+	option = {
+		name = vi_ruler_contract.costly_option
+		# reason = give_me_success_agents
+		# flavor = EVENT_WINDOW_OPTION_AGENTS_SUCCESS
+
+		remove_short_term_gold = medium_gold_value
+
+		scope:scheme = {
+			# Success.
+			add_scheme_modifier = {
+				type = vi_extra_resources_contract_modifier
+				days = 365
+			}
+		}
+
+		stress_impact = {
+			just = minor_stress_impact_loss
+			diligent = minor_stress_impact_loss
+			generous = minor_stress_impact_loss
+			paranoid = minor_stress_impact_loss
+			compassionate = minor_stress_impact_loss
+			lazy = minor_stress_impact_gain
+		}
+	}
+	
+	# Focus on balanced
+	option = {
+		name = vi_ruler_contract.normal_option
+		# reason = give_me_balanced_agents
+		# flavor = EVENT_WINDOW_OPTION_AGENTS_BALANCED
+
+		scope:scheme = {
+			
+		}
+
+		stress_impact = {
+			lazy = minor_stress_impact_gain
+		}
+
+		ai_chance = {
+			base = 100
+		}
+	}
+
+	option = {
+		name = vi_ruler_contract.cancel_option
+
+		stress_impact = {
+			just = medium_stress_impact_gain
+			diligent = medium_stress_impact_gain
+			compassionate = medium_stress_impact_gain
+			lazy = medium_stress_impact_loss
+			callous = miniscule_stress_impact_loss
+		}
+
+		scope:scheme = {
+			end_scheme = yes
+		}
+		scope:ongoing_contract = {
+			complete_task_contract = failure_standard
+		}
+	}
+	
+	# Now show us the panel.
+	after = {
+		debug_log = "After vi_ruler_contract.0001"
+		debug_log_scopes = yes
+		open_view = {
+			view = intrigue_window
+			player = root
+		}
+	}
+}
+
+vi_ruler_contract.0002 = {
+	hidden = yes
+
+	immediate = {
+		random = {
+			chance = scope:scheme.scheme_success_chance
+			save_scope_value_as = {
+				name = scheme_successful
+				value = yes
+			}
+		}
+		scope:owner = {
+			if = {
+				limit = { exists = scope:scheme_successful }
+				trigger_event = vi_ruler_contract.0003
+			}
+			else = { trigger_event = vi_ruler_contract.0004 }
+		}
+	}
+}
+
+vi_ruler_contract.0003 = {
+	type = character_event
+	window = scheme_successful_event
+	title = vi_ruler_contract.0003.t
+	desc = vi_ruler_contract.0003.desc_1
+	theme = realm
+	left_portrait = {
+		character = root
+		animation = personality_rational
+	}
+	right_portrait = {
+		character = scope:leader
+		animation = marshal
+	}
+	#override_background = { reference = feast }
+
+	immediate = {
+		scope:scheme = {
+			random_scheme_agent_slot = {
+				limit = {
+					is_agent_slot_type = agent_vi_leader
+				}
+				slot_character = {
+					save_scope_as = leader
+				}
+			}
+
+			if = {
+				limit = {
+					NOT = {
+						exists = scope:leader
+					}
+				}
+				random_scheme_agent_character = {
+					save_scope_as = leader
+				}
+			}
+		}
+
+		scope:scheme.task_contract = { complete_task_contract = success }
+		
+		# And wrap things up.
+		
+	}
+
+	# Acknowledge.
+	option = {
+		name = vi_ruler_contract.success_skeptical_option
+
+		stress_impact = {
+			cynical = medium_stress_impact_loss
+		}
+		scope:scheme = {
+			every_scheme_agent_character = {
+				add_opinion = {
+					target = root
+					modifier = insult_opinion
+					opinion = -15
+				}
+			}
+		}
+	}
+
+	option = {
+		name = vi_ruler_contract.success_neutral_option
+		
+	}
+
+	option = {
+		name = vi_ruler_contract.success_trust_option
+		scope:scheme = {
+			every_scheme_agent_character = {
+				add_opinion = {
+					target = root
+					modifier = trusted_me_opinion
+					opinion = 10
+				}
+			}
+		}
+		
+	}
+
+	after = {
+		scope:scheme ?= { end_scheme = yes }
+	}
+}
+
+#	Failure event.
+vi_ruler_contract.0004 = {
+	type = character_event
+	window = scheme_failed_event
+	title = vi_ruler_contract.0004.t
+	desc = vi_ruler_contract.0004.desc
+	theme = realm
+	center_portrait = {
+		character = root
+		animation = disappointed
+	}
+	right_portrait = {
+		character = scope:employer
+		animation = disappointed
+	}
+	override_background = { reference = courtyard }
+
+	immediate = {
+		
+		scope:scheme.task_contract = { complete_task_contract = failure_standard }
+		# Employer outcome.
+		scope:scheme = {
+			random_scheme_agent_slot = {
+				limit = {
+					is_agent_slot_type = agent_vi_leader
+				}
+				slot_character = {
+					save_scope_as = leader
+				}
+			}
+
+			if = {
+				limit = {
+					NOT = {
+						exists = scope:leader
+					}
+				}
+				random_scheme_agent_character = {
+					save_scope_as = leader
+				}
+			}
+		}
+	}
+
+	# Acknowledge.
+	option = {
+		name = vi_ruler_contract.failure_reprimand_option
+		#flavor = laamp_base_contract_schemes.0000.f.contract_concluded
+	}
+	option = {
+		name = vi_ruler_contract.failure_relieved_option
+		#flavor = laamp_base_contract_schemes.0000.f.contract_concluded
+	}
+
+	after = {
+		scope:scheme ?= { end_scheme = yes }
+	}
+}

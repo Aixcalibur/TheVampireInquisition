@@ -1276,6 +1276,11 @@ vi_ogier = {
 		}
 	}
 
+	800.1.1 = {
+		employer = vi_esclarmonde
+		move_to_pool = yes
+	}
+
 	1065.1.1 = {
 		effect = {
 			add_trait = vi_vampire_3
@@ -1311,6 +1316,7 @@ vi_fierabras = {
 
 	790.1.1 = {
 		birth = yes
+		
 		effect = {
 			vi_make_vampire_effect = yes
 			set_immortal_age = 30
@@ -1322,6 +1328,11 @@ vi_fierabras = {
 				PERK = vi_strength_perk
 			}
 		}
+	}
+
+	800.1.1 = {
+		employer = vi_esclarmonde
+		move_to_pool = yes
 	}
 
 	1000.1.1 = {
@@ -1370,6 +1381,11 @@ vi_gerin = {
 		}
 	}
 
+	800.1.1 = {
+		employer = vi_esclarmonde
+		move_to_pool = yes
+	}
+
 	1000.1.1 = {
 		effect = {
 			add_trait = vi_vampire_3
@@ -1416,6 +1432,11 @@ vi_gerier = {
 		}
 	}
 
+	800.1.1 = {
+		employer = vi_esclarmonde
+		move_to_pool = yes
+	}
+
 	1000.1.1 = {
 		effect = {
 			add_trait = vi_vampire_3
@@ -1460,6 +1481,11 @@ vi_berengier = {
 				PERK = vi_celerity_perk
 			}
 		}
+	}
+
+	800.1.1 = {
+		employer = vi_esclarmonde
+		move_to_pool = yes
 	}
 
 	1000.1.1 = {
@@ -1566,6 +1592,8 @@ vi_otton = {
 				PERK = vi_celerity_perk
 			}
 		}
+		employer = vi_esclarmonde
+		move_to_pool = yes
 	}
 
 	1000.1.1 = {

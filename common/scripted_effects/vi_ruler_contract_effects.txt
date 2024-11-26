@@ -1,0 +1,197 @@
+﻿vi_peasant_disappearances_scheme_prep_effect = {
+	save_scope_as = scheme
+	scope:scheme.task_contract ?= { save_scope_as = task_contract }
+
+	debug_log_scopes = yes
+	if = {
+		limit = {
+			NOT = {
+				exists = scope:follow_up_event
+			}
+		}
+		save_scope_value_as = {
+			name = follow_up_event
+			value = event_id:vi_ruler_contract.0002
+		}
+		debug_log_scopes = yes
+	}
+	
+	
+	if = {
+		limit = {
+			NOT = { exists = scope:suppress_next_event }
+		}
+		scheme_owner = { trigger_event = scheme_critical_moments.0002 }
+	}
+}
+
+vi_spawn_peasant_disappearances_effect = {
+	save_scope_as = governor
+
+	hidden_effect = {
+		if = {
+			limit = {
+				NOT = {
+					exists = scope:governance_task_contract_tier
+				}
+			}
+			random_list = {
+				30 = {
+					save_scope_value_as = {
+						name = governance_task_contract_tier
+						value = define:NTaskContract|LOW_TASK_CONTRACT_TIER
+					}
+				}
+				20 = {
+					save_scope_value_as = {
+						name = governance_task_contract_tier
+						value = define:NTaskContract|MEDIUM_TASK_CONTRACT_TIER
+					}
+				}
+				10 = {
+					save_scope_value_as = {
+						name = governance_task_contract_tier
+						value = define:NTaskContract|HIGH_TASK_CONTRACT_TIER
+					}
+				}
+			}
+		}
+	}
+	
+
+	# Select a suitable location
+	random_sub_realm_county = {
+		limit = {
+			any_county_province = {
+				has_holding = yes
+				NOT = { this = scope:governor.capital_province }
+			}
+		}
+		add_county_modifier = {
+			modifier = vi_peasant_disappearances_contract_modifier
+			years = 3
+		}
+		random_county_province = {
+			limit = {
+				has_holding = yes
+				NOT = { this = scope:governor.capital_province }
+			}
+			save_scope_as = target_province
+		}
+	}
+
+	if = {
+		limit = {
+			NOT = {
+				this = scope:target_province.barony.holder
+			}
+		}
+		scope:target_province.barony.holder = {
+			save_scope_as = vi_contractor
+		}
+	}
+	else = {
+		random_councillor = {
+			save_scope_as = vi_contractor
+		}
+	}
+
+	create_task_contract = {
+		task_contract_type = vi_peasant_disappearances
+		task_contract_tier = scope:governance_task_contract_tier
+		location = scope:target_province
+		save_scope_as = new_governance_issue
+		task_contract_employer = scope:vi_contractor
+	}
+	add_character_flag = {
+		flag = task_contract_cooldown_overdue_taxes
+		years = 10
+	}
+}
+
+vi_spawn_overdue_taxes_effect = {
+	save_scope_as = governor
+
+	random_list = {
+		30 = {
+			save_scope_value_as = {
+				name = governance_task_contract_tier
+				value = define:NTaskContract|LOW_TASK_CONTRACT_TIER
+			}
+		}
+		20 = {
+			save_scope_value_as = {
+				name = governance_task_contract_tier
+				value = define:NTaskContract|MEDIUM_TASK_CONTRACT_TIER
+			}
+
+			modifier = {
+				add = 10
+				has_trait = governor
+			}
+			modifier = {
+				add = 10
+				has_trait = governor
+				has_trait_xp = {
+					trait = governor
+					value >= 40
+				}
+			}
+		}
+		10 = {
+			save_scope_value_as = {
+				name = governance_task_contract_tier
+				value = define:NTaskContract|HIGH_TASK_CONTRACT_TIER
+			}
+
+			modifier = {
+				add = 10
+				has_trait = governor
+			}
+			modifier = {
+				add = 10
+				has_trait = governor
+				has_trait_xp = {
+					trait = governor
+					value >= 40
+				}
+			}
+			modifier = {
+				add = 20
+				has_trait = governor
+				has_trait_xp = {
+					trait = governor
+					value >= 80
+				}
+			}
+		}
+	}
+
+	# Select a suitable location
+	random_sub_realm_county = {
+		limit = {
+			any_county_province = {
+				has_holding = yes
+				NOT = { this = scope:governor.capital_province }
+			}
+		}
+		random_county_province = {
+			limit = {
+				has_holding = yes
+				NOT = { this = scope:governor.capital_province }
+			}
+			save_scope_as = target_province
+		}
+	}
+
+	create_task_contract = {
+		task_contract_type = overdue_taxes
+		task_contract_tier = scope:governance_task_contract_tier
+		location = scope:target_province
+		save_scope_as = new_governance_issue
+	}
+	add_character_flag = {
+		flag = task_contract_cooldown_overdue_taxes
+		years = 10
+	}
+}

@@ -86,3 +86,19 @@
  vi_archangel_killed_enemy_friendly: "[CHARACTER.GetShortUINameNoTooltip] incinerated [TARGET_CHARACTER.GetShortUINameNoTooltip] with holy fire!"
  vi_archangel_killed_army_enemy: "Our troops were bathed in holy fire!"
  vi_archangel_killed_army_friendly: "Their troops were bathed in holy fire."
+
+
+
+ VI_FACTION_PEASANT_NAME: "Peasant Rabble"
+ VI_FACTION_PEASANT_TITLE_NAME: "Local Vampire Hunters"
+ VI_FACTION_POPULIST_REVOLT_TITLE_NAME: "Populist Inquisition"
+
+ VI_FACTION_DEMAND_POPULIST: "Foul Vampire Tyrant"
+ VI_FACTION_DEMAND_POPULIST_DESC: "No more shall the people cower under your rule, wondering who next will be taken to slake your vile thirsts. \n\nPrepare to face the wrath of our many faithful!"
+
+ VI_FACTION_REASON_VAMPIRE: "Vampire: $VALUE|0+=$"
+
+ VI_FACTION_DEMAND_PEASANT: "Foul Monster"
+ VI_FACTION_DEMAND_PEASANT_DESC: "No more shall the people cower under your rule, wondering who next will be taken to slake your vile thirsts. \n\nYou and your kind shall be put to the pyre!"
+ #VI_FACTION_DEMAND_PEASANT_ACCEPT: "I guess I could grant a tax lien..."
+ VI_FACTION_DEMAND_PEASANT_REFUSE: "Bold words for a thrall!"

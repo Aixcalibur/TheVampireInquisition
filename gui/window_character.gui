@@ -1587,8 +1587,9 @@ window = {
 
 				vbox = {
 					name = "family_main_view"
-					visible = "[Not( Or(CharacterWindow.IsRelationExpanded( 'children' ), CharacterWindow.IsRelationExpanded( 'siblings' ) ) )]"
-
+					visible = "[Not( Or(Or(CharacterWindow.IsRelationExpanded( 'children' ), CharacterWindow.IsRelationExpanded( 'siblings' ) ), CharacterWindow.IsRelationExpanded( 'vi_spawn' )) )]"
+					layoutpolicy_horizontal = expanding
+					layoutpolicy_vertical = expanding
 					widget = {
 						name = "parents_grandparents_spouses"
 						layoutpolicy_horizontal = expanding
@@ -1615,8 +1616,9 @@ window = {
 
 							vbox_character_row_item = {
 								name = "vi_sire"
+								visible = "[GreaterThan_int32( GetDataModelSize(CharacterWindow.GetRelationsOfType( GetRelation( 'vi_sire' ) )), '(int32)0' )]"
 								#visible = "[Character.HasTrait( GetTrait( 'charioteer_blue' ) )]"
-								visible = "[Or(Or(Character.HasTrait( GetTrait( 'vi_vampire_2' ) ), Character.HasTrait( GetTrait( 'vi_vampire_3' ) )),Or(Character.HasTrait( GetTrait( 'vi_vampire_1' ) ), Character.HasTrait( GetTrait( 'vi_vampire_4' ) )))]"
+								#visible = "[Or(Or(Character.HasTrait( GetTrait( 'vi_vampire_2' ) ), Character.HasTrait( GetTrait( 'vi_vampire_3' ) )),Or(Character.HasTrait( GetTrait( 'vi_vampire_1' ) ), Character.HasTrait( GetTrait( 'vi_vampire_4' ) )))]"
 								layoutpolicy_vertical = expanding
 
 								blockoverride "portrait_datamodel" {
@@ -1633,7 +1635,7 @@ window = {
 
 							vbox_character_row_item = {
 								name = "grandparents"
-								visible = "[Not(Or(GreaterThan_int32( Character.GetMaxSpouses, '(int32)1' ), GreaterThan_int32( Character.GetMaxConsorts, '(int32)0' )))]"
+								visible = "[Or(GreaterThan_int32( GetDataModelSize(CharacterWindow.GetRelationsOfType( GetRelation( 'vi_sire' ) )), '(int32)0' ), Not(Or(GreaterThan_int32( Character.GetMaxSpouses, '(int32)1' ), GreaterThan_int32( Character.GetMaxConsorts, '(int32)0' ))))]"
 								layoutpolicy_vertical = expanding
 
 								blockoverride "portrait_datamodel" {
@@ -1827,63 +1829,110 @@ window = {
 					}
 
 					widget = {
+						name = "vi_spawn"
+						layoutpolicy_horizontal = expanding
+						layoutpolicy_vertical = expanding
+						maximumsize = { -1 110 }
+						visible = "[GreaterThan_int32( GetDataModelSize(CharacterWindow.GetRelationsOfType( GetRelation( 'vi_gui_progeny' ) )), '(int32)0' )]"
+						#visible = "[Or(Or(Character.HasTrait( GetTrait( 'vi_vampire_2' ) ), Character.HasTrait( GetTrait( 'vi_vampire_3' ) )),Or(Character.HasTrait( GetTrait( 'vi_vampire_1' ) ), Character.HasTrait( GetTrait( 'vi_vampire_4' ) )))]"
+						scissor = yes
+						hbox = {
+							#max_width = 5
+							vbox_character_row_item = {
+									
+								name = "vi_spawn"
+								visible = "[GreaterThan_int32( GetDataModelSize(CharacterWindow.GetRelationsOfType( GetRelation( 'vi_gui_progeny' ) )), '(int32)0' )]"
+								layoutpolicy_horizontal = expanding
+								#max_width = 3
+								layoutpolicy_vertical = expanding
+
+								blockoverride "portrait_datamodel" {
+									datamodel = "[CharacterWindow.GetRelationsOfType( GetRelation( 'vi_gui_progeny' ) ),CharacterWindow.GetChildren]"
+								}
+
+								blockoverride "header_text"
+								{
+									text = "VI_SPAWN_HEADING"
+								}
+
+								blockoverride "remaining_items"
+								{
+									visible = "[GreaterThan_int32( GetDataModelSize(CharacterWindow.GetRelationsOfType( GetRelation( 'vi_gui_progeny' ) )), '(int32)7' )]"
+									text = "[GetNumberAbove_int32( GetDataModelSize(CharacterWindow.GetRelationsOfType( GetRelation( 'vi_gui_progeny' ) )), '(int32)7' )|=]"
+								}
+
+								blockoverride "expand_button_inside" {
+									#visible = "[GreaterThan_int32( GetDataModelSize(CharacterWindow.GetRelationsOfType( GetRelation( 'vi_spawn' ) )), '(int32)7' )]"
+									onclick = "[CharacterWindow.ToggleExpandedRelation( 'vi_spawn' )]"
+								}
+							}
+							# vbox_character_row_item = {
+							# 	name = "children"
+							# 	layoutpolicy_horizontal = expanding
+							# 	layoutpolicy_vertical = expanding
+	
+							# 	blockoverride "portrait_datamodel" {
+							# 		datamodel = "[CharacterWindow.GetChildren]"
+							# 	}
+	
+							# 	blockoverride "header_text"
+							# 	{
+							# 		text = "CV_CHILDREN_HEADING"
+							# 	}
+	
+							# 	blockoverride "remaining_items"
+							# 	{
+							# 		visible = "[GreaterThan_int32( GetDataModelSize(CharacterWindow.GetChildren), '(int32)7' )]"
+							# 		text = "[GetNumberAbove_int32( GetDataModelSize(CharacterWindow.GetChildren), '(int32)7' )|=]"
+							# 	}
+	
+							# 	blockoverride "expand_button_inside" {
+							# 		#visible = "[GreaterThan_int32( GetDataModelSize(CharacterWindow.GetChildren), '(int32)7' )]"
+							# 		onclick = "[CharacterWindow.ToggleExpandedRelation( 'children' )]"
+							# 	}
+
+								
+							# }
+							
+						}
+							
+							
+					}
+					
+					widget = {
 						name = "children"
 						layoutpolicy_horizontal = expanding
 						layoutpolicy_vertical = expanding
 						maximumsize = { -1 110 }
+						#visible = "[Not(Or(Or(Character.HasTrait( GetTrait( 'vi_vampire_2' ) ), Character.HasTrait( GetTrait( 'vi_vampire_3' ) )),Or(Character.HasTrait( GetTrait( 'vi_vampire_1' ) ), Character.HasTrait( GetTrait( 'vi_vampire_4' ) ))))]"
+						visible = "[Not(GreaterThan_int32( GetDataModelSize(CharacterWindow.GetRelationsOfType( GetRelation( 'vi_gui_progeny' ) )), '(int32)0' ))]"
 						scissor = yes
-
-						vbox_character_row_item = {
-							name = "children"
-
-							blockoverride "portrait_datamodel" {
-								datamodel = "[CharacterWindow.GetChildren]"
+							
+							vbox_character_row_item = {
+								name = "children"
+								layoutpolicy_vertical = expanding
+	
+								blockoverride "portrait_datamodel" {
+									datamodel = "[CharacterWindow.GetChildren]"
+								}
+	
+								blockoverride "header_text"
+								{
+									text = "CV_CHILDREN_HEADING"
+								}
+	
+								blockoverride "remaining_items"
+								{
+									visible = "[GreaterThan_int32( GetDataModelSize(CharacterWindow.GetChildren), '(int32)7' )]"
+									text = "[GetNumberAbove_int32( GetDataModelSize(CharacterWindow.GetChildren), '(int32)7' )|=]"
+								}
+	
+								blockoverride "expand_button_inside" {
+									visible = "[GreaterThan_int32( GetDataModelSize(CharacterWindow.GetChildren), '(int32)7' )]"
+									onclick = "[CharacterWindow.ToggleExpandedRelation( 'children' )]"
+								}
 							}
-
-							blockoverride "header_text"
-							{
-								text = "CV_CHILDREN_HEADING"
-							}
-
-							blockoverride "remaining_items"
-							{
-								visible = "[GreaterThan_int32( GetDataModelSize(CharacterWindow.GetChildren), '(int32)7' )]"
-								text = "[GetNumberAbove_int32( GetDataModelSize(CharacterWindow.GetChildren), '(int32)7' )|=]"
-							}
-
-							blockoverride "expand_button_inside" {
-								visible = "[GreaterThan_int32( GetDataModelSize(CharacterWindow.GetChildren), '(int32)7' )]"
-								onclick = "[CharacterWindow.ToggleExpandedRelation( 'children' )]"
-							}
-						}
-
-						vbox_character_row_item = {
-							visible = "[Or(Or(Character.HasTrait( GetTrait( 'vi_vampire_2' ) ), Character.HasTrait( GetTrait( 'vi_vampire_3' ) )),Or(Character.HasTrait( GetTrait( 'vi_vampire_1' ) ), Character.HasTrait( GetTrait( 'vi_vampire_4' ) )))]"
-								
-							name = "vi_spawn"
-
-							blockoverride "portrait_datamodel" {
-								datamodel = "[CharacterWindow.GetRelationsOfType( GetRelation( 'vi_spawn' ) )]"
-							}
-
-							blockoverride "header_text"
-							{
-								text = "CV_CHILDREN_HEADING"
-							}
-
-							blockoverride "remaining_items"
-							{
-								visible = "[GreaterThan_int32( GetDataModelSize(CharacterWindow.GetChildren), '(int32)7' )]"
-								text = "[GetNumberAbove_int32( GetDataModelSize(CharacterWindow.GetChildren), '(int32)7' )|=]"
-							}
-
-							blockoverride "expand_button_inside" {
-								visible = "[GreaterThan_int32( GetDataModelSize(CharacterWindow.GetChildren), '(int32)7' )]"
-								onclick = "[CharacterWindow.ToggleExpandedRelation( 'children' )]"
-							}
-						}
-
-						
+							
 					}
 
 					widget = {
@@ -1892,6 +1941,8 @@ window = {
 						layoutpolicy_vertical = expanding
 						maximumsize = { -1 110 }
 						scissor = yes
+						#visible = "[Not(Or(Or(Character.HasTrait( GetTrait( 'vi_vampire_2' ) ), Character.HasTrait( GetTrait( 'vi_vampire_3' ) )),Or(Character.HasTrait( GetTrait( 'vi_vampire_1' ) ), Character.HasTrait( GetTrait( 'vi_vampire_4' ) ))))]"
+						
 
 						vbox_character_row_item = {
 							name = "siblings"
@@ -1919,6 +1970,62 @@ window = {
 					}
 
 					expand = {}
+				}
+
+				### SPAWN EXPANDED
+				scrollbox = {
+					name = "family_vi_spawn_expanded"
+					visible = "[CharacterWindow.IsRelationExpanded( 'vi_spawn' )]"
+					size = { 100% 100% }
+
+					blockoverride "scrollbox_replace_vbox" {
+						vbox_character_row_item = {
+							name = "vi_spawn"
+							margin_top = 10
+							spacing = 5
+
+
+							blockoverride "portrait_datamodel" {
+								datamodel = "[CharacterWindow.GetRelationsOfType( GetRelation( 'vi_gui_progeny' ) )]"
+							}
+
+							blockoverride "header_text"
+							{
+								text = "VI_SPAWN_HEADING"
+							}
+
+							blockoverride "expand_button_inside" {
+								onclick = "[CharacterWindow.ToggleExpandedRelation( 'vi_spawn' )]"
+								down = "[CharacterWindow.IsRelationExpanded( 'vi_gui_progeny' )]"
+							}
+
+							
+
+							blockoverride "gridbox_slots" {}
+						}
+
+						vbox_character_row_item = {
+							name = "children"
+							margin_top = 10
+							spacing = 5
+
+							blockoverride "portrait_datamodel" {
+								datamodel = "[CharacterWindow.GetChildren]"
+							}
+
+							blockoverride "header_text"
+							{
+								text = "CV_CHILDREN_HEADING"
+							}
+
+							blockoverride "expand_button_inside" {
+								onclick = "[CharacterWindow.ToggleExpandedRelation( 'children' )]"
+								down = "[CharacterWindow.IsRelationExpanded( 'children' )]"
+							}
+
+							blockoverride "gridbox_slots" {}
+						}
+					}
 				}
 
 				### SIBLINGS EXPANDED

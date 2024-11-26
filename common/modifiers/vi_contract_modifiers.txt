@@ -1,0 +1,22 @@
+﻿vi_tier_2_contract_modifier = {
+	icon = intrigue_negative
+	scheme_success_chance_max = -10
+	scheme_phase_duration = 10
+}
+
+vi_tier_3_contract_modifier = {
+	icon = intrigue_negative
+	scheme_success_chance_max = -30
+	scheme_phase_duration = 30
+}
+
+vi_extra_resources_contract_modifier = {
+	icon = stewardship_positive
+	scheme_success_chance_growth = 5
+	scheme_phase_duration = -15
+}
+
+vi_peasant_disappearances_contract_modifier = {
+	icon = county_modifier_control_negative
+	monthly_county_control_growth_add = -0.2
+}

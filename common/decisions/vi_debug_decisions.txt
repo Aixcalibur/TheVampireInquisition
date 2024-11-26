@@ -21,10 +21,34 @@
 		# 	id = vi_decision.0010 #id = vi_debug.001
 		# }
 
-		start_struggle = {
-			struggle_type = vi_europe_west_struggle
-			start_phase = struggle_vi_phase_tranquility
+		#vi_spawn_peasant_disappearances_effect = yes
+
+		# dynasty:vi_dynasty_Aphrodisian = {
+		# 	add_dynasty_modifier = {
+		# 		modifier = vi_Anunnaki_modifier
+		# 	}
+		# }
+		
+		set_variable = {
+			name = vi_humanity_value
+			value = 7
 		}
+		hidden_effect = {
+			remove_character_modifier = vi_humanity_modifier
+		}
+		add_character_modifier = vi_humanity_modifier
+
+		# every_ruler = {
+		# 	every_child = {
+		# 		set_relation_vi_gui_sire = prev
+		# 	}
+		# }
+
+		
+		# start_struggle = {
+		# 	struggle_type = vi_europe_west_struggle
+		# 	start_phase = struggle_vi_phase_tranquility
+		# }
 	}
 
 	ai_potential = {

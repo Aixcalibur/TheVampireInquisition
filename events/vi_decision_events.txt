@@ -35,6 +35,29 @@ vi_decision.0001 = {
 		primary_title = { save_scope_as = old_primary_title }
 		capital_province = { save_scope_as = old_capital_province }
 
+		every_courtier = {
+			if = {
+				limit = {
+					opinion = {
+						target = root
+						value >= 50
+					}
+					#vi_is_vampire_trigger = yes
+					OR = {
+						has_relation_friend = root
+						has_relation_lover = root
+						has_any_court_position = yes
+					}
+				}
+				add_to_list = vi_followers
+			}
+			else = {
+				add_to_list = vi_stay
+			}
+		}
+
+		
+
 		if = {
 			limit = { is_independent_ruler = no }
 			liege = { save_scope_as = old_liege }
@@ -90,7 +113,14 @@ vi_decision.0001 = {
 			# Create a loving family so inheritance isn't so borked
 			if = {
 				limit = { has_character_flag = new_laamp_inheritor }
-				trigger_event = game_rule.1001
+				#trigger_event = game_rule.1001
+				every_in_list = {
+					list = vi_stay
+					limit = {
+						is_ruler = no
+					}
+					set_employer = scope:laamp_inheritor
+				}
 				remove_character_flag = new_laamp_inheritor
 			}
 		}
@@ -105,6 +135,16 @@ vi_decision.0001 = {
 				years = 10
 			}
 		}
+
+		every_in_list = {
+			list = vi_followers
+			limit = {
+				is_ruler = no
+			}
+			set_employer = root
+		}
+
+		
 
 		scope:old_liege ?= { trigger_event = ep3_laamps.0032 }
 		adventurer_prestige_reset_effect = yes
@@ -170,6 +210,27 @@ vi_decision.0010 = {
 			}
 		}
 
+		every_courtier = {
+			if = {
+				limit = {
+					opinion = {
+						target = root
+						value >= 50
+					}
+					#vi_is_vampire_trigger = yes
+					OR = {
+						has_relation_friend = root
+						has_relation_lover = root
+						has_any_court_position = yes
+					}
+				}
+				add_to_list = vi_followers
+			}
+			else = {
+				add_to_list = vi_stay
+			}
+		}
+
 		#vi_create_noble_family_effect = yes
 		
 	
@@ -195,6 +256,12 @@ vi_decision.0010 = {
 			type = conquest
 			save_scope_as = change
 			add_claim_on_loss = no
+		}
+
+		primary_title = {
+			current_heir = {
+				save_scope_as = vi_stay_employer
+			}
 		}
 
 		hidden_effect = {
@@ -241,6 +308,16 @@ vi_decision.0010 = {
 		
 		resolve_title_and_vassal_change = scope:princedom
 		change_government = vi_vampire_government
+
+		every_in_list = {
+			list = vi_followers
+			set_employer = root
+		}
+
+		every_in_list = {
+			list = vi_stay
+			set_employer = scope:vi_stay_employer
+		}
 		
 	}
 

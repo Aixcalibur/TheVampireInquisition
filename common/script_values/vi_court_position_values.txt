@@ -1,4 +1,14 @@
-﻿vi_courtier_opinion_value = -50
+﻿vi_courtier_opinion_value = -20
+
+vi_inner_council_salary = {
+	add = {
+		value = 0.05
+		multiply = scope:liege.monthly_character_income
+		desc = COURT_POSITION_SALARY_BREAKDOWN_BASE
+		format = "BASE_VALUE_FORMAT_DECIMALS"
+	}
+	max = 20
+}
 
 vi_relation_court_position_value = {
 	scope:employee = {

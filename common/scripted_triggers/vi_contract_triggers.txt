@@ -1,0 +1,7 @@
+﻿vi_valid_ruler_contract_trigger = {
+	is_ruler = yes
+	#is_landed = yes
+	is_alive = yes
+	is_adult = yes
+	is_incapable = no
+}

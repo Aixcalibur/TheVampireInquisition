@@ -1,0 +1,35 @@
+﻿k_vi_thoth = {
+	500.10.31 = {
+		holder = vi_trismegistus
+		government = vi_vampire_government
+		# succession_laws = { vi_vampire_elective_succession_law }
+		liege = 0
+	}
+}
+
+k_vi_tunis = {
+	800.10.31 = {
+		holder = vi_tunis_man
+		government = vi_vampire_government
+		# succession_laws = { vi_vampire_elective_succession_law }
+		liege = 0
+	}
+}
+
+k_vi_cordoba = {
+	800.10.31 = {
+		holder = vi_cordoba_man
+		government = vi_vampire_government
+		# succession_laws = { vi_vampire_elective_succession_law }
+		liege = 0
+	}
+}
+
+k_vi_delhi = {
+	800.10.31 = {
+		holder = vi_delhi_man
+		government = vi_vampire_government
+		# succession_laws = { vi_vampire_elective_succession_law }
+		liege = 0
+	}
+}

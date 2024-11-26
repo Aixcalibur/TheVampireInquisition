@@ -1,0 +1,164 @@
+﻿vi_trismegistus = {
+	name = hermes_trismegistus
+	dynasty_house = house_vi_Trismegistus
+	faith = vi_thoth
+	culture = ancient_egyptian
+
+	diplomacy = 10
+	martial = 6
+	stewardship = 10
+	intrigue = 7
+	learning = 16
+	prowess = 7
+
+	trait = arbitrary
+	trait = patient
+	trait = humble
+
+	trait = education_learning_5
+	trait = vi_vampire_4
+	trait = witch
+	trait = lifestyle_mystic
+	trait = lifestyle_physician
+	trait = lifestyle_gardener
+	trait = lifestyle_herbalist
+	trait = intellect_good_2
+	trait = shrewd
+	trait = journaller
+	trait = scholar
+	trait = theologian
+	trait = scholarly_court_2
+
+	0.1.1 = {
+		birth = yes
+		effect = {
+			add_character_flag = do_not_generate_starting_family
+			set_immortal_age = 66
+			vi_make_vampire_effect = yes
+			vi_add_allseeing_effect = yes
+			add_prowess_skill = 10
+			add_vi_vampire_lifestyle_xp = 9000
+			add_trait_xp = {
+				trait = lifestyle_mystic
+				value = 100
+			}
+			add_trait_xp = {
+				trait = lifestyle_physician
+				value = 100
+			}
+			add_character_flag = vi_generate_vassals
+		}
+	}
+
+	800.1.1 = {
+		
+	}
+
+	1600.1.1 = {
+		death = yes
+	}
+}
+
+vi_tunis_man = {
+	name = "Hannibal"
+	faith = vi_unreformed
+	dynasty = vi_dynasty_Anunnaki
+	culture = sicilian
+
+	martial = 11
+	intrigue = 11
+	prowess = 1
+
+	trait = brave
+	trait = arrogant
+	trait = ambitious
+
+	trait = education_martial_4
+	trait = vi_vampire_3
+	trait = strategist
+	trait = intellect_good_3
+
+	680.1.1 = {
+		birth = yes
+		effect = {
+			add_character_flag = do_not_generate_starting_family
+			add_character_flag = vi_generate_vassals
+			set_immortal_age = 45
+			add_proess_skill = 12
+			vi_make_vampire_effect = yes
+			vi_add_dragonsscion_effect = yes
+			found_cadet_house_decision_effect = {
+				CHARACTER = this
+				PRESTIGE = 0
+			}
+		}
+	}
+
+	1200.1.1 = {
+		death = yes
+	}
+}
+
+vi_cordoba_man = {
+	name = "Ahmed"
+	faith = vi_thoth
+	#dynasty = vi_dynasty_Anunnaki
+	culture = levantine
+
+	martial = 14
+	prowess = 0
+
+	trait = education_martial_4
+	trait = vi_vampire_3
+
+	670.1.1 = {
+		birth = yes
+		effect = {
+			add_character_flag = do_not_generate_starting_family
+			add_character_flag = vi_generate_vassals
+			set_immortal_age = 30
+			add_prowess_skill = 20
+			vi_make_vampire_effect = yes
+			vi_add_dragonsscion_effect = yes
+			
+		}
+	}
+
+	1200.1.1 = {
+		death = yes
+	}
+}
+
+vi_delhi_man = {
+	name = "Akadadeva"
+	faith = vi_unreformed
+	#dynasty = vi_dynasty_Aphrodisian
+	culture = "gujarati"
+
+	prowess = 0
+
+	trait = education_diplomacy_4
+	trait = vi_vampire_3
+	trait = beauty_good_3
+
+	550.1.1 = {
+		birth = yes
+		effect = {
+			add_character_flag = do_not_generate_starting_family
+			set_immortal_age = 24
+			add_prowess_skill = 18
+			vi_make_vampire_effect = yes
+			vi_add_sirensong_effect = yes
+			# found_cadet_house_decision_effect = {
+			# 	CHARACTER = this
+			# 	PRESTIGE = 0
+			# }
+			add_character_flag = vi_generate_vassals
+		}
+	}
+
+	1200.1.1 = {
+		death = yes
+	}
+}
+

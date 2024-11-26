@@ -1,0 +1,218 @@
+﻿vi_increase_humanity_effect = {
+	change_variable = {
+		name = vi_humanity_value
+		add = 1
+	}
+	if = {
+		limit = {
+			var:vi_humanity_value > 10
+		}
+		set_variable = {
+			name = vi_humanity_value
+			value = 10
+		}
+	}
+	hidden_effect = {
+		remove_character_modifier = vi_humanity_modifier
+	}
+	add_character_modifier = vi_humanity_modifier
+}
+
+vi_decrease_humanity_effect = {
+	change_variable = {
+		name = vi_humanity_value
+		add = -1
+	}
+	if = {
+		limit = {
+			var:vi_humanity_value < 0
+		}
+		set_variable = {
+			name = vi_humanity_value
+			value = 0
+		}
+	}
+	remove_character_modifier = vi_humanity_modifier
+	hidden_effect = {
+		add_character_modifier = vi_humanity_modifier
+	}
+}
+
+vi_initialize_humanity_effect = {
+	set_variable = {
+		name = vi_humanity_value
+		value = {
+			value = 7
+			if = {
+				limit = {
+					has_trait = vi_vampire_5
+				}
+				add = -4
+			}
+			else_if = {
+				limit = {
+					has_trait = vi_vampire_4
+				}
+				add = -3
+			}
+			else_if = {
+				limit = {
+					has_trait = vi_vampire_3
+				}
+				add = -2
+			}
+			else_if = {
+				limit = {
+					age >= 120
+				}
+				add = -1
+			}
+
+			if = {
+				limit = {
+					has_trait = compassionate
+				}
+				add = 2.5
+			}
+			else_if = {
+				limit = {
+					has_trait = callous
+				}
+				add = -1
+			}
+			else_if = {
+				limit = {
+					has_trait = sadistic
+				}
+				add = -2
+			}
+		}
+	}
+
+	if = {
+		limit = {
+			has_trait = just
+		}
+		change_variable = {
+			name = vi_humanity_value
+			add = 2
+		}
+	}
+	if = {
+		limit = {
+			has_trait = honest
+		}
+		change_variable = {
+			name = vi_humanity_value
+			add = 1.5
+		}
+	}
+	if = {
+		limit = {
+			OR = {
+				has_trait = forgiving
+				has_trait = gregarious
+				has_trait = generous
+				has_trait = confider
+				has_trait = trusting
+			}
+		}
+		change_variable = {
+			name = vi_humanity_value
+			add = 1.5
+		}
+	}
+
+	if = {
+		limit = {
+			has_trait = zealous
+			var:vi_humanity_value < 8
+		}
+		change_variable = {
+			name = vi_humanity_value
+			add = 1
+		}
+	}
+	if = {
+		limit = {
+			has_trait = brave
+			var:vi_humanity_value < 7
+		}
+		change_variable = {
+			name = vi_humanity_value
+			add = 1
+		}
+	}
+	if = {
+		limit = {
+			OR = {
+				has_trait = journaller
+				has_trait = patient
+				has_trait = calm
+			}
+			var:vi_humanity_value < 6
+		}
+		change_variable = {
+			name = vi_humanity_value
+			add = 1
+		}
+	}
+	if = {
+		limit = {
+			has_trait = stubborn
+			var:vi_humanity_value < 6
+		}
+		change_variable = {
+			name = vi_humanity_value
+			add = 1
+		}
+	}
+
+	if = {
+		limit = {
+			var:vi_humanity_value < 5
+			OR = {
+				has_trait = vengeful
+				has_trait = lustful
+				has_trait = greedy
+				has_trait = gluttonous
+				has_trait = ambitious
+				has_trait = diligent
+			}
+		}
+		change_variable = {
+			name = vi_humanity_value
+			add = 1
+		}
+	}
+	if = {
+		limit = {
+			var:vi_humanity_value > 5
+			OR = {
+				has_trait = cynical
+				has_trait = arbitrary
+				has_trait = lazy
+				has_trait = shy
+				has_trait = reclusive
+				has_trait = paranoid
+				has_trait = fickle
+				has_trait = eccentric
+			}
+		}
+		change_variable = {
+			name = vi_humanity_value
+			add = -1
+		}
+	}
+
+	clamp_variable = {
+		name = vi_humanity_value
+		min = 1
+		max = 10
+	}
+
+	hidden_effect = {
+		remove_character_modifier = vi_humanity_modifier
+	}
+	add_character_modifier = vi_humanity_modifier
+}

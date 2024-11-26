@@ -1,4 +1,6 @@
-﻿vi_arrogance_value = {
+﻿vi_mod_latest_version = 41125
+
+vi_arrogance_value = {
 	value = 0
 	add = prowess
 	multiply = 0.25
@@ -183,4 +185,9 @@ vi_knight_count = {
 	every_knight = {
 		add = 1
 	}
+}
+
+vi_humanity_scaling_value = {
+	value = 0
+	add = var:vi_humanity_value
 }

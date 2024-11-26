@@ -15,6 +15,9 @@ on_game_start_after_lobby = {
 
 on_ruler_designer_finished = {
 	on_actions = {
+		delay = {
+			days = 10
+		}
 		vi_on_ruler_designer_finished
 	}
 }
@@ -42,6 +45,17 @@ vi_vampire_game_start_ancient_regime = {
 					# vi_is_vampire_trigger = yes
 					has_government = vi_vampire_government
 					is_landed = no
+				}
+
+				if = {
+					limit = {
+						has_character_flag = vi_generate_vassals
+					}
+					trigger_event = {
+						on_action = vi_vampire_game_start_generate_vassals
+						days = 20
+						delayed = yes
+					}
 				}
 	
 				# add_character_modifier = {
@@ -100,6 +114,10 @@ vi_vampire_game_start_ancient_regime = {
 
 vi_vampire_game_start_vampire_ruler = {
 	effect = {
+		add_short_term_gold = {
+			value = age
+			multiply = 0.5
+		}
 		primary_title.title_capital_county = {
 			add_county_modifier = {
 				modifier = vi_county_discreet_modifier
@@ -196,6 +214,12 @@ vi_vampire_game_start_after_lobby = {
 		}
 
 		title:c_byzantion = {
+			add_county_modifier = {
+				modifier = vi_holy_ground_modifier
+			}
+		}
+
+		title:c_mecca = {
 			add_county_modifier = {
 				modifier = vi_holy_ground_modifier
 			}
@@ -337,6 +361,28 @@ vi_vampire_game_start_after_lobby = {
 				}
 			}
 			
+		}
+	}
+}
+
+vi_vampire_game_start_generate_vassals = {
+	trigger = {
+		has_government = vi_vampire_government
+		is_landed = no
+		has_character_flag = vi_generate_vassals
+		any_vassal = {
+			count < 7
+		}
+	}
+
+	effect = {
+
+		vi_generate_prince_vassal_effect = yes
+
+		trigger_event = {
+			on_action = vi_vampire_game_start_generate_vassals
+			days = 20
+			delayed = yes
 		}
 	}
 }

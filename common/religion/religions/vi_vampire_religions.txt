@@ -417,6 +417,26 @@
 			}
 		}
 
+		vi_thoth = {
+			icon = custom_faith_eye_of_providence
+			color = { 0.9 0.9 0.9 }
+			doctrine = doctrine_no_head
+			#religious_head = k_vi_alexandria
+
+			holy_site = constantinople
+			holy_site = alexandria
+			holy_site = rome
+			holy_site = jerusalem
+			holy_site = baghdad
+
+			doctrine = tenet_alexandrian_catechism
+			doctrine = tenet_literalism
+			doctrine = tenet_esotericism
+
+			doctrine = doctrine_witchcraft_virtuous
+			doctrine = special_doctrine_is_gnostic_faith
+		}
+
 		vi_mingcult = { # Sun Moon Holy Cult
 			color = { 0.7 0.7 0.4 }
 			religious_head = k_vi_ming_cult
@@ -559,7 +579,7 @@
 			holy_site = mecca
 			holy_site = jerusalem
 			holy_site = constantinople
-			holy_site = rome
+			#holy_site = rome
 			holy_site = alexandria
 			holy_site = baghdad
 

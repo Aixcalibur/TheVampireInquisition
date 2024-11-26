@@ -2,10 +2,23 @@
 	title_grant_target = yes
 	opinion = 10
 	corresponding = vi_spawn
+	relation_aliases = { vi_gui_sire }
 }
 
 vi_spawn = {
 	title_grant_target = yes
+	hidden = yes
 	opinion = 5
 	corresponding = vi_sire
+	relation_aliases = { vi_gui_progeny }
+}
+
+vi_gui_sire = {
+	hidden = yes
+	corresponding = vi_gui_progeny
+}
+
+vi_gui_progeny = {
+	#hidden = yes
+	corresponding = vi_gui_sire
 }

@@ -89,7 +89,7 @@ vi_vampire_strain_modifier = {
 }
 
 vi_vampire_madness_modifier = {
-	icon = stress_negative
+	icon = vi_detachment
 	diplomacy = -1
 	enemy_hostile_scheme_phase_duration_add = 5
 	enemy_hostile_scheme_success_chance_add = 5
@@ -98,6 +98,8 @@ vi_vampire_madness_modifier = {
 	prowess = 1
 	stacking = yes
 }
+
+
 
 vi_vampire_tiredness_modifier = {
 	icon = stress_negative

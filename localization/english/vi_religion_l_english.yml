@@ -27,6 +27,12 @@
  vi_mingcult_adherent: "Ming Cultist"
  vi_mingcult_adherent_plural: "Ming Cultists"
  vi_mingcult_desc: "Blazing holy fire, burn my frail body. What sorrow is there in life, what suffering in death? To do good and vanquish evil, all for the sake of light. Joys and sorrows alike shall return to dust. Have pity on the people of this world, so burdened with woes! Have pity on the people of this world, so burdened with woes!"
+ 
+ vi_thoth: "Endless Library"
+ vi_thoth_adj: "Librarian"
+ vi_thoth_adherent: "Librarian"
+ vi_thoth_adherent_plural: "Librarians"
+ vi_thoth_desc: "To devote oneself to knowledge is only the most rational path for one who has the lifespan to learn everything."
 
  vi_baphometi: "Cult of the Horned God"
  vi_baphometi_adj: "Baphometi"
@@ -56,7 +62,7 @@
 
  vi_masquerade_required_name: "Required"
  vi_masquerade_required_desc: "The Masquerade refers to the obligation of all vampires to maintain the secret of vampirism."
- doctrine_parameter_vi_masquerade: "Characters with the [GetTrait('vi_exposed_vampire').GetName( GetNullCharacter )] [trait|E] are [criminals|E]\n$EFFECT_LIST_BULLET$Mortals cannot follow this [faith|E]\n$EFFECT_LIST_BULLET$Considers $vi_vampire_religion_adj$ [faiths|E] that require Masquerade to be $hostility_astray_tooltippable$ and [faiths|E] with that do not respect the Masquerade to be $hostility_evil_tooltippable$"
+ doctrine_parameter_vi_masquerade: "Characters with the [GetTrait('vi_exposed_vampire').GetName( GetNullCharacter )] [trait|E] are [criminals|E]\n$EFFECT_LIST_BULLET$Mortals cannot follow this [faith|E]\n$EFFECT_LIST_BULLET$Considers $vi_vampire_religion_adj$ [faiths|E] with that do not respect the Masquerade to be $hostility_evil_tooltippable$"
  doctrine_parameter_hostility_override_vi_masquerade_required: ""
  doctrine_parameter_hostility_override_vi_masquerade_not_required: ""
  doctrine_parameter_hostility_override_vi_diablerie_allowed_not_required: ""
@@ -64,7 +70,7 @@
 
  vi_masquerade_not_required_name: "Not Required"
  vi_masquerade_not_required_desc: "The Masquerade refers to the obligation of all vampires to maintain the secret of vampirism."
- doctrine_parameter_vi_no_masquerade: "Characters with the [GetTrait('vi_exposed_vampire').GetName( GetNullCharacter )] [trait|E] are fully accepted\n$EFFECT_LIST_BULLET$Considers $vi_vampire_religion_adj$ [faiths|E] that do not require Masquerade to be $hostility_astray_tooltippable$ and [faiths|E] that require Masquerade to be $hostility_hostile_tooltippable$"
+ doctrine_parameter_vi_no_masquerade: "Characters with the [GetTrait('vi_exposed_vampire').GetName( GetNullCharacter )] [trait|E] are fully accepted\n$EFFECT_LIST_BULLET$Considers $vi_vampire_religion_adj$ [faiths|E] that require Masquerade to be $hostility_hostile_tooltippable$"
 
 
  doctrine_vi_diablerie_name: "Draining Vampires"

@@ -1,5 +1,5 @@
 ﻿vi_Disian_modifier = {
-	icon = fertility_positive
+	icon = vi_rose_mixed
 	attraction_opinion = 10
 	stress_loss_mult = 0.2
 	
@@ -8,7 +8,7 @@
 }
 
 vi_Anunnaki_modifier = {
-	icon = stewardship_positive
+	icon = vi_crown_mixed
 	stress_loss_mult = -0.2
 	martial = 2
 	stewardship = 2
@@ -17,7 +17,7 @@ vi_Anunnaki_modifier = {
 }
 
 vi_Nosferatu_modifier = {
-	icon = intrigue_positive
+	icon = vi_snake_mixed
 
 	general_opinion = -10
 
