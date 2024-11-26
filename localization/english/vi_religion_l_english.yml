@@ -16,6 +16,12 @@
  vi_nightcourt_adherent_plural: "Night Courtiers"
  vi_nightcourt_desc: "The way of un-life followed by those who pay obeisance to the Queen of the Night. By her decree, vampires shall live in secret harmony with the mortal population."
 
+ vi_eleusinian: "Eleusinian Mysteries"
+ vi_eleusinian_adj: "Eleusinian"
+ vi_eleusinian_adherent: "Eleusinian"
+ vi_eleusinian_adherent_plural: "Eleusinians"
+ vi_eleusinian_desc: "An ancient vampire cult with millennia of history and traditions destroyed by vampire hunters and conflict with the Cult of Mithras. Many modern vampire practices have their roots in the Eleusinian Mysteries."
+
  vi_penitence: "Penitence"
  vi_penitence_adj: "Penitent"
  vi_penitence_adherent: "Penitent"
@@ -84,3 +90,6 @@
 
  holy_site_versailles_name: "Versailles"
  holy_site_versailles_effect_name: "From [holy_site|E] #weak ($holy_site_versailles_name$)#!"
+
+ holy_site_eleusis_name: "Eleusis"
+ holy_site_eleusis_effect_name: "From [holy_site|E] #weak ($holy_site_eleusis_name$)#!"

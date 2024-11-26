@@ -126,7 +126,7 @@ vi_unnatural_youth_modifier = {
 	icon = fertility_positive
 	health = 0.5
 	fertility = -2
-	life_expectancy = 10000
+	life_expectancy = 20
 	no_prowess_loss_from_age = yes
 }
 

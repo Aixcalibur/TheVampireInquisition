@@ -63,8 +63,9 @@ vi_drain_prisoner_interaction = {
 		is_valid = {
 			always = yes
 		}
-		flag = turn
-		localization = VI_TURN
+		flag = kill
+		localization = VI_DRAIN_DRY
+		
 	}
 
 	send_option = { 
@@ -90,8 +91,8 @@ vi_drain_prisoner_interaction = {
 				}
 			}
 		}
-		flag = kill
-		localization = VI_DRAIN_DRY
+		flag = turn
+		localization = VI_TURN
 	}
 
 	send_options_exclusive = no

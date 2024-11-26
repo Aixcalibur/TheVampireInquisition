@@ -10,22 +10,6 @@
 
 vi_vampire_drain_effect = {
 
-	scope:vi_victim = {
-
-		add_stress = major_stress_gain
-
-		add_opinion = {
-			target = scope:vi_vampire
-			modifier = suspicion_opinion
-			opinion = -30
-		}
-
-		add_character_modifier = {
-			modifier = vi_drained_modifier
-			years = 40
-		}
-	}
-
 	scope:vi_vampire = {
 		vi_vampire_drain_stress_effect = yes
 
@@ -72,7 +56,18 @@ vi_vampire_drain_effect = {
 				years = 10
 			}
 
-			add_vi_vampire_lifestyle_xp = 50
+			if = {
+				limit = {
+					scope:vi_victim = {
+						NOT = {
+							has_character_modifier = vi_drained_modifier
+						}
+					}
+				}
+				add_vi_vampire_lifestyle_xp = 50
+			}
+
+			
 		}
 		else_if = {
 			limit = {
@@ -86,7 +81,16 @@ vi_vampire_drain_effect = {
 				years = 20
 			}
 
-			add_vi_vampire_lifestyle_xp = 100
+			if = {
+				limit = {
+					scope:vi_victim = {
+						NOT = {
+							has_character_modifier = vi_drained_modifier
+						}
+					}
+				}
+				add_vi_vampire_lifestyle_xp = 100
+			}
 		}
 		else_if = {
 			limit = {
@@ -100,7 +104,16 @@ vi_vampire_drain_effect = {
 				years = 40
 			}
 
-			add_vi_vampire_lifestyle_xp = 250
+			if = {
+				limit = {
+					scope:vi_victim = {
+						NOT = {
+							has_character_modifier = vi_drained_modifier
+						}
+					}
+				}
+				add_vi_vampire_lifestyle_xp = 250
+			}
 		}
 		else_if = {
 			limit = {
@@ -114,7 +127,32 @@ vi_vampire_drain_effect = {
 				years = 100
 			}
 
-			add_vi_vampire_lifestyle_xp = 500
+			if = {
+				limit = {
+					scope:vi_victim = {
+						NOT = {
+							has_character_modifier = vi_drained_modifier
+						}
+					}
+				}
+				add_vi_vampire_lifestyle_xp = 500
+			}
+		}
+	}
+
+	scope:vi_victim = {
+
+		add_stress = major_stress_gain
+
+		add_opinion = {
+			target = scope:vi_vampire
+			modifier = suspicion_opinion
+			opinion = -30
+		}
+
+		add_character_modifier = {
+			modifier = vi_drained_modifier
+			years = 20
 		}
 	}
 }
@@ -158,11 +196,17 @@ vi_vampire_drain_kill_effect = {
 
 	scope:vi_vampire = {
 
-		vi_vampire_drain_stress_effect = yes
+		stress_impact = {
+			base = massive_stress_impact_loss
+			#compassionate = miniscule_stress_impact_gain
+			#gluttonous = minor_stress_impact_loss
+			#sadistic = miniscule_stress_impact_loss
+			#callous = miniscule_stress_impact_loss
+		}
 
 		add_character_modifier = {
 			modifier = vi_sated_modifier
-			years = 3
+			years = 2
 		}
 
 		if = {
@@ -174,6 +218,14 @@ vi_vampire_drain_kill_effect = {
 
 			add_character_modifier = {
 				modifier = vi_vampire_madness_modifier
+				years = 5
+			}
+
+			if = {
+				limit = {
+					var:vi_humanity_value > 1
+				}
+				vi_decrease_humanity_effect = yes
 			}
 
 			# add_vi_vampire_lifestyle_xp = 50
@@ -195,6 +247,14 @@ vi_vampire_drain_kill_effect = {
 
 			add_character_modifier = {
 				modifier = vi_vampire_madness_modifier
+				years = 10
+			}
+
+			if = {
+				limit = {
+					var:vi_humanity_value > 1
+				}
+				vi_decrease_humanity_effect = yes
 			}
 
 			add_vi_vampire_lifestyle_xp = 100
@@ -219,6 +279,14 @@ vi_vampire_drain_kill_effect = {
 
 			add_character_modifier = {
 				modifier = vi_vampire_madness_modifier
+				years = 20
+			}
+
+			if = {
+				limit = {
+					var:vi_humanity_value > 1
+				}
+				vi_decrease_humanity_effect = yes
 			}
 
 			add_vi_vampire_lifestyle_xp = 300
@@ -244,7 +312,16 @@ vi_vampire_drain_kill_effect = {
 
 			add_character_modifier = {
 				modifier = vi_vampire_madness_modifier
+				years = 50
 			}
+
+			if = {
+				limit = {
+					var:vi_humanity_value > 1
+				}
+				vi_decrease_humanity_effect = yes
+			}
+
 			add_vi_vampire_lifestyle_xp = 600
 		}
 		else_if = {
@@ -256,7 +333,16 @@ vi_vampire_drain_kill_effect = {
 
 			add_character_modifier = {
 				modifier = vi_vampire_madness_modifier
+				years = 100
 			}
+
+			if = {
+				limit = {
+					var:vi_humanity_value > 1
+				}
+				vi_decrease_humanity_effect = yes
+			}
+
 			add_vi_vampire_lifestyle_xp = 4000
 		}
 	}

@@ -26,6 +26,28 @@
 		}
 	}
 
+	vi_virtue_generous = {
+		parameters = {
+			
+		}
+		visible = no 			# Should be shown on the religion interface
+		traits = {
+			virtues = { generous }
+			sins = { greedy }
+		}
+	}
+
+	vi_virtue_temperate = {
+		parameters = {
+			
+		}
+		visible = no 			# Should be shown on the religion interface
+		traits = {
+			virtues = { temperate }
+			sins = { gluttonous }
+		}
+	}
+
 	vi_virtues_christianity = {
 		parameters = {
 			

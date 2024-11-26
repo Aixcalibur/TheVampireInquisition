@@ -66,6 +66,14 @@
 		localization = vi_become_their_child
 	}
 
+	send_option = {
+		flag = convert
+		can_be_changed = {
+			always = yes
+		}
+		localization = vi_convert_faith
+	}
+
 	send_options_exclusive = no
 
 	on_send = {
@@ -97,16 +105,68 @@
 							type = house_head_hook
 							target = scope:actor
 						}
+						add_opinion = {
+							target = scope:actor
+							modifier = pleased_opinion
+							opinion = 10
+						}
+						pay_short_term_gold = {
+							target = scope:actor
+							gold = minor_gold_value
+						}
 					}
+					
 				}
 			}
 			else = {
 				found_cadet_house_decision_effect = {
 					CHARACTER = scope:actor
-					PRESTIGE = 0
+					PRESTIGE = 100
 				}
 			}
+
+			if = {
+				limit = {
+					scope:recipient = {
+						has_character_modifier = vi_Disian_modifier
+					}
+				}
+				add_character_modifier = vi_Disian_modifier
+			}
+			else_if = {
+				limit = {
+					scope:recipient = {
+						has_character_modifier = vi_Anunnaki_modifier
+					}
+				}
+				add_character_modifier = vi_Anunnaki_modifier
+			}
+			else_if = {
+				limit = {
+					scope:recipient = {
+						has_character_modifier = vi_Nosferatu_modifier
+					}
+				}
+				add_character_modifier = vi_Nosferatu_modifier
+			}
+			else_if = {
+				limit = {
+					scope:recipient = {
+						has_character_modifier = vi_Strix_modifier
+					}
+				}
+				add_character_modifier = vi_Strix_modifier
+			}
+
+			if = {
+				limit = {
+					always = scope:convert
+				}
+				set_character_faith = scope:recipient.faith
+			}
 			remove_character_flag = vi_choosing_dynasty
+
+
 			trigger_event = vi_customization.0002
 		}
 

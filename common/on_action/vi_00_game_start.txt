@@ -188,6 +188,59 @@ vi_vampire_game_start_after_lobby = {
 			value = vi_mod_latest_version
 		}
 
+		dynasty:vi_dynasty_Aphrodisian = {
+			#remove_dynasty_modifier = vi_Disian_modifier
+
+			every_dynasty_member = {
+				limit = {
+					OR = {
+						has_trait = vi_dhampir
+						vi_is_vampire_trigger = yes
+					}
+				}
+				add_character_modifier = vi_Disian_modifier
+			}
+		}
+
+		dynasty:vi_dynasty_Anunnaki = {
+			#remove_dynasty_modifier = vi_Anunnaki_modifier
+			every_dynasty_member = {
+				limit = {
+					OR = {
+						has_trait = vi_dhampir
+						vi_is_vampire_trigger = yes
+					}
+				}
+				add_character_modifier = vi_Anunnaki_modifier
+			}
+		}
+
+		dynasty:vi_dynasty_Nosferatu = {
+			#remove_dynasty_modifier = vi_Nosferatu_modifier
+			every_dynasty_member = {
+				limit = {
+					OR = {
+						has_trait = vi_dhampir
+						vi_is_vampire_trigger = yes
+					}
+				}
+				add_character_modifier = vi_Nosferatu_modifier
+			}
+		}
+
+		dynasty:vi_dynasty_Strix = {
+			#remove_dynasty_modifier = vi_Strix_modifier
+			every_dynasty_member = {
+				limit = {
+					OR = {
+						has_trait = vi_dhampir
+						vi_is_vampire_trigger = yes
+					}
+				}
+				add_character_modifier = vi_Strix_modifier
+			}
+		}
+
 		title:c_roma = {
 			add_county_modifier = {
 				modifier = vi_holy_ground_modifier

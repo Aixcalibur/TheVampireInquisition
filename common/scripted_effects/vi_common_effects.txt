@@ -15,6 +15,7 @@
 				has_trait = vi_vampire_3
 				has_trait = vi_vampire_4
 				has_trait = vi_vampire_5
+				has_trait = vi_customizer
 			}
 		}
 		add_trait = vi_vampire_1

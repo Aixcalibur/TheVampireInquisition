@@ -7,3 +7,13 @@
 		diplomacy_per_piety_level = 1
 	}
 }
+
+eleusis = {
+	county = c_attica
+	barony = b_megara
+	
+	character_modifier = {
+		name = holy_site_eleusis_effect_name
+		intrigue_per_piety_level = 1
+	}
+}

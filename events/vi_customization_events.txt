@@ -43,7 +43,7 @@ vi_customization.0001 = {
 		vi_make_vampire_effect = yes
 		custom_tooltip = {
 			text = vi_increase_age_by_20_tt
-			set_age = {
+			change_age = {
 				value = age
 				add = 20
 			}
@@ -197,8 +197,7 @@ vi_customization.0010 = {
 
 	option = {
 		name = vi_customization.0010.a
-		set_age = {
-			value = age
+		change_age = {
 			add = 10
 		}
 		trigger = {
@@ -214,8 +213,7 @@ vi_customization.0010 = {
 
 	option = {
 		name = vi_customization.0010.b
-		set_age = {
-			value = age
+		change_age = {
 			add = -10
 		}
 		trigger = {
@@ -228,8 +226,7 @@ vi_customization.0010 = {
 	}
 	option = {
 		name = vi_customization.0010.c
-		set_age = {
-			value = age
+		change_age = {
 			add = 1
 		}
 		trigger_event = vi_customization.0010

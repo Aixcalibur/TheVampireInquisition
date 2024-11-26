@@ -190,4 +190,6 @@ vi_knight_count = {
 vi_humanity_scaling_value = {
 	value = 0
 	add = var:vi_humanity_value
+	round = yes
+	max = 10
 }

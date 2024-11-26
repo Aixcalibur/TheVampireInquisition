@@ -438,11 +438,14 @@ vi_become_landless_adventurer_decision = {
 		#is_landed = yes
 		# Relevant cultures/faiths
 		
-
 		OR = {
 			has_government = vi_vampire_government
 			has_trait = vi_exposed_vampire
 			debug_only = yes
+		}
+
+		NOT = {
+			is_landless_adventurer = yes
 		}
 	}
 

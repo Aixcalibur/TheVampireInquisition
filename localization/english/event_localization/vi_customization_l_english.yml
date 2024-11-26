@@ -22,6 +22,7 @@
 
  vi_choose_a_vampire_tt: "Interact with a vampire to join their house before continuing"
  vi_become_their_child: "Join their House"
+ vi_convert_faith: "Convert to Faith"
 
  vi_customization.0010.t: "Age Customization"
  vi_customization.0010.desc: "How old are you?"
