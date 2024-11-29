@@ -1,6 +1,0 @@
-﻿l_english:
- vi_debug_decision: "Debug: Test Events"
- vi_debug_decision_desc: "This decision is used to trigger an event that the developer is testing."
- vi_debug_decision_confirm: "It's testing time!"
- vi_debug.001.t: "Debug Event"
- vi_debug.001.desc: "This event exists to test out event settings on demand. This is only visible if you are in debug mode."

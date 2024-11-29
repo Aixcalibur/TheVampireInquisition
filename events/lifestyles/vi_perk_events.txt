@@ -77,9 +77,9 @@ vi_perk.1000 = {
 
 vi_perk.1001 = {
 	type = character_event
-	title = vi_perk.vi_heartstealer.t
+	title = vi_perk.success.t
 	desc = {
-		desc = vi_perk.vi_heartstealer.desc
+		desc = vi_perk.vi_heartstealer.success_desc
 	}
 	theme = intrigue_temptation_focus
 
@@ -88,7 +88,7 @@ vi_perk.1001 = {
 	}
 
 	option = {
-		name = vi_perk.vi_heartstealer.a
+		name = vi_perk.vi_heartstealer.success_a
 		add_character_modifier = {
 			modifier = vi_vampire_madness_modifier
 		}

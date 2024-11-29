@@ -1,8 +1,0 @@
-﻿l_french:
-vi_artifact_vampire_reliquary_name: "Ancien Reliquaire"
-vi_artifact_vampire_reliquary_desc: "Un élégant reliquaire contenant des pouvoirs mystérieux."
-vi_holy_relic_generic_name: "Relique sacrée"
-vi_holy_relic_generic_desc: "Il s'agit d'une petite mais complexe sculpture de style [owner.GetFaith.GetReligion.GetAdjectiveNoTooltip] d'un [owner.GetFaith.ReligiousSymbol]. Elle est imprégnée d'une sainteté inhabituelle."
-
-vi_artifact_longsword_name: "Longue épée longue"
-vi_artifact_longsword_desc: "Il y a les épées longues et puis il y a les épées LONGUES. Cette épée longue de 2 mètres nécessite une taille et une force extraordinaires pour la manier efficacement."
