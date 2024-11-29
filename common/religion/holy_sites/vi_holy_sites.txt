@@ -17,3 +17,13 @@ eleusis = {
 		intrigue_per_piety_level = 1
 	}
 }
+
+sarmizegetusa = {
+	county = c_hunyad
+	barony = b_harszoc
+
+	character_modifier = {
+		name = holy_site_sarmizegetusa_effect_name
+		martial_per_piety_level = 1
+	}
+}

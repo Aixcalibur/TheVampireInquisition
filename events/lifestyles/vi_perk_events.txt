@@ -36,10 +36,13 @@ vi_perk.1000 = {
 					OR = {
 						has_trait = vi_vampire_4
 					}
+					add = 100
 				}
 				show_as_tooltip = {
 					add_trait_force_tooltip = vi_heartstealer
 				}
+
+				trigger_event = vi_perk.1001
 			}
 			50 = {
 				send_interface_toast = {

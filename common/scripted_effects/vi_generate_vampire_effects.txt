@@ -24,10 +24,10 @@ vi_generate_prince_vassal_effect = {
 
 	scope:vi_prince = {
 		set_immortal_age = age
-		change_age = { 200 400}
 		add_trait = vi_vampire_3
 		vi_make_vampire_effect = yes
 		add_vi_vampire_lifestyle_xp = 12000
+		change_age = { 200 400 }
 	}
 
 	capital_county.empire = {
