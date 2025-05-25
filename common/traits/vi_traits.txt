@@ -22,7 +22,13 @@ vi_vampire_1 = {
 	
 	ai_boldness = 20
 	#ai_energy = -100
-
+	desc = {
+		desc = trait_vi_vampire_1_desc
+		triggered_desc = {
+			trigger = { has_variable = vi_vampire_sire }
+			desc = trait_vi_vampire_sire_desc
+		}
+	}
 	compatibility = {
 		vi_inquisitor = @neg_compat_high
 	}
@@ -57,6 +63,14 @@ vi_vampire_2 = {
 
 	ai_boldness = 20
 	#ai_energy = -100
+
+	desc = {
+		desc = trait_vi_vampire_2_desc
+		triggered_desc = {
+			trigger = { has_variable = vi_vampire_sire }
+			desc = trait_vi_vampire_sire_desc
+		}
+	}
 }
 
 vi_vampire_3 = {
@@ -87,6 +101,14 @@ vi_vampire_3 = {
 
 	compatibility = {
 		vi_inquisitor = @neg_compat_high
+	}
+
+	desc = {
+		desc = trait_vi_vampire_3_desc
+		triggered_desc = {
+			trigger = { has_variable = vi_vampire_sire }
+			desc = trait_vi_vampire_sire_desc
+		}
 	}
 
 	ai_boldness = 25
@@ -122,6 +144,14 @@ vi_vampire_4 = {
 		vi_inquisitor = @neg_compat_high
 	}
 
+	desc = {
+		desc = trait_vi_vampire_4_desc
+		triggered_desc = {
+			trigger = { has_variable = vi_vampire_sire }
+			desc = trait_vi_vampire_sire_desc
+		}
+	}
+
 	ai_boldness = 25
 	ai_energy = -30
 }
@@ -153,21 +183,70 @@ vi_vampire_5 = {
 		vi_inquisitor = @neg_compat_high
 	}
 
+	desc = {
+		desc = trait_vi_vampire_5_desc
+		triggered_desc = {
+			trigger = { has_variable = vi_vampire_sire }
+			desc = trait_vi_vampire_sire_desc
+		}
+	}
+
 	ai_boldness = 25
 }
 
 vi_exposed_vampire = {
+	name = {
+		first_valid = {
+			triggered_desc = { 
+				trigger = {
+					has_trait_xp = {
+						trait = vi_exposed_vampire
+						value >= 90
+					}
+				}
+				desc = trait_vi_exposed_vampire_2
+			}
+			desc = trait_vi_exposed_vampire
+		}
+	}
 	icon = excommunicated.dds
 	category = fame
 	shown_in_ruler_designer = no
-	dread_baseline_add = 20
-	enemy_hostile_scheme_phase_duration_add = major_scheme_phase_duration_bonus_value
-	enemy_hostile_scheme_success_chance_add = 30
-	county_opinion_add = -100
+	dread_baseline_add = 10
+	monthly_legitimacy_add = -1
+	county_opinion_add = -20
+
 	triggered_opinion = {
 		parameter = vi_no_masquerade
 		check_missing = yes	
 		opinion_modifier = vi_vampire_opinion
+	}
+
+	track = {
+		25 = {
+			general_opinion = -10
+			monthly_legitimacy_add = -2
+			county_opinion_add = -20
+		}
+		50 = {
+			general_opinion = -10
+			dread_baseline_add = 10
+			monthly_legitimacy_add = -3
+			county_opinion_add = -20
+		}
+		75 = {
+			general_opinion = -10
+			enemy_hostile_scheme_phase_duration_add = major_scheme_phase_duration_bonus_value
+			enemy_hostile_scheme_success_chance_add = 30
+			monthly_legitimacy_add = -4
+			county_opinion_add = -20
+		}
+		100 = {
+			general_opinion = -20
+			dread_baseline_add = 10
+			monthly_legitimacy_add = -10
+			county_opinion_add = -20
+		}
 	}
 
 	ai_rationality = -10

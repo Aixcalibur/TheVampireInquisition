@@ -84,9 +84,16 @@
 			story_owner = {
 				is_landed = yes
 				#has_character_flag = vi_newly_landed
-				NOT = {
-					has_trait = vi_exposed_vampire
+				OR = {
+					NOT = {
+						has_trait = vi_exposed_vampire
+					}
+					has_trait_xp = {
+						trait = vi_exposed_vampire
+						value <= 50
+					}
 				}
+				
 			}
 		}
 
@@ -168,6 +175,10 @@
 			story_owner = {
 				has_trait = vi_exposed_vampire
 				is_landed = yes
+				has_trait_xp = {
+					trait = vi_exposed_vampire
+					value >= 50
+				}
 			}
 		}
 

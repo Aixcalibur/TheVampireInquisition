@@ -1,9 +1,9 @@
-﻿namespace = vi_fake_succession
+﻿namespace = vi_clear_name
 
-vi_fake_succession.0001 = {
+vi_clear_name.0001 = {
 	type = character_event
-	title = vi_fake_succession.0001.t
-	desc = vi_fake_succession.0001.desc
+	title = vi_clear_name.0001.t
+	desc = vi_clear_name.0001.desc
 	theme = realm
 	#override_background = { reference = docks }
 	
@@ -21,7 +21,7 @@ vi_fake_succession.0001 = {
 	}
 
 	option = { #Use the city's native capabilities to produce what's needed
-		name = vi_fake_succession.0001.a
+		name = vi_clear_name.0001.a
 		save_scope_as = actor
 
 		add_character_flag = {
@@ -30,21 +30,21 @@ vi_fake_succession.0001 = {
 		}
 
 		# start_scheme = {
-		# 	type = vi_fake_succession_scheme
+		# 	type = vi_clear_name_scheme
 		# 	target_character = root
 		# }
 		
 		begin_scheme_with_agents_effect = {
-			SCHEME_TYPE = vi_fake_succession_scheme
+			SCHEME_TYPE = vi_clear_name_scheme
 			TARGET_TYPE = target_character
 			TARGET_SCOPE = root
 			# Success.
-			AGENT_1 = agent_physic
+			AGENT_1 = agent_shill
 			AGENT_2 = agent_diplomat
 			AGENT_3 = agent_cleric_success
 			AGENT_4 = agent_scribe
 			# Speed.
-			AGENT_5 = agent_planner
+			AGENT_5 = agent_socialite
 		}
 
 		ai_chance = {
@@ -53,8 +53,8 @@ vi_fake_succession.0001 = {
 		}
 	}
 	option = { #Actually... never mind
-		name = vi_fake_succession.0001.b
-		#remove_decision_cooldown = vi_fake_succession_decision
+		name = vi_clear_name.0001.b
+		#remove_decision_cooldown = vi_clear_name_decision
 		
 		ai_chance = {
 			base = 0
@@ -63,7 +63,7 @@ vi_fake_succession.0001 = {
 	}
 }
 
-vi_fake_succession.1001 = {
+vi_clear_name.1001 = {
 	hidden = yes
 
 	immediate = {
@@ -81,13 +81,13 @@ vi_fake_succession.1001 = {
 				if = {
 					limit = { exists = scope:scheme_successful }
 					trigger_event = {
-						id = vi_fake_succession.1002
+						id = vi_clear_name.1002
 						days = 1
 					}
 				}
 				else = {
 					trigger_event = {
-						id = vi_fake_succession.1003
+						id = vi_clear_name.1003
 						days = 1
 					}	
 				}
@@ -98,10 +98,10 @@ vi_fake_succession.1001 = {
 
 
 # Success
-vi_fake_succession.1002 = {
+vi_clear_name.1002 = {
 	type = character_event
-	title = vi_fake_succession.1002.t
-	desc = vi_fake_succession.1002.desc
+	title = vi_clear_name.1002.t
+	desc = vi_clear_name.1002.desc
 	theme = realm
 	left_portrait = {
 		character = root
@@ -109,20 +109,20 @@ vi_fake_succession.1002 = {
 	}
 
 	immediate = {
-		vi_fake_succession_success_effect = yes
+		vi_clear_name_success_effect = yes
 	}
 
 	option = {
-		name = vi_fake_succession.1002.a
+		name = vi_clear_name.1002.a
 		scope:scheme = { end_scheme = yes }
 	}
 }
 
 # Failure
-vi_fake_succession.1003 = {
+vi_clear_name.1003 = {
 	type = character_event
-	title = vi_fake_succession.1003.t
-	desc = vi_fake_succession.1003.desc
+	title = vi_clear_name.1003.t
+	desc = vi_clear_name.1003.desc
 	theme = realm
 	
 	left_portrait = {
@@ -137,14 +137,6 @@ vi_fake_succession.1003 = {
 
 	immediate = {
 		save_scope_as = actor
-
-		add_legitimacy = -2000
-
-		vi_secret_exposed_vampire_effect = yes
-
-		show_as_tooltip = {
-			add_trait = vi_exposed_vampire
-		}
 
 		random_vassal = {
 			limit = {
@@ -170,7 +162,7 @@ vi_fake_succession.1003 = {
 
 	#Option A: Too bad
 	option = {
-		name = vi_fake_succession.1003.a
+		name = vi_clear_name.1003.a
 		scope:scheme = { end_scheme = yes }
 	}
 

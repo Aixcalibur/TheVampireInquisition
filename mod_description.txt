@@ -41,3 +41,19 @@
  [*]My writers who help add more flavor and events to the mod
  [*]Members of my Discord for their support and ideas
 [/list]
+
+[h2]Frequently Asked Questions[/h2]
+[b]How do I become a Vampire?[/b]
+Either you select the Vampire Customizer trait under “Other Traits” in the Ruler Designer or you befriend a vampire already existing in the world. After some years you may grow suspicious and can ask them to turn you or they offer it themself.
+If you take the customizer, once the game starts there will be a pop-up where you can freely decide what age your character is.
+
+[b]How do I become a Vampire Hunter?[/b]
+Either you select the trait under “Other Traits” in the Ruler Designer or you investigate a vampire in the game and once your suspicions are confirmed, declare them as one to the world. The trait will be granted to you automatically. We are currently working on more content for Vampire Hunters.
+
+[b]How do I become a  Dhampir?[/b]
+Either you select the trait under “Other Traits” in the Ruler Designer or play as a mortal and seduce a vampire or as a vampire and seduce a mortal. The children are Dhampirs and also make better Vampire Hunters. If you make a Dhampir in Ruler Designer you can also select a vampire to be your parent.
+
+[b]What are Vampire Princedom’s?[/b]
+They allow for you to influence the realms of the mortals without the need to hold land and offer unique roleplay mechanics that reward you for building a community of vampires within your Princedom.
+
+Please keep in mind that The Vampire Inquisition is still in alpha. Changes and adjustments will be made.

@@ -1,7 +1,7 @@
 ﻿l_english:
- vi_artifact_vampire_reliquary_name: "Ancient Reliquary"
+ vi_artifact_vampire_reliquary_name: "Reliquary of Ancient Blood"
  vi_artifact_vampire_reliquary_desc: "An elegant reliquary containing mysterious powers within."
- vi_holy_relic_generic_name: "Holy Relic"
+ vi_holy_relic_generic_name: "Protective Relic"
  vi_holy_relic_generic_desc: "This is a small but intricate [owner.GetFaith.GetReligion.GetAdjectiveNoTooltip] styled carving of a [owner.GetFaith.ReligiousSymbol]. It is imbued with unusual holiness."
  
  vi_artifact_longsword_name: "Long Longsword"

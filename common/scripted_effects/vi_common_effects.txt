@@ -47,7 +47,7 @@
 	add_character_modifier = vi_unnatural_youth_modifier
 
 	every_child = {
-		set_relation_vi_gui_sire = prev
+		#set_relation_vi_gui_sire = prev
 	}
 
 	# Make it so vampires don't get the vanilla stress events any more
@@ -335,27 +335,61 @@ vi_add_stacking_modifier_effect = {
 }
 
 vi_secret_exposed_vampire_effect = {
-	add_trait = vi_exposed_vampire
-	#save_scope_as = vi_exposed_vampire
-	liege ?= {
+	if = {
+		limit = {
+			has_trait = vi_exposed_vampire
+			
+		}
 		if = {
 			limit = {
-				has_government = vi_vampire_government
+				vi_is_vampire_trigger = yes
 			}
-			send_interface_message = {
-				type = send_interface_message_bad
-				title = vi_vampire_exposed_msg
-				desc = vi_vampire_exposed_msg_desc
-				#tooltip = LOCALIZATION # optional, otherwise takes it from the message type
-				left_icon = root # optional, character, artifact, or title
-				#right_icon = scope:domicile_location # optional, character, artifact, or title
-				goto = root # optional, character, barony title, province will add a goto button
-				
-				add_legitimacy = medium_legitimacy_loss
+			add_trait_xp = {
+				trait = vi_exposed_vampire
+				value = 10
 			}
-			
-		}	
+		}
+		else = {
+			add_trait_xp = {
+				trait = vi_exposed_vampire
+				value = 5
+			}
+		}
 	}
+	else = {
+		add_trait = vi_exposed_vampire
+	}
+
+	if = {
+		limit = {
+			faith = {
+				NOT = {
+					has_doctrine_parameter = vi_no_masquerade
+				}
+			}
+		}
+		add_piety = medium_piety_loss
+	}
+	#save_scope_as = vi_exposed_vampire
+	# liege ?= {
+	# 	if = {
+	# 		limit = {
+	# 			has_government = vi_vampire_government
+	# 		}
+	# 		send_interface_message = {
+	# 			type = send_interface_message_bad
+	# 			title = vi_vampire_exposed_msg
+	# 			desc = vi_vampire_exposed_msg_desc
+	# 			#tooltip = LOCALIZATION # optional, otherwise takes it from the message type
+	# 			left_icon = root # optional, character, artifact, or title
+	# 			#right_icon = scope:domicile_location # optional, character, artifact, or title
+	# 			goto = root # optional, character, barony title, province will add a goto button
+				
+	# 			add_legitimacy = medium_legitimacy_loss
+	# 		}
+			
+	# 	}	
+	# }
 }
 
 vi_hostile_scheme_monthly_discovery_chance_effect = {
@@ -786,4 +820,20 @@ vi_slow_regeneration_effect = {
 				}
 			}
 		}
+}
+
+vi_add_spawn_variables_effect = {
+	save_scope_as = le_self
+	every_relation = {
+		type = vi_spawn
+		limit = {
+			NOT = {
+				has_variable = vi_vampire_sire
+			}
+		}
+		set_variable = {
+			name = vi_vampire_sire
+			value = scope:le_self
+		}
+	}
 }

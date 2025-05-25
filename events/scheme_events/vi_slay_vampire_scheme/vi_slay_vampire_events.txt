@@ -1,0 +1,36 @@
+﻿# namespace = vi_slay_vampire
+
+# vi_slay_vampire.0001 = {
+# 	type = character_event
+# 	title = vi_slay_vampire.0001.t
+# 	desc = {
+# 		first_valid = {
+# 			triggered_desc = { 
+# 				trigger = {
+# 					scope:target = {
+# 						is_landless_adventurer = yes
+# 					}
+# 				}
+# 				desc = vi_slay_vampire.0001.adventurer_desc
+# 			}
+# 			triggered_desc = { 
+# 				trigger = {
+# 					scope:target = {
+# 						is_landless_adventurer = yes
+# 					}
+# 				}
+# 				desc = vi_slay_vampire.0001.ruler_desc
+# 			}
+# 			desc = vi_slay_vampire.0001.wanderer_desc
+# 		}
+# 	}
+# 	window = scheme_target_event
+# 	theme = murder_scheme
+# }
+
+# vi_slay_vampire.0010 = {
+# 	type = character_event
+# 	title = vi_slay_vampire.0010.t
+# 	window = scheme_target_event
+# 	theme = murder_scheme
+# }

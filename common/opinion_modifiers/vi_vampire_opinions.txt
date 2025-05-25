@@ -1,7 +1,7 @@
 ﻿
 
 vi_vampire_opinion = {
-	opinion = -100
+	opinion = -10
 	imprisonment_reason = yes
 	execute_reason = yes
 	banish_reason = yes

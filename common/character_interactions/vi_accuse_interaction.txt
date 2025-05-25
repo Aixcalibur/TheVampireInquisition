@@ -1,0 +1,528 @@
+﻿vi_accuse_interaction = {
+	icon = icon_scheme_challenge_status
+	interface_priority = 30
+	common_interaction = yes
+	category = interaction_category_hostile
+	common_interaction = yes
+	#interface = blackmail
+	ai_maybe = yes
+	pause_on_receive = yes
+	use_diplomatic_range = yes
+	popup_on_receive = yes
+	desc = vi_accuse_interaction_desc
+	can_send_despite_rejection = yes
+
+	cooldown = {
+		years = 5
+	}
+
+	cooldown_against_recipient = {
+		years = 20
+	}
+
+	is_shown = {
+		OR = {
+			AND = {
+				scope:recipient = {
+					any_secret = {
+						secret_type = secret_vi_vampire
+						is_known_by = scope:actor
+					}
+				}
+			}
+			AND = {
+				scope:actor = {
+					vi_is_vampire_trigger = yes
+				}
+			}
+			AND = {
+				scope:actor = {
+					has_opinion_modifier = {
+						modifier = suspicion_opinion
+						target = scope:recipient
+					}
+					vi_is_vampire_trigger = no
+				}
+			}
+		}
+	}
+	
+	is_highlighted = {
+		scope:actor = {
+			vi_is_vampire_trigger = no
+		}
+	}
+
+	is_valid_showing_failures_only = {
+		# trigger_if = {
+		# 	limit = {
+		# 		scope:recipient = {
+		# 			vi_is_vampire_trigger = yes
+		# 		}
+		# 		scope:actor = {
+		# 			NOT = {
+		# 				has_perk = vi_presence_perk
+		# 			}
+		# 		}
+		# 	}
+		# 	custom_tooltip = {
+		# 		text = vi_need_presence_tt
+		# 		always = no
+		# 	}
+		# }
+	}
+
+	cost = {
+		prestige = {
+			value = 100
+			if = {
+				limit = {
+					scope:recipient = {
+						prestige_level >= 2
+					}
+				}
+				add = {
+					value = 100
+					multiply = scope:recipient.prestige_level
+				}
+			}
+
+			if = {
+				limit = {
+					scope:recipient = {
+						piety_level >= 2
+					}
+				}
+				add = {
+					value = 100
+					multiply = scope:recipient.piety_level
+				}
+			}
+
+			if = {
+				limit = {
+					scope:recipient = {
+						is_landed_or_landless_administrative = yes
+					}
+				}
+			}
+
+			if = {
+				limit = {
+					scope:recipient = {
+						has_legitimacy = yes
+					}
+				}
+				add = {
+					value = 100
+					multiply = scope:recipient.legitimacy_level
+					add = -150
+				}
+			}
+
+			if = {
+				limit = {
+					scope:actor = {
+						is_ai = yes
+					}
+				}
+				multiply = 0.2
+			}
+
+			if = {
+				limit = {
+					scope:actor = {
+						is_ruler = no
+					}
+				}
+				multiply = 0.1
+			}
+		}
+
+		piety = {
+			value = 100
+			if = {
+				limit = {
+					scope:actor = {
+						vi_is_vampire_trigger = yes
+						faith = {
+							NOT = {
+								has_doctrine_parameter = vi_no_masquerade
+							}
+						}
+					}
+				}
+				add = 900
+				if = {
+					limit = {
+						scope:recipient = {
+							vi_is_vampire_trigger = yes
+						}
+					}
+					add = 1000
+				}
+			}
+		}
+	}
+	
+	on_accept = {
+		scope:actor = {
+			add_prestige = medium_prestige_gain
+			if = {
+				limit = {
+					vi_is_vampire_trigger = no
+				}
+				add_piety = major_piety_gain
+			}
+		}
+
+		scope:recipient = {
+			
+			vi_secret_exposed_vampire_effect = yes
+			add_trait_xp = {
+				trait = vi_exposed_vampire
+				value = 100
+			}
+			if = {
+				limit = {
+					is_valid_for_legitimacy_change = yes
+				}
+				send_interface_toast = {
+					type = msg_legitimacy_gain
+					title = legitimacy_gain_toast
+					
+					add_legitimacy = {
+						value = {
+							value = 0
+							
+							if = { # You get a lot of Legitimacy for punching above your weight
+								limit = { # Specially if you are a Duke/Count against an Emperor
+									faith = {
+										NOT = {
+											has_doctrine_parameter = vi_no_masquerade
+										}
+									}
+								}
+								add = -1000
+							}
+						}
+					}
+				}
+			}
+		}
+
+		# If we're a clan this interaction affects unity
+		add_clan_unity_interaction_effect = {
+			CHARACTER = scope:actor
+			TARGET = scope:recipient
+			VALUE = miniscule_unity_gain
+			DESC = clan_unity_inspo.desc
+			REVERSE_NON_HOUSE_TARGET = no
+		}
+	}
+	
+	on_decline = {
+		scope:recipient = {
+			add_opinion = {
+				modifier = accused_crime_opinion
+				target = root
+				opinion = -60
+			}
+			if = {
+				limit = {
+					has_trait = vi_exposed_vampire
+				}
+				add_trait_xp = {
+					trait = vi_exposed_vampire
+					value = {
+						value = 0
+						add = scope:recipient.prestige_level
+						add = scope:recipient.piety_level
+						if = {
+							limit = {
+								scope:recipient = {
+									has_legitimacy = yes
+								}
+							}
+							add = scope:recipient.legitimacy_level
+						}
+						add = {
+							value = scope:recipient.diplomacy
+							multiply = 0.1
+							round = yes
+						}
+					}
+				}
+			}
+			else = {
+				random_list = {
+					40 = {
+						modifier = {add = scope:recipient.intrigue}
+						modifier = {add = scope:recipient.diplomacy}
+						modifier = {subtract = scope:actor.diplomacy}
+
+						modifier = {
+							if = {
+								limit = {
+									has_legitimacy = yes
+									
+								}
+								if = {
+									limit = {
+										legitimacy_level >= 5
+									}
+									add = 120
+								}
+								else_if = {
+									limit = {
+										legitimacy_level >= 4
+									}
+									add = 60
+								}
+								else_if = {
+									limit = {
+										legitimacy_level >= 3
+									}
+									add = 40
+								}
+							}
+						}
+
+						modifier = {
+							if = {
+								limit = {
+									any_secret = {
+										secret_type = secret_vi_vampire
+										is_known_by = scope:actor
+									}
+								}
+								add = -50
+							}
+						}
+					}
+
+					20 = {
+						add_trait = vi_exposed_vampire
+						modifier = {
+							if = {
+								limit = {
+									any_secret = {
+										secret_type = secret_vi_vampire
+										is_known_by = scope:actor
+									}
+								}
+								add = 20
+							}
+						}
+					}
+
+					20 = {
+						
+						modifier = {add = scope:actor.diplomacy}
+						modifier = {subtract = scope:recipient.diplomacy}
+						modifier = {subtract = scope:recipient.intrigue}
+						modifier = {
+							if = {
+								limit = {
+									any_secret = {
+										secret_type = secret_vi_vampire
+										is_known_by = scope:actor
+									}
+								}
+								add = 60
+							}
+						}
+
+						vi_secret_exposed_vampire_effect = yes
+						if = {
+							limit = {
+								has_legitimacy = yes
+								scope:recipient.faith = {
+									NOT = {
+										has_doctrine_parameter = vi_no_masquerade
+									}
+								}
+							}
+							send_interface_toast = {
+								type = msg_legitimacy_gain
+								title = legitimacy_gain_toast
+								
+								add_legitimacy = {
+									value = base_legitimacy_value
+									multiply = -1
+									multiply = scope:actor.legitimacy_level
+								}
+							}
+						}
+					}
+				}
+			}	
+		}
+	}
+	
+
+	ai_frequency = 100
+
+	ai_targets = {
+		ai_recipients = liege
+		ai_recipients = neighboring_rulers
+		ai_recipients = peer_vassals
+		ai_recipients = vassals
+		max = 20
+	}
+
+	ai_target_quick_trigger = {
+		adult = yes
+	}
+
+	ai_accept = {
+		base = -1000
+
+		modifier = {
+			add = 1000
+			scope:recipient = {
+				faith = {
+					has_doctrine_parameter = vi_no_masquerade
+				}
+			}
+		}
+	}
+
+	ai_potential = {
+		is_at_war = no
+		# OR = {
+		# 	has_royal_court = yes
+		# 	government_has_flag = government_is_landless_adventurer
+		# 	has_government = vi_vampire_government
+		# }
+		# gold > ai_inspiration_desired_gold_value
+		# NOT = { has_character_flag = recently_fund_inspiration }
+		# ai_has_conqueror_personality = no
+		# ai_should_focus_on_building_in_their_capital = no
+	}
+
+	ai_will_do = {
+		base = 5
+
+		#Personality
+		modifier = {
+			has_trait = zealous
+			add = 25
+		}
+		
+		modifier = {
+			NOT = {
+				scope:recipient = {
+					any_secret = {
+						secret_type = secret_vi_vampire
+						is_known_by = scope:actor
+					}
+				}
+			}
+			add = -100
+		}
+
+		modifier = {
+			has_dread_level_towards = {
+				target = scope:recipient
+				level >= 1
+			}
+			NOT = {
+				has_trait = vi_inquisitor
+			}
+			add = -20
+		}
+
+		modifier = {
+			has_dread_level_towards = {
+				target = scope:recipient
+				level >= 2
+			}
+			add = -50
+		}
+
+		modifier = {
+			has_trait = paranoid
+			add = 50
+		}
+
+		modifier = {
+			NOT = {
+				has_trait = vi_inquisitor
+			}
+			has_trait = trusting
+			add = -50
+		}
+
+		modifier = {
+			has_trait = craven
+			add = -100
+		}
+
+		modifier = {
+			scope:recipient = {
+				vi_is_vampire_trigger = yes
+			}
+			has_trait = vi_inquisitor
+			add = 50
+		}
+
+		modifier = {
+			scope:recipient = {
+				vi_is_vampire_trigger = no
+			}
+			add = -100
+		}
+
+		modifier = {
+			has_trait = vi_inquisitor
+			has_trait = zealous
+			add = 25
+		}
+
+		# House & Family
+
+		#Feuds
+		modifier = {
+			house.house_head ?= {
+				any_owned_story = {
+					story_type = story_cycle_house_feud
+					has_variable = house_feud_house
+					var:house_feud_house = scope:recipient.house
+				}
+			}
+			add = 50
+		}
+
+		# Relationships
+		modifier = {
+			add = 25
+			has_any_mild_bad_relationship_with_character_trigger = { CHARACTER = scope:recipient }
+		}
+
+		modifier = {
+			add = 50
+			has_any_moderate_bad_relationship_with_character_trigger = { CHARACTER = scope:recipient }
+		}
+
+		modifier = {
+			add = 100
+			has_any_worst_bad_relationship_with_character_trigger = { CHARACTER = scope:recipient }
+		}
+
+		modifier = {
+			add = -15
+			has_any_mild_good_relationship_with_character_trigger = { CHARACTER = scope:recipient }
+		}
+
+		modifier = {
+			add = -20
+			has_any_moderate_good_relationship_with_character_trigger = { CHARACTER = scope:recipient }
+		}
+
+		modifier = {
+			factor = 0
+			has_any_best_good_relationship_with_character_trigger = { CHARACTER = scope:recipient }
+		}
+	}
+}

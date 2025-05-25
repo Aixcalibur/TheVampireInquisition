@@ -144,7 +144,7 @@ vi_hunt_outcome.1001 = {
 		}
 
 		show_as_unavailable = {
-			debug_only = yes
+			#debug_only = yes
 		}
 
 		ai_chance = {

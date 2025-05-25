@@ -265,3 +265,9 @@ vi_laying_low_modifier = {
 	monthly_prestige_gain_mult = -2
 	monthly_piety_gain_mult = -2
 }
+
+vi_panic_modifier = {
+	#icon = county_modifier_control_negative
+	icon = county_modifier_opinion_negative
+	monthly_county_control_decline_add = -0.15
+}

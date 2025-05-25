@@ -15,7 +15,7 @@
 # 	}
 # }
 
-d_nf_vi_montmartre = {
+c_nf_vi_montmartre = {
 	768.11.01 = {
 		holder = vi_esclarmonde
 		government = vi_vampire_government
@@ -24,7 +24,7 @@ d_nf_vi_montmartre = {
 	}
 }
 
-d_vi_cologne = {
+c_vi_cologne = {
 	770.1.1 = {
 		holder = vi_ambrosius
 		government = vi_vampire_government
@@ -33,33 +33,33 @@ d_vi_cologne = {
 	}
 }
 
-d_nf_vi_cologne = {
-	770.1.1 = {
-		holder = vi_ambrosius
-		government = vi_vampire_government
-		succession_laws = { noble_family_succession_law }
-		liege = k_vi_court_of_night
-	}
-}
+# d_nf_vi_cologne = {
+# 	770.1.1 = {
+# 		holder = vi_ambrosius
+# 		government = vi_vampire_government
+# 		succession_laws = { noble_family_succession_law }
+# 		liege = k_vi_court_of_night
+# 	}
+# }
 
-d_vi_orleans = {
-	770.1.1 = {
-		holder = vi_orlok
-		government = vi_vampire_government
-		liege = k_vi_court_of_night
-	}
-}
-
-d_nf_vi_orlok = {
+c_vi_orleans = {
 	770.1.1 = {
 		holder = vi_orlok
 		government = vi_vampire_government
-		succession_laws = { noble_family_succession_law }
 		liege = k_vi_court_of_night
 	}
 }
 
-d_vi_normandy = {
+# d_nf_vi_orlok = {
+# 	770.1.1 = {
+# 		holder = vi_orlok
+# 		government = vi_vampire_government
+# 		succession_laws = { noble_family_succession_law }
+# 		liege = k_vi_court_of_night
+# 	}
+# }
+
+c_vi_normandy = {
 	800.1.1 = {
 		holder = vi_norman
 		government = vi_vampire_government
@@ -67,16 +67,16 @@ d_vi_normandy = {
 	}
 }
 
-d_nf_vi_normandy = {
-	800.1.1 = {
-		holder = vi_norman
-		government = vi_vampire_government
-		succession_laws = { noble_family_succession_law }
-		liege = k_vi_court_of_night
-	}
-}
+# d_nf_vi_normandy = {
+# 	800.1.1 = {
+# 		holder = vi_norman
+# 		government = vi_vampire_government
+# 		succession_laws = { noble_family_succession_law }
+# 		liege = k_vi_court_of_night
+# 	}
+# }
 
-d_vi_lyon = {
+c_vi_lyon = {
 	800.1.1 = {
 		holder = vi_lugh
 		government = vi_vampire_government
@@ -85,16 +85,16 @@ d_vi_lyon = {
 	}
 }
 
-d_nf_vi_lyon = {
-	800.1.1 = {
-		holder = vi_lugh
-		government = vi_vampire_government
-		succession_laws = { noble_family_succession_law }
-		liege = k_vi_court_of_night
-	}
-}
+# d_nf_vi_lyon = {
+# 	800.1.1 = {
+# 		holder = vi_lugh
+# 		government = vi_vampire_government
+# 		succession_laws = { noble_family_succession_law }
+# 		liege = k_vi_court_of_night
+# 	}
+# }
 
-d_vi_zurich = {
+c_vi_zurich = {
 	860.1.1 = {
 		holder = vi_symonne
 		government = vi_vampire_government
@@ -103,7 +103,7 @@ d_vi_zurich = {
 	}
 }
 
-d_vi_london = {
+c_vi_london = {
 	860.1.1 = {
 		holder = vi_victor
 		government = vi_vampire_government
@@ -115,14 +115,14 @@ d_vi_london = {
 	}
 }
 
-d_nf_vi_london = {
-	800.1.1 = {
-		holder = vi_victor
-		government = vi_vampire_government
-		succession_laws = { noble_family_succession_law }
-		liege = k_vi_court_of_night
-	}
-}
+# d_nf_vi_london = {
+# 	800.1.1 = {
+# 		holder = vi_victor
+# 		government = vi_vampire_government
+# 		succession_laws = { noble_family_succession_law }
+# 		liege = k_vi_court_of_night
+# 	}
+# }
 
 
 d_laamp_vi_helsing = { 

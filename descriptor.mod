@@ -1,4 +1,4 @@
-version="0.1.1"
+version="0.2.0"
 tags={
 	"Alternative History"
 	"Balance"
@@ -12,5 +12,5 @@ tags={
 	"Decisions"
 }
 name="The Vampire Inquisition - ALPHA"
-supported_version="1.14.*"
+supported_version="1.16.*"
 remote_file_id="3365606874"

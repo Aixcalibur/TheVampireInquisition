@@ -1,0 +1,252 @@
+﻿namespace = vi_announcement
+
+vi_announcement.0001 = {
+	type = character_event
+	title = vi_announcement.0001.t
+	desc = vi_announcement.0001.desc
+	
+	theme = diplomacy
+
+	right_portrait = {
+		character = root
+		animation = personality_zealous
+	}
+
+	immediate = {
+		save_scope_as = sender
+		add_character_flag = {
+			flag = vi_received_dark_warning
+			years = 5
+		}
+	}
+
+	option = {
+		name = vi_announcement.0001.a
+		trigger = {
+			prestige >= 500
+		}
+		show_as_unavailable = {
+			always = yes
+		}
+		add_prestige = -500
+
+		every_vassal = {
+			trigger_event = vi_announcement.0002
+		}
+
+		if = {
+			limit = {
+				is_independent_ruler = yes
+			}
+			custom_tooltip = vi_announcement.0001.tt_independent
+			every_neighboring_top_liege_realm_owner = {
+				trigger_event = vi_announcement.0002
+			}
+		}
+		else = {
+			custom_tooltip = vi_announcement.0001.tt_vassal
+			liege = {
+				trigger_event = vi_announcement.0002
+				every_vassal = {
+					trigger_event = vi_announcement.0002
+				}
+			}
+		}
+
+		every_sub_realm_county = {
+			custom = vi_every_subrealm_county
+			add_county_modifier = {
+				modifier = vi_panic_modifier
+				years = 3
+			}
+		}
+
+		ai_chance = {
+			base = 100
+		}
+	}
+
+	option = {
+		name = vi_announcement.0001.b
+	}
+}
+
+vi_announcement.0002 = {
+	type = character_event
+	title = vi_announcement.0002.t
+	desc = vi_announcement.0002.desc
+
+	theme = diplomacy
+
+	trigger = {
+		NOR = {
+			has_character_flag = vi_received_dark_warning
+			has_trait = vi_inquisitor
+		}
+	}
+
+	immediate = {
+		add_character_flag = {
+			flag = vi_received_dark_warning
+			years = 5
+		}
+	}
+
+	right_portrait = {
+		character = root
+		animation = personality_cynical
+	}
+
+	option = {
+		name = vi_announcement.0002.a
+
+		trigger = {
+			NOT = {
+				vi_is_vampire_trigger = yes
+			}
+		}
+
+		add_trait = vi_inquisitor
+
+		add_opinion = {
+			target = scope:sender
+			modifier = respect_opinion
+			opinion = 10
+		}
+
+		reverse_add_opinion = {
+			target = scope:sender
+			modifier = respect_opinion
+			opinion = 10
+		}
+
+		stress_impact = {
+			zealous = minor_stress_impact_loss
+		}
+
+		every_sub_realm_county = {
+			custom = vi_every_subrealm_county
+			add_county_modifier = {
+				modifier = vi_panic_modifier
+				years = 3
+			}
+		}
+
+		ai_chance = {
+			base = 10
+
+			opinion_modifier = {
+				opinion_target = scope:sender
+				multiplier = 0.25
+			}
+
+			modifier = {
+				OR = {
+					has_trait = zealous
+					has_trait = trusting
+					has_trait = paranoid
+				}
+				add = 100
+			}
+
+			modifier = {
+				any_known_secret = {
+					secret_type = secret_vi_vampire
+				}
+				NOT = {
+					has_trait = vi_dhampir
+				}
+				add = 100
+			}
+		}
+	}
+
+	option = {
+		name = vi_announcement.0002.b
+
+		add_opinion = {
+			target = scope:sender
+			modifier = disrespect_opinion
+			opinion = -10
+		}
+
+		reverse_add_opinion = {
+			target = scope:sender
+			modifier = angry_opinion
+			opinion = -20
+		}
+
+		scope:sender = {
+			send_interface_message = {
+				title = vi_announcement.0002.msg
+				right_icon = root
+				add_prestige = minor_prestige_loss
+				if = {
+					limit = {
+						root = {
+							has_legitimacy = yes
+							legitimacy_level = 5
+						}
+					}
+					add_legitimacy_effect = { LEGITIMACY = miniscule_legitimacy_loss }
+				}
+			}
+		}
+
+		#add_prestige = minor_prestige_gain
+		
+		ai_chance = {
+			base = 20
+
+			modifier = {
+				has_trait = cynical
+				add = 50
+			}
+
+			modifier = {
+				has_trait = arrogant
+				add = 25
+			}
+
+			opinion_modifier = {
+				opinion_target = scope:sender
+				multiplier = -1
+			}
+
+			modifier = {
+				any_known_secret = {
+					secret_type = secret_vi_vampire
+				}
+				add = -100
+			}
+
+			ai_value_modifier = {
+				ai_rationality = 0.25
+			}
+		}
+	}
+
+	option = {
+		name = vi_announcement.0002.c
+
+		every_sub_realm_county = {
+			custom = vi_every_subrealm_county
+			random = {
+				chance = 30
+				add_county_modifier = {
+					modifier = vi_panic_modifier
+					years = 3
+				}
+			}
+		}
+		
+		ai_chance = {
+			base = 30
+
+			ai_value_modifier = {
+				ai_rationality = 0.25
+			}
+		}
+	}
+
+}

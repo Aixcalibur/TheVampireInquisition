@@ -1,6 +1,6 @@
 ﻿vi_princedom = {
 	type = title
-	tier = duchy
+	tier = county
 	governments = {
 		vi_vampire_government
 	}
@@ -24,7 +24,7 @@ vi_high_princedom = {
 
 vi_streets = {
 	type = title
-	tier = duchy
+	tier = county
 	governments = {
 		vi_vampire_government
 	}
@@ -38,7 +38,7 @@ vi_streets = {
 vi_lord = {
 	type = character
 	gender = male
-	tier = duchy
+	#tier = county
 	special = holder
 	#special = domicile
 	#domicile_type = vi_lair
@@ -57,7 +57,7 @@ vi_lord = {
 vi_lady = {
 	type = character
 	gender = female
-	tier = duchy
+	#tier = duchy
 	special = holder
 	#special = domicile
 	#domicile_type = vi_lair

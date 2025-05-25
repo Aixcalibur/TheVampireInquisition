@@ -83,7 +83,8 @@ vi_vampire_game_start_ancient_regime = {
 				every_vassal = {
 					limit = {
 						vi_is_vampire_trigger = yes
-						highest_held_title_tier = tier_duchy
+						is_landed = no
+						#highest_held_title_tier = tier_county
 					}
 					trigger_event = {
 						on_action = vi_vampire_game_start_vampire_ruler
@@ -114,6 +115,32 @@ vi_vampire_game_start_ancient_regime = {
 
 vi_vampire_game_start_vampire_ruler = {
 	effect = {
+		if = {
+			limit = {
+				is_landed = no
+				NOT = {
+					any_held_title = {
+						is_nomad_title = yes
+					}
+				}
+			}
+
+			save_scope_as = vi_ruler
+			vi_create_domicile_title_effect = yes
+
+			every_held_title = {
+				limit = {
+					is_nomad_title = no
+					tier = tier_county
+				}
+				scope:vi_ruler = {
+					destroy_title = prev
+				}
+			}
+		}
+
+		vi_delete_yurt_buildings_effect = yes
+
 		add_short_term_gold = {
 			value = age
 			multiply = 0.5
@@ -126,7 +153,7 @@ vi_vampire_game_start_vampire_ruler = {
 		}
 
 		vi_build_upgrade_effect = {
-			BUILDING = vi_estate
+			BUILDING = vi_estate_main
 		}
 		vi_build_upgrade_effect = {
 			BUILDING = vi_market
@@ -134,6 +161,8 @@ vi_vampire_game_start_vampire_ruler = {
 
 		vi_build_upgrade_random_effect = yes
 		vi_build_upgrade_random_effect = yes
+
+		vi_add_spawn_variables_effect = yes
 
 		every_courtier = {
 			limit = {

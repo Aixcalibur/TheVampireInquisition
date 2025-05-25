@@ -155,6 +155,8 @@ vi_inquisitor = {
 		}
 	}
 
+	same_opinion = 15
+
 	compatibility = {
 		zealous = @pos_compat_low
 		vi_vampire_1 = @neg_compat_medium

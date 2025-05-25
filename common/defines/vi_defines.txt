@@ -1,0 +1,3 @@
+﻿NSkills = {
+	MAX_PROWESS = 500		# Maximum possible prowess skill points per character
+}

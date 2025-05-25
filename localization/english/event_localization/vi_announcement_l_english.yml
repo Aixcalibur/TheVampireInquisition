@@ -1,0 +1,18 @@
+﻿l_english:
+ vi_announcement.0001.t: "Call to Vigilance"
+ vi_announcement.0001.desc: "I prepare messages to my vassals and neighboring rulers, sharing the truth about vampires. I recount the horrors I have witnessed and the evidence I've uncovered, urging them to prepare their defenses against this insidious threat. These are no mere legends but a dire and imminent danger. \n\nTo my vassals, I emphasize their duty to safeguard their people, while to neighboring rulers, I offer unity in the face of this shared enemy. Though these warnings may spark fear and unrest, I cannot remain silent."
+ vi_announcement.0001.a: "The world must know!"
+ vi_announcement.0001.b: "Perhaps I should reconsider..."
+ vi_announcement.0001.tt_independent: "A message is delivered to vassals and neighboring rulers who may heed or discredit the warning."
+ vi_announcement.0001.tt_vassal: "A message is delivered to your liege, vassals, and fellow vassals who may heed or discredit the warning."
+
+ vi_announcement.0002.t: "A Dark Warning"
+ vi_announcement.0002.desc: "A messenger arrives at court, bearing a sealed letter from [sender.GetShortUIName]. The message is filled with alarming claims about vampires, that live among the living and feast on their blood. The sender urges immediate vigilance, warning that these hidden predators pose a grave threat to all. \n\nThe court erupts with whispers of disbelief, fear, and skepticism as I deliberate how to respond."
+ vi_announcement.0002.msg: "Warning Rebuffed"
+ vi_announcement.0002.a: "We must prepare ourselves immediately!"
+ vi_every_subrealm_county: "Every county in your realm"
+ vi_announcement.0002.b: "Madness. I will warn the people against such absurd rumors."
+ vi_announcement.0002.c: "We should see how other rulers respond..."
+
+ vi_panic_modifier: "Mass Panic"
+ vi_panic_modifier_desc: "This county has descended into panic, jumping at shadows, as rumors of vampires spreads among the populace."

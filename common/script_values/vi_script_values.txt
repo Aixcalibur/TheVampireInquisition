@@ -1,4 +1,4 @@
-﻿vi_mod_latest_version = 41125
+﻿vi_mod_latest_version = 50524
 
 vi_arrogance_value = {
 	value = 0

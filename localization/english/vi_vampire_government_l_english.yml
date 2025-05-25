@@ -2,6 +2,11 @@
  vi_princedom: "Princedom"
  vi_high_princedom: "High Princedom"
 
+ vi_nomad_title_name: "the [vi_title_county.GetNameNoTierNoTooltip] Princedom"
+ vi_nomad_title_name_ads: "[vi_title_county.GetNameNoTierNoTooltip]"
+ #vi_nomad_title_article: ""
+ #vi_nomad_title_name_only_holder_scope: "The [CHARACTER.GetHouse.GetNameNoTooltip] Nomadic Camp"
+
  vi_lady: "Lady"
  vi_lord: "Lord"
  vi_lady_esclarmonde: "Lady"

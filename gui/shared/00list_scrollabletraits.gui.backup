@@ -194,7 +194,7 @@
                 dynamicgridbox = {
                     name = "traits_big"
                     datamodel = "[TraitArrays.GetTraits]"
-                    visible = "[LessThanOrEqualTo_int32(GetDataModelSize(TraitArrays.GetTraits), '(int32)5')]" ### URF
+                    visible = "[LessThanOrEqualTo_int32(GetDataModelSize(TraitArrays.GetTraits), '(int32)4')]" ### URF
                     flipdirection = yes
                     addcolumn = 39
                     addrow = 40
@@ -214,7 +214,7 @@
                 dynamicgridbox = {
                     name = "traits_medium"
                     datamodel = "[TraitArrays.GetTraits]"
-                    visible = "[And(GreaterThan_int32(GetDataModelSize(TraitArrays.GetTraits), '(int32)5'), LessThanOrEqualTo_int32(GetDataModelSize(TraitArrays.GetTraits), '(int32)7'))]" ### URF
+                    visible = "[And(GreaterThan_int32(GetDataModelSize(TraitArrays.GetTraits), '(int32)4'), LessThanOrEqualTo_int32(GetDataModelSize(TraitArrays.GetTraits), '(int32)7'))]" ### URF
                     flipdirection = yes
                     addcolumn = 35
                     addrow = 35

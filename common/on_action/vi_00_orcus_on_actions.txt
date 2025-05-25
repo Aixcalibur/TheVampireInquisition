@@ -1,184 +1,184 @@
-﻿yearly_global_pulse = {
-	on_actions = {
-		delay = {
-			days = { 10 90 }
-		}
-		vi_orcus_yearly_on_action
-	}
-}
+﻿# yearly_global_pulse = {
+# 	on_actions = {
+# 		delay = {
+# 			days = { 10 90 }
+# 		}
+# 		vi_orcus_yearly_on_action
+# 	}
+# }
 
-five_year_everyone_pulse = {
-	on_actions = {
-		vi_orcus_target_on_action
-	}
-}
+# five_year_everyone_pulse = {
+# 	on_actions = {
+# 		vi_orcus_target_on_action
+# 	}
+# }
 
-vi_orcus_target_on_action = {
-	trigger = {
-		NOT = {
-			exists = global_var:vi_orcus_banished
-		}
-		NOR = {
-			has_character_modifier = vi_orcus_modifier
-			has_character_modifier = vi_orcus_blood_modifier
-		}
-		OR = {
-			is_any_elf_type = yes
-			age >= 200
-		}
-		vi_is_vampire_trigger = no
-		NOT = {
-			has_trait = vi_dhampir
-		}
-	}
+# vi_orcus_target_on_action = {
+# 	trigger = {
+# 		NOT = {
+# 			exists = global_var:vi_orcus_banished
+# 		}
+# 		NOR = {
+# 			has_character_modifier = vi_orcus_modifier
+# 			has_character_modifier = vi_orcus_blood_modifier
+# 		}
+# 		OR = {
+# 			is_any_elf_type = yes
+# 			age >= 200
+# 		}
+# 		vi_is_vampire_trigger = no
+# 		NOT = {
+# 			has_trait = vi_dhampir
+# 		}
+# 	}
 
-	effect = {
-		if = {
-			limit = {
-				NOR = {
-					is_target_in_global_variable_list = {
-						name = vi_orcus_targets
-						target = root
-					}
-					is_target_in_global_variable_list = {
-						name = vi_orcus_victims
-						target = root
-					}
-				}
-			}
-			save_scope_as = target
-			add_to_global_variable_list = {
-				name = vi_orcus_targets
-				target = scope:target
-			}
-		}
-	}
-}
+# 	effect = {
+# 		if = {
+# 			limit = {
+# 				NOR = {
+# 					is_target_in_global_variable_list = {
+# 						name = vi_orcus_targets
+# 						target = root
+# 					}
+# 					is_target_in_global_variable_list = {
+# 						name = vi_orcus_victims
+# 						target = root
+# 					}
+# 				}
+# 			}
+# 			save_scope_as = target
+# 			add_to_global_variable_list = {
+# 				name = vi_orcus_targets
+# 				target = scope:target
+# 			}
+# 		}
+# 	}
+# }
 
-vi_orcus_yearly_on_action = {
-	trigger = {
-		NOT = {
-			exists = global_var:vi_orcus_banished
-		}
-		any_in_global_list = {
-			variable = vi_orcus_targets
-			is_alive = yes
-			is_ai = yes
-		}
-	}
-	effect = {
-		if = {
-			limit = {
-				exists = character:vi_orcus
-				character:vi_orcus = {
-					is_alive = yes
-				}
-			}
-			character:vi_orcus = {
-				vi_orcus_target_effect = yes
-			}
-		}
-		else_if = {
-			limit = {
-				exists = global_var:vi_orcus_global
-				global_var:vi_orcus_global = {
-					is_alive = yes
-				}
-			}
-			global_var:vi_orcus_global = {
-				vi_orcus_target_effect = yes
-			}
-		}
-		else_if = {
-			limit = {
-				any_in_global_list = {
-					variable = vi_orcus_victims
-					is_alive = yes
-					is_ai = yes
-				}
-			}
-			random_in_global_list = {
-				variable = vi_orcus_victims
-				limit = {
-					is_ai = yes
-				}
-				weight = {
-					base = 1
-					modifier = {
-						is_ruler = yes
-						add = 10
-					}
-				}
+# vi_orcus_yearly_on_action = {
+# 	trigger = {
+# 		NOT = {
+# 			exists = global_var:vi_orcus_banished
+# 		}
+# 		any_in_global_list = {
+# 			variable = vi_orcus_targets
+# 			is_alive = yes
+# 			is_ai = yes
+# 		}
+# 	}
+# 	effect = {
+# 		if = {
+# 			limit = {
+# 				exists = character:vi_orcus
+# 				character:vi_orcus = {
+# 					is_alive = yes
+# 				}
+# 			}
+# 			character:vi_orcus = {
+# 				vi_orcus_target_effect = yes
+# 			}
+# 		}
+# 		else_if = {
+# 			limit = {
+# 				exists = global_var:vi_orcus_global
+# 				global_var:vi_orcus_global = {
+# 					is_alive = yes
+# 				}
+# 			}
+# 			global_var:vi_orcus_global = {
+# 				vi_orcus_target_effect = yes
+# 			}
+# 		}
+# 		else_if = {
+# 			limit = {
+# 				any_in_global_list = {
+# 					variable = vi_orcus_victims
+# 					is_alive = yes
+# 					is_ai = yes
+# 				}
+# 			}
+# 			random_in_global_list = {
+# 				variable = vi_orcus_victims
+# 				limit = {
+# 					is_ai = yes
+# 				}
+# 				weight = {
+# 					base = 1
+# 					modifier = {
+# 						is_ruler = yes
+# 						add = 10
+# 					}
+# 				}
 
-				vi_orcus_after_effect = yes
-				vi_orcus_target_effect = yes
-			}
-		}
-		# else = {
-		# 	random_in_global_list = {
-		# 		variable = vi_orcus_targets
-		# 		limit = {
-		# 			is_ai = yes
-		# 		}
-		# 		weight = {
-		# 			base = 1
-		# 			modifier = {
-		# 				is_ruler = yes
-		# 				add = 10
-		# 			}
-		# 		}
+# 				vi_orcus_after_effect = yes
+# 				vi_orcus_target_effect = yes
+# 			}
+# 		}
+# 		# else = {
+# 		# 	random_in_global_list = {
+# 		# 		variable = vi_orcus_targets
+# 		# 		limit = {
+# 		# 			is_ai = yes
+# 		# 		}
+# 		# 		weight = {
+# 		# 			base = 1
+# 		# 			modifier = {
+# 		# 				is_ruler = yes
+# 		# 				add = 10
+# 		# 			}
+# 		# 		}
 
-		# 		create_character = {
-		# 			template = knight_errant_character
-		# 			dynasty = none
-		# 			location = location
-		# 			culture = location.culture
-		# 			faith = location.faith
-		# 			save_scope_as = vi_orcus
-		# 		}
+# 		# 		create_character = {
+# 		# 			template = knight_errant_character
+# 		# 			dynasty = none
+# 		# 			location = location
+# 		# 			culture = location.culture
+# 		# 			faith = location.faith
+# 		# 			save_scope_as = vi_orcus
+# 		# 		}
 
-		# 		scope:vi_orcus = {
-		# 			vi_orcus_after_effect = yes
-		# 			vi_orcus_target_effect = yes
-		# 		}
-		# 	}
-		# }
-	}
-}
+# 		# 		scope:vi_orcus = {
+# 		# 			vi_orcus_after_effect = yes
+# 		# 			vi_orcus_target_effect = yes
+# 		# 		}
+# 		# 	}
+# 		# }
+# 	}
+# }
 
-seduce_success = {
-	on_actions = {
-		vi_orcus_seduce_success
-	}
-}
+# seduce_success = {
+# 	on_actions = {
+# 		vi_orcus_seduce_success
+# 	}
+# }
 
-vi_orcus_seduce_success = {
-	trigger = {
-		has_character_modifier = vi_orcus_modifier
-		exists = scope:target
-		scope:target = {
-			is_ai = yes
-		}
-		scope:target = {
-			age >= 18
-		}
-	}
+# vi_orcus_seduce_success = {
+# 	trigger = {
+# 		has_character_modifier = vi_orcus_modifier
+# 		exists = scope:target
+# 		scope:target = {
+# 			is_ai = yes
+# 		}
+# 		scope:target = {
+# 			age >= 18
+# 		}
+# 	}
 
-	effect = {
-		save_scope_as = orcus
+# 	effect = {
+# 		save_scope_as = orcus
 
-		scope:target = {
-			create_character_memory = {
-				type = vi_orcus_seduction
-				participants = {
-					orcus = scope:orcus
-				}
-			}
-			vi_orcus_curse_effect = yes
-			had_sex_with_effect = {
-				CHARACTER = scope:orcus
-				PREGNANCY_CHANCE = 100
-			}
-		}
-	}
-}
+# 		scope:target = {
+# 			create_character_memory = {
+# 				type = vi_orcus_seduction
+# 				participants = {
+# 					orcus = scope:orcus
+# 				}
+# 			}
+# 			vi_orcus_curse_effect = yes
+# 			had_sex_with_effect = {
+# 				CHARACTER = scope:orcus
+# 				PREGNANCY_CHANCE = 100
+# 			}
+# 		}
+# 	}
+# }

@@ -64,6 +64,36 @@
 	}
 }
 
+vi_clear_name_decision = {
+	decision_group_type = major
+	desc = vi_clear_name_decision_desc
+
+	ai_check_interval = 48
+
+	is_shown = {
+		has_trait = vi_exposed_vampire
+		NOT = {
+			any_scheme = {
+				scheme_type = vi_clear_name_scheme
+			}
+		}
+	}
+
+	cost = {
+		prestige = medium_prestige_value
+	}
+
+	effect = {
+		custom_tooltip = vi_clear_name_decision_effect_tt
+		trigger_event = vi_clear_name.0001
+	}
+
+	ai_will_do = {
+		base = 100
+		
+	}
+}
+
 vi_fake_death_decision = {
 	picture = {
 		reference = "gfx/interface/illustrations/decisions/ep3_decision_laamp_neutral_mountain.dds"
@@ -447,6 +477,8 @@ vi_become_landless_adventurer_decision = {
 		NOT = {
 			is_landless_adventurer = yes
 		}
+
+		
 	}
 
 	is_valid = {

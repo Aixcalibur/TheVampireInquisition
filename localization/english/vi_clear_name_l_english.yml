@@ -1,0 +1,31 @@
+﻿l_english:
+ vi_clear_name_decision: "Clear Name"
+ vi_clear_name_decision_desc: "I must quash these horrible rumors about my good name."
+ vi_clear_name_decision_tooltip: "I will clear my name"
+ vi_clear_name_decision_confirm: "Restore my reputation!"
+ vi_clear_name_decision_effect_tt: "You will begin a [scheme|e] to clear your name. This will remove the [GetTrait('vi_exposed_vampire').GetName(GetNullCharacter)] trait."
+
+ vi_clear_name_scheme: "Clear Name"
+ vi_clear_name_scheme_desc: "I seek to clear my name of suspicions of vampirism."
+ vi_clear_name_scheme_desc_general: "Becoming suspected of vampirism is not the end yet, it is still possible to clear one's name."
+
+ vi_clear_name_scheme_SUCCESS_DESC: "You will clear suspicions of your monstrous nature... for now."
+ vi_clear_name_scheme_action: "Clear the Name of"
+
+ VI_VAMPIRE_EXPOSURE: "Level of Suspicion: $VALUE|+0=$" 
+ VI_MY_LEGITIMACY: "[legitimacy|E]: $VALUE|+0=$"
+
+ vi_clear_name.0001.t: "Suspicions"
+ vi_clear_name.0001.desc: "Whispers spread across the land, smearing my good name. Every day the rumors grow, no doubt the people will soon believe I am a devil in human skin who feasts on the young for breakfast and fair maidens for brunch."
+ vi_clear_name.0001.a: "It's time to focus on clearing my name."
+ vi_clear_name.0001.b: "No, I am above what others think."
+
+ vi_clear_name.1002.t: "A Cleared Name"
+ vi_clear_name.1002.desc: "My efforts have born fruit. The people's suspicions have been laid to rest."
+
+ vi_clear_name.1002.a: "My reputation is restored for now..."
+
+ vi_clear_name.1003.t: "Failure"
+ vi_clear_name.1003.desc: "The people remain unconvinced. In fact, they are now even more suspicious than ever."
+
+ vi_clear_name.1003.a: "The world believes me to be a vampire!"
