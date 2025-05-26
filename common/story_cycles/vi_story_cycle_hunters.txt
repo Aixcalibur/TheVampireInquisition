@@ -1,0 +1,171 @@
+﻿story_vi_hunters = {
+	
+	on_setup = {
+		story_owner = {
+			
+		}
+	}
+	
+	on_end = {
+		debug_log_scopes = no
+		debug_log = "Vampire Hunters story ended on:"
+		debug_log_date = yes
+	}
+	
+	on_owner_death = {
+		make_story_owner = story_owner.primary_heir
+	}
+
+	effect_group = {
+		days = 300
+		trigger = {
+			story_owner = {
+				vi_is_vampire_trigger = no
+			}
+		}
+
+		triggered_effect = {
+			trigger = { always = yes }
+			effect = {
+				end_story = yes
+			}
+		}
+	}
+
+	effect_group = {
+		days = { 300 3000 }
+
+		trigger = {
+			story_owner = {
+				vi_is_vampire_trigger = yes
+				OR = {
+					NOT = {
+						has_trait = vi_exposed_vampire
+					}
+					has_trait_xp = {
+						trait = vi_exposed_vampire
+						value <= 50
+					}
+				}
+			}
+		}
+
+		triggered_effect = {
+			trigger = { always = yes }
+			effect = {
+				story_owner = {
+					random_list = {
+						20 = {
+							vi_generate_hunter_for_vampire_effect = yes
+						}
+						40 = {
+							random_vassal = {
+								limit = {
+									vi_is_vampire_trigger = yes
+								}
+								vi_generate_hunter_for_vampire_effect = yes
+							}
+						}
+					}
+					
+				}
+			}
+		}
+	}
+
+	effect_group = { #We make AI kill their targets
+		days = { 100 300 }
+		trigger = {
+			story_owner = {
+				is_ai = yes
+				NOT = {
+					any_scheme = {
+						is_scheme_category = hostile
+					}
+				}
+			}
+		}
+
+		first_valid = {
+			triggered_effect = {
+				trigger = {
+					story_owner = {
+						any_relation = {
+							type = vi_ai_enemy
+							reverse_opinion = {
+								target = story_owner
+								value < 0
+							}
+						}
+					}
+				}
+				effect = {
+					story_owner = {
+						random_relation = {
+							type = vi_ai_enemy
+							limit = {
+								reverse_opinion = {
+									target = story_owner
+									value < 0
+								}
+							}
+							save_scope_as = vi_new_target
+						}
+						if = {
+							limit = {
+								prowess <= scope:vi_new_target.prowess
+							}
+
+							start_scheme = {
+								type = murder
+								target_character = scope:vi_new_target
+							}
+						}
+						else = {
+							start_scheme = {
+								type = vi_hunt
+								target_character = scope:vi_new_target
+							}
+						}
+					}
+				}
+			}
+
+			triggered_effect = {
+				trigger = { always = yes }
+				effect = {
+					random_in_global_list = {
+						variable = vi_wandering_hunters
+						limit = {
+							is_alive = yes
+							reverse_opinion = {
+								target = story_owner
+								value < 0
+							}
+							in_diplomatic_range = story_owner
+						}
+						save_scope_as = vi_new_target
+					}
+					story_owner = {
+						if = {
+							limit = {
+								prowess <= scope:vi_new_target.prowess
+							}
+
+							start_scheme = {
+								type = murder
+								target_character = scope:vi_new_target
+							}
+						}
+						else = {
+							start_scheme = {
+								type = vi_hunt
+								target_character = scope:vi_new_target
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

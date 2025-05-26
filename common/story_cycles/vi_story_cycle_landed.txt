@@ -46,7 +46,7 @@
 				limit = {
 					is_landed = yes
 					NOT = {
-						has_story_of_type = story_vi_landed
+						owns_story_of_type = story_vi_landed
 					}
 					vi_is_vampire_trigger = yes
 				}

@@ -1,0 +1,6 @@
+﻿l_english:
+
+ vi_vampire_hunter_appears.t: "A Vampire Hunter Appears"
+ vi_vampire_hunter_appears.desc: "Yet another mortal has taken it upon themselves to hunt down the creatures of the night."
+ grudge_vi_hunter_1: "[CHARACTER.GetShortUIName|U] developed a hateful grudge against [TARGET_CHARACTER.GetShortUIName] for being too good at [TARGET_CHARACTER.GetHerHis] job."
+ grudge_vi_hunter_1_corresponding: "[TARGET_CHARACTER.GetShortUIName|U] developed a hateful grudge against [CHARACTER.GetShortUIName] for being too good at [CHARACTER.GetHerHis] job."

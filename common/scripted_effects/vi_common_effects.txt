@@ -228,7 +228,7 @@ vi_turn_into_vampire_effect = {
 				limit = {
 					is_landed = yes
 					NOT = {
-						has_story_of_type = story_vi_landed
+						owns_story_of_type = story_vi_landed
 					}
 				}
 				create_story = story_vi_landed
@@ -609,6 +609,7 @@ vi_consider_excommunicated_list = {
 	if = {
 		limit = {
 			faith = faith:vi_nightcourt
+			is_ai = yes
 			NOT = {
 				any_scheme = {
 					is_scheme_category = hostile

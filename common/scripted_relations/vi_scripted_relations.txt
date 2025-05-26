@@ -7,18 +7,24 @@
 
 vi_spawn = {
 	title_grant_target = yes
-	hidden = yes
+	#hidden = yes
 	opinion = 5
 	corresponding = vi_sire
 	relation_aliases = { vi_gui_progeny }
 }
 
 vi_gui_sire = {
+	#deprecated for now, used to display spawn in character menu
 	hidden = yes
 	corresponding = vi_gui_progeny
 }
 
 vi_gui_progeny = {
-	#hidden = yes
+	hidden = yes
 	corresponding = vi_gui_sire
+}
+
+vi_ai_enemy = {
+	#used to let the AI designate targets
+	hidden = yes
 }

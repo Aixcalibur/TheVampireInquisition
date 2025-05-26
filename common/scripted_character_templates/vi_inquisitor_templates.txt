@@ -1,0 +1,205 @@
+﻿vi_hunter_martial_template = {
+	age = { 20 50 }
+	faith = root.location.faith
+	culture = root.location.culture
+	
+	gender_female_chance = root_soldier_female_chance
+
+	trait = vi_inquisitor
+
+	#education
+	random_traits_list = {
+		count = 1
+		education_martial_1 = {weight = { base = 5 }}
+		education_martial_2 = {weight = { base = 10 }}
+		education_martial_3 = {weight = { base = 20 }}
+		education_martial_4 = {weight = { base = 10 }}
+	}
+
+	#personality
+	random_traits_list = {
+		count = 2
+		brave = {}
+		just = {}
+		compassionate = {}
+		stubborn = {}
+		vengeful = {}
+		zealous = {}
+		cynical = {}
+	}
+
+	random_traits_list = {
+		count = { 0 1 }
+		intellect_good_1 = {}
+		shrewd = {}
+		strong = {}
+		athletic = {}
+		physique_good_1 = {}
+		physique_good_2 = {}
+		physique_good_3 = {}
+	}
+
+	random_traits_list = {
+		count = { 1 2 }
+		lifestyle_blademaster = {}
+		lifestyle_hunter = {}
+		tourney_participant = {}
+		gallant = {}
+		strategist = {}
+		holy_warrior = {}
+		reckless = {}
+		flexible_leader = {}
+		schemer = {}
+	}
+
+	random_traits = yes
+
+	martial = {
+		min_template_decent_skill
+		max_template_high_skill
+	}
+
+	intrigue = {
+		min_template_decent_skill
+		max_template_decent_skill
+	}
+
+	prowess = {
+		min_template_decent_skill
+		max_template_high_skill
+	}
+
+	after_creation = {
+		vi_template_hunter_after_effect = yes
+	}
+}
+
+vi_hunter_learning_template = {
+	age = { 40 60 }
+	faith = root.location.faith
+	culture = root.location.culture
+	health = 6
+	
+	trait = vi_inquisitor
+
+	random_traits_list = {
+		count = 1
+		education_learning_2 = {weight = { base = 10 }}
+		education_learning_3 = {weight = { base = 20 }}
+		education_learning_4 = {weight = { base = 30 }}
+	}
+
+	random_traits_list = {
+		count = 1
+		brave = {}
+		just = {}
+		compassionate = {}
+		stubborn = {}
+		vengeful = {}
+		zealous = {}
+		cynical = {}
+		honest = {}
+		humble = {}
+	}
+
+	random_traits_list = {
+		count = { 1 3 }
+		intellect_good_1 = {}
+		intellect_good_2 = {}
+		intellect_good_3 = {}
+		physique_good_1 = {}
+		shrewd = {}
+		theologian = {}
+		whole_of_body = {}
+		scholar = {}
+		lifestyle_mystic = {}
+		lifestyle_physician = {}
+		holy_warrior = {}
+		flexible_leader = {}
+		organizer = {}
+		devoted = {}
+	}
+
+	random_traits = yes
+
+	intrigue = {
+		min_template_decent_skill
+		max_template_high_skill
+	}
+
+	learning = {
+		min_template_high_skill
+		max_template_high_skill
+	}
+
+	prowess = {
+		min_template_decent_skill
+		max_template_decent_skill
+	}
+
+	after_creation = {
+		add_trait_xp = {
+			trait = vi_inquisitor
+			value = { 10 20 }
+		}
+		vi_template_hunter_after_effect = yes
+	}
+}
+
+vi_hunter_intrigue_template = {
+	age = { 16 40 }
+	faith = root.location.faith
+	culture = root.location.culture
+	
+	trait = vi_inquisitor
+
+	random_traits_list = {
+		count = 1
+		education_intrigue_2 = {weight = { base = 10 }}
+		education_intrigue_3 = {weight = { base = 20 }}
+		education_intrigue_4 = {weight = { base = 20 }}
+	}
+
+	random_traits_list = {
+		count = 1
+		brave = {}
+		just = {}
+		compassionate = {}
+		stubborn = {}
+		vengeful = {}
+		zealous = {}
+		cynical = {}
+	}
+
+	random_traits_list = {
+		count = { 0 2 }
+		intellect_good_1 = {}
+		intellect_good_2 = {}
+		physique_good_1 = {}
+		beauty_good_1 = {}
+		beauty_good_2 = {}
+		beauty_good_3 = {}
+		shrewd = {}
+		schemer = {}
+		lifestyle_mystic = {}
+		lifestyle_hunter = {}
+		lifestyle_physician = {}
+		flexible_leader = {}
+	}
+
+	random_traits = yes
+
+	intrigue = {
+		min_template_high_skill
+		max_template_high_skill
+	}
+
+	prowess = {
+		min_template_decent_skill
+		max_template_decent_skill
+	}
+
+	after_creation = {
+		vi_template_hunter_after_effect = yes
+	}
+}

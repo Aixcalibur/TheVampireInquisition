@@ -1,6 +1,7 @@
 ﻿yearly_global_pulse = {
 	on_actions = {
 		vi_version_update
+		vi_hunter_yearly_action
 	}
 }
 
@@ -20,6 +21,71 @@ vi_version_update = {
 	}
 }
 
+vi_hunter_yearly_action = {
+	trigger = {
+		any_in_global_list = {
+			variable = vi_wandering_hunters
+			is_alive = yes
+		}
+	}
+
+	effect = {
+		every_in_global_list = {
+			variable = vi_wandering_hunters
+			limit = {
+				is_alive = yes
+			}
+
+			if = {
+				limit = {
+					NOT = {
+						any_scheme = {
+							is_scheme_category = hostile
+						}
+					}
+					any_relation = {
+						type = vi_ai_target
+						in_diplomatic_range = prev
+						reverse_opinion = {
+							target = prev
+							value < 0
+						}
+					}
+				}
+				random_relation = {
+					limit = {
+						in_diplomatic_range = prev
+						reverse_opinion = {
+							target = prev
+							value < 0
+						}
+						vi_is_vampire_trigger = yes
+					}
+					save_scope_as = vi_hunter_target
+				}
+			
+				start_scheme = {
+					type = murder
+					target = scope:vi_hunter_target
+				}
+			}
+
+			if = {
+				limit = {
+					is_available_ai_adult = yes
+					is_ruler = no
+					has_trait_xp = {
+						trait = vi_inquisitor
+						value >= 40
+					}
+				}
+
+				vi_ai_hunter_become_adventurer_effect = yes
+			}
+		}
+	}
+}
+
 yearly_playable_pulse = {
 	on_actions = {
 		vi_vampire_playable_pulse
@@ -29,6 +95,7 @@ yearly_playable_pulse = {
 
 five_year_everyone_pulse = {
 	on_actions = {
+		vi_ai_hunter_level_up
 		vi_vampire_sire_fix
 		vi_vampire_maintenance_pulse
 	}
@@ -42,6 +109,39 @@ vi_vampire_playable_pulse = {
 	on_actions = {
 		vi_vampire_landed_tracking
 		vi_vampire_policy_pulse
+		vi_hunter_story_creation
+	}
+}
+
+vi_ai_hunter_level_up = {
+	trigger = {
+		has_trait = vi_inquisitor
+		is_healthy = yes
+		is_ai = yes
+	}
+	effect = {
+		add_trait_xp = {
+			trait = vi_inquisitor
+			value = { 5 20 }
+		}
+	}
+}
+
+vi_hunter_story_creation = {
+	trigger = {
+		OR = {
+			is_independent_ruler = yes
+			is_landed = yes
+			is_ai = no
+		}
+		
+		NOT = {
+			owns_story_of_type = story_vi_hunters
+		}
+	}
+
+	effect = {
+		create_story = story_vi_hunters
 	}
 }
 
@@ -86,11 +186,6 @@ vi_vampire_policy_pulse = {
 		is_landless_ruler = yes
 		NOT = {
 			has_character_flag = vi_vampire_policy_decided
-		}
-		any_held_title = {
-			NOT = {
-				has_title_law = noble_family_succession_law
-			}
 		}
 	}
 

@@ -65,11 +65,14 @@ vi_inquisitor = {
 			intrigue = 1
 			#learning = 1
 			prowess = 1
+			ai_boldness = 20
 		}
 		50 = {
 			intrigue = 1
 			learning = 1
 			prowess = 2
+			same_opinion = 15
+			ai_rationality = 20
 		}
 		75 = {
 			intrigue = 1
@@ -80,6 +83,10 @@ vi_inquisitor = {
 			intrigue = 1
 			learning = 1
 			prowess = 2
+			same_opinion = 20
+			rf_abrahamic_opinion = 10
+			ai_rationality = 20
+			ai_boldness = 20
 		}
 	}
 

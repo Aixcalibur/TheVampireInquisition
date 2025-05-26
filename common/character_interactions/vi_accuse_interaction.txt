@@ -21,6 +21,9 @@
 	}
 
 	is_shown = {
+		scope:recipient = {
+			age >= 16
+		}
 		OR = {
 			AND = {
 				scope:recipient = {
@@ -225,7 +228,7 @@
 		scope:recipient = {
 			add_opinion = {
 				modifier = accused_crime_opinion
-				target = root
+				target = scope:actor
 				opinion = -60
 			}
 			if = {
@@ -262,57 +265,57 @@
 						modifier = {subtract = scope:actor.diplomacy}
 
 						modifier = {
-							if = {
-								limit = {
-									has_legitimacy = yes
-									
-								}
+							add = {
+								value = 0
 								if = {
 									limit = {
-										legitimacy_level >= 5
+										has_legitimacy = yes
+										
 									}
-									add = 120
-								}
-								else_if = {
-									limit = {
-										legitimacy_level >= 4
+									if = {
+										limit = {
+											legitimacy_level >= 5
+										}
+										add = 120
 									}
-									add = 60
-								}
-								else_if = {
-									limit = {
-										legitimacy_level >= 3
+									else_if = {
+										limit = {
+											legitimacy_level >= 4
+										}
+										add = 60
 									}
-									add = 40
+									else_if = {
+										limit = {
+											legitimacy_level >= 3
+										}
+										add = 40
+									}
 								}
 							}
 						}
 
 						modifier = {
-							if = {
-								limit = {
-									any_secret = {
-										secret_type = secret_vi_vampire
-										is_known_by = scope:actor
-									}
-								}
-								add = -50
+							any_secret = {
+								secret_type = secret_vi_vampire
+								is_known_by = scope:actor
 							}
+							add = -50
+						}
+
+						modifier = {
+							vi_is_vampire_trigger = no
+							add = 20
 						}
 					}
 
 					20 = {
 						add_trait = vi_exposed_vampire
 						modifier = {
-							if = {
-								limit = {
-									any_secret = {
-										secret_type = secret_vi_vampire
-										is_known_by = scope:actor
-									}
-								}
-								add = 20
+							any_secret = {
+								secret_type = secret_vi_vampire
+								is_known_by = scope:actor
 							}
+							add = 20
 						}
 					}
 
@@ -322,15 +325,16 @@
 						modifier = {subtract = scope:recipient.diplomacy}
 						modifier = {subtract = scope:recipient.intrigue}
 						modifier = {
-							if = {
-								limit = {
-									any_secret = {
-										secret_type = secret_vi_vampire
-										is_known_by = scope:actor
-									}
-								}
-								add = 60
+							any_secret = {
+								secret_type = secret_vi_vampire
+								is_known_by = scope:actor
 							}
+							add = 60
+						}
+
+						modifier = {
+							vi_is_vampire_trigger = no
+							add = -20
 						}
 
 						vi_secret_exposed_vampire_effect = yes
@@ -349,7 +353,7 @@
 								
 								add_legitimacy = {
 									value = base_legitimacy_value
-									multiply = -1
+									multiply = -0.1
 									multiply = scope:actor.legitimacy_level
 								}
 							}

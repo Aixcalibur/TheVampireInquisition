@@ -1,0 +1,227 @@
+﻿vi_generate_hunter_for_vampire_effect = {
+	save_scope_as = le_me
+	random_list = {
+		30 = {
+			create_character = {
+				location = scope:le_me.location
+				faith = scope:le_me.location.faith
+				culture = scope:le_me.location.culture
+				template = vi_hunter_martial_template
+				save_scope_as = vi_new_hunter
+			}
+		}
+
+		30 = {
+			create_character = {
+				location = scope:le_me.location
+				faith = scope:le_me.location.faith
+				culture = scope:le_me.location.culture
+				template = vi_hunter_learning_template
+				save_scope_as = vi_new_hunter
+			}
+		}
+
+		30 = {
+			create_character = {
+				location = scope:le_me.location
+				faith = scope:le_me.location.faith
+				culture = scope:le_me.location.culture
+				template = vi_hunter_intrigue_template
+				save_scope_as = vi_new_hunter
+			}
+		}
+	}
+
+	
+
+	set_relation_potential_rival = scope:vi_new_hunter
+	set_relation_vi_ai_enemy = scope:vi_new_hunter
+
+	scope:vi_new_hunter = {
+		set_relation_vi_ai_enemy = scope:le_me
+	}
+
+	send_interface_message = {
+		type = send_interface_message_bad 
+		title = vi_vampire_hunter_appears.t
+		desc = vi_vampire_hunter_appears.desc
+		right_icon = scope:vi_new_hunter # optional, character, artifact, or title
+		scope:vi_new_hunter = {
+			add_opinion = {
+				modifier = hate_opinion
+				target = scope:le_me
+				opinion = -200
+			}
+			random_list = {
+				50 = {
+					set_relation_grudge = {
+						target = scope:le_me
+						reason = rival_murderer
+					}
+				}
+				30 = {
+					set_relation_grudge = {
+						target = scope:le_me
+						reason = rival_murdered_parent
+					}
+				}
+			}
+		}
+		
+	}
+	
+	add_to_global_variable_list = {
+		name = vi_wandering_hunters
+		target = scope:vi_new_hunter
+	}
+}
+
+vi_ai_hunter_become_adventurer_effect = {
+	save_scope_as = vi_new_hunter_adventurer
+	
+	create_landless_adventurer_title_effect = {
+		REASON = flag:voluntary
+		FLAVOR_CHAR = scope:vi_new_hunter_adventurer
+	}
+
+	add_gold = 500
+
+	every_player = {
+		limit = {
+			vi_is_vampire_trigger = yes
+			in_diplomatic_range = scope:vi_new_hunter_adventurer
+		}
+		send_interface_message = {
+			type = send_interface_message_bad 
+			title = vi_vampire_hunter_appears.t
+			desc = vi_vampire_hunter_appears.desc
+			right_icon = scope:vi_new_hunter_adventurer # optional, character, artifact, or title
+			scope:vi_new_hunter_adventurer = {
+				add_opinion = {
+					modifier = hate_opinion
+					target = prev
+					opinion = -50
+				}
+			}
+		}
+	}
+
+	vi_generate_hunter_for_hunter_effect = yes
+	vi_generate_hunter_for_hunter_effect = yes
+	vi_generate_hunter_for_hunter_effect = yes
+	vi_generate_hunter_for_hunter_effect = yes
+	vi_generate_hunter_for_hunter_effect = yes
+}
+
+vi_generate_hunter_for_hunter_effect = {
+	save_scope_as = vi_hunter_employer
+	random_list = {
+		30 = {
+			create_character = {
+				employer = scope:vi_hunter_employer
+				template = vi_hunter_martial_template
+				save_scope_as = vi_new_hunter
+			}
+		}
+
+		30 = {
+			create_character = {
+				employer = scope:vi_hunter_employer
+				template = vi_hunter_learning_template
+				save_scope_as = vi_new_hunter
+			}
+		}
+
+		30 = {
+			create_character = {
+				employer = scope:vi_hunter_employer
+				template = vi_hunter_intrigue_template
+				save_scope_as = vi_new_hunter
+			}
+		}
+	}
+	reverse_add_opinion = {
+		target = scope:vi_new_hunter
+		modifier = respect_opinion
+		opinion = 50
+	}
+}
+
+vi_template_hunter_after_effect = {
+
+	if = {
+		limit = {
+			has_trait = forgiving
+		}
+		remove_trait = forgiving
+		add_trait = vengeful
+	}
+
+	if = {
+		limit = {
+			has_trait = craven
+		}
+		remove_trait = craven
+		add_trait = brave
+	}
+
+	add_trait_xp = {
+		trait = vi_inquisitor
+		value = {0 20}
+	}
+
+	if = {
+		limit = { has_trait = lifestyle_blademaster }
+		add_trait_xp = {
+			trait = lifestyle_blademaster
+			value = {
+				integer_range = {
+					min = small_lifestyle_random_xp_low
+					max = small_lifestyle_random_xp_high
+				}
+			}
+		}
+	}
+	if = {
+		limit = { has_trait = lifestyle_hunter }
+		add_trait_xp = {
+			trait = lifestyle_hunter
+			track = hunter
+			value = {
+				integer_range = {
+					min = small_lifestyle_random_xp_low
+					max = small_lifestyle_random_xp_high
+				}
+			}
+		}
+	}
+	add_random_tourney_participant_level_effect = yes
+	if = {
+		limit = {
+			has_trait = lifestyle_mystic
+		}
+		add_trait_xp = {
+			trait = lifestyle_mystic
+			value = {
+				integer_range = {
+					min = small_lifestyle_random_xp_low
+					max = small_lifestyle_random_xp_high
+				}
+			}
+		}
+	}
+	if = {
+		limit = {
+			has_trait = lifestyle_physician
+		}
+		add_trait_xp = {
+			trait = lifestyle_physician
+			value = {
+				integer_range = {
+					min = small_lifestyle_random_xp_low
+					max = small_lifestyle_random_xp_high
+				}
+			}
+		}
+	}
+}

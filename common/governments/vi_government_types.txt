@@ -12,7 +12,7 @@
 		state_faith = no
 		use_as_base_on_rank_up = yes
 		use_as_base_on_landed = yes
-		conditional_maa_refill = yes
+		#conditional_maa_refill = yes
 		#allow_out_of_realm_inheritance = no
 		use_as_base_on_landed = yes
 		use_as_base_on_rank_up = yes

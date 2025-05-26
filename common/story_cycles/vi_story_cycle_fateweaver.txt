@@ -283,7 +283,7 @@
 						if = {
 							limit = {
 								NOT = {
-									has_story_of_type = story_conqueror
+									owns_story_of_type = story_conqueror
 								}
 							}
 							create_story = story_conqueror
