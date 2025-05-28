@@ -32,8 +32,6 @@
 		}
 	}
 
-	
-
 	set_relation_potential_rival = scope:vi_new_hunter
 	set_relation_vi_ai_enemy = scope:vi_new_hunter
 

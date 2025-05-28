@@ -81,9 +81,6 @@ vi_drain_prisoner_interaction = {
 			always = yes
 		}
 		is_valid = {
-			NOT = {
-				always = scope:turn
-			}
 			scope:recipient = {
 				NOR = {
 					has_trait = vi_dhampir

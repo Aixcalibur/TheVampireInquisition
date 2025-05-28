@@ -67,6 +67,7 @@ vi_remove_nonvampire_traits_effect = {
 	remove_trait = drunkard
 	remove_trait = hashishiyah
 	remove_trait = rakish
+	remove_trait = vi_inquisitor
 }
 
 vi_recenter_domicile_effect = {
