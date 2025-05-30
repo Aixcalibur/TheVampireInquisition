@@ -1,5 +1,8 @@
 ﻿vi_hostility_group = {
 	group = "not_creatable"
+	is_available_on_create = {
+		religion_tag = vi_vampire_religion
+	}
 	vi_vampiric_hostility_doctrine = {
 		visible = no
 		parameters = {

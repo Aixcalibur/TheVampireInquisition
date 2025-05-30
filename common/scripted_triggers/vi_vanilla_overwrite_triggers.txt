@@ -12,23 +12,15 @@
 # 	has_domicile = yes
 # }
 
-is_playable_character = {
-	OR = {
-		is_landed = yes
-		is_landless_administrative = yes
-		is_landless_adventurer = yes
-		has_government = vi_vampire_government
-		is_ai = no
-	}
-}
 
-is_landed_or_landless_administrative = {
-	OR = {
-		is_landed = yes
-		is_landless_administrative = yes
-		has_government = vi_vampire_government
-	}
-}
+
+# is_landed_or_landless_administrative = {
+# 	OR = {
+# 		is_landed = yes
+# 		is_landless_administrative = yes
+# 		has_government = vi_vampire_government
+# 	}
+# }
 
 
 # realm_law_use_vampire_authority = {

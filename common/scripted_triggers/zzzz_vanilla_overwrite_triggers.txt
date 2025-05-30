@@ -40,6 +40,8 @@ is_playable_character = {
 		is_landless_administrative = yes
 		is_landless_adventurer = yes
 		has_government = vi_vampire_government
+		is_landless_nomad = yes
+		is_ai = no
 	}
 }
 
