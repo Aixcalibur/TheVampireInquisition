@@ -334,7 +334,10 @@ vi_found_princedom_decision = {
 
 	effect = {
 		vi_adventure_create_princedom_effect = yes
-
+		hidden_effect = {
+			vi_create_domicile_title_effect = yes		
+		}
+		
 		# if = {
 		# 	limit = {
 		# 		NOR = {
@@ -406,6 +409,9 @@ vi_lunaris_become_shadow_ruler_decision = {
 		}
 
 		trigger_event = vi_decision.0010
+		hidden_effect = {
+			vi_create_domicile_title_effect = yes		
+		}
 	}
 
 	ai_potential = {

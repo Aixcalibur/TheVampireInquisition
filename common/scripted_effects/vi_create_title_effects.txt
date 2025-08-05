@@ -208,12 +208,16 @@ vi_adventure_create_princedom_effect = {
 	
 	resolve_title_and_vassal_change = scope:change
 
+	vi_create_domicile_title_effect = yes
+
 	every_held_title = {
 		limit = {
 			is_noble_family_title = yes
 		}
 		set_capital_county = scope:vi_title_county
 	}
+
+
 
 	change_government = vi_vampire_government
 
