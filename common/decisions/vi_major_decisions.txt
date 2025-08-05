@@ -334,9 +334,9 @@ vi_found_princedom_decision = {
 
 	effect = {
 		vi_adventure_create_princedom_effect = yes
-		hidden_effect = {
-			vi_create_domicile_title_effect = yes		
-		}
+		# hidden_effect = {
+		# 	vi_create_domicile_title_effect = yes		
+		# }
 		
 		# if = {
 		# 	limit = {
