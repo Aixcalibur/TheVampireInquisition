@@ -1,0 +1,21 @@
+on_birthday = {
+	on_actions = {
+		rvi_track_balance
+	}
+}
+
+rvi_track_balance = {
+	vi_is_vampire_trigger = yes
+	effect = {
+		if = {
+			limit = {
+				rvi_has_positive_perks = yes
+			}
+			trigger_event = rvi_balance.0001
+		if = {
+			limit = {
+				NOT = { rvi_has_positive_perks = yes }
+			}				
+		}
+	}
+}
