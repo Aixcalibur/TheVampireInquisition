@@ -1,7 +1,7 @@
 ﻿start_vi_investigate_interaction = {
 	icon = debug_secret
 	#interface_priority = 100
-	category = interaction_category_admin
+	category = interaction_category_hostile
 
 	send_name = START_SCHEME
 

@@ -1,7 +1,7 @@
 ﻿# start_vi_manipulation_interaction = {
 # 	icon = icon_scheme_political
 # 	interface_priority = 90
-# 	category = interaction_category_admin
+# 	category = interaction_category_hostile
 
 # 	send_name = START_SCHEME
 

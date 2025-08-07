@@ -1,5 +1,5 @@
 ﻿vi_join_house_custom_interaction = {
-	category = interaction_category_admin
+	category = interaction_category_diplomacy
 	icon = designate_favorite
 	desc = vi_join_house_custom_interaction_desc
 
