@@ -1,4 +1,5 @@
 rvi_has_positive_perks = {
+	is_ai = no
 	OR = {
 		AND = {
 			has_trait = shrewd
@@ -199,6 +200,7 @@ rvi_has_positive_perks = {
 	}
 }
 rvi_has_freepoints = {
+	is_ai = no
 	OR = {
 		AND = {
 			OR = {
