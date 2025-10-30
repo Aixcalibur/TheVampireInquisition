@@ -73,99 +73,99 @@
 		}
 	}
 
-	effect_group = { #We make AI kill their targets
-		days = { 100 300 }
-		trigger = {
-			story_owner = {
-				is_ai = yes
-				NOT = {
-					any_scheme = {
-						is_scheme_category = hostile
-					}
-				}
-			}
-		}
+	# effect_group = { #We make AI kill their targets
+	# 	days = { 100 300 }
+	# 	trigger = {
+	# 		story_owner = {
+	# 			is_ai = yes
+	# 			NOT = {
+	# 				any_scheme = {
+	# 					is_scheme_category = hostile
+	# 				}
+	# 			}
+	# 		}
+	# 	}
 
-		first_valid = {
-			triggered_effect = {
-				trigger = {
-					story_owner = {
-						any_relation = {
-							type = vi_ai_enemy
-							reverse_opinion = {
-								target = story_owner
-								value < 0
-							}
-						}
-					}
-				}
-				effect = {
-					story_owner = {
-						random_relation = {
-							type = vi_ai_enemy
-							limit = {
-								reverse_opinion = {
-									target = story_owner
-									value < 0
-								}
-							}
-							save_scope_as = vi_new_target
-						}
-						if = {
-							limit = {
-								prowess <= scope:vi_new_target.prowess
-							}
+	# 	first_valid = {
+	# 		triggered_effect = {
+	# 			trigger = {
+	# 				story_owner = {
+	# 					any_relation = {
+	# 						type = vi_ai_enemy
+	# 						reverse_opinion = {
+	# 							target = story_owner
+	# 							value < 0
+	# 						}
+	# 					}
+	# 				}
+	# 			}
+	# 			effect = {
+	# 				story_owner = {
+	# 					random_relation = {
+	# 						type = vi_ai_enemy
+	# 						limit = {
+	# 							reverse_opinion = {
+	# 								target = story_owner
+	# 								value < 0
+	# 							}
+	# 						}
+	# 						save_scope_as = vi_new_target
+	# 					}
+	# 					if = {
+	# 						limit = {
+	# 							prowess <= scope:vi_new_target.prowess
+	# 						}
 
-							start_scheme = {
-								type = murder
-								target_character = scope:vi_new_target
-							}
-						}
-						else = {
-							start_scheme = {
-								type = vi_hunt
-								target_character = scope:vi_new_target
-							}
-						}
-					}
-				}
-			}
+	# 						start_scheme = {
+	# 							type = murder
+	# 							target_character = scope:vi_new_target
+	# 						}
+	# 					}
+	# 					else = {
+	# 						start_scheme = {
+	# 							type = vi_hunt
+	# 							target_character = scope:vi_new_target
+	# 						}
+	# 					}
+	# 				}
+	# 			}
+	# 		}
 
-			triggered_effect = {
-				trigger = { always = yes }
-				effect = {
-					random_in_global_list = {
-						variable = vi_wandering_hunters
-						limit = {
-							is_alive = yes
-							reverse_opinion = {
-								target = story_owner
-								value < 0
-							}
-							in_diplomatic_range = story_owner
-						}
-						save_scope_as = vi_new_target
-					}
-					story_owner = {
-						if = {
-							limit = {
-								prowess <= scope:vi_new_target.prowess
-							}
+	# 		triggered_effect = {
+	# 			trigger = { always = yes }
+	# 			effect = {
+	# 				random_in_global_list = {
+	# 					variable = vi_wandering_hunters
+	# 					limit = {
+	# 						is_alive = yes
+	# 						reverse_opinion = {
+	# 							target = story_owner
+	# 							value < 0
+	# 						}
+	# 						in_diplomatic_range = story_owner
+	# 					}
+	# 					save_scope_as = vi_new_target
+	# 				}
+	# 				story_owner = {
+	# 					if = {
+	# 						limit = {
+	# 							prowess <= scope:vi_new_target.prowess
+	# 						}
 
-							start_scheme = {
-								type = murder
-								target_character = scope:vi_new_target
-							}
-						}
-						else = {
-							start_scheme = {
-								type = vi_hunt
-								target_character = scope:vi_new_target
-							}
-						}
-					}
-				}
-			}
-		}
-	}
+	# 						start_scheme = {
+	# 							type = murder
+	# 							target_character = scope:vi_new_target
+	# 						}
+	# 					}
+	# 					else = {
+	# 						start_scheme = {
+	# 							type = vi_hunt
+	# 							target_character = scope:vi_new_target
+	# 						}
+	# 					}
+	# 				}
+	# 			}
+	# 		}
+	# 	}
+	# }
 }

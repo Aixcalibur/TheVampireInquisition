@@ -29,7 +29,10 @@ c_vi_cologne = {
 		holder = vi_ambrosius
 		government = vi_vampire_government
 		# succession_laws = { vi_vampire_elective_succession_law }
-		liege = k_vi_court_of_night
+		tributary_of = {
+			suzerain = k_vi_court_of_night
+			contract_group = tributary_subjugated
+		}
 	}
 }
 
@@ -46,7 +49,10 @@ c_vi_orleans = {
 	770.1.1 = {
 		holder = vi_orlok
 		government = vi_vampire_government
-		liege = k_vi_court_of_night
+		tributary_of = {
+			suzerain = k_vi_court_of_night
+			contract_group = tributary_subjugated
+		}
 	}
 }
 
@@ -63,7 +69,10 @@ c_vi_normandy = {
 	800.1.1 = {
 		holder = vi_norman
 		government = vi_vampire_government
-		liege = k_vi_court_of_night
+		tributary_of = {
+			suzerain = k_vi_court_of_night
+			contract_group = tributary_subjugated
+		}
 	}
 }
 
@@ -81,7 +90,10 @@ c_vi_lyon = {
 		holder = vi_lugh
 		government = vi_vampire_government
 		# succession_laws = { vi_vampire_elective_succession_law }
-		liege = k_vi_court_of_night
+		tributary_of = {
+			suzerain = k_vi_court_of_night
+			contract_group = tributary_subjugated
+		}
 	}
 }
 
@@ -99,7 +111,10 @@ c_vi_zurich = {
 		holder = vi_symonne
 		government = vi_vampire_government
 		# succession_laws = { vi_abbey_theocratic_succession_law female_preference_law }
-		liege = k_vi_court_of_night
+		tributary_of = {
+			suzerain = k_vi_court_of_night
+			contract_group = tributary_subjugated
+		}
 	}
 }
 
@@ -108,7 +123,10 @@ c_vi_london = {
 		holder = vi_victor
 		government = vi_vampire_government
 		# succession_laws = { vi_vampire_elective_succession_law }
-		liege = k_vi_court_of_night
+		tributary_of = {
+			suzerain = k_vi_court_of_night
+			contract_group = tributary_subjugated
+		}
 		effect = {
 			set_variable = vi_urchin_flag
 		}

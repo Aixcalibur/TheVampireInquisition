@@ -304,12 +304,23 @@ vi_create_vassal_princedom_effect = {
 	# 	}
 	# }
 
-	change_liege = {
-		liege = scope:vi_liege
-		change = scope:change
-	}
+	# change_liege = {
+	# 	liege = scope:vi_liege
+	# 	change = scope:change
+	# }
 	
 	resolve_title_and_vassal_change = scope:change
+
+	start_tributary = {
+		contract_group = tributary_settled
+		suzerain = scope:vi_liege
+	}
+
+	add_truce_both_ways = {
+		character = scope:vi_liege
+		years = 25
+		name = TRUCE_TRIBUTARY
+	}
 
 	vi_create_domicile_title_effect = yes
 
@@ -340,14 +351,22 @@ vi_create_domicile_title_effect = {
 		}
 	}
 	
-	create_nomad_title = {
-		name = vi_nomad_title_name
-		#pre = "sdfsd"
-		holder = scope:founder
-		prefix = "vi_princedom"
+
+	give_noble_family_title = {
+		name = noble_family_name
+		tier = county
+		article = DEFAULT_TITLE_NAME_ARTICLE
 		government = vi_vampire_government
 		save_scope_as = new_quarters_title
 	}
+	# create_nomad_title = {
+	# 	name = vi_nomad_title_name
+	# 	#pre = "sdfsd"
+	# 	holder = scope:founder
+	# 	prefix = "vi_princedom"
+	# 	government = vi_vampire_government
+	# 	save_scope_as = new_quarters_title
+	# }
 	scope:new_quarters_title = {
 		#set_definitive_form = no
 		#reset_title_prefix = yes
@@ -356,13 +375,14 @@ vi_create_domicile_title_effect = {
 }
 
 vi_delete_yurt_buildings_effect = {
-	domicile = { remove_domicile_building = herd_welfare_yurt_03 }
-	domicile = { remove_domicile_building = character_warfare_yurt_03 }
-	domicile = { remove_domicile_building = mass_warfare_yurt_03 }
-	domicile = { remove_domicile_building = court_yurt_03 }
-	domicile = { remove_domicile_building = family_yurt_03 }
-	domicile = { remove_domicile_building = mystical_yurt_03 }
-	domicile = { remove_domicile_building = trade_yurt_03 }
+	# no longer need this
+	# domicile = { remove_domicile_building = herd_welfare_yurt_03 }
+	# domicile = { remove_domicile_building = character_warfare_yurt_03 }
+	# domicile = { remove_domicile_building = mass_warfare_yurt_03 }
+	# domicile = { remove_domicile_building = court_yurt_03 }
+	# domicile = { remove_domicile_building = family_yurt_03 }
+	# domicile = { remove_domicile_building = mystical_yurt_03 }
+	# domicile = { remove_domicile_building = trade_yurt_03 }
 }
 
 vi_create_noble_family_effect = {

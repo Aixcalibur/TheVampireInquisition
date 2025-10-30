@@ -79,6 +79,16 @@ vi_vampire_game_start_ancient_regime = {
 						value = yes
 					}
 				}
+
+				save_scope_as = vi_suzerain
+
+				every_tributary = {
+					add_truce_both_ways = {
+						character = scope:vi_suzerain
+						years = 25
+						name = TRUCE_TRIBUTARY
+					}
+				}
 	
 				every_vassal = {
 					limit = {
@@ -115,12 +125,18 @@ vi_vampire_game_start_ancient_regime = {
 
 vi_vampire_game_start_vampire_ruler = {
 	effect = {
+
+		#This part is probably redundanttttt
 		if = {
 			limit = {
 				is_landed = no
 				NOT = {
 					any_held_title = {
-						is_nomad_title = yes
+						OR = {
+							is_nomad_title = yes
+							is_noble_family_title = yes
+						}
+						
 					}
 				}
 			}
@@ -130,7 +146,10 @@ vi_vampire_game_start_vampire_ruler = {
 
 			every_held_title = {
 				limit = {
-					is_nomad_title = no
+					NOR = {
+						is_nomad_title = yes
+						is_noble_family_title = yes
+					}
 					tier = tier_county
 				}
 				scope:vi_ruler = {
@@ -139,6 +158,7 @@ vi_vampire_game_start_vampire_ruler = {
 			}
 		}
 
+		#redundant?
 		vi_delete_yurt_buildings_effect = yes
 
 		add_short_term_gold = {
@@ -433,19 +453,19 @@ vi_vampire_game_start_generate_vassals = {
 		has_government = vi_vampire_government
 		is_landed = no
 		has_character_flag = vi_generate_vassals
-		any_vassal = {
-			count < 7
-		}
+		
 	}
 
 	effect = {
+		
 
-		vi_generate_prince_vassal_effect = yes
+		#vi_generate_prince_vassal_effect = yes
 
-		trigger_event = {
-			on_action = vi_vampire_game_start_generate_vassals
-			days = 20
-			delayed = yes
-		}
+		#Removing this I think it causes crashes rn
+		# trigger_event = {
+		# 	on_action = vi_vampire_game_start_generate_vassals
+		# 	days = 20
+		# 	delayed = yes
+		# }
 	}
 }

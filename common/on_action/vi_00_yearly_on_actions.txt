@@ -310,10 +310,10 @@ vi_vampire_maintenance_pulse = {
 			}
 		}
 
-		random = {
-			chance = 50
-			vi_consider_excommunicated_list = yes
-		}
+		# random = {
+		# 	chance = 50
+		# 	vi_consider_excommunicated_list = yes
+		# }
 	}
 }
 

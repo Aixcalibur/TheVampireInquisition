@@ -68,6 +68,7 @@
 	flag = government_is_supernatural
 	flag = government_can_use_tributary_men_at_arms
 	flag = can_start_war_with_raised_troops
+	flag = landless_government_has_landless_vassals
 
 	# flag = government_is_theocracy
 

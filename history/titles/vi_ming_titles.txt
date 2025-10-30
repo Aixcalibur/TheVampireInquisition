@@ -12,7 +12,7 @@ d_nf_vi_ming = {
 		holder = vi_dongfangbubai
 		government = vi_vampire_government
 		succession_laws = { noble_family_succession_law }
-		liege = k_vi_court_of_night
+		liege = 0
 	}
 }
 
@@ -21,7 +21,10 @@ d_vi_samarkand = {
 		holder = vi_lianting
 		government = vi_vampire_government
 		# succession_laws = { vi_vampire_elective_succession_law }
-		liege = k_vi_ming_cult
+		tributary_of = {
+			suzerain = k_vi_ming_cult
+			contract_group = tributary_subjugated
+		}
 	}
 }
 

@@ -3,11 +3,11 @@
 # scope:owner = the person who now holds the artifact
 # scope:old_owner = the person who used to hold the artifact
 
-on_artifact_changed_owner = {
-	on_actions = {
-		vi_on_artifact_changed_owner
-	}
-}
+# on_artifact_changed_owner = {
+# 	on_actions = {
+# 		vi_on_artifact_changed_owner
+# 	}
+# }
 
 # vi_on_artifact_changed_owner = {
 # 	trigger = {
