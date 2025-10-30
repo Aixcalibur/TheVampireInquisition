@@ -254,6 +254,12 @@ vi_vampire_policy.002 = {
 	option = {
 		name = vi_vampire_policy.002.a
 
+		add_truce_both_ways = {
+			character = scope:vi_suzerain
+			years = 10
+			name = TRUCE_TRIBUTARY
+		}
+
 		ai_chance = {
 			base = 50
 
@@ -278,7 +284,6 @@ vi_vampire_policy.002 = {
 				}
 			}
 		}
-		
 	}
 
 	option = {
