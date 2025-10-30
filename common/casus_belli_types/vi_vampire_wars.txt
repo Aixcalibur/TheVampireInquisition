@@ -162,8 +162,22 @@
 				}
 			}
 		}
+		
 		# Truce
-		add_truce_attacker_victory_effect = yes
+		if = { # This if/else exists for localization purposes, since it could be parsed before the war starts
+			limit = { exists = root.war }
+			start_tributary_from_war_effect = {
+				TRIBUTARY = scope:defender
+				SUZERAIN = scope:attacker
+				WAR = root.war
+			}
+		}
+		else = {
+			start_tributary_interaction_effect = {
+				TRIBUTARY = scope:defender
+				SUZERAIN = scope:attacker
+			}
+		}
 
 		scope:attacker = {
 			if = {

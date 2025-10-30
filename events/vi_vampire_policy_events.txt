@@ -207,3 +207,109 @@ vi_vampire_policy.001 = {
 	}
 
 }
+
+vi_vampire_policy.002 = {
+	type = character_event
+	title = vi_vampire_policy.002.t
+	desc = vi_vampire_policy.002.desc
+
+	theme = realm
+
+	right_portrait = {
+		character = scope:vi_overlord
+		# animation = 
+	}
+
+	left_portrait = {
+		character = root
+		animation = personality_bold
+	}
+
+	override_background = {
+		reference = vi_council_chamber_night
+	}
+
+	trigger = {
+		is_tributary = yes
+	}
+
+	immediate = {
+		
+		root = {
+			overlord = {
+				save_scope_as = vi_overlord
+			}
+		}
+
+		root.primary_title.title_capital_county = {
+			save_scope_as = lair_location
+		}
+
+		scope:lair_location.holder = {
+			save_scope_as = vi_host
+		}
+	}
+
+
+	option = {
+		name = vi_vampire_policy.002.a
+
+		ai_chance = {
+			base = 50
+
+			modifier = {
+				add = 50
+				has_trait = craven
+			}
+
+			modifier = {
+				add = -50
+				opinion = {
+					target = scope:vi_overlord
+					value < 0
+				}
+			}
+
+			modifier = {
+				add = 50
+				opinion = {
+					target = scope:vi_overlord
+					value >= 50
+				}
+			}
+		}
+		
+	}
+
+	option = {
+
+		name = vi_vampire_policy.002.b
+
+		ai_chance = {
+			base = 25
+
+			modifier = {
+				add = 25
+				has_trait = ambitious
+			}
+
+			modifier = {
+				add = 25
+				has_trait = greedy
+			}
+
+			modifier = {
+				add = -50
+				has_trait = craven
+			}
+
+			modifier = {
+				add = 50
+				opinion = {
+					target = scope:vi_overlord
+					value < 0
+				}
+			}
+		}
+	}
+}

@@ -41,8 +41,8 @@ vi_vampire_connections_scaling = {
 		limit = {
 			is_ai = yes
 		}
-		liege ?= {
-			every_vassal = {
+		overlord ?= {
+			every_subject = {
 				limit = {
 					vi_is_vampire_trigger = yes
 					has_domicile = yes
@@ -64,8 +64,8 @@ vi_vampire_connections_scaling = {
 		}
 	}
 	else = {
-		liege ?= {
-			every_vassal = {
+		overlord ?= {
+			every_subject = {
 				limit = {
 					vi_is_vampire_trigger = yes
 					has_domicile = yes

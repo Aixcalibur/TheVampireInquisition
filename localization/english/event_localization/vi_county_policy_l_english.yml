@@ -15,3 +15,8 @@
  vi_vampire_policy.001.d:0 "It would be wise to invest in local development."
  vi_vampire_policy.001.d.msg_title:0 "Underworld Investments in [lair_location.GetNameNoTier]"
  vi_vampire_policy.001.d.msg_desc:0 "[root.GetName] has been investing in the people of [lair_location.GetNameNoTier], boosting development growth."
+ 
+ vi_vampire_policy.002.t:0 "Paying Tribute"
+ vi_vampire_policy.002.desc:0 "We have a standing tributary arrangement with [vi_overlord.GetName], but times are forever shifting."
+ vi_vampire_policy.002.a:0 "Things are fine as they are."
+ vi_vampire_policy.002.b:0 "Perhaps we should think about breaking away."
