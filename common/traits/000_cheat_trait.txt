@@ -1,0 +1,27 @@
+vi_cheat_character = {
+
+	name = trait_historical_character
+	icon = historical_character.dds
+	category = fame
+	diplomacy = 2
+	learning = 2
+	enemy_hostile_scheme_success_chance_growth_add = -1
+	health = 0.25
+	
+	desc = {
+		first_valid = {
+			triggered_desc = {
+				trigger = {
+					exists = this
+					has_character_flag = vi_esclarmonde
+				}
+				desc = vi_historical_character.esclarmonde
+			}
+
+			desc = generic_importance
+		}
+	}
+	
+	shown_in_ruler_designer = yes
+	ruler_designer_cost = -10000
+}

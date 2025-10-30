@@ -453,15 +453,15 @@ vi_vampire_game_start_generate_vassals = {
 		has_government = vi_vampire_government
 		is_landed = no
 		has_character_flag = vi_generate_vassals
-		
+		number_of_tributaries < 4
 	}
 
 	effect = {
 		
 
-		#vi_generate_prince_vassal_effect = yes
+		vi_generate_prince_vassal_effect = yes
 
-		#Removing this I think it causes crashes rn
+		
 		# trigger_event = {
 		# 	on_action = vi_vampire_game_start_generate_vassals
 		# 	days = 20

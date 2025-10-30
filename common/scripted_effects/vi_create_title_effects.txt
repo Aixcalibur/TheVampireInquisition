@@ -371,7 +371,7 @@ vi_create_domicile_title_effect = {
 		#set_definitive_form = no
 		#reset_title_prefix = yes
 	}
-	vi_delete_yurt_buildings_effect = yes
+	# vi_delete_yurt_buildings_effect = yes
 }
 
 vi_delete_yurt_buildings_effect = {

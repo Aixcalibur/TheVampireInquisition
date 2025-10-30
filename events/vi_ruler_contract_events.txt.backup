@@ -1,4 +1,6 @@
-﻿namespace = vi_ruler_contract
+﻿#we need to get rid of this because for some reason the contract is getting picked up, i guess they changed the contract system since the last time i made contracts
+
+namespace = vi_ruler_contract
 
 
 scripted_effect roll_scheme_success_or_failure_effect = {
