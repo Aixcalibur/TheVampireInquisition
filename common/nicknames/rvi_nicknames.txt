@@ -1,0 +1,2 @@
+nick_rvi_immortal = {}
+nick_rvi_premudraya = {}

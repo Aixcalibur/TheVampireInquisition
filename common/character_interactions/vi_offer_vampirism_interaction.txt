@@ -1,7 +1,8 @@
 ﻿vi_offer_vampirism_interaction = {
-	category = interaction_category_admin
+	category = interaction_category_friendly
 	icon = icon_dead
 	desc = vi_offer_vampirism_interaction_desc
+	interface_priority = 100
 
 	ai_maybe = yes
 	can_send_despite_rejection = yes
@@ -67,11 +68,6 @@
 					}
 					text = VI_MUST_HAVE_RELATION_TO_OFFER
 				}
-			}
-		}
-		scope:recipient = {
-			NOT = {
-				has_trait = vi_dhampir
 			}
 		}
 	}
@@ -495,7 +491,7 @@
 } 
 
 vi_ask_vampirism_interaction = {
-	category = interaction_category_admin
+	category = interaction_category_friendly
 	icon = icon_dead
 	desc = vi_ask_vampirism_interaction_desc
 
@@ -536,11 +532,6 @@ vi_ask_vampirism_interaction = {
 					secret_type = secret_vi_vampire
 					is_known_by = scope:actor
 				}
-			}
-		}
-		scope:actor = {
-			NOT = {
-				has_trait = vi_dhampir
 			}
 		}
 		scope:actor = {

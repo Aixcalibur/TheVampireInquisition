@@ -1,0 +1,6 @@
+k_rodnoverie = {
+	503.6.6 = {
+		holder = koshey
+	
+	}
+}

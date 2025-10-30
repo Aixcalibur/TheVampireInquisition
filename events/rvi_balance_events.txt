@@ -1,0 +1,64 @@
+namespace = rvi_balance
+
+rvi_balance.0001 = {
+	is_triggered_only = yes
+	type = character_event
+	title = rvi_balance.0001.title
+	desc = rvi_balance.0001.desc
+
+	theme = mental_health
+
+	right_portrait = {
+		character = root
+		animation = sadness
+	}
+
+	override_background = { reference = study }
+
+	option = {
+		name = rvi_balance.0001.a1
+		rvi_remove_all_positive_effects = yes
+		add_character_modifier = {
+			modifier = vi_vampire_strain_modifier
+			years = 5
+		}		
+	}
+	
+	option = {
+		name = rvi_balance.0001.a2
+		rvi_remove_all_positive_effects = yes
+		add_character_modifier = {
+			modifier = vi_vampire_madness_modifier
+			years = 5
+		}		
+	}	
+}
+
+
+rvi_balance.0002 = {
+	is_triggered_only = yes
+	type = character_event
+	title = rvi_balance.0002.title
+	desc = rvi_balance.0002.desc
+
+	theme = mental_health
+
+	right_portrait = {
+		character = root
+		animation = grief
+	}
+
+	override_background = { reference = study }
+
+	option = {
+		name = rvi_balance.0002.a1
+		custom_tooltip = rvi_balance.0002.a1_tt	
+		add_character_modifier = {
+			modifier = vi_vampire_strain_modifier
+			years = 1
+		}		
+		hidden_effect = {	
+			rvi_remove_all_skillpoints = yes
+		}	
+	}	
+}

@@ -1,0 +1,409 @@
+namespace = vi_tsarstvo
+
+vi_tsarstvo.1001 = {
+	type = character_event
+	title = vi_tsarstvo.1001.t
+	desc = {
+		triggered_desc = {
+			trigger = { exists = scope:three_duchies }
+			desc = {
+				desc = vi_tsarstvo.1001.opening_duchies
+				desc = double_line_break
+			}
+		}
+		desc = vi_tsarstvo.1001.desc
+	}
+	theme = realm
+	left_portrait = {
+		character = root
+		animation = personality_dishonorable
+	}
+	
+	immediate = {
+		play_music_cue = "mx_cue_positive_effect"
+		# If Kingdom is formed from three Duchies, specifically shout that out
+		if = {
+			limit = {
+				any_held_title = {
+					tier = tier_duchy
+					count >= 3
+				}
+			}
+			scope:old_title = { # Carried over from the decision
+				save_scope_as = duchy_1
+			}
+			random_held_title = {
+				limit = {
+					tier = tier_duchy
+					NOT = { this = scope:duchy_1 }
+				}
+				save_scope_as = duchy_2
+			}
+			random_held_title = {
+				limit = {
+					tier = tier_duchy
+					NOR = {
+						this = scope:duchy_1
+						this = scope:duchy_2
+					}
+				}
+				save_scope_as = duchy_3
+			}
+			if = { # Safeguarding against loc-breaking here
+				limit = {
+					exists = scope:duchy_1
+					exists = scope:duchy_2
+					exists = scope:duchy_3
+				}
+				save_scope_value_as = {
+					name = three_duchies
+					value = yes
+				}
+			}
+		}
+		show_as_tooltip = {
+			set_primary_title_to = scope:new_title
+		}
+	}
+
+	option = {
+		name = vi_tsarstvo.1001.a
+		add_trait = vi_exposed_vampire
+		capital_province.county = {
+			add_county_modifier = {
+				modifier = posmertnaya_loyalnost_modifier
+			}
+		
+		}
+	}
+}
+
+vi_tsarstvo.1002 = {
+	type = character_event
+	title = vi_tsarstvo.1002.t
+	desc = {
+		triggered_desc = {
+			trigger = { exists = scope:three_duchies }
+			desc = {
+				desc = vi_tsarstvo.1002.opening_duchies
+				desc = double_line_break
+			}
+		}
+		desc = vi_tsarstvo.1002.desc
+	}
+	theme = realm
+	left_portrait = {
+		character = root
+		animation = personality_dishonorable
+	}
+	
+	immediate = {
+		play_music_cue = "mx_cue_positive_effect"
+		capital_county = {
+			random_county_province = {
+				limit = { has_holding = no }
+				set_holding_type = castle_holding
+				add_special_building_slot = generic_uchilishe
+			}	
+		}
+	}
+
+	option = {
+		name = vi_tsarstvo.1002.a
+		capital_province.county = {
+			add_county_modifier = {
+				modifier = undead_migration_modifier
+				years = 100
+			}
+		}
+	}
+	
+	option = {
+		name = vi_tsarstvo.1002.b
+		capital_province.county = {
+			add_county_modifier = {
+				modifier = undead_migration_modifier
+				years = 100
+			}
+		}
+	}
+}
+
+
+vi_tsarstvo.1003 = {
+	type = character_event
+	title = vi_tsarstvo.1003.t
+	desc = vi_tsarstvo.1003.desc
+	theme = learning
+	left_portrait = {
+		character = scope:new_courtier
+		animation = thinking
+	}
+	right_portrait = {
+		character = scope:new_courtier1
+		animation = rage
+	}	
+	override_background = { reference = throne_room }
+	trigger = {
+		any_sub_realm_barony = {
+			title_province = {
+				has_building = generic_uchilishe
+			
+			}
+		}
+	}
+
+	immediate = {
+		
+		create_character = {
+			employer = root
+			template = scholar_vamp_character
+			save_scope_as = new_courtier
+		}
+		if = {
+			scope:new_courtier = {
+				hidden_effect = {    
+					vi_make_vampire_effect = yes
+		
+				}
+			}
+		}	
+		create_character = {
+			employer = root
+			template = scholar_vamp_character_a
+			save_scope_as = new_courtier1
+		}
+		if = {
+			scope:new_courtier1 = {
+				hidden_effect = {    
+					vi_make_vampire_effect = yes
+		
+				}
+			}			
+		}
+	}
+
+
+	option = {
+		name = vi_tsarstvo.1003.a
+		custom_tooltip = {
+			text = vi_tsarstvo.1003.a.tt
+			set_character_faith = faith:vi_rodnoverie
+			
+			
+		}	
+		capital_county = {
+ 			set_county_faith = faith:vi_rodnoverie
+			remove_county_modifier  = posmertnaya_loyalnost_modifier
+			add_county_modifier = {
+ 				modifier = undead_harmony_modifier
+ 			}
+ 		}
+ 		ai_chance = {
+ 			base = 30
+ 		}
+		    
+		scope:new_courtier = {
+			set_relation_friend = { reason = undead_friend_1 target = root }
+			add_trait = loyal
+			add_opinion = {
+				target = root
+				modifier = friendliness_opinion
+				opinion = 50
+			}
+		}
+		
+		scope:new_courtier1 = {
+			set_relation_rival = { reason = undead_rival_1 target = root }
+			add_trait = disloyal
+			add_opinion = {
+				target = root
+				modifier = disappointed_opinion
+				opinion = -50
+			}
+		}		
+	}
+
+	option = {
+		name = vi_tsarstvo.1003.b			
+		capital_county = {
+ 			set_county_faith = faith:vi_smertoverie
+			remove_county_modifier  = posmertnaya_loyalnost_modifier
+			add_county_modifier = {
+ 				modifier = undead_control_modifier
+ 			}
+ 		}
+ 		ai_chance = {
+ 			base = 30
+ 		}
+		    
+		scope:new_courtier = {
+			set_relation_rival = { reason = undead_rival_1 target = root }
+			add_trait = disloyal
+			add_opinion = {
+				target = root
+				modifier = disappointed_opinion
+				opinion = -50
+			}
+		
+ 		}
+		    
+		scope:new_courtier1 = {
+			set_relation_friend = { reason = undead_friend_1 target = root }
+			add_trait = loyal
+			add_opinion = {
+				target = root
+				modifier = friendliness_opinion
+				opinion = 50
+			}
+		}		
+	}
+
+
+	option = {
+		name = vi_tsarstvo.1003.v
+ 		ai_chance = {
+ 			base = 30
+ 		}
+		    
+		scope:new_courtier = {
+			set_relation_rival = { reason = undead_rival_1 target = scope:new_courtier1 }
+			add_opinion = {
+				target = root
+				modifier = disappointed_opinion
+				opinion = -100
+			}
+		}
+		
+		scope:new_courtier1 = {
+			set_relation_rival = { reason = undead_rival_1 target = scope:new_courtier }
+			add_opinion = {
+				target = root
+				modifier = disappointed_opinion
+				opinion = -100
+			}
+		}		
+	}
+}
+
+vi_tsarstvo.1004 = {
+	type = character_event
+	title = vi_tsarstvo.1004.title
+	desc = vi_tsarstvo.1004.desc
+	theme = realm
+	override_background = {
+		reference = throne_room
+	}
+	left_portrait = {
+		character = scope:new_vamp1
+		animation = personality_zealous
+	}
+	right_portrait = {
+		character = scope:new_vamp2
+		animation = personality_honorable
+	}
+	lower_center_portrait = {
+		character = scope:new_vamp3
+		animation = personality_rational
+	}
+	immediate = {
+		create_character = {
+			location = root.location
+			template = vamp_graduate_character
+			save_scope_as = new_vamp1
+		}
+		create_character = {
+			location = root.location
+			template = vamp_graduate_character
+			save_scope_as = new_vamp2
+		}
+		create_character = {
+			location = root.location
+			template = vamp_graduate_character
+			save_scope_as = new_vamp3
+			
+		}
+		if = {
+			scope:new_vamp1 = {
+				hidden_effect = {    
+					vi_make_vampire_effect = yes
+		
+				}
+			}
+		}
+		if = {
+			scope:new_vamp2 = {
+				hidden_effect = {    
+					vi_make_vampire_effect = yes
+		
+				}
+			}
+		}
+		if = {
+			scope:new_vamp3 = {
+				hidden_effect = {    
+					vi_make_vampire_effect = yes
+		
+				}
+			}
+		}
+	}
+	option = {
+		name = vi_tsarstvo.1004.a
+		ai_chance = {
+			base = 50
+		}
+		add_courtier = scope:new_vamp1
+		hidden_effect = {
+			scope:new_vamp2 = {
+				death = {
+					death_reason = death_disappearance
+				}
+			}
+			scope:new_vamp3 = {
+				death = {
+					death_reason = death_disappearance
+				}
+			}
+		}
+	}
+	option = {
+		name = vi_tsarstvo.1004.b
+		ai_chance = {
+			base = 40
+		}
+		add_courtier = scope:new_vamp3
+		hidden_effect = {
+			scope:new_vamp1 = {
+				death = {
+					death_reason = death_disappearance
+				}
+			}
+			scope:new_vamp2 = {
+				death = {
+					death_reason = death_disappearance
+				}
+			}
+		}
+	}
+	option = {
+		name = vi_tsarstvo.1004.v
+		ai_chance = {
+			base = 30
+		}
+		add_courtier = scope:new_vamp2
+		hidden_effect = {
+			scope:target1 = {
+				death = {
+					death_reason = death_disappearance
+				}
+			}
+			scope:new_vamp3 = {
+				death = {
+					death_reason = death_disappearance
+				}
+			}
+		}
+	}
+}
+

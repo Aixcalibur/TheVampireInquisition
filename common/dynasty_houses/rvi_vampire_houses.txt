@@ -1,0 +1,5 @@
+house_rvi_koshey = {
+	name = "dynn_rvi_koshey"
+	dynasty = vi_dynasty_Nosferatu
+	motto = "dynn_rvi_koshey_motto"
+}

@@ -1,0 +1,64 @@
+generic_uchilishe = {
+	construction_time = very_slow_construction_time
+	effect_desc = {
+		desc = unlocks_building_desc
+		triggered_desc = {
+			desc = university_roco_effect_desc
+		}
+		desc = university_effect_desc
+	}
+
+	type_icon = "icon_structure_hotin_fortress.dds"
+	
+	can_construct_potential = {
+		building_university_requirement = yes
+	}
+	
+	can_construct = {
+		county = {
+			development_level >= 10
+		}
+	}
+	
+	show_disabled = yes
+	
+	on_complete = {
+		county.holder = {
+			save_scope_as = founder
+
+			trigger_event = {
+				id = vi_tsarstvo.1003
+				days = 7 
+			}
+		}
+	}
+	
+	cost_gold = 1000
+
+	character_modifier = {
+		monthly_dynasty_prestige = 0.25
+	}
+	
+	county_modifier = {
+		development_growth_factor = 0.15
+		development_growth = 0.15
+		hostile_raid_time = 2
+	}
+	
+	max_garrison = good_building_max_garrison_tier_1
+	province_modifier = {
+		monthly_income = good_building_tax_tier_2
+	}	
+	
+	ai_value = {
+		base = 8
+		modifier = { 
+			factor = 0
+			free_building_slots > 0
+		}
+	}
+	
+	type = special
+
+	flag = travel_point_of_interest_learning
+}

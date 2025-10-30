@@ -1,0 +1,29 @@
+posmertnaya_loyalnost_modifier = {
+	icon = county_modifier_control_positive
+	stacking = no
+	monthly_county_control_growth_add = 1
+	county_opinion_add = 50
+}
+
+undead_harmony_modifier = {
+	icon = county_modifier_control_positive
+	stacking = no
+	tax_mult = 0.1
+	county_opinion_add = 50
+	
+}
+
+undead_control_modifier = {
+	icon = county_modifier_control_positive
+	stacking = no
+	monthly_county_control_growth_add = 2
+	tax_mult = 0.2
+	
+}
+
+undead_migration_modifier = {
+	icon = horse_dead_positive
+	build_speed = -0.5
+	build_gold_cost = -0.2
+	development_growth = 0.5
+}

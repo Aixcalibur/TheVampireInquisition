@@ -724,7 +724,7 @@
 	}
 }
 vi_offer_fealty_interaction = {
-	category = interaction_category_admin
+	category = interaction_category_friendly
 	icon = icon_liege
 	desc = offer_fealty_interaction_desc
 
@@ -895,7 +895,7 @@ vi_offer_fealty_interaction = {
 	}
 }
 vi_sponsor_princedom_interaction = {
-	category = interaction_category_admin
+	category = interaction_category_diplomacy
 	icon = support_candidacy
 	interface_priority = 200
 	desc = vi_sponsor_princedom_interaction_desc

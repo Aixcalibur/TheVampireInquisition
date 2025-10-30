@@ -1,0 +1,13 @@
+﻿l_english:
+
+ rvi_balance.0001.title: "Blood Curse"
+ rvi_balance.0001.desc: "Immortal blood thickens in my veins, like autumn resin in pine trunks. I struggle to move my arms and rise to my feet before the realization of what happened sets in.\n\nToday's awakening brought nothing but suffering—as if [ROOT.Char.GetFaith.DevilName] themself sank their claws into my essence and tore out everything they could reach.\n\nAn ancient curse demanded payment for eternity..."
+ rvi_balance.0001.a1: "I'll have to endure..."
+ rvi_balance.0001.a2: "I'll fill the void with hunting"
+ rvi_balance.0002.title: "Hourglass"
+ rvi_balance.0002.desc: "Another year of my unlife has passed... Yet today I feel nothing but emptiness and weariness.\n\nI sense something leaving me—something not physical—as though I had climbed a great mountain of sand and tumbled down to the very bottom, destined never to reach the summit."
+ rvi_balance.0002.a1: "I must regain my composure"
+ 
+ rvi_balance.0002.a1_tt: "You will lose all free non-vampiric skill points."
+ 
+ 

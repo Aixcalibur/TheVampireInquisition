@@ -1,0 +1,245 @@
+create_custom_knyajestvo_effect = {
+	custom_tooltip = create_new_knyajestvo
+	show_as_tooltip = {
+		every_held_title = {
+			custom = create_dejure_title_knyajestvo
+			limit = {
+				tier = tier_duchy
+			}
+			custom_tooltip = create_dejure_title_knyajestvo_changes
+		}
+	}
+
+	hidden_effect = {
+		dat_banner_effect = yes
+		save_scope_as = founder
+		primary_title = {
+			save_scope_as = old_title
+		}
+		
+		create_dynamic_title = {
+			tier = kingdom
+			name = NEW_CREATED_TITLE_NAME
+			
+		}
+		create_title_and_vassal_change = {
+			type = created
+			save_scope_as = change
+			add_claim_on_loss = no
+		}
+		
+		scope:new_title = {
+			change_title_holder = {
+				holder = root
+				change = scope:change
+			}
+		}
+		
+		resolve_title_and_vassal_change = scope:change
+
+		#Check if all territory is from a single Empire, and if so, make Kingdom de jure of that Empire
+		every_sub_realm_county = {
+			if = {
+				limit = {
+					exists = empire
+				}
+				empire = {
+					if = {
+						limit = {
+							NOT = {
+								is_in_list = potential_empires
+							}
+						}
+						add_to_list = potential_empires
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				any_in_list = {
+					list = potential_empires
+					count > 0
+				}
+			}
+			ordered_in_list = {
+				list = potential_empires
+				order_by = {
+					every_in_de_jure_hierarchy = {
+						continue = {
+							tier > tier_county
+						}
+						limit = {
+							tier = tier_county
+							holder.top_liege = root
+						}
+						add = 1
+					}
+				}
+				position = 0
+				save_scope_as = old_empire
+			}
+		}
+		if = {
+			limit = {
+				exists = scope:old_empire
+			}
+			scope:new_title = {
+				set_de_jure_liege_title = scope:old_empire
+			}
+		}
+		
+		every_held_title = {
+			limit = {
+				tier = tier_duchy
+			}
+			if = {
+				limit = {
+					#Check if you need to notify a player
+					OR = {
+						AND = {
+							exists = kingdom
+							kingdom = {
+								exists = holder
+								holder = {
+									NOT = { this = root }
+									is_ai = no
+								}
+							}
+						}
+						AND = {
+							exists = empire
+							empire = {
+								exists = holder
+								holder = {
+									NOT = { this = root }
+									is_ai = no
+								}
+							}
+						}
+					}
+				}
+				add_to_temporary_list = duchy_for_notification
+				root = {
+					save_temporary_scope_value_as = {
+						name = send_notifications
+						value = yes
+					}
+				}
+			}
+			set_de_jure_liege_title = scope:new_title
+		}
+
+		every_sub_realm_county = {
+			limit = {
+				exists = duchy
+				NOT = { exists = duchy.holder }
+				holder.top_liege = root
+				duchy = {
+					save_temporary_scope_as = test_duchy
+				}
+				holder.top_liege = {
+					completely_controls = scope:test_duchy
+				}
+			}
+			if = {
+				limit = {
+					NOT = {
+						duchy = {
+							is_in_list = additional_de_jure_duchies
+						}
+					}
+				}
+				duchy = {
+					set_de_jure_liege_title = scope:new_title
+					add_to_list = additional_de_jure_duchies
+				}
+			}
+		}
+		
+		scope:new_title = {
+			set_coa = scope:old_title
+			set_color_from_title = scope:old_title
+			set_capital_county = scope:old_title.title_capital_county
+		}
+		set_primary_title_to = scope:new_title
+		
+		trigger_event = vi_tsarstvo.1001
+			
+			
+		}
+	}
+}
+
+
+dat_banner_effect = {
+	hidden_effect = {
+		if = {
+			limit = {
+				NOT = {
+					any_character_artifact = {
+						has_variable = banner_house
+						var:banner_house = root.house
+					}
+				}
+			}
+			set_variable = banner_from_house
+			create_artifact_wall_banner_effect = {
+				OWNER = root
+				CREATOR = scope:messenger
+				TARGET = root.house
+			}
+			if = { # For artifact portraits
+				limit = { exists = scope:newly_created_artifact }
+				scope:newly_created_artifact = { save_scope_as = house_banner }
+			}
+		}
+		#Dynasty banner
+		if = { 
+			limit = {
+				OR = {
+					this = dynasty.dynast # Dynasty Head
+					any_parent = { # Parent landless
+						employer = root
+						dynasty = root.dynasty
+						this = dynasty.dynast
+					}
+				}
+				NOT = {
+					any_character_artifact = {
+						has_variable = banner_dynasty
+						var:banner_dynasty = root.dynasty
+					}
+				}
+			}
+			set_variable = banner_from_dynasty
+			create_artifact_wall_banner_effect = {
+				OWNER = root
+				CREATOR = scope:messenger
+				TARGET = root.dynasty
+			}
+			if = { # For artifact portraits
+				limit = { exists = scope:newly_created_artifact }
+				scope:newly_created_artifact = { save_scope_as = dynasty_banner }
+			}
+		}
+		#Both
+		if = {
+			limit = {
+				exists = scope:house_banner
+				exists = scope:dynasty_banner
+			}
+			custom_tooltip = court_maintenance.0011.banner_tooltip
+		}
+		#House
+		else_if = {
+			limit = { exists = scope:house_banner }
+			custom_tooltip = court_maintenance.0011.banner_house_tooltip
+		}
+		#Dynasty
+		else = { custom_tooltip = court_maintenance.0011.banner_dynasty_tooltip }
+			
+			
+		}
+	}
+}

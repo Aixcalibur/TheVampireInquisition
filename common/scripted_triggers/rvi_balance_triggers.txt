@@ -1,0 +1,281 @@
+rvi_has_positive_perks = {
+	is_ai = no
+	OR = {
+		AND = {
+			has_trait = shrewd
+			vi_is_vampire_trigger = yes
+		}
+		AND = {
+			has_trait = strong
+			vi_is_vampire_trigger = yes
+		}
+		AND = {
+			has_trait = diplomat
+			vi_is_vampire_trigger = yes
+		}
+		AND = {
+			has_trait = gallant
+			vi_is_vampire_trigger = yes
+		}
+		AND = {
+			has_trait = overseer
+			vi_is_vampire_trigger = yes
+		}
+		AND = {
+			has_trait = strategist
+			vi_is_vampire_trigger = yes
+		}
+		AND = {
+			has_trait = administrator
+			vi_is_vampire_trigger = yes
+		}
+		AND = {
+			has_trait = architect
+			vi_is_vampire_trigger = yes
+		}
+		AND = {
+			has_trait = avaricious
+			vi_is_vampire_trigger = yes
+		}
+		AND = {
+			has_trait = schemer
+			vi_is_vampire_trigger = yes
+		}
+		AND = {
+			has_trait = seducer
+			vi_is_vampire_trigger = yes
+		}
+		AND = {
+			has_trait = torturer
+			vi_is_vampire_trigger = yes
+		}
+		AND = {
+			has_trait = theologian
+			vi_is_vampire_trigger = yes
+		}
+		AND = {
+			has_trait = whole_of_body
+			vi_is_vampire_trigger = yes
+		}
+		AND = {
+			has_trait = family_first
+			vi_is_vampire_trigger = yes
+		}
+		AND = {
+			has_trait = lifestyle_herbalist
+			vi_is_vampire_trigger = yes
+		}
+		AND = {
+			has_trait = lifestyle_mystic
+			vi_is_vampire_trigger = yes
+		}
+		AND = {
+			has_trait = lifestyle_reveler
+			vi_is_vampire_trigger = yes
+		}
+		AND = {
+			has_trait = winter_soldier
+			vi_is_vampire_trigger = yes
+		}
+		AND = {
+			has_trait = desert_warrior
+			vi_is_vampire_trigger = yes
+		}
+		AND = {
+			has_trait = aggressive_attacker
+			vi_is_vampire_trigger = yes
+		}
+		AND = {
+			has_trait = flexible_leader
+			vi_is_vampire_trigger = yes
+		}
+		AND = {
+			has_trait = forder
+			vi_is_vampire_trigger = yes
+		}
+		AND = {
+			has_trait = holy_warrior
+			vi_is_vampire_trigger = yes
+		}
+		AND = {
+			has_trait = logistician
+			vi_is_vampire_trigger = yes
+		}
+		AND = {
+			has_trait = military_engineer
+			vi_is_vampire_trigger = yes
+		}
+		AND = {
+			has_trait = organizer
+			vi_is_vampire_trigger = yes
+		}
+		AND = {
+			has_trait = reaver
+			vi_is_vampire_trigger = yes
+		}
+		AND = {
+			has_trait = unyielding_defender
+			vi_is_vampire_trigger = yes
+		}
+		AND = {
+			has_trait = cautious_leader
+			vi_is_vampire_trigger = yes
+		}
+		AND = {
+			has_trait = reckless
+			vi_is_vampire_trigger = yes
+		}
+		AND = {
+			has_trait = forest_fighter
+			vi_is_vampire_trigger = yes
+		}
+		AND = {
+			has_trait = open_terrain_expert
+			vi_is_vampire_trigger = yes
+		}
+		AND = {
+			has_trait = rough_terrain_expert
+			vi_is_vampire_trigger = yes
+		}	
+		AND = {
+			has_trait = jungle_stalker
+			vi_is_vampire_trigger = yes
+		}
+		AND = {
+			has_trait = athletic
+			vi_is_vampire_trigger = yes
+		}
+		AND = {
+			has_trait = journaller
+			vi_is_vampire_trigger = yes
+		}	
+		AND = {
+			has_trait = blind
+			vi_is_vampire_trigger = yes
+		}	
+		AND = {
+			has_trait = lifestyle_gardener
+			vi_is_vampire_trigger = yes
+		}	
+		AND = {
+			has_trait = poet
+			vi_is_vampire_trigger = yes
+		}	
+		AND = {
+			has_trait = adventurer
+			vi_is_vampire_trigger = yes
+		}	
+		AND = {
+			has_trait = berserker
+			vi_is_vampire_trigger = yes
+		}	
+		AND = {
+			has_trait = crusader_king
+			vi_is_vampire_trigger = yes
+		}		
+		AND = {
+			has_trait = faith_warrior
+			vi_is_vampire_trigger = yes
+		}
+		AND = {
+			has_trait = peasant_leader
+			vi_is_vampire_trigger = yes		
+		}	
+		AND = {
+			has_trait = lifestyle_voyager
+			vi_is_vampire_trigger = yes		
+		}			
+		AND = {
+			has_trait = lifestyle_wayfarer
+			vi_is_vampire_trigger = yes		
+		}			
+		AND = {
+			has_trait = lifestyle_surveyor
+			vi_is_vampire_trigger = yes		
+		}
+		AND = {
+			has_trait = nomadic_philosophy
+			vi_is_vampire_trigger = yes		
+		}			
+	}
+}
+rvi_has_freepoints = {
+	is_ai = no
+	OR = {
+		AND = {
+			OR = {
+				martial_lifestyle_perk_points = 1
+				martial_lifestyle_perk_points = 2
+				martial_lifestyle_perk_points = 3
+				martial_lifestyle_perk_points = 4
+				martial_lifestyle_perk_points = 5
+				martial_lifestyle_perk_points = 6
+				martial_lifestyle_perk_points = 7
+				martial_lifestyle_perk_points = 8
+				martial_lifestyle_perk_points = 9
+				martial_lifestyle_perk_points = 10
+			}		
+			vi_is_vampire_trigger = yes
+		}
+		AND = {
+			OR = {
+				stewardship_lifestyle_perk_points = 1
+				stewardship_lifestyle_perk_points = 2
+				stewardship_lifestyle_perk_points = 3
+				stewardship_lifestyle_perk_points = 4
+				stewardship_lifestyle_perk_points = 5
+				stewardship_lifestyle_perk_points = 6
+				stewardship_lifestyle_perk_points = 7
+				stewardship_lifestyle_perk_points = 8
+				stewardship_lifestyle_perk_points = 9
+				stewardship_lifestyle_perk_points = 10	
+			}		
+			vi_is_vampire_trigger = yes
+		}
+		AND = {
+			OR = {
+				diplomacy_lifestyle_perk_points = 1
+				diplomacy_lifestyle_perk_points = 2
+				diplomacy_lifestyle_perk_points = 3
+				diplomacy_lifestyle_perk_points = 4
+				diplomacy_lifestyle_perk_points = 5
+				diplomacy_lifestyle_perk_points = 6
+				diplomacy_lifestyle_perk_points = 7
+				diplomacy_lifestyle_perk_points = 8
+				diplomacy_lifestyle_perk_points = 9
+				diplomacy_lifestyle_perk_points = 10	
+			}			
+			vi_is_vampire_trigger = yes
+		}
+		AND = {
+			OR = {
+				intrigue_lifestyle_perk_points = 1
+				intrigue_lifestyle_perk_points = 2
+				intrigue_lifestyle_perk_points = 3
+				intrigue_lifestyle_perk_points = 4
+				intrigue_lifestyle_perk_points = 5
+				intrigue_lifestyle_perk_points = 6
+				intrigue_lifestyle_perk_points = 7
+				intrigue_lifestyle_perk_points = 8
+				intrigue_lifestyle_perk_points = 9
+				intrigue_lifestyle_perk_points = 10	
+			}			
+			vi_is_vampire_trigger = yes
+		}
+		AND = {
+			OR = {
+				learning_lifestyle_perk_points = 1
+				learning_lifestyle_perk_points = 2
+				learning_lifestyle_perk_points = 3
+				learning_lifestyle_perk_points = 4
+				learning_lifestyle_perk_points = 5
+				learning_lifestyle_perk_points = 6
+				learning_lifestyle_perk_points = 7
+				learning_lifestyle_perk_points = 8
+				learning_lifestyle_perk_points = 9
+				learning_lifestyle_perk_points = 10	
+			}				
+			vi_is_vampire_trigger = yes
+		}
+	}
+}

@@ -1,0 +1,78 @@
+scholar_vamp_character = {
+	age = { 50 66 }
+	random_traits_list = {
+		count = 1
+		education_learning_4 = {}
+	}
+	random_traits_list = {
+		count = 2
+		shrewd = {}
+	}
+	trait = just
+	trait = patient
+	trait = compassionate
+	trait = architect
+	trait = vi_vampire_2
+	random_traits = no
+	faith = faith:vi_rodnoverie
+	culture = culture:russian
+	gender_female_chance = root_faith_dominant_gender_adjusted_female_chance
+	learning = {
+		min_template_high_skill
+		max_template_high_skill
+	}
+}
+
+scholar_vamp_character_a = {
+	age = { 50 66 }
+	random_traits_list = {
+		count = 1
+		education_stewardship_5 = {}
+	}
+	random_traits_list = {
+		count = 2
+		lifestyle_mystic = {}
+	}
+	trait = greedy
+	trait = diligent
+	trait = callous
+	trait = intellect_good_2 
+	trait = avaricious
+	trait = vi_vampire_3
+	random_traits = no
+	faith = faith:vi_smertoverie
+	culture = culture:russian
+	gender_female_chance = root_faith_dominant_gender_adjusted_female_chance
+	stewardship = {
+		min_template_high_skill
+		max_template_high_skill
+	}
+}
+
+vamp_graduate_character = {
+	age = 16
+	random_traits_list = {
+		count = 1
+		education_learning_4 = {}
+		education_martial_4 = {}
+		education_intrigue_4 = {}
+		education_stewardship_4 = {}
+		education_diplomacy_4 = {}		
+	}
+	random_traits_list = {
+		lifestyle_physician = {}
+		lifestyle_mystic = {}
+		lifestyle_herbalist = {}
+		lifestyle_gardener = {}
+	}
+	random_traits = yes
+	trait = vi_vampire_1
+	dynasty = none
+	faith = root.faith
+	culture = root.culture
+	gender_female_chance = root_faith_dominant_gender_adjusted_female_chance
+	learning = {
+		min_template_high_skill
+		max_template_high_skill
+	}
+}

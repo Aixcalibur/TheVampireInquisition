@@ -486,7 +486,7 @@ vi_regenerate_interaction = {
 	icon = debug_good
 	#interface_priority = 30
 	common_interaction = yes
-	category = interaction_category_admin
+	category = interaction_category_friendly
 	desc = vi_regenerate_interaction_desc
 
 	is_shown = {

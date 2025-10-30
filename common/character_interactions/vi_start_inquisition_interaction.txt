@@ -1,7 +1,7 @@
 ﻿
 vi_declare_inquisition_interaction = {
 	#interface_priority = 90
-	category = interaction_category_admin
+	category = interaction_category_hostile
 	use_diplomatic_range = yes
 	ignores_pending_interaction_block = yes
 	icon = icon_raid_estate
@@ -220,7 +220,7 @@ vi_declare_inquisition_interaction = {
 
 vi_declare_inquisition_landless_interaction = {
 	#interface_priority = 90
-	category = interaction_category_admin
+	category = interaction_category_hostile
 	use_diplomatic_range = yes
 	ignores_pending_interaction_block = yes
 	icon = icon_raid_estate

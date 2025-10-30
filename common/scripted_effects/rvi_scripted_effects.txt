@@ -1,0 +1,155 @@
+rvi_remove_all_positive_effects = {
+	remove_trait = shrewd
+	remove_trait = strong
+	remove_trait = diplomat
+	remove_trait = gallant
+	remove_trait = overseer
+	remove_trait = strategist
+	remove_trait = administrator
+	remove_trait = architect
+	remove_trait = avaricious
+	remove_trait = schemer
+	remove_trait = seducer
+	remove_trait = torturer
+	remove_trait = theologian
+	remove_trait = whole_of_body
+	remove_trait = family_first
+	remove_trait = lifestyle_herbalist
+	remove_trait = lifestyle_mystic
+	remove_trait = lifestyle_reveler
+ 	remove_trait = winter_soldier
+	remove_trait = desert_warrior
+	remove_trait = aggressive_attacker
+	remove_trait = flexible_leader
+	remove_trait = forder
+	remove_trait = holy_warrior
+	remove_trait = logistician
+	remove_trait = military_engineer
+	remove_trait = organizer
+	remove_trait = reaver
+	remove_trait = unyielding_defender
+	remove_trait = cautious_leader
+	remove_trait = reckless
+	remove_trait = forest_fighter
+	remove_trait = open_terrain_expert
+	remove_trait = rough_terrain_expert
+	remove_trait = jungle_stalker
+	remove_trait = athletic
+	remove_trait = journaller
+	remove_trait = blind
+	remove_trait = lifestyle_gardener
+	remove_trait = poet
+	remove_trait = adventurer
+	remove_trait = berserker
+	remove_trait = crusader_king
+	remove_trait = faith_warrior		
+	remove_trait = peasant_leader	
+	remove_trait = lifestyle_surveyor	
+	remove_trait = lifestyle_wayfarer
+	remove_trait = lifestyle_voyager	
+	remove_trait = august
+	remove_trait = scholar
+	remove_trait = nomadic_philosophy
+}	
+
+
+rvi_remove_all_skillpoints = {
+	add_martial_lifestyle_perk_points = -999
+	add_stewardship_lifestyle_perk_points = -999
+	add_diplomacy_lifestyle_perk_points = -999
+	add_intrigue_lifestyle_perk_points = -999
+	add_learning_lifestyle_perk_points = -999	
+}					
+
+
+vi_koshey_after_effect = {
+	set_immortal_age = 73
+	add_prestige_level = 5
+	change_influence = 2000
+
+	add_character_flag = vi_bald
+	add_character_flag = no_beard
+
+
+	vi_make_vampire_effect = yes
+
+	if = {
+		limit = { NOT = { has_perk = truth_is_relative_perk } }
+		add_perk = truth_is_relative_perk
+	}
+	if = {
+		limit = { NOT = { has_perk = golden_obligations_perk } }
+		add_perk = golden_obligations_perk
+	}
+	if = {
+		limit = { NOT = { has_perk = meritocracy_perk } }
+		add_perk = meritocracy_perk
+	}
+	if = {
+		limit = { NOT = { has_perk = dark_insights_perk } }
+		add_perk = dark_insights_perk
+	}
+	if = {
+		limit = { NOT = { has_perk = kidnapper_perk } }
+		add_perk = kidnapper_perk
+	}
+	if = {
+		limit = { NOT = { has_perk = court_of_shadows_perk } }
+		add_perk = court_of_shadows_perk
+	}
+
+	vi_vampire_add_perk_effect = {
+		PERK = vi_celerity_perk
+	}
+	vi_vampire_add_perk_effect = {
+		PERK = vi_blink_perk
+	}
+	vi_vampire_add_perk_effect = {
+		PERK = vi_shadowwalk_perk
+	}
+
+	add_prowess_skill = 94
+
+	vi_add_allseeing_effect = yes
+	vi_add_sirensong_effect = yes
+	vi_add_dragonsscion_effect = yes
+
+	give_nickname = nick_rvi_immortal
+	vi_nightcourt_learn_languages = yes
+	remove_trait = vi_vampire_1
+	add_trait = vi_vampire_4
+	add_trait = vi_dragonsscion
+	add_character_modifier = {
+		modifier = rvi_koshey_modifier
+	}		
+}
+
+
+
+vi_vasilisa_after_effect = {
+
+	vi_vampire_skinny_effect = yes
+
+	set_immortal_age = 19
+
+	add_prestige_level = 2
+	
+	add_trait = lifestyle_traveler
+	add_trait_xp = {
+		trait = lifestyle_traveler
+		track = travel
+		value = 100
+	}		
+
+	vi_make_vampire_effect = yes
+
+	add_prowess_skill = 7
+	vi_add_sirensong_effect = yes
+	give_nickname = nick_rvi_premudraya
+	vi_nightcourt_learn_languages = yes
+	remove_trait = vi_vampire_1
+	add_trait = vi_vampire_3
+	
+}
+
+

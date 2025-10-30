@@ -1,0 +1,8 @@
+rvi_koshey_modifier = {
+	icon = magic_positive
+	monthly_income = 5
+	stress_gain_mult = -1
+	health = 20
+	enemy_scheme_secrecy_add = -1000
+	enemy_hostile_scheme_success_chance_add = -1000
+}

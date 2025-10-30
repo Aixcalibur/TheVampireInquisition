@@ -1,0 +1,181 @@
+vi_found_landed_knyajestvo_decision = {
+	picture = {
+		reference = "gfx/interface/illustrations/event_scenes/ep2_holysite_western_night.dds"
+	}
+	decision_group_type = major
+	ai_check_interval = 60
+	desc = vi_found_landed_knyajestvo_decision_desc
+
+	is_shown = {
+		NOT = { has_character_flag = sozdal_knyajestvo }
+		vi_is_vampire_trigger = yes
+		NOT = { government_has_flag = government_is_supernatural }
+	}
+
+	is_valid = {
+		has_trait = vi_vampire_4
+		any_courtier = {
+			count >= 10
+			vi_is_vampire_trigger = yes	
+		}	
+		custom_tooltip = {
+			text = vi_found_landed_knyajestvo_tt
+		    highest_held_title_tier = tier_duchy
+			is_independent_ruler = yes
+		    NOT = { government_has_flag = government_is_landless_adventurer }
+            any_held_title = {
+				tier = tier_duchy	
+			
+			}
+		}
+	}
+
+	is_valid_showing_failures_only = {
+		is_available_adult = yes
+		is_at_war = no
+	}
+
+	cost = {
+		gold = 2000
+		prestige = 4000
+		piety = 1000
+	}
+
+	effect = {
+		add_character_flag = sozdal_knyajestvo
+		create_custom_knyajestvo_effect = yes
+		if = {
+			limit = {
+				is_ai = no
+				NOT = { exists = global_var:found_kingdom_decision  }
+			}
+			set_global_variable = {
+				name = found_knyajestvo_decision
+				value = root
+			}
+			set_global_variable = {
+				name = found_knyajestvo_decision_kingdom
+				value = root.primary_title
+			}
+		}
+	}
+
+	ai_potential = {
+		always = yes
+	}
+
+	ai_will_do = {
+		base = 100
+	}
+}
+
+
+upgrade_landed_knyajestvo_decision = {
+	picture = {
+		reference = "gfx/interface/illustrations/event_scenes/ep2_holysite_western_night.dds"
+	}
+	decision_group_type = major
+	ai_check_interval = 60
+	desc = upgrade_landed_knyajestvo_decision_desc
+
+	is_shown = {
+		has_character_flag = sozdal_knyajestvo
+		NOT = { has_character_flag = obnovil_knyajestvo }
+		vi_is_vampire_trigger = yes
+		NOT = { government_has_flag = government_is_supernatural }
+		NOT = { has_game_rule = off_custom_kingdoms }
+	}
+
+	is_valid = {
+		has_trait = vi_vampire_4
+		any_courtier = {
+			count >= 15
+			vi_is_vampire_trigger = yes	
+		}
+		
+		custom_tooltip = {
+			text = vi_upgrade_landed_knyajestvo_tt
+		    highest_held_title_tier = tier_kingdom
+			is_independent_ruler = yes
+		    NOT = { government_has_flag = government_is_landless_adventurer }
+            any_held_title = {
+				tier = tier_kingdom
+			
+			}
+		}
+	}
+
+	is_valid_showing_failures_only = {
+		is_available_adult = yes
+		is_at_war = no
+	}
+
+	cost = {
+		gold = 800
+		prestige = 1200
+		piety = 2000
+	}
+
+	effect = {
+		custom_tooltip = upgrade_new_knyajestvo
+		add_character_flag = obnovil_knyajestvo
+		trigger_event = vi_tsarstvo.1002
+		if = {
+			limit = {
+				is_ai = no
+				NOT = { exists = global_var:upgrade_kingdom_decision  }
+			}
+			set_global_variable = {
+				name = upgrade_kingdom_decision
+				value = root
+			}
+			set_global_variable = {
+				name = upgrade_kingdom_decision_kingdom
+				value = root.primary_title
+			}
+		}
+	}
+
+	ai_potential = {
+		always = yes
+	}
+
+	ai_will_do = {
+		base = 100
+	}
+}
+
+vi_invite_graduates = {
+	picture = { reference = "gfx/interface/illustrations/decisions/decision_recruitment.dds" }
+	desc = vi_invite_graduates_decision_desc
+	selection_tooltip = vi_invite_graduates_decision_tooltip
+	decision_group_type = courtier
+	is_shown = {
+		any_sub_realm_barony = {
+			title_province = {
+				has_building = generic_uchilishe
+			}	
+		}	
+	} 
+	cooldown = { 
+		days = 1095
+	} 
+	cost = {
+		prestige = 150
+	}
+	effect = {
+		custom_tooltip = vi_invite_graduates_custom
+		trigger_event = {
+			id = vi_tsarstvo.1004
+			days = 3
+		}
+	}
+	ai_check_interval = 0
+	ai_potential = {
+		always = no
+	}
+	ai_will_do = {
+		base = 0
+	}
+}
+
