@@ -24,13 +24,18 @@ vi_customization.0001 = {
 			}
 			add_trait = celibate
 		}
+		if = {
+			limit = {
+				years_from_game_start < 1
+			}
+			set_immortal_age = age
+		}
 	}
 
 	# Become a Fledgling
 	option = {
 		name = vi_customization.0001.a
 		add_trait = vi_vampire_1
-		set_immortal_age = age
 		vi_make_vampire_effect = yes
 		custom_tooltip = vi_free_trait_refund_tt
 		trigger_event = vi_customization.1001
@@ -39,7 +44,6 @@ vi_customization.0001 = {
 	option = {
 		name = vi_customization.0001.b
 		add_trait = vi_vampire_2
-		set_immortal_age = age
 		vi_make_vampire_effect = yes
 		custom_tooltip = {
 			text = vi_increase_age_by_20_tt
@@ -61,7 +65,6 @@ vi_customization.0001 = {
 	option = {
 		name = vi_customization.0001.c
 		add_trait = vi_vampire_3
-		set_immortal_age = age
 		vi_make_vampire_effect = yes
 		custom_tooltip = {
 			text = vi_increase_age_by_200_tt
@@ -205,9 +208,7 @@ vi_customization.0010 = {
 				has_trait = vi_vampire_1
 			}
 		}
-		show_as_unavailabe = {
-			always = yes
-		}
+		
 		trigger_event = vi_customization.0010
 	}
 
@@ -219,9 +220,7 @@ vi_customization.0010 = {
 		trigger = {
 			age >= 16
 		}
-		show_as_unavailabe = {
-			always = yes
-		}
+		
 		trigger_event = vi_customization.0010
 	}
 	option = {
