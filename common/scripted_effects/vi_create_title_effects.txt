@@ -401,6 +401,7 @@ vi_create_noble_family_effect = {
 	}
 	give_noble_family_title = {
 		name = noble_family_name
+		tier = county
 		article = DEFAULT_TITLE_NAME_ARTICLE
 		save_scope_as = new_title
 		government = vi_vampire_government
