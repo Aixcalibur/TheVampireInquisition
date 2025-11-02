@@ -12,5 +12,5 @@ tags={
 	"Decisions"
 }
 name="The Vampire Inquisition - ALPHA"
-supported_version="1.16.*"
+supported_version="1.18.*"
 remote_file_id="3365606874"
