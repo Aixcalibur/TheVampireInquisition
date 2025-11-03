@@ -2,3 +2,8 @@
 	name = "dynn_vi_Ming"
 	culture = "han"
 }
+
+vi_dynasty_Su = {
+	name = "dynn_vi_Su"
+	culture = "han"
+}

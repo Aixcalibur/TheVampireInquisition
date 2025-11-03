@@ -145,7 +145,7 @@
 		weight = {
 			base = 0
 
-			 modifier = {
+			modifier = {
 				add = 999
 				exists = this
 				exists = character:vi_alexia
@@ -198,5 +198,47 @@
 			}
 		}
 	}
+
+	
 }
 
+vi_makeup = {
+	usage = game
+	priority = 11
+	vi_daji_makeup_01 = {
+		dna_modifiers = {
+			morph = {
+				mode = add
+				gene = gene_makeup_vi
+				template = vi_daji_makeup
+				value = 1
+			}
+			# morph = {
+			# 	mode = modify
+			# 	gene = gene_eyebrows_shape
+			# 	template = no_eyebrows
+			# 	value = 0
+			# }
+			# morph = {
+			# 	mode = modify
+			# 	gene = gene_eyebrows_fullness
+			# 	template = no_eyebrows
+			# 	value = 0
+			# }
+		}
+
+		weight = {
+			base = 0
+			modifier = {
+				add = 500
+				has_character_flag = vi_daji
+			}
+			modifier = {
+				add = 999
+				exists = this
+				exists = character:vi_daji
+				this = character:vi_daji
+			}
+		}
+	}
+}

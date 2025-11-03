@@ -1,0 +1,60 @@
+vi_daji = {
+	name = "Dájǐ"
+	dna = vi_daji_dna
+	dynasty = dynasty_vi_Su
+	sexuality = bisexual
+	religion = "shangqing"
+	culture = "han"
+	female = yes
+
+	diplomacy = 20
+	martial = 5
+	stewardship = 10
+	intrigue = 39
+	learning = 12
+	prowess = 0
+
+	trait = sadistic
+	trait = arbitrary
+	trait = calm
+	trait = deceitful
+
+	trait = education_intrigue_5
+	trait = vi_vampire_5
+	trait = vi_dormant
+	trait = seducer
+	trait = schemer
+	trait = torturer
+	trait = beauty_good_3
+
+	0.1.1 = {
+		birth = yes
+		effect = {
+			add_character_flag = do_not_generate_starting_family
+			set_immortal_age = 21
+			vi_make_vampire_effect = yes
+			add_prowess_skill = 20
+			
+			#give_nickname = nick_vi_the_archangel
+			add_character_flag = vi_awaken_by_event_only
+			add_character_flag = vi_daji
+			vi_add_sirensong_effect = yes
+			vi_add_allseeing_effect = yes
+		}
+	}
+
+	867.1.1 = {
+		employer = han_3525
+		effect = {
+			set_age = 1943
+		}
+	}
+
+	1060.1.1 = {
+		employer = han_6821
+	}
+
+	2000.1.1 = {
+		death = yes
+	}
+}

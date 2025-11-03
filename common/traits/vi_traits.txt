@@ -209,7 +209,7 @@ vi_exposed_vampire = {
 			desc = trait_vi_exposed_vampire
 		}
 	}
-	icon = excommunicated.dds
+	#icon = excommunicated.dds
 	category = fame
 	shown_in_ruler_designer = no
 	dread_baseline_add = 10
