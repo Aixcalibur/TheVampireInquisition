@@ -1,7 +1,7 @@
 vi_daji = {
 	name = "Dájǐ"
 	dna = vi_daji_dna
-	dynasty = dynasty_vi_Su
+	dynasty_house = house_vi_Su
 	sexuality = bisexual
 	religion = "shangqing"
 	culture = "han"
@@ -52,6 +52,9 @@ vi_daji = {
 
 	1060.1.1 = {
 		employer = han_6821
+		effect = {
+			set_age = 2136
+		}
 	}
 
 	2000.1.1 = {

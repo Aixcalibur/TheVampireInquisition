@@ -15,7 +15,7 @@ special_genes = {
 						blend_modes = {				 #overlay/replace/hard_light/multiply
 							diffuse = replace
 							# normal = overlay
-							properties = replace
+							#properties = replace
 						}
 						alpha_curve = {	#controls decal alpha relative to gene strength. Will give a linear interpolation if left unspecified
 							#gene strngth%, decal alpha
@@ -31,7 +31,7 @@ special_genes = {
 						# 		{ 0.7 0.8 }
 						# 	}
 						# }
-						priority = 10
+						priority = 5
 						decal_apply_order = post_skin_color
 					}
 				}
