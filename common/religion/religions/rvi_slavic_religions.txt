@@ -7,6 +7,7 @@ slavic_religion = {
 	doctrine = pagan_hostility_doctrine
 
 	#Main Group
+	doctrine = doctrine_polytheist	
 	doctrine = doctrine_no_head
 	doctrine = doctrine_gender_male_dominated
 	doctrine = doctrine_pluralism_fundamentalist
@@ -37,6 +38,9 @@ slavic_religion = {
 
 	#Funeral tradition
 	doctrine = doctrine_funeral_cremation
+
+	#Coronation tradition
+	doctrine = doctrine_no_anointment	
 
 	traits = {
 		virtues = { just gregarious honest }
@@ -247,6 +251,7 @@ slavic_religion = {
 			doctrine = vi_diablerie_allowed
 
 			#Main Group
+			doctrine = doctrine_polytheist
 			doctrine = doctrine_spiritual_head
 			doctrine = doctrine_gender_equal
 			doctrine = doctrine_pluralism_fundamentalist
@@ -280,7 +285,9 @@ slavic_religion = {
 
 			#Funeral tradition
 			doctrine = doctrine_funeral_cremation
-	
+			
+			#Coronation tradition
+			doctrine = doctrine_no_anointment	
 			
 			holy_site = konugardr
 			holy_site = tsargrad
