@@ -1,8 +1,6 @@
 ﻿story_vi_fateweaver = {
 	
 	on_setup = {
-		debug_log = "_FATEWEAVER_Fateweaving started"
-		debug_log_scopes = yes
 		scope:story = {
 			set_variable = { name = vi_vamp_master value = story_owner }
 		}
@@ -65,8 +63,6 @@
 				}
 			}
 			effect = {
-				debug_log = "_FATEWEAVER_Fateweaving ended"
-				debug_log_scopes = yes
 				story_owner = {
 					send_interface_toast = {
 						title = vi_fateunraveled_msg
