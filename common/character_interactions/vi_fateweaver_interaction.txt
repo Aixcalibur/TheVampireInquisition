@@ -84,18 +84,20 @@
 			}
 		}
 
-		create_story = {
-			type = story_vi_fateweaver
-			save_scope_as = story
-		}
-
-		random_owned_story = {
-			limit = {
-				story_type = story_vi_fateweaver
+		scope:actor = {
+			create_story = {
+				type = story_vi_fateweaver
+				save_scope_as = story
 			}
-			set_variable = {
-				name = destiny_child
-				value = scope:destiny_child
+
+			random_owned_story = {
+				limit = {
+					story_type = story_vi_fateweaver
+				}
+				set_variable = {
+					name = destiny_child
+					value = scope:destiny_child
+				}
 			}
 		}
 
