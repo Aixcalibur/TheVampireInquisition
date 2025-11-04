@@ -1,0 +1,16 @@
+﻿namespace = vi_fateweaver
+vi_fateweaver.0001 = {
+    hidden = yes
+
+    immediate = {
+        scope:host = {
+            save_scope_as = adventurer_flavor_char
+        }
+
+        create_landless_adventurer_title_effect = {
+            REASON = flag:voluntary
+            FLAVOR_CHAR = scope:adventurer_flavor_char
+        }
+        add_perk = planned_cultivation_perk
+    }
+}
