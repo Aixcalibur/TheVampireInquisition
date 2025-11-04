@@ -6,6 +6,7 @@
 	doctrine = vi_vampiric_hostility_doctrine
 	doctrine = vi_masquerade_required
 	doctrine = vi_diablerie_shunned
+	doctrine = doctrine_polytheist
 
 	#Main Group
 	doctrine = doctrine_temporal_head
@@ -42,6 +43,9 @@
 	#Funeral tradition
 	doctrine = doctrine_funeral_stoic
 
+	#Coronation tradition
+	doctrine = doctrine_anointment_permitted	
+	
 	traits = {
 		virtues = { patient deceitful callous temperate }
 		sins = {  }
@@ -257,6 +261,7 @@
 			doctrine = tenet_sacred_shadows
 
 			doctrine = vi_diablerie_forbidden
+			doctrine = doctrine_monotheist
 
 			doctrine = doctrine_monogamy
 
@@ -524,6 +529,8 @@
 			doctrine = doctrine_gender_male_dominated
 			doctrine = doctrine_pluralism_righteous
 			doctrine = doctrine_theocracy_temporal
+			
+			doctrine = doctrine_monotheist
 
 			doctrine = doctrine_monogamy
 			doctrine = doctrine_divorce_approval
@@ -779,6 +786,8 @@
 			doctrine = doctrine_witchcraft_virtuous
 			doctrine = doctrine_polygamy
 			doctrine = special_doctrine_is_gnostic_faith
+			
+			doctrine = doctrine_monotheist
 
 			holy_order_names = {
 				{ name = "holy_order_army_of_light" }
@@ -1324,6 +1333,167 @@
 				GHWNamePlural = ghw_great_holy_wars
 			}
 		}
+		
+		vi_rodnoverie = {
+			icon = podsolnuh
+			color = { 0.8 0.4 0.0 }
+			religious_head = k_rodnoverie
 
+			
+			
+			doctrine_background_icon = core_tenet_banner_christian.dds
+			doctrine = vi_vampiric_hostility_doctrine
+			doctrine = vi_masquerade_not_required
+			doctrine = vi_diablerie_allowed
+
+			#Main Group
+			doctrine = doctrine_polytheist
+			doctrine = doctrine_spiritual_head
+			doctrine = doctrine_gender_equal
+			doctrine = doctrine_pluralism_fundamentalist
+			doctrine = doctrine_theocracy_lay_clergy
+
+			#Marriage
+			doctrine = doctrine_concubines
+			doctrine = doctrine_divorce_approval
+			doctrine = doctrine_bastardry_legitimization
+			doctrine = doctrine_consanguinity_restricted
+
+			#Crimes
+			doctrine = doctrine_homosexuality_shunned
+			doctrine = doctrine_adultery_men_shunned
+			doctrine = doctrine_adultery_women_shunned
+			doctrine = doctrine_kinslaying_any_dynasty_member_crime
+			doctrine = doctrine_deviancy_accepted
+			doctrine = doctrine_witchcraft_accepted
+
+			#Clerical Functions
+			doctrine = doctrine_clerical_function_recruitment
+			doctrine = doctrine_clerical_gender_either
+			doctrine = doctrine_clerical_marriage_allowed
+			doctrine = doctrine_clerical_succession_temporal_appointment
+
+
+			doctrine = special_doctrine_is_rodnoverie_faith
+	
+			#Allow pilgrimages
+			doctrine = doctrine_pilgrimage_encouraged
+
+			#Funeral tradition
+			doctrine = doctrine_funeral_cremation
+			
+			holy_site = konugardr
+			holy_site = tsargrad
+			holy_site = braslau
+			holy_site = torun
+			holy_site = novgorod
+
+
+			#Tenets
+			doctrine = tenet_unrelenting_faith
+			doctrine = tenet_sacred_childbirth
+			
+			doctrine_selection_pair = {
+				requires_dlc_flag = legacy_of_persia
+				doctrine = tenet_fp3_fedayeen
+				fallback_doctrine = tenet_struggle_submission
+			}			
+			
+						
+			holy_order_names = {
+				{ name = "holy_order_warriors_of_perun" }
+				{ name = "holy_order_guardians_of_divinerealm" }
+				{ name = "holy_order_faithful_of_highgod" }
+				{ name = "holy_order_warriors_of_the_symbol" }
+			}
+
+			localization = { 
+				HighGodName = slavic_high_god_name
+				HighGodName2 = slavic_high_god_name_2
+				HighGodNamePossessive = slavic_high_god_name_possessive
+				HighGodNameSheHe = CHARACTER_SHEHE_HE
+				HighGodHerselfHimself = CHARACTER_HIMSELF
+				HighGodHerHis = CHARACTER_HERHIS_HIS
+				HighGodNameAlternate = slavic_high_god_name_alternate
+				HighGodNameAlternatePossessive = slavic_high_god_name_alternate_possessive
+				
+				#Creator
+				CreatorName = slavic_creator_god_name
+				CreatorNamePossessive = slavic_creator_god_name_possessive
+				CreatorSheHe = CHARACTER_SHEHE_HE
+				CreatorHerHis = CHARACTER_HERHIS_HIS
+				CreatorHerHim = CHARACTER_HERHIM_HIM	
+	
+				#HealthGod
+				HealthGodName = slavic_health_god_name
+				HealthGodNamePossessive = slavic_health_god_name_possessive
+				HealthGodSheHe = CHARACTER_SHEHE_HE
+				HealthGodHerHis = CHARACTER_HERHIS_HIS
+				HealthGodHerHim = CHARACTER_HERHIM_HIM				
+
+				#FertilityGod
+				FertilityGodName = slavic_fertility_god_name
+				FertilityGodNamePossessive = slavic_fertility_god_name_possessive
+				FertilityGodSheHe = CHARACTER_SHEHE_SHE
+				FertilityGodHerHis = CHARACTER_HERHIS_HER
+				FertilityGodHerHim = CHARACTER_HERHIM_HER
+
+				#WealthGod
+				WealthGodName = slavic_wealth_god_name
+				WealthGodNamePossessive = slavic_wealth_god_name_possessive
+				WealthGodSheHe = CHARACTER_SHEHE_HE
+				WealthGodHerHis = CHARACTER_HERHIS_HIS
+				WealthGodHerHim = CHARACTER_HERHIM_HIM
+
+				#HouseholdGod
+				HouseholdGodName = slavic_household_god_name
+				HouseholdGodNamePossessive = slavic_household_god_name_possessive
+				HouseholdGodSheHe = CHARACTER_SHEHE_HE
+				HouseholdGodHerHis = CHARACTER_HERHIS_HIS
+				HouseholdGodHerHim = CHARACTER_HERHIM_HIM
+				
+				#FateGod
+				FateGodName = slavic_fate_god_name
+				FateGodNamePossessive = slavic_fate_god_name_possessive
+				FateGodSheHe = CHARACTER_SHEHE_HE
+				FateGodHerHis = CHARACTER_HERHIS_HIS
+				FateGodHerHim = CHARACTER_HERHIM_HIM
+
+				#KnowledgeGod
+				KnowledgeGodName = slavic_knowledge_god_name
+				KnowledgeGodNamePossessive = slavic_knowledge_god_name_possessive
+				KnowledgeGodSheHe = CHARACTER_SHEHE_SHE
+				KnowledgeGodHerHis = CHARACTER_HERHIS_HER
+				KnowledgeGodHerHim = CHARACTER_HERHIM_HER
+
+				#WarGod
+				WarGodName = slavic_war_god_name
+				WarGodNamePossessive = slavic_war_god_name_possessive
+				WarGodSheHe = CHARACTER_SHEHE_HE
+				WarGodHerHis = CHARACTER_HERHIS_HIS
+				WarGodHerHim = CHARACTER_HERHIM_HIM
+				
+				#TricksterGod
+				TricksterGodName = slavic_trickster_god_name
+				TricksterGodNamePossessive = slavic_trickster_god_name_possessive
+				TricksterGodSheHe = CHARACTER_SHEHE_HE
+				TricksterGodHerHis = CHARACTER_HERHIS_HIS
+				TricksterGodHerHim = CHARACTER_HERHIM_HIM
+				
+				#NightGod
+				NightGodName = slavic_night_god_name
+				NightGodNamePossessive = slavic_night_god_name_possessive
+				NightGodSheHe = CHARACTER_SHEHE_HE
+				NightGodHerHis = CHARACTER_HERHIS_HIS
+				NightGodHerHim = CHARACTER_HERHIM_HIM
+
+				#WaterGod
+				WaterGodName = slavic_water_god_name
+				WaterGodNamePossessive = slavic_water_god_name_possessive
+				WaterGodSheHe = CHARACTER_SHEHE_HE
+				WaterGodHerHis = CHARACTER_HERHIS_HIS
+				WaterGodHerHim = CHARACTER_HERHIM_HIM		
+			}			
+		}
 	}
 }
