@@ -264,6 +264,8 @@
 			doctrine = doctrine_monotheist
 
 			doctrine = doctrine_monogamy
+			
+			doctrine = special_doctrine_is_nocturne_faith
 
 			holy_order_names = {
 				{ name = "holy_order_knights_templar" coat_of_arms = "ho_knights_templar" }
@@ -343,6 +345,8 @@
 			doctrine = vi_virtue_temperate
 
 			doctrine = doctrine_funeral_bewailment # Ancient Greeks were encouraged to grieve publicly
+			
+			doctrine = special_doctrine_is_eleusinian_faith
 
 			holy_order_names = {
 				{ name = "holy_order_myrmidons" }
@@ -561,6 +565,8 @@
 			#doctrine = tenet_alexandrian_catechism
 			doctrine = tenet_mendicant_preachers
 			doctrine = tenet_monasticism
+			
+			doctrine = special_doctrine_is_penitence_faith
 
 			holy_order_names = {
 				{ name = "holy_order_knights_templar" coat_of_arms = "ho_knights_templar" }
@@ -634,6 +640,8 @@
 
 			doctrine = doctrine_witchcraft_virtuous
 			doctrine = special_doctrine_is_gnostic_faith
+			
+			doctrine = special_doctrine_is_thoth_faith
 		}
 
 		vi_mingcult = { # Sun Moon Holy Cult
@@ -655,6 +663,8 @@
 			doctrine = doctrine_consanguinity_cousins
 
 			doctrine = special_doctrine_is_gnostic_faith
+			
+			doctrine = special_doctrine_is_mingcult_faith
 
 			localization = { # Manichean/Priscillianism Gods
 				#HighGodName
@@ -775,6 +785,8 @@
 			doctrine = unreformed_faith_doctrine
 
 			doctrine = doctrine_consanguinity_unrestricted
+			
+			doctrine = special_doctrine_is_baphometi_faith
 
 			holy_site = mecca
 			holy_site = jerusalem
@@ -976,6 +988,8 @@
 
 			doctrine = vi_masquerade_not_required
 			doctrine = vi_diablerie_allowed
+			
+			doctrine = special_doctrine_is_bloodreign_faith
 
 			holy_site = paderborn
 			holy_site = constantinople
@@ -1158,6 +1172,8 @@
 			graphical_faith = "catholic_gfx"
 
 			doctrine = unreformed_faith_doctrine
+			
+			doctrine = special_doctrine_is_vi_unreformed_faith
 
 			holy_site = paderborn
 			holy_site = hiiumaa
