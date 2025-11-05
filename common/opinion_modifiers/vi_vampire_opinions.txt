@@ -22,3 +22,9 @@ vi_attempted_mind_control_opinion = { # From an event
 	imprisonment_reason = yes
 	banish_reason = yes
 }
+
+vi_daji_boredom_opinion = {
+	opinion = -50
+	#decaying = yes
+	#years = 25
+}

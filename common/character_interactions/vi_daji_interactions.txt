@@ -1,0 +1,127 @@
+vi_daji_seek_favor_interaction = {
+	icon = icon_scheme_seduce
+	category = interaction_category_friendly
+	common_interaction = yes
+	interface_priority = 200
+	desc = vi_daji_seek_favor_interaction_desc
+
+	cooldown = {
+		years = 5
+	}
+
+	ai_maybe = yes
+	can_send_despite_rejection = yes
+	on_decline_summary = vi_daji_seek_favor_interaction_decline_summary
+
+	is_shown = {
+		scope:recipient = {
+			#is_physically_able_ai_adult = yes
+			has_character_flag = vi_daji
+		}
+	}
+
+	ai_min_reply_days = 1
+	ai_max_reply_days = 3
+	
+	is_highlighted = {
+		
+		always = yes
+	}
+
+	is_valid_showing_failures_only = {
+		scope:actor.gold >= gift_value
+		scope:actor = {
+			age >= 16
+			custom_tooltip = {
+				text = vi_daji_no_relation_tt
+				OR = {
+					has_relation_best_friend = scope:recipient
+					has_relation_friend = scope:recipient
+					has_relation_lover = scope:recipient
+					has_relation_soulmate = scope:recipient
+					has_relation_vi_sire = scope:recipient
+					has_relation_vi_spawn = scope:recipient
+					has_relation_mentor = scope:recipient
+					has_relation_elder = scope:recipient
+					has_relation_rival = scope:recipient
+					has_relation_nemesis = scope:recipient
+					has_relation_disciple = scope:recipient
+				}
+			}
+		}
+		scope:recipient = {
+			NOT = {
+				has_trait = vi_dormant
+			}
+		}
+	}
+	
+	on_accept = {
+		scope:actor = {
+			pay_short_term_gold = {
+				gold = {
+					value = gift_value
+					add = major_gold_value
+				}
+				target = scope:recipient
+			}
+			custom_tooltip = vi_daji_favor_accept_tt
+			trigger_event = {
+				on_action = vi_daji_favor_accept_on_action
+			}
+		}
+		show_as_tooltip = {
+			vi_daji_favor_accept_effect = yes
+		}
+		
+	}
+
+	on_decline = {
+		
+		scope:actor = {
+			pay_short_term_gold = {
+				gold = {
+					value = gift_value
+					add = major_gold_value
+				}
+				target = scope:recipient
+			}
+			trigger_event = vi_daji.0101
+		}
+		
+		show_as_tooltip = {
+			vi_daji_favor_reject_effect = yes
+		}
+	}
+
+	ai_accept = {
+ 		base = 50
+
+ 		opinion_modifier = {
+ 			opinion_target = scope:actor
+ 			multiplier = 0.5
+ 			step = 5
+			min = -10
+			max = 30
+ 		}
+	}
+
+	ai_frequency = 1000
+
+	ai_targets = {
+		ai_recipients = guests
+		ai_recipients = courtiers
+	}
+
+	ai_target_quick_trigger = {
+		adult = yes
+	}
+
+	ai_potential = {
+		always = no
+	}
+
+	ai_will_do = {
+		base = -100
+	}
+}

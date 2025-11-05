@@ -30,7 +30,7 @@ vi_dynasty_Su={
 		instance={
 			scale={ 0.710000 0.710000 }
 		}
-
 	}
-
 }
+
+house_vi_Su = vi_dynasty_Su

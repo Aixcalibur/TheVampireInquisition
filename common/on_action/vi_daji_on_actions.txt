@@ -1,0 +1,27 @@
+vi_daji_favor_accept_on_action = {
+	random_events = {
+		50 = vi_daji.0111
+		50 = vi_daji.0112
+	}
+}
+
+vi_daji_yearly_processing = {
+	trigger = {
+		has_character_flag = vi_daji
+		is_alive = yes
+		is_ai = yes
+	}
+
+	effect = {
+		if = {
+			limit = {
+				
+			}
+		}
+
+		trigger_event = {
+			on_action = vi_daji_yearly_processing
+			days = 365
+		}
+	}
+}

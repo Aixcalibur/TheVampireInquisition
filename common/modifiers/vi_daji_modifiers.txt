@@ -1,0 +1,8 @@
+vi_daji_whispers_modifier = {
+	icon = magic_positive
+	stress_gain_mult = 0.5
+	stress_loss_mult = 0.25
+	health = 0.25
+	monthly_lifestyle_xp_gain_mult = 0.5
+	stacking = yes
+}

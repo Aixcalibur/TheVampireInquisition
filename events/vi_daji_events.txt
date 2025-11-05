@@ -1,0 +1,85 @@
+namespace = vi_daji
+
+
+
+vi_daji.0101 = { #rejection
+	type = letter_event
+	opening = {
+		desc = char_interaction.0010.opening
+	}
+	desc = {
+		random_valid = {
+			desc = vi_daji.0101.desc.a
+			desc = vi_daji.0101.desc.b
+			desc = vi_daji.0101.desc.c
+		}
+	}
+		
+	sender = scope:recipient
+
+	immediate = {
+		vi_daji_favor_reject_effect = yes
+		scope:recipient = {
+			save_scope_as = lover
+		}
+	}
+
+	option = {
+		name = lover.3222.a
+	}
+}
+
+vi_daji.0111 = {
+	type = letter_event
+	opening = {
+		desc = char_interaction.0010.opening
+	}
+	desc = {
+		random_valid = {
+			desc = vi_daji.0111.desc.a
+			desc = vi_daji.0111.desc.b
+			desc = vi_daji.0111.desc.c
+		}
+	}
+		
+	sender = scope:recipient
+
+	immediate = {
+		vi_daji_favor_accept_effect = yes
+		scope:actor = {
+			vi_daji_gift_artifact_effect = yes
+		}
+		
+	}
+
+	option = {
+		name = vi_daji.0111.a
+	}
+}
+
+vi_daji.0112 = {
+	type = letter_event
+	opening = {
+		desc = char_interaction.0010.opening
+	}
+	desc = {
+		random_valid = {
+			desc = vi_daji.0112.desc.a
+			desc = vi_daji.0112.desc.b
+			desc = vi_daji.0112.desc.c
+		}
+	}
+		
+	sender = scope:recipient
+
+	immediate = {
+		vi_daji_favor_accept_effect = yes
+		scope:actor = {
+			vi_daji_impart_wisdom_effect = yes
+		}
+	}
+
+	option = {
+		name = vi_daji.0112.a
+	}
+}

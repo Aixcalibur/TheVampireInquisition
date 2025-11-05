@@ -1,0 +1,174 @@
+vi_daji_stress_impact_gain = {
+	stress_impact = {
+		base = major_stress_gain
+		chaste = minor_stress_loss
+		lustful = major_stress_gain
+		rakish = minor_stress_gain
+	}
+}
+
+vi_daji_stress_impact_loss = {
+	stress_impact = {
+		base = monumental_stress_loss
+		chaste = minor_stress_gain
+		lustful = monumental_stress_loss
+		rakish = major_stress_loss
+	}
+}
+
+vi_daji_favor_accept_effect = {
+	scope:actor = {
+		add_character_modifier = {
+			modifier = vi_daji_whispers_modifier
+			years = 10
+		}
+		vi_daji_stress_impact_loss = yes
+	}
+}
+
+vi_daji_favor_reject_effect = {
+	scope:actor = {
+		reverse_add_opinion = {
+			target = scope:recipient
+			modifier = annoyed_opinion
+			opinion = -20
+		}
+		vi_daji_stress_impact_gain = yes
+	}
+}
+
+vi_daji_gift_artifact_effect = {
+	random_list = {
+		40 = {
+			vi_daji_gift_generic_artifact_effect = yes
+		}
+		10 = {
+			# We have not implemented the special artifact so...
+			vi_daji_gift_generic_artifact_effect = yes
+
+			#vi_daji_gift_special_artifact_effect = yes
+		}
+	}
+}
+
+vi_daji_gift_special_artifact_effect = {
+
+}
+
+vi_daji_gift_generic_artifact_effect = {
+	hidden_effect = { random_dummy_gender_effect = yes }
+	save_scope_value_as = {
+		name = quality
+		value = 100
+	}
+	random_list = {
+		10 = {
+			create_artifact_ring_effect = {
+				OWNER = root
+				SMITH = scope:dummy_gender
+			}
+		}
+		10 = {
+			create_artifact_brooch_effect = {
+				OWNER = root
+				SMITH = scope:dummy_gender
+			}
+		}
+		10 = {
+			create_artifact_necklace_effect = {
+				OWNER = root
+				SMITH = scope:dummy_gender
+			}
+		}
+		5 = { #Islamic Relic
+			trigger = { has_royal_court = yes }
+			create_artifact_pedestal_islamic_relic_effect_hist = { OWNER = root }
+		}
+		5 = { #Zoroastrian Relic
+			trigger = { has_royal_court = yes }
+			random_list = {
+				50 = {
+					create_artifact_pedestal_branch_relic_zoroastr_effect = { OWNER = root }
+				}
+				50 = {
+					create_artifact_afarganyu_effect = { OWNER = root }
+				}
+			}
+		}
+		10 = {
+			trigger = {
+				any_artifact = {
+					count < 10
+					has_variable = sassanian_sword
+				}
+			}
+			create_artifact_sassanian_sword_effect = { OWNER = root }
+		}
+		1 = {
+			create_artifact_oxus_bracelet_effect = { OWNER = root }
+		}
+		3 = {
+			create_artifact_fp3_ancient_drinking_vessel_effect = { OWNER = root }
+		}
+	}
+	scope:newly_created_artifact = {
+		# set_variable = {
+		# 	name = suppress_artifact_notifications
+		# 	days = 1
+		# }
+		set_owner = {
+			target = root
+			history = {
+				type = given
+				actor = character:vi_daji
+				recipient = root
+				location = root.location
+			}
+		}
+	}
+}
+
+vi_daji_impart_wisdom_effect = {
+	random_list = {
+		50 = {
+			add_diplomacy_skill = {2 4}
+		}
+		50 = {
+			add_martial_skill = {2 4}
+		}
+		50 = {
+			add_stewardship_skill = {2 4}
+		}
+		50 = {
+			add_intrigue_skill = {2 4}
+		}
+		50 = {
+			add_learning_skill = {2 4}
+		}
+		10 = {
+			add_diplomacy_skill = 1
+			add_martial_skill = 1
+			add_stewardship_skill = 1
+			add_intrigue_skill = 1
+			add_learning_skill = 1
+		}
+	}
+
+	add_character_modifier = {
+		modifier = vi_soothed_modifier
+		years = 10
+	}
+
+	if = {
+		limit = {
+			has_opinion_modifier = {
+				modifier = suspicion_opinion
+				target = scope:recipient
+			}
+		}
+		remove_opinion = {
+			modifier = suspicion_opinion
+			target = scope:recipient
+		}
+	}
+}

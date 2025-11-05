@@ -1,14 +1,7 @@
 version="0.2.0"
 tags={
 	"Alternative History"
-	"Balance"
-	"Character Focuses"
-	"Events"
 	"Gameplay"
-	"Schemes"
-	"Warfare"
-	"Religion"
-	"Decisions"
 	"1.18 'Crane'"
 }
 name="The Vampire Inquisition - ALPHA"
