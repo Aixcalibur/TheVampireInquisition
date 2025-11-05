@@ -7,13 +7,196 @@ is_rodnoverie_faith = {
 
 	special_doctrine_is_rodnoverie_faith = {
 		parameters = {
-			minimum_fervor = 50
+			minimum_fervor = 85
 			faith_can_raid = yes
 			
 		}
 
 		character_modifier = {
 			monthly_county_control_growth_factor = -0.3
+			development_growth_factor = 0.15
+			stewardship_per_piety_level = 1
+			
+		}
+	}
+}
+
+is_nocturne_faith = {
+	group = "special"
+	
+	is_available_on_create = {
+		has_doctrine = special_doctrine_is_nocturne_faith
+	}
+
+	special_doctrine_is_nocturne_faith = {
+		parameters = {
+			minimum_fervor = 85
+			faith_can_raid = yes
+			
+		}
+
+		character_modifier = {
+			knight_limit = 2
+			max_personal_schemes_add = 1
+			
+		}
+	}
+}
+
+is_eleusinian_faith = {
+	group = "special"
+	
+	is_available_on_create = {
+		has_doctrine = special_doctrine_is_eleusinian_faith
+	}
+
+	special_doctrine_is_eleusinian_faith = {
+		parameters = {
+			minimum_fervor = 85
+			faith_can_raid = yes
+			
+		}
+
+		character_modifier = {
+			men_at_arms_recruitment_cost = -0.1
+			men_at_arms_maintenance = -0.1
+			
+		}
+	}
+}
+
+is_penitence_faith = {
+	group = "special"
+	
+	is_available_on_create = {
+		has_doctrine = special_doctrine_is_penitence_faith
+	}
+
+	special_doctrine_is_penitence_faith = {
+		parameters = {
+			minimum_fervor = 85
+			faith_can_raid = yes
+			
+		}
+
+		character_modifier = {
+			monthly_piety_gain_per_knight_add = 0.05
+			stress_loss_per_piety_level = 0.2
+			
+		}
+	}
+}
+
+is_thoth_faith = {
+	group = "special"
+	
+	is_available_on_create = {
+		has_doctrine = special_doctrine_is_thoth_faith
+	}
+
+	special_doctrine_is_thoth_faith = {
+		parameters = {
+			minimum_fervor = 85
+			faith_can_raid = yes
+			
+		}
+
+		character_modifier = {
+			learning_per_piety_level = 1
+			monthly_lifestyle_xp_gain_mult = 0.05
+			
+		}
+	}
+}
+
+
+is_mingcult_faith = {
+	group = "special"
+	
+	is_available_on_create = {
+		has_doctrine = special_doctrine_is_mingcult_faith
+	}
+
+	special_doctrine_is_mingcult_faith = {
+		parameters = {
+			minimum_fervor = 85
+			faith_can_raid = yes
+			
+		}
+
+		character_modifier = {
+			monthly_county_control_growth_add = -0.2
+			prowess_per_piety_level = 2
+			
+		}
+	}
+}
+
+
+is_baphometi_faith = {
+	group = "special"
+	
+	is_available_on_create = {
+		has_doctrine = special_doctrine_is_baphometi_faith
+	}
+
+	special_doctrine_is_baphometi_faith = {
+		parameters = {
+			minimum_fervor = 85
+			faith_can_raid = yes
+			
+		}
+
+		character_modifier = {
+			monthly_piety_gain_per_dread_add = 0.02
+			dread_baseline_add = 50
+			
+		}
+	}
+}
+
+
+is_bloodreign_faith = {
+	group = "special"
+	
+	is_available_on_create = {
+		has_doctrine = special_doctrine_is_bloodreign_faith
+	}
+
+	special_doctrine_is_bloodreign_faith = {
+		parameters = {
+			minimum_fervor = 85
+			faith_can_raid = yes
+			
+		}
+
+		character_modifier = {
+			army_maintenance_mult = -0.5
+			army_damage_mult = 0.15
+			opinion_of_different_faith = -50
+			
+		}
+	}
+}
+
+
+is_vi_unreformed_faith = {
+	group = "special"
+	
+	is_available_on_create = {
+		has_doctrine = special_doctrine_is_vi_unreformed_faith
+	}
+
+	special_doctrine_is_vi_unreformed_faith = {
+		parameters = {
+			minimum_fervor = 85
+			faith_can_raid = yes
+			
+		}
+
+		character_modifier = {
+			stress_loss_mult = 0.5
+			stress_gain_mult = -0.5
 			
 		}
 	}

@@ -15,7 +15,7 @@ scholar_vamp_character = {
 	trait = vi_vampire_2
 	random_traits = no
 	faith = faith:vi_rodnoverie
-	culture = culture:russian
+	culture = root.culture
 	gender_female_chance = root_faith_dominant_gender_adjusted_female_chance
 	learning = {
 		min_template_high_skill
@@ -40,8 +40,8 @@ scholar_vamp_character_a = {
 	trait = avaricious
 	trait = vi_vampire_3
 	random_traits = no
-	faith = faith:vi_smertoverie
-	culture = culture:russian
+	faith = root.faith
+	culture = root.culture
 	gender_female_chance = root_faith_dominant_gender_adjusted_female_chance
 	stewardship = {
 		min_template_high_skill

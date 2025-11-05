@@ -1,5 +1,5 @@
 ﻿l_english:
- vi_found_landed_knyajestvo_decision: "Establish a tsardom in shadows"
+ vi_found_landed_knyajestvo_decision: "Establish a kingdom in shadows"
  vi_found_landed_knyajestvo_decision_desc: "The times of mortal kinglet are over. From now on and forever, these lands will belong to me!"
  vi_found_landed_knyajestvo_decision_tooltip: "Create a new kingdom for the creatures of darkness"
  vi_found_landed_knyajestvo_decision_confirm: "Let there be Darkness!"
@@ -8,7 +8,7 @@
  create_dejure_title_knyajestvo: "A ducal title that you control:"
  create_dejure_title_knyajestvo_changes: "Now [de_jure|El] [Concept( 'duchies', 'duchy' )|E] of your new kingdom"
  
- vi_tsarstvo.1001.t: "Tsardom in shadows"
+ vi_tsarstvo.1001.t: "Kingdom in shadows"
  vi_tsarstvo.1001.opening_duchies: "From now on and forever and ever!"
  vi_tsarstvo.1001.desc: "Finally, after long and hard work, I can breathe a sigh of relief. \n\nMy undead minions have just finished "educational work" with the local population. From now on, most of them are either too scared to ask questions, or have sworn allegiance to me in the hopes of receiving the Embrace of Undeath from one of my servants. Well, those who do not wish to live under my protection or become an immortal servant... they will become food for those who wish. "
  vi_tsarstvo.1001.a: "Let their bodies arise; let them awake and rejoice..."
@@ -43,7 +43,7 @@
  vi_tsarstvo.1004.b: "In the middle, you are good" 
  vi_tsarstvo.1004.v: "You can start duty, [new_vamp3.GetShortUIName]"
  
- upgrade_landed_knyajestvo_decision: "Strengthen the tsardom of shadow"
+ upgrade_landed_knyajestvo_decision: "Strengthen the kingdom of shadow"
  upgrade_landed_knyajestvo_decision_tooltip: "Strengthen your holdings"
  upgrade_landed_knyajestvo_decision_desc: "Now that the local mortals are under complete control, it is time to start developing your domains."
  upgrade_new_knyajestvo: "You strengthen your power over the kingdom."
@@ -61,12 +61,34 @@
  vi_tsarstvo.1002.a: "Good idea, worth visiting their castle"
  vi_tsarstvo.1002.b: "Terrible idea, but it could be profitable..."
 
- vi_tsarstvo.1003.a.tt: "You are turning to a unique vampire confession of Slavic paganism."
- vi_tsarstvo.1003.b.tt: "You are turning to a unique vampire confession of Slavic paganism, whose followers always have access to raids."
+ vi_tsarstvo.1003.a.tt: "You are turning to a vampiric religion."
 
- 
  special_doctrine_is_rodnoverie_faith_name: "Light in the darkness"
  special_doctrine_is_rodnoverie_faith_desc: "May Belobog scatter the darkness upon our thorn-ridden path; for we bear the Blessing of Rod the Ancestor-God unto all the righteous now living. Let their lives brim with joys: verily, their life is eternal henceforth. And it pleases Him Well"
+
+ special_doctrine_is_nocturne_faith_name: "Nocturne"
+ special_doctrine_is_nocturne_faith_desc: "The way of un-life followed by those who pay obeisance to the Queen of the Night. By her decree, vampires shall live in secret harmony with the mortal population." 
+   
+ special_doctrine_is_eleusinian_faith_name: "Eleusinian Mysteries"
+ special_doctrine_is_eleusinian_faith_desc: "An ancient vampire cult with millennia of history and traditions destroyed by vampire hunters and conflict with the Cult of Mithras. Many modern vampire practices have their roots in the Eleusinian Mysteries."
+   
+ special_doctrine_is_penitence_faith_name: "Penitence"
+ special_doctrine_is_penitence_faith_desc: "Some vampires believe that their condition is a divine punishment or test from God and devote their time to penitence."
+  
+ special_doctrine_is_thoth_faith_name: "Endless Library"
+ special_doctrine_is_thoth_faith_desc: "To devote oneself to knowledge is only the most rational path for one who has the lifespan to learn everything."
+   
+ special_doctrine_is_mingcult_faith_name: "Ming"
+ special_doctrine_is_mingcult_faith_desc: "Blazing holy fire, burn my frail body. What sorrow is there in life, what suffering in death? To do good and vanquish evil, all for the sake of light. Joys and sorrows alike shall return to dust. Have pity on the people of this world, so burdened with woes! Have pity on the people of this world, so burdened with woes!"
+
+ special_doctrine_is_baphometi_faith_name: "Horned God"
+ special_doctrine_is_baphometi_faith_desc: "The teachings of the mad prophet Baphomet who channeled demons through his mind as he wrote. The actual practices are incomprehensible without years of study."
+ 
+ special_doctrine_is_bloodreign_faith_name: "Reign of Blood"
+ special_doctrine_is_bloodreign_faith_desc: "No longer shall the wolf hide from the sheep. With the coming of the Great One, the world shall be ruled by the worthy."
+
+ special_doctrine_is_vi_unreformed_faith_name: "Detachment"
+ special_doctrine_is_vi_unreformed_faith_desc: "Those who stalk the night have forsaken their ties to mortal religions. Where shall they find purpose now?"
  
  vi_rodnoverie: "Ancestral"
  vi_rodnoverie_adj: "Ancestral"
@@ -92,5 +114,6 @@
  
  rvi_koshey_modifier: "Koshchei"
  rvi_koshey_modifier_desc: "An incredibly powerful creature of the night that guards its secrets carefully. It is best not to get in its way."
+
 
  
