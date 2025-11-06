@@ -1,25 +1,39 @@
 ﻿l_english:
+ k_vi_hidden_fox_court_article: "$DEFAULT_TITLE_NAME_ARTICLE$"
+ k_vi_hidden_fox_court: "Húxiān Secret Palace"
+ k_vi_hidden_fox_court_adj: "Húxiān"
+ vi_fox_leader: "Xiānnu" #Or just use Lady
 
  dynn_vi_Su: "Sū"
+ c_nf_vi_su_article: "$DEFAULT_TITLE_NAME_ARTICLE$"
+ c_nf_vi_su: "$dynn_vi_Su$ Clan"
  Dájǐ: "Dájǐ"
+ Guìrén: "Guìrén"
+ Xǐmèi: "Xǐmèi"
+
  Tamamo-no-Mae: "Tamamo-no-Mae"
  dynn_vi_Su_motto: "Beauty of Ten Thousand Years" #Uh, feel free to come up with anything else you want.
  nick_vi_daji: "the Nine-Tailed Fox"
  nick_vi_daji_desc: "Capricious as the Yellow River, the Fox Goddess brings prosperity in one hand and ruin in the other."
+ nick_vi_guiren: "the Jade Lutist"
+ nick_vi_guiren_desc: "[CHARACTER.GetTitledFirstNamePossessiveNoTooltip|U] skill with the pipa is legendary, to the extent that one might think [CHARACTER.GetSheHe] and the instrument are one."
+ nick_vi_ximei: "the Nine-Headed Bird"
 
  vi_daji_whispers_modifier: "Whispers of the Fox"
  vi_daji_boredom_opinion: "Bored"
+ vi_prescient_wariness_opinion: "Prescient Wariness"
 
- vi_daji_seek_favor_interaction: "Seek Favor"
- vi_daji_seek_favor_interaction_desc: "Mortals and vampires alike cannot help but grovel at her feet."
+ vi_daji_seek_favor_interaction: "Offer Sacrifice"
+ vi_daji_seek_favor_interaction_desc: "Blood for the Fox Goddess!"
  vi_daji_seek_favor_interaction_decline_summary: "@warning_icon! You may end up annoying [recipient.GetShortUINameNoTooltip] instead!"
- vi_daji_no_relation_tt: "You have no personal relations with [recipient.GetShortUIName]"
- vi_daji_favor_accept_tt: "[recipient.GetShortUIName] will bestow her favor, which may come in many forms."
+ vi_daji_no_relation_tt: "Non-vampires need some sort of personal relation with [recipient.GetShortUIName]"
+ vi_daji_favor_accept_tt: "Receives [recipient.GetShortUINamePossessive] favor, which may come in many forms."
+ vi_daji_victim_appeal_desc: "[secondary_actor.GetShortUINamePossessive] [physical_traits|E]: $VALUE|+0=$"
 
  #Tribute rejected
  vi_daji.0101.desc.a: "You call this an offering? I call it a waste of my attention."
- vi_daji.0101.desc.b: "I cannot decide whether to mock your gift or your bravery in sending it. I think I will do both."
- vi_daji.0101.desc.c: "I see, you brought me something so I'd notice you. You may consider yourself noticed... briefly."
+ vi_daji.0101.desc.b: "I cannot decide whether to mock your offering or your bravery. I think I will do both."
+ vi_daji.0101.desc.c: "I see, you brought me an offering so I'd notice you. You may consider yourself noticed... briefly."
 
  #Daji's Favor
  vi_daji.0111.desc.a: "I was looking through my things and found something that reminded me of you."
@@ -31,3 +45,10 @@
  vi_daji.0112.desc.b: "Perhaps few would take me for a bookworm, but I am actually rather well-read. Allow me to share a little forgotten knowledge."
  vi_daji.0112.desc.c: "Would you be interested in a few insights into the Dao? There was an old man I met in Chu who said..."
  vi_daji.0112.a: "My eyes have truly been opened!"
+
+ dynn_vi_Cao: "Cáo"
+ dynn_vi_Cao_motto: "I would rather betray the world than let the world betray me!"
+ Cāo: "Cāo"
+ Cí: "Cí"
+ vi_caocao_modifier: "Cáo Cāo's Perseverance"
+ e_vi_cao_wei: "Wèi"

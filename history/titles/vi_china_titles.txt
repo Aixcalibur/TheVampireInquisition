@@ -1,0 +1,35 @@
+k_vi_hidden_fox_court = {
+	1.1.1 = {
+		holder = vi_ximei
+		government = vi_vampire_government
+	}
+}
+
+c_nf_vi_su = {
+	1.1.1 = {
+		holder = vi_ximei
+		government = vi_vampire_government
+	}
+}
+
+# e_zhongyuan = {
+# 	220.3.15 = {
+# 		holder = vi_caopi
+# 		government = celestial_government
+# 	}
+
+# 	226.6.28 = {
+# 		holder = 0
+# 	}
+# }
+
+e_vi_cao_wei = {
+	220.3.15 = {
+		holder = vi_caopi
+		government = celestial_government
+	}
+
+	226.6.28 = {
+		holder = 0
+	}
+}

@@ -11,3 +11,10 @@ house_vi_Su = {
 	dynasty = vi_dynasty_Su
 	motto = "dynn_vi_Su_motto"
 }
+
+house_vi_Cao = {
+	name = "dynn_vi_Cao"
+	dynasty = vi_dynasty_Cao
+	culture = "han"
+	motto = "dynn_vi_Cao_motto"
+}

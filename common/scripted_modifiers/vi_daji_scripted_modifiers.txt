@@ -1,0 +1,96 @@
+vi_victim_physical_traits_modifier = {
+	modifier = {
+		$VICTIM$ = {
+			has_trait = beauty_good_3
+		}
+		add = 20
+	}
+
+	modifier = {
+		$VICTIM$ = {
+			has_trait = beauty_good_2
+		}
+		add = 10
+	}
+
+	modifier = {
+		$VICTIM$ = {
+			has_trait = beauty_good_1
+		}
+		add = 5
+	}
+
+	modifier = {
+		$VICTIM$ = {
+			has_trait = beauty_bad_3
+		}
+		add = -100
+	}
+
+	modifier = {
+		$VICTIM$ = {
+			has_trait = beauty_bad_2
+		}
+		add = -50
+	}
+
+	modifier = {
+		$VICTIM$ = {
+			has_trait = beauty_bad_1
+		}
+		add = -25
+	}
+
+	modifier = {
+		$VICTIM$ = {
+			has_trait = physique_good_3
+		}
+		add = 20
+	}
+
+	modifier = {
+		$VICTIM$ = {
+			has_trait = physique_good_2
+		}
+		add = 10
+	}
+
+	modifier = {
+		$VICTIM$ = {
+			has_trait = physique_good_1
+		}
+		add = 5
+	}
+
+	modifier = {
+		$VICTIM$ = {
+			OR = {
+				has_trait = intellect_good_1
+				has_trait = intellect_good_2
+				has_trait = intellect_good_3
+			}
+		}
+		add = 5
+	}
+
+	modifier = {
+		$VICTIM$ = {
+			OR = {
+				has_trait = hunchbacked
+				has_trait = giant
+				has_trait = inbred
+				has_trait = scaly
+			}
+		}
+		add = -20
+	}
+
+	modifier = {
+		$VICTIM$ = {
+			OR = {
+				has_trait = leper
+			}
+		}
+		add = -1000
+	}
+}

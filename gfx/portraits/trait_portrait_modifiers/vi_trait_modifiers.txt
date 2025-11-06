@@ -1,0 +1,8 @@
+# vi_dormant = {
+# 	dormant = {
+# 		traits = {
+# 			vi_dormant
+# 		}
+
+# 	}
+# }

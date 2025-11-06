@@ -43,3 +43,9 @@ vi_orcus_blood_modifier = {
 	icon = fertility_mixed
 	fertility = 10
 }
+
+vi_caocao_modifier = {
+	icon = martial_positive
+	martial_per_prestige_level = 2
+	stress_gain_mult = -1
+}
