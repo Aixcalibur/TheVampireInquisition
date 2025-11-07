@@ -118,7 +118,8 @@
  VI_VAMPIRE_RAID_CB_NAME: "Night Raid against [DEFENDER.GetPrimaryTitle.GetName]"
  VI_VAMPIRE_RAID_CB_SPECIFIC_NAME: "Night Raid against [DEFENDER.GetPrimaryTitle.GetBaseName]"
  VI_VAMPIRE_RAID_CB_WAR_NAME: "$ORDER$ [ATTACKER.GetPrimaryTitle.GetAdjective] Raid against [DEFENDER.GetPrimaryTitle.GetName]"
- VI_VAMPIRE_RAID_CB_WAR_NAME_BASE: "[ATTACKER.GetPrimaryTitle.GetAdjective][DEFENDER.GetPrimaryTitle.GetName]"
+ VI_VAMPIRE_RAID_CB_WAR_NAME_BASE: "[ATTACKER.GetPrimaryTitle.GetAdjective][DEFENDER.GetPrimaryTitle.GetName] Raid"
+
  vi_vampire_raid_cb: "Night Raid"
  vi_vampire_raid_cb_victory_desc: "The conflict ends with the attacker asserting dominance"
  vi_vampire_raid_cb_white_peace_desc: "The conflict ends with both sides settling their gains"
@@ -126,3 +127,14 @@
  vi_vampire_raid_cb_prisoners.tt_attacker: "Between #V 3#! and #V 5#! of [defender.GetShortUINamePossessive] [courtiers|E] will be taken [prisoners|E], depending on [defender.GetHerHis] tier, and handed over to [task_contract_employer.GetShortUIName]."
  vi_vampire_raid_cb_prisoners.tt_gold: "[attacker.GetShortUIName|U] will earn [gold_i] [gold|E] equivalent to the prisoners ransom costs."
  msg_vi_vampire_raid_invalidated_message: "Raid Invalidated"
+
+ vi_vampire_banish: "Vampire Banishment"
+ VI_VAMPIRE_BANISH_CB_NAME: "Banish the vampires of [DEFENDER.GetPrimaryTitle.GetName]"
+ VI_VAMPIRE_BANISH_CB_SPECIFIC_NAME: "Banish the vampires of [DEFENDER.GetPrimaryTitle.GetBaseName]"
+ VI_VAMPIRE_BANISH_CB_WAR_NAME: "$ORDER$ [ATTACKER.GetPrimaryTitle.GetAdjective] Raid against [DEFENDER.GetPrimaryTitle.GetName]"
+ VI_VAMPIRE_BANISH_CB_WAR_NAME_BASE: "[ATTACKER.GetPrimaryTitle.GetAdjective][DEFENDER.GetPrimaryTitle.GetName] Raid"
+
+ vi_vampire_banish_cb: "Vampire Banishment"
+ vi_vampire_banish_cb_victory_desc: "The conflict ends with the attacker driving out the defender"
+ vi_vampire_banish_cb_white_peace_desc: "The conflict ends with both sides settling their gains"
+ vi_vampire_banish_cb_defeat_desc: "The conflict ends with the attacker humiliated"

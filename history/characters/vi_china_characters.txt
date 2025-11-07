@@ -96,7 +96,6 @@ vi_ximei = {
 	trait = beauty_good_3
 	trait = seducer
 	trait = administrator
-	trait = overseer
 	trait = witch
 	
 	29.6.3 = {
