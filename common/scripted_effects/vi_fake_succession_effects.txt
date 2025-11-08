@@ -554,18 +554,18 @@ copy_genetics = {
 }
 copy_stats = {
 	scope:new_identity = {
-		add_diplomacy_skill = {value = scope:original_identity.diplomacy subtract = diplomacy}
-		add_martial_skill = {value = scope:original_identity.martial subtract = martial}
-		add_stewardship_skill = {value = scope:original_identity.stewardship subtract = stewardship}
-		add_intrigue_skill = {value = scope:original_identity.intrigue subtract = intrigue}
-		add_learning_skill = {value = scope:original_identity.learning subtract = learning}
-		add_prowess_skill = {value = scope:original_identity.prowess subtract = prowess}
+		add_diplomacy_skill = {value = scope:source_character.diplomacy}
+		add_martial_skill = {value = scope:source_character.martial}
+		add_stewardship_skill = {value = scope:source_character.stewardship}
+		add_intrigue_skill = {value = scope:source_character.intrigue}
+		add_learning_skill = {value = scope:source_character.learning}
+		add_prowess_skill = {value = scope:source_character.prowess}
 	}
 }
 copy_perks = { 
 	if = {
 		limit = {
-			scope:original_identity = { has_perk = thoughtful_perk  }
+			scope:source_character = { has_perk = thoughtful_perk  }
 		}
 		scope:new_identity = {
 			add_perk = thoughtful_perk
@@ -573,7 +573,7 @@ copy_perks = {
 	}
 	if = {
 		limit = {
-			scope:original_identity = { has_perk = ducal_conquest_perk  }
+			scope:source_character = { has_perk = ducal_conquest_perk  }
 		}
 		scope:new_identity = {
 			add_perk = ducal_conquest_perk
@@ -581,7 +581,7 @@ copy_perks = {
 	}
 	if = {
 		limit = {
-			scope:original_identity = { has_perk = forced_vassalage_perk }
+			scope:source_character = { has_perk = forced_vassalage_perk }
 		}
 		scope:new_identity = {
 			add_perk = forced_vassalage_perk
@@ -2439,16 +2439,468 @@ remove_health_traits = {
 }
 
 copy_claims = {
-  save_scope_as = original_identity
+  save_scope_as = new_identity
   $OTHER_CHARACTER$ = {
     every_held_title = {
-      scope:original_identity = { make_claim_strong = PREV }
+      scope:source_character = { make_claim_strong = PREV }
     }
   }
-  save_scope_as = original_identity
+  save_scope_as = new_identity
   $OTHER_CHARACTER$ = {
     every_claim = {
-      scope:original_identity = { make_claim_strong = PREV }
+      scope:source_character = { make_claim_strong = PREV }
     }
   }
+}
+
+copy_traits_xp = {
+	# Single-track traits from vanilla base game
+	if = {
+		limit = {
+			scope:source_character = { has_trait = lifestyle_reveler }
+		}
+		scope:new_identity = {
+			add_trait = {
+				trait = lifestyle_reveler
+				trait_xp = scope:source_character.trait_xp:lifestyle_reveler
+			}
+		}
+	}
+	if = {
+		limit = {
+			scope:source_character = { has_trait = lifestyle_blademaster }
+		}
+		scope:new_identity = {
+			add_trait = {
+				trait = lifestyle_blademaster
+				trait_xp = scope:source_character.trait_xp:lifestyle_blademaster
+			}
+		}
+	}
+	if = {
+		limit = {
+			scope:source_character = { has_trait = lifestyle_scholar }
+		}
+		scope:new_identity = {
+			add_trait = {
+				trait = lifestyle_scholar
+				trait_xp = scope:source_character.trait_xp:lifestyle_scholar
+			}
+		}
+	}
+	if = {
+		limit = {
+			scope:source_character = { has_trait = lifestyle_mystic }
+		}
+		scope:new_identity = {
+			add_trait = {
+				trait = lifestyle_mystic
+				trait_xp = scope:source_character.trait_xp:lifestyle_mystic
+			}
+		}
+	}
+	if = {
+		limit = {
+			scope:source_character = { has_trait = lifestyle_physician }
+		}
+		scope:new_identity = {
+			add_trait = {
+				trait = lifestyle_physician
+				trait_xp = scope:source_character.trait_xp:lifestyle_physician
+			}
+		}
+	}
+	if = {
+		limit = {
+			scope:source_character = { has_trait = logistician }
+		}
+		scope:new_identity = {
+			add_trait = {
+				trait = logistician
+				trait_xp = scope:source_character.trait_xp:logistician
+			}
+		}
+	}
+	if = {
+		limit = {
+			scope:source_character = { has_trait = organizer }
+		}
+		scope:new_identity = {
+			add_trait = {
+				trait = organizer
+				trait_xp = scope:source_character.trait_xp:organizer
+			}
+		}
+	}
+	if = {
+		limit = {
+			scope:source_character = { has_trait = strategist }
+		}
+		scope:new_identity = {
+			add_trait = {
+				trait = strategist
+				trait_xp = scope:source_character.trait_xp:strategist
+			}
+		}
+	}
+	if = {
+		limit = {
+			scope:source_character = { has_trait = tactician }
+		}
+		scope:new_identity = {
+			add_trait = {
+				trait = tactician
+				trait_xp = scope:source_character.trait_xp:tactician
+			}
+		}
+	}
+	if = {
+		limit = {
+			scope:source_character = { has_trait = unifier }
+		}
+		scope:new_identity = {
+			add_trait = {
+				trait = unifier
+				trait_xp = scope:source_character.trait_xp:unifier
+			}
+		}
+	}
+	if = {
+		limit = {
+			scope:source_character = { has_trait = charioteer_blue }
+		}
+		scope:new_identity = {
+			add_trait = {
+				trait = charioteer_blue
+				trait_xp = scope:source_character.trait_xp:charioteer_blue
+			}
+		}
+	}
+	if = {
+		limit = {
+			scope:source_character = { has_trait = charioteer_green }
+		}
+		scope:new_identity = {
+			add_trait = {
+				trait = charioteer_green
+				trait_xp = scope:source_character.trait_xp:charioteer_green
+			}
+		}
+	}
+	if = {
+		limit = {
+			scope:source_character = { has_trait = charioteer_white }
+		}
+		scope:new_identity = {
+			add_trait = {
+				trait = charioteer_white
+				trait_xp = scope:source_character.trait_xp:charioteer_white
+			}
+		}
+	}
+	if = {
+		limit = {
+			scope:source_character = { has_trait = charioteer_red }
+		}
+		scope:new_identity = {
+			add_trait = {
+				trait = charioteer_red
+				trait_xp = scope:source_character.trait_xp:charioteer_red
+			}
+		}
+	}
+	if = {
+		limit = {
+			scope:source_character = { has_trait = governor }
+		}
+		scope:new_identity = {
+			add_trait = {
+				trait = governor
+				trait_xp = scope:source_character.trait_xp:governor
+			}
+		}
+	}
+	if = {
+		limit = {
+			scope:source_character = { has_trait = violet_poet }
+		}
+		scope:new_identity = {
+			add_trait = {
+				trait = violet_poet
+				trait_xp = scope:source_character.trait_xp:violet_poet
+			}
+		}
+	}
+	if = {
+		limit = {
+			scope:source_character = { has_trait = knight_errant }
+		}
+		scope:new_identity = {
+			add_trait = {
+				trait = knight_errant
+				trait_xp = scope:source_character.trait_xp:knight_errant
+			}
+		}
+	}
+	if = {
+		limit = {
+			scope:source_character = { has_trait = the_wake }
+		}
+		scope:new_identity = {
+			add_trait = {
+				trait = the_wake
+				trait_xp = scope:source_character.trait_xp:the_wake
+			}
+		}
+	}
+	if = {
+		limit = {
+			scope:source_character = { has_trait = confucian_education }
+		}
+		scope:new_identity = {
+			add_trait = {
+				trait = confucian_education
+				trait_xp = scope:source_character.trait_xp:confucian_education
+			}
+		}
+	}
+	if = {
+		limit = {
+			scope:source_character = { has_trait = scarred }
+		}
+		scope:new_identity = {
+			add_trait = {
+				trait = scarred
+				trait_xp = scope:source_character.trait_xp:scarred
+			}
+		}
+	}
+	# Additional lifestyle traits (completing the 29 single-track traits)
+	if = {
+		limit = {
+			scope:source_character = { has_trait = lifestyle_seduction }
+		}
+		scope:new_identity = {
+			add_trait = {
+				trait = lifestyle_seduction
+				trait_xp = scope:source_character.trait_xp:lifestyle_seduction
+			}
+		}
+	}
+	if = {
+		limit = {
+			scope:source_character = { has_trait = lifestyle_theologian }
+		}
+		scope:new_identity = {
+			add_trait = {
+				trait = lifestyle_theologian
+				trait_xp = scope:source_character.trait_xp:lifestyle_theologian
+			}
+		}
+	}
+	if = {
+		limit = {
+			scope:source_character = { has_trait = lifestyle_commander }
+		}
+		scope:new_identity = {
+			add_trait = {
+				trait = lifestyle_commander
+				trait_xp = scope:source_character.trait_xp:lifestyle_commander
+			}
+		}
+	}
+	if = {
+		limit = {
+			scope:source_character = { has_trait = lifestyle_administrator }
+		}
+		scope:new_identity = {
+			add_trait = {
+				trait = lifestyle_administrator
+				trait_xp = scope:source_character.trait_xp:lifestyle_administrator
+			}
+		}
+	}
+	if = {
+		limit = {
+			scope:source_character = { has_trait = lifestyle_diplomat }
+		}
+		scope:new_identity = {
+			add_trait = {
+				trait = lifestyle_diplomat
+				trait_xp = scope:source_character.trait_xp:lifestyle_diplomat
+			}
+		}
+	}
+	if = {
+		limit = {
+			scope:source_character = { has_trait = lifestyle_intrigue }
+		}
+		scope:new_identity = {
+			add_trait = {
+				trait = lifestyle_intrigue
+				trait_xp = scope:source_character.trait_xp:lifestyle_intrigue
+			}
+		}
+	}
+	if = {
+		limit = {
+			scope:source_character = { has_trait = lifestyle_martial }
+		}
+		scope:new_identity = {
+			add_trait = {
+				trait = lifestyle_martial
+				trait_xp = scope:source_character.trait_xp:lifestyle_martial
+			}
+		}
+	}
+	if = {
+		limit = {
+			scope:source_character = { has_trait = lifestyle_stewardship }
+		}
+		scope:new_identity = {
+			add_trait = {
+				trait = lifestyle_stewardship
+				trait_xp = scope:source_character.trait_xp:lifestyle_stewardship
+			}
+		}
+	}
+	if = {
+		limit = {
+			scope:source_character = { has_trait = lifestyle_learning }
+		}
+		scope:new_identity = {
+			add_trait = {
+				trait = lifestyle_learning
+				trait_xp = scope:source_character.trait_xp:lifestyle_learning
+			}
+		}
+	}
+	if = {
+		limit = {
+			scope:source_character = { has_trait = lifestyle_wayfarer }
+		}
+		scope:new_identity = {
+			add_trait = {
+				trait = lifestyle_wayfarer
+				trait_xp = scope:source_character.trait_xp:lifestyle_wayfarer
+			}
+		}
+	}
+	if = {
+		limit = {
+			scope:source_character = { has_trait = lifestyle_voyager }
+		}
+		scope:new_identity = {
+			add_trait = {
+				trait = lifestyle_voyager
+				trait_xp = scope:source_character.trait_xp:lifestyle_voyager
+			}
+		}
+	}
+	if = {
+		limit = {
+			scope:source_character = { has_trait = lifestyle_surveyor }
+		}
+		scope:new_identity = {
+			add_trait = {
+				trait = lifestyle_surveyor
+				trait_xp = scope:source_character.trait_xp:lifestyle_surveyor
+			}
+		}
+	}
+	
+	# Multi-track traits from vanilla base game
+	if = {
+		limit = {
+			scope:source_character = { has_trait = lifestyle_hunter }
+		}
+		scope:new_identity = {
+			add_trait = {
+				trait = lifestyle_hunter
+				track = hunter
+				trait_xp = scope:source_character.trait_xp:lifestyle_hunter:hunter
+			}
+			add_trait = {
+				trait = lifestyle_hunter
+				track = falconer
+				trait_xp = scope:source_character.trait_xp:lifestyle_hunter:falconer
+			}
+		}
+	}
+	if = {
+		limit = {
+			scope:source_character = { has_trait = tourney_participant }
+		}
+		scope:new_identity = {
+			add_trait = {
+				trait = tourney_participant
+				track = foot
+				trait_xp = scope:source_character.trait_xp:tourney_participant:foot
+			}
+			add_trait = {
+				trait = tourney_participant
+				track = bow
+				trait_xp = scope:source_character.trait_xp:tourney_participant:bow
+			}
+			add_trait = {
+				trait = tourney_participant
+				track = horse
+				trait_xp = scope:source_character.trait_xp:tourney_participant:horse
+			}
+			add_trait = {
+				trait = tourney_participant
+				track = wit
+				trait_xp = scope:source_character.trait_xp:tourney_participant:wit
+			}
+		}
+	}
+	if = {
+		limit = {
+			scope:source_character = { has_trait = lifestyle_traveler }
+		}
+		scope:new_identity = {
+			add_trait = {
+				trait = lifestyle_traveler
+				track = travel
+				trait_xp = scope:source_character.trait_xp:lifestyle_traveler:travel
+			}
+			add_trait = {
+				trait = lifestyle_traveler
+				track = danger
+				trait_xp = scope:source_character.trait_xp:lifestyle_traveler:danger
+			}
+		}
+	}
+	if = {
+		limit = {
+			scope:source_character = { has_trait = gallowsbait }
+		}
+		scope:new_identity = {
+			add_trait = {
+				trait = gallowsbait
+				track = bandit
+				trait_xp = scope:source_character.trait_xp:gallowsbait:bandit
+			}
+			add_trait = {
+				trait = gallowsbait
+				track = trickster
+				trait_xp = scope:source_character.trait_xp:gallowsbait:trickster
+			}
+			add_trait = {
+				trait = gallowsbait
+				track = thief
+				trait_xp = scope:source_character.trait_xp:gallowsbait:thief
+			}
+			add_trait = {
+				trait = gallowsbait
+				track = poacher
+				trait_xp = scope:source_character.trait_xp:gallowsbait:poacher
+			}
+			add_trait = {
+				trait = gallowsbait
+				track = marauder
+				trait_xp = scope:source_character.trait_xp:gallowsbait:marauder
+			}
+		}
+	}
 }

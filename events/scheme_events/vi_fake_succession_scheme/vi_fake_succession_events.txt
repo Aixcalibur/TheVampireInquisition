@@ -91,7 +91,6 @@ vi_fake_succession.1001 = {
 	}
 }
 
-
 # Success
 vi_fake_succession.2010 = {
 	type = character_event
@@ -101,10 +100,6 @@ vi_fake_succession.2010 = {
 	left_portrait = {
 		character = root
 		animation = personality_bold
-	}
-
-	immediate = {
-		save_scope_as =	original_identity
 	}
 	
 	# Option A: Original succession effect
@@ -116,7 +111,6 @@ vi_fake_succession.2010 = {
 	# Option B: New identity effect	
 	option = {
 		name = vi_fake_succession.2010.b
-		save_scope_as = original_identity
 		trigger_event = {
 			id = vi_fake_succession.2011
 			delayed = yes
@@ -130,8 +124,9 @@ vi_fake_succession.2011 = {
 	desc = vi_fake_succession.2011.desc
 	theme = realm
 
+	save_scope_as = original_identity
+
 	immediate = {
-		
 		create_character = {
 			age = scope:original_identity.age
 			employer = scope:original_identity
@@ -148,34 +143,32 @@ vi_fake_succession.2011 = {
 			learning = 0
 			prowess = 0
 			
-
 			after_creation = {
-				scope:root = {save_scope_as = new_identity}
-				copy_inheritable_appearance_from = scope:original_identity # vanilla effect
-				copy_traits = scope:original_identity # vanilla effect
-				copy_genetics = yes	# in vi_fake_succession_effects line 191
-			#	remove_health_traits = yes # in vi_fake_succession_identity_effects line 2203, but makes sense to keep health traits
-				copy_sexuality = yes # in vi_fake_succession_effects line 2169
-                copy_perks = yes # in vi_fake_succession_effects line 565
-			#	copy_traits_xp = yes add later, currently bugged
-				copy_stats = yes # in vi_fake_succession_effects line 555
-				copy_claims = { OTHER_CHARACTER = scope:original_identity } # in vi_fake_succession_effects line 2441
-				scope:new_identity = { 
-					add_character_modifier = { modifier = vi_unnatural_youth_modifier }
-				}
+				# Save the newly created character
+				save_scope_as = new_identity
+				
+				# Protect original_identity from vanilla copy side-effects
+				scope:original_identity = { save_scope_as = source_character }
 
-			# Add on later, plan is to remove all traits from the original identity first before copying stats because im worried that the stats will be inflated due to perks/traits adding to stats	
-			#	scope:original_identity = {
-			#		remove_all_perks = yes
-			#		clear_traits = yes
-			#		copy_stats = yes
-			#	}
+				copy_inheritable_appearance_from = scope:source_character # vanilla effect
+				copy_traits = scope:source_character # vanilla effect
+				copy_genetics = yes	# in vi_fake_succession_effects line 191
+				copy_sexuality = yes # in vi_fake_succession_effects line 2169
+				copy_perks = yes # in vi_fake_succession_effects line 565
+				copy_traits_xp = yes # in vi_fake_succession_effects line 2456
+				copy_stats = yes # in vi_fake_succession_effects line 555
+				copy_claims = { OTHER_CHARACTER = scope:source_character } # in vi_fake_succession_effects line 2441
+			#	remove_health_traits = yes # in vi_fake_succession_identity_effects line 2203, but makes sense to keep health traits				
+				add_character_modifier = { modifier = vi_unnatural_youth_modifier }
+				
+				# Restore original_identity
+				scope:source_character = { save_scope_as = original_identity }
 			}
 		}
-	}	
-	
+	}
+
 	left_portrait  = { character = scope:original_identity animation = thinking }
-	right_portrait = { character = scope:new_identity     animation = idle }
+	right_portrait = { character = scope:new_identity animation = idle }
 
 	widgets = {
 		widget = {
@@ -190,7 +183,7 @@ vi_fake_succession.2011 = {
 	option = {
 		name = vi_fake_succession.2011.a
 		scope:new_identity = { save_scope_as = new_identity }
-		scope:original_identity = {
+		ROOT = {
 			save_scope_as = original_identity
 			if = {
 				limit = { exists = scope:new_identity }
@@ -219,10 +212,11 @@ vi_fake_succession.2012 = {
 			if = {
 				limit = { exists = scope:new_identity }
 				set_designated_heir = scope:new_identity
+
 			}
 		}
-		scope:new_identity = {
-			save_scope_as = new_identity
+		scope:original_identity = {
+			save_scope_as = original_identity
 			if = {
 				limit = { exists = scope:new_identity }
 				trigger_event = { 
@@ -233,7 +227,6 @@ vi_fake_succession.2012 = {
 		}
     }
 }
-
 vi_fake_succession.2013 = {
 	type = character_event
 	title = vi_fake_succession.2013.t
@@ -393,4 +386,4 @@ vi_fake_succession.2020 = {
 			
 		}
 	}
-}	
+}
