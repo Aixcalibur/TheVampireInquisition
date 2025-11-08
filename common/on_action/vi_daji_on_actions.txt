@@ -15,8 +15,9 @@ vi_daji_yearly_processing = {
 	effect = {
 		if = {
 			limit = {
-				
+				is_incapable = no
 			}
+			
 		}
 
 		trigger_event = {

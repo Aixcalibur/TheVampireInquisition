@@ -12,4 +12,7 @@ nick_vi_samildanach = {}
 nick_vi_the_archangel = {}
 
 nick_vi_orcus = {}
+
 nick_vi_daji = {}
+nick_vi_guiren = {}
+nick_vi_ximei = {}

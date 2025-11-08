@@ -7,3 +7,8 @@ vi_dynasty_Su = {
 	name = "dynn_vi_Su"
 	culture = "han"
 }
+
+vi_dynasty_Cao = {
+	name = "dynn_vi_Cao"
+	culture = "han"
+}

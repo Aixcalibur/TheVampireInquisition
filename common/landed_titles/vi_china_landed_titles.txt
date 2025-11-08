@@ -1,0 +1,41 @@
+k_vi_hidden_fox_court = {
+	color = { 200 0 0 }
+	definite_form = yes
+	ruler_uses_title_name = yes
+	landless = yes
+	# noble_family = yes
+	can_be_named_after_dynasty = no
+
+	capital = c_henan
+
+	ai_primary_priority = {
+		add = @always_primary_score
+	}
+
+	destroy_if_invalid_heir = no
+	no_automatic_claims = no
+	de_jure_drift_disabled = yes
+	
+}
+
+c_nf_vi_su = {
+	color = { 100 100 100 }
+	capital = c_henan
+
+	definite_form = yes
+	landless = yes
+	ruler_uses_title_name = yes
+	always_follows_primary_heir = yes
+	no_automatic_claims = yes
+	noble_family = yes
+	destroy_if_invalid_heir = yes
+	ai_primary_priority = { add = @never_primary_score }
+}
+
+e_vi_cao_wei = {
+	color = {200 0 0}
+	capital = c_henan
+}
+# k_vi_blood_cult = {
+
+# }

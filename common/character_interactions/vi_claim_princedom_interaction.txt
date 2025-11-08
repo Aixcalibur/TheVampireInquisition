@@ -1,0 +1,158 @@
+# vi_claim_princedom_interaction = {
+# 	category = interaction_category_diplomacy
+# 	icon = vassal_claim_liege_title_interaction
+# 	common_interaction = yes
+# 	interface_priority = 200
+# 	desc = vi_claim_princedom_interaction_desc
+
+# 	is_shown = {
+# 		scope:recipient = {
+# 			has_government = vi_vampire_government
+# 			is_landless = yes
+# 			any_held_title = {
+# 				is_noble_family_title = yes
+# 			}
+# 		}
+# 		scope:actor = {
+# 			vi_is_vampire_trigger = yes
+# 		}
+# 	}
+	
+# 	is_highlighted = {
+# 		always = yes
+# 	}
+
+# 	auto_accept = yes
+
+# 	populate_actor_list = {
+# 		scope:actor = {
+# 			if = {
+# 				limit = {
+# 					is_landless_adventurer = yes
+# 				}
+# 				add_to_list = characters
+# 			}
+# 			every_courtier = {
+# 				limit = {
+# 					vi_is_vampire_trigger = yes
+# 				}
+# 				add_to_list = characters
+# 			}
+# 		}
+# 	}
+
+# 	can_be_picked = {
+# 		vi_is_vampire_trigger = yes
+# 	}
+
+
+# 	is_valid_showing_failures_only = {
+		
+# 	}
+	
+# 	on_accept = {
+# 		scope:recipient = {
+# 			random_held_title = {
+# 				limit = {
+# 					is_noble_family_title = yes
+# 				}
+# 				save_scope_as = target
+# 			}
+# 		}
+
+# 		scope:actor = {
+# 			send_interface_toast = {
+# 				type = event_toast_effect_good
+# 				title = buy_claim_interaction.message
+# 				left_icon = scope:actor
+# 				right_icon = scope:recipient
+# 				add_piety = {
+# 					value = 0
+# 					if = {
+# 						limit = {
+# 							scope:target = {
+# 								tier = tier_county
+# 							}
+# 						}
+# 						add = minor_buy_claim_piety_loss
+# 					}
+# 					if = {
+# 						limit = {
+# 							scope:target = {
+# 								tier = tier_duchy
+# 							}
+# 						}
+# 						add = medium_buy_claim_piety_loss
+# 					}
+# 					if = {
+# 						limit = {
+# 							scope:target = {
+# 								tier = tier_kingdom
+# 							}
+# 						}
+# 						add = major_buy_claim_piety_loss
+# 					}
+# 					if = {
+# 						limit = {
+# 							scope:target = {
+# 								tier = tier_empire
+# 							}
+# 						}
+# 						add = massive_buy_claim_piety_loss
+# 					}
+# 					if = {
+# 						limit = {
+# 							scope:target = {
+# 								tier = tier_hegemony
+# 							}
+# 						}
+# 						add = monumental_buy_claim_piety_loss
+# 					}
+# 					if = {
+# 						limit = {
+# 							government_allows = administrative
+# 						}
+# 						multiply = 1.5
+# 					}
+# 				}
+# 				add_unpressed_claim = scope:target
+# 			}
+# 			stress_impact = {
+# 				just = medium_stress_impact_gain
+# 				honest = medium_stress_impact_gain
+# 			}
+# 		}
+# 		scope:recipient = {
+# 			add_opinion = {
+# 				target = scope:actor
+# 				modifier = claimed_my_title_opinion
+# 				opinion = -40
+# 			}
+# 			trigger_event = perk_interaction.0002
+# 		}
+		
+# 	}
+
+# 	ai_accept = {
+#  		base = 100
+# 	}
+
+# 	ai_frequency = 1000
+
+# 	ai_targets = {
+# 		ai_recipients = guests
+# 		ai_recipients = courtiers
+# 	}
+
+# 	ai_target_quick_trigger = {
+# 		adult = yes
+# 	}
+
+# 	ai_potential = {
+# 		always = no
+# 	}
+
+# 	ai_will_do = {
+# 		base = -100
+# 	}
+# }

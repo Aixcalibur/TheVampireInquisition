@@ -16,10 +16,6 @@ vi_fake_succession.0001 = {
 	# 	animation = scepter
 	# }
 
-	immediate = {
-		
-	}
-
 	option = { #Use the city's native capabilities to produce what's needed
 		name = vi_fake_succession.0001.a
 		save_scope_as = actor
@@ -48,8 +44,7 @@ vi_fake_succession.0001 = {
 		}
 
 		ai_chance = {
-			base = 100
-			
+			base = 100	
 		}
 	}
 	option = { #Actually... never mind
@@ -81,13 +76,13 @@ vi_fake_succession.1001 = {
 				if = {
 					limit = { exists = scope:scheme_successful }
 					trigger_event = {
-						id = vi_fake_succession.1002
+						id = vi_fake_succession.2010
 						days = 1
 					}
 				}
 				else = {
 					trigger_event = {
-						id = vi_fake_succession.1003
+						id = vi_fake_succession.2020
 						days = 1
 					}	
 				}
@@ -96,33 +91,247 @@ vi_fake_succession.1001 = {
 	}
 }
 
-
 # Success
-vi_fake_succession.1002 = {
+vi_fake_succession.2010 = {
 	type = character_event
-	title = vi_fake_succession.1002.t
-	desc = vi_fake_succession.1002.desc
+	title = vi_fake_succession.2010.t
+	desc = vi_fake_succession.2010.desc
 	theme = realm
 	left_portrait = {
 		character = root
 		animation = personality_bold
 	}
-
-	immediate = {
+	
+	# Option A: Original succession effect
+	option = {
+		name = vi_fake_succession.2010.a
 		vi_fake_succession_success_effect = yes
 	}
 
+	# Option B: New identity effect	
 	option = {
-		name = vi_fake_succession.1002.a
-		scope:scheme = { end_scheme = yes }
+		name = vi_fake_succession.2010.b
+		trigger_event = {
+			id = vi_fake_succession.2011
+			delayed = yes
+		}
 	}
 }
 
-# Failure
-vi_fake_succession.1003 = {
+vi_fake_succession.2011 = {
 	type = character_event
-	title = vi_fake_succession.1003.t
-	desc = vi_fake_succession.1003.desc
+	title = vi_fake_succession.2011.t
+	desc = vi_fake_succession.2011.desc
+	theme = realm
+
+	immediate = {
+		save_scope_as = original_identity
+		create_character = {
+			age = scope:original_identity.age
+			employer = scope:original_identity
+			gender = scope:original_identity
+			mother = scope:original_identity
+			dynasty_house = scope:original_identity.house
+			culture = scope:original_identity.culture
+			faith = scope:original_identity.faith
+			random_traits = no
+			martial = 0
+			diplomacy = 0
+			intrigue = 0
+			stewardship = 0
+			learning = 0
+			prowess = 0
+			
+			after_creation = {
+				# Save the newly created character
+				save_scope_as = new_identity
+				
+				# Protect original_identity from vanilla copy side-effects
+				scope:original_identity = { save_scope_as = source_character }
+
+				copy_inheritable_appearance_from = scope:source_character # vanilla effect # confirmed working
+				copy_traits = scope:source_character # vanilla effect # confirmed working
+				copy_genetics = yes	# in vi_fake_succession_effects line 191 # confirmed working 
+				copy_sexuality = yes # in vi_fake_succession_effects line 2169 # confirmed working
+				copy_perks = yes # in vi_fake_succession_effects line 565 # confirmed working
+				copy_traits_xp = yes # in vi_fake_succession_effects line 2456 # still doesnt work, ill try to fix it in the future
+				copy_claims = { OTHER_CHARACTER = scope:source_character } # in vi_fake_succession_effects line 2441 # honestly no idea if this works
+			#	remove_health_traits = yes # in vi_fake_succession_identity_effects line 2203, but makes sense to keep health traits				
+				add_character_modifier = { modifier = vi_unnatural_youth_modifier } # confirmed working
+				
+				# Restore original_identity
+				scope:source_character = { save_scope_as = original_identity } 
+			}
+		}
+	}
+
+	left_portrait  = { character = scope:original_identity animation = thinking }
+	right_portrait = { character = scope:new_identity animation = idle }
+
+	widgets = {
+		widget = {
+			is_shown = { always = yes }
+			gui = "event_window_widget_name_child"
+			container = "dynamic_birth_name"
+			controller = name_character
+			setup_scope = { scope:new_identity = { save_scope_as = name_character_target } }
+		}
+	}	
+
+	option = {
+		name = vi_fake_succession.2011.a
+		scope:new_identity = { save_scope_as = new_identity }
+		ROOT = {
+			save_scope_as = original_identity
+			if = {
+				limit = { exists = scope:new_identity }
+				trigger_event = { 
+					id = vi_fake_succession.2012
+					delayed = yes
+				}
+			}
+		}
+	}
+	after = {
+		hidden_effect = {
+			remove_all_perks = yes # confirmed works
+			clear_traits = yes # confirmed works - vanila
+			## clear_character_modifiers = yes  # doesn't work, need to figure out how to do this
+		}
+	}
+}
+
+vi_fake_succession.2012 = {
+	type = character_event
+	title = vi_fake_succession.2012.t
+	desc = vi_fake_succession.2012.desc
+	theme = realm
+
+	left_portrait  = { character = scope:original_identity animation = schadenfreude }
+	right_portrait = { character = scope:new_identity      animation = personality_bold }
+
+	immediate = {
+		scope:new_identity = {
+		copy_stats = yes
+		}
+		debug_log_scopes = yes
+	}
+	
+	option = {
+		name = vi_fake_succession.2012.a
+		scope:original_identity = {
+			save_scope_as = original_identity
+			if = {
+				limit = { exists = scope:new_identity }
+				set_designated_heir = scope:new_identity
+
+			}
+		}
+		scope:original_identity = {
+			save_scope_as = original_identity
+			if = {
+				limit = { exists = scope:new_identity }
+				trigger_event = { 
+					id = vi_fake_succession.2013
+					delayed = yes
+				}
+			}
+		}
+    }
+}
+
+vi_fake_succession.2013 = {
+	type = character_event
+	title = vi_fake_succession.2013.t
+	desc  = vi_fake_succession.2013.desc
+	theme = death
+
+    left_portrait  = { character = scope:original_identity animation = dead }
+    right_portrait = { character = scope:new_identity      animation = schadenfreude }
+
+    option = {
+        name = vi_fake_succession.2013.a_peaceful
+        scope:original_identity = {
+            hidden_effect = {
+                death = { death_reason = death_peaceful }
+            }
+            show_as_tooltip = { death = { death_reason = death_peaceful } }
+        }
+        scope:new_identity = {
+            hidden_effect = {
+                add_secret = {
+                    type = secret_vi_vampire
+                    target = scope:original_identity
+                }
+            }
+        }
+        if = {
+            limit = { exists = scope:scheme }
+            scope:scheme = { end_scheme = yes }
+        }
+    }
+
+    option = {
+        name = vi_fake_succession.2013.a_religious
+        scope:original_identity = {
+        hidden_effect = {
+            death = {
+                death_reason = death_martyrdom  # Martyrdom death
+            }
+        }
+        show_as_tooltip = {
+            death = { death_reason = death_martyrdom }
+        }
+        }
+        # Create the matching vampire secret on the new identity
+        scope:new_identity = {
+            hidden_effect = {
+                add_secret = {
+                    type = secret_vi_vampire
+                    target = scope:original_identity
+                }
+            }
+        }
+        if = {
+            limit = { exists = scope:scheme }
+            scope:scheme = { end_scheme = yes }
+        }
+    }
+
+    option = {
+        name = vi_fake_succession.2013.a_murder
+        scope:original_identity = {
+            hidden_effect = {
+                death = {
+                    death_reason = death_murder   # Counts as 'murder' for Mandala
+                }
+            }
+            # Public-facing tooltip: shows cause only (no killer)
+            show_as_tooltip = {
+                death = { death_reason = death_murder }
+            }
+        }
+
+        scope:new_identity = {
+            hidden_effect = {
+                add_secret = {
+                    type = secret_vi_vampire
+                    target = scope:original_identity
+                }
+            }
+        }
+        if = {
+            limit = { exists = scope:scheme }
+            scope:scheme = { end_scheme = yes }
+        }
+    }
+}
+
+# Failure
+vi_fake_succession.2020 = {
+	type = character_event
+	title = vi_fake_succession.2020.t
+	desc = vi_fake_succession.2020.desc
 	theme = realm
 	
 	left_portrait = {
@@ -169,10 +378,13 @@ vi_fake_succession.1003 = {
 	}
 
 	#Option A: Too bad
-	option = {
-		name = vi_fake_succession.1003.a
-		scope:scheme = { end_scheme = yes }
-	}
+    option = {
+        name = vi_fake_succession.2020.a
+        if = {
+            limit = { exists = scope:scheme }
+            scope:scheme = { end_scheme = yes }
+        }
+    }
 
 	after = {
 		if = {

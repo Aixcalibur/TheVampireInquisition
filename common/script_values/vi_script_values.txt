@@ -193,3 +193,116 @@ vi_humanity_scaling_value = {
 	round = yes
 	max = 10
 }
+
+vi_fox_favor_stacks = {
+	value = 0
+	add = var:vi_fox_favor
+	max = 5
+}
+
+vi_offered_sacrifice_opinion = {
+	value = 0
+	scope:secondary_actor = {
+		add = vi_victim_appeal_value
+	}
+	multiply = 10
+	add = send_gift_opinion
+	multiply = 0.4
+	min = 10
+}
+
+vi_victim_appeal_value = {
+	value = 0
+	if = {
+		limit = {
+			has_trait = beauty_good_3
+		}
+		add = 20
+	}
+	if = {
+		limit = {
+			has_trait = beauty_good_2
+		}
+		add = 10
+	}
+	if = {
+		limit = {
+			has_trait = beauty_good_1
+		}
+		add = 5
+	}
+	if = {
+		limit = {
+			has_trait = beauty_bad_1
+		}
+		add = -20
+	}
+	if = {
+		limit = {
+			has_trait = beauty_bad_2
+		}
+		add = -40
+	}
+	if = {
+		limit = {
+			has_trait = beauty_bad_3
+		}
+		add = -80
+	}
+	if = {
+		limit = {
+			has_trait = physique_good_3
+		}
+		add = 20
+	}
+	if = {
+		limit = {
+			has_trait = physique_good_2
+		}
+		add = 10
+	}
+	if = {
+		limit = {
+			has_trait = physique_good_1
+		}
+		add = 5
+	}
+	if = {
+		limit = {
+			OR = {
+				has_trait = inbred
+				has_trait = hunchbacked
+				has_trait = clubfooted
+			}
+		}
+		add = -20
+	}
+
+	if = {
+		limit = {
+			has_any_illness = yes
+		}
+		add = -10
+	}
+
+	if = {
+		limit = {
+			has_any_debilitating_illness = yes
+		}
+		add = -80
+	}
+
+	if = {
+		limit = {
+			has_trait = infirm
+		}
+		add = -20
+	}
+
+	if = {
+		limit = {
+			has_trait = incapable
+		}
+		add = -40
+	}
+}

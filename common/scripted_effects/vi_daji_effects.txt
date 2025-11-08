@@ -1,6 +1,6 @@
 vi_daji_stress_impact_gain = {
 	stress_impact = {
-		base = major_stress_gain
+		base = medium_stress_gain
 		chaste = minor_stress_loss
 		lustful = major_stress_gain
 		rakish = minor_stress_gain
@@ -9,7 +9,7 @@ vi_daji_stress_impact_gain = {
 
 vi_daji_stress_impact_loss = {
 	stress_impact = {
-		base = monumental_stress_loss
+		base = major_stress_loss
 		chaste = minor_stress_gain
 		lustful = monumental_stress_loss
 		rakish = major_stress_loss
@@ -17,12 +17,54 @@ vi_daji_stress_impact_loss = {
 }
 
 vi_daji_favor_accept_effect = {
+	
 	scope:actor = {
+		if = {
+			limit = {
+				has_variable = vi_fox_favor
+			}
+			change_variable = {
+				name = vi_fox_favor
+				add = 1 
+			}
+		}
+		else = {
+			set_variable = {
+				name = vi_fox_favor
+				value = 1 
+			}
+		}
 		add_character_modifier = {
 			modifier = vi_daji_whispers_modifier
-			years = 10
+		}
+		reverse_add_opinion = {
+			target = scope:recipient
+			modifier = gift_opinion
+			opinion = vi_offered_sacrifice_opinion
 		}
 		vi_daji_stress_impact_loss = yes
+		
+	}
+	
+	scope:secondary_actor = {
+		hidden_effect = {
+			every_close_family_member = {
+				add_opinion = {
+					target = scope:actor
+					modifier = suspicion_opinion
+					opinion = -5
+				}
+			}
+			every_relation = {
+				type = friend
+				add_opinion = {
+					target = scope:actor
+					modifier = suspicion_opinion
+					opinion = -5
+				}
+			}
+		}
+		death = { death_reason = death_mysterious }
 	}
 }
 
@@ -34,6 +76,19 @@ vi_daji_favor_reject_effect = {
 			opinion = -20
 		}
 		vi_daji_stress_impact_gain = yes
+	}
+
+	scope:secondary_actor = {
+		hidden_effect = {
+			every_close_family_member = {
+				add_opinion = {
+					target = scope:actor
+					modifier = suspicion_opinion
+					opinion = -5
+				}
+			}
+		}
+		death = { death_reason = death_mysterious }
 	}
 }
 

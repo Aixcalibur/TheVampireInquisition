@@ -162,31 +162,40 @@
 				}
 			}
 		}
-		
-		# Truce
-		if = { # This if/else exists for localization purposes, since it could be parsed before the war starts
-			limit = { exists = root.war }
-			start_tributary_from_war_effect = {
-				TRIBUTARY = scope:defender
-				SUZERAIN = scope:attacker
-				WAR = root.war
-			}
-		}
-		else = {
-			start_tributary_interaction_effect = {
-				TRIBUTARY = scope:defender
-				SUZERAIN = scope:attacker
-			}
-		}
 
-		scope:attacker = {
-			if = {
-				limit = {
-					is_independent_ruler = yes
-					is_landed = no
+		if = {
+			limit = {
+				scope:attacker = {
+					is_landless_adventurer = no
+				}
+			}
+			if = { # This if/else exists for localization purposes, since it could be parsed before the war starts
+				limit = { exists = root.war }
+				start_tributary_from_war_effect = {
+					TRIBUTARY = scope:defender
+					SUZERAIN = scope:attacker
+					WAR = root.war
+				}
+			}
+			else = {
+				start_tributary_interaction_effect = {
+					TRIBUTARY = scope:defender
+					SUZERAIN = scope:attacker
+				}
+			}
+
+			scope:attacker = {
+				if = {
+					limit = {
+						is_independent_ruler = yes
+						is_landed = no
+					}
 				}
 			}
 		}
+		
+		# Truce
+		
 
 		# EP3: note gold gained from military assistance/join war contracts and their war contribution threshold
 		laamp_as_mercenary_payout_tooltip_effect = yes
@@ -307,6 +316,351 @@
 	war_name = "VI_VAMPIRE_RAID_CB_WAR_NAME"
 	war_name_base = "VI_VAMPIRE_RAID_CB_WAR_NAME_BASE"
 	cb_name = "VI_VAMPIRE_RAID_CB_NAME"
+	interface_priority = 80
+
+	ticking_war_score_targets_entire_realm = yes
+	attacker_ticking_warscore = 0
+	attacker_wargoal_percentage = 0.01
+	attacker_score_from_occupation_scale = 50
+	defender_score_from_occupation_scale = 50
+	attacker_score_from_battles_scale = 200
+	defender_score_from_battles_scale = 200
+
+	max_attacker_score_from_battles = 200
+	max_defender_score_from_battles = 200
+	
+	max_defender_score_from_occupation = 150
+	max_attacker_score_from_occupation = 150
+
+	max_ai_diplo_distance_to_title = 500
+	
+	ai_score = {
+		value = raid_for_captives_ai_score_value
+	}
+
+	ai_score_mult = {
+		value = 1
+		# Increase odds if the character is a vassal with Ghazi Contract
+		add = {
+			if = {
+				limit = {
+					scope:attacker = {
+						is_independent_ruler = no
+						vassal_contract_has_flag = vassal_contract_cheaper_religious_war
+					}
+				}
+				add = 1
+			}
+		}
+		# Holy War are limited to connected neighbour to limit big empire expansions over weak realms.
+		add = {
+			if = {
+				limit = {  religious_war_vassals_constraints = yes }
+				add = -1000
+			}
+		}
+	}
+}
+
+vi_vampire_banish = {
+	icon = ducal_conquest_cb
+	group = invasion
+	allow_hostages = no
+	target_top_liege_if_outside_realm = no
+
+	# Root is the title
+	# scope:attacker is the attacker
+	# scope:defender is the defender
+	allowed_for_character = {
+		vi_is_vampire_trigger = yes
+		is_landed = yes
+	}
+	allowed_against_character = {
+		#vi_is_vampire_trigger = yes
+		has_government = vi_vampire_government
+		is_landed = no
+		scope:attacker = {
+			any_realm_county = {
+				this = scope:defender.capital_county
+			}
+		}
+	}
+
+	cost = {
+		piety = {
+			value = 0
+			if = {
+				limit = {
+					scope:defender.faith = scope:attacker.faith
+				}
+				add = {
+					value = minor_piety_value
+					desc = CB_SAME_FAITH_COST
+				}
+			}
+
+			multiply = common_cb_piety_cost_multiplier
+		}
+		prestige = {
+			value = major_prestige_value
+			if = {
+				limit = {
+					NOT = { scope:defender.faith = scope:attacker.faith }
+				}
+				add = {
+					value = minor_prestige_value
+					desc = CB_COST_DIFFERENT_FAITH
+				}
+			}
+			multiply = common_cb_prestige_cost_multiplier
+		}
+	}
+
+	should_invalidate = {
+		scope:defender = {
+			is_landed = yes
+		}
+	}
+
+	on_invalidated_desc = msg_vi_vampire_raid_invalidated_message
+
+	on_invalidated = {
+		scope:attacker = {
+			
+		}		
+	}
+
+	on_declaration = {
+		on_declared_war = yes
+
+		scope:defender = {
+
+			worsen_relationship_effect = {
+				TARGET = scope:attacker
+				REASON = rival_raided_me
+			}
+
+			if = {
+				limit = {
+					vi_is_vampire_trigger = no
+				}
+				add_opinion = {
+					target = scope:attacker
+					modifier = suspicion_opinion
+					opinion = -50
+				}
+			}
+
+			if = {
+				limit = {
+					OR = {
+						is_independent_ruler = no
+						is_tributary = yes
+					}
+					
+				}
+
+				overlord ?= {
+					add_opinion = {
+						target = scope:attacker
+						modifier = declared_war
+						opinion = -20
+					}
+				}
+
+				if = {
+					limit = {
+						is_ai = yes
+						is_landed = no
+						has_government = vi_vampire_government
+						overlord ?= {
+							is_ai = yes
+							opinion = {
+								target = scope:defender
+								value > -10
+							}
+						}
+					}
+					scope:war = {
+						add_defender = scope:defender.liege
+					}
+				}
+				scope:war = {
+					add_defender = scope:defender.liege
+				}
+			}
+		}
+		
+	}
+
+	on_victory_desc = {
+		desc = vi_vampire_banish_cb_victory_desc
+	}
+
+	on_victory = {
+		scope:attacker = {
+			#show_pow_release_message_effect = yes
+			accolade_attacker_war_end_glory_gain_low_effect = yes
+		}
+		
+		# Allies on both sides get full prestige value for helping in the war, based on their war participation.
+		modify_allies_of_participants_fame_values = {
+			WINNER = scope:attacker
+			FAME_BASE = major_prestige_value
+			IS_RELIGIOUS_WAR = no
+			WINNER_ALLY_FAME_SCALE = 1
+			LOSER_ALLY_FAME_SCALE = 1
+		}
+
+		scope:defender = {
+			
+			worsen_relationship_effect = {
+				TARGET = scope:attacker
+				REASON = rival_raided_me
+			}
+
+			pay_short_term_gold = {
+				target = scope:attacker
+				gold = major_gold_value
+			}
+
+			every_held_title = {
+				scope:defender = {
+					destroy_title = prev
+				}
+			}
+
+			add_truce_attacker_victory_effect = yes
+
+			create_landless_adventurer_title_effect = {
+				REASON = flag:conquest
+				FLAVOR_CHAR = scope:attacker
+			}
+
+		}
+		
+		# Truce
+		
+
+		# EP3: note gold gained from military assistance/join war contracts and their war contribution threshold
+		laamp_as_mercenary_payout_tooltip_effect = yes
+	}
+
+	on_white_peace_desc = {
+		desc = vi_vampire_raid_cb_white_peace_desc
+
+	}
+
+	on_white_peace = {
+		scope:attacker = { 
+			show_pow_release_message_effect = yes
+			# stress_impact = {
+			# 	ambitious = medium_stress_impact_gain
+			# 	arrogant = medium_stress_impact_gain
+			# }
+		}
+
+		# Allies on both sides get full prestige value for helping in the war, based on their war participation.
+		modify_allies_of_participants_fame_values = {
+			WINNER = scope:attacker # not important as the scales are identical
+			FAME_BASE = major_prestige_value
+			IS_RELIGIOUS_WAR = no
+			WINNER_ALLY_FAME_SCALE = 1
+			LOSER_ALLY_FAME_SCALE = 1
+		}
+
+		scope:defender = {
+			# progress_towards_rival_effect = {
+			# 	REASON = rival_raided_me
+			# 	CHARACTER = scope:attacker
+			# 	OPINION = default_rival_opinion
+			# }
+			# worsen_relationship_effect = {
+			# 	TARGET = scope:attacker
+			# 	REASON = rival_raided_me
+			# }
+			pay_short_term_gold = {
+				target = scope:attacker
+				gold = {
+					value = scope:war.attacker_war_score
+					multiply = monumental_gold_value
+					divide = 100
+				}
+			}
+
+			if = {
+				limit = {
+					scope:war.attacker_war_score > 50
+					is_landed = no
+				}
+				add_character_modifier = {
+					modifier = vi_recently_raided_modifier
+					years = 2
+				}
+			}
+			else_if = {
+				limit = {
+					scope:war.attacker_war_score > 0
+					is_landed = no
+				}
+				add_character_modifier = {
+					modifier = vi_recently_raided_modifier
+					years = 1
+				}
+			}
+		}
+		# Truce
+		add_truce_attacker_victory_effect = yes
+
+		# EP3: note gold gained from military assistance/join war contracts and their war contribution threshold
+		laamp_as_mercenary_payout_tooltip_effect = yes
+	}
+
+	on_defeat_desc = {
+		desc = vi_vampire_banish_cb_defeat_desc
+	}
+
+	on_defeat = {
+		scope:attacker = { show_pow_release_message_effect = yes }
+
+		#EP2 Accolade glory gain from winning against higher ranked enemy
+		scope:defender = { accolade_defender_war_end_glory_gain_low_effect = yes }
+
+		# Allies on both sides get full prestige value for helping in the war, based on their war participation.
+		modify_allies_of_participants_fame_values = {
+			WINNER = scope:defender
+			FAME_BASE = major_prestige_value
+			IS_RELIGIOUS_WAR = no
+			WINNER_ALLY_FAME_SCALE = 1
+			LOSER_ALLY_FAME_SCALE = 1
+		}
+
+		scope:attacker = {
+			pay_short_term_gold = {
+				target = scope:defender
+				gold = monumental_gold_value
+			}
+		}
+
+		# Truce
+		add_truce_attacker_defeat_effect = yes
+
+		scope:attacker = { save_temporary_scope_as = loser }
+		on_lost_aggression_war_discontent_loss = yes
+
+		# EP3: note gold gained from military assistance/join war contracts and their war contribution threshold
+		laamp_as_mercenary_payout_tooltip_effect = yes
+	}
+
+	on_primary_attacker_death = inherit
+	on_primary_defender_death = inherit
+
+	attacker_allies_inherit = yes
+	defender_allies_inherit = yes
+
+	war_name = "VI_VAMPIRE_BANISH_CB_WAR_NAME"
+	war_name_base = "VI_VAMPIRE_BANISH_CB_WAR_NAME_BASE"
+	cb_name = "VI_VAMPIRE_BANISH_CB_NAME"
 	interface_priority = 80
 
 	ticking_war_score_targets_entire_realm = yes

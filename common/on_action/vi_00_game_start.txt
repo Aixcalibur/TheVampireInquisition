@@ -462,10 +462,10 @@ vi_vampire_game_start_generate_vassals = {
 		vi_generate_prince_vassal_effect = yes
 
 		
-		# trigger_event = {
-		# 	on_action = vi_vampire_game_start_generate_vassals
-		# 	days = 20
-		# 	delayed = yes
-		# }
+		trigger_event = {
+			on_action = vi_vampire_game_start_generate_vassals
+			days = 20
+			delayed = yes
+		}
 	}
 }

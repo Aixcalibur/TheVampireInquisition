@@ -13,6 +13,7 @@
 }
 
 vi_fake_succession_monthly_effect = {
+	save_scope_as = scheme
 	random = {
 		chance = 10
 		if = {
@@ -55,8 +56,8 @@ vi_fake_succession_monthly_effect = {
 									modifier = suspicion_opinion
 									opinion = -20
 								}
-								add_scheme_progress = -20
 							}
+							scope:scheme = { add_scheme_progress = -20 }
 						}
 					}
 					20 = {
@@ -70,8 +71,8 @@ vi_fake_succession_monthly_effect = {
 									}
 									reveal_to = scope:agent
 								}
-								add_scheme_progress = -50
 							}
+							scope:scheme = { add_scheme_progress = -50 }
 						}
 					}
 				}
@@ -135,7 +136,7 @@ vi_fake_succession_success_effect = {
 			scope:owner = {
 				NOR = {
 					vi_is_vampire_trigger = yes
-					has_trait = dhampir
+					has_trait = vi_dhampir
 				}
 			}
 		}
@@ -175,7 +176,7 @@ vi_fake_succession_success_effect = {
 
 	hidden_effect = {
 		every_secret = {
-			type = vi_vampire_secret
+			type = secret_vi_vampire
 			remove_secret = yes
 		}
 		add_secret = {
@@ -183,3 +184,4328 @@ vi_fake_succession_success_effect = {
 		}
 	}
 }
+#############################################
+###### FAKE SUCCESSION REWORK EFFECTS #######
+#############################################
+
+copy_genetics = {
+	
+	#There are 34 genetic traits
+	
+	if = {
+		limit = {
+			scope:original_identity = { has_trait = beauty_bad_1 }
+		}
+		scope:new_identity = {
+			add_trait_xp = beauty_bad_1
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_trait = beauty_bad_2 }
+		}
+		scope:new_identity = {
+			add_trait_xp = beauty_bad_2
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_trait = beauty_bad_3 }
+		}
+		scope:new_identity = {
+			add_trait_xp = beauty_bad_3
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_trait = intellect_bad_1 }
+		}
+		scope:new_identity = {
+			add_trait_xp = intellect_bad_1
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_trait = intellect_bad_2 }
+		}
+		scope:new_identity = {
+			add_trait_xp = intellect_bad_2
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_trait = intellect_bad_3 }
+		}
+		scope:new_identity = {
+			add_trait_xp = intellect_bad_3
+		}
+	}
+	
+	if = {
+		limit = {
+			scope:original_identity = { has_trait = physique_bad_1 }
+		}
+		scope:new_identity = {
+			add_trait_xp = physique_bad_1
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_trait = physique_bad_2 }
+		}
+		scope:new_identity = {
+			add_trait_xp = physique_bad_2
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_trait = physique_bad_3 }
+		}
+		scope:new_identity = {
+			add_trait_xp = physique_bad_3
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_trait = beauty_good_1 }
+		}
+		scope:new_identity = {
+			add_trait_xp = beauty_good_1
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_trait = beauty_good_2 }
+		}
+		scope:new_identity = {
+			add_trait_xp = beauty_good_2
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_trait = beauty_good_3 }
+		}
+		scope:new_identity = {
+			add_trait_xp = beauty_good_3
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_trait = intellect_good_1 }
+		}
+		scope:new_identity = {
+			add_trait_xp = intellect_good_1
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_trait = intellect_good_2 }
+		}
+		scope:new_identity = {
+			add_trait_xp = intellect_good_2
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_trait = intellect_good_3 }
+		}
+		scope:new_identity = {
+			add_trait_xp = intellect_good_3
+		}
+	}
+	
+	if = {
+		limit = {
+			scope:original_identity = { has_trait = physique_good_1 }
+		}
+		scope:new_identity = {
+			add_trait_xp = physique_good_1
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_trait = physique_good_2 }
+		}
+		scope:new_identity = {
+			add_trait_xp = physique_good_2
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_trait = physique_good_3 }
+		}
+		scope:new_identity = {
+			add_trait_xp = physique_good_3
+		}
+	}
+	
+	
+	if = {
+		limit = {
+			scope:original_identity = { has_trait = possessed_genetic }
+		}
+		scope:new_identity = {
+			add_trait_xp = possessed_genetic
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_trait = lunatic_genetic }
+		}
+		scope:new_identity = {
+			add_trait_xp = lunatic_genetic
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_trait = depressed_genetic }
+		}
+		scope:new_identity = {
+			add_trait_xp = depressed_genetic
+		}
+	}
+	
+	
+	####PHYSICAL####
+	
+	
+	if = {
+		limit = {
+			scope:original_identity = { has_trait = pure_blooded }
+		}
+		scope:new_identity = {
+			add_trait_xp = pure_blooded
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_trait = fecund }
+		}
+		scope:new_identity = {
+			add_trait_xp = fecund
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_trait = clubfooted }
+		}
+		scope:new_identity = {
+			add_trait_xp = clubfooted
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_trait = hunchbacked }
+		}
+		scope:new_identity = {
+			add_trait_xp = hunchbacked
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_trait = lisping }
+		}
+		scope:new_identity = {
+			add_trait_xp = lisping
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_trait = stuttering }
+		}
+		scope:new_identity = {
+			add_trait_xp = stuttering
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_trait = dwarf }
+		}
+		scope:new_identity = {
+			add_trait_xp = dwarf
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_trait = giant }
+		}
+		scope:new_identity = {
+			add_trait_xp = giant
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_trait = inbred }
+		}
+		scope:new_identity = {
+			add_trait_xp = inbred
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_trait = spindly }
+		}
+		scope:new_identity = {
+			add_trait_xp = spindly
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_trait = scaly }
+		}
+		scope:new_identity = {
+			add_trait_xp = scaly
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_trait = albino }
+		}
+		scope:new_identity = {
+			add_trait_xp = albino
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_trait = wheezing }
+		}
+		scope:new_identity = {
+			add_trait_xp = wheezing
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_trait = bleeder }
+		}
+		scope:new_identity = {
+			add_trait_xp = bleeder
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_trait = infertile }
+		}
+		scope:new_identity = {
+			add_trait_xp = infertile
+		}
+	}
+	
+	
+	
+	####KIND OF GENETIC####
+	
+	if = {
+		limit = {
+			scope:original_identity = { has_trait = sayyid }
+		}
+		scope:new_identity = {
+			add_trait_xp = sayyid
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_trait = saoshyant }
+		}
+		scope:new_identity = {
+			add_trait_xp = saoshyant_descendant
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_trait = saoshyant_descendant }
+		}
+		scope:new_identity = {
+			add_trait_xp = saoshyant_descendant
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_trait = savior }
+		}
+		scope:new_identity = {
+			add_trait_xp = divine_blood
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_trait = divine_blood }
+		}
+		scope:new_identity = {
+			add_trait_xp = divine_blood
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_trait = paragon }
+		}
+		scope:new_identity = {
+			add_trait_xp = consecrated_blood
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_trait = consecrated_blood }
+		}
+		scope:new_identity = {
+			add_trait_xp = consecrated_blood
+		}
+	}
+	
+}
+copy_stats = {
+	scope:new_identity = {
+		add_diplomacy_skill = {value = scope:source_character.diplomacy}
+		add_martial_skill = {value = scope:source_character.martial}
+		add_stewardship_skill = {value = scope:source_character.stewardship}
+		add_intrigue_skill = {value = scope:source_character.intrigue}
+		add_learning_skill = {value = scope:source_character.learning}
+		add_prowess_skill = {value = scope:source_character.prowess}
+	}
+}
+copy_perks = { 
+	if = {
+		limit = {
+			scope:source_character = { has_perk = thoughtful_perk  }
+		}
+		scope:new_identity = {
+			add_perk = thoughtful_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:source_character = { has_perk = ducal_conquest_perk  }
+		}
+		scope:new_identity = {
+			add_perk = ducal_conquest_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:source_character = { has_perk = forced_vassalage_perk }
+		}
+		scope:new_identity = {
+			add_perk = forced_vassalage_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = adaptive_traditions_perk }
+		}
+		scope:new_identity = {
+			add_perk = adaptive_traditions_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = flexible_truces_perk }
+		}
+		scope:new_identity = {
+			add_perk = flexible_truces_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = defensive_negotiations_perk }
+		}
+		scope:new_identity = {
+			add_perk = defensive_negotiations_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = embassies_perk }
+		}
+		scope:new_identity = {
+			add_perk = embassies_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = accomplished_forger_perk }
+		}
+		scope:new_identity = {
+			add_perk = accomplished_forger_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = diplomat_perk }
+		}
+		scope:new_identity = {
+			add_perk = diplomat_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = dark_insights_perk }
+		}
+		scope:new_identity = {
+			add_perk = dark_insights_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = divine_retribution_perk }
+		}
+		scope:new_identity = {
+			add_perk = divine_retribution_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = dreadful_perk }
+		}
+		scope:new_identity = {
+			add_perk = dreadful_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = thriving_in_chaos_perk }
+		}
+		scope:new_identity = {
+			add_perk = thriving_in_chaos_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = malice_implicit_perk }
+		}
+		scope:new_identity = {
+			add_perk = malice_implicit_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = fear_tax_perk }
+		}
+		scope:new_identity = {
+			add_perk = fear_tax_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = forever_infamous_perk }
+		}
+		scope:new_identity = {
+			add_perk = forever_infamous_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = prison_feudal_complex_perk }
+		}
+		scope:new_identity = {
+			add_perk = prison_feudal_complex_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = torturer_perk }
+		}
+		scope:new_identity = {
+			add_perk = torturer_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = anatomical_studies_perk }
+		}
+		scope:new_identity = {
+			add_perk = anatomical_studies_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = carefree_perk }
+		}
+		scope:new_identity = {
+			add_perk = carefree_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = mental_resilience_perk }
+		}
+		scope:new_identity = {
+			add_perk = mental_resilience_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = restraint_perk }
+		}
+		scope:new_identity = {
+			add_perk = restraint_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = know_thyself_perk }
+		}
+		scope:new_identity = {
+			add_perk = know_thyself_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = wash_your_hands_perk }
+		}
+		scope:new_identity = {
+			add_perk = wash_your_hands_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = iron_constitution_perk }
+		}
+		scope:new_identity = {
+			add_perk = iron_constitution_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = healthy_perk }
+		}
+		scope:new_identity = {
+			add_perk = healthy_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = whole_of_body_perk }
+		}
+		scope:new_identity = {
+			add_perk = whole_of_body_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = pedagogy_perk }
+		}
+		scope:new_identity = {
+			add_perk = pedagogy_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = open_minded_perk }
+		}
+		scope:new_identity = {
+			add_perk = open_minded_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = apostate_perk }
+		}
+		scope:new_identity = {
+			add_perk = apostate_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = scientific_perk }
+		}
+		scope:new_identity = {
+			add_perk = scientific_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = planned_cultivation_perk }
+		}
+		scope:new_identity = {
+			add_perk = planned_cultivation_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = scholarly_circles_perk }
+		}
+		scope:new_identity = {
+			add_perk = scholarly_circles_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = learn_on_the_job_perk }
+		}
+		scope:new_identity = {
+			add_perk = learn_on_the_job_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = sanctioned_loopholes_perk }
+		}
+		scope:new_identity = {
+			add_perk = sanctioned_loopholes_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = scholar_perk }
+		}
+		scope:new_identity = {
+			add_perk = scholar_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = faithful_perk }
+		}
+		scope:new_identity = {
+			add_perk = faithful_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = zealous_proselytizer_perk }
+		}
+		scope:new_identity = {
+			add_perk = zealous_proselytizer_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = religious_icon_perk }
+		}
+		scope:new_identity = {
+			add_perk = religious_icon_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = prophet_perk }
+		}
+		scope:new_identity = {
+			add_perk = prophet_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = clerical_justifications_perk }
+		}
+		scope:new_identity = {
+			add_perk = clerical_justifications_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = church_and_state_perk }
+		}
+		scope:new_identity = {
+			add_perk = church_and_state_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = radiant_perk }
+		}
+		scope:new_identity = {
+			add_perk = radiant_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = defender_of_the_faith_perk }
+		}
+		scope:new_identity = {
+			add_perk = defender_of_the_faith_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = theologian_perk }
+		}
+		scope:new_identity = {
+			add_perk = theologian_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = bellum_justum_perk }
+		}
+		scope:new_identity = {
+			add_perk = bellum_justum_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = parthian_tactics_perk }
+		}
+		scope:new_identity = {
+			add_perk = parthian_tactics_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = envelopment_perk }
+		}
+		scope:new_identity = {
+			add_perk = envelopment_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = organized_retreat_perk }
+		}
+		scope:new_identity = {
+			add_perk = organized_retreat_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = hit_and_run_perk }
+		}
+		scope:new_identity = {
+			add_perk = hit_and_run_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = engineered_for_destruction_perk }
+		}
+		scope:new_identity = {
+			add_perk = engineered_for_destruction_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = living_off_the_land_perk }
+		}
+		scope:new_identity = {
+			add_perk = living_off_the_land_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = sappers_perk }
+		}
+		scope:new_identity = {
+			add_perk = sappers_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = strategist_perk }
+		}
+		scope:new_identity = {
+			add_perk = strategist_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = serve_the_crown_perk }
+		}
+		scope:new_identity = {
+			add_perk = serve_the_crown_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = a_mans_home_perk }
+		}
+		scope:new_identity = {
+			add_perk = a_mans_home_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = enduring_hardships_perk }
+		}
+		scope:new_identity = {
+			add_perk = enduring_hardships_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = prepared_conscription_perk }
+		}
+		scope:new_identity = {
+			add_perk = prepared_conscription_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = strict_organization_perk }
+		}
+		scope:new_identity = {
+			add_perk = strict_organization_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = hard_rule_perk }
+		}
+		scope:new_identity = {
+			add_perk = hard_rule_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = soldiers_of_lesser_fortune_perk }
+		}
+		scope:new_identity = {
+			add_perk = soldiers_of_lesser_fortune_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = absolute_control_perk }
+		}
+		scope:new_identity = {
+			add_perk = absolute_control_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = overseer_perk }
+		}
+		scope:new_identity = {
+			add_perk = overseer_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = stalwart_leader_perk }
+		}
+		scope:new_identity = {
+			add_perk = stalwart_leader_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = courtship_perk }
+		}
+		scope:new_identity = {
+			add_perk = courtship_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = promising_prospects_perk }
+		}
+		scope:new_identity = {
+			add_perk = promising_prospects_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = loyalty_and_respect_perk }
+		}
+		scope:new_identity = {
+			add_perk = loyalty_and_respect_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = chivalric_dominance_perk }
+		}
+		scope:new_identity = {
+			add_perk = chivalric_dominance_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = never_back_down_perk }
+		}
+		scope:new_identity = {
+			add_perk = never_back_down_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = kingsguard_perk }
+		}
+		scope:new_identity = {
+			add_perk = kingsguard_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = peacemaker_perk }
+		}
+		scope:new_identity = {
+			add_perk = peacemaker_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = gallant_perk }
+		}
+		scope:new_identity = {
+			add_perk = gallant_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = tax_man_perk }
+		}
+		scope:new_identity = {
+			add_perk = tax_man_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = defensive_measures_perk }
+		}
+		scope:new_identity = {
+			add_perk = defensive_measures_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = organized_muster_rolls_perk }
+		}
+		scope:new_identity = {
+			add_perk = organized_muster_rolls_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = cutting_corners_perk }
+		}
+		scope:new_identity = {
+			add_perk = cutting_corners_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = professional_workforce_perk }
+		}
+		scope:new_identity = {
+			add_perk = professional_workforce_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = centralization_perk }
+		}
+		scope:new_identity = {
+			add_perk = centralization_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = popular_figurehead_perk }
+		}
+		scope:new_identity = {
+			add_perk = popular_figurehead_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = divided_attention_perk }
+		}
+		scope:new_identity = {
+			add_perk = divided_attention_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = architect_perk }
+		}
+		scope:new_identity = {
+			add_perk = architect_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = golden_obligations_perk }
+		}
+		scope:new_identity = {
+			add_perk = golden_obligations_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = heregeld_perk }
+		}
+		scope:new_identity = {
+			add_perk = heregeld_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = detailed_ledgers_perk }
+		}
+		scope:new_identity = {
+			add_perk = detailed_ledgers_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = war_profiteer_perk }
+		}
+		scope:new_identity = {
+			add_perk = war_profiteer_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = fearful_troops_perk }
+		}
+		scope:new_identity = {
+			add_perk = fearful_troops_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = it_is_my_domain_perk }
+		}
+		scope:new_identity = {
+			add_perk = it_is_my_domain_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = golden_aplomb_perk }
+		}
+		scope:new_identity = {
+			add_perk = golden_aplomb_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = at_any_cost_perk }
+		}
+		scope:new_identity = {
+			add_perk = at_any_cost_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = avaricious_perk }
+		}
+		scope:new_identity = {
+			add_perk = avaricious_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = meritocracy_perk }
+		}
+		scope:new_identity = {
+			add_perk = meritocracy_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = chains_of_loyalty_perk }
+		}
+		scope:new_identity = {
+			add_perk = chains_of_loyalty_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = likable_perk }
+		}
+		scope:new_identity = {
+			add_perk = likable_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = positions_of_power_perk }
+		}
+		scope:new_identity = {
+			add_perk = positions_of_power_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = large_levies_perk }
+		}
+		scope:new_identity = {
+			add_perk = large_levies_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = soon_forgiven_perk }
+		}
+		scope:new_identity = {
+			add_perk = soon_forgiven_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = toe_the_line_perk }
+		}
+		scope:new_identity = {
+			add_perk = toe_the_line_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = honored_to_serve_perk }
+		}
+		scope:new_identity = {
+			add_perk = honored_to_serve_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = administrator_perk }
+		}
+		scope:new_identity = {
+			add_perk = administrator_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = benevolent_intent_perk }
+		}
+		scope:new_identity = {
+			add_perk = benevolent_intent_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = inspiring_rule_perk }
+		}
+		scope:new_identity = {
+			add_perk = inspiring_rule_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = firm_hand_perk }
+		}
+		scope:new_identity = {
+			add_perk = firm_hand_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = praetorian_guard_perk }
+		}
+		scope:new_identity = {
+			add_perk = praetorian_guard_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = true_ruler_perk }
+		}
+		scope:new_identity = {
+			add_perk = true_ruler_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = writing_history_perk }
+		}
+		scope:new_identity = {
+			add_perk = writing_history_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = a_life_of_glory_perk }
+		}
+		scope:new_identity = {
+			add_perk = a_life_of_glory_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = dignitas_perk }
+		}
+		scope:new_identity = {
+			add_perk = dignitas_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = august_perk }
+		}
+		scope:new_identity = {
+			add_perk = august_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = befriend_perk }
+		}
+		scope:new_identity = {
+			add_perk = befriend_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = confidants_perk }
+		}
+		scope:new_identity = {
+			add_perk = confidants_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = flatterer_perk }
+		}
+		scope:new_identity = {
+			add_perk = flatterer_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = friendly_counsel_perk }
+		}
+		scope:new_identity = {
+			add_perk = friendly_counsel_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = familial_familiar_perk }
+		}
+		scope:new_identity = {
+			add_perk = familial_familiar_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = groomed_to_rule_perk }
+		}
+		scope:new_identity = {
+			add_perk = groomed_to_rule_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = thicker_than_water_perk }
+		}
+		scope:new_identity = {
+			add_perk = thicker_than_water_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = sound_foundations_perk }
+		}
+		scope:new_identity = {
+			add_perk = sound_foundations_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = family_man_perk }
+		}
+		scope:new_identity = {
+			add_perk = family_man_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = truth_is_relative_perk }
+		}
+		scope:new_identity = {
+			add_perk = truth_is_relative_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = digging_for_dirt_perk }
+		}
+		scope:new_identity = {
+			add_perk = digging_for_dirt_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = kidnapper_perk }
+		}
+		scope:new_identity = {
+			add_perk = kidnapper_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = court_of_shadows_perk }
+		}
+		scope:new_identity = {
+			add_perk = court_of_shadows_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = prepared_for_anything_perk }
+		}
+		scope:new_identity = {
+			add_perk = prepared_for_anything_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = swift_execution_perk }
+		}
+		scope:new_identity = {
+			add_perk = swift_execution_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = a_job_done_right_perk }
+		}
+		scope:new_identity = {
+			add_perk = a_job_done_right_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = twice_schemed_perk }
+		}
+		scope:new_identity = {
+			add_perk = twice_schemed_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = schemer_perk }
+		}
+		scope:new_identity = {
+			add_perk = schemer_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = like_weed_in_a_garden_perk }
+		}
+		scope:new_identity = {
+			add_perk = like_weed_in_a_garden_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = unshackled_lust_perk }
+		}
+		scope:new_identity = {
+			add_perk = unshackled_lust_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = subtle_desire_perk }
+		}
+		scope:new_identity = {
+			add_perk = subtle_desire_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = mortal_adoration_perk }
+		}
+		scope:new_identity = {
+			add_perk = mortal_adoration_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = enticing_opportunity_perk }
+		}
+		scope:new_identity = {
+			add_perk = enticing_opportunity_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = home_advantage_perk }
+		}
+		scope:new_identity = {
+			add_perk = home_advantage_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = graceful_recovery_perk }
+		}
+		scope:new_identity = {
+			add_perk = graceful_recovery_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = smooth_operator_perk }
+		}
+		scope:new_identity = {
+			add_perk = smooth_operator_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = seducer_perk }
+		}
+		scope:new_identity = {
+			add_perk = seducer_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = well_prepared_perk }
+		}
+		scope:new_identity = {
+			add_perk = well_prepared_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = far_and_wide_perk }
+		}
+		scope:new_identity = {
+			add_perk = far_and_wide_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = just_one_more_hill_perk }
+		}
+		scope:new_identity = {
+			add_perk = just_one_more_hill_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = roaming_perk }
+		}
+		scope:new_identity = {
+			add_perk = roaming_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = of_the_people_perk }
+		}
+		scope:new_identity = {
+			add_perk = of_the_people_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = local_hero_perk }
+		}
+		scope:new_identity = {
+			add_perk = local_hero_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = travel_companion_perk }
+		}
+		scope:new_identity = {
+			add_perk = travel_companion_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = the_home_away_from_home_perk }
+		}
+		scope:new_identity = {
+			add_perk = the_home_away_from_home_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = wayfarer_perk }
+		}
+		scope:new_identity = {
+			add_perk = wayfarer_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = power_at_home_perk }
+		}
+		scope:new_identity = {
+			add_perk = power_at_home_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = mercenary_contacts_perk }
+		}
+		scope:new_identity = {
+			add_perk = mercenary_contacts_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = journey_planner_perk }
+		}
+		scope:new_identity = {
+			add_perk = journey_planner_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = finally_there_perk }
+		}
+		scope:new_identity = {
+			add_perk = finally_there_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = journey_perk }
+		}
+		scope:new_identity = {
+			add_perk = journey_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = souvenirs_aplenty_perk }
+		}
+		scope:new_identity = {
+			add_perk = souvenirs_aplenty_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = gracious_host_impeccable_guest_perk }
+		}
+		scope:new_identity = {
+			add_perk = gracious_host_impeccable_guest_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = been_there_done_that_perk }
+		}
+		scope:new_identity = {
+			add_perk = been_there_done_that_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = voyager_perk }
+		}
+		scope:new_identity = {
+			add_perk = voyager_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = mustering_the_troops_perk }
+		}
+		scope:new_identity = {
+			add_perk = mustering_the_troops_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = know_your_land_know_your_people_perk }
+		}
+		scope:new_identity = {
+			add_perk = know_your_land_know_your_people_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = no_stone_unturned_perk }
+		}
+		scope:new_identity = {
+			add_perk = no_stone_unturned_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = travel_logs_perk }
+		}
+		scope:new_identity = {
+			add_perk = travel_logs_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = local_inspection_perk }
+		}
+		scope:new_identity = {
+			add_perk = local_inspection_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = local_arbitration_perk }
+		}
+		scope:new_identity = {
+			add_perk = local_arbitration_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = realm_charts_perk }
+		}
+		scope:new_identity = {
+			add_perk = realm_charts_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = personal_touch_perk }
+		}
+		scope:new_identity = {
+			add_perk = personal_touch_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = surveyor_perk }
+		}
+		scope:new_identity = {
+			add_perk = surveyor_perk
+		}
+	}
+	
+#########################################
+# Vampire Mod Lifestyle Perks (full list)
+#########################################
+
+	# From vi_vampire_will_lifestyle_perks.txt
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = vi_celerity_perk }
+		}
+		scope:new_identity = {
+			add_perk = vi_celerity_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = vi_blink_perk }
+		}
+		scope:new_identity = {
+			add_perk = vi_blink_perk
+		}
+	}
+
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = vi_fortitude_perk }
+		}
+		scope:new_identity = {
+			add_perk = vi_fortitude_perk
+		}
+	}
+
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = vi_strength_perk }
+		}
+		scope:new_identity = {
+			add_perk = vi_strength_perk
+		}
+	}
+
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = vi_regeneration_perk }
+		}
+		scope:new_identity = {
+			add_perk = vi_regeneration_perk
+		}
+	}
+
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = vi_shadowwalk_perk }
+		}
+		scope:new_identity = {
+			add_perk = vi_shadowwalk_perk
+		}
+	}
+
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = vi_storm_perk }
+		}
+		scope:new_identity = {
+			add_perk = vi_storm_perk
+		}
+	}
+
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = vi_transformation_perk }
+		}
+		scope:new_identity = {
+			add_perk = vi_transformation_perk
+		}
+	}
+
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = vi_dragonsscion_perk }
+		}
+		scope:new_identity = {
+			add_perk = vi_dragonsscion_perk
+		}
+	}
+
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = vi_will_martial_perk }
+		}
+		scope:new_identity = {
+			add_perk = vi_will_martial_perk
+		}
+	}
+
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = vi_will_prowess_perk }
+		}
+		scope:new_identity = {
+			add_perk = vi_will_prowess_perk
+		}
+	}
+
+
+	# From vi_vampire_z_insight_lifestyle_perks.txt
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = vi_auspex_perk }
+		}
+		scope:new_identity = {
+			add_perk = vi_auspex_perk
+		}
+	}
+
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = vi_peopleofinterest_perk }
+		}
+		scope:new_identity = {
+			add_perk = vi_peopleofinterest_perk
+		}
+	}
+
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = vi_windfall_perk }
+		}
+		scope:new_identity = {
+			add_perk = vi_windfall_perk
+		}
+	}
+
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = vi_mercantile_perk }
+		}
+		scope:new_identity = {
+			add_perk = vi_mercantile_perk
+		}
+	}
+
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = vi_heartsofmen_perk }
+		}
+		scope:new_identity = {
+			add_perk = vi_heartsofmen_perk
+		}
+	}
+
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = vi_guidance_perk }
+		}
+		scope:new_identity = {
+			add_perk = vi_guidance_perk
+		}
+	}
+
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = vi_propheticdreams_perk }
+		}
+		scope:new_identity = {
+			add_perk = vi_propheticdreams_perk
+		}
+	}
+
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = vi_fateweaver_perk }
+		}
+		scope:new_identity = {
+			add_perk = vi_fateweaver_perk
+		}
+	}
+
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = vi_allseeing_perk }
+		}
+		scope:new_identity = {
+			add_perk = vi_allseeing_perk
+		}
+	}
+
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = vi_insight_stewardship_perk }
+		}
+		scope:new_identity = {
+			add_perk = vi_insight_stewardship_perk
+		}
+	}
+
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = vi_insight_learning_perk }
+		}
+		scope:new_identity = {
+			add_perk = vi_insight_learning_perk
+		}
+	}
+
+
+	# From vi_vampire_charm_lifestyle_perks.txt
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = vi_charm_perk }
+		}
+		scope:new_identity = {
+			add_perk = vi_charm_perk
+		}
+	}
+
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = vi_animal_speak_perk }
+		}
+		scope:new_identity = {
+			add_perk = vi_animal_speak_perk
+		}
+	}
+
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = vi_animal_command_perk }
+		}
+		scope:new_identity = {
+			add_perk = vi_animal_command_perk
+		}
+	}
+
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = vi_soothe_perk }
+		}
+		scope:new_identity = {
+			add_perk = vi_soothe_perk
+		}
+	}
+
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = vi_galvanize_perk }
+		}
+		scope:new_identity = {
+			add_perk = vi_galvanize_perk
+		}
+	}
+
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = vi_persuasion_perk }
+		}
+		scope:new_identity = {
+			add_perk = vi_persuasion_perk
+		}
+	}
+
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = vi_enthrall_perk }
+		}
+		scope:new_identity = {
+			add_perk = vi_enthrall_perk
+		}
+	}
+
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = vi_presence_perk }
+		}
+		scope:new_identity = {
+			add_perk = vi_presence_perk
+		}
+	}
+
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = vi_heartstealer_perk }
+		}
+		scope:new_identity = {
+			add_perk = vi_heartstealer_perk
+		}
+	}
+
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = vi_charm_diplomacy_perk }
+		}
+		scope:new_identity = {
+			add_perk = vi_charm_diplomacy_perk
+		}
+	}
+
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = vi_charm_intrigue_perk }
+		}
+		scope:new_identity = {
+			add_perk = vi_charm_intrigue_perk
+		}
+	}
+}
+
+copy_sexuality = {
+	if = {
+		limit = {
+		scope:original_identity = { has_sexuality = bisexual }
+		}
+		scope:new_identity = {
+			set_sexuality = bisexual
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = {has_sexuality = homosexual}
+		}
+		scope:new_identity = {
+			set_sexuality = homosexual
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = {has_sexuality = heterosexual}
+		}
+		scope:new_identity = {
+			set_sexuality = heterosexual
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = {has_sexuality = asexual}
+		}
+		scope:new_identity = {
+			set_sexuality = asexual
+		}
+	}
+}
+remove_health_traits = {
+
+	#There are 32 health traits
+
+	if = {
+		limit = {
+			scope:original_identity = { has_trait = pregnant }
+		}
+		scope:new_identity = {
+			remove_trait = pregnant
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_trait = depressed_1 }
+		}
+		scope:new_identity = {
+			remove_trait = depressed_1
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_trait = lunatic_1 }
+		}
+		scope:new_identity = {
+			remove_trait = lunatic_1
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_trait = possessed_1 }
+		}
+		scope:new_identity = {
+			remove_trait = possessed_1
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_trait = ill }
+		}
+		scope:new_identity = {
+			remove_trait = ill
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_trait = pneumonic }
+		}
+		scope:new_identity = {
+			remove_trait = pneumonic
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_trait = great_pox }
+		}
+		scope:new_identity = {
+			remove_trait = great_pox
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_trait = early_great_pox }
+		}
+		scope:new_identity = {
+			remove_trait = early_great_pox
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_trait = lovers_pox }
+		}
+		scope:new_identity = {
+			remove_trait = lovers_pox
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_trait = leper }
+		}
+		scope:new_identity = {
+			remove_trait = leper
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_trait = wounded_1 }
+		}
+		scope:new_identity = {
+			remove_trait = wounded_1
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_trait = wounded_2 }
+		}
+		scope:new_identity = {
+			remove_trait = wounded_2
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_trait = wounded_3 }
+		}
+		scope:new_identity = {
+			remove_trait = wounded_3
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_trait = maimed }
+		}
+		scope:new_identity = {
+			remove_trait = maimed
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_trait = one_eyed }
+		}
+		scope:new_identity = {
+			remove_trait = one_eyed
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_trait = one_legged }
+		}
+		scope:new_identity = {
+			remove_trait = one_legged
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_trait = disfigured }
+		}
+		scope:new_identity = {
+			remove_trait = disfigured
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_trait = infirm }
+		}
+		scope:new_identity = {
+			remove_trait = infirm
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_trait = incapable }
+		}
+		scope:new_identity = {
+			remove_trait = incapable
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_trait = gout_ridden }
+		}
+		scope:new_identity = {
+			remove_trait = gout_ridden
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_trait = consumption }
+		}
+		scope:new_identity = {
+			remove_trait = consumption
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_trait = cancer }
+		}
+		scope:new_identity = {
+			remove_trait = cancer
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_trait = typhus }
+		}
+		scope:new_identity = {
+			remove_trait = typhus
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_trait = bubonic_plague }
+		}
+		scope:new_identity = {
+			remove_trait = bubonic_plague
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_trait = smallpox }
+		}
+		scope:new_identity = {
+			remove_trait = smallpox
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_trait = sickly }
+		}
+		scope:new_identity = {
+			remove_trait = sickly
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_trait = scarred }
+		}
+		scope:new_identity = {
+			remove_trait = scarred
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_trait = eunuch }
+		}
+		scope:new_identity = {
+			remove_trait = eunuch_1
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_trait = blind }
+		}
+		scope:new_identity = {
+			remove_trait = blind
+		}
+	}	
+}
+
+copy_claims = {
+  save_scope_as = new_identity
+  $OTHER_CHARACTER$ = {
+    every_held_title = {
+      scope:source_character = { make_claim_strong = PREV }
+    }
+  }
+  save_scope_as = new_identity
+  $OTHER_CHARACTER$ = {
+    every_claim = {
+      scope:source_character = { make_claim_strong = PREV }
+    }
+  }
+}
+
+copy_traits_xp = {
+	# Single-track traits from vanilla base game
+	if = {
+		limit = {
+			scope:source_character = { has_trait = lifestyle_reveler }
+		}
+		scope:new_identity = {
+			add_trait_xp = {
+				trait = lifestyle_reveler
+				value = scope:source_character.trait_xp:lifestyle_reveler
+			}
+		}
+	}
+	if = {
+		limit = {
+			scope:source_character = { has_trait = lifestyle_blademaster }
+		}
+		scope:new_identity = {
+			add_trait_xp = {
+				trait = lifestyle_blademaster
+				value = scope:source_character.trait_xp:lifestyle_blademaster
+			}
+		}
+	}
+	if = {
+		limit = {
+			scope:source_character = { has_trait = lifestyle_scholar }
+		}
+		scope:new_identity = {
+			add_trait_xp = {
+				trait = lifestyle_scholar
+				value = scope:source_character.trait_xp:lifestyle_scholar
+			}
+		}
+	}
+	if = {
+		limit = {
+			scope:source_character = { has_trait = lifestyle_mystic }
+		}
+		scope:new_identity = {
+			add_trait_xp = {
+				trait = lifestyle_mystic
+				value = scope:source_character.trait_xp:lifestyle_mystic
+			}
+		}
+	}
+	if = {
+		limit = {
+			scope:source_character = { has_trait = lifestyle_physician }
+		}
+		scope:new_identity = {
+			add_trait_xp = {
+				trait = lifestyle_physician
+				value = scope:source_character.trait_xp:lifestyle_physician
+			}
+		}
+	}
+	if = {
+		limit = {
+			scope:source_character = { has_trait = logistician }
+		}
+		scope:new_identity = {
+			add_trait_xp = {
+				trait = logistician
+				value = scope:source_character.trait_xp:logistician
+			}
+		}
+	}
+	if = {
+		limit = {
+			scope:source_character = { has_trait = organizer }
+		}
+		scope:new_identity = {
+			add_trait_xp = {
+				trait = organizer
+				value = scope:source_character.trait_xp:organizer
+			}
+		}
+	}
+	if = {
+		limit = {
+			scope:source_character = { has_trait = strategist }
+		}
+		scope:new_identity = {
+			add_trait_xp = {
+				trait = strategist
+				value = scope:source_character.trait_xp:strategist
+			}
+		}
+	}
+	if = {
+		limit = {
+			scope:source_character = { has_trait = tactician }
+		}
+		scope:new_identity = {
+			add_trait_xp = {
+				trait = tactician
+				value = scope:source_character.trait_xp:tactician
+			}
+		}
+	}
+	if = {
+		limit = {
+			scope:source_character = { has_trait = unifier }
+		}
+		scope:new_identity = {
+			add_trait_xp = {
+				trait = unifier
+				value = scope:source_character.trait_xp:unifier
+			}
+		}
+	}
+	if = {
+		limit = {
+			scope:source_character = { has_trait = charioteer_blue }
+		}
+		scope:new_identity = {
+			add_trait_xp = {
+				trait = charioteer_blue
+				value = scope:source_character.trait_xp:charioteer_blue
+			}
+		}
+	}
+	if = {
+		limit = {
+			scope:source_character = { has_trait = charioteer_green }
+		}
+		scope:new_identity = {
+			add_trait_xp = {
+				trait = charioteer_green
+				value = scope:source_character.trait_xp:charioteer_green
+			}
+		}
+	}
+	if = {
+		limit = {
+			scope:source_character = { has_trait = charioteer_white }
+		}
+		scope:new_identity = {
+			add_trait_xp = {
+				trait = charioteer_white
+				value = scope:source_character.trait_xp:charioteer_white
+			}
+		}
+	}
+	if = {
+		limit = {
+			scope:source_character = { has_trait = charioteer_red }
+		}
+		scope:new_identity = {
+			add_trait_xp = {
+				trait = charioteer_red
+				value = scope:source_character.trait_xp:charioteer_red
+			}
+		}
+	}
+	if = {
+		limit = {
+			scope:source_character = { has_trait = governor }
+		}
+		scope:new_identity = {
+			add_trait_xp = {
+				trait = governor
+				value = scope:source_character.trait_xp:governor
+			}
+		}
+	}
+	if = {
+		limit = {
+			scope:source_character = { has_trait = violet_poet }
+		}
+		scope:new_identity = {
+			add_trait_xp = {
+				trait = violet_poet
+				value = scope:source_character.trait_xp:violet_poet
+			}
+		}
+	}
+	if = {
+		limit = {
+			scope:source_character = { has_trait = knight_errant }
+		}
+		scope:new_identity = {
+			add_trait_xp = {
+				trait = knight_errant
+				value = scope:source_character.trait_xp:knight_errant
+			}
+		}
+	}
+	if = {
+		limit = {
+			scope:source_character = { has_trait = the_wake }
+		}
+		scope:new_identity = {
+			add_trait_xp = {
+				trait = the_wake
+				value = scope:source_character.trait_xp:the_wake
+			}
+		}
+	}
+	if = {
+		limit = {
+			scope:source_character = { has_trait = confucian_education }
+		}
+		scope:new_identity = {
+			add_trait_xp = {
+				trait = confucian_education
+				value = scope:source_character.trait_xp:confucian_education
+			}
+		}
+	}
+	if = {
+		limit = {
+			scope:source_character = { has_trait = scarred }
+		}
+		scope:new_identity = {
+			add_trait_xp = {
+				trait = scarred
+				value = scope:source_character.trait_xp:scarred
+			}
+		}
+	}
+	# Additional lifestyle traits (completing the 29 single-track traits)
+	if = {
+		limit = {
+			scope:source_character = { has_trait = lifestyle_seduction }
+		}
+		scope:new_identity = {
+			add_trait_xp = {
+				trait = lifestyle_seduction
+				value = scope:source_character.trait_xp:lifestyle_seduction
+			}
+		}
+	}
+	if = {
+		limit = {
+			scope:source_character = { has_trait = lifestyle_theologian }
+		}
+		scope:new_identity = {
+			add_trait_xp = {
+				trait = lifestyle_theologian
+				value = scope:source_character.trait_xp:lifestyle_theologian
+			}
+		}
+	}
+	if = {
+		limit = {
+			scope:source_character = { has_trait = lifestyle_commander }
+		}
+		scope:new_identity = {
+			add_trait_xp = {
+				trait = lifestyle_commander
+				value = scope:source_character.trait_xp:lifestyle_commander
+			}
+		}
+	}
+	if = {
+		limit = {
+			scope:source_character = { has_trait = lifestyle_administrator }
+		}
+		scope:new_identity = {
+			add_trait_xp = {
+				trait = lifestyle_administrator
+				value = scope:source_character.trait_xp:lifestyle_administrator
+			}
+		}
+	}
+	if = {
+		limit = {
+			scope:source_character = { has_trait = lifestyle_diplomat }
+		}
+		scope:new_identity = {
+			add_trait_xp = {
+				trait = lifestyle_diplomat
+				track
+				value = scope:source_character.trait_xp:lifestyle_diplomat
+			}
+		}
+	}
+	if = {
+		limit = {
+			scope:source_character = { has_trait = lifestyle_intrigue }
+		}
+		scope:new_identity = {
+			add_trait_xp = {
+				trait = lifestyle_intrigue
+				value = scope:source_character.trait_xp:lifestyle_intrigue
+			}
+		}
+	}
+	if = {
+		limit = {
+			scope:source_character = { has_trait = lifestyle_martial }
+		}
+		scope:new_identity = {
+			add_trait_xp = {
+				trait = lifestyle_martial
+				value = scope:source_character.trait_xp:lifestyle_martial
+			}
+		}
+	}
+	if = {
+		limit = {
+			scope:source_character = { has_trait = lifestyle_stewardship }
+		}
+		scope:new_identity = {
+			add_trait_xp = {
+				trait = lifestyle_stewardship
+				value = scope:source_character.trait_xp:lifestyle_stewardship
+			}
+		}
+	}
+	if = {
+		limit = {
+			scope:source_character = { has_trait = lifestyle_learning }
+		}
+		scope:new_identity = {
+			add_trait_xp = {
+				trait = lifestyle_learning
+				value = scope:source_character.trait_xp:lifestyle_learning
+			}
+		}
+	}
+	if = {
+		limit = {
+			scope:source_character = { has_trait = lifestyle_wayfarer }
+		}
+		scope:new_identity = {
+			add_trait_xp = {
+				trait = lifestyle_wayfarer
+				value = scope:source_character.trait_xp:lifestyle_wayfarer
+			}
+		}
+	}
+	if = {
+		limit = {
+			scope:source_character = { has_trait = lifestyle_voyager }
+		}
+		scope:new_identity = {
+			add_trait_xp = {
+				trait = lifestyle_voyager
+				value = scope:source_character.trait_xp:lifestyle_voyager
+			}
+		}
+	}
+	if = {
+		limit = {
+			scope:source_character = { has_trait = lifestyle_surveyor }
+		}
+		scope:new_identity = {
+			add_trait_xp = {
+				trait = lifestyle_surveyor
+				value = scope:source_character.trait_xp:lifestyle_surveyor
+			}
+		}
+	}
+	
+	# Multi-track traits from vanilla base game
+	if = {
+		limit = {
+			scope:source_character = { has_trait = lifestyle_hunter }
+		}
+		scope:new_identity = {
+			add_trait_xp = {
+				trait = lifestyle_hunter
+				track = hunter
+				value = scope:source_character.trait_xp:hunter
+			}
+			add_trait_xp = {
+				trait = lifestyle_hunter
+				track = falconer
+				value = scope:source_character.trait_xp:falconer
+			}
+		}
+	}
+	if = {
+		limit = {
+			scope:source_character = { has_trait = tourney_participant }
+		}
+		scope:new_identity = {
+			add_trait_xp = {
+				trait = tourney_participant
+				track = foot
+				value = scope:source_character.trait_xp:foot
+			}
+			add_trait_xp = {
+				trait = tourney_participant
+				track = bow
+				value = scope:source_character.trait_xp:bow
+			}
+			add_trait_xp = {
+				trait = tourney_participant
+				track = horse
+				value = scope:source_character.trait_xp:horse
+			}
+			add_trait_xp = {
+				trait = tourney_participant
+				track = wit
+				value = scope:source_character.trait_xp:wit
+			}
+		}
+	}
+	if = {
+		limit = {
+			scope:source_character = { has_trait = lifestyle_traveler }
+		}
+		scope:new_identity = {
+			add_trait_xp = {
+				trait = lifestyle_traveler
+				track = travel
+				value = scope:source_character.trait_xp:travel
+			}
+			add_trait_xp = {
+				trait = lifestyle_traveler
+				track = danger
+				value = scope:source_character.trait_xp:danger
+			}
+		}
+	}
+	if = {
+		limit = {
+			scope:source_character = { has_trait = gallowsbait }
+		}
+		scope:new_identity = {
+			add_trait_xp = {
+				trait = gallowsbait
+				track = bandit
+				value = scope:source_character.trait_xp:bandit
+			}
+			add_trait_xp = {
+				trait = gallowsbait
+				track = trickster
+				value = scope:source_character.trait_xp:trickster
+			}
+			add_trait_xp = {
+				trait = gallowsbait
+				track = thief
+				value = scope:source_character.trait_xp:thief
+			}
+			add_trait_xp = {
+				trait = gallowsbait
+				track = poacher
+				value = scope:source_character.trait_xp:poacher
+			}
+			add_trait_xp = {
+				trait = gallowsbait
+				track = marauder
+				value = scope:source_character.trait_xp:marauder
+			}
+		}
+	}
+}
+
+remove_all_perks = { 
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = thoughtful_perk  }
+		}
+		scope:original_identity = {
+			remove_perk = thoughtful_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = ducal_conquest_perk  }
+		}
+		scope:original_identity = {
+			remove_perk = ducal_conquest_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = forced_vassalage_perk }
+		}
+		scope:original_identity = {
+			remove_perk = forced_vassalage_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = adaptive_traditions_perk }
+		}
+		scope:original_identity = {
+			remove_perk = adaptive_traditions_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = flexible_truces_perk }
+		}
+		scope:original_identity = {
+			remove_perk = flexible_truces_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = defensive_negotiations_perk }
+		}
+		scope:original_identity = {
+			remove_perk = defensive_negotiations_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = embassies_perk }
+		}
+		scope:original_identity = {
+			remove_perk = embassies_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = accomplished_forger_perk }
+		}
+		scope:original_identity = {
+			remove_perk = accomplished_forger_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = diplomat_perk }
+		}
+		scope:original_identity = {
+			remove_perk = diplomat_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = dark_insights_perk }
+		}
+		scope:original_identity = {
+			remove_perk = dark_insights_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = divine_retribution_perk }
+		}
+		scope:original_identity = {
+			remove_perk = divine_retribution_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = dreadful_perk }
+		}
+		scope:original_identity = {
+			remove_perk = dreadful_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = thriving_in_chaos_perk }
+		}
+		scope:original_identity = {
+			remove_perk = thriving_in_chaos_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = malice_implicit_perk }
+		}
+		scope:original_identity = {
+			remove_perk = malice_implicit_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = fear_tax_perk }
+		}
+		scope:original_identity = {
+			remove_perk = fear_tax_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = forever_infamous_perk }
+		}
+		scope:original_identity = {
+			remove_perk = forever_infamous_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = prison_feudal_complex_perk }
+		}
+		scope:original_identity = {
+			remove_perk = prison_feudal_complex_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = torturer_perk }
+		}
+		scope:original_identity = {
+			remove_perk = torturer_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = anatomical_studies_perk }
+		}
+		scope:original_identity = {
+			remove_perk = anatomical_studies_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = carefree_perk }
+		}
+		scope:original_identity = {
+			remove_perk = carefree_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = mental_resilience_perk }
+		}
+		scope:original_identity = {
+			remove_perk = mental_resilience_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = restraint_perk }
+		}
+		scope:original_identity = {
+			remove_perk = restraint_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = know_thyself_perk }
+		}
+		scope:original_identity = {
+			remove_perk = know_thyself_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = wash_your_hands_perk }
+		}
+		scope:original_identity = {
+			remove_perk = wash_your_hands_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = iron_constitution_perk }
+		}
+		scope:original_identity = {
+			remove_perk = iron_constitution_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = healthy_perk }
+		}
+		scope:original_identity = {
+			remove_perk = healthy_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = whole_of_body_perk }
+		}
+		scope:original_identity = {
+			remove_perk = whole_of_body_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = pedagogy_perk }
+		}
+		scope:original_identity = {
+			remove_perk = pedagogy_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = open_minded_perk }
+		}
+		scope:original_identity = {
+			remove_perk = open_minded_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = apostate_perk }
+		}
+		scope:original_identity = {
+			remove_perk = apostate_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = scientific_perk }
+		}
+		scope:original_identity = {
+			remove_perk = scientific_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = planned_cultivation_perk }
+		}
+		scope:original_identity = {
+			remove_perk = planned_cultivation_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = scholarly_circles_perk }
+		}
+		scope:original_identity = {
+			remove_perk = scholarly_circles_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = learn_on_the_job_perk }
+		}
+		scope:original_identity = {
+			remove_perk = learn_on_the_job_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = sanctioned_loopholes_perk }
+		}
+		scope:original_identity = {
+			remove_perk = sanctioned_loopholes_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = scholar_perk }
+		}
+		scope:original_identity = {
+			remove_perk = scholar_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = faithful_perk }
+		}
+		scope:original_identity = {
+			remove_perk = faithful_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = zealous_proselytizer_perk }
+		}
+		scope:original_identity = {
+			remove_perk = zealous_proselytizer_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = religious_icon_perk }
+		}
+		scope:original_identity = {
+			remove_perk = religious_icon_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = prophet_perk }
+		}
+		scope:original_identity = {
+			remove_perk = prophet_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = clerical_justifications_perk }
+		}
+		scope:original_identity = {
+			remove_perk = clerical_justifications_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = church_and_state_perk }
+		}
+		scope:original_identity = {
+			remove_perk = church_and_state_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = radiant_perk }
+		}
+		scope:original_identity = {
+			remove_perk = radiant_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = defender_of_the_faith_perk }
+		}
+		scope:original_identity = {
+			remove_perk = defender_of_the_faith_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = theologian_perk }
+		}
+		scope:original_identity = {
+			remove_perk = theologian_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = bellum_justum_perk }
+		}
+		scope:original_identity = {
+			remove_perk = bellum_justum_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = parthian_tactics_perk }
+		}
+		scope:original_identity = {
+			remove_perk = parthian_tactics_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = envelopment_perk }
+		}
+		scope:original_identity = {
+			remove_perk = envelopment_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = organized_retreat_perk }
+		}
+		scope:original_identity = {
+			remove_perk = organized_retreat_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = hit_and_run_perk }
+		}
+		scope:original_identity = {
+			remove_perk = hit_and_run_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = engineered_for_destruction_perk }
+		}
+		scope:original_identity = {
+			remove_perk = engineered_for_destruction_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = living_off_the_land_perk }
+		}
+		scope:original_identity = {
+			remove_perk = living_off_the_land_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = sappers_perk }
+		}
+		scope:original_identity = {
+			remove_perk = sappers_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = strategist_perk }
+		}
+		scope:original_identity = {
+			remove_perk = strategist_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = serve_the_crown_perk }
+		}
+		scope:original_identity = {
+			remove_perk = serve_the_crown_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = a_mans_home_perk }
+		}
+		scope:original_identity = {
+			remove_perk = a_mans_home_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = enduring_hardships_perk }
+		}
+		scope:original_identity = {
+			remove_perk = enduring_hardships_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = prepared_conscription_perk }
+		}
+		scope:original_identity = {
+			remove_perk = prepared_conscription_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = strict_organization_perk }
+		}
+		scope:original_identity = {
+			remove_perk = strict_organization_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = hard_rule_perk }
+		}
+		scope:original_identity = {
+			remove_perk = hard_rule_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = soldiers_of_lesser_fortune_perk }
+		}
+		scope:original_identity = {
+			remove_perk = soldiers_of_lesser_fortune_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = absolute_control_perk }
+		}
+		scope:original_identity = {
+			remove_perk = absolute_control_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = overseer_perk }
+		}
+		scope:original_identity = {
+			remove_perk = overseer_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = stalwart_leader_perk }
+		}
+		scope:original_identity = {
+			remove_perk = stalwart_leader_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = courtship_perk }
+		}
+		scope:original_identity = {
+			remove_perk = courtship_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = promising_prospects_perk }
+		}
+		scope:original_identity = {
+			remove_perk = promising_prospects_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = loyalty_and_respect_perk }
+		}
+		scope:original_identity = {
+			remove_perk = loyalty_and_respect_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = chivalric_dominance_perk }
+		}
+		scope:original_identity = {
+			remove_perk = chivalric_dominance_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = never_back_down_perk }
+		}
+		scope:original_identity = {
+			remove_perk = never_back_down_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = kingsguard_perk }
+		}
+		scope:original_identity = {
+			remove_perk = kingsguard_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = peacemaker_perk }
+		}
+		scope:original_identity = {
+			remove_perk = peacemaker_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = gallant_perk }
+		}
+		scope:original_identity = {
+			remove_perk = gallant_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = tax_man_perk }
+		}
+		scope:original_identity = {
+			remove_perk = tax_man_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = defensive_measures_perk }
+		}
+		scope:original_identity = {
+			remove_perk = defensive_measures_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = organized_muster_rolls_perk }
+		}
+		scope:original_identity = {
+			remove_perk = organized_muster_rolls_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = cutting_corners_perk }
+		}
+		scope:original_identity = {
+			remove_perk = cutting_corners_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = professional_workforce_perk }
+		}
+		scope:original_identity = {
+			remove_perk = professional_workforce_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = centralization_perk }
+		}
+		scope:original_identity = {
+			remove_perk = centralization_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = popular_figurehead_perk }
+		}
+		scope:original_identity = {
+			remove_perk = popular_figurehead_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = divided_attention_perk }
+		}
+		scope:original_identity = {
+			remove_perk = divided_attention_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = architect_perk }
+		}
+		scope:original_identity = {
+			remove_perk = architect_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = golden_obligations_perk }
+		}
+		scope:original_identity = {
+			remove_perk = golden_obligations_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = heregeld_perk }
+		}
+		scope:original_identity = {
+			remove_perk = heregeld_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = detailed_ledgers_perk }
+		}
+		scope:original_identity = {
+			remove_perk = detailed_ledgers_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = war_profiteer_perk }
+		}
+		scope:original_identity = {
+			remove_perk = war_profiteer_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = fearful_troops_perk }
+		}
+		scope:original_identity = {
+			remove_perk = fearful_troops_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = it_is_my_domain_perk }
+		}
+		scope:original_identity = {
+			remove_perk = it_is_my_domain_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = golden_aplomb_perk }
+		}
+		scope:original_identity = {
+			remove_perk = golden_aplomb_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = at_any_cost_perk }
+		}
+		scope:original_identity = {
+			remove_perk = at_any_cost_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = avaricious_perk }
+		}
+		scope:original_identity = {
+			remove_perk = avaricious_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = meritocracy_perk }
+		}
+		scope:original_identity = {
+			remove_perk = meritocracy_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = chains_of_loyalty_perk }
+		}
+		scope:original_identity = {
+			remove_perk = chains_of_loyalty_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = likable_perk }
+		}
+		scope:original_identity = {
+			remove_perk = likable_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = positions_of_power_perk }
+		}
+		scope:original_identity = {
+			remove_perk = positions_of_power_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = large_levies_perk }
+		}
+		scope:original_identity = {
+			remove_perk = large_levies_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = soon_forgiven_perk }
+		}
+		scope:original_identity = {
+			remove_perk = soon_forgiven_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = toe_the_line_perk }
+		}
+		scope:original_identity = {
+			remove_perk = toe_the_line_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = honored_to_serve_perk }
+		}
+		scope:original_identity = {
+			remove_perk = honored_to_serve_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = administrator_perk }
+		}
+		scope:original_identity = {
+			remove_perk = administrator_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = benevolent_intent_perk }
+		}
+		scope:original_identity = {
+			remove_perk = benevolent_intent_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = inspiring_rule_perk }
+		}
+		scope:original_identity = {
+			remove_perk = inspiring_rule_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = firm_hand_perk }
+		}
+		scope:original_identity = {
+			remove_perk = firm_hand_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = praetorian_guard_perk }
+		}
+		scope:original_identity = {
+			remove_perk = praetorian_guard_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = true_ruler_perk }
+		}
+		scope:original_identity = {
+			remove_perk = true_ruler_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = writing_history_perk }
+		}
+		scope:original_identity = {
+			remove_perk = writing_history_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = a_life_of_glory_perk }
+		}
+		scope:original_identity = {
+			remove_perk = a_life_of_glory_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = dignitas_perk }
+		}
+		scope:original_identity = {
+			remove_perk = dignitas_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = august_perk }
+		}
+		scope:original_identity = {
+			remove_perk = august_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = befriend_perk }
+		}
+		scope:original_identity = {
+			remove_perk = befriend_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = confidants_perk }
+		}
+		scope:original_identity = {
+			remove_perk = confidants_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = flatterer_perk }
+		}
+		scope:original_identity = {
+			remove_perk = flatterer_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = friendly_counsel_perk }
+		}
+		scope:original_identity = {
+			remove_perk = friendly_counsel_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = familial_familiar_perk }
+		}
+		scope:original_identity = {
+			remove_perk = familial_familiar_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = groomed_to_rule_perk }
+		}
+		scope:original_identity = {
+			remove_perk = groomed_to_rule_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = thicker_than_water_perk }
+		}
+		scope:original_identity = {
+			remove_perk = thicker_than_water_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = sound_foundations_perk }
+		}
+		scope:original_identity = {
+			remove_perk = sound_foundations_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = family_man_perk }
+		}
+		scope:original_identity = {
+			remove_perk = family_man_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = truth_is_relative_perk }
+		}
+		scope:original_identity = {
+			remove_perk = truth_is_relative_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = digging_for_dirt_perk }
+		}
+		scope:original_identity = {
+			remove_perk = digging_for_dirt_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = kidnapper_perk }
+		}
+		scope:original_identity = {
+			remove_perk = kidnapper_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = court_of_shadows_perk }
+		}
+		scope:original_identity = {
+			remove_perk = court_of_shadows_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = prepared_for_anything_perk }
+		}
+		scope:original_identity = {
+			remove_perk = prepared_for_anything_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = swift_execution_perk }
+		}
+		scope:original_identity = {
+			remove_perk = swift_execution_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = a_job_done_right_perk }
+		}
+		scope:original_identity = {
+			remove_perk = a_job_done_right_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = twice_schemed_perk }
+		}
+		scope:original_identity = {
+			remove_perk = twice_schemed_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = schemer_perk }
+		}
+		scope:original_identity = {
+			remove_perk = schemer_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = like_weed_in_a_garden_perk }
+		}
+		scope:original_identity = {
+			remove_perk = like_weed_in_a_garden_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = unshackled_lust_perk }
+		}
+		scope:original_identity = {
+			remove_perk = unshackled_lust_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = subtle_desire_perk }
+		}
+		scope:original_identity = {
+			remove_perk = subtle_desire_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = mortal_adoration_perk }
+		}
+		scope:original_identity = {
+			remove_perk = mortal_adoration_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = enticing_opportunity_perk }
+		}
+		scope:original_identity = {
+			remove_perk = enticing_opportunity_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = home_advantage_perk }
+		}
+		scope:original_identity = {
+			remove_perk = home_advantage_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = graceful_recovery_perk }
+		}
+		scope:original_identity = {
+			remove_perk = graceful_recovery_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = smooth_operator_perk }
+		}
+		scope:original_identity = {
+			remove_perk = smooth_operator_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = seducer_perk }
+		}
+		scope:original_identity = {
+			remove_perk = seducer_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = well_prepared_perk }
+		}
+		scope:original_identity = {
+			remove_perk = well_prepared_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = far_and_wide_perk }
+		}
+		scope:original_identity = {
+			remove_perk = far_and_wide_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = just_one_more_hill_perk }
+		}
+		scope:original_identity = {
+			remove_perk = just_one_more_hill_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = roaming_perk }
+		}
+		scope:original_identity = {
+			remove_perk = roaming_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = of_the_people_perk }
+		}
+		scope:original_identity = {
+			remove_perk = of_the_people_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = local_hero_perk }
+		}
+		scope:original_identity = {
+			remove_perk = local_hero_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = travel_companion_perk }
+		}
+		scope:original_identity = {
+			remove_perk = travel_companion_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = the_home_away_from_home_perk }
+		}
+		scope:original_identity = {
+			remove_perk = the_home_away_from_home_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = wayfarer_perk }
+		}
+		scope:original_identity = {
+			remove_perk = wayfarer_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = power_at_home_perk }
+		}
+		scope:original_identity = {
+			remove_perk = power_at_home_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = mercenary_contacts_perk }
+		}
+		scope:original_identity = {
+			remove_perk = mercenary_contacts_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = journey_planner_perk }
+		}
+		scope:original_identity = {
+			remove_perk = journey_planner_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = finally_there_perk }
+		}
+		scope:original_identity = {
+			remove_perk = finally_there_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = journey_perk }
+		}
+		scope:original_identity = {
+			remove_perk = journey_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = souvenirs_aplenty_perk }
+		}
+		scope:original_identity = {
+			remove_perk = souvenirs_aplenty_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = gracious_host_impeccable_guest_perk }
+		}
+		scope:original_identity = {
+			remove_perk = gracious_host_impeccable_guest_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = been_there_done_that_perk }
+		}
+		scope:original_identity = {
+			remove_perk = been_there_done_that_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = voyager_perk }
+		}
+		scope:original_identity = {
+			remove_perk = voyager_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = mustering_the_troops_perk }
+		}
+		scope:original_identity = {
+			remove_perk = mustering_the_troops_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = know_your_land_know_your_people_perk }
+		}
+		scope:original_identity = {
+			remove_perk = know_your_land_know_your_people_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = no_stone_unturned_perk }
+		}
+		scope:original_identity = {
+			remove_perk = no_stone_unturned_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = travel_logs_perk }
+		}
+		scope:original_identity = {
+			remove_perk = travel_logs_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = local_inspection_perk }
+		}
+		scope:original_identity = {
+			remove_perk = local_inspection_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = local_arbitration_perk }
+		}
+		scope:original_identity = {
+			remove_perk = local_arbitration_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = realm_charts_perk }
+		}
+		scope:original_identity = {
+			remove_perk = realm_charts_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = personal_touch_perk }
+		}
+		scope:original_identity = {
+			remove_perk = personal_touch_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = surveyor_perk }
+		}
+		scope:original_identity = {
+			remove_perk = surveyor_perk
+		}
+	}
+	
+#########################################
+# Vampire Mod Lifestyle Perks (full list)
+#########################################
+
+	# From vi_vampire_will_lifestyle_perks.txt
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = vi_celerity_perk }
+		}
+		scope:original_identity = {
+			remove_perk = vi_celerity_perk
+		}
+	}
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = vi_blink_perk }
+		}
+		scope:original_identity = {
+			remove_perk = vi_blink_perk
+		}
+	}
+
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = vi_fortitude_perk }
+		}
+		scope:original_identity = {
+			remove_perk = vi_fortitude_perk
+		}
+	}
+
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = vi_strength_perk }
+		}
+		scope:original_identity = {
+			remove_perk = vi_strength_perk
+		}
+	}
+
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = vi_regeneration_perk }
+		}
+		scope:original_identity = {
+			remove_perk = vi_regeneration_perk
+		}
+	}
+
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = vi_shadowwalk_perk }
+		}
+		scope:original_identity = {
+			remove_perk = vi_shadowwalk_perk
+		}
+	}
+
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = vi_storm_perk }
+		}
+		scope:original_identity = {
+			remove_perk = vi_storm_perk
+		}
+	}
+
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = vi_transformation_perk }
+		}
+		scope:original_identity = {
+			remove_perk = vi_transformation_perk
+		}
+	}
+
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = vi_dragonsscion_perk }
+		}
+		scope:original_identity = {
+			remove_perk = vi_dragonsscion_perk
+		}
+	}
+
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = vi_will_martial_perk }
+		}
+		scope:original_identity = {
+			remove_perk = vi_will_martial_perk
+		}
+	}
+
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = vi_will_prowess_perk }
+		}
+		scope:original_identity = {
+			remove_perk = vi_will_prowess_perk
+		}
+	}
+
+
+	# From vi_vampire_z_insight_lifestyle_perks.txt
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = vi_auspex_perk }
+		}
+		scope:original_identity = {
+			remove_perk = vi_auspex_perk
+		}
+	}
+
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = vi_peopleofinterest_perk }
+		}
+		scope:original_identity = {
+			remove_perk = vi_peopleofinterest_perk
+		}
+	}
+
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = vi_windfall_perk }
+		}
+		scope:original_identity = {
+			remove_perk = vi_windfall_perk
+		}
+	}
+
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = vi_mercantile_perk }
+		}
+		scope:original_identity = {
+			remove_perk = vi_mercantile_perk
+		}
+	}
+
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = vi_heartsofmen_perk }
+		}
+		scope:original_identity = {
+			remove_perk = vi_heartsofmen_perk
+		}
+	}
+
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = vi_guidance_perk }
+		}
+		scope:original_identity = {
+			remove_perk = vi_guidance_perk
+		}
+	}
+
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = vi_propheticdreams_perk }
+		}
+		scope:original_identity = {
+			remove_perk = vi_propheticdreams_perk
+		}
+	}
+
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = vi_fateweaver_perk }
+		}
+		scope:original_identity = {
+			remove_perk = vi_fateweaver_perk
+		}
+	}
+
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = vi_allseeing_perk }
+		}
+		scope:original_identity = {
+			remove_perk = vi_allseeing_perk
+		}
+	}
+
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = vi_insight_stewardship_perk }
+		}
+		scope:original_identity = {
+			remove_perk = vi_insight_stewardship_perk
+		}
+	}
+
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = vi_insight_learning_perk }
+		}
+		scope:original_identity = {
+			remove_perk = vi_insight_learning_perk
+		}
+	}
+
+
+	# From vi_vampire_charm_lifestyle_perks.txt
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = vi_charm_perk }
+		}
+		scope:original_identity = {
+			remove_perk = vi_charm_perk
+		}
+	}
+
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = vi_animal_speak_perk }
+		}
+		scope:original_identity = {
+			remove_perk = vi_animal_speak_perk
+		}
+	}
+
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = vi_animal_command_perk }
+		}
+		scope:original_identity = {
+			remove_perk = vi_animal_command_perk
+		}
+	}
+
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = vi_soothe_perk }
+		}
+		scope:original_identity = {
+			remove_perk = vi_soothe_perk
+		}
+	}
+
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = vi_galvanize_perk }
+		}
+		scope:original_identity = {
+			remove_perk = vi_galvanize_perk
+		}
+	}
+
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = vi_persuasion_perk }
+		}
+		scope:original_identity = {
+			remove_perk = vi_persuasion_perk
+		}
+	}
+
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = vi_enthrall_perk }
+		}
+		scope:original_identity = {
+			remove_perk = vi_enthrall_perk
+		}
+	}
+
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = vi_presence_perk }
+		}
+		scope:original_identity = {
+			remove_perk = vi_presence_perk
+		}
+	}
+
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = vi_heartstealer_perk }
+		}
+		scope:original_identity = {
+			remove_perk = vi_heartstealer_perk
+		}
+	}
+
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = vi_charm_diplomacy_perk }
+		}
+		scope:original_identity = {
+			remove_perk = vi_charm_diplomacy_perk
+		}
+	}
+
+	if = {
+		limit = {
+			scope:original_identity = { has_perk = vi_charm_intrigue_perk }
+		}
+		scope:original_identity = {
+			remove_perk = vi_charm_intrigue_perk
+		}
+	}
+}	

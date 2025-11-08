@@ -24,9 +24,30 @@ vi_daji_seek_favor_interaction = {
 	ai_max_reply_days = 3
 	
 	is_highlighted = {
-		
 		always = yes
 	}
+
+
+	populate_actor_list = {
+		scope:actor = {
+			every_prisoner = {
+				limit = {
+					vi_is_vampire_trigger = no
+				}
+				add_to_list = characters
+			}
+		}
+	}
+
+	can_be_picked = {
+		NOT = {
+			vi_is_vampire_trigger = yes
+		}
+		NOR = {
+			has_any_illness = yes
+		}
+	}
+
 
 	is_valid_showing_failures_only = {
 		scope:actor.gold >= gift_value
@@ -35,6 +56,7 @@ vi_daji_seek_favor_interaction = {
 			custom_tooltip = {
 				text = vi_daji_no_relation_tt
 				OR = {
+					vi_is_vampire_trigger = yes
 					has_relation_best_friend = scope:recipient
 					has_relation_friend = scope:recipient
 					has_relation_lover = scope:recipient
@@ -53,23 +75,32 @@ vi_daji_seek_favor_interaction = {
 			NOT = {
 				has_trait = vi_dormant
 			}
+			NOT = {
+				is_imprisoned = yes
+			}
 		}
 	}
 	
 	on_accept = {
+		
 		scope:actor = {
-			pay_short_term_gold = {
-				gold = {
-					value = gift_value
-					add = major_gold_value
+			if = {
+				limit = {
+					scope:recipient = {
+						has_opinion_modifier = {
+							target = scope:actor
+							modifier = gift_opinion
+						}
+					}
 				}
-				target = scope:recipient
+				custom_tooltip = ALREADY_SENT_GIFT_WARNING
 			}
 			custom_tooltip = vi_daji_favor_accept_tt
 			trigger_event = {
 				on_action = vi_daji_favor_accept_on_action
 			}
 		}
+
 		show_as_tooltip = {
 			vi_daji_favor_accept_effect = yes
 		}
@@ -77,15 +108,7 @@ vi_daji_seek_favor_interaction = {
 	}
 
 	on_decline = {
-		
 		scope:actor = {
-			pay_short_term_gold = {
-				gold = {
-					value = gift_value
-					add = major_gold_value
-				}
-				target = scope:recipient
-			}
 			trigger_event = vi_daji.0101
 		}
 		
@@ -95,15 +118,35 @@ vi_daji_seek_favor_interaction = {
 	}
 
 	ai_accept = {
- 		base = 50
+ 		base = 60
+		
+		# vi_victim_physical_traits_modifier = {
+		# 	VICTIM = scope:secondary_actor
+		# }
 
- 		opinion_modifier = {
- 			opinion_target = scope:actor
- 			multiplier = 0.5
- 			step = 5
-			min = -10
-			max = 30
- 		}
+		modifier = {
+			desc = vi_daji_victim_appeal_desc
+			scope:secondary_actor = {
+				is_alive = yes
+			}
+			add = scope:secondary_actor.vi_victim_appeal_value
+		}
+
+		modifier = {
+			scope:recipient = {
+				has_relation_rival = scope:secondary_actor
+			}
+			add = 40
+		}
+
+		modifier = {
+			scope:recipient = {
+				has_relation_nemesis = scope:secondary_actor
+			}
+			add = 80
+		}
+
+		max = 95
 	}
 
 	ai_frequency = 1000

@@ -9,3 +9,16 @@
 		top_liege = no
 	}
 }
+
+vi_fox_leader = {
+	type = character
+	gender = female
+	tier = kingdom
+	titles = {
+		k_vi_hidden_fox_court
+	}
+	priority = 900
+	flavourization_rules = { 
+		spouse_takes_title = no
+	}
+}

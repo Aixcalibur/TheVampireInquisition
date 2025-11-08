@@ -244,6 +244,12 @@ vi_vampire_maintenance_pulse = {
 					type = soulmate
 					vi_is_vampire_trigger = no
 				}
+				NOT = {
+					any_child = {
+						age < 16
+						is_alive = yes
+					}
+				}
 			}
 			add_character_modifier = {
 				modifier = vi_vampire_strain_modifier

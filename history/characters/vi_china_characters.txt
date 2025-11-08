@@ -3,7 +3,7 @@ vi_daji = {
 	dna = vi_daji_dna
 	dynasty_house = house_vi_Su
 	sexuality = bisexual
-	religion = "shangqing"
+	religion = vi_fox_cult
 	culture = "han"
 	female = yes
 
@@ -46,14 +46,14 @@ vi_daji = {
 	}
 
 	867.1.1 = { # She was born 1076 BCE
-		employer = han_3525
+		employer = vi_ximei
 		effect = {
 			set_age = 1943
 		}
 	}
 
 	1060.1.1 = {
-		employer = han_6821
+		employer = vi_ximei
 		effect = {
 			set_age = 2136
 		}
@@ -69,6 +69,208 @@ vi_daji = {
 	}
 
 	2000.1.1 = {
+		death = yes
+	}
+}
+
+vi_ximei = {
+	name = "Xǐmèi"
+	dna = vi_ximei_dna
+	dynasty_house = house_vi_Su
+	religion = vi_fox_cult
+	culture = "han"
+	female = yes
+	
+	diplomacy = 11
+	stewardship = 10
+	intrigue = 16
+	prowess = 0
+
+	trait = education_stewardship_4
+
+	trait = temperate
+	trait = arbitrary
+	trait = deceitful
+
+	trait = vi_vampire_4
+	trait = beauty_good_3
+	trait = seducer
+	trait = administrator
+	trait = witch
+	
+	29.6.3 = {
+		birth = yes
+		effect = {
+			add_character_flag = do_not_generate_starting_family
+			set_immortal_age = 25
+			vi_make_vampire_effect = yes
+			add_prowess_skill = 15
+			vi_add_sirensong_effect = yes
+			vi_add_allseeing_effect = yes
+			set_relation_vi_sire = character:vi_daji
+			set_variable = {
+				name = vi_vampire_sire
+				value = character:vi_daji
+			}
+			set_relation_friend = { reason = friend_generic_history target = character:vi_daji }
+			add_character_flag = vi_generate_vassals
+		}
+	}
+}
+
+vi_guiren = {
+	name = "Guìrén"
+	dna = vi_guiren_dna
+	dynasty_house = house_vi_Su
+	religion = vi_fox_cult
+	culture = "han"
+	female = yes
+	
+	diplomacy = 12
+	intrigue = 15
+	prowess = 0
+
+	trait = education_diplomacy_4
+
+	trait = deceitful
+	trait = craven
+	trait = gregarious
+
+	trait = vi_vampire_3
+	trait = beauty_good_3
+	trait = seducer
+
+	trait = poet
+	
+	251.9.24 = {
+		birth = yes
+		effect = {
+			add_character_flag = do_not_generate_starting_family
+			set_immortal_age = 22
+			vi_make_vampire_effect = yes
+			add_prowess_skill = 13
+			vi_add_sirensong_effect = yes
+			give_nickname = nick_vi_guiren
+			set_relation_vi_sire = character:vi_daji
+			set_variable = {
+				name = vi_vampire_sire
+				value = character:vi_daji
+			}
+			set_relation_friend = { reason = friend_generic_history target = character:vi_daji }
+			set_relation_friend = { reason = friend_generic_history target = character:vi_ximei }
+		}
+	}
+
+	867.1.1 = {
+		employer = vi_ximei
+	}
+}
+
+vi_zuoci = {
+	name = "Zuǒ Cí"
+	religion = "shangqing"
+	culture="han"
+
+	trait = eccentric
+	trait = lifestyle_mystic
+	trait = vi_vampire_4
+	
+	1.1.0 = {
+		birth = yes
+	}
+
+	1.1.300 = {
+		death = {
+			reason = death_mysterious
+		}
+	}
+}
+
+vi_caocao = {
+	name = "Cāo"
+	dna = vi_caocao_dna
+	dynasty_house = house_vi_Cao
+	religion = "jingxue"
+	culture = "han"
+
+	diplomacy = 15
+	martial = 20
+	stewardship = 15
+	intrigue = 18
+	learning = 12
+	prowess = 0
+
+	trait = ambitious
+	trait = paranoid
+	trait = arrogant
+	trait = callous
+
+	trait = education_diplomacy_5
+	trait = vi_vampire_4
+	trait = intellect_good_3
+	trait = vi_dormant
+
+	trait = overseer
+	trait = strategist
+	trait = august
+	trait = scholar
+	trait = administrator
+	trait = confucian_education
+	trait = lifestyle_poet
+	trait = disloyal
+
+	155.3.18 = {
+		birth = yes
+	}
+
+	220.3.15 = {
+		set_immortal_age = 50
+		vi_make_vampire_effect = yes
+		vi_add_allseeing_effect = yes
+		add_prowess_skill = 30
+		set_relation_vi_sire = character:vi_zuoci
+
+		set_variable = {
+			name = vi_vampire_sire
+			value = character:vi_zuoci
+		}
+
+		add_character_modifier = {
+			modifier = vi_caocao_modifier
+		}
+
+		add_trait_xp = {
+			trait = confucian_education
+			value = 50
+		}
+
+		add_trait_xp = {
+			trait = lifestyle_poet
+			value = 100
+		}
+	}
+}
+
+vi_caopi = {
+	name = "Pī"
+	dynasty_house = house_vi_Cao
+	religion = "jingxue"
+	culture="han"
+	father = vi_caocao
+	trait = ambitious
+	trait = paranoid
+	trait = education_stewardship_3
+	trait = administrator
+	trait = scholar
+	trait = intellect_good_1
+	trait = lifestyle_poet
+	trait = lifestyle_blademaster
+
+	187.10.30 = {
+		birth = yes
+	}
+
+	226.6.29 = {
 		death = yes
 	}
 }
