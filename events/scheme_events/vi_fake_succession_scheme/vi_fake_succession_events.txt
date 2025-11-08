@@ -124,9 +124,8 @@ vi_fake_succession.2011 = {
 	desc = vi_fake_succession.2011.desc
 	theme = realm
 
-	save_scope_as = original_identity
-
 	immediate = {
+		save_scope_as = original_identity
 		create_character = {
 			age = scope:original_identity.age
 			employer = scope:original_identity
@@ -150,19 +149,18 @@ vi_fake_succession.2011 = {
 				# Protect original_identity from vanilla copy side-effects
 				scope:original_identity = { save_scope_as = source_character }
 
-				copy_inheritable_appearance_from = scope:source_character # vanilla effect
-				copy_traits = scope:source_character # vanilla effect
-				copy_genetics = yes	# in vi_fake_succession_effects line 191
-				copy_sexuality = yes # in vi_fake_succession_effects line 2169
-				copy_perks = yes # in vi_fake_succession_effects line 565
-				copy_traits_xp = yes # in vi_fake_succession_effects line 2456
-				copy_stats = yes # in vi_fake_succession_effects line 555
-				copy_claims = { OTHER_CHARACTER = scope:source_character } # in vi_fake_succession_effects line 2441
+				copy_inheritable_appearance_from = scope:source_character # vanilla effect # confirmed working
+				copy_traits = scope:source_character # vanilla effect # confirmed working
+				copy_genetics = yes	# in vi_fake_succession_effects line 191 # confirmed working 
+				copy_sexuality = yes # in vi_fake_succession_effects line 2169 # confirmed working
+				copy_perks = yes # in vi_fake_succession_effects line 565 # confirmed working
+				copy_traits_xp = yes # in vi_fake_succession_effects line 2456 # still doesnt work, ill try to fix it in the future
+				copy_claims = { OTHER_CHARACTER = scope:source_character } # in vi_fake_succession_effects line 2441 # honestly no idea if this works
 			#	remove_health_traits = yes # in vi_fake_succession_identity_effects line 2203, but makes sense to keep health traits				
-				add_character_modifier = { modifier = vi_unnatural_youth_modifier }
+				add_character_modifier = { modifier = vi_unnatural_youth_modifier } # confirmed working
 				
 				# Restore original_identity
-				scope:source_character = { save_scope_as = original_identity }
+				scope:source_character = { save_scope_as = original_identity } 
 			}
 		}
 	}
@@ -194,6 +192,13 @@ vi_fake_succession.2011 = {
 			}
 		}
 	}
+	after = {
+		hidden_effect = {
+			remove_all_perks = yes # confirmed works
+			clear_traits = yes # confirmed works - vanila
+			## clear_character_modifiers = yes  # doesn't work, need to figure out how to do this
+		}
+	}
 }
 
 vi_fake_succession.2012 = {
@@ -205,6 +210,13 @@ vi_fake_succession.2012 = {
 	left_portrait  = { character = scope:original_identity animation = schadenfreude }
 	right_portrait = { character = scope:new_identity      animation = personality_bold }
 
+	immediate = {
+		scope:new_identity = {
+		copy_stats = yes
+		}
+		debug_log_scopes = yes
+	}
+	
 	option = {
 		name = vi_fake_succession.2012.a
 		scope:original_identity = {
@@ -227,6 +239,7 @@ vi_fake_succession.2012 = {
 		}
     }
 }
+
 vi_fake_succession.2013 = {
 	type = character_event
 	title = vi_fake_succession.2013.t
