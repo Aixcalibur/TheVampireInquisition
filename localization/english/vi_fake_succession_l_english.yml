@@ -23,13 +23,27 @@
  vi_fake_succession.0001.a: "It's time to introduce a 'successor' and fake my own death."
  vi_fake_succession.0001.b: "No, it's too risky..."
 
- vi_fake_succession.1002.t: "A Rule Renewed"
- vi_fake_succession.1002.desc: "The ruse has succeeded. Courtiers and vassals alike have accepted the transition, be it through the mourning of the "late" ruler, the arrival of the "hidden heir," or the mysterious withdrawal from public life and scrutiny.\n\nMy ordeals are far from over, I have to rebuild my legitimacy as a ruler once more, but at least, for now, the rumors have quieted down."
+ vi_fake_succession.2010.t: "A Rule Renewed"
+ vi_fake_succession.2010.desc: "The ruse has succeeded. Courtiers and vassals alike have accepted the transition, be it through the mourning of the "late" ruler, the arrival of the "hidden heir," or the mysterious withdrawal from public life and scrutiny.\n\nMy ordeals are far from over, I have to rebuild my legitimacy as a ruler once more, but at least, for now, the rumors have quieted down."
 
- vi_fake_succession.1002.a: "My rule begins anew..."
+ vi_fake_succession.2010.a: "My rule begins anew..."
+ vi_fake_succession.2010.b: "Placeholder"
 
- vi_fake_succession.1003.t: "Failure"
- vi_fake_succession.1003.desc: "Despite all my attempts, the people were unconvinced. Rather, my attempts to fake my succession only served to rouse the suspicions of my subjects. \n\n"Who here has ever seen [actor.GetTitledFirstName] and [actor.GetTitledFirstName] II in the same room?" They would demand, and they would not accept any of my perfectly logical answers.\n\nFrom there, my subjects started to dig deeper, gathering clues until they reached the truth.\n\nMy secret has been exposed!"
+ vi_fake_succession.2020.t: "Failure"
+ vi_fake_succession.2020.desc: "Despite all my attempts, the people were unconvinced. Rather, my attempts to fake my succession only served to rouse the suspicions of my subjects. \n\n"Who here has ever seen [actor.GetTitledFirstName] and [actor.GetTitledFirstName] II in the same room?" They would demand, and they would not accept any of my perfectly logical answers.\n\nFrom there, my subjects started to dig deeper, gathering clues until they reached the truth.\n\nMy secret has been exposed!"
 
- vi_fake_succession.1003.a: "Now the world knows I am a vampire!"
- 
+ vi_fake_succession.2020.a: "Now the world knows I am a vampire!"
+
+ vi_fake_succession.2011.t: "Identity creation"
+ vi_fake_succession.2011.desc: "Placeholder"
+ vi_fake_succession.2011.a: "Proceed to vi_fake_succession.2012 -- Designate as heir"
+
+ vi_fake_succession.2012.t: "Heir Designation"
+ vi_fake_succession.2012.desc: "Placeholder"
+ vi_fake_succession.2012.a: "Proceed to vi_fake_succession.2013 -- Choose cover story"
+
+ vi_fake_succession.2013.t: "Cover story"
+ vi_fake_succession.2013.desc: "Placeholder"
+ vi_fake_succession.2013.a_peaceful: "Die in sleep"
+ vi_fake_succession.2013.a_religious: "Religious death"
+ vi_fake_succession.2013.a_murder: "Murder death"

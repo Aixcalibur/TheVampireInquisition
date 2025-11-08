@@ -19,7 +19,7 @@
 	tier_speed = 1
 	base_progress_goal = t2_base_phase_length_value #120
 	base_maximum_success = t1_base_max_success_value #20
-	base_maximum_success_chance = 90
+	#removed line giving unexpecteed token error base_maximum_success_chance = 90
 	phases_per_agent_charge = 1
 	success_chance_growth_per_skill_point = t2_scgpsp_value
 
