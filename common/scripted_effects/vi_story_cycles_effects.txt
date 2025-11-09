@@ -79,7 +79,7 @@ vi_spawn_army = {
 	}
 	save_scope_value_as = {
 		name = reinforcements
-		value = var:troopsize
+		value = local_var:troopsize
 	}
 	spawn_army = {
 		levies = scope:reinforcements
