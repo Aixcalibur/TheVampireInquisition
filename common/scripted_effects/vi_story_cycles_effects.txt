@@ -1,0 +1,95 @@
+﻿vi_buff_destiny_child = {
+	add_short_term_gold = 100
+	add_war_chest_gold = 100
+	add_stress = medium_stress_loss
+	random_list = {
+		10 = {
+			scope:story.var:destiny_child = { add_martial_skill = 1 }
+		}
+		10 = {
+			scope:story.var:destiny_child = { gain_trait_or_experience_effect = { TRAIT = military_engineer AMOUNT = 33 } }
+		}
+		10 = {
+			scope:story.var:destiny_child = { gain_trait_or_experience_effect = { TRAIT = organizer AMOUNT = 33 } }
+		}
+	}
+}
+
+vi_empower_maa = {
+	every_maa_regiment = {
+		limit = {
+			is_maa_in_combat = no
+			can_upgrade_maa = yes
+		}
+		change_maa_regiment_size = {
+			size = 1
+			reinforce = yes
+		}
+	}
+	if = {
+		limit = {
+			maa_regiments_count < maa_regiments_max_count
+		}
+		random_list = {
+			50 = {
+				create_maa_regiment = {
+					type = handpicked_faithful
+					check_can_recruit = no
+					size = 1
+				}
+			}
+			50 = {
+				if = {
+					limit = {
+						NOT = { any_maa_regiment = { is_unit_type = siege_weapon } }
+					}
+					create_maa_regiment = {
+						type = onager
+						check_can_recruit = no
+						size = 1
+					}
+				}
+				else = {
+					create_maa_regiment = {
+						type = varangian_guards
+						check_can_recruit = no
+						size = 1
+					}
+				}
+			}
+		}
+	}
+}
+
+vi_spawn_army = {
+	save_scope_as = spawn_target
+	set_local_variable = {
+		name = troopsize
+		value = {
+			value = 100
+			if = {
+				limit = {
+					scope:spawn_target = { is_landed = yes }
+				}
+				multiply = scope:spawn_target.primary_title.tier
+			} else = {
+				multiply = 2
+			}
+		}
+	}
+	save_scope_value_as = {
+		name = reinforcements
+		value = local_var:troopsize
+	}
+	spawn_army = {
+		levies = scope:reinforcements
+		men_at_arms = {
+			type = handpicked_faithful
+			men = scope:reinforcements
+		}
+		location = scope:spawn_target.location
+		inheritable = no
+		uses_supply = no
+		name = event_troop_default_name
+	}
+}

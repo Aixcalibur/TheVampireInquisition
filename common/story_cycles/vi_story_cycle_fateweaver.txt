@@ -1,15 +1,15 @@
 ﻿story_vi_fateweaver = {
-	
+
 	on_setup = {
 		scope:story = {
 			set_variable = { name = vi_vamp_master value = story_owner }
 		}
 	}
-	
+
 	on_end = {
-		
+
 	}
-	
+
 	on_owner_death = {
 		var:destiny_child = {
 			send_interface_toast = {
@@ -28,7 +28,7 @@
 		}
 		end_story = yes
 	}
-	
+
 	# Something happens - random events
 
 	effect_group = {
@@ -136,7 +136,7 @@
 								type = story_destiny_child
 								save_scope_as = story
 							}
-					
+
 							random_owned_story = {
 								limit = {
 									story_type = story_destiny_child
@@ -148,7 +148,7 @@
 							}
 						}
 					}
-					
+
 				}
 			}
 			triggered_effect = {
@@ -274,14 +274,15 @@
 				is_adult = yes
 			}
 		}
-
 		first_valid = {
+			# Independent ruler, sufficient strength, sufficient title tier
 			triggered_effect = {
 				trigger = {
 					var:destiny_child = {
 						is_independent_ruler = yes
 						is_landed = yes
-						current_military_strength >= 3000
+						current_military_strength >= 4000
+						highest_held_title_tier > tier_county
 					}
 				}
 				effect = {
@@ -292,7 +293,7 @@
 									owns_story_of_type = story_conqueror
 								}
 							}
-							create_story = story_conqueror
+							trigger_event = conqueror.0001
 						}
 					}
 					story_owner = {
@@ -307,8 +308,234 @@
 							add_vi_vampire_lifestyle_xp = 1000
 						}
 					}
+					# just to be sure
+					root = { end_story = yes }
+				}
+			}
+			triggered_effect = {
+				trigger = {
+					var:destiny_child = {
+						is_ruler = yes
+						is_landed = yes
+						OR = {
+							is_independent_ruler = no
+							is_tributary = yes
+						}
+						is_at_war = no
+						OR = {
+							liege = {
+								prev.current_military_strength >= {
+									value = {
+										value = max_military_strength
+										multiply = 1.2
+									}
+								}
+							}
+							suzerain = {
+								prev.current_military_strength >= {
+									value = {
+										value = max_military_strength
+										multiply = 1.2
+									}
+								}
+							}
+						}
+					}
+				}
+				effect = {
+					story_owner = {
+						send_interface_message = {
+							title = vi_fateinfluence_msg
+							right_icon = scope:story.var:destiny_child
+							scope:story.var:destiny_child = {
+								if = {
+									limit = {
+										exists = liege
+									}
+									start_war = {
+										cb = independence_war
+										target = scope:story.var:destiny_child.liege
+									}
+								} else = {
+									start_war = {
+										cb = tributary_independence_war
+										target = scope:story.var:destiny_child.suzerain
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+			triggered_effect = {
+				trigger = {
+					var:destiny_child = {
+						is_ruler = yes
+						is_landed = yes
+						is_independent_ruler = yes
+						is_tributary = no
+						highest_held_title_tier <= tier_county
+						is_at_war = no
+					}
+				}
+				effect = {
+					var:destiny_child = {
+						vi_buff_destiny_child = yes
+						vi_empower_maa = yes
+						vi_spawn_army = yes
+						if = {
+							limit = {
+								exists = capital_province.duchy.holder
+							}
+							add_pressed_claim = capital_province.duchy
+							if = {
+								limit = {
+									scope:story.var:destiny_child = {
+										has_truce = capital_province.duchy.holder
+									}
+								}
+								cancel_truce_both_ways = capital_province.duchy.holder
+							}
+							start_war = {
+								cb = claim_cb
+								target = capital_province.duchy.holder
+								claimant = scope:story.var:destiny_child
+								target_title = capital_province.duchy
+								target_title = capital_province.duchy.title_capital_county
+							}
+						}
+						else_if = {
+							limit = {
+								OR = {
+									any_alert_creatable_title = {
+										duchy = scope:story.var:destiny_child.capital_province.duchy
+									}
+									any_alert_usurpable_title = {
+										duchy = scope:story.var:destiny_child.capital_province.duchy
+									}
+								}
+							}
+							capital_province.duchy = {
+								create_title_and_vassal_change = {
+									type = usurped
+									save_scope_as = change
+									add_claim_on_loss = yes
+								}
+								change_title_holder_include_vassals = {
+									holder = scope:story.var:destiny_child
+									change = scope:change
+								}
+								resolve_title_and_vassal_change = scope:change
+							}
+						}
+						else = {
+							scope:story.var:destiny_child = {
+								create_dynamic_title = {
+									tier = duchy
+									name = NEW_CREATED_TITLE_NAME
+								}
+								create_title_and_vassal_change = {
+									type = created
+									save_scope_as = change
+									add_claim_on_loss = no
+								}
 
-					end_story = yes
+								scope:new_title = {
+									set_destroy_on_gain_same_tier = yes
+									set_no_automatic_claims = yes
+									set_can_be_named_after_dynasty = no
+									change_title_holder = {
+										holder = scope:story.var:destiny_child
+										change = scope:change
+									}
+								}
+
+								resolve_title_and_vassal_change = scope:change
+								scope:new_title = { generate_coa = yes }
+							}
+						}
+					}
+					story_owner = {
+						send_interface_message = {
+							title = vi_fateinfluence_msg
+							right_icon = scope:story.var:destiny_child
+						}
+					}
+				}
+			}
+			triggered_effect = {
+				trigger = {
+					var:destiny_child = {
+						is_ruler = yes
+						is_landed = yes
+					}
+				}
+				effect = {
+					scope:story.var:vi_vamp_master = {
+						send_interface_message = {
+							title = vi_fateinfluence_msg
+							right_icon = scope:story.var:destiny_child
+							scope:story.var:destiny_child = { vi_buff_destiny_child = yes vi_empower_maa = yes }
+						}
+					}
+					scope:story.var:destiny_child = { vi_spawn_army = yes }
+					if = {
+						limit = {
+							scope:story.var:destiny_child = { AND = {
+								exists = liege
+								is_primary_heir_of = liege
+							}}
+						}
+						scope:story.var:vi_vamp_master = {
+							send_interface_message = {
+								title = vi_dcneedshelp_msg
+								right_icon = scope:story.var:destiny_child
+							}
+						}
+					}
+				}
+			}
+			triggered_effect = {
+				trigger = {
+					story_owner = {
+						has_dlc_feature = roads_to_power
+					}
+					var:destiny_child = {
+						is_ruler = yes
+						is_landless_ruler = yes
+					}
+				}
+				effect = {
+					scope:story.var:vi_vamp_master = {
+						send_interface_message = {
+							title = vi_fateinfluence_msg
+							right_icon = scope:story.var:destiny_child
+							scope:story.var:destiny_child = { vi_buff_destiny_child = yes vi_empower_maa = yes }
+						}
+					}
+					scope:story.var:destiny_child = { vi_spawn_army = yes }
+				}
+			}
+			triggered_effect = {
+				trigger = {
+					var:destiny_child = {
+						is_ruler = no
+						exists = liege
+						is_primary_heir_of = liege
+						liege = { is_landless_ruler = no }
+					}
+				}
+				effect = {
+					story_owner = {
+						send_interface_message = {
+							title = vi_dcneedshelp_msg
+							right_icon = scope:story.var:destiny_child
+							random = {
+								chance = 50
+								scope:story.var:destiny_child = { vi_buff_destiny_child = yes }
+							}
+						}
+					}
 				}
 			}
 			triggered_effect = {
@@ -344,185 +571,10 @@
 						send_interface_message = {
 							title = vi_fateinfluence_msg
 							right_icon = scope:story.var:destiny_child
-							scope:story.var:destiny_child = {
-								create_landless_adventurer_title_tooltip_effect = yes
-								add_gold = 200
-							}
+							scope:story.var:destiny_child = { vi_buff_destiny_child = yes vi_empower_maa = yes }
 						}
 					}
-				}
-			}
-			triggered_effect = {
-				trigger = {
-					story_owner = {
-						has_dlc_feature = roads_to_power
-					}
-					var:destiny_child = {
-						is_ruler = yes
-						is_landless_ruler = yes
-					}
-				}
-				effect = {
-					var:destiny_child = {
-						scope:story.var:vi_vamp_master = {
-							send_interface_message = {
-								title = vi_fateinfluence_msg
-								right_icon = scope:story.var:destiny_child
-								scope:story.var:destiny_child = { add_short_term_gold = 50 }
-								scope:story.var:destiny_child = { add_war_chest_gold = 100 }
-								scope:story.var:destiny_child = { add_stress = medium_stress_loss }
-							}
-						}
-						every_maa_regiment = {
-							limit = {
-								is_maa_in_combat = no
-								can_upgrade_maa = yes
-							}
-							change_maa_regiment_size = {
-								size = 1
-								reinforce = yes
-							}
-						}
-						if = {
-							limit = {
-								maa_regiments_count < maa_regiments_max_count
-							}
-							send_interface_message = {
-								title = vi_fateinfluence_msg
-								right_icon = scope:story.var:destiny_child
-								random_list = {
-									50 = {
-										create_maa_regiment = {
-											type = handpicked_faithful
-											check_can_recruit = no
-											size = 1
-										}
-									}
-									50 = {
-										if = {
-											limit = {
-												NOT = {
-													any_maa_regiment = {
-														is_unit_type = siege_weapon
-													}
-												}
-											}
-											create_maa_regiment = {
-												type = onager
-												check_can_recruit = no
-												size = 1
-											}
-										}
-										else = {
-											create_maa_regiment = {
-												type = varangian_guards
-												check_can_recruit = no
-												size = 1
-											}
-										}
-									}
-								}
-							}
-						}
-						else = {
-							send_interface_message = {
-								title = vi_fateinfluence_msg
-								right_icon = scope:story.var:destiny_child
-								random_list = {
-									10 = {
-										scope:story.var:destiny_child = { add_martial_skill = 1 }
-									}
-									10 = {
-										scope:story.var:destiny_child = { 
-											if = {
-												limit = {
-													has_trait = military_engineer
-												}
-												add_trait_xp = {
-													trait = military_engineer
-													value = 11
-												}
-											} else = {
-												add_trait = military_engineer
-											}
-										}
-									}
-									10 = {
-										scope:story.var:destiny_child = { 
-											if = {
-												limit = {
-													has_trait = organizer
-												}
-												add_trait_xp = {
-													trait = organizer
-													value = 11
-												}
-											} else = {
-												add_trait = organizer
-											}
-										}
-									}
-								}
-							}
-						}
-					}
-				}
-			}
-			triggered_effect = {
-				trigger = {
-					var:destiny_child = {
-						is_ruler = yes	
-						is_landed = yes
-					}
-				}
-				effect = {
-					set_local_variable = {
-						name = troopsize
-						value = {
-							value = 100
-							multiply = var:destiny_child.primary_title.tier
-						}
-					}
-					save_scope_value_as = {
-						name = reinforcements
-						value = local_var:troopsize
-					}
-
-					scope:story.var:destiny_child = {
-						send_interface_message = {
-							title = vi_fateinfluence_msg
-							right_icon = scope:story.var:destiny_child
-							add_short_term_gold = 150
-							add_stress = medium_stress_loss
-							spawn_army = {
-								levies = scope:reinforcements
-								men_at_arms = {
-									type = handpicked_faithful
-									men = scope:reinforcements
-								}
-								location = scope:story.var:destiny_child.capital_province
-								name = event_troop_default_name
-							}
-						}
-					}
-
-					scope:story.var:vi_vamp_master = {
-						send_interface_message = {
-							title = vi_fateinfluence_msg
-							right_icon = scope:story.var:destiny_child
-							add_short_term_gold = 150
-							add_stress = medium_stress_loss
-							spawn_army = {
-								levies = scope:reinforcements
-								men_at_arms = {
-									type = handpicked_faithful
-									men = scope:reinforcements
-								}
-								location = scope:story.var:destiny_child.capital_province
-								name = event_troop_default_name
-							}
-						}
-					}
+					scope:story.var:destiny_child = { vi_spawn_army = yes }
 				}
 			}
 			triggered_effect = {
@@ -531,17 +583,7 @@
 				}
 				effect = {
 					var:destiny_child = {
-						random_list = {
-							50 = {
-								add_gold = 50
-							}
-							50 = {
-								add_stress = minor_stress_loss
-							}
-							20 = {
-								add_martial_skill = 1
-							}
-						}
+						vi_buff_destiny_child = yes
 					}
 				}
 			}
