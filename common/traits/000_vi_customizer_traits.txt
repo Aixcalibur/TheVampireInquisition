@@ -13,7 +13,7 @@ vi_customizer = {
 		vi_inquisitor
 	}
 
-	ruler_designer_cost = 100
+	ruler_designer_cost = 80
 	stress_gain_mult = 0.5
 	fertility = -1
 
@@ -40,7 +40,7 @@ vi_dhampir = {
 	#flag = vi_advantage_against_vampires
 	flag = vi_cannot_be_turned_into_vampire
 
-	ruler_designer_cost = 50
+	ruler_designer_cost = 40
 
 	ai_boldness = 10
 }

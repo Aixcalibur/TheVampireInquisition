@@ -5,24 +5,133 @@ vi_daji_favor_accept_on_action = {
 	}
 }
 
-vi_daji_yearly_processing = {
+vi_daji_awakening = { # We will make this more elaborate later
 	trigger = {
-		has_character_flag = vi_daji
-		is_alive = yes
+		exists = title:h_china
+
+		years_from_game_start > 20
+		
+		character:vi_daji = {
+			has_character_flag = vi_daji
+			is_alive = yes
+			is_ai = yes
+			has_trait = vi_dormant
+		}
+
+		title:h_china.holder = {
+			is_adult = yes
+			is_attracted_to_gender_of = character:vi_daji
+		}
+	}
+
+	effect = {
+		character:vi_daji = {
+			remove_trait = vi_dormant
+
+			trigger_event = {
+				on_action = vi_daji_awake_pulse
+				days = { 300 600 }
+			}
+
+			save_scope_as = secondary_recipient
+		}
+
+		title:h_china.holder = {
+			add_courtier = character:vi_daji
+
+			save_scope_as = secondary_actor
+
+			save_scope_as = vi_daji_target
+
+			if = {
+				limit = {
+					is_ai = yes
+				}
+				set_relation_lover = {
+					reason = lover_random_8
+					target = character:vi_daji
+				}
+				character:vi_daji = {
+					add_hook = {
+						type = loyalty_hook
+						target = scope:secondary_actor
+					}
+				}
+
+				if = {
+					limit = {
+						allowed_more_concubines = yes
+					}
+					concubine_on_accept_effect = yes
+				}
+				clear_saved_scope = scope:secondary_recipient
+				clear_saved_scope = scope:secondary_actor
+			}
+			else = {
+				clear_saved_scope = scope:secondary_recipient
+				clear_saved_scope = scope:secondary_actor
+				character:vi_daji = {
+					start_scheme = {
+						type = seduce
+						target_character = title:h_china.holder
+					}
+				}
+			}
+		}
+	}
+}
+
+vi_daji_awake_pulse = {
+	trigger = {
 		is_ai = yes
+		is_alive = yes
+		NOT = {
+			has_trait = vi_dormant
+		}
 	}
 
 	effect = {
 		if = {
 			limit = {
-				is_incapable = no
+				OR = {
+					NOT = {
+						exists = scope:vi_daji_target
+					}
+					scope:vi_daji_target = {
+						is_alive = no
+					}
+				}
 			}
-			
-		}
 
-		trigger_event = {
-			on_action = vi_daji_yearly_processing
-			days = 365
+			if = {
+				limit = {
+					exists = title:h_china.holder
+				}
+				title:h_china.holder = {
+					add_courtier = character:vi_daji
+					save_scope_as = vi_daji_target
+				}
+
+				character:vi_daji = {
+					start_scheme = {
+						type = seduce
+						target_character = title:h_china.holder
+					}
+				}
+			}
 		}
+		else = {
+			run_interaction = {
+				interaction = vi_visit_interaction
+				actor = root
+				recipient = scope:vi_daji_target
+				execute_threshold = accept
+			}
+		}
+	}
+
+	on_actions = {
+		delay = { days = { 300 500 } }
+		vi_daji_awake_pulse
 	}
 }

@@ -98,3 +98,9 @@ vi_pending_perk_effect = {
 	first = vi_pending_perk_effect
 	third = vi_pending_perk_effect
 }
+
+vi_auspex_perk_effect = {
+	global = vi_auspex_perk_effect
+	first = vi_auspex_perk_effect
+	third = vi_auspex_perk_effect
+}

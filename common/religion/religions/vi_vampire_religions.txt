@@ -324,7 +324,7 @@
 		vi_fox_cult = {
 
 			color = { 78 173 167 }
-			icon = custom_faith_lotus
+			icon = vi_huxian
 
 			religious_head = k_vi_hidden_fox_court
 
