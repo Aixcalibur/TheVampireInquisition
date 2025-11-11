@@ -156,8 +156,7 @@
  vi_vampire_insight_focus_effect_desc: "Focusing on Insight grants:"
 
  vi_auspex_perk_name: "Auspex"
- vi_auspex_perk_effect: "Can more easily detect [GetScheme('vi_hunt').GetTypeName] [scheme|E] against you" 
-
+ vi_auspex_perk_effect: "Can more easily detect [GetScheme('vi_hunt').GetTypeName] [scheme|E] against you/n Can use the Awaken [interaction|E] to call upon [GetTrait('vi_dormant').GetName( GetNullCharacter )] [vampires|E]" 
 
  vi_peopleofinterest_perk_name: "Discerning Eye"
  vi_pending_perk_effect: "Pending a more interesting perk effect"

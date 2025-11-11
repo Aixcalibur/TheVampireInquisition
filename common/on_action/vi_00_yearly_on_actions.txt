@@ -2,6 +2,7 @@
 	on_actions = {
 		vi_version_update
 		vi_hunter_yearly_action
+		vi_china_story_yearly_check
 	}
 }
 
@@ -43,16 +44,9 @@ vi_hunter_yearly_action = {
 							is_scheme_category = hostile
 						}
 					}
-					any_relation = {
-						type = vi_ai_target
-						in_diplomatic_range = prev
-						reverse_opinion = {
-							target = prev
-							value < 0
-						}
-					}
 				}
 				random_relation = {
+					type = grudge
 					limit = {
 						in_diplomatic_range = prev
 						reverse_opinion = {
@@ -409,5 +403,13 @@ vi_vampire_upgrade_elder = {
 		add_trait = vi_vampire_4
 		remove_trait = vi_vampire_3
 		remove_trait = vi_vampire_2
+	}
+}
+
+vi_china_story_yearly_check = {
+	random_on_action = {
+		900 = 0
+		50 = vi_daji_awakening
+		#100 = vi_caocao_awakening
 	}
 }

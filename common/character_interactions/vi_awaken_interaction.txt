@@ -1,0 +1,192 @@
+vi_awaken_interaction = {
+	category = interaction_category_diplomacy
+	icon = designate_favorite
+	desc = vi_awaken_interaction_desc
+
+	use_diplomatic_range = yes
+
+	# ai_maybe = yes
+	# can_send_despite_rejection = yes
+
+	cooldown = {
+		years = 5
+	}
+
+	cooldown_against_recipient = {
+		years = 20
+	}
+
+	is_shown = {
+
+		scope:actor = {
+			# OR = {
+			# 	vi_is_vampire_trigger = yes
+			# 	scope:recipient = {
+			# 		any_secret = {
+			# 			secret_type = secret_vi_vampire
+			# 			is_known_by = scope:actor
+			# 		}
+			# 	}
+			# }
+			has_perk = vi_auspex_perk
+		}
+		
+		scope:recipient = {
+			vi_is_vampire_trigger = yes
+			has_trait = vi_dormant
+		}
+	}
+
+	is_valid_showing_failures_only = {
+		scope:recipient = {
+			custom_tooltip = {
+				text = vi_awaken_too_soon
+				NOT = {
+					has_character_flag = vi_recent_dormant
+				}
+			}
+
+			# custom_tooltip = {
+			# 	text = vi_awaken_cannot_be_found
+			# 	NOT = {
+			# 		has_character_flag = vi_awaken_by_event_only
+			# 	}
+			# }
+		}
+	}
+
+	cost = {
+		gold = 100
+		piety = 50
+	}
+
+	send_option = {
+		is_shown = {
+			NOT = { scope:actor = scope:recipient }
+		}
+		is_valid = {
+			scope:actor = {
+				has_usable_hook = scope:recipient
+			}
+		}
+		flag = hook
+		localization = GENERIC_SPEND_A_HOOK
+	}
+	should_use_extra_icon = {
+		scope:actor = { has_usable_hook = scope:recipient }
+	}
+	extra_icon = "gfx/interface/icons/character_interactions/hook_icon.dds"
+
+	auto_accept = {
+		custom_description = {
+			text = "spending_hook"
+			subject = scope:actor
+			object = scope:recipient
+			scope:hook = yes
+			AND = {
+				scope:actor = { has_strong_hook = scope:recipient }
+				scope:recipient = {
+					NOT = {
+						has_character_flag = vi_awaken_by_event_only
+					}
+				}
+			}
+		}
+	}
+
+	on_accept = {
+		scope:actor = {
+			if = {
+				limit = {
+					scope:hook = yes
+					has_hook = scope:recipient
+				}
+				use_hook = scope:recipient
+			}
+		}
+		scope:recipient = {
+			remove_trait = vi_dormant
+
+			if = {
+				limit = {
+					is_ruler = no
+				}
+				add_hook = {
+					target = scope:actor
+					type = favor_hook
+				}
+				scope:actor = {
+					add_courtier = scope:recipient
+				}
+			}
+		}	
+	}
+
+	ai_accept = {
+		base = -10
+
+		modifier = {
+			scope:recipient = {
+				has_character_flag = vi_awaken_by_event_only
+			}
+			add = -1000
+			desc = vi_awaken_by_event_desc
+		}
+
+		opinion_modifier = {
+ 			opinion_target = scope:actor
+ 			multiplier = 0.5
+ 			step = 5
+			desc = AI_OPINION_REASON
+ 		}
+
+		modifier = {
+			has_relation_soulmate = scope:actor
+			add = 200
+			desc = AI_YOUR_SOULMATE
+		}
+
+ 		modifier = {
+ 			has_relation_friend = scope:actor
+			NOT = {
+				has_relation_best_friend = scope:actor
+			}
+ 			add = 75
+ 			desc = AI_YOUR_FRIEND
+ 		}
+
+		 modifier = {
+			has_relation_best_friend = scope:actor
+			add = 150
+			desc = AI_YOUR_BEST_FRIEND
+		}
+
+		modifier = {
+			has_relation_vi_sire = scope:actor
+			add = 50
+			desc = AI_YOUR_SIRE
+		}
+
+		modifier = {
+			desc = SCHEME_WEAK_HOOK_USED
+			add = 100
+			scope:hook = yes
+		}
+
+		modifier = {
+			has_relation_vi_spawn = scope:actor
+			add = 50
+			desc = AI_YOUR_SPAWN
+		}
+
+		modifier = {
+			scope:recipient.house = scope:actor.house
+			add = 20
+			desc = IS_SAME_HOUSE_REASON
+		}
+	}
+
+	ai_potential = {
+		always = no
+	}
+}

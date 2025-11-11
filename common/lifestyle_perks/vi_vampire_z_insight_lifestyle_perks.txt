@@ -48,6 +48,9 @@
 	}
 
 	effect = {
+		custom_description_no_bullet = {
+			text = vi_auspex_perk_effect
+		}
 		vi_on_perk_added_effect = yes
 	}
 }

@@ -23,13 +23,27 @@
  vi_fake_succession.0001.a: "It's time to introduce a 'successor' and fake my own death."
  vi_fake_succession.0001.b: "No, it's too risky..."
 
- vi_fake_succession.1002.t: "A Rule Renewed"
- vi_fake_succession.1002.desc: "The ruse has succeeded. Courtiers and vassals alike have accepted the transition, be it through the mourning of the "late" ruler, the arrival of the "hidden heir," or the mysterious withdrawal from public life and scrutiny.\n\nMy ordeals are far from over, I have to rebuild my legitimacy as a ruler once more, but at least, for now, the rumors have quieted down."
+ vi_fake_succession.2010.t: "A Rule Renewed"
+ vi_fake_succession.2010.desc: "The ruse has succeeded. Courtiers and vassals alike have accepted the transition, be it through the mourning of the "late" ruler, the arrival of the "hidden heir," or the mysterious withdrawal from public life and scrutiny.\n\nMy ordeals are far from over, I have to rebuild my legitimacy as a ruler once more, but at least, for now, the rumors have quieted down."
 
- vi_fake_succession.1002.a: "My rule begins anew..."
+ vi_fake_succession.2010.a: "My reign continues unchallenged."
+ vi_fake_succession.2010.b: "Time to go even further."
 
- vi_fake_succession.1003.t: "Failure"
- vi_fake_succession.1003.desc: "Despite all my attempts, the people were unconvinced. Rather, my attempts to fake my succession only served to rouse the suspicions of my subjects. \n\n"Who here has ever seen [actor.GetTitledFirstName] and [actor.GetTitledFirstName] II in the same room?" They would demand, and they would not accept any of my perfectly logical answers.\n\nFrom there, my subjects started to dig deeper, gathering clues until they reached the truth.\n\nMy secret has been exposed!"
+ vi_fake_succession.2020.t: "Failure"
+ vi_fake_succession.2020.desc: "Despite all my attempts, the people were unconvinced. Rather, my attempts to fake my succession only served to rouse the suspicions of my subjects. \n\n"Who here has ever seen [actor.GetTitledFirstName] and [actor.GetTitledFirstName] II in the same room?" They would demand, and they would not accept any of my perfectly logical answers.\n\nFrom there, my subjects started to dig deeper, gathering clues until they reached the truth.\n\nMy secret has been exposed!"
 
- vi_fake_succession.1003.a: "Now the world knows I am a vampire!"
- 
+ vi_fake_succession.2020.a: "Now the world knows I am a vampire!"
+
+ vi_fake_succession.2011.t: "A Fresh Face"
+ vi_fake_succession.2011.desc: "A matter of paperwork and identity. I must craft a believable new face for the realm — a name, a backstory, a life on parchment. The court will accept this natural transition, and I will continue my rule unbothered, merely wearing different clothes."
+ vi_fake_succession.2011.a: "Forge my new identity."
+
+ vi_fake_succession.2012.t: "Appointing the Successor"
+ vi_fake_succession.2012.desc: "A matter of paperwork and perception. The realm must see a natural heir stepping into place — another version of me, reborn under a different name. I'll fade into legend while I step back onto the stage in fresh clothes."
+ vi_fake_succession.2012.a: "Designate my new self as heir."
+
+ vi_fake_succession.2013.t: "Crafting the Narrative"
+ vi_fake_succession.2013.desc: "Every good succession needs a believable end to the previous  chapter. I must decide how the old ruler will depart — peacefully, piously, or under suspicious circumstances. The choice will determine how quickly the realm moves past their grief."
+ vi_fake_succession.2013.a_peaceful: "A quiet passing."
+ vi_fake_succession.2013.a_religious: "A religious sacrifice."
+ vi_fake_succession.2013.a_murder: "Foul play."

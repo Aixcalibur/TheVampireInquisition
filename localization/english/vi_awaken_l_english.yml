@@ -1,0 +1,8 @@
+﻿l_english:
+ vi_awaken_interaction: "Awaken"
+ vi_awaken_interaction_desc: "Prepare a ritual to call into the world of dreams and hope for a response."
+ AI_YOUR_SIRE:0 "[recipient.GetSheHe|U] is your Sire: $VALUE|=+0$"
+ AI_YOUR_SPAWN:0 "[recipient.GetSheHe|U] is your Spawn: $VALUE|=+0$"
+
+ vi_awaken_too_soon: "[recipient.GetShortUINameNoTooltip] has gone to sleep too recently."
+ vi_awaken_by_event_desc: "[recipient.GetSheHe|U] is biding [recipient.GetHerHis|U] time: $VALUE|=+0$"
