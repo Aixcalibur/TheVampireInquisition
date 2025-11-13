@@ -197,7 +197,7 @@ copy_genetics = {
 			scope:original_identity = { has_trait = beauty_bad_1 }
 		}
 		scope:new_identity = {
-			add_trait_xp = beauty_bad_1
+			add_trait = beauty_bad_1
 		}
 	}
 	if = {
@@ -205,7 +205,7 @@ copy_genetics = {
 			scope:original_identity = { has_trait = beauty_bad_2 }
 		}
 		scope:new_identity = {
-			add_trait_xp = beauty_bad_2
+			add_trait = beauty_bad_2
 		}
 	}
 	if = {
@@ -213,7 +213,7 @@ copy_genetics = {
 			scope:original_identity = { has_trait = beauty_bad_3 }
 		}
 		scope:new_identity = {
-			add_trait_xp = beauty_bad_3
+			add_trait = beauty_bad_3
 		}
 	}
 	if = {
@@ -221,7 +221,7 @@ copy_genetics = {
 			scope:original_identity = { has_trait = intellect_bad_1 }
 		}
 		scope:new_identity = {
-			add_trait_xp = intellect_bad_1
+			add_trait = intellect_bad_1
 		}
 	}
 	if = {
@@ -229,7 +229,7 @@ copy_genetics = {
 			scope:original_identity = { has_trait = intellect_bad_2 }
 		}
 		scope:new_identity = {
-			add_trait_xp = intellect_bad_2
+			add_trait = intellect_bad_2
 		}
 	}
 	if = {
@@ -237,7 +237,7 @@ copy_genetics = {
 			scope:original_identity = { has_trait = intellect_bad_3 }
 		}
 		scope:new_identity = {
-			add_trait_xp = intellect_bad_3
+			add_trait = intellect_bad_3
 		}
 	}
 	
@@ -246,7 +246,7 @@ copy_genetics = {
 			scope:original_identity = { has_trait = physique_bad_1 }
 		}
 		scope:new_identity = {
-			add_trait_xp = physique_bad_1
+			add_trait = physique_bad_1
 		}
 	}
 	if = {
@@ -254,7 +254,7 @@ copy_genetics = {
 			scope:original_identity = { has_trait = physique_bad_2 }
 		}
 		scope:new_identity = {
-			add_trait_xp = physique_bad_2
+			add_trait = physique_bad_2
 		}
 	}
 	if = {
@@ -262,7 +262,7 @@ copy_genetics = {
 			scope:original_identity = { has_trait = physique_bad_3 }
 		}
 		scope:new_identity = {
-			add_trait_xp = physique_bad_3
+			add_trait = physique_bad_3
 		}
 	}
 	if = {
@@ -270,7 +270,7 @@ copy_genetics = {
 			scope:original_identity = { has_trait = beauty_good_1 }
 		}
 		scope:new_identity = {
-			add_trait_xp = beauty_good_1
+			add_trait = beauty_good_1
 		}
 	}
 	if = {
@@ -278,7 +278,7 @@ copy_genetics = {
 			scope:original_identity = { has_trait = beauty_good_2 }
 		}
 		scope:new_identity = {
-			add_trait_xp = beauty_good_2
+			add_trait = beauty_good_2
 		}
 	}
 	if = {
@@ -286,7 +286,7 @@ copy_genetics = {
 			scope:original_identity = { has_trait = beauty_good_3 }
 		}
 		scope:new_identity = {
-			add_trait_xp = beauty_good_3
+			add_trait = beauty_good_3
 		}
 	}
 	if = {
@@ -294,7 +294,7 @@ copy_genetics = {
 			scope:original_identity = { has_trait = intellect_good_1 }
 		}
 		scope:new_identity = {
-			add_trait_xp = intellect_good_1
+			add_trait = intellect_good_1
 		}
 	}
 	if = {
@@ -302,7 +302,7 @@ copy_genetics = {
 			scope:original_identity = { has_trait = intellect_good_2 }
 		}
 		scope:new_identity = {
-			add_trait_xp = intellect_good_2
+			add_trait = intellect_good_2
 		}
 	}
 	if = {
@@ -310,7 +310,7 @@ copy_genetics = {
 			scope:original_identity = { has_trait = intellect_good_3 }
 		}
 		scope:new_identity = {
-			add_trait_xp = intellect_good_3
+			add_trait = intellect_good_3
 		}
 	}
 	
@@ -319,7 +319,7 @@ copy_genetics = {
 			scope:original_identity = { has_trait = physique_good_1 }
 		}
 		scope:new_identity = {
-			add_trait_xp = physique_good_1
+			add_trait = physique_good_1
 		}
 	}
 	if = {
@@ -327,7 +327,7 @@ copy_genetics = {
 			scope:original_identity = { has_trait = physique_good_2 }
 		}
 		scope:new_identity = {
-			add_trait_xp = physique_good_2
+			add_trait = physique_good_2
 		}
 	}
 	if = {
@@ -335,7 +335,7 @@ copy_genetics = {
 			scope:original_identity = { has_trait = physique_good_3 }
 		}
 		scope:new_identity = {
-			add_trait_xp = physique_good_3
+			add_trait = physique_good_3
 		}
 	}
 	
@@ -345,7 +345,7 @@ copy_genetics = {
 			scope:original_identity = { has_trait = possessed_genetic }
 		}
 		scope:new_identity = {
-			add_trait_xp = possessed_genetic
+			add_trait = possessed_genetic
 		}
 	}
 	if = {
@@ -353,7 +353,7 @@ copy_genetics = {
 			scope:original_identity = { has_trait = lunatic_genetic }
 		}
 		scope:new_identity = {
-			add_trait_xp = lunatic_genetic
+			add_trait = lunatic_genetic
 		}
 	}
 	if = {
@@ -361,7 +361,7 @@ copy_genetics = {
 			scope:original_identity = { has_trait = depressed_genetic }
 		}
 		scope:new_identity = {
-			add_trait_xp = depressed_genetic
+			add_trait = depressed_genetic
 		}
 	}
 	
@@ -374,7 +374,7 @@ copy_genetics = {
 			scope:original_identity = { has_trait = pure_blooded }
 		}
 		scope:new_identity = {
-			add_trait_xp = pure_blooded
+			add_trait = pure_blooded
 		}
 	}
 	if = {
@@ -382,7 +382,7 @@ copy_genetics = {
 			scope:original_identity = { has_trait = fecund }
 		}
 		scope:new_identity = {
-			add_trait_xp = fecund
+			add_trait = fecund
 		}
 	}
 	if = {
@@ -390,7 +390,7 @@ copy_genetics = {
 			scope:original_identity = { has_trait = clubfooted }
 		}
 		scope:new_identity = {
-			add_trait_xp = clubfooted
+			add_trait = clubfooted
 		}
 	}
 	if = {
@@ -398,7 +398,7 @@ copy_genetics = {
 			scope:original_identity = { has_trait = hunchbacked }
 		}
 		scope:new_identity = {
-			add_trait_xp = hunchbacked
+			add_trait = hunchbacked
 		}
 	}
 	if = {
@@ -406,7 +406,7 @@ copy_genetics = {
 			scope:original_identity = { has_trait = lisping }
 		}
 		scope:new_identity = {
-			add_trait_xp = lisping
+			add_trait = lisping
 		}
 	}
 	if = {
@@ -414,7 +414,7 @@ copy_genetics = {
 			scope:original_identity = { has_trait = stuttering }
 		}
 		scope:new_identity = {
-			add_trait_xp = stuttering
+			add_trait = stuttering
 		}
 	}
 	if = {
@@ -422,7 +422,7 @@ copy_genetics = {
 			scope:original_identity = { has_trait = dwarf }
 		}
 		scope:new_identity = {
-			add_trait_xp = dwarf
+			add_trait = dwarf
 		}
 	}
 	if = {
@@ -430,7 +430,7 @@ copy_genetics = {
 			scope:original_identity = { has_trait = giant }
 		}
 		scope:new_identity = {
-			add_trait_xp = giant
+			add_trait = giant
 		}
 	}
 	if = {
@@ -438,7 +438,7 @@ copy_genetics = {
 			scope:original_identity = { has_trait = inbred }
 		}
 		scope:new_identity = {
-			add_trait_xp = inbred
+			add_trait = inbred
 		}
 	}
 	if = {
@@ -446,7 +446,7 @@ copy_genetics = {
 			scope:original_identity = { has_trait = spindly }
 		}
 		scope:new_identity = {
-			add_trait_xp = spindly
+			add_trait = spindly
 		}
 	}
 	if = {
@@ -454,7 +454,7 @@ copy_genetics = {
 			scope:original_identity = { has_trait = scaly }
 		}
 		scope:new_identity = {
-			add_trait_xp = scaly
+			add_trait = scaly
 		}
 	}
 	if = {
@@ -462,7 +462,7 @@ copy_genetics = {
 			scope:original_identity = { has_trait = albino }
 		}
 		scope:new_identity = {
-			add_trait_xp = albino
+			add_trait = albino
 		}
 	}
 	if = {
@@ -470,7 +470,7 @@ copy_genetics = {
 			scope:original_identity = { has_trait = wheezing }
 		}
 		scope:new_identity = {
-			add_trait_xp = wheezing
+			add_trait = wheezing
 		}
 	}
 	if = {
@@ -478,7 +478,7 @@ copy_genetics = {
 			scope:original_identity = { has_trait = bleeder }
 		}
 		scope:new_identity = {
-			add_trait_xp = bleeder
+			add_trait = bleeder
 		}
 	}
 	if = {
@@ -486,7 +486,7 @@ copy_genetics = {
 			scope:original_identity = { has_trait = infertile }
 		}
 		scope:new_identity = {
-			add_trait_xp = infertile
+			add_trait = infertile
 		}
 	}
 	
@@ -499,7 +499,7 @@ copy_genetics = {
 			scope:original_identity = { has_trait = sayyid }
 		}
 		scope:new_identity = {
-			add_trait_xp = sayyid
+			add_trait = sayyid
 		}
 	}
 	if = {
@@ -507,7 +507,7 @@ copy_genetics = {
 			scope:original_identity = { has_trait = saoshyant }
 		}
 		scope:new_identity = {
-			add_trait_xp = saoshyant_descendant
+			add_trait = saoshyant_descendant
 		}
 	}
 	if = {
@@ -515,7 +515,7 @@ copy_genetics = {
 			scope:original_identity = { has_trait = saoshyant_descendant }
 		}
 		scope:new_identity = {
-			add_trait_xp = saoshyant_descendant
+			add_trait = saoshyant_descendant
 		}
 	}
 	if = {
@@ -523,7 +523,7 @@ copy_genetics = {
 			scope:original_identity = { has_trait = savior }
 		}
 		scope:new_identity = {
-			add_trait_xp = divine_blood
+			add_trait = divine_blood
 		}
 	}
 	if = {
@@ -531,7 +531,7 @@ copy_genetics = {
 			scope:original_identity = { has_trait = divine_blood }
 		}
 		scope:new_identity = {
-			add_trait_xp = divine_blood
+			add_trait = divine_blood
 		}
 	}
 	if = {
@@ -539,7 +539,7 @@ copy_genetics = {
 			scope:original_identity = { has_trait = paragon }
 		}
 		scope:new_identity = {
-			add_trait_xp = consecrated_blood
+			add_trait = consecrated_blood
 		}
 	}
 	if = {
@@ -547,7 +547,7 @@ copy_genetics = {
 			scope:original_identity = { has_trait = consecrated_blood }
 		}
 		scope:new_identity = {
-			add_trait_xp = consecrated_blood
+			add_trait = consecrated_blood
 		}
 	}
 	
