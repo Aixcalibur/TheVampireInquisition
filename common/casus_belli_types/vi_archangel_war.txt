@@ -201,10 +201,8 @@
 
 		scope:attacker = { add_prestige = major_prestige_gain }
 		scope:defender = {
-			death = {
-				death_reason = death_vi_holy_flames
-				killer = scope:attacker
-			}
+			trigger_event = vi_archangel.3001
+			
 		}
 		add_truce_attacker_victory_effect = yes
 
