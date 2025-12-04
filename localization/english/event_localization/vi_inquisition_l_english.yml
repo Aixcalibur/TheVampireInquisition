@@ -53,9 +53,12 @@
  vi_archangel.0001.vampire: "Let us hope [vi_archangel.GetSheHe] does not turn [vi_archangel.GetHerHis] sights on us next..."
  vi_archangel.0001.observer: "The world has gone mad..."
  vi_archangel.0001.arrogant: "I could take him on."
+ vi_archangel_war_victory_desc: ""He is not simply conqueror.\n\ His holy war will end not in annihilation, but in... salvation. He offers not death, but mercy. A mercy more terrible than any pyre.""
+ vi_archangel_war_cb_defeat_desc: "His heart is pierced by the blade that was His light\n\ His hands, bound by shackles that were once shrines."
  
  vi_archangel_modifier: "Archangel"
  vi_archangel_modifier_desc: "An archangel is capable of taking on the legions of Hell alone."
+ rf_vi_vampire_opinion: "Vampiric Opinion"
 
  vi_archangel_war: "Anti-Vampire Crusade"
  VI_ARCHANGEL_WAR_NAME: "Crusade against [DEFENDER.GetShortUINameNotMe]"
