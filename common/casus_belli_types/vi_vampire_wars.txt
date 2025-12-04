@@ -147,9 +147,17 @@
 				REASON = rival_raided_me
 			}
 
-			pay_short_term_gold = {
+
+			if = {
+				limit = {
+					gold > 200
+				}
+				
+				pay_short_term_gold = {
 				target = scope:attacker
 				gold = monumental_gold_value
+				
+				}
 			}
 
 			if = {
@@ -234,12 +242,18 @@
 			# 	TARGET = scope:attacker
 			# 	REASON = rival_raided_me
 			# }
-			pay_short_term_gold = {
+			if = {
+				limit = {
+					gold > 200
+				}
+				
+				pay_short_term_gold = {
 				target = scope:attacker
-				gold = {
-					value = scope:war.attacker_war_score
-					multiply = monumental_gold_value
-					divide = 100
+					gold = {
+						value = scope:war.attacker_war_score
+						multiply = monumental_gold_value
+						divide = 100
+					}
 				}
 			}
 
@@ -291,11 +305,18 @@
 		}
 
 		scope:attacker = {
-			pay_short_term_gold = {
+			if = {
+				limit = {
+					gold > 200
+				}
+				
+				pay_short_term_gold = {
 				target = scope:defender
-				gold = monumental_gold_value
+					gold = monumental_gold_value
+				}
 			}
-		}
+		}		
+
 
 		# Truce
 		add_truce_attacker_defeat_effect = yes
@@ -518,10 +539,17 @@ vi_vampire_banish = {
 				TARGET = scope:attacker
 				REASON = rival_raided_me
 			}
-
-			pay_short_term_gold = {
+			
+			if = {
+				limit = {
+					gold > 200
+				}
+				
+				pay_short_term_gold = {
 				target = scope:attacker
 				gold = major_gold_value
+				
+				}
 			}
 
 			every_held_title = {
@@ -579,14 +607,20 @@ vi_vampire_banish = {
 			# 	TARGET = scope:attacker
 			# 	REASON = rival_raided_me
 			# }
-			pay_short_term_gold = {
-				target = scope:attacker
-				gold = {
-					value = scope:war.attacker_war_score
-					multiply = monumental_gold_value
-					divide = 100
+			if = {
+				limit = {
+					gold > 200
 				}
-			}
+				
+				pay_short_term_gold = {
+				target = scope:attacker
+					gold = {
+						value = scope:war.attacker_war_score
+						multiply = monumental_gold_value
+						divide = 100
+					}
+				}
+			}			
 
 			if = {
 				limit = {
@@ -635,12 +669,17 @@ vi_vampire_banish = {
 			LOSER_ALLY_FAME_SCALE = 1
 		}
 
-		scope:attacker = {
+		if = {
+			limit = {
+				gold > 200
+			}
+				
 			pay_short_term_gold = {
-				target = scope:defender
+			target = scope:defender
 				gold = monumental_gold_value
 			}
-		}
+		}		
+
 
 		# Truce
 		add_truce_attacker_defeat_effect = yes
