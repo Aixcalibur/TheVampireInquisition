@@ -28,6 +28,7 @@
 
  vi_fake_succession.2010.a: "My reign continues unchallenged."
  vi_fake_succession.2010.b: "Time to go even further."
+ vi_fake_succession.2010.b_tt: "#X This will kill your character and replace it with a new one. Save your game before proceeding.#!"
 
  vi_fake_succession.2020.t: "Failure"
  vi_fake_succession.2020.desc: "Despite all my attempts, the people were unconvinced. Rather, my attempts to fake my succession only served to rouse the suspicions of my subjects. \n\n"Who here has ever seen [actor.GetTitledFirstName] and [actor.GetTitledFirstName] II in the same room?" They would demand, and they would not accept any of my perfectly logical answers.\n\nFrom there, my subjects started to dig deeper, gathering clues until they reached the truth.\n\nMy secret has been exposed!"
