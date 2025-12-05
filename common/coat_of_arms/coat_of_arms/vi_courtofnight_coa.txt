@@ -170,7 +170,7 @@ house_vi_Montmartre = {
 
 }
 
-d_nf_vi_montmartre = {
+c_nf_vi_montmartre = {
 	# custom=yes
 	pattern="pattern__solid_designer.dds"
 	color1=red

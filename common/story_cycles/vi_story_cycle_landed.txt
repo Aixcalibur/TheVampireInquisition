@@ -220,6 +220,17 @@
 							50 = {
 								vi_neighboring_rulers_all_inquisition = yes
 							}
+							10 = {
+								trigger = {
+									character:vi_michael = {
+										is_alive = yes
+										is_at_war = no
+									}
+								}
+								story_owner = {
+									vi_awaken_the_archangel = yes
+								}
+							}
 						}
 					}
 				}
