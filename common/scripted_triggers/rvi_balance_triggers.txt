@@ -277,5 +277,20 @@ rvi_has_freepoints = {
 			}				
 			vi_is_vampire_trigger = yes
 		}
+		AND = {
+			OR = {
+				wanderer_lifestyle_perk_points = 1
+				wanderer_lifestyle_perk_points = 2
+				wanderer_lifestyle_perk_points = 3
+				wanderer_lifestyle_perk_points = 4
+				wanderer_lifestyle_perk_points = 5
+				wanderer_lifestyle_perk_points = 6
+				wanderer_lifestyle_perk_points = 7
+				wanderer_lifestyle_perk_points = 8
+				wanderer_lifestyle_perk_points = 9
+				wanderer_lifestyle_perk_points = 10	
+			}				
+			vi_is_vampire_trigger = yes
+		}
 	}
 }
