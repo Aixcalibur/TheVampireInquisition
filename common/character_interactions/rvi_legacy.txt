@@ -1,0 +1,165 @@
+﻿rvi_exalt_interaction = {
+	icon = child
+	common_interaction = yes
+	category = interaction_category_friendly
+	interface_priority = 100
+	desc = rvi_exalt_interaction
+
+	cooldown_against_recipient = {
+		years = 10
+ 	}
+
+	is_shown = {
+		scope:recipient = {
+			has_trait = vi_dhampir
+			
+		}
+		scope:actor = {
+			vi_is_vampire_trigger = yes
+			dynasty = {
+				has_dynasty_perk = rvi_one_legacy_1
+				
+			}
+		}
+	}
+	
+	is_highlighted = {
+		always = yes
+	}
+
+	is_valid_showing_failures_only = {
+		scope:recipient = {
+			age >= 16
+		}
+	}
+
+	cost = {
+		piety = 200
+	}
+	
+	on_accept = {
+		scope:recipient = {
+			add_opinion = {
+				target = scope:actor
+				modifier = grateful_opinion
+				opinion = 10
+			}
+		
+			
+			save_scope_as = vi_target
+			
+			custom_tooltip = rvi_exalt_description_tt
+			hidden_effect = {
+				add_character_flag = {
+					flag = immune_to_disease
+					years = 20
+				}
+			}
+		}
+		
+		scope:actor = {
+			save_scope_as = vi_vampire
+			trigger_event = rvi_legacies.1001
+			add_character_modifier = {
+				modifier = vi_vampire_strain_modifier
+				years = 10
+			}
+		}
+	}
+	
+	auto_accept = yes
+
+	ai_frequency = 1000
+
+	ai_targets = {
+		ai_recipients = guests
+		ai_recipients = courtiers
+	}
+
+	ai_target_quick_trigger = {
+		adult = no
+	}
+
+	ai_potential = {
+		always = no
+	}
+
+	ai_will_do = {
+		base = -100
+	}
+}
+
+rvi_loyality_interaction = {
+	icon = icon_dynasty
+	common_interaction = yes
+	category = interaction_category_friendly
+	interface_priority = 100
+	desc = rvi_loyality_description_tt
+
+	cooldown_against_recipient = {
+		years = 10
+ 	}
+
+	is_shown = {
+		scope:recipient != scope:actor
+		
+		scope:recipient = {
+			NOT = {
+				has_trait = loyal
+			}		
+			OR = {
+				has_trait = vi_vampire_1
+				has_trait = vi_vampire_2
+				has_trait = vi_vampire_3
+				has_trait = vi_vampire_4
+				has_trait = vi_vampire_5
+			}		
+		}		
+		scope:actor = {
+			is_dynast = yes
+			dynasty = scope:recipient.dynasty
+			vi_is_vampire_trigger = yes
+			dynasty = {
+				has_dynasty_perk = rvi_one_legacy_5
+				
+			}
+		}
+	}
+
+	is_valid_showing_failures_only = {
+		scope:recipient = {
+			age >= 16
+		}
+	}
+
+	cost = {
+		piety = 200
+	}
+	
+	on_accept = {
+		scope:recipient = {
+			save_scope_as = vi_loyal
+			
+		}
+		
+		scope:actor = {
+			save_scope_as = vi_loyal2
+			trigger_event = rvi_legacies.1002
+			add_character_modifier = {
+				modifier = vi_vampire_strain_modifier
+				years = 10
+			}
+		}
+	}
+	
+	auto_accept = yes
+
+	ai_potential = {
+		always = no
+	}
+
+	ai_will_do = {
+		base = -100
+	}
+}
+
