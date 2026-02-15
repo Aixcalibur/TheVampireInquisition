@@ -58,7 +58,8 @@ rvi_remove_all_skillpoints = {
 	add_stewardship_lifestyle_perk_points = -999
 	add_diplomacy_lifestyle_perk_points = -999
 	add_intrigue_lifestyle_perk_points = -999
-	add_learning_lifestyle_perk_points = -999	
+	add_learning_lifestyle_perk_points = -999
+	add_wanderer_lifestyle_perk_points = -999	
 }					
 
 
