@@ -1,0 +1,6 @@
+﻿
+rvi_dhampire_exalt_1_effect = {
+	global = rvi_dhampire_exalt_1_effect_desc
+	first = rvi_dhampire_exalt_1_effect_desc
+	third = rvi_dhampire_exalt_1_effect_desc
+}
