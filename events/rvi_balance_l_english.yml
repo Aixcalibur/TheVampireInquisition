@@ -1,0 +1,35 @@
+﻿l_english:
+
+ rvi_balance.0001.title: "Blood Curse"
+ rvi_balance.0001.desc: "Immortal blood thickens in my veins, like autumn resin in pine trunks. I struggle to move my arms and rise to my feet before the realization of what happened sets in.\n\nToday's awakening brought nothing but suffering—as if [ROOT.Char.GetFaith.DevilName] themself sank their claws into my essence and tore out everything they could reach.\n\nAn ancient curse demanded payment for eternity..."
+ rvi_balance.0001.a1: "I'll have to endure..."
+ rvi_balance.0001.a2: "I'll fill the void with hunting"
+ rvi_balance.0002.title: "Hourglass"
+ rvi_balance.0002.desc: "Another year of my unlife has passed... Yet today I feel nothing but emptiness and weariness.\n\nI sense something leaving me—something not physical—as though I had climbed a great mountain of sand and tumbled down to the very bottom, destined never to reach the summit."
+ rvi_balance.0002.a1: "I must regain my composure"
+ 
+ rvi_balance.0002.a1_tt: "You will lose all free non-vampiric skill points each year you exist."
+ 
+ 
+ 
+ rvi_legacy_track_name: "Eternity"
+ rvi_legacy_track_desc: "Immortal bloodline fed by blood"
+ rvi_one_legacy_1_name: "Exalt"
+ rvi_dhampire_exalt_effect: "Allows to exalt an dhampire to a full-fledged creature of the night"
+ rvi_exalt_interaction: "Exalt dhampire"
+ rvi_exalt_description_tt: "The dhampire will become a full-fledged creature of the night"
+ rvi_legacies.1001.t: "Exalt"
+ rvi_legacies.1001.desc: "A half-dead offspring of cursed blood stands before you. [Select_CString(vi_target.IsFemale, 'Her', 'His')] gut are false, and his half-life serves no purpose. \n\nYou know a ritual that can awaken the thirst and make [Select_CString(vi_target.IsFemale, 'her', 'his')] a true creature of the night."
+ rvi_legacies.1001.a: "Come closer, child"
+ rvi_one_legacy_2_name: "Obsessed with details"
+ rvi_one_legacy_3_name: "Immortal Proud"
+ rvi_one_legacy_4_name: "Nights under the crosses"
+ rvi_one_legacy_5_name: "And what will you do to us?"
+ rvi_vampire_loyality_effect: "Allows to force vampires of your dynasty to be loyal"
+ rvi_loyality_interaction: "Force loyalty"
+ rvi_loyality_description_tt: "Make this creature of the night serve you faithfully"
+ rvi_legacies.1002.t: "Undying Loyalty"
+ rvi_legacies.1002.desc: "[vi_loyal.GetFirstName] showed up at the first call. You felt confusion before you heard the footsteps. [Select_CString(vi_loyal.IsFemale, 'She', 'He')] still stands at the threshold, trying to maintain his dignity, but his gaze treacherously slides to the table.\n\nThe cup. It sits on the table, heavy, dark, brimming with your blood. Petals and roots float within it, their names known only to you. They don't so much soften the taste as make it unbearably desirable. \n\nIt's not just blood. It's submission, clothed in the form of a gift."
+ rvi_legacies.1002.a: "I'm not holding you back, child."
+ 
+ 
