@@ -1,0 +1,11 @@
+﻿
+
+dynasty_head_is_vampire_trigger = {
+	OR = {
+		has_trait = vi_vampire_1
+		has_trait = vi_vampire_2
+		has_trait = vi_vampire_3
+		has_trait = vi_vampire_4
+		has_trait = vi_vampire_5
+	}
+}
