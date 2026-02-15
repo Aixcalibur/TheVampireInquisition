@@ -1,0 +1,69 @@
+﻿rvi_one_legacy_1 = {
+	legacy = rvi_legacy_track
+
+	effect = {
+		custom_tooltip = rvi_dhampire_exalt_effect
+	}
+
+	ai_chance = {
+		value = 1
+		if = {
+			limit = { dynasty_head_is_vampire_trigger = yes }
+			multiply = 1000	
+		}		
+	}
+}
+
+rvi_one_legacy_2 = {
+	legacy = rvi_legacy_track
+	
+	character_modifier = {
+		character_travel_safety_mult = 0.5
+		hostile_scheme_phase_duration_add = major_scheme_phase_duration_malus_value
+		enemy_hostile_scheme_success_chance_add = -100
+		enemy_scheme_secrecy_add = -50
+		character_travel_speed_mult = -0.5
+		
+	}
+}
+
+rvi_one_legacy_3 = {
+	legacy = rvi_legacy_track
+
+	character_modifier = {
+		dynasty_house_opinion = 100
+		learn_language_scheme_phase_duration_add = major_scheme_phase_duration_malus_value
+		independent_ruler_opinion = -50
+	}
+}
+
+rvi_one_legacy_4 = {
+	legacy = rvi_legacy_track
+
+	character_modifier = {
+		tolerance_advantage_mod = -5
+		hard_casualty_modifier = -0.5	
+		supply_duration = -0.2
+		max_loot_mult = 0.5		
+
+	}
+}
+
+rvi_one_legacy_5 = {
+	legacy = rvi_legacy_track
+
+	effect = {
+		custom_tooltip = rvi_vampire_loyality_effect
+	}
+
+
+	character_modifier = {
+		monthly_tyranny = -1
+		dread_baseline_add = 50
+		stress_loss_mult = 0.5
+		monthly_prestige_gain_mult = -1
+		monthly_piety_gain_mult = -1
+
+
+	}
+}
