@@ -1,0 +1,65 @@
+namespace = rvi_legacies
+
+#Exalt
+rvi_legacies.1001 = {
+	type = character_event
+	title = rvi_legacies.1001.t
+	desc = rvi_legacies.1001.desc
+	theme = realm
+	left_portrait = {
+		character = scope:vi_vampire
+		animation = personality_dishonorable
+	}
+	right_portrait = {
+		character = scope:vi_target
+		animation = personality_dishonorable
+	}	
+	
+	immediate = {
+		play_music_cue = "mx_cue_positive_effect"
+		
+	}
+
+	option = {
+		name = rvi_legacies.1001.a
+		scope:vi_target = {
+			vi_remove_nonvampire_traits_effect = yes
+			vi_turn_into_vampire_effect = yes
+			add_opinion = {
+				target = scope:vi_vampire
+				modifier = grateful_opinion
+				opinion = 10
+			}
+
+		}
+	}
+}
+
+rvi_legacies.1002 = {
+	type = character_event
+	title = rvi_legacies.1002.t
+	desc = rvi_legacies.1002.desc
+	theme = realm
+	left_portrait = {
+		character = scope:vi_loyal2
+		animation = personality_dishonorable
+	}
+	right_portrait = {
+		character = scope:vi_loyal
+		animation = personality_zealous
+	}	
+	
+	immediate = {
+		play_music_cue = "mx_cue_positive_effect"
+		
+	}
+
+	option = {
+		name = rvi_legacies.1002.a
+		scope:vi_loyal = {
+			add_trait = loyal
+
+		}
+	}
+}
+
