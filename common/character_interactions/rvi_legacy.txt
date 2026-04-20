@@ -120,8 +120,7 @@ rvi_loyality_interaction = {
 			dynasty = scope:recipient.dynasty
 			vi_is_vampire_trigger = yes
 			dynasty = {
-				has_dynasty_perk = rvi_one_legacy_5
-				
+				has_dynasty_perk = rvi_one_legacy_5	
 			}
 		}
 	}
@@ -163,3 +162,427 @@ rvi_loyality_interaction = {
 	}
 }
 
+rvi_trait_interaction = {
+	icon = icon_dynasty
+	common_interaction = yes
+	category = interaction_category_friendly
+	interface_priority = 100
+	desc = rvi_trait_description_tt
+
+	cooldown_against_recipient = {
+		years = 0
+ 	}
+	is_shown = {
+		scope:recipient != scope:actor
+		scope:recipient	= {
+			has_character_modifier = rvi_ame_comblee_modifier
+		}		
+		scope:actor = {
+			is_dynast = yes
+			vi_is_vampire_trigger = yes
+		}
+	}	
+	is_valid = {
+		scope:actor = {
+			dynasty = {
+				has_dynasty_perk = rvi_one_legacy_3
+			}
+		}		
+		scope:recipient = {	
+			has_character_modifier = rvi_ame_comblee_modifier
+			NOT = {
+				has_character_modifier = rvi_entracte_modifier
+			}				
+			age >= 16
+			OR = {
+				AND = {
+					has_trait = physique_good_3
+					NOT = { scope:actor = { has_trait = physique_good_3 } }
+				}
+				AND = {
+					has_trait = intellect_good_3
+					NOT = { scope:actor = { has_trait = intellect_good_3 } }
+				}	
+				AND = {
+					has_trait = beauty_good_3
+					NOT = { scope:actor = { has_trait = beauty_good_3 } }
+				}							
+			}		
+		}
+	}
+	cost = {
+		piety = 600
+	}
+	
+	on_accept = {
+		scope:recipient = {
+			save_scope_as = vi_traitsuck		
+		}	
+		scope:actor = {
+			save_scope_as = vi_traitsucker
+			trigger_event = rvi_legacies.1003
+			add_character_modifier = {
+				modifier = vi_vampire_strain_modifier
+				years = 1
+			}
+		}
+	}
+	
+	auto_accept = yes
+
+	ai_potential = {
+		always = no
+	}
+
+	ai_will_do = {
+		base = -100
+	}
+}
+
+rvi_give_trait_interaction = {
+	icon = icon_dynasty
+	common_interaction = yes
+	category = interaction_category_friendly
+	interface_priority = 100
+	desc = rvi_give_trait_description_tt
+
+	cooldown_against_recipient = {
+		years = 10
+ 	}
+
+	is_shown = {
+		scope:recipient != scope:actor
+		scope:recipient = {
+			vi_is_vampire_trigger = yes
+		}		
+		scope:actor = {
+			is_dynast = yes
+			vi_is_vampire_trigger = yes
+			dynasty = {
+				has_dynasty_perk = rvi_one_legacy_4
+			}
+		}
+	}		
+	is_valid = {		
+		scope:recipient = {	
+			vi_is_vampire_trigger = yes
+			OR = {
+				AND = {
+					NOT = { 
+						has_trait = physique_good_3
+					}	
+					scope:actor = { 
+						has_trait = physique_good_3
+					}			
+				}
+				AND = {
+					NOT = { 
+						has_trait = intellect_good_3
+					}		
+					scope:actor = { 
+						has_trait = intellect_good_3
+					}		
+				}
+				AND = {
+					NOT = { 
+						has_trait = beauty_good_3
+					}		
+					scope:actor = { 
+						has_trait = beauty_good_3
+					}		
+				}					
+			}		
+		}			
+	}
+
+	cost = {
+		piety = 600
+	}
+	
+	on_accept = {
+		scope:recipient = {
+			save_scope_as = vi_traitsucker1
+		}
+		scope:actor = {
+			save_scope_as = vi_traitsuck1
+			trigger_event = rvi_legacies.1004
+			add_character_modifier = {
+				modifier = vi_vampire_strain_modifier
+				years = 1
+			}
+		}
+	}
+	
+	auto_accept = yes
+
+	ai_potential = {
+		always = no
+	}
+
+	ai_will_do = {
+		base = -100
+	}
+}
+
+rvi_createdham_interaction = {
+	icon = icon_dead
+	common_interaction = yes
+	category = interaction_category_friendly
+	interface_priority = 100
+	desc = rvi_createdham_description_tt
+
+	ai_maybe = yes
+	can_send_despite_rejection = yes
+	on_decline_summary = vi_offer_vampirism_decline_summary
+
+	cooldown_against_recipient = {
+		years = 1
+	}
+
+	is_shown = {
+		scope:recipient != scope:actor
+		scope:recipient = {
+			vi_is_vampire_trigger = no
+			NOT = { 
+				has_trait = vi_dhampir
+				has_character_modifier = rvi_ame_comblee_modifier
+			}
+		}
+		scope:actor = {
+			is_dynast = yes
+			vi_is_vampire_trigger = yes
+			dynasty = {
+				has_dynasty_perk = rvi_one_legacy_2
+			}
+		}
+	}		
+	is_valid = {		
+		scope:recipient = {	
+			is_courtier_of = scope:actor
+			vi_is_vampire_trigger = no
+            is_adult = yes
+			OR = {
+				has_trait = intellect_good_3
+				has_trait = beauty_good_3
+				has_trait = physique_good_3
+			}			
+			NOT = { 
+				has_trait = vi_dhampir
+				has_character_modifier = rvi_ame_videe_modifier
+			}
+		}		
+		scope:actor = {
+			has_trait = vi_heartstealer			
+		}			
+	}
+
+	cost = {
+		piety = 800
+	}
+	
+	send_options_exclusive = no	
+	
+	on_accept = {
+		scope:recipient = {
+			add_character_modifier = {
+				modifier = rvi_entracte_modifier
+				years = 1
+			}
+			add_character_modifier = {
+				modifier = rvi_ame_comblee_modifier
+			}			
+		}
+		scope:actor = {
+			stress_impact = {
+				base = medium_stress_impact_gain
+			}
+			add_character_modifier = {
+				modifier = vi_vampire_strain_modifier
+				years = 10
+			}
+			add_character_modifier = {
+				modifier = vi_drained_modifier
+				years = 1
+			}		
+		}		
+	}
+
+	on_decline = {
+		scope:actor = {
+			send_interface_toast = {
+				title = vi_vampirism_declined_msg
+				right_icon = scope:recipient
+				random_secret = {
+					limit = {
+						secret_type = secret_vi_vampire
+					}
+					reveal_to = scope:recipient
+				}
+				add_opinion = {
+					target = scope:recipient
+					modifier = disappointed_opinion
+					opinion = -60
+				}
+			}
+		}
+	}	
+	
+	ai_accept = {
+ 		base = -50
+
+ 		opinion_modifier = {
+ 			opinion_target = scope:actor
+ 			multiplier = 0.5
+ 			step = 5
+ 		}
+
+		modifier = {
+			add = {
+				value = scope:recipient.dynasty.dynasty_prestige_level
+				multiply = -10
+			}
+			AND = {
+				always = scope:adoption_send_option
+				scope:recipient = {
+					exists = dynasty
+					dynasty ?= {
+						any_dynasty_member = {
+							count >= 3
+						}
+						dynasty_prestige_level >= 2
+					}
+				}
+			}
+			
+			desc = VI_ASKING_TO_BE_ADOPTED
+		}
+
+ 		#Relations & relatives (with actor)
+ 		modifier = {
+ 			has_relation_lover = scope:actor
+			NOT = {
+				has_relation_soulmate = scope:actor
+			}
+ 			add = 100
+ 			desc = AI_YOUR_LOVER
+ 		}
+
+		modifier = {
+			has_trait = zealous
+			faith = {
+				NOT = {
+					is_in_family = rf_vi_vampire
+				}
+			}
+			add = -50
+			desc = VI_ZEALOUS
+		}
+
+		modifier = {
+			has_trait = vi_inquisitor
+			add = -50
+		}
+
+		modifier = {
+			OR = {
+				has_trait = sadistic
+				has_trait = callous
+				ai_compassion < -50
+			}
+			add = 25
+			desc = VI_DOESNT_MIND_BLOOD
+		}
+
+		modifier = {
+			OR = {
+				has_trait = compassionate
+				ai_compassion > 50
+			}
+			add = -25
+			desc = VI_MINDS_BLOOD
+		}
+
+
+		modifier = {
+			has_relation_soulmate = scope:actor
+			add = 500
+			desc = AI_YOUR_SOULMATE
+		}
+
+ 		modifier = {
+ 			has_relation_friend = scope:actor
+			NOT = {
+				has_relation_best_friend = scope:actor
+			}
+ 			add = 50
+ 			desc = AI_YOUR_FRIEND
+ 		}
+
+		 modifier = {
+			has_relation_best_friend = scope:actor
+			add = 100
+			desc = AI_YOUR_BEST_FRIEND
+		}
+
+ 		modifier = {
+ 			is_child_of = scope:actor
+ 			add = 50
+ 			desc = AI_YOUR_CHILD
+ 		}
+
+ 		modifier = {
+ 			this.dynasty.dynast = scope:actor
+ 			add = 10
+ 			desc = AI_YOU_ARE_THE_DYNAST
+ 		}
+
+ 		modifier = {
+ 			this.house.house_head = scope:actor
+ 			add = 25
+ 			desc = AI_YOU_ARE_THE_HOUSE_HEAD
+ 		}
+		
+		modifier = {
+ 			this.top_liege = scope:actor
+ 			add = 40
+ 			desc = AI_YOU_ARE_THE_SOVEREIGN
+ 		}
+		
+		modifier = {
+ 			NOT = { is_child_of = scope:actor }
+ 			NOT = { is_close_family_of = scope:actor }
+			is_extended_family_of = scope:actor
+ 			add = 10
+ 			desc = AI_YOUR_RELATIVE
+ 		}
+
+ 		modifier = {
+ 			NOT = { is_child_of = scope:actor }
+ 			is_close_family_of = scope:actor
+ 			add = 20
+ 			desc = AI_YOUR_RELATIVE
+ 		}
+
+ 		modifier = {
+ 			is_spouse_of = scope:actor
+ 			add = 50
+ 			desc = AI_YOUR_SPOUSE
+ 		}
+
+		## Target's liege amenities decreases acceptance 
+
+
+ 		# modifier = {
+		# 	add = 25
+		# 	scope:influence_send_option = yes
+		# 	desc = INFLUENCE_INTERACTION_ACCEPTANCE_SEND_OPTION
+		# }
+		
+	}
+
+	ai_potential = {
+		always = no
+	}
+}	
+	
+	
