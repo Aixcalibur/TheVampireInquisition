@@ -17,6 +17,10 @@
 rvi_one_legacy_2 = {
 	legacy = rvi_legacy_track
 	
+	effect = {
+		custom_tooltip = rvi_dhampire_create_effect
+	}	
+	
 	character_modifier = {
 		character_travel_safety_mult = 0.5
 		hostile_scheme_phase_duration_add = major_scheme_phase_duration_malus_value
@@ -29,9 +33,13 @@ rvi_one_legacy_2 = {
 
 rvi_one_legacy_3 = {
 	legacy = rvi_legacy_track
+	
+	effect = {
+		custom_tooltip = rvi_dhampire_eat_effect
+	}	
+		
 
 	character_modifier = {
-		dynasty_house_opinion = 100
 		learn_language_scheme_phase_duration_add = major_scheme_phase_duration_malus_value
 		independent_ruler_opinion = -50
 	}
@@ -39,11 +47,15 @@ rvi_one_legacy_3 = {
 
 rvi_one_legacy_4 = {
 	legacy = rvi_legacy_track
+	
+	effect = {
+		custom_tooltip = rvi_give_trait_effect
+	}	
+		
 
 	character_modifier = {
-		tolerance_advantage_mod = -5
-		hard_casualty_modifier = -0.5	
-		supply_duration = -0.2
+		tolerance_advantage_mod = -10
+		supply_duration = -0.3
 		max_loot_mult = 0.5		
 
 	}
