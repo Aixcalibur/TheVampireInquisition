@@ -1,0 +1,16 @@
+rvi_entracte_modifier = {
+	icon = magic_positive
+	general_opinion = -20
+}
+
+rvi_ame_comblee_modifier = {
+	icon = vi_rose_mixed
+	stress_gain_mult = -0.5
+	health = 1
+}
+
+rvi_ame_videe_modifier = {
+	icon = vi_detachment
+	stress_gain_mult = 0.5
+	health = -1
+}
