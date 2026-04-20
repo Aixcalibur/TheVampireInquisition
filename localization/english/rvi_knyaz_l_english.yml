@@ -90,11 +90,11 @@
  special_doctrine_is_vi_unreformed_faith_name: "Detachment"
  special_doctrine_is_vi_unreformed_faith_desc: "Those who stalk the night have forsaken their ties to mortal religions. Where shall they find purpose now?"
  
- vi_rodnoverie: "Ancestral"
- vi_rodnoverie_adj: "Ancestral"
- vi_rodnoverie_adherent: "Ancestral"
- vi_rodnoverie_adherent_plural: "Ancestrals"
- vi_rodnoverie_plural: "Ancestrals"
+ vi_rodnoverie: "Rodnoverie"
+ vi_rodnoverie_adj: "Rodnoverie"
+ vi_rodnoverie_adherent: "Rodnover"
+ vi_rodnoverie_adherent_plural: "Rodnovers"
+ vi_rodnoverie_plural: "Rodnovers"
  vi_rodnoverie_desc: "Some vampires dwelling in the lands of Eastern Europe believe themselves to be supernatural shepherds of mankind, sent by Belobog to maintain order and bestow the Blessing of Unlife upon His righteous followers"
 
  holy_site_tsargrad_name: "Tsargrad"
