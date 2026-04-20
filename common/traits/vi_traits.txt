@@ -19,6 +19,7 @@ vi_vampire_1 = {
 	immortal = yes
 	flag = can_murder_own_children
 	flag = immortal_visuals
+	flag = is_immortal	
 	
 	ai_boldness = 20
 	#ai_energy = -100
@@ -56,6 +57,7 @@ vi_vampire_2 = {
 	immortal = yes
 	flag = can_murder_own_children
 	flag = immortal_visuals
+	flag = is_immortal		
 
 	compatibility = {
 		vi_inquisitor = @neg_compat_high
@@ -98,6 +100,7 @@ vi_vampire_3 = {
 	#flag = immortal_visuals
 	flag = vi_sunlight_burns
 	#long_reign_bonus_mult = -1000
+	flag = is_immortal		
 
 	compatibility = {
 		vi_inquisitor = @neg_compat_high
@@ -139,6 +142,7 @@ vi_vampire_4 = {
 	flag = can_murder_own_children
 	flag = immortal_visuals
 	flag = vi_sunlight_burns
+	flag = is_immortal		
 
 	compatibility = {
 		vi_inquisitor = @neg_compat_high
@@ -178,6 +182,7 @@ vi_vampire_5 = {
 	flag = can_murder_own_children
 	flag = immortal_visuals
 	flag = vi_sunlight_burns
+	flag = is_immortal		
 
 	compatibility = {
 		vi_inquisitor = @neg_compat_high
