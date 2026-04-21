@@ -23,6 +23,110 @@ vi_doctrine_core_tenets = {
 	number_of_picks = 0
 
 	doctrine_types = {
-		tenet_ars_occultism = {
+		tenet_ars_occultism
+	}
+}
+
+is_rodnoverie_faith = {
+	category = "special"
+	
+	is_available_on_create = {
+		has_doctrine = special_doctrine_is_rodnoverie_faith
+	}
+	
+	doctrine_types = {
+		special_doctrine_is_rodnoverie_faith
+	}
+}
+
+is_nocturne_faith = {
+	category = "special"
+	
+	is_available_on_create = {
+		has_doctrine = special_doctrine_is_nocturne_faith
+	}
+	doctrine_types = {
+		special_doctrine_is_nocturne_faith
+	}
+}
+
+is_eleusinian_faith = {
+	category = "special"
+	
+	is_available_on_create = {
+		has_doctrine = special_doctrine_is_eleusinian_faith
+	}
+	doctrine_types = {
+		special_doctrine_is_eleusinian_faith
+	}
+}
+
+is_penitence_faith = {
+	category = "special"
+	
+	is_available_on_create = {
+		has_doctrine = special_doctrine_is_penitence_faith
+	}
+	doctrine_types = {
+		special_doctrine_is_penitence_faith
+	}
+}
+
+is_thoth_faith = {
+	category = "special"
+	
+	is_available_on_create = {
+		has_doctrine = special_doctrine_is_thoth_faith
+	}
+	doctrine_types = {
+		special_doctrine_is_rodnoverie_faith
+	}
+}
+
+
+is_mingcult_faith = {
+	category = "special"
+	
+	is_available_on_create = {
+		has_doctrine = special_doctrine_is_mingcult_faith
+	}
+	doctrine_types = {
+		special_doctrine_is_mingcult_faith
+	}
+}
+
+
+iis_baphometi_faith = {
+	category = "special"
+	
+	is_available_on_create = {
+		has_doctrine = special_doctrine_is_baphometi_faith
+	}
+	doctrine_types = {
+		special_doctrine_is_baphometi_faith
+	}
+}
+
+
+is_bloodreign_faith = {
+	category = "special"
+	
+	is_available_on_create = {
+		has_doctrine = special_doctrine_is_bloodreign_faith
+	}
+	doctrine_types = {
+		special_doctrine_is_bloodreign_faith
+	}
+}
+
+
+is_vi_unreformed_faith = {
+	category = "special"
+	
+	is_available_on_create = {
+		has_doctrine = special_doctrine_is_vi_unreformed_faith
+	}
+	doctrine_types = {
+		special_doctrine_is_vi_unreformed_faith
 	}
 }
