@@ -1,0 +1,28 @@
+doctrine_vi_masquerade = {
+	category = "crimes"
+
+	doctrine_types = {
+		vi_masquerade_required
+		vi_masquerade_not_required
+	}
+}
+
+doctrine_vi_diablerie = {
+	category = "crimes"
+
+	doctrine_types = {
+		vi_diablerie_forbidden
+		vi_diablerie_shunned
+		vi_diablerie_allowed
+	}
+}
+
+vi_doctrine_core_tenets = {
+	category = "core_tenets"
+	
+	number_of_picks = 0
+
+	doctrine_types = {
+		tenet_ars_occultism = {
+	}
+}
