@@ -386,7 +386,7 @@ rvi_createdham_interaction = {
 		scope:recipient = {
 			add_character_modifier = {
 				modifier = rvi_entracte_modifier
-				years = 1
+				years = 5
 			}
 			add_character_modifier = {
 				modifier = rvi_ame_comblee_modifier
