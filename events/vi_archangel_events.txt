@@ -152,7 +152,7 @@ vi_archangel.3001 = {
 		}
 		desc = vi_archangel.3001.desc
 	}
-	window = scheme_target_event
+	window = scheme_successful_event
 	theme = murder_scheme
 
 	left_portrait = {
