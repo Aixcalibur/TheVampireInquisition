@@ -78,8 +78,7 @@ vi_hunt_outcome.1001 = {
 		}
 	}
 
-	window = scheme_target_event
-	#window = scheme_successful_event
+	window = scheme_successful_event
 	theme = murder_scheme
 
 	left_portrait = {
@@ -197,9 +196,8 @@ vi_hunt_outcome.2001 = {
 			desc = vi_hunt_outcome.debug_advantage
 		}
 	}
-	window = scheme_target_event
 	theme = murder_scheme
-	#window = scheme_successful_event
+	window = scheme_successful_event
 	left_portrait = {
 		character = scope:vi_hunt_attacker
 		animation = assassin
@@ -482,9 +480,8 @@ vi_hunt_outcome.3001 = {
 			desc = vi_hunt_outcome.debug_advantage
 		}
 	}
-	window = scheme_target_event
 	theme = murder_scheme
-	#window = scheme_successful_event
+	window = scheme_successful_event
 	immediate = {
 		vi_hunt_outcome_perspective_effect = yes
 	}
@@ -744,9 +741,8 @@ vi_hunt_outcome.4001 = {
 		vi_hunt_outcome_perspective_effect = yes
 	}
 
-	window = scheme_target_event
 	theme = murder_scheme
-	#window = scheme_successful_event
+	window = scheme_successful_event
 
 	left_portrait = {
 		character = scope:vi_hunt_attacker
@@ -1034,7 +1030,7 @@ vi_hunt_outcome.9002 = {
 			desc = vi_hunt_outcome.debug_advantage
 		}
 	}
-	window = scheme_target_event
+	window = scheme_successful_event
 	theme = murder_scheme
 
 	left_portrait = {
@@ -1261,7 +1257,7 @@ vi_hunt_outcome.9102 = {
 			desc = vi_hunt_outcome.debug_advantage
 		}
 	}
-	window = scheme_target_event
+	window = scheme_successful_event
 	theme = murder_scheme
 
 	left_portrait = {
