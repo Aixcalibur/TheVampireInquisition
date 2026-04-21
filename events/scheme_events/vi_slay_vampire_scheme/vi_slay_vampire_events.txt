@@ -24,13 +24,13 @@
 # 			desc = vi_slay_vampire.0001.wanderer_desc
 # 		}
 # 	}
-# 	window = scheme_target_event
+# 	window = scheme_successful_event
 # 	theme = murder_scheme
 # }
 
 # vi_slay_vampire.0010 = {
 # 	type = character_event
 # 	title = vi_slay_vampire.0010.t
-# 	window = scheme_target_event
+# 	window = scheme_successful_event
 # 	theme = murder_scheme
 # }
