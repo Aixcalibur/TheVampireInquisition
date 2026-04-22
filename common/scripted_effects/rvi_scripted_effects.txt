@@ -1,6 +1,4 @@
 rvi_remove_all_positive_effects = {
-	remove_trait = shrewd
-	remove_trait = strong
 	remove_trait = diplomat
 	remove_trait = gallant
 	remove_trait = overseer
@@ -37,8 +35,6 @@ rvi_remove_all_positive_effects = {
 	remove_trait = athletic
 	remove_trait = journaller
 	remove_trait = blind
-	remove_trait = lifestyle_gardener
-	remove_trait = poet
 	remove_trait = adventurer
 	remove_trait = berserker
 	remove_trait = crusader_king
