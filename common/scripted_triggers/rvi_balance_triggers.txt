@@ -2,14 +2,6 @@ rvi_has_positive_perks = {
 	is_ai = no
 	OR = {
 		AND = {
-			has_trait = shrewd
-			vi_is_vampire_trigger = yes
-		}
-		AND = {
-			has_trait = strong
-			vi_is_vampire_trigger = yes
-		}
-		AND = {
 			has_trait = diplomat
 			vi_is_vampire_trigger = yes
 		}
@@ -152,15 +144,7 @@ rvi_has_positive_perks = {
 		AND = {
 			has_trait = blind
 			vi_is_vampire_trigger = yes
-		}	
-		AND = {
-			has_trait = lifestyle_gardener
-			vi_is_vampire_trigger = yes
-		}	
-		AND = {
-			has_trait = poet
-			vi_is_vampire_trigger = yes
-		}	
+		}		
 		AND = {
 			has_trait = adventurer
 			vi_is_vampire_trigger = yes
