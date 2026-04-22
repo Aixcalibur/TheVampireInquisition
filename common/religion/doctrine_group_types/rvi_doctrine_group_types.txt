@@ -1,6 +1,10 @@
 doctrine_vi_masquerade = {
 	category = "crimes"
 
+	is_available_on_create = {
+		religion_tag = vi_vampire_religion
+	}
+	
 	doctrine_types = {
 		vi_masquerade_required
 		vi_masquerade_not_required
@@ -9,6 +13,10 @@ doctrine_vi_masquerade = {
 
 doctrine_vi_diablerie = {
 	category = "crimes"
+
+	is_available_on_create = {
+		religion_tag = vi_vampire_religion
+	}
 
 	doctrine_types = {
 		vi_diablerie_forbidden
@@ -19,6 +27,10 @@ doctrine_vi_diablerie = {
 
 vi_doctrine_core_tenets = {
 	category = "core_tenets"
+	
+	is_available_on_create = {
+		religion_tag = vi_vampire_religion
+	}	
 	
 	number_of_picks = 0
 
