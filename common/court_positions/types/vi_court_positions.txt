@@ -3,6 +3,11 @@
 	category = court_position_category_special
 	minimum_rank = duchy # Should only be available for dukes and above
 	skill = martial
+	
+	court_position_asset = {
+		animation = toast_goblet
+	}
+	
 
 	opinion = {
 		#value = regular_court_position_opinion
@@ -298,6 +303,11 @@ vi_herald_court_position = {
 	category = court_position_category_special
 	minimum_rank = duchy # Should only be available for dukes and above
 	skill = diplomacy
+	
+	court_position_asset = {
+		animation = chancellor
+	}
+	
 
 	opinion = {
 		#value = regular_court_position_opinion
@@ -641,6 +651,11 @@ vi_sword_court_position = {
 	category = court_position_category_special
 	minimum_rank = duchy # Should only be available for dukes and above
 	skill = martial
+	
+	court_position_asset = {
+		animation = marshal
+	}
+	
 
 	opinion = {
 		#value = regular_court_position_opinion
@@ -992,6 +1007,11 @@ vi_castellan_court_position = {
 	category = court_position_category_special
 	minimum_rank = duchy # Should only be available for dukes and above
 	skill = stewardship
+	
+	court_position_asset = {
+		animation = personality_bold
+	}
+	
 
 	opinion = {
 		#value = regular_court_position_opinion
@@ -1352,6 +1372,10 @@ vi_shadow_court_position = {
 	category = court_position_category_special
 	minimum_rank = duchy # Should only be available for dukes and above
 	skill = intrigue
+
+	court_position_asset = {
+		animation = hunting_knife_start
+	}
 
 	opinion = {
 		#value = regular_court_position_opinion
@@ -1733,6 +1757,11 @@ vi_augur_court_position = {
 	category = court_position_category_special
 	minimum_rank = duchy # Should only be available for dukes and above
 	skill = learning
+	
+	court_position_asset = {
+		animation = thinking
+	}
+	
 
 	opinion = {
 		#value = regular_court_position_opinion
@@ -2171,6 +2200,11 @@ vi_thrall_keeper_court_position = {
 	minimum_rank = duchy # Should only be available for dukes and above
 	skill = diplomacy
 
+	court_position_asset = {
+		animation = menacing
+	}
+
+
 	opinion = {
 		#value = regular_court_position_opinion
 		value = 5
@@ -2480,6 +2514,11 @@ vi_sentinel_court_position = {
 	category = court_position_category_special
 	minimum_rank = duchy # Should only be available for dukes and above
 	skill = martial
+
+	court_position_asset = {
+		animation = personality_compassionate
+	}
+
 
 	opinion = {
 		#value = regular_court_position_opinion
@@ -3153,6 +3192,11 @@ vi_merchant_liaison_court_position = {
 	category = court_position_category_special
 	minimum_rank = duchy # Should only be available for dukes and above
 	skill = diplomacy
+
+	court_position_asset = {
+		animation = toast_goblet
+	}
+	
 
 	opinion = {
 		#value = regular_court_position_opinion
