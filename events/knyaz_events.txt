@@ -186,12 +186,7 @@ vi_tsarstvo.1003 = {
 
 	option = {
 		name = vi_tsarstvo.1003.a
-		custom_tooltip = {
-			text = vi_tsarstvo.1003.a.tt
-			set_character_faith = faith:vi_rodnoverie
-			
-			
-		}	
+		set_character_faith = faith:vi_rodnoverie	
 		capital_county = {
  			set_county_faith = faith:vi_rodnoverie
 			remove_county_modifier  = posmertnaya_loyalnost_modifier
@@ -225,9 +220,10 @@ vi_tsarstvo.1003 = {
 	}
 
 	option = {
-		name = vi_tsarstvo.1003.b			
+		name = vi_tsarstvo.1003.b
+		set_character_faith = faith:vi_bloodreign		
 		capital_county = {
- 			set_county_faith = faith:vi_smertoverie
+ 			set_county_faith = faith:vi_bloodreign
 			remove_county_modifier  = posmertnaya_loyalnost_modifier
 			add_county_modifier = {
  				modifier = undead_control_modifier
