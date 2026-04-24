@@ -66,3 +66,116 @@ rvi_balance.0002 = {
 	}	
 }
 
+rvi_balance.0003 = {
+	is_triggered_only = yes
+	type = character_event
+	title = rvi_balance.0003.title
+	desc = rvi_balance.0003.desc
+
+	theme = mental_health
+
+	right_portrait = {
+		character = root
+		animation = grief
+	}
+
+	override_background = { reference = study }
+
+	option = {
+		trigger = {
+			has_character_flag = rvi_bandit_court_spam
+		}
+		name = rvi_balance.0003.a1
+		custom_tooltip = rvi_balance.0003.a1_tt
+		add_character_flag = {
+			flag = rvi_stop_court_spam
+			years = 20
+		}		
+		add_character_modifier = {
+			modifier = rvi_hungry_vampire_modifier
+			years = 1
+		}	
+	}
+	option = {
+		trigger = {
+			NOT = {
+				has_character_flag = rvi_bandit_court_spam
+			}
+		}
+		name = rvi_balance.0003.a2
+		custom_tooltip = rvi_balance.0003.a2_tt
+		add_character_flag = rvi_bandit_court_spam
+		add_character_flag = {
+			flag = rvi_stop_court_spam
+			years = 20
+		}		
+		add_character_modifier = {
+			modifier = rvi_hungry_vampire_modifier
+			years = 1		
+		}
+		trigger_event = {
+			id = rvi_balance.0004
+			days = 10
+		}		
+	}		
+}
+
+rvi_balance.0004 = {
+	type = character_event
+	title = rvi_balance.0004.title
+	desc = rvi_balance.0004.desc
+
+	theme = mental_health
+
+	right_portrait = {
+		character = root
+		animation = dismissal
+	}
+	left_portrait = {
+		character = scope:new_victim
+		animation = rage
+	}
+
+	override_background = { reference = wilderness_activity }	
+
+	immediate = {
+		create_character = {
+			template = criminal_thief_bandit_character
+			save_scope_as = new_victim
+		}
+		hidden_effect = {
+			scope:new_victim = {
+				add_character_modifier = {
+					modifier = malnourished_modifier
+					years = 1
+				}		
+			}		
+		}
+	}
+
+	option = {
+		name = rvi_balance.0004.a1
+		custom_tooltip = rvi_balance.0004.a1_tt
+		hidden_effect = {
+			scope:new_victim = {
+				set_employer = root
+			}		
+		}	
+		appoint_court_position = {
+			recipient = scope:new_victim
+			court_position = rvi_victim_court_position
+		}			
+		scope:new_victim = {
+			add_trait = loyal
+			add_opinion = {
+				target = root
+				modifier = friendliness_opinion
+				opinion = 50
+			}
+		}
+	}
+	option = {
+		name = rvi_balance.0004.a2
+		custom_tooltip = rvi_balance.0004.a2_tt	
+	}		
+}
