@@ -3494,3 +3494,226 @@ vi_merchant_liaison_court_position = {
 		}
 	}
 }
+
+
+
+rvi_victim_court_position = {
+	max_available_positions = 1
+	category = court_position_category_special
+	skill = martial
+
+	court_position_asset = {
+		animation = personality_zealous
+	}
+
+
+	opinion = {
+		#value = regular_court_position_opinion
+		value = -40
+	}
+
+	# How high the aptitude has to be to reach the 5 different modifier levels
+	aptitude_level_breakpoints = { 40 80 120 160 }
+
+	# How good is this character in this position? root scope is the holder of the court position
+	aptitude = {
+		value = 1
+		
+		add = {
+			value = prowess
+			desc = court_position_skill_prowess
+		}
+		
+		if = {
+			limit = {
+				has_trait = physique_good_1
+			}
+			add = {
+				value = 60
+				desc = court_position_physique_good_1_trait
+			}
+		}
+		if = {
+			limit = {
+				has_trait = physique_good_2
+			}
+			add = {
+				value = 80
+				desc = court_position_physique_good_2_trait
+			}
+		}
+		if = {
+			limit = {
+				has_trait = physique_good_3
+			}
+			add = {
+				value = 100
+				desc = court_position_physique_good_3_trait
+			}
+		}
+		if = {
+			limit = {
+				has_trait = beauty_good_1
+			}
+			add = {
+				value = 40
+				desc = court_position_beauty_good_1_trait
+			}
+		}
+
+		if = {
+			limit = {
+				has_trait = beauty_good_2
+			}
+			add = {
+				value = 60
+				desc = court_position_beauty_good_2_trait				
+			}
+		}
+		if = {
+			limit = {
+				has_trait = beauty_good_3
+			}
+			add = {
+				value = 80
+				desc = court_position_beauty_good_3_trait	
+			}
+		}
+		if = {
+			limit = {
+				has_trait = loyal
+			}
+			add = {
+				value = 60
+				desc = court_position_loyal_trait
+			}
+		}
+		if = {
+			limit = {
+				has_trait = pure_blooded
+			}
+			add = {
+				value = 160
+				desc = court_position_pure_blooded_trait
+			}
+		}
+		if = {
+			limit = {
+				has_trait = infirm
+			}
+			add = {
+				value = -75
+				desc = court_position_infirm_trait
+			}
+		}		
+	}
+
+	# Is this an available position for this court? (root is court owner)
+	is_shown = {
+		vi_is_vampire_trigger = yes
+	}
+
+	valid_position = {
+		vi_is_vampire_trigger = yes
+	}
+
+	is_shown_character = {
+		scope:employee = {
+			vi_is_vampire_trigger = no
+			is_courtier_of = scope:liege
+			is_imprisoned = no
+		}
+	}
+
+	valid_character = {
+		scope:employee = {
+			is_courtier_of = scope:liege
+		}
+	}
+
+
+	salary = {
+		round = no
+		gold = {
+			value = major_court_position_salary # Update X_salary_tooltip if script_value is changed
+			if = {
+				limit = {
+					scope:liege ?= {
+						is_ai = yes
+					}
+				}
+				multiply = 0.1
+			}
+			#You're working with LAAMPS now
+			
+
+			if = {
+				limit = { 
+					scope:liege ?= { is_landless_adventurer = yes }
+				}
+				multiply = {
+					value = 0
+					desc = court_position_laamps_free
+					format = "BASE_VALUE_FORMAT_DECIMALS_MINUS_POSITIVE"
+				}
+			}
+		}
+	}
+
+	is_powerful_agent = no
+
+	# These modifiers are employed based on what level the aptitude reaches (levels are defined as breakpoints)
+	scaling_employer_modifiers = {
+		terrible = {
+			monthly_vi_vampire_lifestyle_xp_gain_add = 1
+		}
+		poor = {
+			monthly_vi_vampire_lifestyle_xp_gain_add = 2
+		}
+		average = {
+			monthly_vi_vampire_lifestyle_xp_gain_add = 3
+		}
+		good = {
+			monthly_vi_vampire_lifestyle_xp_gain_add = 4
+		}
+		excellent = {
+			monthly_vi_vampire_lifestyle_xp_gain_add = 5
+		}
+	}
+
+	modifier = {
+		monthly_prestige = minor_court_position_prestige_salary
+		stress_gain_mult = -0.1
+	}
+
+	on_court_position_received = {
+		basic_gained_court_position_effect = yes
+	}
+	on_court_position_revoked = {
+		basic_revoked_court_position_effect = yes
+	}
+	on_court_position_invalidated = {
+		basic_invalidated_court_position_effect = yes
+	}
+	# Scripted value to determine whether an AI will hire/fire a position or not. Hires over 0, fires under -50. Look in _court_positions.info for more extensive documentation!
+	candidate_score = {
+		value = 100
+		#add = scope:base_value
+		add = court_position_candidate_aptitude_value
+		add = court_position_candidate_score_base_value
+		add = court_position_debt_considerations_value
+	}
+
+	sort_order = {
+		value = 300
+		if = {
+			limit = {
+				NOT = { employs_court_position = vi_sentinel_position }
+				any_courtier = {
+					vi_is_vampire_trigger = yes
+				}
+			}
+			add = 100
+		}
+	}
+}
