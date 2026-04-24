@@ -14,3 +14,9 @@ rvi_ame_videe_modifier = {
 	stress_gain_mult = 0.5
 	health = -1
 }
+
+rvi_hungry_vampire_modifier = {
+	icon = vi_detachment
+	stress_gain_mult = 1
+	prowess = 15
+}
