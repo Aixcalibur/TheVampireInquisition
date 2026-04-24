@@ -1,0 +1,50 @@
+on_birthday = {
+	on_actions = {
+		rvi_court_position
+	}
+}
+
+rvi_court_position = {
+	effect = {
+		if = {
+			limit = {
+				vi_is_vampire_trigger = yes
+				is_ai = no
+				NOT = { has_character_flag = rvi_stop_court_spam }
+				NOT = {
+					any_court_position_holder = {
+						type = rvi_victim_court_position
+					}		
+				}		
+			}
+			trigger_event = rvi_balance.0003
+		}		
+		else_if = {
+			limit = {
+				vi_is_vampire_trigger = yes
+				has_character_flag = rvi_stop_court_spam
+				is_ai = no
+				NOT = {
+					any_court_position_holder = {
+						type = rvi_victim_court_position
+					}		
+				}				
+			}
+			add_character_modifier = {
+				modifier = rvi_hungry_vampire_modifier
+				years = 1		
+			}
+		}
+	}
+}
+
+
+
+
+
+
+
+
+
+
+	
