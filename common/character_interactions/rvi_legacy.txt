@@ -375,6 +375,24 @@ rvi_createdham_interaction = {
 			has_trait = vi_heartstealer			
 		}			
 	}
+	
+	send_option = {
+		is_valid = {
+			scope:actor = {
+				has_usable_hook = scope:recipient
+			}
+			NOT = {
+				scope:recipient = { is_imprisoned_by = scope:actor }
+			}
+		}
+		flag = hook
+		localization = SCHEME_HOOK
+	}
+	send_options_exclusive = no
+	should_use_extra_icon = {
+		scope:actor = { has_usable_hook = scope:recipient }
+	}
+	extra_icon = "gfx/interface/icons/character_interactions/hook_icon.dds"	
 
 	cost = {
 		piety = 800
@@ -456,6 +474,11 @@ rvi_createdham_interaction = {
 			
 			desc = VI_ASKING_TO_BE_ADOPTED
 		}
+		modifier = {
+			add = 200
+			scope:hook = yes
+			desc = SCHEME_HOOK
+		}		
 
  		#Relations & relatives (with actor)
  		modifier = {
