@@ -346,8 +346,8 @@ rvi_legacies.1004 = {
 			}
 			if = {
 				limit = { has_trait = intellect_good_2 }
-				add_trait = intellect_good_3
 				remove_trait = intellect_good_2
+				add_trait = intellect_good_3
 			}
 			else_if = {
 				limit = { has_trait = intellect_good_1 }
