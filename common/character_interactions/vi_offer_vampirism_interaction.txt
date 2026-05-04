@@ -65,7 +65,7 @@
 			NOT = {
 				has_trait = vi_dhampir
 				has_character_modifier = rvi_ame_videe_modifier
-				has_character_modifier = rvi_ame_comblee_modifier				
+				has_character_modifier = rvi_ame_comblee_modifier
 			}
 			
 			trigger_if = {
@@ -344,6 +344,19 @@
  			add = 50
  			desc = AI_YOUR_SPOUSE
  		}
+		modifier = {
+			OR = {
+				has_trait = infirm
+				has_trait = withering_mind
+				has_trait = clouded_eyes
+				has_trait = faltering_heart
+				has_trait = fragile_bones
+				has_trait = incapable
+				has_trait = gout_ridden
+			}
+			add = 50
+			desc = RVI_AGES
+		}
 
 		## Target's liege amenities decreases acceptance 
 
