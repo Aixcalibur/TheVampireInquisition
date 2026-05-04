@@ -81,4 +81,7 @@
  rvi_balance.0004.a1_tt: "For a handsome reward, [Select_CString(new_victim.IsFemale, 'she', 'he')] will fill a small vessel with [new_victim.GetHerHis] blood each day to sate your hunger, truly believing that [Select_CString(new_victim.IsFemale, 'she', 'he')] is merely aiding a physician's research."
  rvi_balance.0004.a2: "Begone, before I tear your legs off!"
  rvi_balance.0004.a2_tt: "You will not be able to sate your hunger as long as the position of Intimate Favorite remains vacant"
- 
+ rvi_vampire_adopt_interaction: "Claim for the Pack"
+ rvi_vampire_adopt_interaction_desc: "As an [Concept('vampire', 'darkspawn')|E], you can [adopt|E] a lowborn character into your [dynasty|E]. [recipient.GetTitledFirstNameNoTooltip] will become the head of the new house, but not your child or heir."
+ RVI_AGES: "Aged and frail: $VALUE|=+0$"
+ AI_YOUR_SOULMATE: "Your soulmate: $VALUE|=+0$"
