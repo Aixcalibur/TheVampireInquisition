@@ -2,6 +2,13 @@
 
 	add_character_flag = immune_to_disease
 	add_character_flag = vi_vampire
+	remove_trait = infirm
+	remove_trait = withering_mind
+	remove_trait = clouded_eyes
+	remove_trait = faltering_heart
+	remove_trait = fragile_bones
+	remove_trait = incapable
+	remove_trait = gout_ridden
 	hidden_effect = {
 		remove_character_modifier = vi_drained_modifier
 		vi_remove_nonvampire_traits_effect = yes
