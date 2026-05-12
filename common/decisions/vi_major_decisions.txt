@@ -65,6 +65,9 @@
 }
 
 vi_clear_name_decision = {
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/ep3_decision_laamp_neutral_mountain.dds"
+	}	
 	decision_group_type = major
 	desc = vi_clear_name_decision_desc
 
@@ -78,6 +81,17 @@ vi_clear_name_decision = {
 			}
 		}
 	}
+	
+	is_valid_showing_failures_only = {
+		custom_tooltip = {
+			text = rvi_no_masquerade
+			NOT = {
+				faith = { 
+					has_doctrine_parameter = vi_no_masquerade
+				}		
+			}	
+		}	
+	}	
 
 	cost = {
 		prestige = medium_prestige_value
