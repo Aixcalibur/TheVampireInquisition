@@ -23,6 +23,7 @@ vi_is_vampire_maa = { #Relevant for defecting MaA
 	OR = {
 		is_maa_type = vi_vampire_bats
 		is_maa_type = vi_elite_vampires
+		is_maa_type = rvi_vampire_ushkuy
 	}
 }
 
