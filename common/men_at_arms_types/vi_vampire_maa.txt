@@ -101,8 +101,8 @@ vi_elite_vampires = {
 
 	can_recruit = {
 		OR = {
-			has_trait = vi_vampire_3
-			has_trait = vi_vampire_4
+			#has_trait = vi_vampire_3
+			#has_trait = vi_vampire_4
 			has_trait = vi_vampire_5
 			AND = {
 				has_government = vi_vampire_government
@@ -208,6 +208,54 @@ vi_health_point_maa = {
 	low_maintenance_cost = { gold = 0 }
 	high_maintenance_cost = { gold = 0 }
 	provision_cost = 0
+
+	allowed_in_hired_troops = no
+}
+
+rvi_vampire_ushkuy = {
+	type = skirmishers
+
+	damage = 41
+	toughness = 29
+	pursuit = 10
+	screen = 30
+	siege_tier = 1
+	siege_value = 0.1
+	
+	terrain_bonus = {
+		wetlands = { toughness = 12 pursuit = 6	screen = 6 }
+		forest = { pursuit = 6 }
+		taiga = { pursuit = 6 }
+		plains = { screen = -22 }
+		drylands = { screen = -22 }
+		farmlands  = { screen = -22 }
+		steppe = { screen = -22 }
+	}
+	can_recruit = {
+		OR = {
+			has_trait = vi_vampire_2
+			has_trait = vi_vampire_3
+			has_trait = vi_vampire_4
+			has_trait = vi_vampire_5
+			
+		}		
+	}	
+	
+	counters = {
+		heavy_infantry = 1	
+		archer_cavalry = 1
+		peasant_militia = 1
+	}
+
+	
+	buy_cost = { gold = huscarls_recruitment_cost }
+	low_maintenance_cost = { gold = huscarls_low_maint_cost }
+	high_maintenance_cost = { gold = huscarls_high_maint_cost }
+	provision_cost = @provisions_cost_infantry_cheap
+	
+	stack = 50
+	ai_quality = { value = @cultural_maa_extra_ai_score }
+	icon = ushkuy
 
 	allowed_in_hired_troops = no
 }
