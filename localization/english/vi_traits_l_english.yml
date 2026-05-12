@@ -51,7 +51,7 @@
  trait_track_vi_exposed_vampire:0 "Suspicion"
  trait_track_vi_exposed_vampire_desc:0 "Rumors cross the land..."
  trait_vi_exposed_vampire_2:0 "Exposed Vampire"
- trait_vi_exposed_vampire_desc:0 "Could it be true? A vampire?"
+ trait_vi_exposed_vampire_desc:0 "Spiritual leaders denounce this creature as an enemy of all mankind. Subjects are either paralyzed by terror or consumed by envy. The common folk whisper of a heavenly scourge and shun the levies, loath to serve a master whose heart has long since ceased its rhythm. To adventurers and hunters, the secret is out: they know how to strike at this leech and [ROOT.GetCharacter.GetHerHis] fawning lackeys."
 
  trait_vi_dormant:0 "Dormant"
  trait_vi_dormant_desc:0 "This vampire is hidden away in hibernation."
