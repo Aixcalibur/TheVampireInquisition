@@ -141,7 +141,6 @@ vi_strength_perk = {
 	}
 
 	effect = {
-		add_trait_force_tooltip = strong
 		vi_on_perk_added_effect = yes
 	}
 }
