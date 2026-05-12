@@ -22,7 +22,7 @@
 
 	is_shown = {
 		scope:recipient = {
-			age >= 16
+			vi_is_vampire_trigger = yes
 		}
 		OR = {
 			AND = {
