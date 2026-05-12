@@ -1,4 +1,11 @@
 rvi_remove_all_positive_effects = {
+	remove_trait = adventurer_follower
+	remove_trait = consecrated_blood
+	remove_trait = murderer
+	remove_trait = paragon
+	remove_trait = strong
+	remove_trait = shrewd
+	remove_trait = lifestyle_gardener	
 	remove_trait = diplomat
 	remove_trait = gallant
 	remove_trait = overseer
