@@ -48,7 +48,7 @@ vi_vampire_connections_modifier = {
 
 vi_knight_effectiveness_modifier = {
 	icon = prowess_positive
-	knight_effectiveness_mult = 0.05
+	knight_effectiveness_mult = 0.01
 	scale = vi_knight_effectiveness_scaling_value
 }
 
