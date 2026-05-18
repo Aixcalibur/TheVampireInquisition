@@ -365,7 +365,7 @@
 						}
 						#hunter
 						random = {
-							chance = 70
+							chance = 40
 							trigger_event = {
 								id = rvi_ritual.0008
 								days = 49
