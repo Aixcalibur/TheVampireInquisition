@@ -76,3 +76,70 @@ vamp_graduate_character = {
 		max_template_high_skill
 	}
 }
+
+rvi_food_template = {
+	age = { 16 33 }
+	gender_female_chance = 100
+	culture = root.culture
+	faith = root.faith
+	dynasty = none
+	random_traits = no
+
+	#Education
+	random_traits_list = {
+		count = 1
+		education_intrigue_2  = {}
+		education_intrigue_3  = {}
+		education_intrigue_4  = {}
+		education_learning_2  = {}
+		education_learning_3  = {}
+		education_learning_4  = {}
+		education_diplomacy_3  = {}
+		education_diplomacy_4  = {}
+	}
+	#Personality trait 1 (main)
+	random_traits_list = {
+		count = 1
+		chaste = {}
+		honest = {}
+		shy = {}
+		trusting = {}
+		content = {}
+		forgiving = {}
+	}
+	#Personality trait 2-3
+	random_traits_list = {
+		count = 2
+		lustful = {}
+		deceitful = {}
+		brave = {}
+		gregarious = {}
+		ambitious = {}
+		vengeful = {}
+		gluttonous = {}
+		temperate  = {}
+		greedy = {}
+		generous = {}
+		lazy = {}
+		diligent = {}
+		wrathful = {}
+		calm = {}
+		patient = {}
+		impatient = {}
+		arrogant = {}
+		arbitrary = {}
+		just = {}
+		paranoid = {}
+		compassionate = {}
+		callous = {}
+		sadistic = {}
+		stubborn = {}
+		fickle = {}
+	}
+	random_traits_list = {
+		count = 1
+		pure_blooded = {}
+		beauty_good_2 = {}
+		beauty_good_3 = {}
+	}
+}
