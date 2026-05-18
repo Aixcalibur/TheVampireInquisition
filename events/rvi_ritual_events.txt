@@ -1,0 +1,906 @@
+﻿namespace = rvi_ritual
+
+#no guests
+rvi_ritual.0001 = {
+	type = activity_event
+	title = rvi_ritual.0001.t
+	desc = rvi_ritual.0001.desc
+	theme = witchcraft
+	override_background = {
+		reference = reference = bp1_kitchen_western
+	}
+	left_portrait = {
+		character = scope:target
+		animation = sadness
+	}
+
+	option = {
+		name = rvi_ritual.0001.a
+		
+		scope:activity = {
+			set_variable = activity_invalidated
+		}
+	}
+}
+
+rvi_ritual.0002 = {
+	type = activity_event
+	title = rvi_ritual.0002.t
+	desc = rvi_ritual.0002.desc
+	theme = witchcraft
+	override_background = {
+		reference = ce1_catacombs
+	}
+	left_portrait = scope:inviter
+	right_portrait = scope:created_food
+	
+	trigger = {
+		scope:activity = {
+			any_attending_character = {
+				this != root
+				is_adult = yes
+			}
+		}
+	}
+
+	immediate = {
+		hidden_effect = {
+			capital_province = { save_scope_as = capital }
+			scope:activity = {
+				random_attending_character = {
+					limit = {
+						NOR = {
+							is_courtier_of = root
+							this = root
+						}
+						is_ai = yes
+						is_adult = yes
+					}
+					alternative_limit = {
+						is_ai = yes
+						is_adult = yes
+					}
+					alternative_limit = { is_adult = yes }
+					save_scope_as = inviter
+				}
+			}
+
+			rvi_create_food_effect = { WHO = root }
+			scope:created_food = {
+				visit_court_of = root
+			}
+		}
+	}
+	
+	option = {
+		name = rvi_ritual.0002.a
+		trigger = { 
+			has_trait = vi_heartstealer
+		}	
+		hidden_effect = {
+			scope:created_food = {
+				set_employer = root
+			}		
+		}
+		scope:created_food = {
+			add_trait = loyal
+		}		
+		appoint_court_position = {
+			recipient = scope:created_food
+			court_position = rvi_victim_court_position
+		}			
+		reverse_add_opinion = {
+			target = scope:inviter
+			modifier = grateful_opinion
+			opinion = 15
+		}
+	}
+
+	option = {
+		name = rvi_ritual.0002.b
+		trigger = { 
+			NOT = { has_trait = vi_heartstealer	}
+		}	
+		hidden_effect = {
+			scope:created_food = {
+				set_employer = root
+			}		
+		}
+		appoint_court_position = {
+			recipient = scope:created_food
+			court_position = rvi_victim_court_position
+		}			
+		reverse_add_opinion = {
+			target = scope:inviter
+			modifier = grateful_opinion
+			opinion = 15
+		}
+	}
+
+	option = {
+		name = rvi_ritual.0002.c
+		trigger = { always = yes }
+		
+		hidden_effect = {
+			scope:created_food = {
+				set_employer = root
+			}
+		}
+		reverse_add_opinion = {
+			target = scope:created_food
+			modifier = grateful_opinion
+			opinion = 30
+		}		
+	}
+
+	option = {
+		name = rvi_ritual.0002.d
+		trigger = { always = yes }
+		
+		reverse_add_opinion = {
+			target = scope:created_food
+			modifier = grateful_opinion
+			opinion = 30
+		}
+		reverse_add_opinion = {
+			target = scope:inviter
+			modifier = disappointed_opinion
+			opinion = -15
+		}
+	}
+}
+
+rvi_ritual.0003 = {
+	type = activity_event
+	title = rvi_ritual.0003.t
+	desc = rvi_ritual.0003.desc
+	theme = witchcraft
+	override_background = {
+		reference = corridor_night
+	}
+	left_portrait = {
+		character = scope:rvi_rowdy
+		animation = aggressive_sword
+	}
+
+	right_portrait = {
+		character = scope:rvi_rowdy_2
+		animation = rage
+	}
+
+
+	
+	trigger = {
+		scope:activity = {
+			any_attending_character = {
+				this != root
+				is_adult = yes
+			}
+		}
+	}
+
+	immediate = {
+		hidden_effect = {
+			capital_province = { save_scope_as = capital }
+			scope:activity = {
+				random_attending_character = {
+					limit = {
+						NOR = {
+							this = root
+							his = scope:rvi_rowdy_2
+						}
+						is_ai = yes
+						is_adult = yes
+					}
+					save_scope_as = rvi_rowdy
+				}
+				random_attending_character = {
+					limit = {
+						NOR = {
+							this = root
+							this = scope:rvi_rowdy
+						}
+						is_ai = yes
+						is_adult = yes
+					}
+					save_scope_as = rvi_rowdy_2
+				}				
+			}
+		}
+	}
+	
+	option = {
+		name = rvi_ritual.0003.a
+		trigger = { 
+			has_trait = vi_dragonsscion
+		}	
+		scope:rvi_rowdy = {
+			add_trait = wounded_1
+		}
+		scope:rvi_rowdy_2 = {
+			add_trait = wounded_1
+		}
+	}
+
+	option = {
+		name = rvi_ritual.0003.b
+		trigger = { 
+			NOT = { has_trait = vi_dragonsscion	}
+		}				
+		reverse_add_opinion = {
+			target = scope:rvi_rowdy
+			modifier = disappointed_opinion
+			opinion = -50
+			years = 5
+		}
+		reverse_add_opinion = {
+			target = scope:rvi_rowdy_2
+			modifier = disappointed_opinion
+			opinion = -50
+			years = 5
+		}		
+	}
+
+	option = {
+		name = rvi_ritual.0003.c
+		trigger = { always = yes }
+		scope:rvi_rowdy = {
+			set_relation_rival = {
+				target = scope:rvi_rowdy_2
+				reason = undead_rival_1
+			}		
+		}
+		scope:rvi_rowdy_2 = {
+			set_relation_rival = {
+				target = scope:rvi_rowdy
+				reason = undead_rival_1
+			}
+		}
+		reverse_add_opinion = {
+			target = scope:rvi_rowdy
+			modifier = grateful_opinion
+			opinion = 30
+		}
+		reverse_add_opinion = {
+			target = scope:rvi_rowdy_2
+			modifier = disappointed_opinion
+			opinion = -30
+		}			
+	}
+
+	option = {
+		name = rvi_ritual.0003.d
+		scope:rvi_rowdy = {
+			set_relation_rival = {
+				target = scope:rvi_rowdy_2
+				reason = undead_rival_1
+			}		
+		}
+		scope:rvi_rowdy_2 = {
+			set_relation_rival = {
+				target = scope:rvi_rowdy
+				reason = undead_rival_1
+			}
+		}
+		reverse_add_opinion = {
+			target = scope:rvi_rowdy
+			modifier = disappointed_opinion
+			opinion = -30
+		}
+		reverse_add_opinion = {
+			target = scope:rvi_rowdy_2
+			modifier = grateful_opinion
+			opinion = 30
+		}			
+	}
+	
+	option = {
+		name = rvi_ritual.0003.e
+		scope:rvi_rowdy = {
+			set_relation_rival = {
+				target = scope:rvi_rowdy_2
+				reason = undead_rival_1
+			}
+		}
+	}
+}
+
+
+rvi_ritual.0004 = {
+	type = activity_event
+	title = rvi_ritual.0004.t
+	desc = rvi_ritual.0004.desc
+	theme = witchcraft
+	override_background = {
+		reference = feast
+	}
+	right_portrait = {
+		character = scope:rvi_poet
+		animation = storyteller
+	}
+
+	
+	trigger = {
+		scope:activity = {
+			any_attending_character = {
+				this != root
+				is_adult = yes
+			}
+		}
+	}
+
+	immediate = {
+		hidden_effect = {
+			capital_province = { save_scope_as = capital }
+			scope:activity = {
+				random_attending_character = {
+					limit = {
+						NOR = {
+							this = root
+							has_trait = lifestyle_poet
+						}
+						is_ai = yes
+						is_adult = yes
+					}
+					save_scope_as = rvi_poet
+				}
+			}
+		}
+	}
+	
+	option = {
+		name = rvi_ritual.0004.a
+		trigger = { 
+			has_trait = vi_heartstealer
+		}	
+		scope:rvi_poet = {
+			add_trait = lifestyle_poet
+			add_trait_xp = {
+				trait = lifestyle_poet
+				value = 100
+			}
+		}
+		reverse_add_opinion = {
+			target = scope:rvi_poet
+			modifier = grateful_opinion
+			opinion = 30
+		}			
+	}
+
+	option = {
+		name = rvi_ritual.0004.b
+		trigger = { 
+			NOT = { has_trait = vi_heartstealer }
+		}				
+		scope:rvi_poet = {
+			add_trait = lifestyle_poet
+		}
+		reverse_add_opinion = {
+			target = scope:rvi_poet
+			modifier = grateful_opinion
+			opinion = 30
+		}			
+	}
+
+	option = {
+		name = rvi_ritual.0004.c
+		trigger = { always = yes }
+		scope:rvi_poet = {
+			stress_impact = {
+				base = major_stress_gain
+			}
+		}		
+	}
+}
+
+rvi_ritual.0005 = {
+	type = activity_event
+	title = rvi_ritual.0005.t
+	desc = rvi_ritual.0005.desc
+	theme = witchcraft
+	override_background = {
+		reference = feast
+	}
+	right_portrait = {
+		character = scope:rvi_soul
+		animation = storyteller
+	}
+
+	
+	trigger = {
+		scope:activity = {
+			any_attending_character = {
+				this != root
+				is_adult = yes
+			}
+		}
+	}
+
+	immediate = {
+		hidden_effect = {
+			capital_province = { save_scope_as = capital }
+			scope:activity = {
+				random_attending_character = {
+					limit = {
+						NOR = {
+							this = root
+							has_trait = lifestyle_reveler
+						}
+						is_ai = yes
+						is_adult = yes
+					}
+					save_scope_as = rvi_soul
+				}
+			}
+		}
+	}
+	
+	option = {
+		name = rvi_ritual.0005.a
+		trigger = { 
+			has_trait = vi_heartstealer
+		}	
+		scope:rvi_soul = {
+			add_trait = lifestyle_reveler
+			add_trait_xp = {
+				trait = lifestyle_reveler
+				value = 100
+			}
+		}
+		reverse_add_opinion = {
+			target = scope:rvi_soul
+			modifier = grateful_opinion
+			opinion = 30
+		}			
+	}
+
+	option = {
+		name = rvi_ritual.0005.b
+		trigger = { 
+			NOT = { has_trait = vi_heartstealer }
+		}				
+		scope:rvi_soul = {
+			add_trait = lifestyle_reveler
+		}
+		reverse_add_opinion = {
+			target = scope:rvi_soul
+			modifier = grateful_opinion
+			opinion = 30
+		}			
+	}
+
+	option = {
+		name = rvi_ritual.0005.c
+		trigger = { always = yes }
+		scope:rvi_soul = {
+			reverse_add_opinion = {
+				target = scope:rvi_soul
+				modifier = disappointed_opinion
+				opinion = -30
+			}
+		}		
+	}
+}
+
+rvi_ritual.0006 = {
+	type = activity_event
+	title = rvi_ritual.0006.t
+	desc = rvi_ritual.0006.desc
+	theme = witchcraft
+	override_background = {
+		reference = terrain_travel
+	}
+	right_portrait = {
+		character = root
+		animation = chaplain
+	}
+
+	
+	trigger = {
+		scope:activity = {
+			any_attending_character = {
+				this != root
+				is_adult = yes
+			}
+		}
+	}
+
+	immediate = {
+		scope:activity = {
+			every_attending_character = {
+				limit = {
+					NOR = {
+						this = root
+						has_trait = lifestyle_reveler
+					}
+					is_ai = yes
+					is_adult = yes
+				}
+				save_scope_as = rvi_soul
+			}
+		}
+	}
+	
+	option = {
+		name = rvi_ritual.0006.a
+		trigger = { 
+			has_trait = vi_heartstealer
+		}
+		custom_tooltip = {
+			text = rvi_impressed_guests_desc_tt
+		}		
+		hidden_effect = {
+			scope:activity = {
+				every_attending_character = {
+					add_opinion = {
+						target = host
+						modifier = impressed_opinion
+						opinion = 30
+						years = 10
+					}		
+				}
+			}		
+		}
+	}		
+
+	option = {
+		name = rvi_ritual.0006.b
+		trigger = { 
+			NOT = { has_trait = vi_heartstealer }
+		}		
+		custom_tooltip = {
+			text = rvi_not_impressed_guests_desc_tt
+		}		
+		hidden_effect = {
+			scope:activity = {
+				every_attending_character = {
+					add_opinion = {
+						target = host
+						modifier = impressed_opinion
+						opinion = 15
+						years = 10
+					}		
+				}
+			}		
+		}			
+	}
+}
+
+rvi_ritual.0007 = {
+	type = activity_event
+	title = rvi_ritual.0007.t
+	desc = rvi_ritual.0007.desc
+	theme = witchcraft
+	override_background = {
+		reference = vi_battlefield_night
+	}
+	right_portrait = {
+		character = scope:rvi_berserker
+		animation = marshal
+	}
+
+	trigger = {
+		scope:activity = {
+			any_attending_character = {
+				this != root
+				is_adult = yes
+			}
+		}
+	}
+
+	immediate = {
+		hidden_effect = {
+			capital_province = { save_scope_as = capital }
+			scope:activity = {
+				random_attending_character = {
+					limit = {
+						NOR = {
+							this = root
+							has_trait = berserker
+						}
+						is_ai = yes
+						is_adult = yes
+					}
+					save_scope_as = rvi_berserker
+				}
+			}
+		}
+	}
+	option = {
+		name = rvi_ritual.0007.a	
+		scope:rvi_berserker = {
+			add_trait = berserker
+		}
+		capital_county = {
+			add_county_modifier = {
+				modifier = highwaymen_eliminated_modifier
+				years = 10
+			}
+		}		
+		reverse_add_opinion = {
+			target = scope:rvi_berserker
+			modifier = grateful_opinion
+			opinion = 10
+		}			
+	}
+
+	option = {
+		name = rvi_ritual.0007.b
+		trigger = { always = yes }		
+		scope:host = {
+			reverse_add_opinion = {
+				target = scope:rvi_berserker
+				modifier = disappointed_opinion
+				opinion = -30
+			}
+		}
+		capital_county = {
+			add_county_modifier = {
+				modifier = highwaymen_eliminated_modifier
+				years = 10
+			}
+		}		
+	}
+}
+
+rvi_ritual.0008 = {
+	type = activity_event
+	title = rvi_ritual.0008.t
+	desc = rvi_ritual.0008.desc
+	theme = witchcraft
+	override_background = {
+		reference = terrain_scope
+	}
+	left_portrait = {
+		character = scope:vi_new_hunter
+		animation = crossbow
+	}
+	right_portrait = {
+		character = scope:host
+		animation = pain
+	}	
+
+	trigger = {
+		scope:activity = {
+			any_attending_character = {
+				this != root
+				is_adult = yes
+			}
+		}
+	}
+
+	immediate = {
+		hidden_effect = {
+			create_character = {
+				template = vi_hunter_learning_template
+				save_scope_as = vi_new_hunter
+			}
+			scope:vi_new_hunter = {
+				add_trait_xp = {
+					trait = vi_inquisitor
+					value = 100
+				}		
+			}
+		}		
+	}
+	option = {
+		name = rvi_ritual.0008.a
+		trigger = { 
+			has_trait = vi_dragonsscion
+		}
+		custom_tooltip = {
+			text = rvi_ritual.0008.a_desc
+		}			
+		unknown_murder_effect = {
+			VICTIM = scope:vi_new_hunter
+			MURDERER = scope:host
+			REASON = death_mysterious
+		}
+		add_character_modifier = {
+			modifier = rvi_strange_dust_modifier
+			days = 3
+		}		
+	}
+
+	option = {
+		name = rvi_ritual.0008.b
+		#trigger = { always = yes }
+		trigger = { 
+			has_trait = vi_dragonsscion
+		}
+		custom_tooltip = {
+			text = rvi_ritual.0008.b_desc
+		}		
+        rightfully_imprison_character_effect = {
+			IMPRISONER = root
+			TARGET = scope:vi_new_hunter
+		}
+		add_character_modifier = {
+			modifier = rvi_strange_dust_modifier
+			days = 3
+		}			
+	}		
+	option = {
+		name = rvi_ritual.0008.с
+		trigger = { always = yes }
+		custom_tooltip = {
+			text = rvi_ritual.0008.c_desc
+		}			
+		configure_start_single_combat_effect = {
+			SC_INITIATOR = scope:vi_new_hunter
+			SC_ATTACKER = scope:vi_new_hunter
+			SC_DEFENDER = root
+			FATALITY = always
+			FIXED = no
+			LOCALE = terrain_scope
+			OUTPUT_EVENT = single_combat.1006
+			INVALIDATION_EVENT = single_combat.1006
+		}	
+		add_character_modifier = {
+			modifier = rvi_strange_dust_modifier
+			days = 3
+		}			
+	}
+	option = {
+		name = rvi_ritual.0008.d
+		trigger = { always = yes }
+		custom_tooltip = {
+			text = rvi_ritual.0008.d_desc
+		}
+		scope:vi_new_hunter = {
+			set_relation_rival = {
+				target = root
+				reason = rival_duel_attacked
+			}
+		}		
+		add_character_modifier = {
+			modifier = rvi_strange_dust_modifier
+			days = 3
+		}			
+	}	
+}
+
+
+rvi_ritual.1010 = {
+	type = activity_event
+	title = rvi_ritual.1010.t
+	desc = rvi_ritual.1010.desc
+	theme = witchcraft
+	override_background = {
+		reference = ce1_catacombs
+	}
+	left_portrait = root
+
+	immediate = {
+		save_scope_as = host
+		capital_province = { save_scope_as = background_wilderness_scope } 
+	}
+
+	option = {
+		name = rvi_ritual.1010.c
+
+		duel = {
+			skill = diplomacy
+			value = 50
+			50 = {
+				desc = rvi_ritual.1010.c.great
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = 5
+				}
+				save_scope_value_as = {
+					name = grand_rite_ceremony_outcome
+					value = flag:great_improvisation
+				}
+				add_vi_vampire_lifestyle_xp = 800
+			}
+			50 = {	
+				desc = rvi_ritual.1010.c.poor
+				compare_modifier = {
+					value = scope:duel_value
+					multiplier = -5
+				}
+				min = 10
+				save_scope_value_as = {
+					name = grand_rite_ceremony_outcome
+					value = flag:poor_improvisation
+				}
+				add_vi_vampire_lifestyle_xp = 500
+			}
+		}
+
+		stress_impact = {
+			shy = minor_stress_impact_gain
+		}
+	}
+
+	option = {
+		name = rvi_ritual.1010.d
+		
+
+		save_scope_value_as = {
+			name = grand_rite_ceremony_outcome
+			value = flag:offering
+		}
+
+		add_vi_vampire_lifestyle_xp = 600
+	}
+}
+
+rvi_ritual.1011 = {
+	is_triggered_only = yes
+	type = character_event
+	title = rvi_ritual.1011.title
+	desc = rvi_ritual.1011.desc
+
+	theme = feast_activity
+
+	right_portrait = {
+		character = root
+		animation = shame
+	}
+
+	override_background = { reference = study }
+
+	option = {
+		name = rvi_ritual.1011.a
+		capital_county = {
+			add_county_modifier = {
+				modifier = vi_county_drained_modifier
+				years = 5
+			}			
+		}
+	}		
+}
+
+rvi_ritual.1012 = {
+	is_triggered_only = yes
+	type = character_event
+	title = rvi_ritual.1012.title
+	desc = rvi_ritual.1012.desc
+
+	theme = feast_activity
+
+	right_portrait = {
+		character = root
+		animation = thinking
+	}
+
+	override_background = { reference = study }
+
+	option = {
+		name = rvi_ritual.1012.a
+		capital_county = {
+			add_county_modifier = {
+				modifier = vi_county_discreet_modifier
+				years = 5
+			}	
+		}			
+	}		
+}
+
+rvi_ritual.1013 = {
+	is_triggered_only = yes
+	type = character_event
+	title = rvi_ritual.1013.title
+	desc = rvi_ritual.1013.desc
+
+	theme = feast_activity
+
+	right_portrait = {
+		character = root
+		animation = personality_honorable
+	}
+
+	override_background = { reference = study }
+
+	option = {
+		name = rvi_ritual.1013.a
+		capital_county = {
+			add_county_modifier = {
+				modifier = vi_county_underworld_investment_modifier
+				years = 5
+			}
+		}		
+	}	
+}
