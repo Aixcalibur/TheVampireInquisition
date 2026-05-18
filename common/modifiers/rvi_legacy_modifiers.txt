@@ -20,3 +20,8 @@ rvi_hungry_vampire_modifier = {
 	stress_gain_mult = 1
 	prowess = 15
 }
+
+rvi_strange_dust_modifier = {
+	icon = vi_detachment
+	prowess_mult = -0.9
+}
