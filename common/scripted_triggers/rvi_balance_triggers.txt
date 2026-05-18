@@ -306,3 +306,17 @@ rvi_has_freepoints = {
 		}
 	}
 }
+
+activity_vamp_ritual_valid_trigger = {		
+	house ?= {
+		custom_tooltip = {
+			text = rvi_no_5_vamp		
+			any_house_member = {	
+				count >= 5
+					this != root
+					vi_is_vampire_trigger = yes
+				}		
+			}
+		}
+	}		
+}
