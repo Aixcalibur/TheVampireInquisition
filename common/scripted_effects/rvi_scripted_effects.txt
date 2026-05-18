@@ -156,4 +156,71 @@ vi_vasilisa_after_effect = {
 	
 }
 
+rvi_create_food_effect = {
+	create_character = {
+		location = $WHO$.capital_province
+		culture = $WHO$.culture
+		faith = $WHO$.faith
+		gender = scope:food_gender
+		template = rvi_food_template
+		random_traits = no
 
+		after_creation = {
+			#Sometimes adjust sexuality to create compatibility with WHO
+			if = {
+				limit = {
+					$WHO$ = { is_attracted_to_gender_of = prev }
+					NOT = { is_attracted_to_gender_of = $WHO$ }
+				}
+				random = {
+					chance = 65
+					set_sexuality = bisexual
+				}
+			}
+		}
+		
+		save_scope_as = created_food
+	}
+}
+
+
+vamp_ritual_host_rewards_effect = {
+	scope:host = {
+		add_stress = major_stress_loss
+	}
+	scope:activity = {
+		if = {
+			limit = {
+				has_activity_option = {
+					category = rvi_blood_option_food
+					option = rvi_blood_bad
+				}
+			}
+			scope:host = {
+				trigger_event = rvi_ritual.1011
+			}		
+		}
+		else_if = {
+			limit = {
+				has_activity_option = {
+					category = rvi_blood_option_food
+					option = rvi_blood_normal
+				}
+			}
+			scope:host = {
+				trigger_event = rvi_ritual.1012
+			}		
+		}
+		else_if = {
+			limit = {
+				has_activity_option = {
+					category = rvi_blood_option_food
+					option = rvi_blood_good
+				}
+			}
+			scope:host = {
+				trigger_event = rvi_ritual.1013
+			}		
+		}
+	}
+}
