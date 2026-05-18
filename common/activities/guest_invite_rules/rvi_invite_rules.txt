@@ -1,0 +1,104 @@
+﻿activity_invite_rule_house_vampires = {
+	effect = {
+		house ?= {
+			every_house_member = {
+				limit = {
+					vi_is_vampire_trigger = yes
+					# Remove diarchs from the list.
+					bannable_serving_diarch_trigger = no
+				}
+				add_to_list = characters
+			}
+		}
+	}
+}
+
+activity_invite_rule_other_vampires= {
+	effect = {
+		# Vassals
+		every_vassal_or_below = {
+			limit = {
+				vi_is_vampire_trigger = yes
+				# Remove diarchs from the list.
+				bannable_serving_diarch_trigger = no
+			}
+			add_to_list = characters
+		}
+		# Non-House Family
+		every_close_or_extended_family_member = {
+			limit = {
+				vi_is_vampire_trigger = yes
+				# Remove diarchs from the list.
+				bannable_serving_diarch_trigger = no
+			}
+			add_to_list = characters
+		}
+		# Spouses
+		every_spouse = {
+			limit = {
+				vi_is_vampire_trigger = yes
+				# Remove diarchs from the list.
+				bannable_serving_diarch_trigger = no
+			}
+			add_to_list = characters
+		}
+		# Liege
+		liege ?= {
+			if = {
+				limit = {
+					vi_is_vampire_trigger = yes
+					# Remove diarchs from the list.
+					bannable_serving_diarch_trigger = no
+				}
+				add_to_list = characters
+			}
+		}
+		# Lovers
+		every_relation = {
+			type = lover
+			limit = {
+				vi_is_vampire_trigger = yes
+				# Remove diarchs from the list.
+				bannable_serving_diarch_trigger = no
+			}
+			add_to_list = characters
+		}
+		# Friends
+		every_relation = {
+			type = friend
+			limit = {
+				vi_is_vampire_trigger = yes
+				# Remove diarchs from the list.
+				bannable_serving_diarch_trigger = no
+			}
+			add_to_list = characters
+		}
+		# Courtiers
+		every_courtier_or_guest = {
+			limit = {
+				vi_is_vampire_trigger = yes
+				# Remove diarchs from the list.
+				bannable_serving_diarch_trigger = no
+			}
+			add_to_list = characters
+		}
+		# Foreign Guests
+		every_foreign_court_guest = {
+			limit = {
+				vi_is_vampire_trigger = yes
+				# Remove diarchs from the list.
+				bannable_serving_diarch_trigger = no
+			}
+			add_to_list = characters
+		}
+		# Other Known Secrets
+		every_known_secret = {
+			limit = {
+				secret_type = secret_vi_vampire
+				# Remove diarchs from the list.
+				secret_owner = { bannable_serving_diarch_trigger = no }
+			}
+			secret_owner = { add_to_list = characters }
+		}
+	}
+}
