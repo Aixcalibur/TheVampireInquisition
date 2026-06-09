@@ -301,7 +301,6 @@ vi_found_princedom_decision = {
 	}
 
 	is_valid = {
-		prestige_level >= 3
 		OR = {
 			custom_tooltip = {
 				text = vi_found_princedom_decision_enough_vampires
