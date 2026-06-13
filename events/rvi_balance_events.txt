@@ -20,20 +20,20 @@ rvi_balance.0001 = {
 		rvi_remove_all_positive_effects = yes
 		add_character_flag = rvi_stop_trait_spam
 		add_character_modifier = {
-			modifier = vi_vampire_strain_modifier
-			years = 5
-		}		
+			modifier = rvi_chad_modifier
+		}	
+		custom_tooltip = rvi_balance_tt
+		custom_tooltip = rvi_chad_tt
+		custom_tooltip = rvi_nowayback
 	}
 	
 	option = {
 		name = rvi_balance.0001.a2
-		rvi_remove_all_positive_effects = yes
-		add_character_flag = rvi_stop_trait_spam
 		add_character_modifier = {
-			modifier = vi_vampire_madness_modifier
-			years = 5
-		}		
-	}	
+			modifier = rvi_tubik_modifier
+		}	
+		custom_tooltip = rvi_nowayback
+	}
 }
 
 
