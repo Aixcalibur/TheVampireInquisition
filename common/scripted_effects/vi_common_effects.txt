@@ -603,8 +603,9 @@ vi_hostile_scheme_monthly_discovery_chance_effect = {
 vi_on_perk_added_effect = {
 	if = {
 		limit = {
-			is_ai = no
+			is_ai = no		
 			years_from_game_start > 1
+			NOT = { has_character_modifier = rvi_chad_modifier }			
 		}
 		add_stress = medium_stress_gain
 	}
