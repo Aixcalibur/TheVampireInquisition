@@ -25,3 +25,24 @@ rvi_strange_dust_modifier = {
 	icon = vi_detachment
 	prowess_mult = -0.9
 }
+
+rvi_tubik_modifier = {
+	icon = vi_detachment
+	stress_loss_mult = -0.5
+	scheme_secrecy = -65
+	enemy_hostile_scheme_success_chance_add = 80
+	enemy_hostile_scheme_phase_duration_add = -50
+	monthly_lifestyle_xp_gain_mult = -0.50
+	owned_personal_scheme_success_chance_max_add = -45
+}
+
+rvi_chad_modifier = {
+	icon = vi_rose_mixed
+	max_personal_schemes_add = 1
+	max_political_schemes_add = 1
+	stress_loss_mult = 0.5
+	monthly_dynasty_prestige = 1
+	monthly_lifestyle_xp_gain_mult = 0.15
+	scheme_secrecy = 25
+}
+
