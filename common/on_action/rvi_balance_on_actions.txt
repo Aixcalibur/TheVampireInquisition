@@ -9,17 +9,22 @@ rvi_track_balance = {
 	effect = {
 		if = {
 			limit = {
-				rvi_has_positive_perks = yes
-				NOT = { has_character_flag = rvi_stop_trait_spam }
+				has_character_modifier = rvi_tubik_modifier
 			}
-			trigger_event = rvi_balance.0001
 		}			
 		else_if = {
 			limit = {
 				rvi_has_positive_perks = yes
-				has_character_flag = rvi_stop_trait_spam
+				NOT = { has_character_modifier = rvi_chad_modifier }
 			}
-			rvi_remove_all_positive_effects = yes		
+			trigger_event = rvi_balance.0001
 		}
+		else_if = {
+			limit = {
+				rvi_has_positive_perks = yes
+				has_character_modifier = rvi_chad_modifier
+			}
+			rvi_remove_all_positive_effects = yes	
+		}		
 	}
 }
