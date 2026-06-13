@@ -3,7 +3,7 @@
  rvi_balance.0001.title: "Blood Curse"
  rvi_balance.0001.desc: "Immortal blood thickens in my veins, like autumn resin in pine trunks. I struggle to move my arms and rise to my feet before the realization of what happened sets in.\n\nToday's awakening brought nothing but suffering—as if [ROOT.Char.GetFaith.DevilName] themself sank their claws into my essence and tore out everything they could reach.\n\nAn ancient curse demanded payment for eternity..."
  rvi_balance.0001.a1: "I'll have to endure..."
- rvi_balance.0001.a2: "I'll fill the void with hunting"
+ rvi_balance.0001.a2: "No! I am stronger. I am smarter. I am better!"
  rvi_balance.0002.title: "Hourglass"
  rvi_balance.0002.desc: "Another year of my unlife has passed... Yet today I feel nothing but emptiness and weariness.\n\nI sense something leaving me—something not physical—as though I had climbed a great mountain of sand and tumbled down to the very bottom, destined never to reach the summit."
  rvi_balance.0002.a1: "I must regain my composure"
@@ -185,3 +185,12 @@
  rvi_ritual.1013.desc: "The last guests have departed. You retire to your chambers and look out the window.\n\nEverything below is calm. A few vampires among the guests, whose names you don't even know, are diligently cleaning up the aftermath of the night — broken jugs, scraps of expensive fabric, and traces of debauchery.\n\nThanks to the generously purchased blood, none of the guests hunted the locals. And this did not go unnoticed.\n\nBy midday, you receive news: several influential vampires who attended the feast have decided to invest in these lands. Some sent stonemasons, some trade caravans, and some simply transferred gold for the development of the domain.\n\nThey saw that under your rule these lands are reliably protected from other undead. And that means — one can safely invest here."
  rvi_ritual.1013.a: "Amazing"
  rvi_activity_vamp_ritual_host_an_a: "a"
+ 
+ rvi_tubik_modifier: "False Apex"
+ rvi_tubik_modifier_desc: "This creature of the night has fully given itself over to its megalomania in its endless hunger for power and supremacy."
+ rvi_chad_modifier: "Humbled Eternal"
+ rvi_chad_modifier_desc: "This creature of the night has chosen restraint over raw power. By distancing from unnecessary thoughts, it has found a fragile but precious equilibrium - calmer, more focused, and far less tormented by hunger."
+ rvi_chad_tt: "You won't gain stress by learning the vampire lifestyle"
+ rvi_balance_tt: "Every year you will lose traits that are incompatible with vampirism"
+ rvi_nowayback: "There will be no way back"
+ 
