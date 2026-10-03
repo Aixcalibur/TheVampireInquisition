@@ -1,0 +1,12 @@
+﻿vi_vampiric_hostility_doctrine = {
+	doctrine_group_type = hostility_group
+	index = 0
+	divergence = 30
+	
+	visible = no
+	parameters = {
+		hostility_same_religion = 1
+		hostility_same_family = 2
+		hostility_others = 1
+	}
+}
