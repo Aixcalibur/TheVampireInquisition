@@ -12,41 +12,41 @@ vi_vampire_drain_effect = {
 
 	scope:vi_vampire = {
 		vi_vampire_drain_stress_effect = yes
-		vi_copy_victim_trait_effect = { TRAIT = beauty_bad_1 }
-		vi_copy_victim_trait_effect = { TRAIT = beauty_bad_2 }
-		vi_copy_victim_trait_effect = { TRAIT = beauty_bad_3 }
-		vi_copy_victim_trait_effect = { TRAIT = beauty_good_1 }
-		vi_copy_victim_trait_effect = { TRAIT = beauty_good_2 }
-		vi_copy_victim_trait_effect = { TRAIT = beauty_good_3 }
-		vi_copy_victim_trait_effect = { TRAIT = intellect_bad_1 }
-		vi_copy_victim_trait_effect = { TRAIT = intellect_bad_2 }
-		vi_copy_victim_trait_effect = { TRAIT = intellect_bad_3 }
-		vi_copy_victim_trait_effect = { TRAIT = intellect_good_1 }
-		vi_copy_victim_trait_effect = { TRAIT = intellect_good_2 }
-		vi_copy_victim_trait_effect = { TRAIT = intellect_good_3 }
-		vi_copy_victim_trait_effect = { TRAIT = physique_bad_1 }
-		vi_copy_victim_trait_effect = { TRAIT = physique_bad_2 }
-		vi_copy_victim_trait_effect = { TRAIT = physique_bad_3 }
-		vi_copy_victim_trait_effect = { TRAIT = physique_good_1 }
-		vi_copy_victim_trait_effect = { TRAIT = physique_good_2 }
-		vi_copy_victim_trait_effect = { TRAIT = physique_good_3 }	
-		vi_copy_victim_trait_effect = { TRAIT = strong }
-		vi_copy_victim_trait_effect = { TRAIT = fecund }
-		vi_copy_victim_trait_effect = { TRAIT = infertile }
-		vi_copy_victim_trait_effect = { TRAIT = bleeder }
-		vi_copy_victim_trait_effect = { TRAIT = wheezing }
-		vi_copy_victim_trait_effect = { TRAIT = albino }
-		vi_copy_victim_trait_effect = { TRAIT = scaly }
-		vi_copy_victim_trait_effect = { TRAIT = hunchbacked }
-		vi_copy_victim_trait_effect = { TRAIT = clubfooted }
-		vi_copy_victim_trait_effect = { TRAIT = lisping }
-		vi_copy_victim_trait_effect = { TRAIT = stuttering }
-		vi_copy_victim_trait_effect = { TRAIT = dwarf }
-		vi_copy_victim_trait_effect = { TRAIT = inbred }
-		vi_copy_victim_trait_effect = { TRAIT = weak }
-		vi_copy_victim_trait_effect = { TRAIT = dull }
-		vi_copy_victim_trait_effect = { TRAIT = impotent }
-		vi_copy_victim_trait_effect = { TRAIT = spindly }
+		vi_vampire_copy_victim_trait_effect = { TRAIT = beauty_bad_1 }
+		vi_vampire_copy_victim_trait_effect = { TRAIT = beauty_bad_2 }
+		vi_vampire_copy_victim_trait_effect = { TRAIT = beauty_bad_3 }
+		vi_vampire_copy_victim_trait_effect = { TRAIT = beauty_good_1 }
+		vi_vampire_copy_victim_trait_effect = { TRAIT = beauty_good_2 }
+		vi_vampire_copy_victim_trait_effect = { TRAIT = beauty_good_3 }
+		vi_vampire_copy_victim_trait_effect = { TRAIT = intellect_bad_1 }
+		vi_vampire_copy_victim_trait_effect = { TRAIT = intellect_bad_2 }
+		vi_vampire_copy_victim_trait_effect = { TRAIT = intellect_bad_3 }
+		vi_vampire_copy_victim_trait_effect = { TRAIT = intellect_good_1 }
+		vi_vampire_copy_victim_trait_effect = { TRAIT = intellect_good_2 }
+		vi_vampire_copy_victim_trait_effect = { TRAIT = intellect_good_3 }
+		vi_vampire_copy_victim_trait_effect = { TRAIT = physique_bad_1 }
+		vi_vampire_copy_victim_trait_effect = { TRAIT = physique_bad_2 }
+		vi_vampire_copy_victim_trait_effect = { TRAIT = physique_bad_3 }
+		vi_vampire_copy_victim_trait_effect = { TRAIT = physique_good_1 }
+		vi_vampire_copy_victim_trait_effect = { TRAIT = physique_good_2 }
+		vi_vampire_copy_victim_trait_effect = { TRAIT = physique_good_3 }	
+		vi_vampire_copy_victim_trait_effect = { TRAIT = strong }
+		vi_vampire_copy_victim_trait_effect = { TRAIT = fecund }
+		vi_vampire_copy_victim_trait_effect = { TRAIT = infertile }
+		vi_vampire_copy_victim_trait_effect = { TRAIT = bleeder }
+		vi_vampire_copy_victim_trait_effect = { TRAIT = wheezing }
+		vi_vampire_copy_victim_trait_effect = { TRAIT = albino }
+		vi_vampire_copy_victim_trait_effect = { TRAIT = scaly }
+		vi_vampire_copy_victim_trait_effect = { TRAIT = hunchbacked }
+		vi_vampire_copy_victim_trait_effect = { TRAIT = clubfooted }
+		vi_vampire_copy_victim_trait_effect = { TRAIT = lisping }
+		vi_vampire_copy_victim_trait_effect = { TRAIT = stuttering }
+		vi_vampire_copy_victim_trait_effect = { TRAIT = dwarf }
+		vi_vampire_copy_victim_trait_effect = { TRAIT = inbred }
+		vi_vampire_copy_victim_trait_effect = { TRAIT = weak }
+		vi_vampire_copy_victim_trait_effect = { TRAIT = dull }
+		vi_vampire_copy_victim_trait_effect = { TRAIT = impotent }
+		vi_vampire_copy_victim_trait_effect = { TRAIT = spindly }
 
 		add_character_modifier = {
 			modifier = vi_sated_modifier
