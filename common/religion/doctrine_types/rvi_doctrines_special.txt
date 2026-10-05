@@ -1,6 +1,8 @@
 special_doctrine_is_rodnoverie_faith = {
+	doctrine_group_type = is_rodnoverie_faith
+	icon = "special_doctrine_teachings_of_jesus"
+	
 	parameters = {
-		minimum_fervor = 85
 		faith_can_raid = yes
 		
 	}
@@ -13,8 +15,10 @@ special_doctrine_is_rodnoverie_faith = {
 }
 
 special_doctrine_is_nocturne_faith = {
+	doctrine_group_type = is_nocturne_faith
+	icon = "special_doctrine_teachings_of_jesus"
+	
 	parameters = {
-		minimum_fervor = 85
 		faith_can_raid = yes
 		
 	}
@@ -26,8 +30,10 @@ special_doctrine_is_nocturne_faith = {
 }
 
 special_doctrine_is_eleusinian_faith = {
+	doctrine_group_type = is_eleusinian_faith
+	icon = "special_doctrine_teachings_of_jesus"
+	
 	parameters = {
-		minimum_fervor = 85
 		faith_can_raid = yes
 		
 	}
@@ -40,8 +46,10 @@ special_doctrine_is_eleusinian_faith = {
 }
 
 special_doctrine_is_penitence_faith = {
+	doctrine_group_type = is_penitence_faith
+	icon = "special_doctrine_teachings_of_jesus"
+	
 	parameters = {
-		minimum_fervor = 85
 		faith_can_raid = yes
 			
 	}
@@ -54,8 +62,10 @@ special_doctrine_is_penitence_faith = {
 }
 
 special_doctrine_is_thoth_faith = {
+	doctrine_group_type = is_thoth_faith
+	icon = "special_doctrine_teachings_of_jesus"
+	
 	parameters = {
-		minimum_fervor = 85
 		faith_can_raid = yes
 		
 	}
@@ -69,8 +79,10 @@ special_doctrine_is_thoth_faith = {
 
 
 special_doctrine_is_mingcult_faith = {
+	doctrine_group_type = is_mingcult_faith
+	icon = "special_doctrine_teachings_of_jesus"
+	
 	parameters = {
-		minimum_fervor = 85
 		faith_can_raid = yes
 		
 	}
@@ -84,23 +96,20 @@ special_doctrine_is_mingcult_faith = {
 
 
 special_doctrine_is_baphometi_faith = {
+	doctrine_group_type = is_baphometi_faith
+	icon = "special_doctrine_teachings_of_jesus"
+	
 	parameters = {
-		minimum_fervor = 85
 		faith_can_raid = yes
-		
-	}
-
-	character_modifier = {
-		monthly_piety_gain_per_dread_add = 0.02
-		dread_baseline_add = 50
-		
 	}
 }
 
 
 special_doctrine_is_bloodreign_faith = {
+	doctrine_group_type = is_bloodreign_faith
+	icon = "special_doctrine_teachings_of_jesus"
+	
 	parameters = {
-		minimum_fervor = 85
 		faith_can_raid = yes
 		
 	}
@@ -115,8 +124,10 @@ special_doctrine_is_bloodreign_faith = {
 
 
 special_doctrine_is_vi_unreformed_faith = {
+	doctrine_group_type = is_vi_unreformed_faith
+	icon = "special_doctrine_teachings_of_jesus"
+	
 	parameters = {
-		minimum_fervor = 85
 		faith_can_raid = yes
 		
 	}

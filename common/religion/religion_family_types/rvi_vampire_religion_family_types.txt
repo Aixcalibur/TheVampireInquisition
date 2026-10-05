@@ -1,0 +1,9 @@
+﻿rf_vi_vampire = {
+	graphical_faith = "orthodox_gfx"
+	piety_icon_group = "eastern"	
+	# hostility_doctrine = abrahamic_hostility_doctrine
+	tenet_background_icon = tenet_banner_known_core
+	tenet_heretical_background_icon = tenet_banner_unknown_heretical
+	tenet_neutral_background_icon = tenet_banner_known_neutral
+	tenet_unknown_background_icon = tenet_banner_unknown_neutral
+}

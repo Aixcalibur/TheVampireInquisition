@@ -1,4 +1,8 @@
 ﻿vi_masquerade_required = {
+	doctrine_group_type = doctrine_vi_masquerade
+	index = 0
+	divergence = 0
+
 	piety_cost = {
 		value = faith_doctrine_cost_low
 		if = {
@@ -19,6 +23,10 @@
 }
 
 vi_masquerade_not_required = {
+	doctrine_group_type = doctrine_vi_masquerade
+	index = 0
+	divergence = 0
+
 	piety_cost = {
 		value = 1000000
 		if = {
@@ -36,6 +44,10 @@ vi_masquerade_not_required = {
 	
 
 vi_diablerie_forbidden = {
+	doctrine_group_type = doctrine_vi_diablerie
+	index = 0
+	divergence = 0
+
 	piety_cost = {
 		value = faith_doctrine_cost_low
 		if = {
@@ -52,6 +64,10 @@ vi_diablerie_forbidden = {
 }
 
 vi_diablerie_shunned = {
+	doctrine_group_type = doctrine_vi_diablerie
+	index = 0
+	divergence = 0
+
 	piety_cost = {
 		value = faith_doctrine_cost_low
 		if = {
@@ -66,6 +82,10 @@ vi_diablerie_shunned = {
 }
 
 vi_diablerie_allowed = {
+	doctrine_group_type = doctrine_vi_diablerie
+	index = 0
+	divergence = 0
+
 	piety_cost = {
 		value = faith_doctrine_cost_low
 		if = {
