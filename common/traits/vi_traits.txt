@@ -210,7 +210,7 @@ vi_exposed_vampire = {
 				trigger = {
 					has_trait_xp = {
 						trait = vi_exposed_vampire
-						value >= 90
+						value >= 60
 					}
 				}
 				desc = trait_vi_exposed_vampire_2
@@ -246,18 +246,17 @@ vi_exposed_vampire = {
 			levy_size = -0.10
 			character_max_prestige_level_add = 1
 			knight_effectiveness_mult = -0.15
-			faith_modifier = {
-				#-debuff
-				parameter = vi_no_masquerade
-				stress_gain_mult = -0.05
-				general_opinion = 25
-				county_opinion_add = 20
-				monthly_legitimacy_add = 0.5
-				levy_size = 0.05
-				
-				vassal_opinion = -25
-				
-			}				
+		#	faith_modifier = {
+		#		#-debuff
+		#		parameter = vi_no_masquerade
+		#		stress_gain_mult = -0.05
+		#		general_opinion = 25
+		#		county_opinion_add = 20
+		#		monthly_legitimacy_add = 0.5
+		#		levy_size = 0.05
+		#		
+		#		vassal_opinion = -25
+		#	}				
 		}
 		50 = {
 			general_opinion = -25
@@ -266,17 +265,17 @@ vi_exposed_vampire = {
 			character_max_prestige_level_add = 1
 			army_maintenance_mult = 0.1
 			knight_effectiveness_mult = -0.15
-			faith_modifier = {
-				parameter = vi_no_masquerade
-				stress_gain_mult = -0.05	
-				general_opinion = 25
-				county_opinion_add = 10
-				levy_size = 0.15
-				
-				vassal_opinion = -25
-				monthly_dynasty_prestige = 0.20
-				monthly_influence = 0.5
-			}			
+		#	faith_modifier = {
+		#		parameter = vi_no_masquerade
+		#		stress_gain_mult = -0.05	
+		#		general_opinion = 25
+		#		county_opinion_add = 10
+		#		levy_size = 0.15
+		#		
+		#		vassal_opinion = -25
+		#		monthly_dynasty_prestige = 0.20
+		#		monthly_influence = 0.5
+		#	}			
 		}
 		75 = {
 			general_opinion = -25
@@ -285,17 +284,17 @@ vi_exposed_vampire = {
 			character_max_prestige_level_add = 1
 			army_maintenance_mult = 0.1
 			knight_effectiveness_mult = -0.25
-			faith_modifier = {
-				parameter = vi_no_masquerade
-				stress_gain_mult = -0.15	
-				general_opinion = 25
-				county_opinion_add = 10
-				levy_size = 0.15
-				
-				vassal_opinion = -25
-				monthly_dynasty_prestige = 0.30
-				monthly_influence = 1			
-			}			
+		#	faith_modifier = {
+		#		parameter = vi_no_masquerade
+		#		stress_gain_mult = -0.15	
+		#		general_opinion = 25
+		#		county_opinion_add = 10
+		#		levy_size = 0.15
+		#		
+		#		vassal_opinion = -25
+		#		monthly_dynasty_prestige = 0.30
+		#		monthly_influence = 1			
+		#	}			
 		}
 		100 = {
 			general_opinion = -25
@@ -305,16 +304,16 @@ vi_exposed_vampire = {
 			army_maintenance_mult = 0.1
 			knight_effectiveness_mult = -0.2
 			faith_modifier = {
-				parameter = vi_no_masquerade
-				stress_gain_mult = -0.25				
-				general_opinion = 25
-				county_opinion_add = 10
-				levy_size = 0.15
-				
-				vassal_opinion = -25
-				monthly_dynasty_prestige = 0.40
-				monthly_influence = 1				
-			}
+		#		parameter = vi_no_masquerade
+		#		stress_gain_mult = -0.25				
+		#		general_opinion = 25
+		#		county_opinion_add = 10
+		#		levy_size = 0.15
+		#		
+		#		vassal_opinion = -25
+		#		monthly_dynasty_prestige = 0.40
+		#		monthly_influence = 1				
+		#	}
 		}
 	}
 	

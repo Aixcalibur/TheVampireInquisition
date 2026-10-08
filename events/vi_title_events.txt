@@ -1,0 +1,119 @@
+namespace = vi_title_exposed    
+
+vi_title_exposed.0001 = {
+	type = character_event
+	title = vi_title_exposed.0001.t
+	desc = vi_title_exposed.0001.desc
+	theme = realm
+	#override_background = { reference = docks }
+	
+	left_portrait = {
+		character = root
+		animation = debating
+	}
+	# right_portrait = {
+	# 	character = scope:aide
+	# 	animation = scepter
+	# }
+
+    immediate = {
+        add_trait_xp = {
+            trait = vi_exposed_vampire
+            value = {
+                value = 0
+                if = {
+                    limit = { highest_held_title_tier >= tier_county }
+                    add = 10
+                }
+                if = {
+                    limit = { highest_held_title_tier >= tier_duchy }
+                    add = 10
+                }
+                if = {
+                limit = { highest_held_title_tier >= tier_kingdom }
+                add = 10
+            }
+            if = {
+                    limit = { highest_held_title_tier >= tier_empire }
+                    add = 10
+                }
+                if = {
+                    limit = { highest_held_title_tier >= tier_hegemony }
+                    add = 10
+                }
+            }
+        }
+    }
+
+	option = { #Use the city's native capabilities to produce what's needed
+		name = vi_title_exposed.0001.a
+		save_scope_as = actor
+
+		add_character_flag = {
+			flag = fake_succession_decision_flag
+			years = 10
+		}
+
+		# start_scheme = {
+		# 	type = vi_fake_succession_scheme
+		# 	target_character = root
+		# }
+		
+		begin_scheme_with_agents_effect = {
+			SCHEME_TYPE = vi_fake_succession_scheme
+			TARGET_TYPE = target_character
+			TARGET_SCOPE = root
+			# Success.
+			AGENT_1 = agent_physic
+			AGENT_2 = agent_diplomat
+			AGENT_3 = agent_cleric_success
+			AGENT_4 = agent_scribe
+			# Speed.
+			AGENT_5 = agent_planner
+		}
+
+		ai_chance = {
+			base = 45	
+		}
+	}
+	option = { #Use the city's native capabilities to produce what's needed
+		name = vi_title_exposed.0001.b
+		save_scope_as = actor
+
+		add_character_flag = {
+			flag = fake_succession_decision_flag
+			years = 10
+		}
+
+		# start_scheme = {
+		# 	type = vi_clear_name_scheme
+		# 	target_character = root
+		# }
+		
+		begin_scheme_with_agents_effect = {
+			SCHEME_TYPE = vi_clear_name_scheme
+			TARGET_TYPE = target_character
+			TARGET_SCOPE = root
+			# Success.
+			AGENT_1 = agent_shill
+			AGENT_2 = agent_diplomat
+			AGENT_3 = agent_cleric_success
+			AGENT_4 = agent_scribe
+			# Speed.
+			AGENT_5 = agent_socialite
+		}
+
+		ai_chance = {
+			base = 45
+			
+		}
+	}
+    	option = { #Actually... never mind
+		name = vi_title_exposed.0001.c
+		
+		ai_chance = {
+			base = 10
+			
+		}
+	}
+}

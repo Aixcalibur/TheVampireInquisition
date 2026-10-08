@@ -1,0 +1,6 @@
+﻿l_english:
+ vi_title_exposed.0001.t: "A vampire becomes [ROOT.Char.GetTitleTierName]!"
+ vi_title_exposed.0001.desc: "The deed is done. I am now [ROOT.Char.GetTitledFirstName], the sovereign ruler of [ROOT.Char.GetPrimaryTitle.GetName]. Yet whispers persist that I have lived a year too long and achieved far too much in one lifetime. How shall I proceed?"
+ vi_title_exposed.0001.a: "Perhaps a succession is in order."
+ vi_title_exposed.0001.b: "I must work clear my name."
+ vi_title_exposed.0001.c: "I will embrace my new title and the power it brings."

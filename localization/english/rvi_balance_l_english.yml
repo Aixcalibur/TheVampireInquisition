@@ -87,7 +87,7 @@
  rvi_balance.0004.a2_tt: "You will not be able to sate your hunger as long as the position of Intimate Favorite remains vacant"
  max_prestige_level_entry: "An unrevealed vampire is forced to remain in the shadows"
  rvi_no_masquerade: "Your character does not shun outed vampires"
- TRAIT_FLAG_DESC_rvi_troops_deserting: "Mortal [Concept( 'men_at_arms', 'Men-at-Arms' )|E] may deserting during a defensive war"
+ TRAIT_FLAG_DESC_rvi_troops_deserting: "Mortal [Concept( 'men_at_arms', 'Men-at-Arms' )|E] may desert during a defensive war"
  rvi_vampire_ushkuy: "Undead Marauders"
  rvi_vampire_ushkuy_flavor: "#F Undead marauders who glide silently through swamps and forests. They tear into their enemies with fangs and hew them with axes with equal lethality. Some of them are even able to climb a high wall without siege equipment.#!"
  RVI_AGES: "Aged and frail: $VALUE|=+0$"
