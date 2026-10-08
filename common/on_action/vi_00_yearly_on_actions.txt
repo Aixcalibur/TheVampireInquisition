@@ -104,6 +104,7 @@ vi_vampire_playable_pulse = {
 		vi_vampire_landed_tracking
 		vi_vampire_policy_pulse
 		vi_hunter_story_creation
+		vi_exposed_vampire_xp_pulse
 	}
 }
 
@@ -411,5 +412,19 @@ vi_china_story_yearly_check = {
 		900 = 0
 		50 = vi_daji_awakening
 		#100 = vi_caocao_awakening
+	}
+}
+
+vi_exposed_vampire_xp_pulse = {
+	trigger = {
+		has_trait = vi_exposed_vampire
+		age >= 100
+	}
+
+	effect = {
+		add_trait_xp = {
+			trait = vi_exposed_vampire
+			value = 1
+		}
 	}
 }

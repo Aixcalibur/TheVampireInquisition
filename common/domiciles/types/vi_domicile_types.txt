@@ -44,7 +44,7 @@
 
 	can_move_manually = no
 	travel = yes
-	move_with_realm_capital = yes
+	move_with_realm_capital = no
 
 	base_external_slots = 2
 
