@@ -1,9 +1,22 @@
-﻿# on_rank_up = {
-# 	on_actions = {
-# 		delay = { days = 1 }
+﻿on_rank_up = {
+    on_actions = {
+ 	    delay = { days = 1 }
 # 		vi_on_rank_up_changed_capital
-# 	}
-# }
+        vi_on_rank_up_exposed_vampire
+ 	}
+}
+
+vi_on_rank_up_exposed_vampire = {
+    trigger = {
+        has_trait = vi_exposed_vampire
+        age >= 100
+    }
+
+    events = {
+        delay = { days = 10 }
+        vi_title_exposed.0001
+    }
+}
 
 # vi_on_rank_up_changed_capital = {
 # 	trigger = {

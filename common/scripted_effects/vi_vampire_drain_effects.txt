@@ -157,7 +157,6 @@ vi_vampire_drain_effect = {
 	}
 }
 
-
 vi_vampire_drain_turn_hostile_effect = {
 
 	scope:vi_victim = {

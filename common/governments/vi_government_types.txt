@@ -18,6 +18,7 @@
 		use_as_base_on_rank_up = yes
 		# subject_men_at_arms = yes
 		inherit_from_dynastic_government = no
+		noble_families = yes
 	}
 
 	court_generate_commanders = yes

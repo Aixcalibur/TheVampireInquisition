@@ -179,7 +179,7 @@ vi_adventure_create_princedom_effect = {
 	destroy_laamp_effect = { ADVENTURER = scope:actor }
 
 
-	vi_create_noble_family_effect = yes
+#	vi_create_noble_family_effect = yes
 	
 	create_dynamic_title = {
 		tier = kingdom
@@ -385,46 +385,46 @@ vi_delete_yurt_buildings_effect = {
 	# domicile = { remove_domicile_building = trade_yurt_03 }
 }
 
-vi_create_noble_family_effect = {
-	debug_log = create_noble_family_title
-
-	save_scope_as = new_noble_family_holder
-	hidden_effect = { # NF can only be held by house heads
-		if = { # Start by checking that we are not the house head already
-			limit = {
-				house ?= {
-					house_head != scope:new_noble_family_holder
-				}
-			}
-			create_cadet_branch = yes
-		}
-	}
-	give_noble_family_title = {
-		name = noble_family_name
-		tier = county
-		article = DEFAULT_TITLE_NAME_ARTICLE
-		save_scope_as = new_title
-		government = vi_vampire_government
-	}
-	scope:new_title = {
-		holder = {
-			save_scope_as = noble_family_head
-		}
-		set_coa = scope:noble_family_head.house
-		if = {
-			limit = {
-				exists = scope:vi_title_county
-			}
-			set_capital_county = scope:vi_title_county
-		}
-	}
-	custom_description = {
-		text = create_noble_family_tt
-	}
-
-	#change_government = vi_vampire_government
-
-	#Notifications
+#vi_create_noble_family_effect = {
+#	debug_log = create_noble_family_title
+#
+#	save_scope_as = new_noble_family_holder
+#	hidden_effect = { # NF can only be held by house heads
+#		if = { # Start by checking that we are not the house head already
+#			limit = {
+#				house ?= {
+#					house_head != scope:new_noble_family_holder
+#				}
+#			}
+#			create_cadet_branch = yes
+#		}
+#	}
+#	give_noble_family_title = {
+#		name = noble_family_name
+#		tier = county
+#		article = DEFAULT_TITLE_NAME_ARTICLE
+#		save_scope_as = new_title
+#		government = vi_vampire_government
+#	}
+#	scope:new_title = {
+#		holder = {
+#			save_scope_as = noble_family_head
+#		}
+#		set_coa = scope:noble_family_head.house
+#		if = {
+#			limit = {
+#				exists = scope:vi_title_county
+#			}
+#			set_capital_county = scope:vi_title_county
+#		}
+#	}
+#	custom_description = {
+#		text = create_noble_family_tt
+#	}
+#
+#	#change_government = vi_vampire_government
+#
+#	#Notifications
 	# top_liege ?= {
 	# 	every_vassal = {
 	# 		limit = {
@@ -438,8 +438,8 @@ vi_create_noble_family_effect = {
 	# 	}
 	# }
 
-	debug_log_scopes = yes
-}
+#	debug_log_scopes = yes
+#}
 
 debug_vi_title_effect = {
 	every_vassal = {
