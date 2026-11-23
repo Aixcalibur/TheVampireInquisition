@@ -34,16 +34,6 @@
 	}
 }
 
-is_playable_character = {
-	OR = {
-		is_landed = yes
-		is_landless_administrative = yes
-		is_landless_adventurer = yes
-		has_government = vi_vampire_government
-		is_landless_nomad = yes
-		is_ai = no
-	}
-}
 
 can_be_drunkard = {
 	vi_is_vampire_trigger = no
