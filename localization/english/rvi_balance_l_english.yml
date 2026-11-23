@@ -157,7 +157,7 @@
  rvi_ritual.0008.a_desc: "This hunter has nothing to oppose"
  rvi_ritual.0008.b: "Do your old way in my prison"
  rvi_ritual.0008.b_desc: "What to do with [vi_new_hunter.GetHerHim] can be decided later"
- rvi_ritual.0008.с: "You want a fair fight? Then have it..."
+ rvi_ritual.0008.c: "You want a fair fight? Then have it..."
  rvi_ritual.0008.c_desc: "You and the [Select_CString(vi_new_hunter.IsFemale, 'old huntress', 'old hunter')] engage in a deadly duel"
  rvi_ritual.0008.d: "Fuck off, you decrepit [Select_CString(vi_new_hunter.IsFemale, 'bitch', 'bastard')]!"
  rvi_ritual.0008.d_desc: "You disappear among the trees. Dealing with [vi_new_hunter.GetHerHim] can wait.\nIf [vi_new_hunter.GetSheHe] doesn't get to you first."
@@ -194,3 +194,5 @@
  rvi_balance_tt: "Every year you will lose traits that are incompatible with vampirism"
  rvi_nowayback: "There will be no way back"
  
+ vi_vampire_government_filter_option: "Vampire Princedom"
+ vi_vampire_government_filter_option_desc: "Only show characters with [vampire|E] [government|E]"
