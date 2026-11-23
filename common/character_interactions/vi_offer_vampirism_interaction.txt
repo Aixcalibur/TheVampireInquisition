@@ -537,6 +537,7 @@ vi_ask_vampirism_interaction = {
 		scope:recipient = {
 			vi_is_vampire_trigger = yes
 			OR = {
+				has_trait = vi_exposed_vampire
 				has_government = vi_vampire_government
 				any_secret = {
 					secret_type = secret_vi_vampire
@@ -555,9 +556,12 @@ vi_ask_vampirism_interaction = {
 		custom_description = {
 			text = VI_MUST_KNOW_SECRET
 			scope:recipient = {
-				any_secret = {
-					secret_type = secret_vi_vampire
-					is_known_by = scope:actor
+				OR = {
+					has_trait = vi_exposed_vampire
+					any_secret = {
+						secret_type = secret_vi_vampire
+						is_known_by = scope:actor
+					}
 				}
 			}
 		}
