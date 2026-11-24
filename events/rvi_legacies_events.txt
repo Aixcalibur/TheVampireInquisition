@@ -1,4 +1,4 @@
-namespace = rvi_legacies
+﻿namespace = rvi_legacies
 
 #Exalt
 rvi_legacies.1001 = {
