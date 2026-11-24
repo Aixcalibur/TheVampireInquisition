@@ -1,4 +1,4 @@
-namespace = rvi_balance
+﻿namespace = rvi_balance
 
 rvi_balance.0001 = {
 	is_triggered_only = yes
