@@ -1,4 +1,4 @@
-rvi_koshey_modifier = {
+﻿rvi_koshey_modifier = {
 	icon = magic_positive
 	monthly_income = 5
 	stress_gain_mult = -1
