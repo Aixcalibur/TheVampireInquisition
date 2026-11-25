@@ -1,4 +1,4 @@
-rvi_remove_all_positive_effects = {
+﻿rvi_remove_all_positive_effects = {
 	remove_trait = adventurer_follower
 	remove_trait = consecrated_blood
 	remove_trait = murderer
