@@ -1,4 +1,4 @@
-rvi_entracte_modifier = {
+﻿rvi_entracte_modifier = {
 	icon = magic_positive
 	general_opinion = -20
 }
