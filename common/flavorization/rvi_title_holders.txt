@@ -1,4 +1,4 @@
-ecumenical_rodnover = {
+﻿ecumenical_rodnover = {
 	type = character
 	gender = male
 	special = holder
